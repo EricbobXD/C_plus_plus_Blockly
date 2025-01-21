@@ -540,7 +540,10 @@
                 "contents": [
                   {"kind": "block", "type": "function_definition_void"},
                   {"kind": "block", "type": "function_definition"},
-                  {"kind": "block", "type": "function_call"}
+                  {"kind": "block", "type": "function_call"},
+                  {"kind": "labal", "text": "變數定義"},
+                  {"kind": "block", "type": "def_var"},
+                  {"kind": "block", "type": "string_commas"}
                 ]
               },
               { // variable
@@ -660,7 +663,8 @@
                   {"kind": "label", "text": "循環條件"},
                   {"kind": "block", "type": "logic_operators"},
                   {"kind": "label", "text": "迴圈條件"},
-                  {"kind": "block", "type": "var_cal"} 
+                  {"kind": "block", "type": "var_cal"},
+                  {"kind": "block", "type": "while_block"},
                 ]
               },
             ]
@@ -914,7 +918,7 @@
                 },
                 { //get struct
                     "type": "get_struct",
-                    "message0": "結構 名字: %1, 變數名: %2",
+                    "message0": "結構 名字: %1, 變數名: %2, 大小%3",
                     "args0": [{
                             "type": "field_input",
                             "name": "struct_name",
@@ -922,7 +926,11 @@
                         {
                             "type": "field_input",
                             "name": "var_name"
-                        }
+                        },
+                        {
+                            "type":"input_value",
+                            "name": "size"
+                        },
                     ],
                     "colour": "#f4a460",
                     "previousStatement": null,
@@ -955,7 +963,7 @@
                 },
                 { //get class
                     "type": "get_class",
-                    "message0": "類別 名字: %1, 變數名: %2",
+                    "message0": "類別 名字: %1, 變數名: %2, 大小%3",
                     "args0": [{
                             "type": "field_input",
                             "name": "class_name",
@@ -963,6 +971,10 @@
                         {
                             "type": "field_input",
                             "name": "var_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "size"
                         }
                     ],
                     "colour": "#e9967a",
@@ -3493,6 +3505,10 @@
         Blockly.Cpp['get_struct'] = function(block) {
             var struct_name = block.getFieldValue('struct_name');
             var var_name = block.getFieldValue('var_name');
+            var size = Blockly.Cpp.valueToCode(block, 'size', 1);
+            if (size){
+                return `${struct_name} ${var_name}[${size}];`
+            }
             return `${struct_name} ${var_name};`;
         };
 
@@ -3517,6 +3533,10 @@
         Blockly.Cpp['get_class'] = function(block) {
             var class_name = block.getFieldValue('class_name');
             var var_name = block.getFieldValue('var_name');
+            var size = Blockly.Cpp.valueToCode(block, 'size', 1);
+            if (size){
+                return `${class_name} ${var_name}[${size}];`
+            }
             return `${class_name} ${var_name};`;
         };
 
