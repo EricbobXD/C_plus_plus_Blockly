@@ -639,18 +639,30 @@
               },
               { // condition and loop
                 "kind": "category",
-                "name": "條件與迴圈",
+                "name": "條件與終止",
                 "colour": "#00ABEA",
                 "contents": [
                   {"kind": "block", "type": "if_block"},
-                  {"kind": "block", "type": "for_block"},
-                  {"kind": "block", "type": "while_block"},
                   {"kind": "block", "type": "switch_block"},
                   {"kind": "block", "type": "break_block"},
                   {"kind": "block", "type": "continue_block"},
                   {"kind": "block", "type": "return_block"}
                 ]
-              }
+              },
+              { // 
+                "kind": "category",
+                "name": "迴圈",
+                "colour": "#2473c2",
+                "contents": [
+                  {"kind": "block", "type": "for_block"},
+                  {"kind": "label", "text": "初始變數值"},
+                  {"kind": "block", "type": "def_var"},
+                  {"kind": "label", "text": "循環條件"},
+                  {"kind": "block", "type": "logic_operators"},
+                  {"kind": "label", "text": "迴圈條件"},
+                  {"kind": "block", "type": "var_cal"} 
+                ]
+              },
             ]
         };
 
@@ -1053,9 +1065,10 @@
                 },
 
                 //condition
+                //condition
                 { //for
                     "type": "for_block",
-                    "message0": "初始變數值 %1  循環條件 %2 迴圈條件 %3 %4 %5 執行%6 ",
+                    "message0": "初始變數值 %1  循環條件 %2 迴圈條件 %3  執行%4 ",
                     "args0": [
                         {
                             "type": "input_value",
@@ -1067,21 +1080,8 @@
                             "check": "Boolean"
                         },
                         {
-                            "type": "field_input",
-                            "name": "VAR1",
-                            "text": "i"
-                        },
-                        {
-                            "type": "field_dropdown",
-                            "name": "equal",
-                            "options": [
-                                ["+=", "+="],
-                                ["-=", "-="]
-                            ]
-                        },
-                        {
                             "type": "input_value",
-                            "name": "number"
+                            "name": "var_cal",
                         },
                         {
                             "type": "input_statement",
@@ -1091,8 +1091,109 @@
                     "previousStatement": null,
                     "nextStatement": null,
                     "inputsInline": true,
-                    "colour": "#00abea",
+                    "colour": "#2473c2",
                     "tooltip": "For 迴圈",
+                    "helpUrl": ""
+                },
+
+                //define variable
+                { //def variable
+                    "type": "def_var",
+                    "message0" : "宣告 %1 %2 變數名稱: %3 = %4",
+                    "args0" : [
+                        {
+                            "type": "field_dropdown",
+                            "name": "unsigned",
+                            "options": [
+                                ["有正有負", "no"],
+                                ["全部取正", "unsigned"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type" : "field_input",
+                            "name" : "var_name",
+                            "text" : "i"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "value"
+                        },
+                    ],
+                    "colour": "#2473c2",
+                    "output": null,
+                    "tooltip" : "定義一個變數",
+                    "helpurl" : ""
+                },            
+              
+                //operation
+                { //logic operators
+                    "type": "logic_operators",
+                    "message0": "%1 %2 %3",
+                    "args0": [{
+                            "type": "input_value",
+                            "name": "A"
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "OPERATOR",
+                            "options": [
+                                ["==", "EQUAL"],
+                                ["!=", "NOT_EQUAL"],
+                                [">", "GREATER"],
+                                ["<", "LESS"],
+                                [">=", "GREATER_EQUAL"],
+                                ["<=", "LESS_EQUAL"]
+                            ]
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "B"
+                        }
+                    ],
+                    "output": "Boolean",
+                    "colour": "#2473c2",
+                    "inputsInline": true,
+                    "tooltip": "運算符",
+                    "helpUrl": ""
+                },
+                { //var caculacte
+                    "type": "var_caculacte",
+                    "message0": "%1  %2  %3",
+                    "args0": [{
+                            "type": "input_value",
+                            "name": "A"
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "OPERATOR",
+                            "options": [
+                                ["+=", "ADD_EQUALS"],
+                                ["-=", "SUBTRACT_EQUALS"],
+                                ["*=", "MUTIPLY_EQUALS"],
+                                ["/=", "DEVIDE_EQUALS"],
+                            ]
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "B"
+                        }
+                    ],
+                    "output": "Number",
+                    "colour": "#2473c2",
+                    "inputsInline": true,
+                    "tooltip": "簡化運算符",
                     "helpUrl": ""
                 },
                 { //while
@@ -3532,29 +3633,85 @@
             return code;
         };
 
-        Blockly.Cpp['for_block'] = function(block) {
+         Blockly.Cpp['for_block'] = function(block) {
             var init = Blockly.Cpp.valueToCode(block, 'INIT', 1);
-            var varName2 = block.getFieldValue('VAR2');
-            var condition = Blockly.Cpp.valueToCode(block, 'CONDITION', 1) || 'false';
-            var condition2 = Blockly.Cpp.valueToCode(block, 'CONDITION2', 1) || `${varName} + 1`;
+            var condition = Blockly.Cpp.valueToCode(block, 'CONDITION', 1);
+            var var_cal = Blockly.Cpp.valueToCode(block, 'var_cal', 1);
             var statements_body = Blockly.Cpp.statementToCode(block, 'DO')
 
+            if (init.startsWith('(') && init.endsWith(')')) {
+                init = init.slice(1, -1);
+            }
             if (condition.startsWith('(') && condition.endsWith(')')) {
                 condition = condition.slice(1, -1);
             }
-            if (condition2.startsWith('(') && condition2.endsWith(')')) {
-                condition2 = condition2.slice(1, -1);
+            if (var_cal.startsWith('(') && var_cal.endsWith(')')) {
+                var_cal = var_cal.slice(1, -1);
             }
-            if (varName.startsWith('(') && varName.endsWith(')')) {
-                varName = varName.slice(1, -1);
-            }
-            if (varName2.startsWith('(') && varName2.endsWith(')')) {
-                varName2 = varName2.slice(1, -1);
-            }
-
-            return `for (int ${varName} = ${init}; ${condition}; ${varName2} = ${condition2}) {\n${statements_body}}\n`;
+            return `for (${init}; ${condition}; ${var_cal}){\n${statements_body}\n}\n`;
         };
 
+        Blockly.Cpp['var_cal'] = function(block) {
+            var Value1 = Blockly.Cpp.valueToCode(block, 'A', 1) || '0';
+            var Value2 = Blockly.Cpp.valueToCode(block, 'B', 1) || '0';
+
+            var operator = block.getFieldValue('OPERATOR');
+            var operatorSymbol;
+
+            switch (operator) {
+                case 'ADD_EQUALS':
+                    operatorSymbol = '+=';
+                    break;
+                case 'SUBTRACT_EQUALS':
+                    operatorSymbol = '-=';
+                    break;
+                case 'MUTIPLY_EQUALS':
+                    operatorSymbol = '*=';
+                    break;
+                case 'DEVIDE_EQUALS':
+                    operatorSymbol = '/=';
+                    break;
+                default:
+                    operatorSymbol = '+=';
+            }
+
+            if (Value1.startsWith('(') && Value1.endsWith(')')) {
+                Value1 = Value1.slice(1, -1);
+            }
+            if (Value2.startsWith('(') && Value2.endsWith(')')) {
+                Value2 = Value2.slice(1, -1);
+            }
+
+            code = `(${Value1} ${operatorSymbol} ${Value2})`;
+
+            return [code, 1];
+        };
+
+        Blockly.Cpp['main_block'] = function(block) {
+            var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
+            return `int main() {\n${statements_body}\n  return 0;\n}`;
+        };
+        //define variable
+        Blockly.Cpp['def_var'] = function(block) {
+            var unsigned = block.getFieldValue('unsigned');
+            var type = block.getFieldValue('TYPE');
+            var var_name = block.getFieldValue('var_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            code = '';
+            if (unsigned === 'unsigned'){
+                code += 'unsigned ';
+            }
+            
+            code += type + ' ' + var_name;
+            if (value.startsWith('(') && value.endsWith(')')){
+                value = value.slice(1, -1);
+            }
+            if (value !== ''){
+                code += ` = ${value}`;
+            }
+            code += ';\n';
+            return code;
+        };
         //input and output
         Blockly.Cpp['cin_block'] = function(block) {
             var value_var = Blockly.Cpp.valueToCode(block, 'VARIABLES', 1);
