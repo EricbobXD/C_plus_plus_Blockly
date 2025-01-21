@@ -1136,40 +1136,8 @@
                     "tooltip" : "定義一個變數",
                     "helpurl" : ""
                 },            
-              
-                //operation
-                { //logic operators
-                    "type": "logic_operators",
-                    "message0": "%1 %2 %3",
-                    "args0": [{
-                            "type": "input_value",
-                            "name": "A"
-                        },
-                        {
-                            "type": "field_dropdown",
-                            "name": "OPERATOR",
-                            "options": [
-                                ["==", "EQUAL"],
-                                ["!=", "NOT_EQUAL"],
-                                [">", "GREATER"],
-                                ["<", "LESS"],
-                                [">=", "GREATER_EQUAL"],
-                                ["<=", "LESS_EQUAL"]
-                            ]
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "B"
-                        }
-                    ],
-                    "output": "Boolean",
-                    "colour": "#2473c2",
-                    "inputsInline": true,
-                    "tooltip": "運算符",
-                    "helpUrl": ""
-                },
                 { //var caculacte
-                    "type": "var_caculacte",
+                    "type": "var_cal",
                     "message0": "%1  %2  %3",
                     "args0": [{
                             "type": "input_value",
@@ -3685,11 +3653,6 @@
             code = `(${Value1} ${operatorSymbol} ${Value2})`;
 
             return [code, 1];
-        };
-
-        Blockly.Cpp['main_block'] = function(block) {
-            var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
-            return `int main() {\n${statements_body}\n  return 0;\n}`;
         };
         //define variable
         Blockly.Cpp['def_var'] = function(block) {
