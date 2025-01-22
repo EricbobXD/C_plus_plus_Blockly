@@ -16,7 +16,7 @@
             padding: 10px;
             background-color: #343a40;
             display: flex;
-            width: 680px;
+            width: 600px;
             align-items: center;
             gap: 10px;
         }
@@ -232,6 +232,55 @@
         .blocklyToolboxContents {
             padding: 0.01em;
         }
+
+                /* 教學遮罩與提示框樣式 */
+                .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9998;
+            pointer-events: none;
+            display: none;
+        }
+
+        .highlight {
+            position: absolute;
+            background-color: rgba(253, 253, 253, 0.603); /* 更亮的背景色 */
+            border: 2px solid #00b3ff; /* 邊框顏色 */
+            z-index: 9999;
+            pointer-events: auto;
+            display: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            z-index: 10000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            display: none;
+        }
+
+        .tooltip p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .next-button {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -247,6 +296,7 @@
             <button class="run" id="r">執行</button>
             <button class="run_compile" id="c_r">編譯&執行</button>
             <button class="toggle-view" id="toggle-button" onclick="toggleView()">切換模式</button>
+            <button class="start-tutorial-btn" id="start-tutorial">開始教學</button>
             <a href='https://hackmd.io/@cpp-blockly' target="_blank"><button class="help">尋求幫助?</button></a>
         </div>
     </header>
@@ -272,6 +322,104 @@
             </div>
         </div>
     </main>
+
+    <!-- 遮罩與提示框 -->
+    <div class="overlay" id="overlay"></div>
+    <div class="highlight" id="highlight"></div>
+    <div class="tooltip" id="tooltip">
+        <p id="tooltip-text"></p>
+        <button class="next-button" id="next-step">下一步</button>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const steps = []; // 初始化 steps 變數
+    
+            // 設置教學步驟
+            const searchContainer = document.getElementById('searchContainer');
+            searchContainer.setAttribute('data-step', '1');
+            searchContainer.setAttribute('data-text', '這是搜尋區域，您可以輸入需要搜尋的內容。');
+            steps.push(searchContainer);
+    
+            const actions = document.querySelector('.actions');
+            actions.setAttribute('data-step', '2');
+            actions.setAttribute('data-text', '這是按鈕區域，包含了編譯、執行等功能按鈕。');
+            steps.push(actions);
+    
+            const blocklyWorkspace = document.getElementById('blockly-workspace');
+            blocklyWorkspace.setAttribute('data-step', '3');
+            blocklyWorkspace.setAttribute('data-text', '這是 Blockly 的工作區域，您可以在這裡設計程式積木邏輯。');
+            steps.push(blocklyWorkspace);
+    
+            const codeview = document.querySelector('.code-view');
+            codeview.setAttribute('data-step', '4');
+            codeview.setAttribute('data-text', '這是呈現程式碼、測試編譯區域，您可以在這裡觀察結果。');
+            steps.push(codeview);
+    
+            const overlay = document.getElementById('overlay');
+            const highlight = document.getElementById('highlight');
+            const tooltip = document.getElementById('tooltip');
+            const tooltipText = document.getElementById('tooltip-text');
+            const nextButton = document.getElementById('next-step');
+    
+            let currentStep = 0;
+    
+            function highlightStep(stepIndex) {
+                const step = steps[stepIndex];
+
+                // 獲取當前步驟的邊界框
+                const rect = step.getBoundingClientRect();
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+                // 設置高亮框選的位置
+                highlight.style.top = `${rect.top + scrollY}px`;
+                highlight.style.left = `${rect.left}px`;
+                highlight.style.width = `${rect.width}px`;
+                highlight.style.height = `${rect.height}px`;
+
+                // 設置提示框的位置
+                if (stepIndex >= steps.length - 2) { // 如果是最後兩個步驟
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+
+                    tooltipText.innerText = step.dataset.text;
+                    tooltip.style.top = `${centerY + 20}px`; // 提示框位置在螢幕中心下方
+                    tooltip.style.left = `${centerX - tooltip.offsetWidth / 2}px`; // 提示框居中
+                } else {
+                    tooltipText.innerText = step.dataset.text;
+                    tooltip.style.top = `${rect.bottom + scrollY + 10}px`; // 提示框位置在高亮下方
+                    tooltip.style.left = `${rect.left}px`;
+                }
+
+                highlight.style.display = 'block';
+                tooltip.style.display = 'block';
+            }
+
+            
+            function showNextStep() {
+                if (currentStep < steps.length) {
+                    highlightStep(currentStep);
+                    currentStep++;
+                } else {
+                    endTutorial();
+                }
+            }
+    
+            function endTutorial() {
+                overlay.style.display = 'none';
+                highlight.style.display = 'none';
+                tooltip.style.display = 'none';
+                currentStep = 0;
+            }
+    
+            document.getElementById('start-tutorial').addEventListener('click', () => {
+                overlay.style.display = 'block';
+                showNextStep();
+            });
+    
+            nextButton.addEventListener('click', showNextStep);
+        };
+    </script>
 
     <script>
         let currentModeIndex = 0;
