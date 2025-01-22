@@ -138,6 +138,7 @@
         header .actions button.run_compile { background-color: #f0ad4e; color: #fff; }
         header .actions button.toggle-view { background-color: #d9534f; color: #fff; }
         header .actions button.help { background-color: #5bc0de; color: #fff; }
+        header .actions button.start-tutorial-btn { background-color: rgb(220, 20, 203); color:#fff; }
 
         main {
             display: flex;
@@ -338,7 +339,7 @@
             // 設置教學步驟
             const searchContainer = document.getElementById('searchContainer');
             searchContainer.setAttribute('data-step', '1');
-            searchContainer.setAttribute('data-text', '這是搜尋區域，您可以輸入需要搜尋的內容。');
+            searchContainer.setAttribute('data-text', '這是搜尋區域，您可以輸入Block ID搜尋您要的方塊。');
             steps.push(searchContainer);
     
             const actions = document.querySelector('.actions');
@@ -348,12 +349,12 @@
     
             const blocklyWorkspace = document.getElementById('blockly-workspace');
             blocklyWorkspace.setAttribute('data-step', '3');
-            blocklyWorkspace.setAttribute('data-text', '這是 Blockly 的工作區域，您可以在這裡設計程式積木邏輯。');
+            blocklyWorkspace.setAttribute('data-text', '這是 Blockly 的工作區，您可以在旁邊的列表裡拖曳程式積木來設計程式。');
             steps.push(blocklyWorkspace);
     
             const codeview = document.querySelector('.code-view');
             codeview.setAttribute('data-step', '4');
-            codeview.setAttribute('data-text', '這是呈現程式碼、測試編譯區域，您可以在這裡觀察結果。');
+            codeview.setAttribute('data-text', '這是呈現轉換後的程式碼、測試和編譯區域，您可以在這裡觀察結果。');
             steps.push(codeview);
     
             const overlay = document.getElementById('overlay');
