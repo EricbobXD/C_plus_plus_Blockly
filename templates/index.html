@@ -810,6 +810,7 @@
                   {"kind": "block", "type": "for_block"},
                   {"kind": "label", "text": "初始變數值"},
                   {"kind": "block", "type": "def_var"},
+                  {"kind": "block", "type": "get_var"}
                   {"kind": "label", "text": "循環條件"},
                   {"kind": "block", "type": "logic_operators"},
                   {"kind": "label", "text": "迴圈條件"},
@@ -3842,7 +3843,6 @@
             if (value !== ''){
                 code += ` = ${value}`;
             }
-            code += ';\n';
             return [code, 1];
         };
         //input and output
