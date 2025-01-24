@@ -10,7 +10,10 @@ app = FastAPI()
 # CORS(處理跨域資源共享) : 允許不同領域的請求
 app.add_middleware(
     CORSMiddleware, # 跨域訪問設置
-    allow_origins = ['*'],
+    allow_origins = ['*',
+                     'https://github.com/EricbobXD/C_plus_plus_Blockly/edit/main/templates/block.j', 
+                     'https://github.com/EricbobXD/C_plus_plus_Blockly/edit/main/templates/block.j', 
+                     'https://github.com/EricbobXD/C_plus_plus_Blockly/edit/main/templates/block.j'],
     allow_credentials = True, # 允許請求攜帶憑據
     allow_methods = ['*'], # 允許所有HTTP方法
     allow_headers = ['*'] # 允許所有標頭 
