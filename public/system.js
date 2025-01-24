@@ -268,6 +268,23 @@
                       {"kind": "block", "type": "array[i]"}
                     ]
                   },
+                  { // bitset
+                    "kind": "category",
+                    "name": "bitset",
+                    "colour": "#C9A200",
+                    "contents": [
+                      {"kind": "block", "type": "define_bitset"},
+                      {"kind": "block", "type": "bitset[i]"},
+                      {"kind": "block", "type": "bitset_size"},
+                      {"kind": "block", "type": "bitset_count"},
+                      {"kind": "block", "type": "bitset_set"},
+                      {"kind": "block", "type": "bitset_reset"},
+                      {"kind": "block", "type": "bitset_all"},
+                      {"kind": "block", "type": "bitset_any"},
+                      {"kind": "block", "type": "bitset_none"},
+                      {"kind": "block", "type": "get_var"},
+                    ]
+                  },
                   { // map
                     "kind": "category",
                     "name": "字典 Map",
