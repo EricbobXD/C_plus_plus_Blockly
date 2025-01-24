@@ -2019,7 +2019,7 @@
                 //vector
                 { //define vector
                     "type": "define_vector",
-                    "message0": "資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
+                    "message0": "vector : 資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
                     "args0": [{
                             "type": "field_dropdown",
                             "name": "TYPE",
@@ -2053,7 +2053,7 @@
                 },
                 { //vector push back
                     "type": "push_back",
-                    "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
+                    "message0": "在 vector %1 新增 %2 在最後一個(只能輸入單個)",
                     "args0": [{
                             "type": "field_input",
                             "name": "vec_name"
@@ -2072,7 +2072,7 @@
                 },
                 { //vector pop back
                     "type": "pop_back",
-                    "message0": "在 %1 刪除最後一個",
+                    "message0": "在 vector %1 刪除最後一個",
                     "args0": [{
                         "type": "field_input",
                         "name": "vec_name"
@@ -2086,7 +2086,7 @@
                 },
                 { //vector clear
                     "type": "vector_clear",
-                    "message0": "把 %1 的元素全部清除",
+                    "message0": "把 vector %1 的元素全部清除",
                     "args0": [{
                         "type": "field_input",
                         "name": "vec_name"
@@ -2100,7 +2100,7 @@
                 },
                 { //vector size
                     "type": "vector_size",
-                    "message0": "%1 的陣列大小",
+                    "message0": "vector %1 的陣列大小",
                     "args0": [{
                         "type": "field_input",
                         "name": "vec_name"
@@ -2196,7 +2196,7 @@
                 },
                 { //vec begin
                     "type": "vec_begin",
-                    "message0": "陣列 %1 (begin)",
+                    "message0": "vector陣列 %1 (begin)",
                     "args0": [{
                             "type": "field_input",
                             "name": "vec_name",
@@ -2211,7 +2211,7 @@
                 },
                 { //vec end
                     "type": "vec_end",
-                    "message0": "陣列 %1 (end)",
+                    "message0": "vector陣列 %1 (end)",
                     "args0": [{
                             "type": "field_input",
                             "name": "vec_name",
@@ -2226,7 +2226,7 @@
                 },
                 { //vec rbegin
                     "type": "vec_rbegin",
-                    "message0": "陣列 %1 (rbegin)",
+                    "message0": "vector陣列 %1 (rbegin)",
                     "args0": [{
                             "type": "field_input",
                             "name": "vec_name",
@@ -2241,7 +2241,7 @@
                 },
                 { //vec rend
                     "type": "vec_rend",
-                    "message0": "陣列 %1 (rend)",
+                    "message0": "vector陣列 %1 (rend)",
                     "args0": [{
                             "type": "field_input",
                             "name": "vec_name",
@@ -2258,7 +2258,7 @@
                 //map
                 { //create map
                     "type" : "create_map",
-                    "message0" : "資料型態 <%1, %2>, 陣列名稱 %3, 大小 %4, 陣列內容 %5",
+                    "message0" : "map : 資料型態 <%1, %2>, 陣列名稱 %3, 大小 %4, 陣列內容 %5",
                     "args0" : [
                         {
                             "type": "field_dropdown",
@@ -2351,7 +2351,7 @@
                 },
                 { //map begin
                     "type": "map_begin",
-                    "message0": "陣列 %1 的第一個(begin)",
+                    "message0": "map陣列 %1 的第一個(begin)",
                     "args0": [{
                             "type": "field_input",
                             "name": "map_name",
@@ -2365,7 +2365,7 @@
                 },
                 { //map end
                     "type": "map_end",
-                    "message0": "陣列 %1 的最後一個(end)",
+                    "message0": "map陣列 %1 的最後一個(end)",
                     "args0": [{
                             "type": "field_input",
                             "name": "map_name",
@@ -2379,7 +2379,7 @@
                 },
                 { //map rbegin
                     "type": "map_rbegin",
-                    "message0": "陣列 %1 的最後一個(rbegin)",
+                    "message0": "map陣列 %1 的最後一個(rbegin)",
                     "args0": [{
                             "type": "field_input",
                             "name": "map_name",
@@ -2393,7 +2393,7 @@
                 },
                 { //map rend
                     "type": "map_rend",
-                    "message0": "陣列 %1 的第一個(rend)",
+                    "message0": "map陣列 %1 的第一個(rend)",
                     "args0": [{
                             "type": "field_input",
                             "name": "map_name",
@@ -2407,7 +2407,7 @@
                 },
                 { //map clear
                     "type": "map_clear",
-                    "message0": "把 %1 的元素全部清除",
+                    "message0": "把 map%1 的元素全部清除",
                     "args0": [{
                         "type": "field_input",
                         "name": "map_name"
@@ -2421,7 +2421,7 @@
                 },
                 { //map size
                     "type": "map_size",
-                    "message0": "%1 的陣列大小",
+                    "message0": "map1 的陣列大小",
                     "args0": [{
                         "type": "field_input",
                         "name": "map_name"
@@ -2503,7 +2503,7 @@
                 //array
                 { //create array
                     "type": "create_array",
-                    "message0": "資料型態 %1 , 陣列名稱 %2 , 大小 : %3 , 陣列內容 %4 (可加可不加)",
+                    "message0": "內建陣列資料型態 %1 , 陣列名稱 %2 , 大小 : %3 , 陣列內容 %4 (可加可不加)",
                     "args0": [{
                             "type": "field_dropdown",
                             "name": "TYPE",
@@ -2540,7 +2540,7 @@
                 },
                 { //array_name_block
                     "type": "array_name_block",
-                    "message0": "陣列 %1",
+                    "message0": "內建陣列 %1",
                     "args0": [{
                             "type": "field_input",
                             "name": "array_name",
@@ -2555,7 +2555,7 @@
                 },
                 { //array_content
                     "type": "array_content",
-                    "message0": "陣列內容〔%1〕",
+                    "message0": "內建陣列內容〔%1〕",
                     "args0": [{
                         "type": "input_value",
                         "name": "content"
@@ -2567,7 +2567,7 @@
                 },
                 { //array[i]
                     "type" : "array[i]",
-                    "message0" : "陣列 %1 [%2]",
+                    "message0" : "內建陣列 %1 [%2]",
                     "args0" :[
                         {
                             "type" : "field_input",
