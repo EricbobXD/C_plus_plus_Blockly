@@ -15,8 +15,11 @@ RUN python3 -m pip install --upgrade pip &&\
 RUN useradd -m user1
 RUN usermod -s /sbin/nologin root
 
-USER user1
-WORKDIR /home/user1
+USER nobody 
+#限制資源使用
+ENV PYTHONUNBUFFERED=1
+ENV GUNICORN_CMD_ARGS="--workers 1 --threads 4"
+
 WORKDIR /app
 COPY . .
 
