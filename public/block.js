@@ -1989,6 +1989,137 @@
                   "output": null,
                   "colour": "#51c2c0",
                   "tooltip": "替換掉setw多出的空格"
+                },
+
+                //bitset
+                {//define bitset
+                    "type" : "define_bitset",
+                    "message0": "創建 bitset陣列 名稱: %1, 大小 %2, 內容: %3",
+                    "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "bitset_name",
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "bitset_size"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "bitset_content"
+                        }
+                    ],
+                    "colour": "#bad63d",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個bitset陣列，bitset是一加速的布林陣列",
+                    "helpurl": ""
+                },   
+                { //array[i]
+                    "type" : "bitset[i]",
+                    "message0" : "bitset陣列 %1 [位置%2] = 值%3",
+                    "args0" :[
+                        {
+                            "type" : "field_input",
+                            "name" : "bitset_name"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "pos"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "value"
+                        }
+                    ],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_size
+                    "type": "bitset_size",
+                    "message0": "bitset 名稱: %1 大小",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_set
+                    "type": "bitset_set",
+                    "message0": "bitset 名稱: %1 設內容全部是true(1)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_reset
+                    "type": "bitset_reset",
+                    "message0": "bitset 名稱: %1 設內容全部是false(0)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_count
+                    "type": "bitset_count",
+                    "message0": "bitset 名稱: %1 的 true(1) 個數",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_all
+                    "type": "bitset_all",
+                    "message0": "bitset 名稱: %1 判斷是否都是true(1)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_any
+                    "type": "bitset_any",
+                    "message0": "bitset 名稱: %1 判斷是否有true(1)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
+                },
+                {//bitset_none
+                    "type": "bitset_none",
+                    "message0": "bitset 名稱: %1 判斷是否沒有true(1)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "bitset_name"
+                    }],
+                    "colour": "#ff5757",
+                    "output": null,
+                    "tooltip": "矩陣名稱",
+                    "helpurl": ""
                 }
             ]
         );
@@ -3829,4 +3960,63 @@
          Blockly.Cpp['setfill'] = function(block) {
             var code = `setfill(${Blockly.Cpp.valueToCode(block, 'number', 1)})`; 
             return [code, 1];
+        };
+
+                Blockly.Cpp['define_bitset'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            var bitset_size = Blockly.Cpp.valueToCode(block, 'bitset_size', 1);
+            var bitset_content = Blockly.Cpp.valueToCode(block, 'bitset_content', 1) || '';
+            if (bitset_size.startsWith('(') && bitset_size.endsWith(')')){
+                bitset_size = bitset_size.slice(1, -1);
+            }
+            var code = `bitset<${bitset_size}>${bitset_name}`;
+            if (bitset_content !== ''){
+                if (bitset_content.startsWith('(') && bitset_content.endsWith(')')){
+                    bitset_content = bitset_content.slice(1, -1);
+                }
+                code += bitset_content;
+            }  
+            return code +';\n';
+        }
+        Blockly.Cpp['bitset[i]'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (pos.startsWith('(') && pos.endsWith(')')){
+                pos = pos.slice(1, -1);
+            }
+            if (value.startsWith('(') && value.endsWith(')')){
+                value = value.slice(1, -1);
+            }
+            var code = `${bitset_name}[${pos}] = ${value}`;
+            return [code, 1];
+        }
+        Blockly.Cpp['bitset_set'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.set()`, 1];
+        };
+        Blockly.Cpp['bitset_reset'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.reset()`, 1];
+        };
+        Blockly.Cpp['bitset_size'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.size()`, 1];
+        };
+        Blockly.Cpp['bitset_count'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.count()`, 1];
+        };
+        
+        Blockly.Cpp['bitset_all'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.all()`, 1];
+        };
+        Blockly.Cpp['bitset_any'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.any()`, 1];
+        };
+        Blockly.Cpp['bitset_none'] = function(block) {
+            var bitset_name = block.getFieldValue('bitset_name');
+            return [`${bitset_name}.none()`, 1];
         };
