@@ -2788,14 +2788,6 @@
             return 'cin.tie(0); cout.tie(0);\n';
         };
 
-        Blockly.Cpp['include_bits/stdc++.h'] = function(block) {
-            return '#include <bits/stdc++.h>\n';
-        };
-
-        Blockly.Cpp['using_namespace_std'] = function(block) {
-            return 'using namespace std;\n\n';
-        };
-
         Blockly.Cpp['main_block'] = function(block) {
             var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
             return `int main() {\n${statements_body}\n  return 0;\n}`;
