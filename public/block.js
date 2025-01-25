@@ -1,4 +1,4 @@
-        // 方塊定義程式碼
+        // 方塊定義&轉換程式碼
         Blockly.defineBlocksWithJsonArray(
             [
                 //struct
@@ -1998,7 +1998,7 @@
                     "args0": [
                         {
                             "type": "field_input",
-                            "name": "bitset_name"
+                            "name": "bitset_name",
                         },
                         {
                             "type": "input_value",
@@ -2123,7 +2123,7 @@
                 }
             ]
         );
-        // 方塊定義程式碼
+
         Blockly.Blocks['if_block'] = {
             init: function () {
                 this.setPreviousStatement(true);
