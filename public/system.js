@@ -257,17 +257,6 @@
                       {"kind": "block", "type": "set_end"}
                     ]
                   },
-                  { // array
-                    "kind": "category",
-                    "name": "陣列 Array",
-                    "colour": "#ff5757",
-                    "contents": [
-                      {"kind": "block", "type": "create_array"},
-                      {"kind": "block", "type": "array_name_block"},
-                      {"kind": "block", "type": "array_content"},
-                      {"kind": "block", "type": "array[i]"}
-                    ]
-                  },
                   { // bitset
                     "kind": "category",
                     "name": "bitset",
@@ -401,6 +390,17 @@
                   {"kind": "block", "type": "ref_equal"},
                   {"kind": "block", "type": "get_ref"},
                   {"kind": "block", "type": "nullptr"}
+                ]
+              },
+              { // array
+                "kind": "category",
+                "name": "陣列 Array",
+                "colour": "#ff5757",
+                "contents": [
+                  {"kind": "block", "type": "create_array"},
+                  {"kind": "block", "type": "array_name_block"},
+                  {"kind": "block", "type": "array_content"},
+                  {"kind": "block", "type": "array[i]"}
                 ]
               },
               { // struct & class
