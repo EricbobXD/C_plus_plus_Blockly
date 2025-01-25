@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import subprocess
+import os
 
 
 app = FastAPI()
@@ -18,7 +19,8 @@ app.add_middleware(
 )
 
 templates = Jinja2Templates(directory='templates')
-app.mount("/public", StaticFiles(directory="public"), name="public")
+public_dir = os.getenv('PUBLIC_DIR', 'public')
+app.mount("/public", StaticFiles(directory=public_dir), name="public")
 
 class Code(BaseModel):
     id_code : str
