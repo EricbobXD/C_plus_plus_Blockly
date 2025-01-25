@@ -3963,7 +3963,7 @@
             return [code, 1];
         };
 
-                Blockly.Cpp['define_bitset'] = function(block) {
+        Blockly.Cpp['define_bitset'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             var bitset_size = Blockly.Cpp.valueToCode(block, 'bitset_size', 1);
             var bitset_content = Blockly.Cpp.valueToCode(block, 'bitset_content', 1) || '';
@@ -3978,7 +3978,7 @@
                 code += bitset_content;
             }  
             return code +';\n';
-        }
+        };
         Blockly.Cpp['bitset[i]'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
@@ -3991,7 +3991,7 @@
             }
             var code = `${bitset_name}[${pos}] = ${value}`;
             return [code, 1];
-        }
+        };
         Blockly.Cpp['bitset_set'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             return [`${bitset_name}.set()`, 1];
