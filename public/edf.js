@@ -1998,7 +1998,7 @@
                     "args0": [
                         {
                             "type": "field_input",
-                            "name": "bitset_name",
+                            "name": "bitset_name"
                         },
                         {
                             "type": "input_value",
