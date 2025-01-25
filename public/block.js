@@ -2712,6 +2712,7 @@
             return [`${code}`, Blockly.Cpp.ORDER_ATOMIC];
         }
 
+
         // struct
         Blockly.Cpp['def_struct'] = function(block) {
             var struct_name = block.getFieldValue('struct_name');
