@@ -1954,7 +1954,7 @@
             return [code, 1];
         }
 
-//queeu
+//queue
         Blockly.Cpp['def_queue'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             var queue_type = block.getFieldValue('queue_type');
@@ -2013,3 +2013,64 @@
             }
             return queue_name + ".push_range(" + element + ");\n";
         };
+
+//priority_queue
+        Blockly.Cpp['def_priority_queue'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name');
+            var priority_queue_type = block.getFieldValue('priority_queue_type');
+            var priority_queue_content = Blockly.Cpp.valueToCode(block, 'priority_queue_content', 1) || '';
+            var code = `priority_queue<${priority_queue_type}>${priority_queue_name}`;
+            if (priority_queue_content !== ''){
+                if (priority_queue_content.startsWith('(') && priority_queue_content.endsWith(')')){
+                    priority_queue_content = priority_queue_content.slice(1, -1);
+                }
+                code += priority_queue_content;
+            }  
+            return code +';\n';
+        };
+        
+        Blockly.Cpp['priority_queue_push'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return priority_queue_name + ".push(" + element + ");\n";
+        };
+        
+        Blockly.Cpp['priority_queue_pop'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name');
+            return priority_queue_name + ".pop();\n";
+        };
+        
+         Blockly.Cpp['priority_queue_front'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name');
+            return priority_queue_name + ".front();\n";
+        };
+        
+        Blockly.Cpp['priority_queue_size'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
+            return priority_queue_name + ".size();\n";
+        }
+        
+        Blockly.Cpp['priority_queue_empty'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
+            var code = priority_queue_name + ".empty\n";
+            return [code, 1];
+        }
+        
+        Blockly.Cpp['priority_queue_swap'] = function(block) {
+            var priority_queue_name1 = block.getFieldValue('priority_queue_name1');
+            var priority_queue_name2 = block.getFieldValue('priority_queue_name2');
+            return `${priority_queue_name1}.swap(${priority_queue_name2};`;
+        };
+        
+        Blockly.Cpp['priority_queue_push_range'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return priority_queue_name + ".push_range(" + element + ");\n";
+        };
+        
