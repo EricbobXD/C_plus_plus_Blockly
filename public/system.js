@@ -642,7 +642,7 @@
         // 程式碼同步轉換
         var id_code = '';
         async function updateCodeOutput() {
-            id_code = '#include <bits/stdc++.h>\nusing namespace std;\n\n' + Blockly.Cpp.workspaceToCode(workspace); // 獲取 Blockly 生成的 C++ 代碼
+            id_code = Blockly.Cpp.workspaceToCode(workspace); // 獲取 Blockly 生成的 C++ 代碼
             var lines = id_code.split('\n'); // 按行分割代碼
             var outputElement = document.getElementById('code-output');
 
