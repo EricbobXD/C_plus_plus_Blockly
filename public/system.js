@@ -302,14 +302,14 @@
                     "name": "堆疊 stack",
                     "colour": "#561229",
                     "contents": [
-                      {"kind": "block", "type": "def_queue"},
-                      {"kind": "block", "type": "queue_front"},
-                      {"kind": "block", "type": "queue_push"},
-                      {"kind": "block", "type": "queue_push_range"},
-                      {"kind": "block", "type": "queue_pop"},
-                      {"kind": "block", "type": "queue_empty"},
-                      {"kind": "block", "type": "queue_size"},
-                      {"kind": "block", "type": "queue_swap"}
+                      {"kind": "block", "type": "def_stack"},
+                      {"kind": "block", "type": "stack_front"},
+                      {"kind": "block", "type": "stack_push"},
+                      {"kind": "block", "type": "stack_push_range"},
+                      {"kind": "block", "type": "stack_pop"},
+                      {"kind": "block", "type": "stack_empty"},
+                      {"kind": "block", "type": "stack_size"},
+                      {"kind": "block", "type": "stack_swap"}
                     ]
                   },
                   { // queue
@@ -320,10 +320,26 @@
                       {"kind": "block", "type": "def_queue"},
                       {"kind": "block", "type": "queue_front"},
                       {"kind": "block", "type": "queue_push"},
+                      {"kind": "block", "type": "queue_push_range"},
                       {"kind": "block", "type": "queue_pop"},
                       {"kind": "block", "type": "queue_empty"},
                       {"kind": "block", "type": "queue_size"},
-                
+                      {"kind": "block", "type": "queue_swap"}
+                    ]
+                  },
+                  { // priority_queue
+                    "kind": "category",
+                    "name": "佇列 priority_queue",
+                    "colour": "#f269e1",
+                    "contents": [
+                      {"kind": "block", "type": "def_priority_queue"},
+                      {"kind": "block", "type": "priority_queue_front"},
+                      {"kind": "block", "type": "priority_queue_push"},
+                      {"kind": "block", "type": "priority_queue_push_range"},
+                      {"kind": "block", "type": "priority_queue_pop"},
+                      {"kind": "block", "type": "priority_queue_empty"},
+                      {"kind": "block", "type": "priority_queue_size"},
+                      {"kind": "block", "type": "priority_queue_swap"}
                     ]
                   },
                   { // algorithm
