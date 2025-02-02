@@ -2128,7 +2128,7 @@
                   "message0": "stack 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
                   "args0": [{
                           "type": "field_dropdown",
-                          "name": "TYPE",
+                          "name": "stack_type",
                           "options": [
                               ["整數", "int"],
                               ["浮點數", "float"],
