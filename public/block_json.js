@@ -2364,6 +2364,44 @@
                       "output" : null,
                       "tooltip": "如果 queue 內部為空，則傳回 true 值。",
                       "helpUrl": ""
-              },
+                  },
+                  { //queue push_range
+                      "type": "queue_push_range",
+                      "message0": "在 queue 名稱: %1 加陣列 %2 在最後一個(push)",
+                      "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                      ],
+                      "colour": "#561229",
+                      "previousStatement": null,
+                      "nextStatement": null,
+                      "tooltip": "把陣列推到queue最後",
+                      "helpurl": ""
+                  },
+                  { //queue swap
+                      "type": "queue_swap",
+                      "message0": "交換 queue 名稱: %1, queue 名稱: %2",
+                      "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "queue_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "queue_name2"
+                        }
+                      ],
+                      "colour": "#561229",
+                      "previousStatement": null,
+                      "nextStatement": null,
+                      "tooltip": "把元素推到queue最後",
+                      "helpurl": ""
+                  },
             ]
         );
