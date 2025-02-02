@@ -544,6 +544,15 @@
                   {"kind": "block", "type": "while_block"}
                 ]
               },
+              { // another
+                "kind": "category",
+                "name": "其他工具",
+                "colour": "#2473c2",
+                "contents": [
+                  {"kind": "block", "type": "define_block"},
+                  {"kind": "block", "type": "typedef_block"}
+                ]
+              },  
             ]
         };
 
