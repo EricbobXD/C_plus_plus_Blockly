@@ -1942,4 +1942,57 @@
             return `${stack_name1}.swap(${stack_name2};`;
         };
 
+        Blockly.Cpp['stack_size'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            return stack_name + ".size();\n";
+        }
+
+        Blockly.Cpp['stack_empty'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            var code = stack_name + ".empty\n";
+            return [code, 1];
+        }
+
+        Blockly.Cpp['def_queue'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            var queue_type = block.getFieldValue('queue_type');
+            var queue_content = Blockly.Cpp.valueToCode(block, 'queue_content', 1) || '';
+            var code = `queue<${queue_type}>${queue_name}`;
+            if (queue_content !== ''){
+                if (queue_content.startsWith('(') && queue_content.endsWith(')')){
+                    queue_content = queue_content.slice(1, -1);
+                }
+                code += queue_content;
+            }  
+            return code +';\n';
+        };
         
+        Blockly.Cpp['queue_push'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return queue_name + ".push(" + element + ");\n";
+        };
+        
+        Blockly.Cpp['queue_pop'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            return queue_name + ".pop();\n";
+        };
+        
+         Blockly.Cpp['queue_front'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            return queue_name + ".front();\n";
+        };
+        
+        Blockly.Cpp['queue_size'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            return queue_name + ".size();\n";
+        }
+        
+        Blockly.Cpp['queue_empty'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            var code = queue_name + ".empty\n";
+            return [code, 1];
+        }
