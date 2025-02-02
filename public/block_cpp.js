@@ -1268,7 +1268,7 @@
         };
 
         // vector
-        Blockly.Cpp['push_back'] = function(block) {
+        Blockly.Cpp['vector_push_back'] = function(block) {
             var vec_name = block.getFieldValue('vec_name');
             var number = Blockly.Cpp.valueToCode(block, 'number', 1) || '';
             if (number.startsWith('(') && number.endsWith(')')) {
@@ -1277,12 +1277,12 @@
             return vec_name + ".push_back(" + number + ");\n";
         };
 
-        Blockly.Cpp['pop_back'] = function(block) {
+        Blockly.Cpp['vector_pop_back'] = function(block) {
             var vec_name = block.getFieldValue('vec_name');
             return vec_name + ".pop_back();\n";
         };
 
-        Blockly.Cpp['emplace_back'] = function(block) {
+        Blockly.Cpp['vector_emplace_back'] = function(block) {
             var name = block.getFieldValue('NAME');
             var num = block.getFieldValue('number');
             return code = name + ".emplace_back(" + num + ");\n";
@@ -1918,7 +1918,7 @@
             return stack_name + ".push(" + element + ");\n";
         };
 
-         Blockly.Cpp['stack_push_range'] = function(block) {
+        Blockly.Cpp['stack_push_range'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
             if (element.startsWith('(') && element.endsWith(')')) {
@@ -1954,6 +1954,7 @@
             return [code, 1];
         }
 
+//queeu
         Blockly.Cpp['def_queue'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             var queue_type = block.getFieldValue('queue_type');
@@ -1997,3 +1998,18 @@
             var code = queue_name + ".empty\n";
             return [code, 1];
         }
+
+        Blockly.Cpp['queue_swap'] = function(block) {
+            var queue_name1 = block.getFieldValue('queue_name1');
+            var queue_name2 = block.getFieldValue('queue_name2');
+            return `${queue_name1}.swap(${queue_name2};`;
+        };
+        
+        Blockly.Cpp['queue_push_range'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return queue_name + ".push_range(" + element + ");\n";
+        };
