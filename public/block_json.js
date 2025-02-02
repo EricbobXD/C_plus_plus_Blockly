@@ -979,7 +979,12 @@
                           "type": "field_input",
                           "name": "func_name",
                       },
-                    ]
+                    ],
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#123456",
+                    "tooltip": "偷懶作法",
+                    "helpUrl": ""
                 },
                 {
                     "type": "typedef_block",
@@ -993,9 +998,50 @@
                           "type": "field_input",
                           "name": "name",
                       },
-                    ]
+                    ],
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#123456",
+                    "tooltip": "偷懶作法",
+                    "helpUrl": ""
                 },
-              
+                {
+                    "type": "include_std_block",
+                    "message0": "引用所有std函式庫",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#123456",
+                    "tooltip": "引用所有std函式庫",
+                    "helpUrl": ""
+                },
+                {
+                    "type": "include_pbds_block",
+                    "message0": "引用所有std函式庫",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#123456",
+                    "tooltip": "引用所有std函式庫",
+                    "helpUrl": ""
+                },
+                {
+                    "type": "std_space_block",
+                    "message0": "引用std空間",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#123456",
+                    "tooltip": "引用std空間",
+                    "helpUrl": ""
+                },
+                {
+                    "type": "pbds_space_block",
+                    "message0": "引用pbds空間",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#123456",
+                    "tooltip": "引用pbds空間",
+                    "helpUrl": ""
+                },
+                
                 //Standard Library
                 //math
                 { //math caculacte
