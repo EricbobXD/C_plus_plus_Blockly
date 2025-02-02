@@ -303,7 +303,7 @@
                     "colour": "#561229",
                     "contents": [
                       {"kind": "block", "type": "def_stack"},
-                      {"kind": "block", "type": "stack_front"},
+                      {"kind": "block", "type": "stack_top"},
                       {"kind": "block", "type": "stack_push"},
                       {"kind": "block", "type": "stack_push_range"},
                       {"kind": "block", "type": "stack_pop"},
@@ -330,7 +330,7 @@
                   { // priority_queue
                     "kind": "category",
                     "name": "佇列 priority_queue",
-                    "colour": "#f269e1",
+                    "colour": "#f2eb69",
                     "contents": [
                       {"kind": "block", "type": "def_priority_queue"},
                       {"kind": "block", "type": "priority_queue_front"},
