@@ -1135,6 +1135,18 @@
             }
         };
 
+        Blockly.Cpp['define_block'] = function(block) {
+            var name = block.getFieldValue('name');
+            var func_name = block.getFieldValue('func_name');
+            return `define ${name} ${func_name}`;
+        }
+
+        Blockly.Cpp['typedef_block'] = function(block) {
+            var type_name = block.getFieldValue('type_name');
+            var name = block.getFieldValue('name');
+            return `type_def ${type_name} ${name}`;
+        }
+
         // Standard Library
         // math
         Blockly.Cpp['math_random'] = function(block) {
