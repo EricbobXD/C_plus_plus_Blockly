@@ -2289,7 +2289,7 @@
                             "name": "content"
                         }
                     ],
-                    "colour": "#561229",
+                    "colour": "#f269e1",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "創建一個queue",
@@ -2308,7 +2308,7 @@
                           "name": "element"
                       },
                     ],
-                    "colour": "#561229",
+                    "colour": "#f269e1",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到queue最後",
@@ -2321,7 +2321,7 @@
                           "type": "field_input",
                           "name": "queue_name"
                       }],
-                    "colour": "#561229",
+                    "colour": "#f269e1",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到queue最後",
@@ -2334,7 +2334,7 @@
                           "type": "field_input",
                           "name": "queue_name"
                       }],
-                    "colour": "#561229",
+                    "colour": "#f269e1",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到queue最後",
@@ -2349,7 +2349,7 @@
                       }],
                       "inputsInline": true,
                       "output": null,
-                      "colour": "#561229",
+                      "colour": "#f269e1",
                       "tooltip": "取得 queue 目前持有的元素個數。",
                       "helpUrl": ""
                   },
@@ -2362,7 +2362,7 @@
                               "name" : "queue_name"
                           }
                       ],
-                      "colour": "#561229",
+                      "colour": "#f269e1",
                       "output" : null,
                       "tooltip": "如果 queue 內部為空，則傳回 true 值。",
                       "helpUrl": ""
