@@ -299,8 +299,13 @@
                   },
                   { // map
                     "kind": "category",
-                    "name": "ㄋ                 {"kind": "block", "type": "set_find"},
-
+                    "name": "set",
+                    "colour": "#C9A200",
+                    "contents": [
+                      {"kind": "block", "type": "define_set"},
+                      {"kind": "block", "type": "set_insert"},
+                      {"kind": "block", "type": "set_erase"},
+                      {"kind": "block", "type": "set_find"},
                       {"kind": "label", "text": "set 迭代器"},
                       {"kind": "block", "type": "set_begin"},
                       {"kind": "block", "type": "set_end"}
