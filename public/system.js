@@ -271,7 +271,7 @@
                       {"kind": "block", "type": "bitset_all"},
                       {"kind": "block", "type": "bitset_any"},
                       {"kind": "block", "type": "bitset_none"},
-                      {"kind": "block", "type": "get_var"},
+                      {"kind": "block", "type": "get_var"}
                     ]
                   },
                   { // map
@@ -297,61 +297,7 @@
                       {"kind": "block", "type": "map_rend"}
                     ]
                   },
-                  { // map
-                    "kind": "category",
-                    "name": "set",
-                    "colour": "#C9A200",
-                    "contents": [
-                      {"kind": "block", "type": "define_set"},
-                      {"kind": "block", "type": "set_insert"},
-                      {"kind": "block", "type": "set_erase"},
-                      {"kind": "block", "type": "set_find"},
-                      {"kind": "label", "text": "set 迭代器"},
-                      {"kind": "block", "type": "set_begin"},
-                      {"kind": "block", "type": "set_end"}
-                    ]
-                  },
-                  { // bitset
-                    "kind": "category",
-                    "name": "bitset",
-                    "colour": "#C9A200",
-                    "contents": [
-                      {"kind": "block", "type": "define_bitset"},
-                      {"kind": "block", "type": "bitset[i]"},
-                      {"kind": "block", "type": "bitset_size"},
-                      {"kind": "block", "type": "bitset_count"},
-                      {"kind": "block", "type": "bitset_set"},
-                      {"kind": "block", "type": "bitset_reset"},
-                      {"kind": "block", "type": "bitset_all"},
-                      {"kind": "block", "type": "bitset_any"},
-                      {"kind": "block", "type": "bitset_none"},
-                      {"kind": "block", "type": "get_var"},
-                    ]
-                  },
-                  { // map
-                    "kind": "category",
-                    "name": "字典 Map",
-                    "colour": "#1AA197",
-                    "contents": [
-                      {"kind": "block", "type": "create_map"},
-                      {"kind": "block", "type": "map_insert"},
-                      {"kind": "block", "type": "map[i]"},
-                      {"kind": "block", "type": "map_clear"},
-                      {"kind": "block", "type": "map_size"},
-                      {"kind": "block", "type": "map_empty"},
-                      {"kind": "block", "type": "map_first"},
-                      {"kind": "block", "type": "map_second"},
-                      {"kind": "block", "type": "map_find"},
-
-                      {"kind": "label", "text": "map 迭代器"},
-
-                      {"kind": "block", "type": "map_begin"},
-                      {"kind": "block", "type": "map_end"},
-                      {"kind": "block", "type": "map_rbegin"},
-                      {"kind": "block", "type": "map_rend"}
-                    ]
-                  },
-                  { // map
+                  { // stack
                     "kind": "category",
                     "name": "堆疊 stack",
                     "colour": "#561229",
@@ -362,7 +308,7 @@
                       {"kind": "block", "type": "stack_pop"},
                       {"kind": "block", "type": "stack_push_range"},
                       {"kind": "block", "type": "stack_swap"},
-                      ]
+                    ]
                   },
                   { // algorithm
                     "kind": "category",
@@ -563,7 +509,7 @@
                   {"kind": "block", "type": "logic_operators"},
                   {"kind": "label", "text": "迴圈條件"},
                   {"kind": "block", "type": "var_cal"},
-                  {"kind": "block", "type": "while_block"},
+                  {"kind": "block", "type": "while_block"}
                 ]
               },
             ]
