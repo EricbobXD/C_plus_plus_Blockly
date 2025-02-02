@@ -316,7 +316,7 @@
                   { // queue
                     "kind": "category",
                     "name": "佇列 queue",
-                    "colour": "#561229",
+                    "colour": "#f269e1",
                     "contents": [
                       {"kind": "block", "type": "def_queue"},
                       {"kind": "block", "type": "queue_front"},
