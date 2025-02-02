@@ -2403,5 +2403,147 @@
                       "tooltip": "把元素推到queue最後",
                       "helpurl": ""
                   },
+                  { //define priority_queue
+                    "type": "def_priority_queue", 
+                    "message0": "priority_queue 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "priority_queue_type",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "priority_queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "content"
+                        }
+                    ],
+                    "colour": "#f269e1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個priority_queue",
+                    "helpurl": ""
+              },  
+              { //priority_queue push
+                    "type": "priority_queue_push",
+                    "message0": "在 priority_queue 名稱: %1 加元素 %2( 在最後一個(push)",
+                    "args0": [
+                      {
+                          "type": "field_input",
+                          "name": "priority_queue_name"
+                      },
+                      {
+                          "type": "input_value",
+                          "name": "element"
+                      },
+                    ],
+                    "colour": "#f269e1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                  },
+                  { //priority_queue pop
+                    "type": "priority_queue_pop",
+                    "message0": "在 priority_queue 名稱: %1 刪除最後一個元素(pop)",
+                    "args0": [{
+                          "type": "field_input",
+                          "name": "priority_queue_name"
+                      }],
+                    "colour": "#f269e1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                  },
+                  { //priority_queue top
+                    "type": "priority_queue_front",
+                    "message0": "在 priority_queue 名稱: %1 取出最後一個元素(front)",
+                    "args0": [{
+                          "type": "field_input",
+                          "name": "priority_queue_name"
+                      }],
+                    "colour": "#f269e1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                  },
+                  { //priority_queue size
+                      "type": "priority_queue_size",
+                      "message0": "priority_queue %1 的陣列大小",
+                      "args0": [{
+                          "type": "field_input",
+                          "name": "priority_queue _name"
+                      }],
+                      "inputsInline": true,
+                      "output": null,
+                      "colour": "#f269e1",
+                      "tooltip": "取得 priority_queue 目前持有的元素個數。",
+                      "helpUrl": ""
+                  },
+                  { //priority_queue empty
+                      "type" : "priority_queue_empty",
+                      "message0" : "判斷priority_queue  %1 是否為空",
+                      "args0" : [
+                          {
+                              "type" : "field_input",
+                              "name" : "priority_queue_name"
+                          }
+                      ],
+                      "colour": "#f269e1",
+                      "output" : null,
+                      "tooltip": "如果 priority_queue 內部為空，則傳回 true 值。",
+                      "helpUrl": ""
+                  },
+                  { //priority_queue push_range
+                      "type": "priority_queue_push_range",
+                      "message0": "在 priority_queue 名稱: %1 加陣列 %2 在最後一個(push)",
+                      "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "priority_queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                      ],
+                      "colour": "#561229",
+                      "previousStatement": null,
+                      "nextStatement": null,
+                      "tooltip": "把陣列推到priority_queue最後",
+                      "helpurl": ""
+                  },
+                  { //priority_queue swap
+                      "type": "priority_queue_swap",
+                      "message0": "交換 priority_queue 名稱: %1, priority_queue 名稱: %2",
+                      "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "priority_queue_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "priority_queue_name2"
+                        }
+                      ],
+                      "colour": "#561229",
+                      "previousStatement": null,
+                      "nextStatement": null,
+                      "tooltip": "把元素推到priority_queue最後",
+                      "helpurl": ""
+                  },
+            ]
+        );
             ]
         );
