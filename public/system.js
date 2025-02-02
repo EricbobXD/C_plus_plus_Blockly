@@ -225,9 +225,9 @@
                     "colour": "#5C4AB6",
                     "contents": [
                       {"kind": "block", "type": "define_vector"},
-                      {"kind": "block", "type": "push_back"},
-                      {"kind": "block", "type": "emplace_back"},
-                      {"kind": "block", "type": "pop_back"},
+                      {"kind": "block", "type": "vector_push_back"},
+                      {"kind": "block", "type": "vector_emplace_back"},
+                      {"kind": "block", "type": "vector_pop_back"},
                       {"kind": "block", "type": "vector_insert"},
                       {"kind": "block", "type": "vector_erase"},
                       {"kind": "block", "type": "vector_clear"},
