@@ -297,6 +297,68 @@
                       {"kind": "block", "type": "map_rend"}
                     ]
                   },
+                  { // map
+                    "kind": "category",
+                    "name": "ㄋ                 {"kind": "block", "type": "set_find"},
+
+                      {"kind": "label", "text": "set 迭代器"},
+                      {"kind": "block", "type": "set_begin"},
+                      {"kind": "block", "type": "set_end"}
+                    ]
+                  },
+                  { // bitset
+                    "kind": "category",
+                    "name": "bitset",
+                    "colour": "#C9A200",
+                    "contents": [
+                      {"kind": "block", "type": "define_bitset"},
+                      {"kind": "block", "type": "bitset[i]"},
+                      {"kind": "block", "type": "bitset_size"},
+                      {"kind": "block", "type": "bitset_count"},
+                      {"kind": "block", "type": "bitset_set"},
+                      {"kind": "block", "type": "bitset_reset"},
+                      {"kind": "block", "type": "bitset_all"},
+                      {"kind": "block", "type": "bitset_any"},
+                      {"kind": "block", "type": "bitset_none"},
+                      {"kind": "block", "type": "get_var"},
+                    ]
+                  },
+                  { // map
+                    "kind": "category",
+                    "name": "字典 Map",
+                    "colour": "#1AA197",
+                    "contents": [
+                      {"kind": "block", "type": "create_map"},
+                      {"kind": "block", "type": "map_insert"},
+                      {"kind": "block", "type": "map[i]"},
+                      {"kind": "block", "type": "map_clear"},
+                      {"kind": "block", "type": "map_size"},
+                      {"kind": "block", "type": "map_empty"},
+                      {"kind": "block", "type": "map_first"},
+                      {"kind": "block", "type": "map_second"},
+                      {"kind": "block", "type": "map_find"},
+
+                      {"kind": "label", "text": "map 迭代器"},
+
+                      {"kind": "block", "type": "map_begin"},
+                      {"kind": "block", "type": "map_end"},
+                      {"kind": "block", "type": "map_rbegin"},
+                      {"kind": "block", "type": "map_rend"}
+                    ]
+                  },
+                  { // map
+                    "kind": "category",
+                    "name": "堆疊 stack",
+                    "colour": "#561229",
+                    "contents": [
+                      {"kind": "block", "type": "def_stack"},
+                      {"kind": "block", "type": "stack_top"},
+                      {"kind": "block", "type": "stack_push"},
+                      {"kind": "block", "type": "stack_pop"},
+                      {"kind": "block", "type": "stack_push_range"},
+                      {"kind": "block", "type": "stack_swap"},
+                      ]
+                  },
                   { // algorithm
                     "kind": "category",
                     "name": "演算法 algorithm",
