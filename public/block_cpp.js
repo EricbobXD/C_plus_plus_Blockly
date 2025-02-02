@@ -1914,7 +1914,7 @@
             if (element.startsWith('(') && element.endsWith(')')) {
                 element = element.slice(1, -1);
             }
-            return stack_name + ".push_back(" + element + ");\n";
+            return stack_name + ".push(" + element + ");\n";
         };
 
          Blockly.Cpp['stack_push_range'] = function(block) {
@@ -1923,7 +1923,7 @@
             if (element.startsWith('(') && element.endsWith(')')) {
                 element = element.slice(1, -1);
             }
-            return stack_name + ".push(" + element + ");\n";
+            return stack_name + ".push_range(" + element + ");\n";
         };
         
         Blockly.Cpp['stack_pop'] = function(block) {
