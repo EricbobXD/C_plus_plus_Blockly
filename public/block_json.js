@@ -967,7 +967,35 @@
                     "tooltip": "獲取位置的值",
                     "helpUrl": ""
                 },
-                
+                {
+                    "type": "define_block",
+                    "message0": "定義 自定義名子: %1, 函式名子: %2",
+                    "args0":[
+                      {
+                          "type": "field_input",
+                          "name": "name",
+                      },
+                      {
+                          "type": "field_input",
+                          "name": "func_name",
+                      },
+                    ]
+                },
+                {
+                    "type": "typedef_block",
+                    "message0": "定義 資料型態名子: %1, 自定義名子: %2",
+                    "args0":[
+                      {
+                          "type": "field_input",
+                          "name": "type_name",
+                      },
+                      {
+                          "type": "field_input",
+                          "name": "name",
+                      },
+                    ]
+                },
+              
                 //Standard Library
                 //math
                 { //math caculacte
