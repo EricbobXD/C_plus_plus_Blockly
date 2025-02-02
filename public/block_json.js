@@ -2378,7 +2378,7 @@
                             "name": "element"
                         },
                       ],
-                      "colour": "#561229",
+                      "colour": "#f269e1",
                       "previousStatement": null,
                       "nextStatement": null,
                       "tooltip": "把陣列推到queue最後",
@@ -2397,7 +2397,7 @@
                             "name": "queue_name2"
                         }
                       ],
-                      "colour": "#561229",
+                      "colour": "#f269e1",
                       "previousStatement": null,
                       "nextStatement": null,
                       "tooltip": "把元素推到queue最後",
