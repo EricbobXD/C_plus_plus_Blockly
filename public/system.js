@@ -322,8 +322,8 @@
                       {"kind": "block", "type": "queue_front"},
                       {"kind": "block", "type": "queue_push"},
                       {"kind": "block", "type": "queue_pop"},
-                      {"kind": "block", "type": "stack_empty"},
-                      {"kind": "block", "type": "stack_size"},
+                      {"kind": "block", "type": "queue_empty"},
+                      {"kind": "block", "type": "queue_size"},
                     ]
                   },
                   { // algorithm
