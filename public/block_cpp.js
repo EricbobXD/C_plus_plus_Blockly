@@ -1894,6 +1894,7 @@
             return [`${bitset_name}.none()`, 1];
         };
 
+//stack
         Blockly.Cpp['def_stack'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             var stack_type = block.getFieldValue('stack_type');
