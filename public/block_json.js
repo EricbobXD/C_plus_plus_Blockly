@@ -2264,5 +2264,108 @@
                     "tooltip": "如果 stack 內部為空，則傳回 true 值。",
                     "helpUrl": ""
                 },
+                { //define queue
+                    "type": "def_queue", 
+                    "message0": "queue 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "queue_name",
+                            "text": "queue"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "content"
+                        }
+                    ],
+                    "colour": "#561229",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個queue",
+                    "helpurl": ""
+              },  
+              { //queue push
+                    "type": "queue_push",
+                    "message0": "在 queue 名稱: %1 加元素 %2( 在最後一個(push)",
+                    "args0": [
+                      {
+                          "type": "field_input",
+                          "name": "queue_name"
+                      },
+                      {
+                          "type": "input_value",
+                          "name": "element"
+                      },
+                    ],
+                    "colour": "#561229",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                  },
+                  { //queue pop
+                    "type": "queue_pop",
+                    "message0": "在 queue 名稱: %1 刪除最後一個元素(pop)",
+                    "args0": [{
+                          "type": "field_input",
+                          "name": "queue_name"
+                      }],
+                    "colour": "#561229",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                  },
+                  { //queue top
+                    "type": "queue_front",
+                    "message0": "在 queue 名稱: %1 取出最後一個元素(front)",
+                    "args0": [{
+                          "type": "field_input",
+                          "name": "queue_name"
+                      }],
+                    "colour": "#561229",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                  },
+                  { //queue size
+                      "type": "queue_size",
+                      "message0": "queue %1 的陣列大小",
+                      "args0": [{
+                          "type": "field_input",
+                          "name": "queue _name"
+                      }],
+                      "inputsInline": true,
+                      "output": null,
+                      "colour": "#561229",
+                      "tooltip": "取得 queue 目前持有的元素個數。",
+                      "helpUrl": ""
+                  },
+                  { //queue empty
+                      "type" : "queue_empty",
+                      "message0" : "判斷queue  %1 是否為空",
+                      "args0" : [
+                          {
+                              "type" : "field_input",
+                              "name" : "queue_name"
+                          }
+                      ],
+                      "colour": "#561229",
+                      "output" : null,
+                      "tooltip": "如果 queue 內部為空，則傳回 true 值。",
+                      "helpUrl": ""
+              },
             ]
         );
