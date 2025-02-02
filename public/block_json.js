@@ -2140,8 +2140,7 @@
                       },
                       {
                           "type": "field_input",
-                          "name": "stack_name",
-                          "text": "stack"
+                          "name": "stack_name"
                       },
                       {
                           "type": "input_value",
@@ -2269,7 +2268,7 @@
                     "message0": "queue 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
                     "args0": [{
                             "type": "field_dropdown",
-                            "name": "TYPE",
+                            "name": "queue_type",
                             "options": [
                                 ["整數", "int"],
                                 ["浮點數", "float"],
@@ -2281,8 +2280,7 @@
                         },
                         {
                             "type": "field_input",
-                            "name": "queue_name",
-                            "text": "queue"
+                            "name": "queue_name"
                         },
                         {
                             "type": "input_value",
