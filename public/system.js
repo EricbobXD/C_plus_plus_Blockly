@@ -302,15 +302,14 @@
                     "name": "堆疊 stack",
                     "colour": "#561229",
                     "contents": [
-                      {"kind": "block", "type": "def_stack"},
-                      {"kind": "block", "type": "stack_top"},
-                      {"kind": "block", "type": "stack_push"},
-                      {"kind": "block", "type": "stack_push_range"},
-                      {"kind": "block", "type": "stack_pop"},
-                      {"kind": "block", "type": "stack_empty"},
-                      {"kind": "block", "type": "stack_size"},
-                      {"kind": "block", "type": "stack_swap"},
-                      
+                      {"kind": "block", "type": "def_queue"},
+                      {"kind": "block", "type": "queue_front"},
+                      {"kind": "block", "type": "queue_push"},
+                      {"kind": "block", "type": "queue_push_range"},
+                      {"kind": "block", "type": "queue_pop"},
+                      {"kind": "block", "type": "queue_empty"},
+                      {"kind": "block", "type": "queue_size"},
+                      {"kind": "block", "type": "queue_swap"}
                     ]
                   },
                   { // queue
@@ -324,6 +323,7 @@
                       {"kind": "block", "type": "queue_pop"},
                       {"kind": "block", "type": "queue_empty"},
                       {"kind": "block", "type": "queue_size"},
+                
                     ]
                   },
                   { // algorithm
