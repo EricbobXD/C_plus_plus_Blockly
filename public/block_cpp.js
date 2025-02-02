@@ -1987,12 +1987,12 @@
         };
         
         Blockly.Cpp['queue_size'] = function(block) {
-            var queue_name = block.getFieldValue('queue_name');
+            var queue_name = block.getFieldValue('queue_name') || '';
             return queue_name + ".size();\n";
         }
         
         Blockly.Cpp['queue_empty'] = function(block) {
-            var queue_name = block.getFieldValue('queue_name');
+            var queue_name = block.getFieldValue('queue_name') || '';
             var code = queue_name + ".empty\n";
             return [code, 1];
         }
