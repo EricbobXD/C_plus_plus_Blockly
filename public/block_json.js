@@ -2120,6 +2120,149 @@
                   "output": null,
                   "colour": "#51c2c0",
                   "tooltip": "替換掉setw多出的空格"
-                }
+                },
+
+              //stack 
+                { //define stack
+                  "type": "def_stack", 
+                  "message0": "stack 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
+                  "args0": [{
+                          "type": "field_dropdown",
+                          "name": "TYPE",
+                          "options": [
+                              ["整數", "int"],
+                              ["浮點數", "float"],
+                              ["雙重浮點數", "double"],
+                              ["字元", "char"],
+                              ["字串", "string"],
+                              ["更長的整數", "long long"]
+                          ]
+                      },
+                      {
+                          "type": "field_input",
+                          "name": "stack_name",
+                          "text": "stack"
+                      },
+                      {
+                          "type": "input_value",
+                          "name": "content"
+                      }
+                  ],
+                  "colour": "#561229",
+                  "previousStatement": null,
+                  "nextStatement": null,
+                  "tooltip": "創建一個stack",
+                  "helpurl": ""
+                },  
+                { //stack push
+                  "type": "stack_push",
+                  "message0": "在 stack 名稱: %1 加元素 %2( 在最後一個(push)",
+                  "args0": [
+                    {
+                        "type": "field_input",
+                        "name": "stack_name"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "element"
+                    },
+                  ],
+                  "colour": "#561229",
+                  "previousStatement": null,
+                  "nextStatement": null,
+                  "tooltip": "把元素推到stack最後",
+                  "helpurl": ""
+                },
+                { //stack push_range
+                  "type": "stack_push_range",
+                  "message0": "在 stack 名稱: %1 加陣列 %2 在最後一個(push)",
+                  "args0": [
+                    {
+                        "type": "field_input",
+                        "name": "stack_name"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "element"
+                    },
+                  ],
+                  "colour": "#561229",
+                  "previousStatement": null,
+                  "nextStatement": null,
+                  "tooltip": "把陣列推到stack最後",
+                  "helpurl": ""
+                },
+                { //stack pop
+                  "type": "stack_pop",
+                  "message0": "在 stack 名稱: %1 刪除最後一個元素(pop)",
+                  "args0": [{
+                        "type": "field_input",
+                        "name": "stack_name"
+                    }],
+                  "colour": "#561229",
+                  "previousStatement": null,
+                  "nextStatement": null,
+                  "tooltip": "把元素推到stack最後",
+                  "helpurl": ""
+                },
+                { //stack top
+                  "type": "stack_top",
+                  "message0": "在 stack 名稱: %1 取出最後一個元素()",
+                  "args0": [{
+                        "type": "field_input",
+                        "name": "stack_name"
+                    }],
+                  "colour": "#561229",
+                  "previousStatement": null,
+                  "nextStatement": null,
+                  "tooltip": "把元素推到stack最後",
+                  "helpurl": ""
+                },
+                { //stack swap
+                  "type": "stack_swap",
+                  "message0": "交換 stack 名稱: %1, stack 名稱: %2",
+                  "args0": [
+                    {
+                        "type": "field_input",
+                        "name": "stack_name1"
+                    },
+                    {
+                        "type": "field_input",
+                        "name": "stack_name2"
+                    }
+                  ],
+                  "colour": "#561229",
+                  "previousStatement": null,
+                  "nextStatement": null,
+                  "tooltip": "把元素推到stack最後",
+                  "helpurl": ""
+                },
+                { //stack size
+                    "type": "stack_size",
+                    "message0": "stack %1 的陣列大小",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "stack _name"
+                    }],
+                    "inputsInline": true,
+                    "output": null,
+                    "colour": "#561229",
+                    "tooltip": "取得 stack 目前持有的元素個數。",
+                    "helpUrl": ""
+                },
+                { //stack empty
+                    "type" : "stack_empty",
+                    "message0" : "判斷stack  %1 是否為空",
+                    "args0" : [
+                        {
+                            "type" : "field_input",
+                            "name" : "stack_name"
+                        }
+                    ],
+                    "colour": "#561229",
+                    "output" : null,
+                    "tooltip": "如果 stack 內部為空，則傳回 true 值。",
+                    "helpUrl": ""
+                },
             ]
         );
