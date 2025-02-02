@@ -1893,3 +1893,53 @@
             var bitset_name = block.getFieldValue('bitset_name');
             return [`${bitset_name}.none()`, 1];
         };
+
+        Blockly.Cpp['def_stack'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            var stack_type = block.getFieldValue('stack_type');
+            var stack_content = Blockly.Cpp.valueToCode(block, 'stack_content', 1) || '';
+            var code = `stack<${stack_type}>${stack_name}`;
+            if (stack_content !== ''){
+                if (stack_content.startsWith('(') && stack_content.endsWith(')')){
+                    stack_content = stack_content.slice(1, -1);
+                }
+                code += stack_content;
+            }  
+            return code +';\n';
+        };
+
+        Blockly.Cpp['stack_push'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return stack_name + ".push_back(" + element + ");\n";
+        };
+
+         Blockly.Cpp['stack_push_range'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return stack_name + ".push(" + element + ");\n";
+        };
+        
+        Blockly.Cpp['stack_pop'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            return stack_name + ".pop();\n";
+        };
+
+         Blockly.Cpp['stack_top'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            return stack_name + ".top();\n";
+        };
+
+        Blockly.Cpp['stack_swap'] = function(block) {
+            var stack_name1 = block.getFieldValue('stack_name1');
+            var stack_name2 = block.getFieldValue('stack_name2');
+            return `${stack_name1}.swap(${stack_name2};`;
+        };
+
+        
