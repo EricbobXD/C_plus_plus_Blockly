@@ -1134,7 +1134,7 @@
                     "helpurl": ""
                 },
                 { //vector push back
-                    "type": "push_back",
+                    "type": "vector_push_back",
                     "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
                     "args0": [{
                             "type": "field_input",
@@ -1153,7 +1153,7 @@
                     "helpUrl": ""
                 },
                 { //vector pop back
-                    "type": "pop_back",
+                    "type": "vector_pop_back",
                     "message0": "在 %1 刪除最後一個",
                     "args0": [{
                         "type": "field_input",
@@ -1256,7 +1256,7 @@
                     "helpurl" : ""
                 },
                 { //emplace back
-                    "type": "emplace_back",
+                    "type": "vector_emplace_back",
                     "message0": "在 %1 新增 %2 在最後一個(可輸入多個 , 用空白分開)",
                     "args0": [
                     {
