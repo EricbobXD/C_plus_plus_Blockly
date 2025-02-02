@@ -546,9 +546,11 @@
               },
               { // another
                 "kind": "category",
-                "name": "其他工具",
-                "colour": "#2473c2",
+                "name": "基本工具",
+                "colour": "#123456",
                 "contents": [
+                  {"kind": "block", "type": "include_block"},
+                  {"kind": "block", "type": "std_block"},
                   {"kind": "block", "type": "define_block"},
                   {"kind": "block", "type": "typedef_block"}
                 ]
