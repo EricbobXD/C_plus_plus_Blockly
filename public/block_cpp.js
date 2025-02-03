@@ -1577,7 +1577,7 @@
             var type2 = block.getFieldValue('TYPE2');
             var pair_name = block.getFieldValue('pair_name');
             var content = Blockly.Cpp.valueToCode(block, 'content', 1);
-            var code = `pair<${type1}, ${type2}>${pair_name}\n`;
+            var code = `pair<${type1}, ${type2}>${pair_name}`;
             if (content){
                 if (content.startsWith('(') && content.endsWith(')')){
                     content = content.slice(1, -1);
@@ -1589,21 +1589,13 @@
         }
         Blockly.Cpp['pair_first'] = function(block) {
             var pair_name = block.getFieldValue('pair_name');
-            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
-            if (key.startsWith('(') && key.endsWith(')')){
-                key = key.slice(1, -1);
-            }
-            var code = `${pair_name}[${key}].first`;
+            var code = `${pair_name}.first`;
             return [code, 1];
         }
         
         Blockly.Cpp['pair_second'] = function(block) {
             var pair_name = block.getFieldValue('pair_name');
-            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
-            if (key.startsWith('(') && key.endsWith(')')){
-                key = key.slice(1, -1);
-            }
-            var code = `${pair_name}[${key}].second`;
+            var code = `${pair_name}.second`;
             return [code, 1];
         }
 
