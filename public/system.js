@@ -549,8 +549,10 @@
                 "name": "基本工具",
                 "colour": "#123456",
                 "contents": [
-                  {"kind": "block", "type": "include_block"},
-                  {"kind": "block", "type": "std_block"},
+                  {"kind": "block", "type": "include_std_block"},
+                  {"kind": "block", "type": "include_pbds_block"},
+                  {"kind": "block", "type": "std_space_block"},
+                  {"kind": "block", "type": "pbds_space_block"},  
                   {"kind": "block", "type": "define_block"},
                   {"kind": "block", "type": "typedef_block"}
                 ]
