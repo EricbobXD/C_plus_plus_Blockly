@@ -1745,6 +1745,7 @@
                         }
                     ],
                     "output" : null,
+                    "inputsInline": true,
                     "colour": "#69f26b",
                     "tooltip": "create new pair has key and value",
                     "helpUrl": ""
