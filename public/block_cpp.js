@@ -1144,7 +1144,7 @@
         Blockly.Cpp['typedef_block'] = function(block) {
             var type_name = block.getFieldValue('type_name');
             var name = block.getFieldValue('name');
-            return `type_def ${type_name} ${name}\n`;
+            return `typedef ${type_name} ${name}\n`;
         };
 
         Blockly.Cpp['include_std_block'] = function(block) {
@@ -1321,7 +1321,7 @@
             var vec_name = block.getFieldValue('vec_name');
             var vec_size = Blockly.Cpp.valueToCode(block, 'vec_size', 1) || '';
             var content = Blockly.Cpp.valueToCode(block, 'vec_content', 1) || '';
-            var code = `vector<${type}>${vec_name}\n`;
+            var code = `vector<${type}>${vec_name}`;
             if (vec_size) {
                 if (vec_size.startsWith('(') && vec_size.endsWith(')')) {
                     vec_size = vec_size.slice(1, -1);
