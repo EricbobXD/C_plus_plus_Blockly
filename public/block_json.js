@@ -1732,11 +1732,11 @@
                     "helpUrl": ""
                 },
                 { //make_pair
-                    "type" : "pair_second",
+                    "type" : "make_pair",
                     "message0" : "pair key: %1, value: %2",
                     "args0" : [
                         {
-                            "type" : "field_input",
+                            "type" : "input_value",
                             "name" : "key"
                         },
                         {
