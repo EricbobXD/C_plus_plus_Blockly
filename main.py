@@ -1,10 +1,13 @@
 from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request,  BackgroundTasks, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import subprocess
 import os
+import time
+
 
 
 app = FastAPI()
@@ -36,19 +39,11 @@ class Code_and_Text(BaseModel):
 source_file = 'main.cpp'
 executable_file = 'main'
 test_file = 'test.txt'
-
-@app.get('/')
-async def read_root(request : Request):
-    return templates.TemplateResponse('index.html',{"request" : request})
-
-@app.post("/compile")
-async def compile_code(code : Code):    
-    if not code.id_code.strip():
-        return {"status" : "error" , "message" : "Empty code"}
-
-    # write code in source_file
+os.makedirs('app/tmp', exist_ok=True)
+def compile(id_code):
+     # write code in source_file
     with open(source_file, 'w') as f:
-        f.write(code.id_code)
+        f.write(id_code)
     
     command = ['g++', source_file, '-o', executable_file]
     try:
@@ -60,12 +55,10 @@ async def compile_code(code : Code):
         subprocess.run(['rm' , source_file])
         error = f'{e.stderr}'.replace(f'{source_file}:', '')
         return {"status" : "error" , "message" : error}
-    
-@app.post('/run')
-async def run_code(code : Text):
 
+def run(test_file):
     with open(test_file, 'w') as f:
-        f.write(code.test_file)
+        f.write(test_file)
 
     command = f'cat {test_file} | ./{executable_file}'
     
@@ -75,12 +68,32 @@ async def run_code(code : Text):
     
     except subprocess.CalledProcessError as e:
         return {"status" : "error" , "message" : e.stderr}
+
+pre = time.time()
+def cleanup():
+    global active_tmp_dir
+    now = time.time() 
+    if pre - now > 300 or pre == now:
+        os.system('rm -rf /app/tmp')
+    
+    time.sleep(300)
+    
+
+
+@app.get('/')
+async def read_root(request : Request):
+    return templates.TemplateResponse('index.html',{"request" : request})
+
+@app.post("/compile")
+async def compile_code(code : Code):    
+    compile(code.id_code)
+    
+@app.post('/run')
+async def run_code(code : Text):
+    run(code.test_file)
         
 @app.post('/compile_and_run')
 async def compile_and_run_code(code : Code_and_Text):
-    if not code.id_code.strip():
-        return {"status" : "error" , "message" : "Empty code"}
-    
     # write code in source_file
     with open(source_file, 'w') as f:
         f.write(code.id_code)
