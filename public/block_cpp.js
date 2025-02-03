@@ -1474,13 +1474,9 @@
                 if (content.startsWith('(') && content.endsWith(')')){
                     content = content.slice(1, -1);
                 }
-                else{
-                    code += '(' + content;
-                }
+                code += `(${content})`;
             }
-            if (map_size || content){
-                code += ')';
-            }
+            code += ';\n';
             return code;
         }
 
@@ -1586,13 +1582,9 @@
                 if (content.startsWith('(') && content.endsWith(')')){
                     content = content.slice(1, -1);
                 }
-                else{
-                    code += '(' + content;
-                }
+                code += `(${content})`;
             }
-            if (pair_size || content){
-                code += ')';
-            }
+            code += ';\n';
             return code;
         }
         Blockly.Cpp['pair_first'] = function(block) {
