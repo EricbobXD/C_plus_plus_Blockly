@@ -1414,7 +1414,7 @@
                 //map
                 { //create map
                     "type" : "create_map",
-                    "message0" : "資料型態 <%1, %2>, 陣列名稱 %3, 大小 %4, 陣列內容 %5",
+                    "message0" : "map 資料型態 <%1, %2>, 陣列名稱 %3, 陣列內容 %4",
                     "args0" : [
                         {
                             "type": "field_dropdown",
@@ -1444,11 +1444,6 @@
                             "type" : "field_input",
                             "name" : "map_name",
                             "check" : "String"
-                        },
-                        {
-                            "type" : "input_value", 
-                            "name" : "map_size",
-                            "check" : "Number"
                         },
                         {
                             "type" : "input_value",
@@ -1655,6 +1650,106 @@
                     "tooltip": "尋找元素",
                     "helpUrl": ""
                 },
+                //pair
+                { //create pair
+                    "type" : "create_pair",
+                    "message0" : "pair 資料型態 <%1, %2>, 陣列名稱 %3, 陣列內容 %4",
+                    "args0" : [
+                        {
+                            "type": "field_dropdown",
+                            "name": "TYPE1",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "TYPE2",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type" : "field_input",
+                            "name" : "pair_name",
+                            "check" : "String"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "content"
+                        }
+                    ],
+                    "inputsInline": true,
+                    "colour": "#69f26b",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "helpUrl": ""
+                },
+                { //pair first
+                    "type" : "pair_first",
+                    "message0" : "pair: %1, 位置: %2 的key(first)",
+                    "args0" : [
+                        {
+                            "type" : "field_input",
+                            "name" : "pair_name"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "key"
+                        }
+                    ],
+                    "output" : null,
+                    "colour": "#69f26b",
+                    "tooltip": "pair key(first)",
+                    "helpUrl": ""
+                },
+                { //pair second
+                    "type" : "pair_second",
+                    "message0" : "pair: %1, 位置: %2 的value(second)",
+                    "args0" : [
+                        {
+                            "type" : "field_input",
+                            "name" : "pair_name"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "key"
+                        }
+                    ],
+                    "output" : null,
+                    "colour": "#69f26b",
+                    "tooltip": "pair value(second)",
+                    "helpUrl": ""
+                },
+                { //make_pair
+                    "type" : "pair_second",
+                    "message0" : "pair key: %1, value: %2",
+                    "args0" : [
+                        {
+                            "type" : "field_input",
+                            "name" : "key"
+                        },
+                        {
+                            "type" : "input_value",
+                            "name" : "value"
+                        }
+                    ],
+                    "output" : null,
+                    "colour": "#69f26b",
+                    "tooltip": "create new pair has key and value",
+                    "helpUrl": ""
+                },
+               
 
                 //array
                 { //create array
