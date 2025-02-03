@@ -1139,29 +1139,29 @@
             var name = block.getFieldValue('name');
             var func_name = block.getFieldValue('func_name');
             return `define ${name} ${func_name}`;
-        }
+        };
 
         Blockly.Cpp['typedef_block'] = function(block) {
             var type_name = block.getFieldValue('type_name');
             var name = block.getFieldValue('name');
             return `type_def ${type_name} ${name}`;
-        }
+        };
 
         Blockly.Cpp['include_std_block'] = function(block) {
             return `#include <bits/stdc++.h>\n`;
-        }
+        };
 
         Blockly.Cpp['include_pbds_block'] = function(block) {
             return `#include <bits/extc++.h>\n`;
-        }
+        };
 
         Blockly.Cpp['std_space_block'] = function(block) {
             return `using namespace std;\n`;
-        }
+        };
 
         Blockly.Cpp['pbds_space_block'] = function(block) {
             return `using namespace __gun_pbds;\n`;
-        }
+        };
 
         // Standard Library
         // math
@@ -1974,13 +1974,13 @@
         Blockly.Cpp['stack_size'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             return stack_name + ".size();\n";
-        }
+        };
 
         Blockly.Cpp['stack_empty'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             var code = stack_name + ".empty\n";
             return [code, 1];
-        }
+        };
 
 //queue
         Blockly.Cpp['def_queue'] = function(block) {
@@ -2079,13 +2079,13 @@
         Blockly.Cpp['priority_queue_size'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
             return priority_queue_name + ".size();\n";
-        }
+        };
         
         Blockly.Cpp['priority_queue_empty'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
             var code = priority_queue_name + ".empty\n";
             return [code, 1];
-        }
+        };
         
         Blockly.Cpp['priority_queue_swap'] = function(block) {
             var priority_queue_name1 = block.getFieldValue('priority_queue_name1');
