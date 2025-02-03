@@ -1624,7 +1624,7 @@
             if (value.startsWith('(') && value.endsWith(')')){
                 value = value.slice(1, -1);
             }
-            var code = `make_pair(${key}, value)`;
+            var code = `make_pair(${key}, ${value})`;
             return [code, 1];
         }
         // set
