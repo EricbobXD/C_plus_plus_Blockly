@@ -1697,17 +1697,11 @@
                 },
                 { //pair first
                     "type" : "pair_first",
-                    "message0" : "pair: %1, 位置: %2 的key(first)",
-                    "args0" : [
-                        {
+                    "message0" : "pair: %1 的 key(first)",
+                    "args0" : [{
                             "type" : "field_input",
                             "name" : "pair_name"
-                        },
-                        {
-                            "type" : "input_value",
-                            "name" : "key"
-                        }
-                    ],
+                        }],
                     "output" : null,
                     "colour": "#69f26b",
                     "tooltip": "pair key(first)",
@@ -1715,17 +1709,11 @@
                 },
                 { //pair second
                     "type" : "pair_second",
-                    "message0" : "pair: %1, 位置: %2 的value(second)",
-                    "args0" : [
-                        {
+                    "message0" : "pair: %1 的value(second)",
+                    "args0" : [{
                             "type" : "field_input",
                             "name" : "pair_name"
-                        },
-                        {
-                            "type" : "input_value",
-                            "name" : "key"
-                        }
-                    ],
+                        }],
                     "output" : null,
                     "colour": "#69f26b",
                     "tooltip": "pair value(second)",
