@@ -257,23 +257,6 @@
                       {"kind": "block", "type": "set_end"}
                     ]
                   },
-                  { // bitset
-                    "kind": "category",
-                    "name": "bitset",
-                    "colour": "#C9A200",
-                    "contents": [
-                      {"kind": "block", "type": "define_bitset"},
-                      {"kind": "block", "type": "bitset[i]"},
-                      {"kind": "block", "type": "bitset_size"},
-                      {"kind": "block", "type": "bitset_count"},
-                      {"kind": "block", "type": "bitset_set"},
-                      {"kind": "block", "type": "bitset_reset"},
-                      {"kind": "block", "type": "bitset_all"},
-                      {"kind": "block", "type": "bitset_any"},
-                      {"kind": "block", "type": "bitset_none"},
-                      {"kind": "block", "type": "get_var"}
-                    ]
-                  },
                   { // map
                     "kind": "category",
                     "name": "字典 Map",
@@ -295,6 +278,17 @@
                       {"kind": "block", "type": "map_end"},
                       {"kind": "block", "type": "map_rbegin"},
                       {"kind": "block", "type": "map_rend"}
+                    ]
+                  },
+                  { // map
+                    "kind": "category",
+                    "name": "有序的對 pair",
+                    "colour": "#69f26b",
+                    "contents": [
+                      {"kind": "block", "type": "create_pair"},
+                      {"kind": "block", "type": "pair_first"},
+                      {"kind": "block", "type": "pair_second"},
+                      {"kind": "block", "type": "make_pair"},
                     ]
                   },
                   { // stack
@@ -340,6 +334,23 @@
                       {"kind": "block", "type": "priority_queue_empty"},
                       {"kind": "block", "type": "priority_queue_size"},
                       {"kind": "block", "type": "priority_queue_swap"}
+                    ]
+                  },
+                  { // bitset
+                    "kind": "category",
+                    "name": "bitset",
+                    "colour": "#C9A200",
+                    "contents": [
+                      {"kind": "block", "type": "define_bitset"},
+                      {"kind": "block", "type": "bitset[i]"},
+                      {"kind": "block", "type": "bitset_size"},
+                      {"kind": "block", "type": "bitset_count"},
+                      {"kind": "block", "type": "bitset_set"},
+                      {"kind": "block", "type": "bitset_reset"},
+                      {"kind": "block", "type": "bitset_all"},
+                      {"kind": "block", "type": "bitset_any"},
+                      {"kind": "block", "type": "bitset_none"},
+                      {"kind": "block", "type": "get_var"}
                     ]
                   },
                   { // algorithm
