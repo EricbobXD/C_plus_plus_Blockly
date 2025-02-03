@@ -1468,21 +1468,11 @@
             var type1 = block.getFieldValue('TYPE1');
             var type2 = block.getFieldValue('TYPE2');
             var map_name = block.getFieldValue('map_name');
-            var map_size = Blockly.Cpp.valueToCode(block, 'map_size', 1);
             var content = Blockly.Cpp.valueToCode(block, 'content', 1);
             var code = `map<${type1}, ${type2}>${map_name}\n`;
-            if (map_size){
-                if (map_size.startsWith('(') && map_size.endsWith(')')){
-                    map_size = map_size.slice(1, -1);
-                }
-                code += '(' + map_size;
-            } 
             if (content){
                 if (content.startsWith('(') && content.endsWith(')')){
                     content = content.slice(1, -1);
-                }
-                if (map_size){
-                    code += ' , ' + content;
                 }
                 else{
                     code += '(' + content;
@@ -1584,6 +1574,59 @@
             return [code, 1];
         }
 
+
+        // pair
+        Blockly.Cpp['create_pair'] = function(block) {
+            var type1 = block.getFieldValue('TYPE1');
+            var type2 = block.getFieldValue('TYPE2');
+            var pair_name = block.getFieldValue('pair_name');
+            var content = Blockly.Cpp.valueToCode(block, 'content', 1);
+            var code = `pair<${type1}, ${type2}>${pair_name}\n`;
+            if (content){
+                if (content.startsWith('(') && content.endsWith(')')){
+                    content = content.slice(1, -1);
+                }
+                else{
+                    code += '(' + content;
+                }
+            }
+            if (pair_size || content){
+                code += ')';
+            }
+            return code;
+        }
+        Blockly.Cpp['pair_first'] = function(block) {
+            var pair_name = block.getFieldValue('pair_name');
+            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
+            if (key.startsWith('(') && key.endsWith(')')){
+                key = key.slice(1, -1);
+            }
+            var code = `${pair_name}[${key}].first`;
+            return [code, 1];
+        }
+        
+        Blockly.Cpp['pair_second'] = function(block) {
+            var pair_name = block.getFieldValue('pair_name');
+            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
+            if (key.startsWith('(') && key.endsWith(')')){
+                key = key.slice(1, -1);
+            }
+            var code = `${pair_name}[${key}].second`;
+            return [code, 1];
+        }
+
+        Blockly.Cpp['make_pair'] = function(block) {
+            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (key.startsWith('(') && key.endsWith(')')){
+                key = key.slice(1, -1);
+            }
+            if (value.startsWith('(') && value.endsWith(')')){
+                value = value.slice(1, -1);
+            }
+            var code = `make_pair(${key}, value)`;
+            return [code, 1];
+        }
         // set
         Blockly.Cpp['create_set'] = function(block) {
             var type = block.getFieldValue('TYPE');
