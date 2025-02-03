@@ -1345,6 +1345,7 @@
                     }
                     ],
                     "inputsInline": true,
+                    "previousStatement" : null,  
                     "nextStatement": null,
                     "colour": "#3d7fd6",
                     "tooltip": "直接在vector內建立物件",
