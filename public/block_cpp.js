@@ -1135,7 +1135,7 @@
             }
         };
 
-        Blockly.Cpp['function_definition'] = function(block) {
+        Blockly.Cpp['lambda'] = function(block) {
             var capture = block.getFieldValue('capture');
             var VAR = Blockly.Cpp.valueToCode(block, 'var', 1);
             var statement = Blockly.Cpp.statementToCode(block, 'var', 1);
