@@ -417,7 +417,8 @@
                   {"kind": "block", "type": "function_definition_void"},
                   {"kind": "block", "type": "function_definition"},
                   {"kind": "block", "type": "function_call"},
-                  {"kind": "block", "type": "lambda"}
+                  {"kind": "block", "type": "lambda"},
+                        
                   {"kind": "label", "text": "變數定義"},
                   {"kind": "block", "type": "def_var"},
                   {"kind": "block", "type": "string_commas"}
