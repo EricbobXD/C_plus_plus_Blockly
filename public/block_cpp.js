@@ -1135,6 +1135,13 @@
             }
         };
 
+        Blockly.Cpp['function_definition'] = function(block) {
+            var capture = block.getFieldValue('capture');
+            var VAR = Blockly.Cpp.valueToCode(block, 'var', 1);
+            var statement = Blockly.Cpp.statementToCode(block, 'var', 1);
+            return `[${capture}](${VAR}){\n${statement}\n}`;
+        };
+        
         Blockly.Cpp['define_block'] = function(block) {
             var name = block.getFieldValue('name');
             var func_name = block.getFieldValue('func_name');
