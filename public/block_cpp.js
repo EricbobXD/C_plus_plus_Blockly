@@ -1136,7 +1136,7 @@
         };
 
         Blockly.Cpp['lambda'] = function(block) {
-            var capture = block.getFieldValue('capture');
+            var capture = block.getFieldValue('captures');
             var VAR = Blockly.Cpp.valueToCode(block, 'var', 1);
             var statement = Blockly.Cpp.statementToCode(block, 'var', 1);
             return `[${capture}](${VAR}){\n${statement}\n}`;
