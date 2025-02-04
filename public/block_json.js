@@ -560,7 +560,8 @@
                             "name": "captures",
                             "options":[
                                 ["&", "&"],
-                                ["=", "="]
+                                ["=", "="],
+                                ["都不要", ""]
                             ]
                         },
                         {
@@ -574,6 +575,7 @@
                         "name": "statement"
                     }],
                     "colour": "#234567",
+                    "output": null,
                     "tooltip" : "定義一個lambda",
                     "helpurl" : ""
                 },
