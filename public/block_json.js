@@ -551,6 +551,32 @@
                     "tooltip": "呼叫函數",
                     "helpUrl": ""
                 },        
+                {
+                    "type": "lambda",
+                    "message0": "lambda [%1](引用變數: %2),
+                    "args0": [
+                        {
+                            "type": "field_dropdown",
+                            "name": "captures",
+                            "options":[
+                                ["&", "&"],
+                                ["=", "="]
+                            ]
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "var"
+                        },
+                    ],
+                    "message1": "%1",
+                    "args1": [{
+                        "type": "input_statement",
+                        "name": "statement"
+                    }],
+                    "colour": "#234567",
+                    "tooltip" : "定義一個lambda",
+                    "helpurl" : ""
+                },
                 
                 //define variable
                 { //def variable
