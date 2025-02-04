@@ -553,7 +553,7 @@
                 },        
                 {
                     "type": "lambda",
-                    "message0": "lambda [%1](引用變數: %2),
+                    "message0": "lambda [%1](引用變數: %2)",
                     "args0": [
                         {
                             "type": "field_dropdown",
