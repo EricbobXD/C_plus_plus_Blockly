@@ -1370,21 +1370,22 @@
 
         Blockly.Cpp['vector_insert'] = function(block) {
             var vec_name = block.getFieldValue('vec_name');
-            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
+            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
             if (pos === '0'){
                 pos = '';
             }
             else{
                 if (pos.startsWith('(') && pos.endsWith(')')){
-                    pos = pos.slice(1, -1);
+                    pos = '+' + pos.slice(1, -1);
                 }
             }
             if (value.startsWith('(') && value.endsWith(')')){
                     value = value.slice(1, -1);
+                    
             }
             
-            return `${vec_name}.insert(${vec_name}.begin()+${pos}, ${value})\n`; 
+            return `${vec_name}.insert(${vec_name}.begin()${pos}, ${value})\n`; 
         }
 
         Blockly.Cpp['vector_erase'] = function(block) {
