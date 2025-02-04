@@ -1016,11 +1016,11 @@
                 },
                 {
                     "type": "include_pbds_block",
-                    "message0": "引用所有std函式庫",
+                    "message0": "引用所有pbds函式庫",
                     "previousStatement": null,
                     "nextStatement": null,
                     "colour": "#123456",
-                    "tooltip": "引用所有std函式庫",
+                    "tooltip": "引用所有pbds函式庫",
                     "helpUrl": ""
                 },
                 {
