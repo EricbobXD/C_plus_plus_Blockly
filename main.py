@@ -87,10 +87,6 @@ async def read_root(request : Request):
 @app.post("/compile")
 async def compile_code(code : Code):    
     compile(code.id_code)
-    
-@app.post('/run')
-async def run_code(code : Text):
-    run(code.test_file)
         
 @app.post('/compile_and_run')
 async def compile_and_run_code(code : Code_and_Text):
