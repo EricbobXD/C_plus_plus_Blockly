@@ -1139,6 +1139,9 @@
             var capture = block.getFieldValue('captures');
             var VAR = Blockly.Cpp.valueToCode(block, 'VAR', 1);
             var statement = Blockly.Cpp.statementToCode(block, 'DO') || '';
+            if (VAR.startsWith('(') && VAR.endsWith(')')) {
+                VAR = VAR.slice(1, -1);
+            }
             return `[${capture}](${VAR}){\n${statement}\n}`;
         };
         
