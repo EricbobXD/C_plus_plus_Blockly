@@ -551,7 +551,7 @@
                     "tooltip": "呼叫函數",
                     "helpUrl": ""
                 },        
-                {
+                {//lambda
                     "type": "lambda",
                     "message0": "lambda [%1](引用變數: %2)",
                     "args0": [
@@ -559,14 +559,14 @@
                             "type": "field_dropdown",
                             "name": "captures",
                             "options":[
+                                ["都不要", ""],
                                 ["&", "&"],
-                                ["=", "="],
-                                ["都不要", ""]
+                                ["=", "="]
                             ]
                         },
                         {
                             "type": "input_value",
-                            "name": "var"
+                            "name": "VAR"
                         },
                     ],
                     "message1": "%1",
@@ -574,7 +574,7 @@
                         "type": "input_statement",
                         "name": "statement"
                     }],
-                    "colour": "#234567",
+                    "colour": "#db00db",
                     "output": null,
                     "tooltip" : "定義一個lambda",
                     "helpurl" : ""
