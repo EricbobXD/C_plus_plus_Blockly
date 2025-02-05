@@ -569,10 +569,10 @@
                             "name": "VAR"
                         },
                     ],
-                    "message1": "%1",
+                    "message1": "%1 ",
                     "args1": [{
                         "type": "input_statement",
-                        "name": "statement"
+                        "name": "DO"
                     }],
                     "colour": "#db00db",
                     "output": null,
