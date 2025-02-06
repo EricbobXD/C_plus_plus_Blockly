@@ -19,7 +19,7 @@
                             "name": "bitset_content"
                         }
                     ],
-                    "colour": "#bad63d",
+                    "colour": "#ff5757",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "創建一個bitset陣列，bitset是一加速的布林陣列",
