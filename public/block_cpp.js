@@ -1371,7 +1371,7 @@
             }
 
             if (array){
-                var array_name = block.getFieldValue('array');
+                var array_name = Blockly.Cpp.valueToCode(block, 'array', 1);
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
