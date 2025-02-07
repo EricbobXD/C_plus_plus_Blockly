@@ -1326,7 +1326,7 @@
             return code = name + ".emplace_back(" + num + ");\n";
         };
 
-        /*Blockly.Cpp['define_vector'] = function(block) {
+        Blockly.Cpp['define_vector'] = function(block) {
             var type = block.getFieldValue('TYPE');
             var vec_name = block.getFieldValue('vec_name');
             var vec_size = Blockly.Cpp.valueToCode(block, 'vec_size', 1) || '';
@@ -1352,8 +1352,8 @@
                 code += ')';
             }
             return code;
-        }*/
-        Blockly.Cpp['define_vector'] = function(block) {
+        }
+        /*Blockly.Cpp['define_vector'] = function(block) {
             var type = block.getFieldValue('TYPE');
             var vec_name = block.getFieldValue('vec_name');
             var code = `vector<${type}>${vec_name}`;
@@ -1394,7 +1394,7 @@
                 code += ')';
             }
             return code;
-        }
+        }*/
 
         Blockly.Cpp['vec_begin'] = function(block) {
             var vec_name = block.getFieldValue('vec_name') || '';
