@@ -2817,6 +2817,7 @@
                             .setCheck("Iterator")
                             .appendField(" 結束: ");
                     } else if (!it && block.getInput("begin")) {
+                        block.removeInput("it_field");  
                         block.removeInput("begin");
                         block.removeInput("end");
                     }
