@@ -1326,7 +1326,7 @@
             return code = name + ".emplace_back(" + num + ");\n";
         };
 
-        Blockly.Cpp['define_vector'] = function(block) {
+        /*Blockly.Cpp['define_vector'] = function(block) {
             var type = block.getFieldValue('TYPE');
             var vec_name = block.getFieldValue('vec_name');
             var vec_size = Blockly.Cpp.valueToCode(block, 'vec_size', 1) || '';
@@ -1349,6 +1349,48 @@
                 }
             }
             if (vec_size || content) {
+                code += ')';
+            }
+            return code;
+        }*/
+        Blockly.Cpp['define_vector'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var vec_name = block.getFieldValue('vec_name');
+            var code = `vector<${type}>${vec_name}`;
+
+            var size = block.getFieldValue('size') === "TRUE"
+            var array = block.getFieldValue('array') === "TRUE"
+            var it = block.getFieldValue('it') === "TRUE"
+
+            if (size){
+                var size_value = Blockly.Cpp.valueToCode(block, 'size', 1);
+                if (size_value.startsWith('(') && size_value.endsWith(')')) {
+                    size_value = size_value.slice(1, -1);
+                }
+                code += `(${size_value}`;
+            }
+
+            if (array){
+                var array_name = block.getFieldValue('array');
+                if (array_name.startsWith('(') && array_name.endsWith(')')) {
+                    array_name = array_name.slice(1, -1);
+                }
+                if (size){
+                    code += `, ${array_name}`;
+                } 
+                else{
+                    code += `(${array_name}`;
+                }
+            }
+
+            if (it){
+                var array2_name = block.getFieldValue('array2_name');
+                var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
+                var end = Blockly.Cpp.valueToCode(block, 'end', 1);
+                code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
+            }
+
+            if (size || array || it){
                 code += ')';
             }
             return code;
