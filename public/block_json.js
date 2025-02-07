@@ -1234,7 +1234,7 @@
                     "nextStatement": null,
                     "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
                     "helpurl": ""
-                },
+                },*/
                 { //vector push back
                     "type": "vector_push_back",
                     "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
@@ -1253,7 +1253,7 @@
                     "colour": "#3d7fd6",
                     "tooltip": "新增元素至 vector 的尾端，必要時會進行記憶體組態。",
                     "helpUrl": ""
-                },*/
+                },
                 { //vector pop back
                     "type": "vector_pop_back",
                     "message0": "在 %1 刪除最後一個",
