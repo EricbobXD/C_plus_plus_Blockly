@@ -2733,7 +2733,7 @@
             ]
         );
 
-        Blockly.Blocks['define_vector'] = {
+        Blockly.Blocks['define_vector'] = { 
             init: function() {
                 this.jsonInit({
                     "type": "define_vector",
@@ -2753,7 +2753,7 @@
                         },
                         {
                             "type": "field_input",
-                            "name": "vec_name",
+                            "name": "vec_name"
                         },
                         {
                             "type": "field_checkbox",
@@ -2777,7 +2777,7 @@
                     "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
                     "helpurl": ""
                 });
-
+    
                 this.setOnChange(function(event) {
                     const block = this;
                     if (!block) return;
@@ -2785,7 +2785,7 @@
                     const size = block.getFieldValue("size") === "TRUE";
                     const array = block.getFieldValue("array") === "TRUE";
                     const it = block.getFieldValue("it") === "TRUE";
-
+    
                     // 處理大小 (size)
                     if (size && !block.getInput("size")) {
                         block.appendValueInput('size')
@@ -2794,7 +2794,7 @@
                     } else if (!size && block.getInput("size")) {
                         block.removeInput("size");
                     }
-
+    
                     // 處理陣列 (array)
                     if (array && !block.getInput("array")) {
                         block.appendValueInput("array")
@@ -2803,12 +2803,13 @@
                     } else if (!array && block.getInput("array")) {
                         block.removeInput("array");
                     }
-
+    
                     // 處理迭代器 (it)
-                    if (it && !block.getInput("it_field")) {
-                        block.appendDummyInput("it_field")
-                            .appendField("迭代器:")
-                            .appendField(new Blockly.FieldTextInput("array2_name"), "array2_name");
+                    if (it && !block.getInput("array1")) {
+                        block.appendDummyInput("array1")
+                            .appendField("请输入名稱: ")
+                            .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+    
                         block.appendValueInput("begin")
                             .setCheck("Iterator")
                             .appendField("迭代器 開始: ");
@@ -2816,11 +2817,64 @@
                         block.appendValueInput("end")
                             .setCheck("Iterator")
                             .appendField(" 結束: ");
-                    } else if (!it && block.getInput("begin")) {
-                        block.removeInput("it_field");  
+                    } else if (!it && block.getInput("array1")) {
+                        block.removeInput("array1");
                         block.removeInput("begin");
                         block.removeInput("end");
                     }
                 });
-            }
+            },
+            mutationToDom: function() {
+                var container = document.createElement('mutation');
+                container.setAttribute('size', this.getFieldValue('size'));
+                container.setAttribute('array', this.getFieldValue('array'));
+                container.setAttribute('it', this.getFieldValue('it'));
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                this.setFieldValue(xmlElement.getAttribute('size'), 'size');
+                this.setFieldValue(xmlElement.getAttribute('array'), 'array');
+                this.setFieldValue(xmlElement.getAttribute('it'), 'it');
+                
+                // 確保根據 mutation 變更正確處理輸入
+                const size = xmlElement.getAttribute('size') === "true";
+                const array = xmlElement.getAttribute('array') === "true";
+                const it = xmlElement.getAttribute('it') === "true";
+    
+                if (size && !this.getInput("size")) {
+                    this.appendValueInput('size')
+                        .setCheck("Number")
+                        .appendField('大小');
+                } else if (!size && this.getInput("size")) {
+                    this.removeInput("size");
+                }
+    
+                if (array && !this.getInput("array")) {
+                    this.appendValueInput("array")
+                        .setCheck("Array")
+                        .appendField('陣列');
+                } else if (!array && this.getInput("array")) {
+                    this.removeInput("array");
+                }
+    
+                if (it && !this.getInput("array1")) {
+                    this.appendDummyInput("array1")
+                        .appendField("请输入名稱: ")
+                        .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+    
+                    this.appendValueInput("begin")
+                        .setCheck("Iterator")
+                        .appendField("迭代器 開始: ");
+                    
+                    this.appendValueInput("end")
+                        .setCheck("Iterator")
+                        .appendField(" 結束: ");
+                } else if (!it && this.getInput("array1")) {
+                    this.removeInput("array1");
+                    this.removeInput("begin");
+                    this.removeInput("end");
+                }
+            }   
         };
+        }
+    };
