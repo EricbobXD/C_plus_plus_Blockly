@@ -1201,7 +1201,7 @@
                 },
                 
                 //vector
-                { //define vector
+                /*{ //define vector
                     "type": "define_vector",
                     "message0": "資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
                     "args0": [{
@@ -1253,7 +1253,7 @@
                     "colour": "#3d7fd6",
                     "tooltip": "新增元素至 vector 的尾端，必要時會進行記憶體組態。",
                     "helpUrl": ""
-                },
+                },*/
                 { //vector pop back
                     "type": "vector_pop_back",
                     "message0": "在 %1 刪除最後一個",
@@ -2732,3 +2732,94 @@
               },
             ]
         );
+
+        Blockly.Blocks['define_vector'] = {
+            init: function() {
+                this.jsonInit({
+                    "type": "define_vector",
+                    "message0": "資料型態%1 , 名字: %2 , 大小: %3, 陣列: %4, 迭代器: %5 (不一定要勾選)",
+                    "args0": [
+                        {
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮整數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "vec_name",
+                        },
+                        {
+                            "type": "field_checkbox",
+                            "name": "size",
+                            "checked": false
+                        },
+                        {
+                            "type": "field_checkbox",
+                            "name": "array",
+                            "checked": false
+                        },
+                        {
+                            "type": "field_checkbox",
+                            "name": "it",
+                            "checked": false
+                        }
+                    ],
+                    "colour": "#3d7fd6",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
+                    "helpurl": ""
+                });
+
+                this.setOnChange(function(event) {
+                    const block = this;
+                    if (!block) return;
+                    
+                    const size = block.getFieldValue("size") === "TRUE";
+                    const array = block.getFieldValue("array") === "TRUE";
+                    const it = block.getFieldValue("it") === "TRUE";
+
+                    // 處理大小 (size)
+                    if (size && !block.getInput("size")) {
+                        block.appendValueInput('size')
+                            .setCheck("Number")
+                            .appendField('大小');
+                    } else if (!size && block.getInput("size")) {
+                        block.removeInput("size");
+                    }
+
+                    // 處理陣列 (array)
+                    if (array && !block.getInput("array")) {
+                        block.appendValueInput("array")
+                            .setCheck("Array")
+                            .appendField('陣列');
+                    } else if (!array && block.getInput("array")) {
+                        block.removeInput("array");
+                    }
+
+                    // 處理迭代器 (it)
+                    if (it && !block.getInput("it_field")) {
+                        block.appendDummyInput("it_field")
+                            .appendField("迭代器:")
+                            .appendField(new Blockly.FieldTextInput("array2_name"), "array2_name");
+                        block.appendValueInput("begin")
+                            .setCheck("Iterator")
+                            .appendField("迭代器 開始: ");
+                        
+                        block.appendValueInput("end")
+                            .setCheck("Iterator")
+                            .appendField(" 結束: ");
+                    } else if (!it && block.getInput("begin")) {
+                        block.removeInput("begin");
+                        block.removeInput("end");
+                    }
+                });
+            }
+        };
