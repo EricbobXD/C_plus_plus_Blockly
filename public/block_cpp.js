@@ -1331,76 +1331,6 @@
             return code = name + ".emplace_back(" + num + ");\n";
         };
 
-        Blockly.Cpp['define_vector'] = function(block) {
-            var type = block.getFieldValue('TYPE');
-            var vec_name = block.getFieldValue('vec_name');
-            var vec_size = Blockly.Cpp.valueToCode(block, 'vec_size', 1) || '';
-            var content = Blockly.Cpp.valueToCode(block, 'vec_content', 1) || '';
-            var code = `vector<${type}>${vec_name}`;
-            if (vec_size) {
-                if (vec_size.startsWith('(') && vec_size.endsWith(')')) {
-                    vec_size = vec_size.slice(1, -1);
-                }
-                code += '(' + vec_size;
-            }
-            if (content) {
-                if (content.startsWith('(') && content.endsWith(')')) {
-                    content = content.slice(1, -1);
-                }
-                if (vec_size) {
-                    code += ' , ' + content;
-                } else {
-                    code += '(' + content;
-                }
-            }
-            if (vec_size || content) {
-                code += ')';
-            }
-            return code;
-        }
-        /*Blockly.Cpp['define_vector'] = function(block) {
-            var type = block.getFieldValue('TYPE');
-            var vec_name = block.getFieldValue('vec_name');
-            var code = `vector<${type}>${vec_name}`;
-
-            var size = block.getFieldValue('size') === "TRUE"
-            var array = block.getFieldValue('array') === "TRUE"
-            var it = block.getFieldValue('it') === "TRUE"
-
-            if (size){
-                var size_value = Blockly.Cpp.valueToCode(block, 'size', 1);
-                if (size_value.startsWith('(') && size_value.endsWith(')')) {
-                    size_value = size_value.slice(1, -1);
-                }
-                code += `(${size_value}`;
-            }
-
-            if (array){
-                var array_name = Blockly.Cpp.valueToCode(block, 'array', 1);
-                if (array_name.startsWith('(') && array_name.endsWith(')')) {
-                    array_name = array_name.slice(1, -1);
-                }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
-            }
-
-            if (it){
-                var array2_name = block.getFieldValue('array2_name');
-                var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
-                var end = Blockly.Cpp.valueToCode(block, 'end', 1);
-                code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-
-            if (size || array || it){
-                code += ')';
-            }
-            return code;
-        }*/
-
         Blockly.Cpp['vec_begin'] = function(block) {
             var vec_name = block.getFieldValue('vec_name') || '';
             var code = vec_name + '.begin()';
@@ -2187,3 +2117,199 @@
             return priority_queue_name + ".push_range(" + element + ");\n";
         };
         
+        Blockly.Blocks['define_vector'] = {  
+              init: function() {
+                  this.jsonInit({
+                      "type": "define_vector",
+                      "message0": "資料型態 %1 , 名字: %2 , 大小: %3, 陣列: %4, 迭代器: %5",
+                      "args0": [
+                          {
+                              "type": "field_dropdown",
+                              "name": "TYPE",
+                              "options": [
+                                  ["整數", "int"],
+                                  ["浮整數", "float"],
+                                  ["雙重浮點數", "double"],
+                                  ["字元", "char"],
+                                  ["字串", "string"],
+                                  ["更長的整數", "long long"]
+                              ]
+                          },
+                          {
+                              "type": "field_input",
+                              "name": "vec_name"
+                          },
+                          {
+                              "type": "field_checkbox",
+                              "name": "size",
+                              "checked": false
+                          },
+                          {
+                              "type": "field_checkbox",
+                              "name": "array",
+                              "checked": false
+                          },
+                          {
+                              "type": "field_checkbox",
+                              "name": "it",
+                              "checked": false
+                          }
+                      ],
+                      "colour": "#3d7fd6",
+                      "previousStatement": null,
+                      "nextStatement": null,
+                      "tooltip": "創建一個 vector 陣列，vector 是會自動擴展容量的陣列",
+                      "helpurl": "",
+                      "inputsInline": false  // 確保預設排列方式為換行
+                  });
+
+        // 監聽積木變更
+        this.setOnChange(function(event) {
+            const block = this;
+            if (!block) return;
+
+            const sizeChecked  = block.getFieldValue("size") === "TRUE";
+            const arrayChecked = block.getFieldValue("array") === "TRUE";
+            const itChecked    = block.getFieldValue("it") === "TRUE";
+
+            // 確保 inputsInline 為 false，讓輸入項目換行排列
+            block.setInputsInline(false);
+
+            // 動態新增 / 移除 size 輸入
+            if (sizeChecked && !block.getInput("size")) {
+                block.appendValueInput('size')
+                    .setCheck("Number")
+                    .appendField('大小')
+                    .setAlign(Blockly.ALIGN_RIGHT);
+            } else if (!sizeChecked && block.getInput("size")) {
+                block.removeInput("size", true);
+            }
+
+            // 動態新增 / 移除 array 輸入
+            if (arrayChecked && !block.getInput("array")) {
+                block.appendValueInput("array")
+                    .setCheck("Array")
+                    .appendField('陣列')
+                    .setAlign(Blockly.ALIGN_RIGHT);
+            } else if (!arrayChecked && block.getInput("array")) {
+                block.removeInput("array", true);
+            }
+
+            // 動態新增 / 移除 iterator 輸入
+            if (itChecked && !block.getInput("iterator_name")) {
+                block.appendDummyInput("iterator_name")
+                    .appendField("輸入名稱: ")
+                    .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+
+                block.appendValueInput("begin")
+                    .setCheck("Iterator")
+                    .appendField("迭代器 開始: ")
+                    .setAlign(Blockly.ALIGN_RIGHT);
+
+                block.appendValueInput("end")
+                    .setCheck("Iterator")
+                    .appendField("結束: ")
+                    .setAlign(Blockly.ALIGN_RIGHT);
+            } else if (!itChecked && block.getInput("iterator_name")) {
+                block.removeInput("iterator_name", true);
+                block.removeInput("begin", true);
+                block.removeInput("end", true);
+            }
+        });
+    },
+
+    // 儲存積木狀態
+    mutationToDom: function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('size', this.getFieldValue('size'));
+        container.setAttribute('array', this.getFieldValue('array'));
+        container.setAttribute('it', this.getFieldValue('it'));
+        return container;
+    },
+
+    // 讀取積木狀態
+    domToMutation: function(xmlElement) {
+        this.setFieldValue(xmlElement.getAttribute('size'), 'size');
+        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
+        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
+
+        const sizeChecked  = xmlElement.getAttribute('size') === "TRUE";
+        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
+        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
+
+        // 確保 inputsInline 為 false，避免縮成一行
+        this.setInputsInline(false);
+
+        if (sizeChecked && !this.getInput("size")) {
+            this.appendValueInput('size')
+                .setCheck("Number")
+                .appendField('大小')
+                .setAlign(Blockly.ALIGN_RIGHT);
+        }
+
+        if (arrayChecked && !this.getInput("array")) {
+            this.appendValueInput("array")
+                .setCheck("Array")
+                .appendField('陣列')
+                .setAlign(Blockly.ALIGN_RIGHT);
+        }
+
+        if (itChecked && !this.getInput("iterator_name")) {
+            this.appendDummyInput("iterator_name")
+                .appendField("輸入名稱: ")
+                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+
+            this.appendValueInput("begin")
+                .setCheck("Iterator")
+                .appendField("迭代器 開始: ")
+                .setAlign(Blockly.ALIGN_RIGHT);
+
+            this.appendValueInput("end")
+                .setCheck("Iterator")
+                .appendField("結束: ")
+                .setAlign(Blockly.ALIGN_RIGHT);
+        }
+    }
+};
+        Blockly.Cpp['define_vector'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var vec_name = block.getFieldValue('vec_name');
+            var code = `vector<${type}>${vec_name}`;
+
+            var size = block.getFieldValue('size') === "TRUE"
+            var array = block.getFieldValue('array') === "TRUE"
+            var it = block.getFieldValue('it') === "TRUE"
+
+            if (size){
+                var size_value = Blockly.Cpp.valueToCode(block, 'size', 1);
+                if (size_value.startsWith('(') && size_value.endsWith(')')) {
+                    size_value = size_value.slice(1, -1);
+                }
+                code += `(${size_value}`;
+            }
+
+            if (array){
+                var array_name = block.getFieldValue('array');
+                if (array_name.startsWith('(') && array_name.endsWith(')')) {
+                    array_name = array_name.slice(1, -1);
+                }
+                if (size){
+                    code += `, ${array_name}`;
+                } 
+                else{
+                    code += `(${array_name}`;
+                }
+            }
+
+            if (it){
+                var array2_name = block.getFieldValue('array2_name');
+                var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
+                var end = Blockly.Cpp.valueToCode(block, 'end', 1);
+                code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
+            }
+
+            if (size || array || it){
+                code += ')';
+            }
+            return code;
+        }
