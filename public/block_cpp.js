@@ -2180,7 +2180,7 @@
                 block.appendValueInput('size')
                     .setCheck("Number")
                     .appendField('大小')
-                    .setAlign(Blockly.ALIGN_RIGHT);
+                    .setAlign(Blockly.ALIGN_LEFT);
             } else if (!sizeChecked && block.getInput("size")) {
                 block.removeInput("size", true);
             }
@@ -2190,7 +2190,7 @@
                 block.appendValueInput("array")
                     .setCheck("Array")
                     .appendField('陣列')
-                    .setAlign(Blockly.ALIGN_RIGHT);
+                    .setAlign(Blockly.ALIGN_LEFT);
             } else if (!arrayChecked && block.getInput("array")) {
                 block.removeInput("array", true);
             }
@@ -2204,12 +2204,12 @@
                 block.appendValueInput("begin")
                     .setCheck("Iterator")
                     .appendField("迭代器 開始: ")
-                    .setAlign(Blockly.ALIGN_RIGHT);
+                    .setAlign(Blockly.ALIGN_LEFT);
 
                 block.appendValueInput("end")
                     .setCheck("Iterator")
                     .appendField("結束: ")
-                    .setAlign(Blockly.ALIGN_RIGHT);
+                    .setAlign(Blockly.ALIGN_LEFT);
             } else if (!itChecked && block.getInput("iterator_name")) {
                 block.removeInput("iterator_name", true);
                 block.removeInput("begin", true);
@@ -2244,14 +2244,14 @@
             this.appendValueInput('size')
                 .setCheck("Number")
                 .appendField('大小')
-                .setAlign(Blockly.ALIGN_RIGHT);
+                .setAlign(Blockly.ALIGN_LEFT);
         }
 
         if (arrayChecked && !this.getInput("array")) {
             this.appendValueInput("array")
                 .setCheck("Array")
                 .appendField('陣列')
-                .setAlign(Blockly.ALIGN_RIGHT);
+                .setAlign(Blockly.ALIGN_LEFT);
         }
 
         if (itChecked && !this.getInput("iterator_name")) {
@@ -2262,12 +2262,12 @@
             this.appendValueInput("begin")
                 .setCheck("Iterator")
                 .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_RIGHT);
+                .setAlign(Blockly.ALIGN_LEFT);
 
             this.appendValueInput("end")
                 .setCheck("Iterator")
                 .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_RIGHT);
+                .setAlign(Blockly.ALIGN_LEFT);
         }
     }
 };
