@@ -1317,7 +1317,7 @@
             if (number.startsWith('(') && number.endsWith(')')) {
                 number = number.slice(1, -1);
             }
-            return vec_name + ".push_back(" + number + ");\n";
+            return vec_name + ".push_back(" + number + ");\n"; 
         };
 
         Blockly.Cpp['vector_pop_back'] = function(block) {
