@@ -506,6 +506,7 @@
         createMathOperatorBlock('math_percent', '%');
         createMathOperatorBlock('math_devide', '/');
         createMathOperatorBlock('math_subtract', '-');
+        createMathOperatorBlock('number_comma', ',');
 
         createStringOperatorBlock('string_plus', '+');
         createStringOperatorBlock('string_commas', ',');
@@ -521,7 +522,7 @@
         Blockly.Cpp['math_multiply'] = function (block) {
             return math_generateCode(block, ' * ');
         };
-
+        
         Blockly.Cpp['math_percent'] = function (block) {
             return math_generateCode(block, ' % ');
         };
@@ -534,6 +535,10 @@
             return math_generateCode(block, ' - ');
         };
 
+        Blockly.Cpp['number_comma'] = function (block) {
+            return math_generateCode(block, ', ');
+        };
+        
         Blockly.Cpp['string_plus'] = function (block) {
             return string_generateCode(block, ' + ');
         };
