@@ -1148,7 +1148,7 @@
         Blockly.Cpp['define_block'] = function(block) {
             var name = block.getFieldValue('name');
             var func_name = block.getFieldValue('func_name');
-            return `define ${name} ${func_name}\n`;
+            return `#define ${name} ${func_name}\n`;
         };
 
         Blockly.Cpp['typedef_block'] = function(block) {
