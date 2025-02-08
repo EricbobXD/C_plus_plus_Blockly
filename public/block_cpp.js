@@ -2311,5 +2311,6 @@
             if (size || array || it){
                 code += ')';
             }
+            code += ';';
             return code;
         }
