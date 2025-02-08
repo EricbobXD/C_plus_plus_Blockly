@@ -525,8 +525,8 @@
                   {"kind": "block", "type": "math_multiply"},
                   {"kind": "block", "type": "math_percent"},
                   {"kind": "block", "type": "math_devide"},
-                  {"kind": "block", "type": "math_subtract"}
-
+                  {"kind": "block", "type": "math_subtract"},
+                  {"kind": "block", "type": "number_comma"}
                 ]
               },
               { // condition and loop
