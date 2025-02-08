@@ -1201,7 +1201,7 @@
                 },
                 
                 //vector
-                { //define vector
+                /*{ //define vector
                     "type": "define_vector",
                     "message0": "資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
                     "args0": [{
@@ -1234,7 +1234,7 @@
                     "nextStatement": null,
                     "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
                     "helpurl": ""
-                },
+                },*/
                 { //vector push back
                     "type": "vector_push_back",
                     "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
