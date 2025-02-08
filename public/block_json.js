@@ -1201,40 +1201,6 @@
                 },
                 
                 //vector
-                /*{ //define vector
-                    "type": "define_vector",
-                    "message0": "資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
-                    "args0": [{
-                            "type": "field_dropdown",
-                            "name": "TYPE",
-                            "options": [
-                                ["整數", "int"],
-                                ["浮整數", "float"],
-                                ["雙重浮點數", "double"],
-                                ["字元", "char"],
-                                ["字串", "string"],
-                                ["更長的整數", "long long"]
-                            ]
-                        },
-                        {
-                            "type": "field_input",
-                            "name": "vec_name",
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "vec_size"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "vec_content"
-                        }
-                    ],
-                    "colour": "#3d7fd6",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
-                    "helpurl": ""
-                },*/
                 { //vector push back
                     "type": "vector_push_back",
                     "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
