@@ -2,64 +2,117 @@
 <html lang="zh-tw">
 <head>
     <meta charset="UTF-8">
+    <title>C++ Blockly</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Blockly -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.2.1/blockly.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.2.1/blocks_compressed.js"></script>
+    <!-- Markdown & Highlight -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
-    <title>C++ Blockly</title>
     <link rel="stylesheet" href="public/style.css">
 </head>
+
 <body>
     <header>
         <h1>C++ Blockly</h1>
-        <div class="file-info"></div>
         <div id="searchContainer">
-            <input type="text" id="searchInput" placeholder="Search for blocks(type ID ONLY)...">
-            <button id="searchButton">Search</button>
+            <input type="text" id="searchInput" placeholder="🔍 搜尋方塊 ID...">
+            <button class="search" id="searchButton">搜尋</button>
         </div>
         <div class="actions">
-            <button class="compile" id="c">編譯</button>
-            <button class="run" id="r">執行</button>
-            <button class="run_compile" id="c_r">編譯&執行</button>
-            <button class="toggle-view" id="toggle-button" onclick="toggleView()">切換模式</button>
-            <button class="start-tutorial-btn" id="start-tutorial">開始教學</button>
-            <a href='https://hackmd.io/@cpp-blockly' target="_blank"><button class="help">尋求幫助?</button></a>
+            <button class="compile" id="c">編譯程式碼</button>
+            <button class="run_compile" id="c_r">編譯並執行</button>
+            <button class="start-tutorial-btn" id="start-tutorial">📚 快速教學</button>
+            <button class="menu" id="menu">⚙️ 設定</button>
         </div>
     </header>
-    <main id="main-container">
-        <div class="blockly-workspace" id="blockly-workspace"></div>
-        <div class="code-view">
-            <div class="input-output">
-                <div class="section">
-                    <h3>轉換程式碼 <button onclick="copyText('code-output')">複製程式碼</button> <button onclick="downloadText('code-output', 'main.cpp')">下載程式碼</button></h3>
-                </div>
-                <div id="code-output"></div>
-                <div class="section">
-                    <h3>輸入測資 <button onclick="copyText('textarea')">複製測資</button> <button id="sent_data">送出測資</button> <button id="reset">重置測資</button></h3>
-                    <textarea id="textarea" placeholder="請在這裡輸入測資..."></textarea>
-                </div>
-                <div class="section">
-                    <h3>編譯/執行結果 <button onclick="copyText('report')">複製結果</button> <button onclick="downloadText('report', 'report.txt')">下載結果</button> <button id="reset_2">清除結果</button></h3>
-                    <textarea readonly placeholder="結果將顯示在這裡..." id="report"></textarea>
-                </div>
-                <div class="section">
-                    <footer>&copy; 2024 Bosen & EricbobXD.  All Rights Reserved.</footer>
-                </div>
+
+    <div id="blockly-workspace"></div>
+
+    <div class="test_compiler" id="test_compiler">
+        <header>
+            <span>編譯與測試</span>
+        </header>
+        <div class="input-output">
+            <div class="section">
+                <h3>📄 測資
+                    <button onclick="copyText('textarea')">複製</button>
+                    <button id="reset">重置</button>
+                </h3>
+                <textarea id="textarea" placeholder="請在這裡輸入測資..."></textarea>
+            </div>
+            <div class="section">
+                <h3>📋 結果
+                    <button onclick="copyText('report')">複製</button>
+                    <button id="reset_2">清除</button>
+                </h3>
+                <textarea readonly placeholder="結果將顯示在這裡..." id="report"></textarea>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- 遮罩與提示框 -->
+    <div class="code-view" id="code-view">
+        <header>
+            <span>轉換程式碼</span>
+            <div>
+                <button onclick="copyText('code')">複製</button>
+                <button onclick="downloadText('code', 'main.cpp')">下載</button>
+            </div>
+        </header>
+        <div class="code-content" id="code"></div>
+    </div>
+
+    <div class="blockly-view" id="blockly-view">
+        <header>
+            <span>Blockly 說明</span>
+        </header>
+        <div>
+            <p>👉 點擊方塊查看說明。</p>
+        </div>
+    </div>
+
+    <div class="info" id="info">
+        <header>
+            <span>關於我們以及網站</span>
+        </header>
+        <div>
+            <ul>
+                <li><p>網站名稱：C++ Blockly</p></li>
+                <li><p>作者：</p></li>
+                <ul>
+                    <li><a href="https://github.com/EricbobXD">EricbobXD(Coderex._.bob)</a></li>
+                    <li><a href="https://github.com/bosen-you">bosen-you</a></li>
+                </ul>
+                <li><p>執照：<a href="https://github.com/EricbobXD/C_plus_plus_Blockly/tree/main?tab=Apache-2.0-1-ov-file">Apache-2.0 license</a></p></li>
+                <li><p>創作年份：2024年</p></li>
+                <li><p>👉 <a href="https://github.com/EricbobXD/C_plus_plus_Blockly">Github</a></p></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="menu-container">
+        <h3 style="text-align: center;">設定列表</h3>
+        <button id="menu-codeview" class="menu-btn">📝 測試編譯</button>
+        <button id="menu-conversion" class="menu-btn">🔁 轉換代碼</button>
+        <button id="menu-intro" class="menu-intro">📗 方塊說明</button>
+        <button id="menu-info" class="menu-info">💳 關於我們</button>
+    </div>
+
     <div class="overlay" id="overlay"></div>
     <div class="highlight" id="highlight"></div>
     <div class="tooltip" id="tooltip">
         <p id="tooltip-text"></p>
-        <button class="next-button" id="next-step">下一步</button>
+        <button id="next-step">下一步</button>
     </div>
+
+    <footer>
+        &copy; 2024 Bosen &amp; EricbobXD. All Rights Reserved.
+    </footer>
+
 
     <script src="public/system.js" defer></script>
     <script src="public/block_cpp.js" defer></script>
