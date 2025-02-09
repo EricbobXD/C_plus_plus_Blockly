@@ -2172,11 +2172,11 @@
             const arrayChecked = block.getFieldValue("array") === "TRUE";
             const itChecked    = block.getFieldValue("it") === "TRUE";
 
-            if (sizeChecked && itchecked){
+            if (sizeChecked && itChecked){
                 alert("大小跟迭代器不能一起使用喔😘");
             }
 
-            if (arrayChecked && itchecked){
+            if (arrayChecked && itChecked){
                 alert("陣列不能跟迭代器不能一起使用喔😘")
             }
             // 確保 inputsInline 為 false，讓輸入項目換行排列
