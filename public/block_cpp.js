@@ -2174,14 +2174,10 @@
 
             if (sizeChecked && itChecked){
                 alert("大小跟迭代器不能一起使用喔😘");
-                sizeChecked = false;
-                itChecked = false;
             }
 
             if (arrayChecked && itChecked){
                 alert("陣列不能跟迭代器不能一起使用喔😘");
-                arrayChecked = false;
-                itChecked = false;
             }
             // 確保 inputsInline 為 false，讓輸入項目換行排列
             block.setInputsInline(false);
