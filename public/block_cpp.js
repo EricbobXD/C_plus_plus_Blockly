@@ -2172,6 +2172,13 @@
             const arrayChecked = block.getFieldValue("array") === "TRUE";
             const itChecked    = block.getFieldValue("it") === "TRUE";
 
+            if (sizeChecked && itchecked){
+                alert("大小跟迭代器不能一起使用喔😘");
+            }
+
+            if (arrayChecked && itchecked){
+                alert("陣列不能跟迭代器不能一起使用喔😘")
+            }
             // 確保 inputsInline 為 false，讓輸入項目換行排列
             block.setInputsInline(false);
 
@@ -2307,7 +2314,7 @@
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
             }
-
+                
             if (size || array || it){
                 code += ')';
             }
