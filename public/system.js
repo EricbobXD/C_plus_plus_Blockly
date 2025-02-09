@@ -449,7 +449,7 @@
                             "colour": "#e67e22",
                             "contents": [{
                                     "kind": "block",
-                                    "type": "create_set"
+                                    "type": "define_set"
                                 },
                                 {
                                     "kind": "block",
@@ -487,7 +487,7 @@
                             "colour": "#1abc9c",
                             "contents": [{
                                     "kind": "block",
-                                    "type": "create_map"
+                                    "type": "define_map"
                                 },
                                 {
                                     "kind": "block",
@@ -549,7 +549,7 @@
                             "colour": "#338f35",
                             "contents": [{
                                     "kind": "block",
-                                    "type": "create_pair"
+                                    "type": "define_pair"
                                 },
                                 {
                                     "kind": "block",
@@ -571,7 +571,7 @@
                             "colour": "#c74134",
                             "contents": [{
                                     "kind": "block",
-                                    "type": "def_stack"
+                                    "type": "define_stack"
                                 },
                                 {
                                     "kind": "block",
@@ -609,7 +609,7 @@
                             "colour": "#fd79a8",
                             "contents": [{
                                     "kind": "block",
-                                    "type": "def_queue"
+                                    "type": "define_queue"
                                 },
                                 {
                                     "kind": "block",
@@ -647,7 +647,7 @@
                             "colour": "#f1c40f",
                             "contents": [{
                                     "kind": "block",
-                                    "type": "def_priority_queue"
+                                    "type": "define_priority_queue"
                                 },
                                 {
                                     "kind": "block",
