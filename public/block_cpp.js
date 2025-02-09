@@ -1,5 +1,5 @@
         Blockly.Blocks['if_block'] = {
-            init: function () {
+            init: function() {
                 this.setPreviousStatement(true);
                 this.appendValueInput("IF_VALUE")
                     .setCheck("Boolean")
@@ -49,20 +49,20 @@
                 const containerBlock = workspace.newBlock('if_mutator');
                 containerBlock.initSvg();
                 let connection = containerBlock.nextConnection;
-                
+
                 for (let i = 0; i < this.elifCount_; i++) {
                     const elifBlock = workspace.newBlock('elif_mutator');
                     elifBlock.initSvg();
                     connection.connect(elifBlock.previousConnection);
                     connection = elifBlock.nextConnection;
                 }
-                
+
                 if (this.hasElse_) {
                     const elseBlock = workspace.newBlock('else_mutator');
                     elseBlock.initSvg();
                     connection.connect(elseBlock.previousConnection);
                 }
-                
+
                 return containerBlock;
             },
 
@@ -71,7 +71,7 @@
                 let elifConnections = [];
                 let elifCount = 0;
                 let hasElse = false;
-                
+
                 while (clauseBlock) {
                     switch (clauseBlock.type) {
                         case 'elif_mutator':
@@ -87,11 +87,11 @@
                     clauseBlock = clauseBlock.nextConnection &&
                         clauseBlock.nextConnection.targetBlock();
                 }
-                
+
                 this.elifCount_ = elifCount;
                 this.hasElse_ = hasElse;
                 this.updateShape_();
-                
+
                 for (let i = 0; i < this.elifCount_; i++) {
                     if (elifConnections[i]) {
                         Blockly.Mutator.reconnect(elifConnections[i], this, 'ELIF' + i);
@@ -108,7 +108,7 @@
                 if (this.getInput('ELSE')) {
                     this.removeInput('ELSE');
                 }
-                
+
                 // 重新添加所需的輸入
                 for (let i = 0; i < this.elifCount_; i++) {
                     this.appendValueInput('ELIF' + i)
@@ -118,7 +118,7 @@
                         .setCheck(null)
                         .appendField('執行');
                 }
-                
+
                 if (this.hasElse_) {
                     this.appendStatementInput('ELSE')
                         .setCheck(null)
@@ -160,18 +160,18 @@
             const ifValue = Blockly.Cpp.valueToCode(block, 'IF_VALUE', Blockly.Cpp.ORDER_ATOMIC) || 'false';
             let code = `if (${ifValue}) {\n`;
             code += Blockly.Cpp.statementToCode(block, 'IF_DO');
-            
+
             for (let i = 0; i < block.elifCount_; i++) {
                 const elifValue = Blockly.Cpp.valueToCode(block, 'ELIF' + i, Blockly.Cpp.ORDER_ATOMIC) || 'false';
                 code += `} else if (${elifValue}) {\n`;
                 code += Blockly.Cpp.statementToCode(block, 'ELIF_DO' + i);
             }
-            
+
             if (block.hasElse_) {
                 code += '} else {\n';
                 code += Blockly.Cpp.statementToCode(block, 'ELSE');
             }
-            
+
             code += '}\n';
             return code;
         };
@@ -220,7 +220,7 @@
                 const containerBlock = workspace.newBlock('switch_mutator');
                 containerBlock.initSvg();
                 containerBlock.setFieldValue(this.caseCount_, 'CASE_COUNT');
-                
+
                 let connection = containerBlock.nextConnection;
                 for (let i = 0; i < this.caseCount_; i++) {
                     const caseBlock = workspace.newBlock('case_mutator');
@@ -228,24 +228,24 @@
                     connection.connect(caseBlock.previousConnection);
                     connection = caseBlock.nextConnection;
                 }
-                
+
                 return containerBlock;
             },
 
             compose: function(containerBlock) {
                 let clauseBlock = containerBlock.nextConnection.targetBlock();
                 let connections = [];
-                
+
                 while (clauseBlock) {
                     if (clauseBlock.type === 'case_mutator') {
                         connections.push(clauseBlock.valueConnection_);
                     }
                     clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
                 }
-                
+
                 this.caseCount_ = connections.length;
                 this.updateShape_();
-                
+
                 for (let i = 0; i < this.caseCount_; i++) {
                     if (connections[i]) {
                         Blockly.Mutator.reconnect(connections[i], this, 'CASE' + i);
@@ -259,7 +259,7 @@
                     this.removeInput('CASE' + i);
                     this.removeInput('CASE_DO' + i);
                 }
-                
+
                 // Add new inputs
                 for (let i = 0; i < this.caseCount_; i++) {
                     this.appendValueInput('CASE' + i)
@@ -310,7 +310,7 @@
         };
 
         Blockly.Blocks['string_generic'] = {
-            init: function () {
+            init: function() {
                 this.setColour("#71b700");
                 this.setOutput(true, "String");
                 this.setInputsInline(true);
@@ -319,18 +319,18 @@
                 this.operator_ = '+'; // 預設運算符為加法
                 this.updateShape_();
             },
-            mutationToDom: function () {
+            mutationToDom: function() {
                 const container = document.createElement('mutation');
                 container.setAttribute('items', this.itemCount_);
                 container.setAttribute('operator', this.operator_);
                 return container;
             },
-            domToMutation: function (xmlElement) {
+            domToMutation: function(xmlElement) {
                 this.itemCount_ = Math.max(2, parseInt(xmlElement.getAttribute('items'), 10)); // 確保最少兩個
                 this.operator_ = xmlElement.getAttribute('operator') || '+';
                 this.updateShape_();
             },
-            decompose: function (workspace) {
+            decompose: function(workspace) {
                 const containerBlock = workspace.newBlock('string_generic_container');
                 containerBlock.initSvg();
                 let connection = containerBlock.getInput('STACK').connection;
@@ -342,7 +342,7 @@
                 }
                 return containerBlock;
             },
-            compose: function (containerBlock) {
+            compose: function(containerBlock) {
                 let itemBlock = containerBlock.getInputTargetBlock('STACK');
                 const connections = [];
                 while (itemBlock) {
@@ -355,7 +355,7 @@
                     Blockly.Mutator.reconnect(connections[i], this, 'ADD' + i);
                 }
             },
-            updateShape_: function () {
+            updateShape_: function() {
                 // 移除多餘的輸入
                 let i = 0;
                 while (this.getInput('ADD' + i)) {
@@ -371,14 +371,14 @@
                     }
                 }
             },
-            setOperator: function (operator) {
+            setOperator: function(operator) {
                 this.operator_ = operator;
                 this.updateShape_();
             }
         };
 
         Blockly.Blocks['string_generic_container'] = {
-            init: function () {
+            init: function() {
                 this.setColour("#71b700");
                 this.appendDummyInput().appendField("輸入");
                 this.appendStatementInput('STACK');
@@ -387,7 +387,7 @@
         };
 
         Blockly.Blocks['string_generic_item'] = {
-            init: function () {
+            init: function() {
                 this.setColour("#71b700");
                 this.appendDummyInput().appendField("項目");
                 this.setPreviousStatement(true);
@@ -397,7 +397,7 @@
         };
 
         Blockly.Blocks['math_generic'] = {
-            init: function () {
+            init: function() {
                 this.setColour("#277ace");
                 this.setOutput(true, "Number");
                 this.setInputsInline(true);
@@ -406,18 +406,18 @@
                 this.operator_ = '+'; // 預設運算符為加法
                 this.updateShape_();
             },
-            mutationToDom: function () {
+            mutationToDom: function() {
                 const container = document.createElement('mutation');
                 container.setAttribute('items', this.itemCount_);
                 container.setAttribute('operator', this.operator_);
                 return container;
             },
-            domToMutation: function (xmlElement) {
+            domToMutation: function(xmlElement) {
                 this.itemCount_ = Math.max(2, parseInt(xmlElement.getAttribute('items'), 10)); // 確保最少兩個
                 this.operator_ = xmlElement.getAttribute('operator') || '+';
                 this.updateShape_();
             },
-            decompose: function (workspace) {
+            decompose: function(workspace) {
                 const containerBlock = workspace.newBlock('math_generic_container');
                 containerBlock.initSvg();
                 let connection = containerBlock.getInput('STACK').connection;
@@ -429,7 +429,7 @@
                 }
                 return containerBlock;
             },
-            compose: function (containerBlock) {
+            compose: function(containerBlock) {
                 let itemBlock = containerBlock.getInputTargetBlock('STACK');
                 const connections = [];
                 while (itemBlock) {
@@ -442,7 +442,7 @@
                     Blockly.Mutator.reconnect(connections[i], this, 'ADD' + i);
                 }
             },
-            updateShape_: function () {
+            updateShape_: function() {
                 // 移除多餘的輸入
                 let i = 0;
                 while (this.getInput('ADD' + i)) {
@@ -458,14 +458,14 @@
                     }
                 }
             },
-            setOperator: function (operator) {
+            setOperator: function(operator) {
                 this.operator_ = operator;
                 this.updateShape_();
             }
         };
 
         Blockly.Blocks['math_generic_container'] = {
-            init: function () {
+            init: function() {
                 this.setColour("#277ace");
                 this.appendDummyInput().appendField("數字輸入");
                 this.appendStatementInput('STACK');
@@ -474,7 +474,7 @@
         };
 
         Blockly.Blocks['math_generic_item'] = {
-            init: function () {
+            init: function() {
                 this.setColour("#277ace");
                 this.appendDummyInput().appendField("項目");
                 this.setPreviousStatement(true);
@@ -485,7 +485,7 @@
 
         function createMathOperatorBlock(type, operatorSymbol) {
             Blockly.Blocks[type] = Object.assign({}, Blockly.Blocks['math_generic'], {
-                init: function () {
+                init: function() {
                     Blockly.Blocks['math_generic'].init.call(this);
                     this.setOperator(operatorSymbol);
                 }
@@ -494,7 +494,7 @@
 
         function createStringOperatorBlock(type, operatorSymbol) {
             Blockly.Blocks[type] = Object.assign({}, Blockly.Blocks['string_generic'], {
-                init: function () {
+                init: function() {
                     Blockly.Blocks['string_generic'].init.call(this);
                     this.setOperator(operatorSymbol);
                 }
@@ -506,7 +506,6 @@
         createMathOperatorBlock('math_percent', '%');
         createMathOperatorBlock('math_devide', '/');
         createMathOperatorBlock('math_subtract', '-');
-        createMathOperatorBlock('number_comma', ',');
 
         createStringOperatorBlock('string_plus', '+');
         createStringOperatorBlock('string_commas', ',');
@@ -515,43 +514,39 @@
 
         Blockly.Cpp = Blockly.Cpp || {};
 
-        Blockly.Cpp['math_plus'] = function (block) {
+        Blockly.Cpp['math_plus'] = function(block) {
             return math_generateCode(block, ' + ');
         };
 
-        Blockly.Cpp['math_multiply'] = function (block) {
+        Blockly.Cpp['math_multiply'] = function(block) {
             return math_generateCode(block, ' * ');
         };
-        
-        Blockly.Cpp['math_percent'] = function (block) {
+
+        Blockly.Cpp['math_percent'] = function(block) {
             return math_generateCode(block, ' % ');
         };
 
-        Blockly.Cpp['math_devide'] = function (block) {
+        Blockly.Cpp['math_devide'] = function(block) {
             return math_generateCode(block, ' / ');
         };
 
-        Blockly.Cpp['math_subtract'] = function (block) {
+        Blockly.Cpp['math_subtract'] = function(block) {
             return math_generateCode(block, ' - ');
         };
 
-        Blockly.Cpp['number_comma'] = function (block) {
-            return math_generateCode(block, ', ');
-        };
-        
-        Blockly.Cpp['string_plus'] = function (block) {
+        Blockly.Cpp['string_plus'] = function(block) {
             return string_generateCode(block, ' + ');
         };
 
-        Blockly.Cpp['string_commas'] = function (block) {
+        Blockly.Cpp['string_commas'] = function(block) {
             return string_generateCode(block, ' , ');
         };
 
-        Blockly.Cpp['string_cout'] = function (block) {
+        Blockly.Cpp['string_cout'] = function(block) {
             return string_generateCode(block, ' << ');
         };
 
-        Blockly.Cpp['string_cin'] = function (block) {
+        Blockly.Cpp['string_cin'] = function(block) {
             return string_generateCode(block, ' >> ');
         };
 
@@ -563,7 +558,7 @@
                     argument = argument.slice(1, -1);
                 }
 
-                    code += argument;
+                code += argument;
                 if (i < block.itemCount_ - 1) {
                     code += operator;
                 }
@@ -581,7 +576,7 @@
                     argument = argument.slice(1, -1);
                 }
 
-                    code += argument;
+                code += argument;
                 if (i < block.itemCount_ - 1) {
                     code += operator;
                 }
@@ -602,7 +597,7 @@
             var struct_name = block.getFieldValue('struct_name');
             var var_name = block.getFieldValue('var_name');
             var size = Blockly.Cpp.valueToCode(block, 'size', 1);
-            if (size){
+            if (size) {
                 return `${struct_name} ${var_name}[${size}];`
             }
             return `${struct_name} ${var_name};`;
@@ -625,12 +620,12 @@
 
             return code;
         };
- 
+
         Blockly.Cpp['get_class'] = function(block) {
             var class_name = block.getFieldValue('class_name');
             var var_name = block.getFieldValue('var_name');
             var size = Blockly.Cpp.valueToCode(block, 'size', 1);
-            if (size){
+            if (size) {
                 return `${class_name} ${var_name}[${size}];`
             }
             return `${class_name} ${var_name};`;
@@ -644,7 +639,7 @@
         Blockly.Cpp['tab'] = function(block) {
             return [`  `, 1];
         };
-        
+
         Blockly.Cpp['label'] = function(block) {
             var text = block.getFieldValue('TEXT') || '';
             return [`"${text}"`, 1];
@@ -690,8 +685,7 @@
 
             if (returnValue === "") {
                 return `return;`
-            }
-            else {
+            } else {
                 return `return ${returnValue};\n`;
             }
         };
@@ -709,7 +703,7 @@
             return code;
         };
 
-         Blockly.Cpp['for_block'] = function(block) {
+        Blockly.Cpp['for_block'] = function(block) {
             var init = Blockly.Cpp.valueToCode(block, 'INIT', 1);
             var condition = Blockly.Cpp.valueToCode(block, 'CONDITION', 1);
             var var_cal = Blockly.Cpp.valueToCode(block, 'var_cal', 1);
@@ -769,15 +763,15 @@
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
-            if (unsigned === 'unsigned'){
+            if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
-            
+
             code += type + ' ' + var_name;
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            if (value !== ''){
+            if (value !== '') {
                 code += ` = ${value}`;
             }
             code += ';\n';
@@ -954,7 +948,7 @@
         Blockly.Cpp['nullptr'] = function() {
             return ['nullptr', 1];
         };
-        
+
         Blockly.Cpp['declare_pointer'] = function(block) {
             var Const_ptr = block.getFieldValue('const_ptr');
             var Const_var = block.getFieldValue('const_var');
@@ -963,30 +957,30 @@
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
-            if (Const_ptr === 'const_ptr'){
+            if (Const_ptr === 'const_ptr') {
                 code += 'const ';
             }
-            if (unsigned === 'unsigned'){
+            if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
-            
+
             code += `${type}* `;
-            if (Const_var === 'const_var'){
-                code += 'const '; 
+            if (Const_var === 'const_var') {
+                code += 'const ';
             }
-            
+
             code += var_name + ' ';
 
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            if (value !== ''){
+            if (value !== '') {
                 code += `= ${value}`;
             }
             code += ';\n';
             return code;
         };
-        
+
         Blockly.Cpp['declare_reference'] = function(block) {
             var Const_ptr = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
@@ -994,29 +988,28 @@
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
-            if (Const_ptr === 'const'){
+            if (Const_ptr === 'const') {
                 code += 'const ';
             }
-            if (unsigned === 'unsigned'){
+            if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
-            
-            if (type === 'no'){
+
+            if (type === 'no') {
                 code += `&${var_name} `;
-            }
-            else {
+            } else {
                 code += `${type} &${var_name} `;
             }
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            if (value !== ''){
+            if (value !== '') {
                 code += `= ${value}`;
             }
             code += ';\n';
             return code;
         };
-        
+
         Blockly.Cpp['ptr_equal'] = function(block) {
             var ptr = block.getFieldValue('ptr_name');
             var value = Blockly.Cpp.valueToCode(block, 'VALUE', 1) || '0';
@@ -1053,18 +1046,18 @@
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
-            if (Const === 'const'){
+            if (Const === 'const') {
                 code += 'const ';
             }
-            if (unsigned === 'unsigned'){
+            if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
-            
+
             code += type + ' ' + var_name;
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            if (value !== ''){
+            if (value !== '') {
                 code += ` = ${value}`;
             }
             code += ';\n';
@@ -1089,16 +1082,15 @@
         Blockly.Cpp['function_call'] = function(block) {
             var funcName = block.getFieldValue('funcName');
             var value = Blockly.Cpp.valueToCode(block, 'VALUE', 1);
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            if (value){
+            if (value) {
                 return `${funcName}(${value});\n`;
-            }
-            else{
+            } else {
                 return funcName + '\n';
             }
-            
+
         };
 
         Blockly.Cpp['function_definition'] = function(block) {
@@ -1108,7 +1100,7 @@
             var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
             var expression = Blockly.Cpp.valueToCode(block, 'expression', 1);
             if (data.startsWith('(') && data.endsWith(')')) {
-                    data = data.slice(1, -1);
+                data = data.slice(1, -1);
             }
             if (content.startsWith('(') && content.endsWith(')')) {
                 content = content.slice(1, -1);
@@ -1119,23 +1111,22 @@
 
             return `${Type} ${funcName}(${data}) {\n${content}  return ${expression};\n}\n`;
         };
-        
+
         Blockly.Cpp['function_definition_void'] = function(block) {
             var funcName = block.getFieldValue('funcName');
             var data = Blockly.Cpp.valueToCode(block, 'data', 1);
             var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
             var expression = block.getFieldValue('expression');
             if (data.startsWith('(') && data.endsWith(')')) {
-                    data = data.slice(1, -1);
+                data = data.slice(1, -1);
             }
             if (content.startsWith('(') && content.endsWith(')')) {
                 content = content.slice(1, -1);
             }
 
-            if (expression === 'no'){
+            if (expression === 'no') {
                 return `void ${funcName}(${data}) {\n${content}\n}\n`;
-            }
-            else{
+            } else {
                 return `void ${funcName}(${data}) {\n${content}  return;\n}\n`;
             }
         };
@@ -1149,11 +1140,11 @@
             }
             return `[${capture}](${VAR}){\n${statement}\n}`;
         };
-        
+
         Blockly.Cpp['define_block'] = function(block) {
             var name = block.getFieldValue('name');
             var func_name = block.getFieldValue('func_name');
-            return `#define ${name} ${func_name}\n`;
+            return `define ${name} ${func_name}\n`;
         };
 
         Blockly.Cpp['typedef_block'] = function(block) {
@@ -1317,7 +1308,7 @@
             if (number.startsWith('(') && number.endsWith(')')) {
                 number = number.slice(1, -1);
             }
-            return vec_name + ".push_back(" + number + ");\n"; 
+            return vec_name + ".push_back(" + number + ");\n";
         };
 
         Blockly.Cpp['vector_pop_back'] = function(block) {
@@ -1330,6 +1321,75 @@
             var num = block.getFieldValue('number');
             return code = name + ".emplace_back(" + num + ");\n";
         };
+
+        /*Blockly.Cpp['define_vector'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var vec_name = block.getFieldValue('vec_name');
+            var vec_size = Blockly.Cpp.valueToCode(block, 'vec_size', 1) || '';
+            var content = Blockly.Cpp.valueToCode(block, 'vec_content', 1) || '';
+            var code = `vector<${type}>${vec_name}`;
+            if (vec_size) {
+                if (vec_size.startsWith('(') && vec_size.endsWith(')')) {
+                    vec_size = vec_size.slice(1, -1);
+                }
+                code += '(' + vec_size;
+            }
+            if (content) {
+                if (content.startsWith('(') && content.endsWith(')')) {
+                    content = content.slice(1, -1);
+                }
+                if (vec_size) {
+                    code += ' , ' + content;
+                } else {
+                    code += '(' + content;
+                }
+            }
+            if (vec_size || content) {
+                code += ')';
+            }
+            return code;
+        }*/
+        Blockly.Cpp['define_vector'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var vec_name = block.getFieldValue('vec_name');
+            var code = `vector<${type}>${vec_name}`;
+
+            var size = block.getFieldValue('size') === "TRUE"
+            var array = block.getFieldValue('array') === "TRUE"
+            var it = block.getFieldValue('it') === "TRUE"
+
+            if (size) {
+                var size_value = Blockly.Cpp.valueToCode(block, 'size', 1);
+                if (size_value.startsWith('(') && size_value.endsWith(')')) {
+                    size_value = size_value.slice(1, -1);
+                }
+                code += `(${size_value}`;
+            }
+
+            if (array) {
+                var array_name = Blockly.Cpp.valueToCode(block, 'array', 1);
+                if (array_name.startsWith('(') && array_name.endsWith(')')) {
+                    array_name = array_name.slice(1, -1);
+                }
+                if (size) {
+                    code += `, ${array_name}`;
+                } else {
+                    code += `(${array_name}`;
+                }
+            }
+
+            if (it) {
+                var array2_name = block.getFieldValue('array2_name');
+                var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
+                var end = Blockly.Cpp.valueToCode(block, 'end', 1);
+                code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
+            }
+
+            if (size || array || it) {
+                code += ')';
+            }
+            return code;
+        }
 
         Blockly.Cpp['vec_begin'] = function(block) {
             var vec_name = block.getFieldValue('vec_name') || '';
@@ -1359,39 +1419,37 @@
             var vec_name = block.getFieldValue('vec_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
-            if (pos === '0'){
+            if (pos === '0') {
                 pos = '';
-            }
-            else{
-                if (pos.startsWith('(') && pos.endsWith(')')){
+            } else {
+                if (pos.startsWith('(') && pos.endsWith(')')) {
                     pos = '+' + pos.slice(1, -1);
                 }
             }
-            if (value.startsWith('(') && value.endsWith(')')){
-                    value = value.slice(1, -1);
-                    
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+
             }
-            
-            return `${vec_name}.insert(${vec_name}.begin()${pos}, ${value})\n`; 
+
+            return `${vec_name}.insert(${vec_name}.begin()${pos}, ${value})\n`;
         }
 
         Blockly.Cpp['vector_erase'] = function(block) {
             var vec_name = block.getFieldValue('vec_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
-            if (pos === '0'){
+            if (pos === '0') {
                 pos = '';
-            }
-            else{
-                if (pos.startsWith('(') && pos.endsWith(')')){
+            } else {
+                if (pos.startsWith('(') && pos.endsWith(')')) {
                     pos = pos.slice(1, -1);
                 }
             }
-            if (value.startsWith('(') && value.endsWith(')')){
-                    value = value.slice(1, -1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
             }
-            
-            return `${vec_name}.insert(${vec_name}.begin()+${pos}, ${value})\n`; 
+
+            return `${vec_name}.insert(${vec_name}.begin()+${pos}, ${value})\n`;
         }
 
         Blockly.Cpp['vector_clear'] = function(block) {
@@ -1409,7 +1467,7 @@
             var code = vec_name + ".empty\n";
             return [code, 1];
         }
-        
+
         // array
         Blockly.Cpp['create_array'] = function(block) {
             var type = block.getFieldValue('TYPE');
@@ -1444,7 +1502,7 @@
         Blockly.Cpp['array[i]'] = function(block) {
             var array_name = block.getFieldValue('array_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
-            if (pos.startsWith('(') && pos.endsWith(')')){
+            if (pos.startsWith('(') && pos.endsWith(')')) {
                 pos = pos.slice(1, -1);
             }
             var code = `${array_name}[${pos}]`;
@@ -1458,8 +1516,8 @@
             var map_name = block.getFieldValue('map_name');
             var content = Blockly.Cpp.valueToCode(block, 'content', 1);
             var code = `map<${type1}, ${type2}>${map_name}\n`;
-            if (content){
-                if (content.startsWith('(') && content.endsWith(')')){
+            if (content) {
+                if (content.startsWith('(') && content.endsWith(')')) {
                     content = content.slice(1, -1);
                 }
                 code += `(${content})`;
@@ -1472,10 +1530,10 @@
             var map_name = block.getFieldValue('map_name');
             var first = Blockly.Cpp.valueToCode(block, 'first', 1) || '';
             var second = Blockly.Cpp.valueToCode(block, 'second', 1) || '';
-            if (first.startsWith('(') && first.endsWith(')')){
+            if (first.startsWith('(') && first.endsWith(')')) {
                 first = first.slice(1, -1);
             }
-            if (second.startsWith('(') && second.endsWith(')')){
+            if (second.startsWith('(') && second.endsWith(')')) {
                 second = second.slice(1, -1);
             }
             return `${map_name}.insert({${first}, ${second}})\n`;
@@ -1486,7 +1544,7 @@
             var map_key = block.getFieldValue('map_key');
             var map_value = block.getFieldValue('map_value');
             return `${map_name}[${map_key}] = ${map_value}\n`;
-        }        
+        }
 
         Blockly.Cpp['map_begin'] = function(block) {
             var map_name = block.getFieldValue('map_name') || '';
@@ -1531,17 +1589,17 @@
         Blockly.Cpp['map_first'] = function(block) {
             var map_name = block.getFieldValue('map_name');
             var key = Blockly.Cpp.valueToCode(block, 'key', 1);
-            if (key.startsWith('(') && key.endsWith(')')){
+            if (key.startsWith('(') && key.endsWith(')')) {
                 key = key.slice(1, -1);
             }
             var code = `${map_name}[${key}].first`;
             return [code, 1];
         }
-        
+
         Blockly.Cpp['map_second'] = function(block) {
             var map_name = block.getFieldValue('map_name');
             var key = Blockly.Cpp.valueToCode(block, 'key', 1);
-            if (key.startsWith('(') && key.endsWith(')')){
+            if (key.startsWith('(') && key.endsWith(')')) {
                 key = key.slice(1, -1);
             }
             var code = `${map_name}[${key}].second`;
@@ -1551,7 +1609,7 @@
         Blockly.Cpp['map_find'] = function(block) {
             var map_name = block.getFieldValue('map_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             var code = `${map_name}.find(${value})`;
@@ -1566,8 +1624,8 @@
             var pair_name = block.getFieldValue('pair_name');
             var content = Blockly.Cpp.valueToCode(block, 'content', 1);
             var code = `pair<${type1}, ${type2}>${pair_name}`;
-            if (content){
-                if (content.startsWith('(') && content.endsWith(')')){
+            if (content) {
+                if (content.startsWith('(') && content.endsWith(')')) {
                     content = content.slice(1, -1);
                 }
                 code += `(${content})`;
@@ -1580,7 +1638,7 @@
             var code = `${pair_name}.first`;
             return [code, 1];
         }
-        
+
         Blockly.Cpp['pair_second'] = function(block) {
             var pair_name = block.getFieldValue('pair_name');
             var code = `${pair_name}.second`;
@@ -1590,10 +1648,10 @@
         Blockly.Cpp['make_pair'] = function(block) {
             var key = Blockly.Cpp.valueToCode(block, 'key', 1);
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
-            if (key.startsWith('(') && key.endsWith(')')){
+            if (key.startsWith('(') && key.endsWith(')')) {
                 key = key.slice(1, -1);
             }
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             var code = `make_pair(${key}, ${value})`;
@@ -1606,24 +1664,23 @@
             var set_size = Blockly.Cpp.valueToCode(block, 'set_size', 1) || '';
             var content = Blockly.Cpp.valueToCode(block, 'set_content', 1) || '';
             var code = `set<${type}>${set_name}\n`;
-            if (set_size){
-                if (set_size.startsWith('(') && set_size.endsWith(')')){
+            if (set_size) {
+                if (set_size.startsWith('(') && set_size.endsWith(')')) {
                     set_size = set_size.slice(1, -1);
                 }
                 code += '(' + set_size;
             }
-            if (content){
-                if (content.startsWith('(') && content.endsWith(')')){
+            if (content) {
+                if (content.startsWith('(') && content.endsWith(')')) {
                     content = content.slice(1, -1);
                 }
-                if (set_size){
+                if (set_size) {
                     code += ' , ' + content;
-                }
-                else{
+                } else {
                     code += '(' + content;
                 }
             }
-            if (set_size || content){
+            if (set_size || content) {
                 code += ')';
             }
             return code;
@@ -1632,7 +1689,7 @@
         Blockly.Cpp['set_insert'] = function(block) {
             var set_name = block.getFieldValue('set_name') || '';
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             return `${set_name}.insert(${value})\n`;
@@ -1641,7 +1698,7 @@
         Blockly.Cpp['set_erase'] = function(block) {
             var set_name = block.getFieldValue('set_name') || '';
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             return `${set_name}.insert(${value})\n`;
@@ -1668,7 +1725,7 @@
         Blockly.Cpp['set_find'] = function(block) {
             var set_name = block.getFieldValue('set_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             var code = `${set_name}.find(${value})\n`;
@@ -1681,24 +1738,22 @@
             var name = block.getFieldValue('name');
             var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
             var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
-            if (start.startsWith('(') && start.endsWith(')')){
+            if (start.startsWith('(') && start.endsWith(')')) {
                 start = start.slice(1, -1);
             }
-            if (end.startsWith('(') && end.endsWith(')')){
+            if (end.startsWith('(') && end.endsWith(')')) {
                 end = end.slice(1, -1);
             }
-            
-            if (start === '0'){
+
+            if (start === '0') {
                 start = '';
-            }
-            else{
+            } else {
                 start = '+' + start;
             }
-            
-            if (type === "內建陣列"){
+
+            if (type === "內建陣列") {
                 return `sort(${name}${start}, ${name}+${end})\n`;
-            }
-            else{
+            } else {
                 return `sort(${name}.begin()${start}, ${name}.begin()+${end})\n`;
             }
         }
@@ -1708,24 +1763,22 @@
             var name = block.getFieldValue('name');
             var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
             var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
-            if (start.startsWith('(') && start.endsWith(')')){
+            if (start.startsWith('(') && start.endsWith(')')) {
                 start = start.slice(1, -1);
             }
-            if (end.startsWith('(') && end.endsWith(')')){
+            if (end.startsWith('(') && end.endsWith(')')) {
                 end = end.slice(1, -1);
             }
 
-            if (start === '0'){
+            if (start === '0') {
                 start = '';
-            }
-            else{
+            } else {
                 start = '+' + start;
             }
 
-            if (type === "內建陣列"){
+            if (type === "內建陣列") {
                 return `*max_element(${name}+${start}, ${name}+${end})\n`;
-            }
-            else{
+            } else {
                 return `*max_element(${name}.begin()+${start}, ${name}.begin()+${end})\n`;
             }
         }
@@ -1735,24 +1788,22 @@
             var name = block.getFieldValue('name');
             var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
             var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
-            if (start.startsWith('(') && start.endsWith(')')){
+            if (start.startsWith('(') && start.endsWith(')')) {
                 start = start.slice(1, -1);
             }
-            if (end.startsWith('(') && end.endsWith(')')){
+            if (end.startsWith('(') && end.endsWith(')')) {
                 end = end.slice(1, -1);
             }
-            
-            if (start === '0'){
+
+            if (start === '0') {
                 start = '';
-            }
-            else{
+            } else {
                 start = '+' + start;
             }
 
-            if (type === "內建陣列"){
+            if (type === "內建陣列") {
                 return `*min_element(${name}+${start}, ${name}+${end})\n`;
-            }
-            else{
+            } else {
                 return `*min_element(${name}.begin()+${start}, ${name}.begin()+${end})\n`;
             }
         }
@@ -1763,27 +1814,25 @@
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
             var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
-            if (start.startsWith('(') && start.endsWith(')')){
+            if (start.startsWith('(') && start.endsWith(')')) {
                 start = start.slice(1, -1);
             }
-            if (end.startsWith('(') && end.endsWith(')')){
+            if (end.startsWith('(') && end.endsWith(')')) {
                 end = end.slice(1, -1);
             }
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            
-            if (start === '0'){
+
+            if (start === '0') {
                 start = '';
-            }
-            else{
+            } else {
                 start = '+' + start;
             }
 
-            if (type === "內建陣列"){
+            if (type === "內建陣列") {
                 return `find(${name}${start}, ${name}+${end}, ${value})\n`;
-            }
-            else{
+            } else {
                 return `find(${name}.begin()${start}, ${name}.begin()+${end}, ${value})\n`;
             }
         }
@@ -1848,13 +1897,13 @@
         // iomanip
         // setbase
         Blockly.Cpp['setbase'] = function(block) {
-            var code = `setbase(${block.getFieldValue('carry')})`; 
+            var code = `setbase(${block.getFieldValue('carry')})`;
             return [code, 1]
         };
 
         Blockly.Cpp['setprecision'] = function(block) {
             var code = '';
-            if (choice = block.getFieldValue('choice') === 'sig_figs'){
+            if (choice = block.getFieldValue('choice') === 'sig_figs') {
                 code += 'fixed << ';
             }
             code += `setprecision(${Blockly.Cpp.valueToCode(block, 'number', 1)})`
@@ -1862,40 +1911,40 @@
         };
 
         Blockly.Cpp['setw'] = function(block) {
-            var code = `setw(${Blockly.Cpp.valueToCode(block, 'number', 1)})`; 
+            var code = `setw(${Blockly.Cpp.valueToCode(block, 'number', 1)})`;
             return [code, 1];
         };
 
         Blockly.Cpp['setfill'] = function(block) {
-            var code = `setfill(${Blockly.Cpp.valueToCode(block, 'number', 1)})`; 
+            var code = `setfill(${Blockly.Cpp.valueToCode(block, 'number', 1)})`;
             return [code, 1];
         };
-      
+
         Blockly.Cpp['define_bitset'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             var bitset_size = Blockly.Cpp.valueToCode(block, 'bitset_size', 1);
             var bitset_content = Blockly.Cpp.valueToCode(block, 'bitset_content', 1) || '';
-            if (bitset_size.startsWith('(') && bitset_size.endsWith(')')){
+            if (bitset_size.startsWith('(') && bitset_size.endsWith(')')) {
                 bitset_size = bitset_size.slice(1, -1);
             }
             var code = `bitset<${bitset_size}>${bitset_name}`;
-            if (bitset_content !== ''){
-                if (bitset_content.startsWith('(') && bitset_content.endsWith(')')){
+            if (bitset_content !== '') {
+                if (bitset_content.startsWith('(') && bitset_content.endsWith(')')) {
                     bitset_content = bitset_content.slice(1, -1);
                 }
                 code += bitset_content;
-            }  
-            return code +';\n';
+            }
+            return code + ';\n';
         };
-        
+
         Blockly.Cpp['bitset[i]'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
-            if (pos.startsWith('(') && pos.endsWith(')')){
+            if (pos.startsWith('(') && pos.endsWith(')')) {
                 pos = pos.slice(1, -1);
             }
-            if (value.startsWith('(') && value.endsWith(')')){
+            if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             var code = `${bitset_name}[${pos}] = ${value}`;
@@ -1911,7 +1960,7 @@
             var bitset_name = block.getFieldValue('bitset_name');
             return [`${bitset_name}.reset()`, 1];
         };
-        
+
         Blockly.Cpp['bitset_size'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             return [`${bitset_name}.size()`, 1];
@@ -1921,7 +1970,7 @@
             var bitset_name = block.getFieldValue('bitset_name');
             return [`${bitset_name}.count()`, 1];
         };
-        
+
         Blockly.Cpp['bitset_all'] = function(block) {
             var bitset_name = block.getFieldValue('bitset_name');
             return [`${bitset_name}.all()`, 1];
@@ -1937,19 +1986,19 @@
             return [`${bitset_name}.none()`, 1];
         };
 
-//stack
+        //stack
         Blockly.Cpp['def_stack'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             var stack_type = block.getFieldValue('stack_type');
             var stack_content = Blockly.Cpp.valueToCode(block, 'stack_content', 1) || '';
             var code = `stack<${stack_type}>${stack_name}`;
-            if (stack_content !== ''){
-                if (stack_content.startsWith('(') && stack_content.endsWith(')')){
+            if (stack_content !== '') {
+                if (stack_content.startsWith('(') && stack_content.endsWith(')')) {
                     stack_content = stack_content.slice(1, -1);
                 }
                 code += stack_content;
-            }  
-            return code +';\n';
+            }
+            return code + ';\n';
         };
 
         Blockly.Cpp['stack_push'] = function(block) {
@@ -1969,13 +2018,13 @@
             }
             return stack_name + ".push_range(" + element + ");\n";
         };
-        
+
         Blockly.Cpp['stack_pop'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             return stack_name + ".pop();\n";
         };
 
-         Blockly.Cpp['stack_top'] = function(block) {
+        Blockly.Cpp['stack_top'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             return stack_name + ".top();\n";
         };
@@ -1997,21 +2046,21 @@
             return [code, 1];
         };
 
-//queue
+        //queue
         Blockly.Cpp['def_queue'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             var queue_type = block.getFieldValue('queue_type');
             var queue_content = Blockly.Cpp.valueToCode(block, 'queue_content', 1) || '';
             var code = `queue<${queue_type}>${queue_name}`;
-            if (queue_content !== ''){
-                if (queue_content.startsWith('(') && queue_content.endsWith(')')){
+            if (queue_content !== '') {
+                if (queue_content.startsWith('(') && queue_content.endsWith(')')) {
                     queue_content = queue_content.slice(1, -1);
                 }
                 code += queue_content;
-            }  
-            return code +';\n';
+            }
+            return code + ';\n';
         };
-        
+
         Blockly.Cpp['queue_push'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
@@ -2020,22 +2069,22 @@
             }
             return queue_name + ".push(" + element + ");\n";
         };
-        
+
         Blockly.Cpp['queue_pop'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             return queue_name + ".pop();\n";
         };
-        
-         Blockly.Cpp['queue_front'] = function(block) {
+
+        Blockly.Cpp['queue_front'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             return queue_name + ".front();\n";
         };
-        
+
         Blockly.Cpp['queue_size'] = function(block) {
             var queue_name = block.getFieldValue('queue_name') || '';
             return queue_name + ".size();\n";
         }
-        
+
         Blockly.Cpp['queue_empty'] = function(block) {
             var queue_name = block.getFieldValue('queue_name') || '';
             var code = queue_name + ".empty\n";
@@ -2047,7 +2096,7 @@
             var queue_name2 = block.getFieldValue('queue_name2');
             return `${queue_name1}.swap(${queue_name2};`;
         };
-        
+
         Blockly.Cpp['queue_push_range'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
@@ -2057,21 +2106,21 @@
             return queue_name + ".push_range(" + element + ");\n";
         };
 
-//priority_queue
+        //priority_queue
         Blockly.Cpp['def_priority_queue'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
             var priority_queue_type = block.getFieldValue('priority_queue_type');
             var priority_queue_content = Blockly.Cpp.valueToCode(block, 'priority_queue_content', 1) || '';
             var code = `priority_queue<${priority_queue_type}>${priority_queue_name}`;
-            if (priority_queue_content !== ''){
-                if (priority_queue_content.startsWith('(') && priority_queue_content.endsWith(')')){
+            if (priority_queue_content !== '') {
+                if (priority_queue_content.startsWith('(') && priority_queue_content.endsWith(')')) {
                     priority_queue_content = priority_queue_content.slice(1, -1);
                 }
                 code += priority_queue_content;
-            }  
-            return code +';\n';
+            }
+            return code + ';\n';
         };
-        
+
         Blockly.Cpp['priority_queue_push'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
             var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
@@ -2080,34 +2129,34 @@
             }
             return priority_queue_name + ".push(" + element + ");\n";
         };
-        
+
         Blockly.Cpp['priority_queue_pop'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
             return priority_queue_name + ".pop();\n";
         };
-        
-         Blockly.Cpp['priority_queue_front'] = function(block) {
+
+        Blockly.Cpp['priority_queue_front'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
             return priority_queue_name + ".front();\n";
         };
-        
+
         Blockly.Cpp['priority_queue_size'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
             return priority_queue_name + ".size();\n";
         };
-        
+
         Blockly.Cpp['priority_queue_empty'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
             var code = priority_queue_name + ".empty\n";
             return [code, 1];
         };
-        
+
         Blockly.Cpp['priority_queue_swap'] = function(block) {
             var priority_queue_name1 = block.getFieldValue('priority_queue_name1');
             var priority_queue_name2 = block.getFieldValue('priority_queue_name2');
             return `${priority_queue_name1}.swap(${priority_queue_name2};`;
         };
-        
+
         Blockly.Cpp['priority_queue_push_range'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
             var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
@@ -2116,208 +2165,3 @@
             }
             return priority_queue_name + ".push_range(" + element + ");\n";
         };
-        
-        Blockly.Blocks['define_vector'] = {  
-              init: function() {
-                  this.jsonInit({
-                      "type": "define_vector",
-                      "message0": "資料型態 %1 , 名字: %2 , 大小: %3, 陣列: %4, 迭代器: %5",
-                      "args0": [
-                          {
-                              "type": "field_dropdown",
-                              "name": "TYPE",
-                              "options": [
-                                  ["整數", "int"],
-                                  ["浮整數", "float"],
-                                  ["雙重浮點數", "double"],
-                                  ["字元", "char"],
-                                  ["字串", "string"],
-                                  ["更長的整數", "long long"]
-                              ]
-                          },
-                          {
-                              "type": "field_input",
-                              "name": "vec_name"
-                          },
-                          {
-                              "type": "field_checkbox",
-                              "name": "size",
-                              "checked": false
-                          },
-                          {
-                              "type": "field_checkbox",
-                              "name": "array",
-                              "checked": false
-                          },
-                          {
-                              "type": "field_checkbox",
-                              "name": "it",
-                              "checked": false
-                          }
-                      ],
-                      "colour": "#3d7fd6",
-                      "previousStatement": null,
-                      "nextStatement": null,
-                      "tooltip": "創建一個 vector 陣列，vector 是會自動擴展容量的陣列",
-                      "helpurl": "",
-                      "inputsInline": false  // 確保預設排列方式為換行
-                  });
-
-        // 監聽積木變更
-        this.setOnChange(function(event) {
-            const block = this;
-            if (!block) return;
-
-            var sizeChecked  = block.getFieldValue("size") === "TRUE";
-            var arrayChecked = block.getFieldValue("array") === "TRUE";
-            var itChecked    = block.getFieldValue("it") === "TRUE";
-
-            if (sizeChecked && itChecked){
-                alert("大小跟迭代器不能一起使用喔😘");
-            }
-
-            if (arrayChecked && itChecked){
-                alert("陣列不能跟迭代器不能一起使用喔😘");
-            }
-            // 確保 inputsInline 為 false，讓輸入項目換行排列
-            block.setInputsInline(false);
-
-            // 動態新增 / 移除 size 輸入
-            if (sizeChecked && !block.getInput("size")) {
-                block.appendValueInput('size')
-                    .setCheck("Number")
-                    .appendField('大小')
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!sizeChecked && block.getInput("size")) {
-                block.removeInput("size", true);
-            }
-
-            // 動態新增 / 移除 array 輸入
-            if (arrayChecked && !block.getInput("array")) {
-                block.appendValueInput("array")
-                    .setCheck("Array")
-                    .appendField('陣列')
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!arrayChecked && block.getInput("array")) {
-                block.removeInput("array", true);
-            }
-
-            // 動態新增 / 移除 iterator 輸入
-            if (itChecked && !block.getInput("iterator_name")) {
-                block.appendDummyInput("iterator_name")
-                    .appendField("輸入名稱: ")
-                    .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-                block.appendValueInput("begin")
-                    .setCheck("Iterator")
-                    .appendField("迭代器 開始: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-
-                block.appendValueInput("end")
-                    .setCheck("Iterator")
-                    .appendField("結束: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!itChecked && block.getInput("iterator_name")) {
-                block.removeInput("iterator_name", true);
-                block.removeInput("begin", true);
-                block.removeInput("end", true);
-            }
-        });
-    },
-
-    // 儲存積木狀態
-    mutationToDom: function() {
-        var container = document.createElement('mutation');
-        container.setAttribute('size', this.getFieldValue('size'));
-        container.setAttribute('array', this.getFieldValue('array'));
-        container.setAttribute('it', this.getFieldValue('it'));
-        return container;
-    },
-
-    // 讀取積木狀態
-    domToMutation: function(xmlElement) {
-        this.setFieldValue(xmlElement.getAttribute('size'), 'size');
-        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
-        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
-
-        const sizeChecked  = xmlElement.getAttribute('size') === "TRUE";
-        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
-        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
-
-        // 確保 inputsInline 為 false，避免縮成一行
-        this.setInputsInline(false);
-
-        if (sizeChecked && !this.getInput("size")) {
-            this.appendValueInput('size')
-                .setCheck("Number")
-                .appendField('大小')
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-
-        if (arrayChecked && !this.getInput("array")) {
-            this.appendValueInput("array")
-                .setCheck("Array")
-                .appendField('陣列')
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-
-        if (itChecked && !this.getInput("iterator_name")) {
-            this.appendDummyInput("iterator_name")
-                .appendField("輸入名稱: ")
-                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-            this.appendValueInput("begin")
-                .setCheck("Iterator")
-                .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-
-            this.appendValueInput("end")
-                .setCheck("Iterator")
-                .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-    }
-};
-        Blockly.Cpp['define_vector'] = function(block) {
-            var type = block.getFieldValue('TYPE');
-            var vec_name = block.getFieldValue('vec_name');
-            var code = `vector<${type}>${vec_name}`;
-
-            var size = block.getFieldValue('size') === "TRUE"
-            var array = block.getFieldValue('array') === "TRUE"
-            var it = block.getFieldValue('it') === "TRUE"
-
-            if (size){
-                var size_value = Blockly.Cpp.valueToCode(block, 'size', 1);
-                if (size_value.startsWith('(') && size_value.endsWith(')')) {
-                    size_value = size_value.slice(1, -1);
-                }
-                code += `(${size_value}`;
-            }
-
-            if (array){
-                var array_name = block.getFieldValue('array');
-                if (array_name.startsWith('(') && array_name.endsWith(')')) {
-                    array_name = array_name.slice(1, -1);
-                }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
-            }
-
-            if (it){
-                var array2_name = block.getFieldValue('array2_name');
-                var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
-                var end = Blockly.Cpp.valueToCode(block, 'end', 1);
-                code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (size || array || it){
-                code += ')';
-            }
-            code += ';';
-            return code;
-        }
