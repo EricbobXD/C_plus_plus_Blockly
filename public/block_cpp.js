@@ -2168,16 +2168,20 @@
             const block = this;
             if (!block) return;
 
-            const sizeChecked  = block.getFieldValue("size") === "TRUE";
-            const arrayChecked = block.getFieldValue("array") === "TRUE";
-            const itChecked    = block.getFieldValue("it") === "TRUE";
+            var sizeChecked  = block.getFieldValue("size") === "TRUE";
+            var arrayChecked = block.getFieldValue("array") === "TRUE";
+            var itChecked    = block.getFieldValue("it") === "TRUE";
 
             if (sizeChecked && itChecked){
                 alert("大小跟迭代器不能一起使用喔😘");
+                sizeChecked = false;
+                itChecked = false;
             }
 
             if (arrayChecked && itChecked){
-                alert("陣列不能跟迭代器不能一起使用喔😘")
+                alert("陣列不能跟迭代器不能一起使用喔😘");
+                arrayChecked = false;
+                itChecked = false;
             }
             // 確保 inputsInline 為 false，讓輸入項目換行排列
             block.setInputsInline(false);
