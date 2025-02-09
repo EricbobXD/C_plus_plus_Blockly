@@ -1,12 +1,11 @@
-// 方塊定義&轉換程式碼
+        // 方塊定義&轉換程式碼
         Blockly.defineBlocksWithJsonArray(
             [
                 //bitset
-                {//define bitset
-                    "type" : "define_bitset",
+                { //define bitset
+                    "type": "define_bitset",
                     "message0": "創建 bitset陣列 名稱: %1, 大小 %2, 內容: %3",
-                    "args0": [
-                        {
+                    "args0": [{
                             "type": "field_input",
                             "name": "bitset_name",
                         },
@@ -24,22 +23,21 @@
                     "nextStatement": null,
                     "tooltip": "創建一個bitset陣列，bitset是一加速的布林陣列",
                     "helpurl": ""
-                },   
+                },
                 { //array[i]
-                    "type" : "bitset[i]",
-                    "message0" : "bitset陣列 %1 [位置%2] = 值%3",
-                    "args0" :[
-                        {
-                            "type" : "field_input",
-                            "name" : "bitset_name"
+                    "type": "bitset[i]",
+                    "message0": "bitset陣列 %1 [位置%2] = 值%3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "bitset_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "pos"
+                            "type": "input_value",
+                            "name": "pos"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
                     "colour": "#ff5757",
@@ -47,7 +45,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_size
+                { //bitset_size
                     "type": "bitset_size",
                     "message0": "bitset 名稱: %1 大小",
                     "args0": [{
@@ -59,7 +57,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_set
+                { //bitset_set
                     "type": "bitset_set",
                     "message0": "bitset 名稱: %1 設內容全部是true(1)",
                     "args0": [{
@@ -71,7 +69,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_reset
+                { //bitset_reset
                     "type": "bitset_reset",
                     "message0": "bitset 名稱: %1 設內容全部是false(0)",
                     "args0": [{
@@ -83,7 +81,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_count
+                { //bitset_count
                     "type": "bitset_count",
                     "message0": "bitset 名稱: %1 的 true(1) 個數",
                     "args0": [{
@@ -95,7 +93,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_all
+                { //bitset_all
                     "type": "bitset_all",
                     "message0": "bitset 名稱: %1 判斷是否都是true(1)",
                     "args0": [{
@@ -107,7 +105,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_any
+                { //bitset_any
                     "type": "bitset_any",
                     "message0": "bitset 名稱: %1 判斷是否有true(1)",
                     "args0": [{
@@ -119,7 +117,7 @@
                     "tooltip": "矩陣名稱",
                     "helpurl": ""
                 },
-                {//bitset_none
+                { //bitset_none
                     "type": "bitset_none",
                     "message0": "bitset 名稱: %1 判斷是否沒有true(1)",
                     "args0": [{
@@ -137,8 +135,8 @@
                     "type": "def_struct",
                     "message0": "結構 名字: %1 ",
                     "args0": [{
-                            "type": "field_input",
-                            "name": "struct_name"
+                        "type": "field_input",
+                        "name": "struct_name"
                     }],
                     "message1": "%1",
                     "args1": [{
@@ -147,7 +145,7 @@
                     }],
                     "colour": "#f4a460",
                     "tooltip": "定義一個結構",
-                    "helpurl":""
+                    "helpurl": ""
                 },
                 { //get struct
                     "type": "get_struct",
@@ -161,7 +159,7 @@
                             "name": "var_name"
                         },
                         {
-                            "type":"input_value",
+                            "type": "input_value",
                             "name": "size"
                         },
                     ],
@@ -177,9 +175,9 @@
                     "type": "def_class",
                     "message0": "類別 名子: %1",
                     "args0": [{
-                            "type": "field_input",
-                            "name": "class_name"
-                        }],
+                        "type": "field_input",
+                        "name": "class_name"
+                    }],
                     "message1": "公開 %1",
                     "args1": [{
                         "type": "input_statement",
@@ -192,7 +190,7 @@
                     }],
                     "colour": "#e9967a",
                     "tooltip": "定義一個類別",
-                    "helpurl":""
+                    "helpurl": ""
                 },
                 { //get class
                     "type": "get_class",
@@ -231,7 +229,7 @@
                     "inputsInline": false,
                     "tooltip": "運行主要程式碼的框架",
                     "helpUrl": ""
-                },        
+                },
                 { //ios sync
                     "type": "boost_ios_sync",
                     "message0": "輸入輸出同步禁用",
@@ -310,12 +308,10 @@
                 },
 
                 //condition
-                //condition
                 { //for
                     "type": "for_block",
                     "message0": "初始變數值 %1  循環條件 %2 迴圈條件 %3  執行%4 ",
-                    "args0": [
-                        {
+                    "args0": [{
                             "type": "input_value",
                             "name": "INIT"
                         },
@@ -344,9 +340,8 @@
                 //define variable
                 { //def variable
                     "type": "def_var",
-                    "message0" : "宣告 %1 %2 變數名稱: %3 = %4",
-                    "args0" : [
-                        {
+                    "message0": "宣告 %1 %2 變數名稱: %3 = %4",
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "unsigned",
                             "options": [
@@ -367,20 +362,20 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "var_name",
-                            "text" : "i"
+                            "type": "field_input",
+                            "name": "var_name",
+                            "text": "i"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         },
                     ],
                     "colour": "#DABD00",
                     "output": null,
-                    "tooltip" : "定義一個變數",
-                    "helpurl" : ""
-                },            
+                    "tooltip": "定義一個變數",
+                    "helpurl": ""
+                },
                 { //var caculacte
                     "type": "var_cal",
                     "message0": "%1  %2  %3",
@@ -427,7 +422,7 @@
                     "tooltip": "While 迴圈",
                     "colour": "#00abea"
                 },
-               
+
                 //stop
                 { //break
                     "type": "break_block",
@@ -457,32 +452,30 @@
                     "tooltip": "返回值",
                     "helpUrl": ""
                 },
-                
+
                 //function
                 { //def function void
                     "type": "function_definition_void",
                     "message0": "函式型態: void 名稱 %1 變數 %2",
-                    "args0": [
-                        {
-                            "type" : "field_input",
-                            "name" : "funcName",
-                            "text" : "MyFunction"
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "funcName",
+                            "text": "MyFunction"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "data",
+                            "type": "input_value",
+                            "name": "data",
                         }
                     ],
-                    "message1" : "%1 回傳值%2",
-                    "args1" : [
-                        {
-                            "type" : "input_statement",
-                            "name" : "DO"
+                    "message1": "%1 回傳值%2",
+                    "args1": [{
+                            "type": "input_statement",
+                            "name": "DO"
                         },
                         {
-                            "type" : "field_dropdown",
-                            "name" : "expression",
-                            "options" : [
+                            "type": "field_dropdown",
+                            "name": "expression",
+                            "options": [
                                 ["回傳", "return"],
                                 ["不回傳", "no"]
                             ]
@@ -507,24 +500,23 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "funcName",
-                            "text" : "MyFunction2"
+                            "type": "field_input",
+                            "name": "funcName",
+                            "text": "MyFunction2"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "data",
+                            "type": "input_value",
+                            "name": "data",
                         }
                     ],
-                    "message1" : "%1 回傳值 %2",
-                    "args1" : [
-                        {
-                            "type" : "input_statement",
-                            "name" : "DO"
+                    "message1": "%1 回傳值 %2",
+                    "args1": [{
+                            "type": "input_statement",
+                            "name": "DO"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "expression"
+                            "type": "input_value",
+                            "name": "expression"
                         }
                     ],
                     "colour": "#db00db",
@@ -550,15 +542,14 @@
                     "nextStatement": null,
                     "tooltip": "呼叫函數",
                     "helpUrl": ""
-                },        
-                {//lambda
+                },
+                { //lambda
                     "type": "lambda",
                     "message0": "lambda [%1](引用變數: %2)",
-                    "args0": [
-                        {
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "captures",
-                            "options":[
+                            "options": [
                                 ["都不要", ""],
                                 ["&", "&"],
                                 ["=", "="]
@@ -576,16 +567,15 @@
                     }],
                     "colour": "#db00db",
                     "output": null,
-                    "tooltip" : "定義一個lambda",
-                    "helpurl" : ""
+                    "tooltip": "定義一個lambda",
+                    "helpurl": ""
                 },
-                
+
                 //define variable
                 { //def variable
                     "type": "declare_variable",
-                    "message0" : "宣告 %1 %2 %3 變數名稱: %4 = %5",
-                    "args0" : [
-                        {
+                    "message0": "宣告 %1 %2 %3 變數名稱: %4 = %5",
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "const",
                             "options": [
@@ -614,20 +604,20 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "var_name",
-                            "text" : "i"
+                            "type": "field_input",
+                            "name": "var_name",
+                            "text": "i"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         },
                     ],
                     "colour": "#DABD00",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "定義一個變數",
-                    "helpurl" : ""
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "定義一個變數",
+                    "helpurl": ""
                 },
                 { //variable equals
                     "type": "var_equal",
@@ -660,8 +650,8 @@
                     "colour": "#DABD00",
                     "tooltip": "取得一個變數的資料",
                     "helpUrl": ""
-                },                
-              
+                },
+
                 //operation
                 { //& | ^ Not
                     "type": "or_and_xor",
@@ -801,7 +791,7 @@
                     "tooltip": "輸出",
                     "helpUrl": ""
                 },
-                                
+
                 //bool
                 { //true
                     "type": "true",
@@ -819,7 +809,7 @@
                     "tooltip": "否/假",
                     "helpUrl": ""
                 },
-                
+
                 //pointer
                 { //nullptr
                     "type": "nullptr",
@@ -831,9 +821,8 @@
                 },
                 { //declare_pointer
                     "type": "declare_pointer",
-                    "message0" : "宣告 %1 %2 %3 %4指標名稱: %5 = %6",
-                    "args0" : [
-                        {
+                    "message0": "宣告 %1 %2 %3 %4指標名稱: %5 = %6",
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "const_ptr",
                             "options": [
@@ -870,25 +859,24 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "var_name"
+                            "type": "field_input",
+                            "name": "var_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         },
                     ],
                     "colour": "#5f9ea0",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "定義一個指標",
-                    "helpurl" : ""
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "定義一個指標",
+                    "helpurl": ""
                 },
                 { //declart_reference
                     "type": "declare_reference",
-                    "message0" : "宣告 %1 %2 %3 位置名稱: %4 = %5",
-                    "args0" : [
-                        {   
+                    "message0": "宣告 %1 %2 %3 位置名稱: %4 = %5",
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "const",
                             "options": [
@@ -917,19 +905,19 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "var_name"
+                            "type": "field_input",
+                            "name": "var_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         },
                     ],
                     "colour": "#5f9ea0",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "宣告一個位置",
-                    "helpurl" : ""
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "宣告一個位置",
+                    "helpurl": ""
                 },
                 { //ptr equal
                     "type": "ptr_equal",
@@ -998,15 +986,14 @@
                 {
                     "type": "define_block",
                     "message0": "定義 自定義名子: %1, 函式名子: %2",
-                    "args0":[
-                      {
-                          "type": "field_input",
-                          "name": "name",
-                      },
-                      {
-                          "type": "field_input",
-                          "name": "func_name",
-                      },
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "name",
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "func_name",
+                        },
                     ],
                     "previousStatement": null,
                     "nextStatement": null,
@@ -1017,15 +1004,14 @@
                 {
                     "type": "typedef_block",
                     "message0": "定義 資料型態名子: %1, 自定義名子: %2",
-                    "args0":[
-                      {
-                          "type": "field_input",
-                          "name": "type_name",
-                      },
-                      {
-                          "type": "field_input",
-                          "name": "name",
-                      },
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "type_name",
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "name",
+                        },
                     ],
                     "previousStatement": null,
                     "nextStatement": null,
@@ -1069,7 +1055,7 @@
                     "tooltip": "引用pbds空間",
                     "helpUrl": ""
                 },
-                
+
                 //Standard Library
                 //math
                 { //math caculacte
@@ -1199,8 +1185,42 @@
                     "tooltip": "生成隨機數",
                     "helpUrl": ""
                 },
-                
+
                 //vector
+                /*{ //define vector
+                    "type": "define_vector",
+                    "message0": "資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮整數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "vec_name",
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "vec_size"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "vec_content"
+                        }
+                    ],
+                    "colour": "#3d7fd6",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
+                    "helpurl": ""
+                },*/
                 { //vector push back
                     "type": "vector_push_back",
                     "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
@@ -1262,84 +1282,79 @@
                     "helpUrl": ""
                 },
                 { //vec empty
-                    "type" : "vector_empty",
-                    "message0" : "判斷vector %1 是否為空",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "vec_name"
-                        }
-                    ],
+                    "type": "vector_empty",
+                    "message0": "判斷vector %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "vec_name"
+                    }],
                     "colour": "#3d7fd6",
-                    "output" : null,
+                    "output": null,
                     "tooltip": "如果 vector 內部為空，則傳回 true 值。",
                     "helpUrl": ""
                 },
                 { //vector insert
-                    "type" : "vector_insert",
-                    "message0" : "vector %1 在 %2 位置插入 %3",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "vec_name"
+                    "type": "vector_insert",
+                    "message0": "vector %1 在 %2 位置插入 %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vec_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "pos"
+                            "type": "input_value",
+                            "name": "pos"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
                     "colour": "#3d7fd6",
                     "inputsInline": true,
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "插入一個或多個元素至 vector 內的任意位置。",
-                    "helpurl" : ""
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "插入一個或多個元素至 vector 內的任意位置。",
+                    "helpurl": ""
                 },
                 { //vector erase
-                    "type" : "vector_erase",
-                    "message0" : "vector %1 在 %2 位置刪除 %3",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "vec_name"
+                    "type": "vector_erase",
+                    "message0": "vector %1 在 %2 位置刪除 %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vec_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "pos"
+                            "type": "input_value",
+                            "name": "pos"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
                     "colour": "#3d7fd6",
                     "inputsInline": true,
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "刪除 vector 中一個或多個元素。",
-                    "helpurl" : ""
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "刪除 vector 中一個或多個元素。",
+                    "helpurl": ""
                 },
                 { //emplace back
                     "type": "vector_emplace_back",
                     "message0": "在 %1 新增 %2 在最後一個(可輸入多個 , 用空白分開)",
-                    "args0": [
-                    {
-                        "type": "field_input",
-                        "name": "NAME",
-                        "check" : ["Number" , "String"]
-                    },
-                    {
-                        "type": "field_input",
-                        "name": "number",
-                        "text": ""
-                    }
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "NAME",
+                            "check": ["Number", "String"]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "number",
+                            "text": ""
+                        }
                     ],
                     "inputsInline": true,
-                    "previousStatement" : null,  
+                    "previousStatement": null,
                     "nextStatement": null,
                     "colour": "#3d7fd6",
                     "tooltip": "直接在vector內建立物件",
@@ -1405,13 +1420,12 @@
                     "tooltip": "回傳一個迭代器，它指向 vector 的第一個元素的前一個位置。",
                     "helpUrl": ""
                 },
-                                
+
                 //map
                 { //create map
-                    "type" : "create_map",
-                    "message0" : "map 資料型態 <%1, %2>, 陣列名稱 %3, 陣列內容 %4",
-                    "args0" : [
-                        {
+                    "type": "create_map",
+                    "message0": "map 資料型態 <%1, %2>, 陣列名稱 %3, 陣列內容 %4",
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "TYPE1",
                             "options": [
@@ -1436,13 +1450,13 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "map_name",
-                            "check" : "String"
+                            "type": "field_input",
+                            "name": "map_name",
+                            "check": "String"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "content"
+                            "type": "input_value",
+                            "name": "content"
                         }
                     ],
                     "inputsInline": true,
@@ -1452,48 +1466,46 @@
                     "helpUrl": ""
                 },
                 { //map insert
-                    "type" : "map_insert",
-                    "message0" : "map %1 新增陣列元素〔%2, %3〕",
-                    "args0" :[
-                        {
-                            "type" : "field_input",
-                            "name" : "map_name"
+                    "type": "map_insert",
+                    "message0": "map %1 新增陣列元素〔%2, %3〕",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "first"
+                            "type": "input_value",
+                            "name": "first"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "second"
+                            "type": "input_value",
+                            "name": "second"
                         },
                     ],
                     "colour": "#20b2aa",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "path 1 to insert key and value in map"
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "path 1 to insert key and value in map"
                 },
                 { //map[i]
-                    "type" : "map[i]",
-                    "message0" : "map名稱 %1, key: %2, value: %3",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "map_name"
+                    "type": "map[i]",
+                    "message0": "map名稱 %1, key: %2, value: %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "map_key"
+                            "type": "field_input",
+                            "name": "map_key"
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "map_value"
+                            "type": "field_input",
+                            "name": "map_value"
                         }
                     ],
                     "colour": "#20b2aa",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "path 2 to insert key and value in map"
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "path 2 to insert key and value in map"
                 },
                 { //map begin
                     "type": "map_begin",
@@ -1579,78 +1591,72 @@
                     "helpUrl": ""
                 },
                 { //map empty
-                "type" : "map_empty",
-                "message0" : "判斷map %1 是否為空",
-                "args0" : [
-                    {
-                        "type" : "field_input",
-                        "name" : "map_name"
-                    }
-                ],
-                "colour": "#20b2aa",
-                "output" : null,
-                "helpUrl": ""
+                    "type": "map_empty",
+                    "message0": "判斷map %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "map_name"
+                    }],
+                    "colour": "#20b2aa",
+                    "output": null,
+                    "helpUrl": ""
                 },
                 { //map first
-                    "type" : "map_first",
-                    "message0" : "map: %1, 位置: %2 的key(first)",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "map_name"
+                    "type": "map_first",
+                    "message0": "map: %1, 位置: %2 的key(first)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "key"
+                            "type": "input_value",
+                            "name": "key"
                         }
                     ],
-                    "output" : null,
+                    "output": null,
                     "colour": "#20b2aa",
                     "tooltip": "map key(first)",
                     "helpUrl": ""
                 },
                 { //map second
-                    "type" : "map_second",
-                    "message0" : "map: %1, 位置: %2 的value(second)",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "map_name"
+                    "type": "map_second",
+                    "message0": "map: %1, 位置: %2 的value(second)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "key"
+                            "type": "input_value",
+                            "name": "key"
                         }
                     ],
-                    "output" : null,
+                    "output": null,
                     "colour": "#20b2aa",
                     "tooltip": "map value(second)",
                     "helpUrl": ""
                 },
                 { //map find
-                    "type" : "map_find",
-                    "message0" : "map: %1 中尋找有沒有 %2 (key)值",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "map_name"
+                    "type": "map_find",
+                    "message0": "map: %1 中尋找有沒有 %2 (key)值",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
-                    "output" : null,
+                    "output": null,
                     "colour": "#20b2aa",
                     "tooltip": "尋找元素",
                     "helpUrl": ""
                 },
                 //pair
                 { //create pair
-                    "type" : "create_pair",
-                    "message0" : "pair 資料型態 <%1, %2>, 陣列名稱 %3, 陣列內容 %4",
-                    "args0" : [
-                        {
+                    "type": "create_pair",
+                    "message0": "pair 資料型態 <%1, %2>, 陣列名稱 %3, 陣列內容 %4",
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "TYPE1",
                             "options": [
@@ -1675,65 +1681,64 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "pair_name",
-                            "check" : "String"
+                            "type": "field_input",
+                            "name": "pair_name",
+                            "check": "String"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "content"
+                            "type": "input_value",
+                            "name": "content"
                         }
                     ],
                     "inputsInline": true,
-                    "colour": "#69f26b",
+                    "colour": "#49a34b",
                     "previousStatement": null,
                     "nextStatement": null,
                     "helpUrl": ""
                 },
                 { //pair first
-                    "type" : "pair_first",
-                    "message0" : "pair: %1 的 key(first)",
-                    "args0" : [{
-                            "type" : "field_input",
-                            "name" : "pair_name"
-                        }],
-                    "output" : null,
-                    "colour": "#69f26b",
+                    "type": "pair_first",
+                    "message0": "pair: %1 的 key(first)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "pair_name"
+                    }],
+                    "output": null,
+                    "colour": "#49a34b",
                     "tooltip": "pair key(first)",
                     "helpUrl": ""
                 },
                 { //pair second
-                    "type" : "pair_second",
-                    "message0" : "pair: %1 的value(second)",
-                    "args0" : [{
-                            "type" : "field_input",
-                            "name" : "pair_name"
-                        }],
-                    "output" : null,
-                    "colour": "#69f26b",
+                    "type": "pair_second",
+                    "message0": "pair: %1 的value(second)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "pair_name"
+                    }],
+                    "output": null,
+                    "colour": "#49a34b",
                     "tooltip": "pair value(second)",
                     "helpUrl": ""
                 },
                 { //make_pair
-                    "type" : "make_pair",
-                    "message0" : "pair key: %1, value: %2",
-                    "args0" : [
-                        {
-                            "type" : "input_value",
-                            "name" : "key"
+                    "type": "make_pair",
+                    "message0": "pair key: %1, value: %2",
+                    "args0": [{
+                            "type": "input_value",
+                            "name": "key"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
-                    "output" : null,
+                    "output": null,
                     "inputsInline": true,
-                    "colour": "#69f26b",
+                    "colour": "#49a34b",
                     "tooltip": "create new pair has key and value",
                     "helpUrl": ""
                 },
-               
+
 
                 //array
                 { //create array
@@ -1801,16 +1806,15 @@
                     "helpurl": ""
                 },
                 { //array[i]
-                    "type" : "array[i]",
-                    "message0" : "陣列 %1 [%2]",
-                    "args0" :[
-                        {
-                            "type" : "field_input",
-                            "name" : "array_name"
+                    "type": "array[i]",
+                    "message0": "陣列 %1 [%2]",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "array_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "pos"
+                            "type": "input_value",
+                            "name": "pos"
                         }
                     ],
                     "colour": "#ff5757",
@@ -1824,7 +1828,7 @@
                     "type": "get_current_timestamp",
                     "message0": "取得目前時間戳記",
                     "output": "time_t",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "以一個時間戳回傳正確時間",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1833,12 +1837,19 @@
                 { //calculate time difference
                     "type": "calculate_time_difference",
                     "message0": "時間 %1 和 %2 秒差",
-                    "args0": [
-                        { "type": "input_value", "name": "END_TIME", "check": "time_t" },
-                        { "type": "input_value", "name": "START_TIME", "check": "time_t" }
+                    "args0": [{
+                            "type": "input_value",
+                            "name": "END_TIME",
+                            "check": "time_t"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "START_TIME",
+                            "check": "time_t"
+                        }
                     ],
                     "output": "Number",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "計算兩個時間戳之間的秒數差",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1847,11 +1858,13 @@
                 { //convert to local time
                     "type": "convert_to_local_time",
                     "message0": "轉換 %1 到本地時間",
-                    "args0": [
-                        { "type": "input_value", "name": "TIMESTAMP", "check": "time_t" }
-                    ],
+                    "args0": [{
+                        "type": "input_value",
+                        "name": "TIMESTAMP",
+                        "check": "time_t"
+                    }],
                     "output": "tm",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "以一個結構轉換一個時間戳至本地時間",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1860,11 +1873,13 @@
                 { //convert to utc time
                     "type": "convert_to_utc_time",
                     "message0": "轉換 %1 到 UTC 時間",
-                    "args0": [
-                        { "type": "input_value", "name": "TIMESTAMP", "check": "time_t" }
-                    ],
+                    "args0": [{
+                        "type": "input_value",
+                        "name": "TIMESTAMP",
+                        "check": "time_t"
+                    }],
                     "output": "tm",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "以一個結構轉換一個時間戳至UTC時間",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1873,12 +1888,19 @@
                 { //format time string
                     "type": "format_time_string",
                     "message0": "格式化時間 %1 格式: %2",
-                    "args0": [
-                        { "type": "input_value", "name": "TIME_STRUCT", "check": "tm" },
-                        { "type": "field_input", "name": "FORMAT", "text": "%Y-%m-%d %H:%M:%S" }
+                    "args0": [{
+                            "type": "input_value",
+                            "name": "TIME_STRUCT",
+                            "check": "tm"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "FORMAT",
+                            "text": "%Y-%m-%d %H:%M:%S"
+                        }
                     ],
                     "output": "String",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "使用給定格式將時間結構格式化為字串。",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1888,19 +1910,41 @@
                     "type": "set_time_structure",
                     "message0": "設定時間結構: ",
                     "message1": "年 %1 月 %2 日 %3",
-                    "args1": [
-                        { "type": "input_value", "name": "YEAR", "check": "Number" },
-                        { "type": "input_value", "name": "MONTH", "check": "Number" },
-                        { "type": "input_value", "name": "DAY", "check": "Number" }
+                    "args1": [{
+                            "type": "input_value",
+                            "name": "YEAR",
+                            "check": "Number"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "MONTH",
+                            "check": "Number"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "DAY",
+                            "check": "Number"
+                        }
                     ],
                     "message2": "時 %1 分 %2 秒 %3",
-                    "args2": [
-                        { "type": "input_value", "name": "HOUR", "check": "Number" },
-                        { "type": "input_value", "name": "MINUTE", "check": "Number" },
-                        { "type": "input_value", "name": "SECOND", "check": "Number" }
+                    "args2": [{
+                            "type": "input_value",
+                            "name": "HOUR",
+                            "check": "Number"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "MINUTE",
+                            "check": "Number"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "SECOND",
+                            "check": "Number"
+                        }
                     ],
                     "output": "tm",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "用給予值創建一個時間結構",
                     "helpUrl": "",
                     "inputsInline": false,
@@ -1910,19 +1954,26 @@
                 { //read time structure member
                     "type": "read_time_structure_member",
                     "message0": "讀取 %1 來源: %2",
-                    "args0": [
-                        { "type": "field_dropdown", "name": "MEMBER", "options": [
-                            ["年", "tm_year"],
-                            ["月", "tm_mon"],
-                            ["日", "tm_mday"],
-                            ["小時", "tm_hour"],
-                            ["分鐘", "tm_min"],
-                            ["秒", "tm_sec"]
-                        ]},
-                        { "type": "input_value", "name": "TIME_STRUCT", "check": "tm" }
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "MEMBER",
+                            "options": [
+                                ["年", "tm_year"],
+                                ["月", "tm_mon"],
+                                ["日", "tm_mday"],
+                                ["小時", "tm_hour"],
+                                ["分鐘", "tm_min"],
+                                ["秒", "tm_sec"]
+                            ]
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "TIME_STRUCT",
+                            "check": "tm"
+                        }
                     ],
                     "output": "Number",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "從時間結構中讀取特定數值",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1932,7 +1983,7 @@
                     "type": "get_current_local_time",
                     "message0": "取得本地目前時間",
                     "output": "tm",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "以一個tm結構回傳本地目前時間",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1942,7 +1993,7 @@
                     "type": "get_current_utc_time",
                     "message0": "取得準確 UTC 時間",
                     "output": "tm",
-                    "colour": "#eac800",
+                    "colour": "#9458ad",
                     "tooltip": "一個tm結構回傳準確的UTC時間",
                     "helpUrl": "",
                     "previousStatement": null,
@@ -1951,10 +2002,9 @@
 
                 //set
                 { //create set
-                    "type" : "create_set",
+                    "type": "create_set",
                     "message0": "創建set 資料型態 %1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4 (可加可不加)",
-                    "args0" : [
-                        {
+                    "args0": [{
                             "type": "field_dropdown",
                             "name": "TYPE",
                             "options": [
@@ -1967,427 +2017,412 @@
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "set_name",
+                            "type": "field_input",
+                            "name": "set_name",
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "set_size"
+                            "type": "input_value",
+                            "name": "set_size"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "set_content"
+                            "type": "input_value",
+                            "name": "set_content"
                         }
                     ],
-                    "colour" : "#f9943b",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "建立一個集合，集合是一個有序列表",
-                    "helpurl" : ""
+                    "colour": "#f9943b",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "建立一個集合，集合是一個有序列表",
+                    "helpurl": ""
                 },
                 { //set insert
-                    "type" : "set_insert",
-                    "message0" : "set %1 插入 %2",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "set_name"
+                    "type": "set_insert",
+                    "message0": "set %1 插入 %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
-                    "colour" : "#f9943b",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "插入元素",
-                    "helpurl" : ""
+                    "colour": "#f9943b",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "插入元素",
+                    "helpurl": ""
                 },
                 { //set erase
-                    "type" : "set_erase",
-                    "message0" : "set %1 刪除 %2",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "set_name"
+                    "type": "set_erase",
+                    "message0": "set %1 刪除 %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
-                    "colour" : "#f9943b",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "刪除元素",
-                    "helpurl" : ""
+                    "colour": "#f9943b",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "刪除元素",
+                    "helpurl": ""
                 },
                 { //set begin
-                    "type" : "set_begin",
-                    "message0" : "set %1 (begin)",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "set_name",
-                            "check" : "String"
+                    "type": "set_begin",
+                    "message0": "set %1 (begin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name",
+                            "check": "String"
                         }
 
                     ],
-                    "colour" : "#778899",
-                    "output" : null,
+                    "colour": "#778899",
+                    "output": null,
                     "tooltip": "返回容器開始處的迭代器",
                     "helpUrl": ""
                 },
                 { //set end
-                    "type" : "set_end",
-                    "message0" : "set %1 (end)",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "set_name",
-                            "check" : "String"
+                    "type": "set_end",
+                    "message0": "set %1 (end)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name",
+                            "check": "String"
                         }
 
                     ],
-                    "colour" : "#778899",
-                    "output" : null,
+                    "colour": "#778899",
+                    "output": null,
                     "tooltip": "返回容器結束處的迭代器",
                     "helpUrl": ""
                 },
                 { //set empty
-                    "type" : "set_empty",
-                    "message0" : "判斷set %1 是否為空",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "set_name"
-                        }
-                    ],
-                    "colour" : "#f9943b",
-                    "output" : null,
+                    "type": "set_empty",
+                    "message0": "判斷set %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "set_name"
+                    }],
+                    "colour": "#f9943b",
+                    "output": null,
                     "tooltip": "檢查容器是否為空",
                     "helpUrl": ""
                 },
                 { //set find
-                    "type" : "set_find",
-                    "message0" : "set: %1 中尋找有沒有 %2 (key)值",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "set_name"
+                    "type": "set_find",
+                    "message0": "set: %1 中尋找有沒有 %2 (key)值",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         }
                     ],
-                    "colour" : "#f9943b",
-                    "output" : null,
+                    "colour": "#f9943b",
+                    "output": null,
                     "tooltip": "搜到特定鍵值的元素",
                     "helpUrl": ""
                 },
 
                 //algorithm
                 { //algorithm sort
-                    "type" : "sort",
-                    "message0" : "%1 陣列 %2 排序, 範圍(頭: %3, 尾: %4)",
-                    "args0" : [ 
-                        {
-                            "type" : "field_dropdown",
-                            "name" : "TYPE",
-                            "options" : [
+                    "type": "sort",
+                    "message0": "%1 陣列 %2 排序, 範圍(頭: %3, 尾: %4)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
                                 ["內建陣列", "內建陣列"],
                                 ["模組陣列", "模組陣列"]
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "name"
+                            "type": "field_input",
+                            "name": "name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "start"
+                            "type": "input_value",
+                            "name": "start"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "end"
+                            "type": "input_value",
+                            "name": "end"
                         }
                     ],
-                    "colour" : "#3cb371",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "陣列排序"
+                    "colour": "#226ea1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "陣列排序"
                 },
                 { //algorithm max
-                    "type" : "max",
-                    "message0" : "%1 陣列 %2 最大值, 範圍(頭: %3, 尾: %4)",
-                    "args0" : [ 
-                        {
-                            "type" : "field_dropdown",
-                            "name" : "TYPE",
-                            "options" : [
+                    "type": "max",
+                    "message0": "%1 陣列 %2 最大值, 範圍(頭: %3, 尾: %4)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
                                 ["內建陣列", "內建陣列"],
                                 ["模組陣列", "模組陣列"]
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "name"
+                            "type": "field_input",
+                            "name": "name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "start"
+                            "type": "input_value",
+                            "name": "start"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "end"
+                            "type": "input_value",
+                            "name": "end"
                         }
                     ],
-                    "colour" : "#3cb371",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "在陣列中搜尋最大元素"
+                    "colour": "#226ea1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "在陣列中搜尋最大元素"
                 },
                 { //algorithm min
-                    "type" : "min",
-                    "message0" : "%1 陣列 %2 最小值, 範圍(頭: %3, 尾: %4)",
-                    "args0" : [ 
-                        {
-                            "type" : "field_dropdown",
-                            "name" : "TYPE",
-                            "options" : [
+                    "type": "min",
+                    "message0": "%1 陣列 %2 最小值, 範圍(頭: %3, 尾: %4)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
                                 ["內建陣列", "內建陣列"],
                                 ["模組陣列", "模組陣列"]
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "name"
+                            "type": "field_input",
+                            "name": "name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "start"
+                            "type": "input_value",
+                            "name": "start"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "end"
+                            "type": "input_value",
+                            "name": "end"
                         }
                     ],
-                    "colour" : "#3cb371",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "在陣列中搜尋最小元素"
+                    "colour": "#226ea1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "在陣列中搜尋最小元素"
                 },
                 { //algorithm find
-                    "type" : "find",
-                    "message0" : "%1 陣列 %2 尋找 %3 範圍(頭: %4, 尾: %5)",
-                    "args0" : [ 
-                        {
-                            "type" : "field_dropdown",
-                            "name" : "TYPE",
-                            "options" : [
+                    "type": "find",
+                    "message0": "%1 陣列 %2 尋找 %3 範圍(頭: %4, 尾: %5)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
                                 ["內建陣列", "內建陣列"],
                                 ["模組陣列", "模組陣列"]
                             ]
                         },
                         {
-                            "type" : "field_input",
-                            "name" : "name"
+                            "type": "field_input",
+                            "name": "name"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "value"
+                            "type": "input_value",
+                            "name": "value"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "start"
+                            "type": "input_value",
+                            "name": "start"
                         },
                         {
-                            "type" : "input_value",
-                            "name" : "end"
+                            "type": "input_value",
+                            "name": "end"
                         }
                     ],
-                    "colour" : "#3cb371",
-                    "previousStatement" : null,
-                    "nextStatement" : null,
-                    "tooltip" : "在陣列中尋找元素"
+                    "colour": "#226ea1",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "在陣列中尋找元素"
                 },
                 // iomanip
-                {// setbase 
-                  "type": "setbase",
-                  "message0": "更改數字為%1",
-                  "args0": [{
-                    "type": "field_dropdown",
-                    "name": "carry",
-                    "options":[
-                      ["二進位制", "2"],
-                      ["八進位制", "10"],
-                      ["十進位制", "10"],
-                      ["十六進位制", "16"]
+                { // setbase 
+                    "type": "setbase",
+                    "message0": "更改數字為%1",
+                    "args0": [{
+                        "type": "field_dropdown",
+                        "name": "carry",
+                        "options": [
+                            ["二進位制", "2"],
+                            ["八進位制", "10"],
+                            ["十進位制", "10"],
+                            ["十六進位制", "16"]
+                        ],
+                    }],
+                    "output": null,
+                    "colour": "#51c2c0",
+                    "tooltip": "轉換數字進位制"
+                },
+                {
+                    "type": "setprecision",
+                    "message0": "取 %1 %2位",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "choice",
+                            "options": [
+                                ["有效位數", "sig_figs"],
+                                ["小數位數", "place"]
+                            ]
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "nunber"
+                        }
                     ],
-                  }],
-                  "output": null,
-                  "colour": "#51c2c0",
-                  "tooltip": "轉換數字進位制"
+                    "colour": "#51c2c0",
+                    "output": null,
+                    "tooltip": "控制輸出位數"
                 },
                 {
-                  "type": "setprecision",
-                  "message0": "取 %1 %2位",
-                  "args0": [
-                    {
-                      "type": "field_dropdown",
-                      "name": "choice",
-                      "options": [
-                        ["有效位數", "sig_figs"],
-                        ["小數位數", "place"]
-                      ]
-                    },
-                    {
-                      "type": "input_value",
-                      "name": "nunber"
-                    }
-                  ],
-                  "colour": "#51c2c0",
-                  "output": null,
-                  "tooltip": "控制輸出位數"
+                    "type": "setw",
+                    "message0": "控制輸出 %1 位",
+                    "args0": [{
+                        "type": "input_value",
+                        "name": "number"
+                    }],
+                    "output": null,
+                    "colour": "#51c2c0",
+                    "tooltip": "控制輸出位數"
                 },
                 {
-                  "type": "setw",
-                  "message0": "控制輸出 %1 位",
-                  "args0": [{
-                    "type": "input_value",
-                    "name": "number"
-                  }],
-                  "output": null,
-                  "colour": "#51c2c0",
-                  "tooltip": "控制輸出位數"
-                },
-                {
-                  "type": "setfill",
-                  "message0": "把setw空格補 %1",
-                  "args0": [{
-                    "type": "input_value",
-                    "name": "strings"
-                  }],
-                  "output": null,
-                  "colour": "#51c2c0",
-                  "tooltip": "替換掉setw多出的空格"
+                    "type": "setfill",
+                    "message0": "把setw空格補 %1",
+                    "args0": [{
+                        "type": "input_value",
+                        "name": "strings"
+                    }],
+                    "output": null,
+                    "colour": "#51c2c0",
+                    "tooltip": "替換掉setw多出的空格"
                 },
 
-              //stack 
+                //stack 
                 { //define stack
-                  "type": "def_stack", 
-                  "message0": "stack 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
-                  "args0": [{
-                          "type": "field_dropdown",
-                          "name": "stack_type",
-                          "options": [
-                              ["整數", "int"],
-                              ["浮點數", "float"],
-                              ["雙重浮點數", "double"],
-                              ["字元", "char"],
-                              ["字串", "string"],
-                              ["更長的整數", "long long"]
-                          ]
-                      },
-                      {
-                          "type": "field_input",
-                          "name": "stack_name"
-                      },
-                      {
-                          "type": "input_value",
-                          "name": "content"
-                      }
-                  ],
-                  "colour": "#561229",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "創建一個stack",
-                  "helpurl": ""
-                },  
+                    "type": "def_stack",
+                    "message0": "stack 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "stack_type",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "stack_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "content"
+                        }
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個stack",
+                    "helpurl": ""
+                },
                 { //stack push
-                  "type": "stack_push",
-                  "message0": "在 stack 名稱: %1 加元素 %2( 在最後一個(push)",
-                  "args0": [
-                    {
-                        "type": "field_input",
-                        "name": "stack_name"
-                    },
-                    {
-                        "type": "input_value",
-                        "name": "element"
-                    },
-                  ],
-                  "colour": "#561229",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把元素推到stack最後",
-                  "helpurl": ""
+                    "type": "stack_push",
+                    "message0": "在 stack 名稱: %1 加元素 %2( 在最後一個(push)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "stack_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到stack最後",
+                    "helpurl": ""
                 },
                 { //stack push_range
-                  "type": "stack_push_range",
-                  "message0": "在 stack 名稱: %1 加陣列 %2 在最後一個(push)",
-                  "args0": [
-                    {
-                        "type": "field_input",
-                        "name": "stack_name"
-                    },
-                    {
-                        "type": "input_value",
-                        "name": "element"
-                    },
-                  ],
-                  "colour": "#561229",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把陣列推到stack最後",
-                  "helpurl": ""
+                    "type": "stack_push_range",
+                    "message0": "在 stack 名稱: %1 加陣列 %2 在最後一個(push)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "stack_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到stack最後",
+                    "helpurl": ""
                 },
                 { //stack pop
-                  "type": "stack_pop",
-                  "message0": "在 stack 名稱: %1 刪除最後一個元素(pop)",
-                  "args0": [{
+                    "type": "stack_pop",
+                    "message0": "在 stack 名稱: %1 刪除最後一個元素(pop)",
+                    "args0": [{
                         "type": "field_input",
                         "name": "stack_name"
                     }],
-                  "colour": "#561229",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把元素推到stack最後",
-                  "helpurl": ""
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到stack最後",
+                    "helpurl": ""
                 },
                 { //stack top
-                  "type": "stack_top",
-                  "message0": "在 stack 名稱: %1 取出最後一個元素()",
-                  "args0": [{
+                    "type": "stack_top",
+                    "message0": "在 stack 名稱: %1 取出最後一個元素()",
+                    "args0": [{
                         "type": "field_input",
                         "name": "stack_name"
                     }],
-                  "colour": "#561229",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把元素推到stack最後",
-                  "helpurl": ""
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到stack最後",
+                    "helpurl": ""
                 },
                 { //stack swap
-                  "type": "stack_swap",
-                  "message0": "交換 stack 名稱: %1, stack 名稱: %2",
-                  "args0": [
-                    {
-                        "type": "field_input",
-                        "name": "stack_name1"
-                    },
-                    {
-                        "type": "field_input",
-                        "name": "stack_name2"
-                    }
-                  ],
-                  "colour": "#561229",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把元素推到stack最後",
-                  "helpurl": ""
+                    "type": "stack_swap",
+                    "message0": "交換 stack 名稱: %1, stack 名稱: %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "stack_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "stack_name2"
+                        }
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到stack最後",
+                    "helpurl": ""
                 },
                 { //stack size
                     "type": "stack_size",
@@ -2398,26 +2433,24 @@
                     }],
                     "inputsInline": true,
                     "output": null,
-                    "colour": "#561229",
+                    "colour": "#b53c2f",
                     "tooltip": "取得 stack 目前持有的元素個數。",
                     "helpUrl": ""
                 },
                 { //stack empty
-                    "type" : "stack_empty",
-                    "message0" : "判斷stack  %1 是否為空",
-                    "args0" : [
-                        {
-                            "type" : "field_input",
-                            "name" : "stack_name"
-                        }
-                    ],
-                    "colour": "#561229",
-                    "output" : null,
+                    "type": "stack_empty",
+                    "message0": "判斷stack  %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "stack_name"
+                    }],
+                    "colour": "#b53c2f",
+                    "output": null,
                     "tooltip": "如果 stack 內部為空，則傳回 true 值。",
                     "helpUrl": ""
                 },
                 { //define queue
-                    "type": "def_queue", 
+                    "type": "def_queue",
                     "message0": "queue 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
                     "args0": [{
                             "type": "field_dropdown",
@@ -2440,89 +2473,16 @@
                             "name": "content"
                         }
                     ],
-                    "colour": "#f269e1",
+                    "colour": "#cf5f87",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "創建一個queue",
                     "helpurl": ""
-              },  
-              { //queue push
+                },
+                { //queue push
                     "type": "queue_push",
                     "message0": "在 queue 名稱: %1 加元素 %2( 在最後一個(push)",
-                    "args0": [
-                      {
-                          "type": "field_input",
-                          "name": "queue_name"
-                      },
-                      {
-                          "type": "input_value",
-                          "name": "element"
-                      },
-                    ],
-                    "colour": "#f269e1",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "把元素推到queue最後",
-                    "helpurl": ""
-                  },
-                  { //queue pop
-                    "type": "queue_pop",
-                    "message0": "在 queue 名稱: %1 刪除最後一個元素(pop)",
                     "args0": [{
-                          "type": "field_input",
-                          "name": "queue_name"
-                      }],
-                    "colour": "#f269e1",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "把元素推到queue最後",
-                    "helpurl": ""
-                  },
-                  { //queue top
-                    "type": "queue_front",
-                    "message0": "在 queue 名稱: %1 取出最後一個元素(front)",
-                    "args0": [{
-                          "type": "field_input",
-                          "name": "queue_name"
-                      }],
-                    "colour": "#f269e1",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "把元素推到queue最後",
-                    "helpurl": ""
-                  },
-                  { //queue size
-                      "type": "queue_size",
-                      "message0": "queue %1 的陣列大小",
-                      "args0": [{
-                          "type": "field_input",
-                          "name": "queue _name"
-                      }],
-                      "inputsInline": true,
-                      "output": null,
-                      "colour": "#f269e1",
-                      "tooltip": "取得 queue 目前持有的元素個數。",
-                      "helpUrl": ""
-                  },
-                  { //queue empty
-                      "type" : "queue_empty",
-                      "message0" : "判斷queue  %1 是否為空",
-                      "args0" : [
-                          {
-                              "type" : "field_input",
-                              "name" : "queue_name"
-                          }
-                      ],
-                      "colour": "#f269e1",
-                      "output" : null,
-                      "tooltip": "如果 queue 內部為空，則傳回 true 值。",
-                      "helpUrl": ""
-                  },
-                  { //queue push_range
-                      "type": "queue_push_range",
-                      "message0": "在 queue 名稱: %1 加陣列 %2 在最後一個(push)",
-                      "args0": [
-                        {
                             "type": "field_input",
                             "name": "queue_name"
                         },
@@ -2530,18 +2490,86 @@
                             "type": "input_value",
                             "name": "element"
                         },
-                      ],
-                      "colour": "#f269e1",
-                      "previousStatement": null,
-                      "nextStatement": null,
-                      "tooltip": "把陣列推到queue最後",
-                      "helpurl": ""
-                  },
-                  { //queue swap
-                      "type": "queue_swap",
-                      "message0": "交換 queue 名稱: %1, queue 名稱: %2",
-                      "args0": [
+                    ],
+                    "colour": "#cf5f87",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                },
+                { //queue pop
+                    "type": "queue_pop",
+                    "message0": "在 queue 名稱: %1 刪除最後一個元素(pop)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "queue_name"
+                    }],
+                    "colour": "#cf5f87",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                },
+                { //queue top
+                    "type": "queue_front",
+                    "message0": "在 queue 名稱: %1 取出最後一個元素(front)",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "queue_name"
+                    }],
+                    "colour": "#cf5f87",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                },
+                { //queue size
+                    "type": "queue_size",
+                    "message0": "queue %1 的陣列大小",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "queue _name"
+                    }],
+                    "inputsInline": true,
+                    "output": null,
+                    "colour": "#cf5f87",
+                    "tooltip": "取得 queue 目前持有的元素個數。",
+                    "helpUrl": ""
+                },
+                { //queue empty
+                    "type": "queue_empty",
+                    "message0": "判斷queue  %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "queue_name"
+                    }],
+                    "colour": "#cf5f87",
+                    "output": null,
+                    "tooltip": "如果 queue 內部為空，則傳回 true 值。",
+                    "helpUrl": ""
+                },
+                { //queue push_range
+                    "type": "queue_push_range",
+                    "message0": "在 queue 名稱: %1 加陣列 %2 在最後一個(push)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "queue_name"
+                        },
                         {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#cf5f87",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到queue最後",
+                    "helpurl": ""
+                },
+                { //queue swap
+                    "type": "queue_swap",
+                    "message0": "交換 queue 名稱: %1, queue 名稱: %2",
+                    "args0": [{
                             "type": "field_input",
                             "name": "queue_name1"
                         },
@@ -2549,152 +2577,290 @@
                             "type": "field_input",
                             "name": "queue_name2"
                         }
-                      ],
-                      "colour": "#f269e1",
-                      "previousStatement": null,
-                      "nextStatement": null,
-                      "tooltip": "把元素推到queue最後",
-                      "helpurl": ""
-                  },
-                  { //define priority_queue
-                "type": "def_priority_queue", 
-                "message0": "priority_queue 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
-                "args0": [{
-                        "type": "field_dropdown",
-                        "name": "priority_queue_type",
-                        "options": [
-                            ["整數", "int"],
-                            ["浮點數", "float"],
-                            ["雙重浮點數", "double"],
-                            ["字元", "char"],
-                            ["字串", "string"],
-                            ["更長的整數", "long long"]
-                        ]
-                    },
-                    {
+                    ],
+                    "colour": "#cf5f87",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                },
+                { //define priority_queue
+                    "type": "def_priority_queue",
+                    "message0": "priority_queue 資料型態 %1 , 陣列名稱 %2 , 陣列內容 %3 (可加可不加)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "priority_queue_type",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "priority_queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "content"
+                        }
+                    ],
+                    "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個priority_queue",
+                    "helpurl": ""
+                },
+                { //priority_queue push
+                    "type": "priority_queue_push",
+                    "message0": "在 priority_queue 名稱: %1 加元素 %2( 在最後一個(push)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "priority_queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                },
+                { //priority_queue pop
+                    "type": "priority_queue_pop",
+                    "message0": "在 priority_queue 名稱: %1 刪除最後一個元素(pop)",
+                    "args0": [{
                         "type": "field_input",
                         "name": "priority_queue_name"
-                    },
-                    {
-                        "type": "input_value",
-                        "name": "content"
-                    }
-                ],
-                "colour": "#f2eb69",
-                "previousStatement": null,
-                "nextStatement": null,
-                "tooltip": "創建一個priority_queue",
-                "helpurl": ""
-            },  
-            { //priority_queue push
-                "type": "priority_queue_push",
-                "message0": "在 priority_queue 名稱: %1 加元素 %2( 在最後一個(push)",
-                "args0": [
-                  {
-                      "type": "field_input",
-                      "name": "priority_queue_name"
-                  },
-                  {
-                      "type": "input_value",
-                      "name": "element"
-                  },
-                ],
-                "colour": "#f2eb69",
-                "previousStatement": null,
-                "nextStatement": null,
-                "tooltip": "把元素推到priority_queue最後",
-                "helpurl": ""
-              },
-              { //priority_queue pop
-                "type": "priority_queue_pop",
-                "message0": "在 priority_queue 名稱: %1 刪除最後一個元素(pop)",
-                "args0": [{
-                      "type": "field_input",
-                      "name": "priority_queue_name"
-                  }],
-                "colour": "#f2eb69",
-                "previousStatement": null,
-                "nextStatement": null,
-                "tooltip": "把元素推到priority_queue最後",
-                "helpurl": ""
-              },
-              { //priority_queue top
-                "type": "priority_queue_front",
-                "message0": "在 priority_queue 名稱: %1 取出最後一個元素(front)",
-                "args0": [{
-                      "type": "field_input",
-                      "name": "priority_queue_name"
-                  }],
-                "colour": "#f2eb69",
-                "previousStatement": null,
-                "nextStatement": null,
-                "tooltip": "把元素推到priority_queue最後",
-                "helpurl": ""
-              },
-              { //priority_queue size
-                  "type": "priority_queue_size",
-                  "message0": "priority_queue %1 的陣列大小",
-                  "args0": [{
-                      "type": "field_input",
-                      "name": "priority_queue _name"
-                  }],
-                  "inputsInline": true,
-                  "output": null,
-                  "colour": "#f2eb69",
-                  "tooltip": "取得 priority_queue 目前持有的元素個數。",
-                  "helpUrl": ""
-              },
-              { //priority_queue empty
-                  "type" : "priority_queue_empty",
-                  "message0" : "判斷priority_queue  %1 是否為空",
-                  "args0" : [
-                      {
-                          "type" : "field_input",
-                          "name" : "priority_queue_name"
-                      }
-                  ],
-                  "colour": "#f2eb69",
-                  "output" : null,
-                  "tooltip": "如果 priority_queue 內部為空，則傳回 true 值。",
-                  "helpUrl": ""
-              },
-              { //priority_queue push_range
-                  "type": "priority_queue_push_range",
-                  "message0": "在 priority_queue 名稱: %1 加陣列 %2 在最後一個(push)",
-                  "args0": [
-                    {
+                    }],
+                    "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                },
+                { //priority_queue top
+                    "type": "priority_queue_front",
+                    "message0": "在 priority_queue 名稱: %1 取出最後一個元素(front)",
+                    "args0": [{
                         "type": "field_input",
                         "name": "priority_queue_name"
-                    },
-                    {
-                        "type": "input_value",
-                        "name": "element"
-                    },
-                  ],
-                  "colour": "#f2eb69",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把陣列推到priority_queue最後",
-                  "helpurl": ""
-              },
-              { //priority_queue swap
-                  "type": "priority_queue_swap",
-                  "message0": "交換 priority_queue 名稱: %1, priority_queue 名稱: %2",
-                  "args0": [
-                    {
+                    }],
+                    "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                },
+                { //priority_queue size
+                    "type": "priority_queue_size",
+                    "message0": "priority_queue %1 的陣列大小",
+                    "args0": [{
                         "type": "field_input",
-                        "name": "priority_queue_name1"
-                    },
-                    {
+                        "name": "priority_queue _name"
+                    }],
+                    "inputsInline": true,
+                    "output": null,
+                    "colour": "#d6af0f",
+                    "tooltip": "取得 priority_queue 目前持有的元素個數。",
+                    "helpUrl": ""
+                },
+                { //priority_queue empty
+                    "type": "priority_queue_empty",
+                    "message0": "判斷priority_queue  %1 是否為空",
+                    "args0": [{
                         "type": "field_input",
-                        "name": "priority_queue_name2"
-                    }
-                  ],
-                  "colour": "#f2eb69",
-                  "previousStatement": null,
-                  "nextStatement": null,
-                  "tooltip": "把元素推到priority_queue最後",
-                  "helpurl": ""
-              },
+                        "name": "priority_queue_name"
+                    }],
+                    "colour": "#d6af0f",
+                    "output": null,
+                    "tooltip": "如果 priority_queue 內部為空，則傳回 true 值。",
+                    "helpUrl": ""
+                },
+                { //priority_queue push_range
+                    "type": "priority_queue_push_range",
+                    "message0": "在 priority_queue 名稱: %1 加陣列 %2 在最後一個(push)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "priority_queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到priority_queue最後",
+                    "helpurl": ""
+                },
+                { //priority_queue swap
+                    "type": "priority_queue_swap",
+                    "message0": "交換 priority_queue 名稱: %1, priority_queue 名稱: %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "priority_queue_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "priority_queue_name2"
+                        }
+                    ],
+                    "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                },
             ]
         );
+
+        Blockly.Blocks['define_vector'] = {
+            init: function() {
+                this.jsonInit({
+                    "type": "define_vector",
+                    "message0": "資料型態%1 , 名字: %2 , 大小: %3, 陣列: %4, 迭代器: %5 (不一定要勾選)",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮整數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "vec_name"
+                        },
+                        {
+                            "type": "field_checkbox",
+                            "name": "size",
+                            "checked": false
+                        },
+                        {
+                            "type": "field_checkbox",
+                            "name": "array",
+                            "checked": false
+                        },
+                        {
+                            "type": "field_checkbox",
+                            "name": "it",
+                            "checked": false
+                        }
+                    ],
+                    "colour": "#3d7fd6",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
+                    "helpurl": ""
+                });
+
+                this.setOnChange(function(event) {
+                    const block = this;
+                    if (!block) return;
+
+                    const size = block.getFieldValue("size") === "TRUE";
+                    const array = block.getFieldValue("array") === "TRUE";
+                    const it = block.getFieldValue("it") === "TRUE";
+
+                    // 處理大小 (size)
+                    if (size && !block.getInput("size")) {
+                        block.appendValueInput('size')
+                            .setCheck("Number")
+                            .appendField('大小');
+                    } else if (!size && block.getInput("size")) {
+                        block.removeInput("size");
+                    }
+
+                    // 處理陣列 (array)
+                    if (array && !block.getInput("array")) {
+                        block.appendValueInput("array")
+                            .setCheck("Array")
+                            .appendField('陣列');
+                    } else if (!array && block.getInput("array")) {
+                        block.removeInput("array");
+                    }
+
+                    // 處理迭代器 (it)
+                    if (it && !block.getInput("array1")) {
+                        block.appendDummyInput("array1")
+                            .appendField("请输入名稱: ")
+                            .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+
+                        block.appendValueInput("begin")
+                            .setCheck("Iterator")
+                            .appendField("迭代器 開始: ");
+
+                        block.appendValueInput("end")
+                            .setCheck("Iterator")
+                            .appendField(" 結束: ");
+                    } else if (!it && block.getInput("array1")) {
+                        block.removeInput("array1");
+                        block.removeInput("begin");
+                        block.removeInput("end");
+                    }
+                });
+            },
+            mutationToDom: function() {
+                var container = document.createElement('mutation');
+                container.setAttribute('size', this.getFieldValue('size'));
+                container.setAttribute('array', this.getFieldValue('array'));
+                container.setAttribute('it', this.getFieldValue('it'));
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                this.setFieldValue(xmlElement.getAttribute('size'), 'size');
+                this.setFieldValue(xmlElement.getAttribute('array'), 'array');
+                this.setFieldValue(xmlElement.getAttribute('it'), 'it');
+
+                // 確保根據 mutation 變更正確處理輸入
+                const size = xmlElement.getAttribute('size') === "true";
+                const array = xmlElement.getAttribute('array') === "true";
+                const it = xmlElement.getAttribute('it') === "true";
+
+                if (size && !this.getInput("size")) {
+                    this.appendValueInput('size')
+                        .setCheck("Number")
+                        .appendField('大小');
+                } else if (!size && this.getInput("size")) {
+                    this.removeInput("size");
+                }
+
+                if (array && !this.getInput("array")) {
+                    this.appendValueInput("array")
+                        .setCheck("Array")
+                        .appendField('陣列');
+                } else if (!array && this.getInput("array")) {
+                    this.removeInput("array");
+                }
+
+                if (it && !this.getInput("array1")) {
+                    this.appendDummyInput("array1")
+                        .appendField("请输入名稱: ")
+                        .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+
+                    this.appendValueInput("begin")
+                        .setCheck("Iterator")
+                        .appendField("迭代器 開始: ");
+
+                    this.appendValueInput("end")
+                        .setCheck("Iterator")
+                        .appendField(" 結束: ");
+                } else if (!it && this.getInput("array1")) {
+                    this.removeInput("array1");
+                    this.removeInput("begin");
+                    this.removeInput("end");
+                }
+            }
+        };
