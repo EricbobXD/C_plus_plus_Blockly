@@ -2760,7 +2760,7 @@ Blockly.Blocks['define_deque'] = {
                     "checked": false
                 }
             ],
-            "colour": "#3d7fd6",
+            "colour": "#dde3b0",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "創建一個 deque 陣列，deque 是會自動擴展容量的陣列",
