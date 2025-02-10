@@ -2484,7 +2484,7 @@
                     "helpUrl": ""
                 },
                 { //deque prepend_range
-                    "type": "deque_prepend_range",
+                    "type": "deque_prepend_front",
                     "message0": "在 deque 名稱: %1 加陣列 %2 到最後 (prepend)",
                     "args0": [{
                             "type": "field_input",
@@ -2595,7 +2595,7 @@
                             "name": "deque_name2"
                         }
                     ],
-                    "colour": "#b53c2f",
+                    "colour": "#dde3b0",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把兩個deque中的元素交換",
