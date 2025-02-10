@@ -2484,7 +2484,7 @@
                     "helpUrl": ""
                 },
                 { //deque prepend_range
-                    "type": "deque_prepend_front",
+                    "type": "deque_prepend_range",
                     "message0": "在 deque 名稱: %1 加陣列 %2 到最後 (prepend)",
                     "args0": [{
                             "type": "field_input",
