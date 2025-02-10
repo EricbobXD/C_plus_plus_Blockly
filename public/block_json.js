@@ -2551,7 +2551,7 @@
                         },
                         {
                             "type": "input_value",
-                            "name": "element"
+                            "name": "array"
                         },
                     ],
                     "colour": "#dde3b0",
