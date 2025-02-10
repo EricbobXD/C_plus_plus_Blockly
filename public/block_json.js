@@ -1187,43 +1187,9 @@
                 },
 
                 //vector
-                /*{ //define vector
-                    "type": "define_vector",
-                    "message0": "資料型態%1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4(可加可不加)",
-                    "args0": [{
-                            "type": "field_dropdown",
-                            "name": "TYPE",
-                            "options": [
-                                ["整數", "int"],
-                                ["浮整數", "float"],
-                                ["雙重浮點數", "double"],
-                                ["字元", "char"],
-                                ["字串", "string"],
-                                ["更長的整數", "long long"]
-                            ]
-                        },
-                        {
-                            "type": "field_input",
-                            "name": "vec_name",
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "vec_size"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "vec_content"
-                        }
-                    ],
-                    "colour": "#3d7fd6",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "創建一個vector陣列，vector是會自動擴展容量的陣列",
-                    "helpurl": ""
-                },*/
                 { //vector push back
                     "type": "vector_push_back",
-                    "message0": "在 %1 新增 %2 在最後一個(只能輸入單個)",
+                    "message0": "vector 在 %1 新增 %2 在最後一個(只能輸入單個)",
                     "args0": [{
                             "type": "field_input",
                             "name": "vec_name"
@@ -1242,7 +1208,7 @@
                 },
                 { //vector pop back
                     "type": "vector_pop_back",
-                    "message0": "在 %1 刪除最後一個",
+                    "message0": "vector 在 %1 刪除最後一個",
                     "args0": [{
                         "type": "field_input",
                         "name": "vec_name"
@@ -1256,7 +1222,7 @@
                 },
                 { //vector clear
                     "type": "vector_clear",
-                    "message0": "把 %1 的元素全部清除",
+                    "message0": "vector 把 %1 的元素全部清除",
                     "args0": [{
                         "type": "field_input",
                         "name": "vec_name"
@@ -1270,7 +1236,7 @@
                 },
                 { //vector size
                     "type": "vector_size",
-                    "message0": "%1 的陣列大小",
+                    "message0": "vector %1 的陣列大小",
                     "args0": [{
                         "type": "field_input",
                         "name": "vec_name"
@@ -2404,6 +2370,391 @@
                     "tooltip": "把元素推到queue最後",
                     "helpurl": ""
                 },
+                //deqeue
+                { //deque push back
+                    "type": "deque_push_back",
+                    "message0": "deque 在 %1 新增 %2 在最後一個(只能輸入單個)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "number"
+                        }
+                    ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "新增元素至 deque 的尾端，必要時會進行記憶體組態。",
+                    "helpUrl": ""
+                },
+                { //emplace back
+                    "type": "deque_emplace_back",
+                    "message0": "在 %1 新增 %2 在最後一個(可輸入多個 , 用空白分開)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "NAME",
+                            "check": ["Number", "String"]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "number",
+                            "text": ""
+                        }
+                    ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "直接在deque內建立物件",
+                    "helpUrl": ""
+                },
+                { //deque append_range
+                    "type": "deque_append_range",
+                    "message0": "在 deque 名稱: %1 加陣列 %3 到最後 (append)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到deque最後",
+                    "helpurl": ""
+                },
+                { //deque pop back
+                    "type": "deque_pop_back",
+                    "message0": "deque 在 %1 刪除最後一個",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "deque_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "刪除 deque 最尾端的元素。",
+                    "helpUrl": ""
+                },
+                { //deque push front
+                    "type": "deque_push_front",
+                    "message0": "deque 在 %1 新增 %2 在第一個(只能輸入單個)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "number"
+                        }
+                    ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "新增元素至 deque 的前端，必要時會進行記憶體組態。",
+                    "helpUrl": ""
+                },
+                { //emplace front
+                    "type": "deque_emplace_front",
+                    "message0": "在 %1 新增 %2 在第一個(可輸入多個 , 用空白分開)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "NAME",
+                            "check": ["Number", "String"]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "number",
+                            "text": ""
+                        }
+                    ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "直接在deque內建立物件",
+                    "helpUrl": ""
+                },
+                { //deque prepend_range
+                    "type": "deque_prepend_range",
+                    "message0": "在 deque 名稱: %1 加陣列 %3 到最後 (prepend)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到deque最後",
+                    "helpurl": ""
+                },
+                { //deque pop front
+                    "type": "deque_pop_front",
+                    "message0": "deque 在 %1 刪除第一個",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "deque_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "刪除 deque 最前端的元素。",
+                    "helpUrl": ""
+                },
+                { //deque insert
+                    "type": "deque_insert",
+                    "message0": "deque %1 在 %2 位置插入 %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "插入一個或多個元素至 deque 內的任意位置。",
+                    "helpurl": ""
+                },
+                { //deque insert_range
+                    "type": "deque_insert_range",
+                    "message0": "在 deque 名稱: %1 在位置: %2 加陣列 %3 (insert)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到deque最後",
+                    "helpurl": ""
+                },
+                { //deque erase
+                    "type": "deque_erase",
+                    "message0": "deque %1 在 %2 位置刪除 %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "刪除 deque 中一個或多個元素。",
+                    "helpurl": ""
+                },
+                { //deque swap
+                    "type": "deque_swap",
+                    "message0": "交換 deque 名稱: %1, deque 名稱: %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "deque_name2"
+                        }
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把兩個deque中的元素交換",
+                    "helpurl": ""
+                },
+                
+                //read
+                {//operate[]
+                    "type": "deque_operate[]",
+                    "message0": "deque 讀取名稱%1 第 %2 個元素",
+                    "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "deque_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "讀取deque[i]。",
+                    "helpurl": ""
+                },
+                {//deque_front
+                    "type": "deque_front",
+                    "message0": "deque 讀取名稱%1 第一個元素",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        }],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "讀取deque第一個元素。",
+                    "helpurl": ""
+                },
+                {//deque_back
+                    "type": "deque_back",
+                    "message0": "deque 讀取名稱%1 最後一個元素",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name"
+                        }],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "讀取deque最後一個元素。",
+                    "helpurl": ""
+                },
+                
+                // condition
+                { //deque clear
+                    "type": "deque_clear",
+                    "message0": "把 %1 的元素全部清除",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "deque_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "清空所有元素。",
+                    "helpUrl": ""
+                },
+                { //deque size
+                    "type": "deque_size",
+                    "message0": "%1 的陣列大小",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "deque_name"
+                    }],
+                    "inputsInline": true,
+                    "output": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "取得 deque 目前持有的元素個數。",
+                    "helpUrl": ""
+                },
+                { //deque empty
+                    "type": "deque_empty",
+                    "message0": "判斷deque %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "deque_name"
+                    }],
+                    "colour": "#dde3b0",
+                    "output": null,
+                    "tooltip": "如果 deque 內部為空，則傳回 true 值。",
+                    "helpUrl": ""
+                },
+                
+                //iterator
+                { //deque begin
+                    "type": "deque_begin",
+                    "message0": "deque 陣列 %1 (begin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 deque 第一個元素。",
+                    "helpUrl": ""
+                },
+                { //deque end
+                    "type": "deque_end",
+                    "message0": "deque 陣列 %1 (end)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個反向迭代器，它指向 deque 最尾端元素的下一個位置",
+                    "helpUrl": ""
+                },
+                { //deque rbegin
+                    "type": "deque_rbegin",
+                    "message0": "deque 陣列 %1 (rbegin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 deque 最尾端元素的。",
+                    "helpUrl": ""
+                },
+                { //deque rend
+                    "type": "deque_rend",
+                    "message0": "deque 陣列 %1 (rend)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "deque_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 deque 的第一個元素的前一個位置。",
+                    "helpUrl": ""
+                },
+                //priority_queue
                 { //priority_queue push
                     "type": "priority_queue_push",
                     "message0": "在 priority_queue 名稱: %1 加元素 %2( 在最後一個(push)",
