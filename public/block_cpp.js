@@ -2419,7 +2419,7 @@
                               "checked": false
                           }
                       ],
-                      "colour": "#b53c2f",
+                      "colour": "#cf5f87",
                       "previousStatement": null,
                       "nextStatement": null,
                       "tooltip": "創建一個 queue 陣列，queue 是會自動擴展容量的陣列",
@@ -2577,7 +2577,7 @@
                               "checked": false
                           }
                       ],
-                      "colour": "#b53c2f",
+                      "colour": "#d6af0f",
                       "previousStatement": null,
                       "nextStatement": null,
                       "tooltip": "創建一個 priority_queue 陣列，priority_queue 是會自動擴展容量的陣列",
@@ -2734,7 +2734,7 @@
                               "checked": false
                           }
                       ],
-                      "colour": "#b53c2f",
+                      "colour": "#f9943b",
                       "previousStatement": null,
                       "nextStatement": null,
                       "tooltip": "創建一個 set 陣列，set 是會自動擴展容量的陣列",
@@ -3073,7 +3073,7 @@
 
                     ],
                     "inputsInline": true,
-                    "colour": "#20b2aa",
+                    "colour": "#49a34b",
                     "previousStatement": null,
                     "nextStatement": null,
                     "helpUrl": ""
