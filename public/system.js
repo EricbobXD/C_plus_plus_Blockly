@@ -1087,11 +1087,11 @@
                         },
                         {
                             "kind": "block",
-                            "type": "var_caculacte"
+                            "type": "var_calculate"
                         },
                         {
                             "kind": "block",
-                            "type": "math_caculacte"
+                            "type": "math_calculate"
                         },
                         {
                             "kind": "block",
@@ -1128,7 +1128,7 @@
                         },
                         {
                             "kind": "block",
-                            "type": "math_devide"
+                            "type": "math_divide"
                         },
                         {
                             "kind": "block",
