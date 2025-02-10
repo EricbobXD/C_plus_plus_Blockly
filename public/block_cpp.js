@@ -3028,7 +3028,7 @@
                 .appendField("結束: ")
                 .setAlign(Blockly.ALIGN_LEFT);
         }
-    };
+    }
 };
         Blockly.Cpp['define_map'] = function(block) {
             var type = block.getFieldValue('TYPE');
