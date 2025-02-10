@@ -2413,7 +2413,7 @@
                 },
                 { //deque append_range
                     "type": "deque_append_range",
-                    "message0": "在 deque 名稱: %1 加陣列 %3 到最後 (append)",
+                    "message0": "在 deque 名稱: %1 加陣列 %2 到最後 (append)",
                     "args0": [{
                             "type": "field_input",
                             "name": "deque_name"
@@ -2485,7 +2485,7 @@
                 },
                 { //deque prepend_range
                     "type": "deque_prepend_range",
-                    "message0": "在 deque 名稱: %1 加陣列 %3 到最後 (prepend)",
+                    "message0": "在 deque 名稱: %1 加陣列 %2 到最後 (prepend)",
                     "args0": [{
                             "type": "field_input",
                             "name": "deque_name"
