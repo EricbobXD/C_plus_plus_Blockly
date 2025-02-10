@@ -2927,6 +2927,168 @@ Blockly.Blocks['define_deque'] = {
       return code;
 };
 
+Blockly.Blocks['deque_assign'] = {  
+    init: function() {
+        this.jsonInit({
+            "type": "deque_assign",
+             "message0": "deque 名稱: %1清空並插入 重複次數: %2, 陣列: %3, 迭代器: %4",
+          "args0": [{
+                  "type": "field_input",
+                  "name": "deque_name"
+              },
+              {
+                  "type": "field_checkbox",
+                  "name": "count",
+                  "checked": false
+              },
+              {
+                  "type": "field_checkbox",
+                  "name": "array",
+                  "checked": false
+              },
+              {
+                  "type": "field_checkbox",
+                  "name": "it",
+                  "checked": false
+              }
+            ],
+            "colour": "#dde3b0",
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "",
+            "helpurl": "",
+            "inputsInline": false  // 確保預設排列方式為換行
+        });
+
+        // 監聽積木變更
+        this.setOnChange(function(event) {
+            const block = this;
+            if (!block) return;
+
+            var countChecked  = block.getFieldValue("count") === "TRUE";
+            var arrayChecked = block.getFieldValue("array") === "TRUE";
+            var itChecked    = block.getFieldValue("it") === "TRUE";
+
+            if (countChecked && itChecked){
+                alert("次數跟迭代器不能一起使用喔😘");
+            }
+
+            if (arrayChecked && countChecked){
+                alert("陣列不能跟次數不能一起使用喔😘");
+            }
+
+            if (arrayChecked && itChecked){
+                alert("陣列不能跟迭代器不能一起使用喔😘");
+            }
+            // 確保 inputsInline 為 false，讓輸入項目換行排列
+            block.setInputsInline(false);
+
+            // 動態新增 / 移除 count 輸入
+            if (countChecked && !block.getInput("count")) {
+                block.appendValueInput('count')
+                    .setCheck("Number")
+                    .appendField('重複次數')
+                    .setAlign(Blockly.ALIGN_LEFT);
+                block.appendValueInput('str')
+                    .setCheck("String")
+                    .appendField("被重複字串")
+                    .setAlign(Blockly.ALIGN_LEFT);
+            } else if (!countChecked && block.getInput("count")) {
+                block.removeInput("count", true);
+                block.removeInput("str", true);
+            }
+
+            // 動態新增 / 移除 array 輸入
+            if (arrayChecked && !block.getInput("array")) {
+                block.appendValueInput("array")
+                    .setCheck("Array")
+                    .appendField('陣列')
+                    .setAlign(Blockly.ALIGN_LEFT);
+            } else if (!arrayChecked && block.getInput("array")) {
+                block.removeInput("array", true);
+            }
+
+            // 動態新增 / 移除 iterator 輸入
+            if (itChecked && !block.getInput("iterator_name")) {
+                block.appendDummyInput("iterator_name")
+                    .appendField("輸入名稱: ")
+                    .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+
+                block.appendValueInput("begin")
+                    .setCheck("Iterator")
+                    .appendField("迭代器 開始: ")
+                    .setAlign(Blockly.ALIGN_LEFT);
+
+                block.appendValueInput("end")
+                    .setCheck("Iterator")
+                    .appendField("結束: ")
+                    .setAlign(Blockly.ALIGN_LEFT);
+            } else if (!itChecked && block.getInput("iterator_name")) {
+                block.removeInput("iterator_name", true);
+                block.removeInput("begin", true);
+                block.removeInput("end", true);
+            }
+        });
+    },
+
+    // 儲存積木狀態
+    mutationToDom: function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('count', this.getFieldValue('count'));
+        container.setAttribute('array', this.getFieldValue('array'));
+        container.setAttribute('it', this.getFieldValue('it'));
+    return container;
+    },
+
+    // 讀取積木狀態
+    domToMutation: function(xmlElement) {
+        this.setFieldValue(xmlElement.getAttribute('count'), 'count');
+        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
+        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
+
+        const countChecked  = xmlElement.getAttribute('count') === "TRUE";
+        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
+        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
+
+        // 確保 inputsInline 為 false，避免縮成一行
+        this.setInputsInline(false);
+
+        if (countChecked && !this.getInput("count")) {
+        this.appendValueInput('count')
+            .setCheck("Number")
+            .appendField('大小')
+            .setAlign(Blockly.ALIGN_LEFT);
+        this.appendValueInput('str')
+            .setCheck("String")
+            .appendField("被重複字串")
+            .setAlign(Blockly.ALIGN_LEFT);
+        }
+
+        if (arrayChecked && !this.getInput("array")) {
+        this.appendValueInput("array")
+            .setCheck("Array")
+            .appendField('陣列')
+            .setAlign(Blockly.ALIGN_LEFT);
+        }
+
+        if (itChecked && !this.getInput("iterator_name")) {
+        this.appendDummyInput("iterator_name")
+            .appendField("輸入陣列名稱: ")
+            .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
+
+        this.appendValueInput("begin")
+            .setCheck("Iterator")
+            .appendField("迭代器 開始: ")
+            .setAlign(Blockly.ALIGN_LEFT);
+
+        this.appendValueInput("end")
+            .setCheck("Iterator")
+            .appendField("結束: ")
+            .setAlign(Blockly.ALIGN_LEFT);
+        }
+    }
+};
+
  Blockly.Blocks['define_priority_queue'] = {  
               init: function() {
                   this.jsonInit({
