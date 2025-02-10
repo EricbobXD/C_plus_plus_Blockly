@@ -2933,7 +2933,7 @@
                         }
 
                     ],
-                    "inputsInline": true,
+                    "inputsInline": false,
                     "colour": "#20b2aa",
                     "previousStatement": null,
                     "nextStatement": null,
