@@ -2938,7 +2938,7 @@
                     "previousStatement": null,
                     "nextStatement": null,
                     "helpUrl": ""
-                },
+                 });
 
         // 監聽積木變更
         this.setOnChange(function(event) {
@@ -3115,7 +3115,7 @@
                     "previousStatement": null,
                     "nextStatement": null,
                     "helpUrl": ""
-                },
+                 });
 
         // 監聽積木變更
         this.setOnChange(function(event) {
