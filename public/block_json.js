@@ -1915,40 +1915,6 @@
                 },
 
                 //set
-                { //create set
-                    "type": "create_set",
-                    "message0": "創建set 資料型態 %1 , 名字 : %2 , 大小 : %3(可加可不加) : 陣列內容 : %4 (可加可不加)",
-                    "args0": [{
-                            "type": "field_dropdown",
-                            "name": "TYPE",
-                            "options": [
-                                ["整數", "int"],
-                                ["浮點數", "float"],
-                                ["雙重浮點數", "double"],
-                                ["字元", "char"],
-                                ["字串", "string"],
-                                ["更長的整數", "long long"]
-                            ]
-                        },
-                        {
-                            "type": "field_input",
-                            "name": "set_name",
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "set_size"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "set_content"
-                        }
-                    ],
-                    "colour": "#f9943b",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "建立一個集合，集合是一個有序列表",
-                    "helpurl": ""
-                },
                 { //set insert
                     "type": "set_insert",
                     "message0": "set %1 插入 %2",
