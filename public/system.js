@@ -675,7 +675,7 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "deque_prepend_front"
+                                    "type": "deque_prepend_range"
                                 },
                                 {
                                     "kind": "block",
