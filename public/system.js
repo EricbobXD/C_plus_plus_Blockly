@@ -644,7 +644,7 @@
                         {
                             "kind": "category",
                             "name": "deque",
-                            "colour": "#6c5ce7",
+                            "colour": "#dde3b0",
                             "contents": [{
                                     "kind": "block",
                                     "type": "define_deque"
