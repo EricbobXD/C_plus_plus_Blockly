@@ -695,6 +695,30 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "deque_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 讀取元素"
+                                },
+                                 {
+                                    "kind": "block",
+                                    "type": "deque_operate[]"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_back"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 判斷式"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "deque_clear"
                                 },
                                 {
@@ -704,14 +728,6 @@
                                 {
                                     "kind": "block",
                                     "type": "deque_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_resize"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_swap"
                                 },
                                 {
                                     "kind": "label",
