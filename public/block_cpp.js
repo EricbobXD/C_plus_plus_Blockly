@@ -2376,12 +2376,7 @@
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
+                code += `(${array_name})`;
             }
 
             if (it){
@@ -2389,10 +2384,6 @@
                 var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (array || it){
-                code += ')';
             }
             code += ';';
             return code;
