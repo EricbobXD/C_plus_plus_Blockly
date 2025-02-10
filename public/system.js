@@ -643,6 +643,100 @@
                         },
                         {
                             "kind": "category",
+                            "name": "deque",
+                            "colour": "#6c5ce7",
+                            "contents": [{
+                                    "kind": "block",
+                                    "type": "define_deque"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_push_back"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_emplace_back"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_append_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_pop_back"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_push_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_emplace_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_prepend_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_pop_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_insert"
+                                },
+                                 {
+                                    "kind": "block",
+                                    "type": "deque_insert_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_erase"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_clear"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_size"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_empty"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_resize"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 迭代器"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_begin"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_end"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_rbegin"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_rend"
+                                }
+                            ]
+                        },
+                        {
+                            "kind": "category",
                             "name": "priority_queue",
                             "colour": "#f1c40f",
                             "contents": [{
