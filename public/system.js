@@ -698,6 +698,10 @@
                                     "type": "deque_swap"
                                 },
                                 {
+                                    "kind": "block",
+                                    "type": "deque_assign"
+                                },
+                                {
                                     "kind": "label",
                                     "text": "Deque 讀取元素"
                                 },
