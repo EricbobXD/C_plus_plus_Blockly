@@ -504,7 +504,7 @@
         createMathOperatorBlock('math_plus', '+');
         createMathOperatorBlock('math_multiply', '*');
         createMathOperatorBlock('math_percent', '%');
-        createMathOperatorBlock('math_devide', '/');
+        createMathOperatorBlock('math_divide', '/');
         createMathOperatorBlock('math_subtract', '-');
 
         createStringOperatorBlock('string_plus', '+');
@@ -684,7 +684,7 @@
             }
 
             if (returnValue === "") {
-                return `return;`
+                return `return\n;`
             } else {
                 return `return ${returnValue};\n`;
             }
@@ -816,8 +816,7 @@
             if (Value.startsWith('(') && Value.endsWith(')')) {
                 Value = Value.slice(1, -1);
             }
-
-            return `!${Value};\n`;
+            return [`!${Value}`, 1];
         };
 
         Blockly.Cpp['logic_operators'] = function(block) {
@@ -1350,37 +1349,35 @@
             var vec_name = block.getFieldValue('vec_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
             if (pos === '0') {
-                pos = '';
+                return `${vec_name}.insert(${vec_name}.begin(), ${value});\n`
             } else {
                 if (pos.startsWith('(') && pos.endsWith(')')) {
                     pos = '+' + pos.slice(1, -1);
                 }
             }
-            if (value.startsWith('(') && value.endsWith(')')) {
-                value = value.slice(1, -1);
 
-            }
-
-            return `${vec_name}.insert(${vec_name}.begin()${pos}, ${value})\n`;
+            return `${vec_name}.insert(${vec_name}.begin()${pos}, ${value});\n`;
         }
 
         Blockly.Cpp['vector_erase'] = function(block) {
             var vec_name = block.getFieldValue('vec_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+             if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
             if (pos === '0') {
-                pos = '';
+                 return `${vec_name}.erase(${vec_name}.begin(), ${value});\n`;
             } else {
                 if (pos.startsWith('(') && pos.endsWith(')')) {
                     pos = pos.slice(1, -1);
                 }
             }
-            if (value.startsWith('(') && value.endsWith(')')) {
-                value = value.slice(1, -1);
-            }
-
-            return `${vec_name}.insert(${vec_name}.begin()+${pos}, ${value})\n`;
+            return `${vec_name}.erase(${vec_name}.begin()+${pos}, ${value});\n`;
         }
 
         Blockly.Cpp['vector_clear'] = function(block) {
@@ -1467,7 +1464,7 @@
             if (second.startsWith('(') && second.endsWith(')')) {
                 second = second.slice(1, -1);
             }
-            return `${map_name}.insert({${first}, ${second}})\n`;
+            return `${map_name}.insert({${first}, ${second}});\n`;
         }
 
         Blockly.Cpp['map[i]'] = function(block) {
@@ -1596,7 +1593,7 @@
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            return `${set_name}.insert(${value})\n`;
+            return `${set_name}.insert(${value});\n`;
         }
 
         Blockly.Cpp['set_erase'] = function(block) {
@@ -1605,7 +1602,7 @@
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            return `${set_name}.insert(${value})\n`;
+            return `${set_name}.erase(${value});\n`;
         }
 
         Blockly.Cpp['set_begin'] = function(block) {
@@ -2533,12 +2530,8 @@
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
+                code += `(${array_name})`;
+                
             }
 
             if (it){
@@ -2546,10 +2539,6 @@
                 var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (array || it){
-                code += ')';
             }
             code += ';';
             return code;
@@ -2699,12 +2688,7 @@
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
+                code += `(${array_name})`;
             }
 
             if (it){
@@ -2712,10 +2696,6 @@
                 var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (array || it){
-                code += ')';
             }
             code += ';';
             return code;
@@ -2865,12 +2845,7 @@
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
+                code += `(${array_name})`;
             }
 
             if (it){
@@ -2878,10 +2853,6 @@
                 var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (array || it){
-                code += ')';
             }
             code += ';';
             return code;
@@ -3043,12 +3014,7 @@
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
+                code += `(${array_name})`;
             }
 
             if (it){
@@ -3056,10 +3022,6 @@
                 var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (array || it){
-                code += ')';
             }
             code += ';';
             return code;
@@ -3220,12 +3182,7 @@
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
                     array_name = array_name.slice(1, -1);
                 }
-                if (size){
-                    code += `, ${array_name}`;
-                } 
-                else{
-                    code += `(${array_name}`;
-                }
+                code += `(${array_name})`;
             }
 
             if (it){
@@ -3233,10 +3190,6 @@
                 var begin = Blockly.Cpp.valueToCode(block, 'begin', 1);
                 var end = Blockly.Cpp.valueToCode(block, 'end', 1);
                 code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-            }
-                
-            if (array || it){
-                code += ')';
             }
             code += ';';
             return code;
