@@ -523,6 +523,80 @@
                     "tooltip": "定義一個有回傳值的函數",
                     "helpUrl": ""
                 },
+                //function
+                { //def_fun_void
+                    "type": "def_fun_void",
+                    "message0": "函式型態: void 名稱 %1 變數 %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "funcName",
+                            "text": "MyFunction"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "data",
+                        }
+                    ],
+                    "message1": "%1 回傳值%2",
+                    "args1": [{
+                            "type": "input_statement",
+                            "name": "DO"
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "expression",
+                            "options": [
+                                ["回傳", "return"],
+                                ["不回傳", "no"]
+                            ]
+                        }
+                    ],
+                    "colour": "#db00db",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "定義一個沒有回傳值的函數",
+                    "helpUrl": ""
+                },
+                { //def_fun
+                    "type": "def_fun",
+                    "message0": "函式型態: %1 名稱 %2 變數%3",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "funcName",
+                            "text": "MyFunction2"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "data",
+                        }
+                    ],
+                    "message1": "%1 回傳值 %2",
+                    "args1": [{
+                            "type": "input_statement",
+                            "name": "DO"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "expression"
+                        }
+                    ],
+                    "colour": "#db00db",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "定義一個有回傳值的函數",
+                    "helpUrl": ""
+                },
                 { //cll function
                     "type": "function_call",
                     "message0": "函式 %1 %2",
@@ -873,6 +947,59 @@
                     "tooltip": "定義一個指標",
                     "helpurl": ""
                 },
+                 { //def_ptr
+                    "type": "def_ptr",
+                    "message0": "宣告 %1 %2 %3 %4指標名稱: %5 = %6",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "const_ptr",
+                            "options": [
+                                ["不固定指標位置", "no"],
+                                ["固定指標位置", "const_ptr"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "unsigned",
+                            "options": [
+                                ["有正有負", "no"],
+                                ["全部取正", "unsigned"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "const_var",
+                            "options": [
+                                ["不固定變數大小", "no"],
+                                ["固定變數大小", "const_var"]
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "var_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        },
+                    ],
+                    "colour": "#5f9ea0",
+                    "output": true,
+                    "tooltip": "定義一個指標",
+                    "helpurl": ""
+                },
                 { //declart_reference
                     "type": "declare_reference",
                     "message0": "宣告 %1 %2 %3 位置名稱: %4 = %5",
@@ -916,6 +1043,51 @@
                     "colour": "#5f9ea0",
                     "previousStatement": null,
                     "nextStatement": null,
+                    "tooltip": "宣告一個位置",
+                    "helpurl": ""
+                },
+                { //declart_reference
+                    "type": "def_ref",
+                    "message0": "宣告 %1 %2 %3 位置名稱: %4 = %5",
+                    "args0": [{
+                            "type": "field_dropdown",
+                            "name": "const",
+                            "options": [
+                                ["不固定變數位置", "no"],
+                                ["固定變數位置", "const"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "unsigned",
+                            "options": [
+                                ["有正有負", "no"],
+                                ["全部取正", "unsigned"]
+                            ]
+                        },
+                        {
+                            "type": "field_dropdown",
+                            "name": "TYPE",
+                            "options": [
+                                ["整數", "int"],
+                                ["浮點數", "float"],
+                                ["雙重浮點數", "double"],
+                                ["字元", "char"],
+                                ["字串", "string"],
+                                ["更長的整數", "long long"],
+                            ]
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "var_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        },
+                    ],
+                    "colour": "#5f9ea0",
+                    "output": true,
                     "tooltip": "宣告一個位置",
                     "helpurl": ""
                 },
@@ -981,6 +1153,24 @@
                     "output": null,
                     "colour": "#5f9ea0",
                     "tooltip": "獲取位置的值",
+                    "helpUrl": ""
+                },
+                { //ptr of
+                    "type": "ptr_of",
+                    "message0": "指標 %1 -> %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "ptr_name",
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "of"
+                        }
+                    ],
+                    "colour": "#5f9ea0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "指標指向物件",
                     "helpUrl": ""
                 },
                 {
