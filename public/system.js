@@ -999,6 +999,14 @@
                         },
                         {
                             "kind": "block",
+                            "type": "def_ptr"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_ref"
+                        },
+                        {
+                            "kind": "block",
                             "type": "string_commas"
                         }
                     ]
@@ -1042,8 +1050,16 @@
                             "type": "get_ptr"
                         },
                         {
+                            "kind": "block",
+                            "type": "ptr_of"
+                        },
+                        {
                             "kind": "label",
                             "text": "reference"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "declare_reference"
                         },
                         {
                             "kind": "block",
@@ -1109,6 +1125,18 @@
                         {
                             "kind": "block",
                             "type": "get_class"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Function"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_fun"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_fun_void"
                         }
                     ]
                 },
