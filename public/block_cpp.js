@@ -1009,6 +1009,65 @@
             return code;
         };
 
+        Blockly.Cpp['def_ptr'] = function(block) {
+            var Const_ptr = block.getFieldValue('const_ptr');
+            var Const_var = block.getFieldValue('const_var');
+            var unsigned = block.getFieldValue('unsigned');
+            var type = block.getFieldValue('TYPE');
+            var var_name = block.getFieldValue('var_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            code = '';
+            if (Const_ptr === 'const_ptr') {
+                code += 'const ';
+            }
+            if (unsigned === 'unsigned') {
+                code += 'unsigned ';
+            }
+
+            code += `${type}* `;
+            if (Const_var === 'const_var') {
+                code += 'const ';
+            }
+
+            code += var_name + ' ';
+
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            if (value !== '') {
+                code += `= ${value}`;
+            }
+            return [code, 1];
+        };
+
+        Blockly.Cpp['def_ref'] = function(block) {
+            var Const_ptr = block.getFieldValue('const');
+            var unsigned = block.getFieldValue('unsigned');
+            var type = block.getFieldValue('TYPE');
+            var var_name = block.getFieldValue('var_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            code = '';
+            if (Const_ptr === 'const') {
+                code += 'const ';
+            }
+            if (unsigned === 'unsigned') {
+                code += 'unsigned ';
+            }
+
+            if (type === 'no') {
+                code += `&${var_name} `;
+            } else {
+                code += `${type} &${var_name} `;
+            }
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            if (value !== '') {
+                code += `= ${value}`;
+            }
+            return [code, 1];
+        };
+        
         Blockly.Cpp['ptr_equal'] = function(block) {
             var ptr = block.getFieldValue('ptr_name');
             var value = Blockly.Cpp.valueToCode(block, 'VALUE', 1) || '0';
@@ -1035,6 +1094,12 @@
         Blockly.Cpp['get_ref'] = function(block) {
             var ref = block.getFieldValue('ref_name');
             return [`${ref}`, 1];
+        };
+
+        Blockly.Cpp['ptr_of'] = function(block) {
+            var ptr_name = Blockly.Cpp.valueToCode(block, 'ptr_name', 1);
+            var of = Blockly.Cpp.valueToCode(block, 'of', 1);
+            return [`${ptr_name} -> ${of}`, 1];
         };
 
         // define variable
@@ -1130,6 +1195,43 @@
             }
         };
 
+        Blockly.Cpp['def_fun'] = function(block) {
+            var Type = block.getFieldValue('TYPE');
+            var funcName = block.getFieldValue('funcName');
+            var data = Blockly.Cpp.valueToCode(block, 'data', 1);
+            var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
+            var expression = Blockly.Cpp.valueToCode(block, 'expression', 1);
+            if (data.startsWith('(') && data.endsWith(')')) {
+                data = data.slice(1, -1);
+            }
+            if (content.startsWith('(') && content.endsWith(')')) {
+                content = content.slice(1, -1);
+            }
+            if (expression.startsWith('(') && expression.endsWith(')')) {
+                expression = expression.slice(1, -1);
+            }
+
+            return `${Type} ${funcName}(${data}) {\n${content}  return ${expression};\n}\n`;
+        };
+
+        Blockly.Cpp['def_fun_void'] = function(block) {
+            var funcName = block.getFieldValue('funcName');
+            var data = Blockly.Cpp.valueToCode(block, 'data', 1);
+            var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
+            var expression = block.getFieldValue('expression');
+            if (data.startsWith('(') && data.endsWith(')')) {
+                data = data.slice(1, -1);
+            }
+            if (content.startsWith('(') && content.endsWith(')')) {
+                content = content.slice(1, -1);
+            }
+
+            if (expression === 'no') {
+                return `void ${funcName}(${data}) {\n${content}\n}\n`;
+            } else {
+                return `void ${funcName}(${data}) {\n${content}  return;\n}\n`, 1;
+            }
+        };
         Blockly.Cpp['lambda'] = function(block) {
             var capture = block.getFieldValue('captures');
             var VAR = Blockly.Cpp.valueToCode(block, 'VAR', 1);
