@@ -340,7 +340,7 @@
                 //define variable
                 { //def variable
                     "type": "def_var",
-                    "message0": "宣告 %1 %2 變數名稱: %3 = %4",
+                    "message0": "宣告 %1 變數名稱: %2 = %3",
                     "args0": [{
                             "type": "field_dropdown",
                             "name": "unsigned",
@@ -949,16 +949,8 @@
                 },
                  { //def_ptr
                     "type": "def_ptr",
-                    "message0": "宣告 %1 %2 %3 %4指標名稱: %5 = %6",
+                    "message0": "宣告 %1 %2 指標名稱: %3 = %4",
                     "args0": [{
-                            "type": "field_dropdown",
-                            "name": "const_ptr",
-                            "options": [
-                                ["不固定指標位置", "no"],
-                                ["固定指標位置", "const_ptr"]
-                            ]
-                        },
-                        {
                             "type": "field_dropdown",
                             "name": "unsigned",
                             "options": [
@@ -976,14 +968,6 @@
                                 ["字元", "char"],
                                 ["字串", "string"],
                                 ["更長的整數", "long long"]
-                            ]
-                        },
-                        {
-                            "type": "field_dropdown",
-                            "name": "const_var",
-                            "options": [
-                                ["不固定變數大小", "no"],
-                                ["固定變數大小", "const_var"]
                             ]
                         },
                         {
@@ -1048,16 +1032,8 @@
                 },
                 { //declart_reference
                     "type": "def_ref",
-                    "message0": "宣告 %1 %2 %3 位置名稱: %4 = %5",
+                    "message0": "宣告 %1 %2 位置名稱: %3 = %4",
                     "args0": [{
-                            "type": "field_dropdown",
-                            "name": "const",
-                            "options": [
-                                ["不固定變數位置", "no"],
-                                ["固定變數位置", "const"]
-                            ]
-                        },
-                        {
                             "type": "field_dropdown",
                             "name": "unsigned",
                             "options": [
