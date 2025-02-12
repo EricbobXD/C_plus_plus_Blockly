@@ -1249,7 +1249,7 @@
                 //Standard Library
                 //math
                 { //math caculacte
-                    "type": "math_caculacte",
+                    "type": "math_calculate",
                     "message0": "%1  %2  %3",
                     "args0": [{
                             "type": "input_value",
