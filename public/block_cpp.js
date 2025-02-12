@@ -1010,26 +1010,16 @@
         };
 
         Blockly.Cpp['def_ptr'] = function(block) {
-            var Const_ptr = block.getFieldValue('const_ptr');
-            var Const_var = block.getFieldValue('const_var');
             var unsigned = block.getFieldValue('unsigned');
             var type = block.getFieldValue('TYPE');
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
-            if (Const_ptr === 'const_ptr') {
-                code += 'const ';
-            }
             if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
 
-            code += `${type}* `;
-            if (Const_var === 'const_var') {
-                code += 'const ';
-            }
-
-            code += var_name + ' ';
+            code += `${type}* ${var_name} `;
 
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
@@ -1041,15 +1031,11 @@
         };
 
         Blockly.Cpp['def_ref'] = function(block) {
-            var Const_ptr = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
             var type = block.getFieldValue('TYPE');
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
-            if (Const_ptr === 'const') {
-                code += 'const ';
-            }
             if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
