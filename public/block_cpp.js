@@ -1,3 +1,73 @@
+        Blockly.Blocks['main_block'] = {
+            init: function() {
+                this.jsonInit({
+                    "type": "main_block",
+                    "message0": "#include %1",
+                    "args0": [
+                        {
+                            "type": "field_dropdown",
+                            "name": "INCLUDE",
+                            "options": [
+                                ["<bits/stdc++.h>", "<bits/stdc++.h>"],
+                                ["<bits/extc++.h>", "<bits/extc++.h>"]
+                            ]
+                        }
+                    ],
+                    "message1": "using namespace %1",
+                    "args1": [
+                        {
+                            "type": "field_dropdown",
+                            "name": "NAMESPACE",
+                            "options": [
+                                ["std", "std"],
+                                ["pbds", "__gnu_pbds"]
+                            ]
+                        }
+                    ],
+                    "message2": "%1", 
+                    "args2": [
+                        {
+                            "type": "input_statement",
+                            "name": "DEFINES"
+                        }
+                    ],
+                    "message3": "int main() {",
+                    "message4": "    %1",
+                    "args4": [
+                        {
+                            "type": "input_statement",
+                            "name": "DO"
+                        }
+                    ],
+                    "message5": "    return 0;",
+                    "message6": "}",
+                    "colour": "#24B324",
+                    "inputsInline": false,
+                    "tooltip": "C++ 主函式結構",
+                    "helpUrl": "",
+                    "movable": true,
+                    "deletable": false
+                });
+
+                // 限制 "DEFINES"
+                this.setOnChange(function(event) {
+                    if (!this.workspace) return; // 防止 Blockly 初始化時觸發錯誤
+
+                    let allowedBlocks = ["define_block", "typedef_block"];
+                    let connection = this.getInputTargetBlock("DEFINES");
+
+                    while (connection) {
+                        if (!allowedBlocks.includes(connection.type)) {
+                            // 不是允許的積木類型，將其自動斷開
+                            connection.unplug();
+                            alert(`檢測到非法方塊組合，已阻止連接。\n被攔截方塊 ID： ${connection.type}\n僅接受方塊 ID： define_block, typedef_block`);
+                        }
+                        connection = connection.getNextBlock();
+                    }
+                });
+            }
+        };
+
         Blockly.Blocks['if_block'] = {
             init: function() {
                 this.setPreviousStatement(true);
@@ -663,8 +733,16 @@
         };
 
         Blockly.Cpp['main_block'] = function(block) {
+            var include = block.getFieldValue('INCLUDE');
+            var namespace = block.getFieldValue('NAMESPACE');
+            
+            var define_code = Blockly.Cpp.statementToCode(block, 'DEFINES');
             var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
-            return `int main() {\n${statements_body}\n  return 0;\n}`;
+
+            // ✅ 移除 Blockly 自動增加的 2 個空格
+            define_code = define_code.replace(/^  /gm, '');
+
+            return `#include ${include}\nusing namespace ${namespace};\n\n${define_code}\nint main() {\n${statements_body}\n    return 0;\n}`;
         };
 
         // stop
@@ -1010,16 +1088,26 @@
         };
 
         Blockly.Cpp['def_ptr'] = function(block) {
+            var Const_ptr = block.getFieldValue('const_ptr');
+            var Const_var = block.getFieldValue('const_var');
             var unsigned = block.getFieldValue('unsigned');
             var type = block.getFieldValue('TYPE');
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
+            if (Const_ptr === 'const_ptr') {
+                code += 'const ';
+            }
             if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
 
-            code += `${type}* ${var_name} `;
+            code += `${type}* `;
+            if (Const_var === 'const_var') {
+                code += 'const ';
+            }
+
+            code += var_name + ' ';
 
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
@@ -1031,11 +1119,15 @@
         };
 
         Blockly.Cpp['def_ref'] = function(block) {
+            var Const_ptr = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
             var type = block.getFieldValue('TYPE');
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
+            if (Const_ptr === 'const') {
+                code += 'const ';
+            }
             if (unsigned === 'unsigned') {
                 code += 'unsigned ';
             }
@@ -1231,7 +1323,7 @@
         Blockly.Cpp['define_block'] = function(block) {
             var name = block.getFieldValue('name');
             var func_name = block.getFieldValue('func_name');
-            return `define ${name} ${func_name}\n`;
+            return `#define ${name} ${func_name}\n`;
         };
 
         Blockly.Cpp['typedef_block'] = function(block) {
