@@ -340,7 +340,7 @@
                 //define variable
                 { //def variable
                     "type": "def_var",
-                    "message0": "宣告 %1 變數名稱: %2 = %3",
+                    "message0": "宣告 %1 %2 變數名稱: %3 = %4",
                     "args0": [{
                             "type": "field_dropdown",
                             "name": "unsigned",
