@@ -1352,7 +1352,7 @@
             return [`sqrt(${Value});\n`, Blockly.Cpp.ORDER_ATOMIC];
         };
 
-        Blockly.Cpp['math_caculacte'] = function(block) {
+        Blockly.Cpp['math_calculate'] = function(block) {
             var Value1 = Blockly.Cpp.valueToCode(block, 'A', 1) || '0';
             var Value2 = Blockly.Cpp.valueToCode(block, 'B', 1) || '0';
 
