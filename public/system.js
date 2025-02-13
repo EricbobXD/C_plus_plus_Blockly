@@ -607,7 +607,31 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "map[i]"
+                                    "type": "map_insert_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_erase"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_emplace"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_extract"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_merge"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Set 條件判斷"
                                 },
                                 {
                                     "kind": "block",
@@ -623,15 +647,35 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "map_first"
+                                    "type": "map_max_size"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Set 尋找元素"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "map_second"
+                                    "type": "map_count"
                                 },
                                 {
                                     "kind": "block",
                                     "type": "map_find"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_contains"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_equal_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_lower_bound"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "map_upper_bound"
                                 },
                                 {
                                     "kind": "label",
@@ -652,6 +696,18 @@
                                 {
                                     "kind": "block",
                                     "type": "map_rend"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "map 輔助工具"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "make_map"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "string_commas"
                                 }
                             ]
                         },
