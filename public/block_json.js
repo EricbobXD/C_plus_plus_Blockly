@@ -1089,6 +1089,19 @@
                     "tooltip": "指標指向物件",
                     "helpUrl": ""
                 },
+                { //ptr of
+                    "type": "ptr_to",
+                    "message0": "* 變數 %1",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "var_name",
+                        }],
+                    "colour": "#5f9ea0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "*變數",
+                    "helpUrl": ""
+                },
                 {
                     "type": "define_block",
                     "message0": "定義 自定義名子: %1, 函式名子: %2",
