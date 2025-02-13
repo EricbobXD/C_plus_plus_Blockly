@@ -1872,9 +1872,366 @@
                     "tooltip": "pair value(second)",
                     "helpUrl": ""
                 },
-                { //make_pair
-                    "type": "make_pair",
-                    "message0": "pair key: %1, value: %2",
+                //map
+                { //map insert
+                    "type": "map_insert",
+                    "message0": "map %1 插入 %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "插入一個或多個元素至 map 內的任意位置。",
+                    "helpurl": ""
+                },
+                { //map insert_range
+                    "type": "map_insert_range",
+                    "message0": "在 map 名稱: %1 加陣列 %2 (insert)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "array"
+                        },
+                    ],
+                    "colour": "#20b2aa",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到map最後",
+                    "helpurl": ""
+                },
+                { //map erase
+                    "type": "map_erase",
+                    "message0": "map %1 刪除 %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "刪除 map 中一個或多個元素。",
+                    "helpurl": ""
+                },
+                { //map emplace
+                    "type": "map_emplace",
+                    "message0": "在 map 名稱: %1 加超過一個元素 %2 在最後一個(emplace)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#20b2aa",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到map最後",
+                    "helpurl": ""
+                },
+                { //map extract
+                    "type": "map_extract",
+                    "message0": "map %1 提取 %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "map 提取元素",
+                    "helpurl": ""
+                },
+                { //map merge
+                    "type": "map_merge",
+                    "message0": "map1: %1 合併 map2: %2, 並map2 刪除 map1 有的元素",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "map_name2"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "map1合併map2, 並map2 刪除 map1 有的元素",
+                    "helpurl": ""
+                },
+                { //map swap
+                    "type": "map_swap",
+                    "message0": "交換 map 名稱: %1, map 名稱: %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "map_name2"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把兩個map中的元素交換",
+                    "helpurl": ""
+                },
+                
+                // condition
+                { //map clear
+                    "type": "map_clear",
+                    "message0": "把 %1 的元素全部清除",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "map_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#20b2aa",
+                    "tooltip": "清空所有元素。",
+                    "helpUrl": ""
+                },
+                { //map size
+                    "type": "map_size",
+                    "message0": "%1 的陣列大小",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "map_name"
+                    }],
+                    "inputsInline": true,
+                    "output": null,
+                    "colour": "#20b2aa",
+                    "tooltip": "取得 map 目前持有的元素個數。",
+                    "helpUrl": ""
+                },
+                { //map empty
+                    "type": "map_empty",
+                    "message0": "判斷map %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "map_name"
+                    }],
+                    "colour": "#20b2aa",
+                    "output": null,
+                    "tooltip": "如果 map 內部為空，則傳回 true 值。",
+                    "helpUrl": ""
+                },
+                { //map max_size
+                    "type": "map_max_size",
+                    "message0": "map 名稱: %1 最大元素數量",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        }],
+                    "colour": "#20b2aa",
+                    "output": null,
+                    "tooltip": "球map最大元素數量",
+                    "helpUrl": ""
+                },
+                
+                //lookup
+                {//map count
+                    "type": "map_count",
+                    "message0": "map %1 尋找是否有元素: %2(返回 0, 1)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "map尋找是否有元素(返回 0, 1)",
+                    "helpurl": ""
+                },
+                {//map find
+                    "type": "map_find",
+                    "message0": "map %1 尋找是否有元素: %2 (返回迭代器)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "map尋找是否有元素(返回迭代器)",
+                    "helpurl": ""
+                },
+                {//map contains
+                    "type": "map_contains",
+                    "message0": "map %1 尋找是否有元素: %2(返回 true, false)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "map尋找是否有元素(返回 true, false)",
+                    "helpurl": ""
+                },
+                {//map equal_range
+                    "type": "map_equal_range",
+                    "message0": "map %1 尋找是否有元素: %2(返回 first: 等於元素位置, second: 下一個元素位置)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "map尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
+                    "helpurl": ""
+                },
+                {//map lower_bound
+                    "type": "map_lower_bound",
+                    "message0": "map %1 尋找是否有元素1: %2(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "map判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
+                    "helpurl": ""
+                },
+                {//map upper_bound
+                    "type": "map_upper_bound",
+                    "message0": "map %1 尋找是否有元素1: %2(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#20b2aa",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "map判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
+                    "helpurl": ""
+                },
+                
+                //iterator
+                { //map begin
+                    "type": "map_begin",
+                    "message0": "map 陣列 %1 (begin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 map 第一個元素。",
+                    "helpUrl": ""
+                },
+                { //map end
+                    "type": "map_end",
+                    "message0": "map 陣列 %1 (end)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個反向迭代器，它指向 map 最尾端元素的下一個位置",
+                    "helpUrl": ""
+                },
+                { //map rbegin
+                    "type": "map_rbegin",
+                    "message0": "map 陣列 %1 (rbegin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 map 最尾端元素的。",
+                    "helpUrl": ""
+                },
+                { //map rend
+                    "type": "map_rend",
+                    "message0": "map 陣列 %1 (rend)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "map_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 map 的第一個元素的前一個位置。",
+                    "helpUrl": ""
+                },
+                
+                { //make_map
+                    "type": "make_map",
+                    "message0": "map key: %1, value: %2",
                     "args0": [{
                             "type": "input_value",
                             "name": "key"
@@ -1887,7 +2244,7 @@
                     "output": null,
                     "inputsInline": true,
                     "colour": "#49a34b",
-                    "tooltip": "define new pair has key and value",
+                    "tooltip": "define new map has key and value",
                     "helpUrl": ""
                 },
 
@@ -2221,7 +2578,7 @@
                             "name": "element"
                         },
                     ],
-                    "colour": "#b53c2f",
+                    "colour": "#f9943b",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到set最後",
@@ -2858,7 +3215,7 @@
                             "name": "element"
                         },
                     ],
-                    "colour": "#b53c2f",
+                    "colour": "#cf5f87",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到queue最後",
@@ -3366,7 +3723,7 @@
                             "name": "element"
                         },
                     ],
-                    "colour": "#b53c2f",
+                    "colour": "#d6af0f",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到priority_queue最後",
