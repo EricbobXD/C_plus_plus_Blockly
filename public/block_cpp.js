@@ -1180,9 +1180,9 @@
             return [`${ptr_name} -> ${of}`, 1];
         };
 
-        Blockly.Cpp['ptr_of'] = function(block) {
+        Blockly.Cpp['ptr_to'] = function(block) {
             var var_name = Blockly.Cpp.valueToCode(block, 'var_name', 1);
-            return [`${ptr_name} -> ${of}`, 1];
+            return [`*${var_name}`, 1];
         };
 
         // define variable
