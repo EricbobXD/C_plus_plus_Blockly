@@ -1829,51 +1829,149 @@
             return [code, 1];
         }
         // set
-
         Blockly.Cpp['set_insert'] = function(block) {
-            var set_name = block.getFieldValue('set_name') || '';
-            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             return `${set_name}.insert(${value});\n`;
         }
-
+        
+        Blockly.Cpp['set_insert_range'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var array = Blockly.Cpp.valueToCode(block, 'array', 1);
+            if (array.startsWith('(') && value.endsWith(')')) {
+                array = array.slice(1, -1);
+            }
+            return `${set_name}.insert(${array});\n`;
+        }
+        
         Blockly.Cpp['set_erase'] = function(block) {
-            var set_name = block.getFieldValue('set_name') || '';
-            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
-            if (value.startsWith('(') && value.endsWith(')')) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             return `${set_name}.erase(${value});\n`;
         }
-
-        Blockly.Cpp['set_begin'] = function(block) {
-            var set_name = block.getFieldValue('set_name') || '';
-            var code = set_name + '.begin()';
-            return [code, 1];
+        
+        Blockly.Cpp['set_extract'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+             if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${set_name}.extract(${value});`, 1];
         }
-
-        Blockly.Cpp['set_end'] = function(block) {
-            var set_name = block.getFieldValue('set_name') || '';
-            var code = set_name + 'end()';
-            return [code, 1];
+        
+        Blockly.Cpp['set_merge'] = function(block) {
+            var set_name1 = block.getFieldValue('set_name1');
+            var set_name2 = block.getFieldValue('set_name2');
+            return `${set_name1}.merge(${set_name2};`;
+        };
+        
+        Blockly.Cpp['set_swap'] = function(block) {
+            var set_name1 = block.getFieldValue('set_name1');
+            var set_name2 = block.getFieldValue('set_name2');
+            return `${set_name1}.swap(${set_name2};`;
+        };
+        
+        
+        
+        Blockly.Cpp['set_clear'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            return set_name + ".clear();";
+        };
+        
+        Blockly.Cpp['set_size'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            return [`${set_name}.size();`, 1];
         }
-
+        
         Blockly.Cpp['set_empty'] = function(block) {
             var set_name = block.getFieldValue('set_name');
-            var code = set_name + ".empty\n";
-            return [code, 1];
+            return [`${set_name}.empty();`, 1];
         }
-
+        
+        
+        Blockly.Cpp['set_max_size'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            return [`${set_name}.max_size();`, 1];
+        }
+        
+        Blockly.Cpp['set_count'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${set_name}.count(${value})`, 1];
+        }
+        
         Blockly.Cpp['set_find'] = function(block) {
             var set_name = block.getFieldValue('set_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            var code = `${set_name}.find(${value})\n`;
-            return [code, 1];
+            return [`${set_name}.find(${value})`, 1];
+        }
+        
+        Blockly.Cpp['set_contains'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${set_name}.contains(${value})`, 1];
+        }
+        
+        Blockly.Cpp['set_equal_range'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${set_name}.equal_range(${value})`, 1];
+        }
+        
+        Blockly.Cpp['set_lower_bound'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${set_name}.lower_bound(${value})`, 1];
+        }
+        
+        Blockly.Cpp['set_upper_bound'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${set_name}.upper_bound(${value})`, 1];
+        }
+        
+        Blockly.Cpp['set_begin'] = function(block) {
+            var set_name = block.getFieldValue('set_name') || '';
+            return [`${set_name}.begin();`, 1];
+        }
+        
+        Blockly.Cpp['set_end'] = function(block) {
+            var set_name = block.getFieldValue('set_name') || '';
+            return [`${set_name}.end();`, 1];
+        }
+        
+        Blockly.Cpp['set_rbegin'] = function(block) {
+            var set_name = block.getFieldValue('set_name') || '';
+            return [`${set_name}.rbegin();`, 1];
+        }
+        
+        Blockly.Cpp['set_rend'] = function(block) {
+            var set_name = block.getFieldValue('set_name') || '';
+            return [`${set_name}.rend();`, 1];
         }
 
         // algorithm
