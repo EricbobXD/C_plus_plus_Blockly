@@ -103,7 +103,7 @@
                 if (!this.elifCount_ && !this.hasElse_) {
                     return null;
                 }
-                const container = Blockly.utils.xml.createElement('mutation');
+                const container = Blockly.utils.xml.defineElement('mutation');
                 container.setAttribute('elifCount', this.elifCount_);
                 container.setAttribute('hasElse', this.hasElse_);
                 return container;
@@ -276,7 +276,7 @@
 
             mutationToDom: function() {
                 if (!this.caseCount_) return null;
-                const container = Blockly.utils.xml.createElement('mutation');
+                const container = Blockly.utils.xml.defineElement('mutation');
                 container.setAttribute('caseCount', this.caseCount_);
                 return container;
             },
@@ -390,7 +390,7 @@
                 this.updateShape_();
             },
             mutationToDom: function() {
-                const container = document.createElement('mutation');
+                const container = document.defineElement('mutation');
                 container.setAttribute('items', this.itemCount_);
                 container.setAttribute('operator', this.operator_);
                 return container;
@@ -477,7 +477,7 @@
                 this.updateShape_();
             },
             mutationToDom: function() {
-                const container = document.createElement('mutation');
+                const container = document.defineElement('mutation');
                 container.setAttribute('items', this.itemCount_);
                 container.setAttribute('operator', this.operator_);
                 return container;
@@ -553,7 +553,7 @@
             }
         };
 
-        function createMathOperatorBlock(type, operatorSymbol) {
+        function defineMathOperatorBlock(type, operatorSymbol) {
             Blockly.Blocks[type] = Object.assign({}, Blockly.Blocks['math_generic'], {
                 init: function() {
                     Blockly.Blocks['math_generic'].init.call(this);
@@ -562,7 +562,7 @@
             });
         }
 
-        function createStringOperatorBlock(type, operatorSymbol) {
+        function defineStringOperatorBlock(type, operatorSymbol) {
             Blockly.Blocks[type] = Object.assign({}, Blockly.Blocks['string_generic'], {
                 init: function() {
                     Blockly.Blocks['string_generic'].init.call(this);
@@ -571,16 +571,16 @@
             });
         }
 
-        createMathOperatorBlock('math_plus', '+');
-        createMathOperatorBlock('math_multiply', '*');
-        createMathOperatorBlock('math_percent', '%');
-        createMathOperatorBlock('math_divide', '/');
-        createMathOperatorBlock('math_subtract', '-');
+        defineMathOperatorBlock('math_plus', '+');
+        defineMathOperatorBlock('math_multiply', '*');
+        defineMathOperatorBlock('math_percent', '%');
+        defineMathOperatorBlock('math_divide', '/');
+        defineMathOperatorBlock('math_subtract', '-');
 
-        createStringOperatorBlock('string_plus', '+');
-        createStringOperatorBlock('string_commas', ',');
-        createStringOperatorBlock('string_cin', '>>');
-        createStringOperatorBlock('string_cout', '<<');
+        defineStringOperatorBlock('string_plus', '+');
+        defineStringOperatorBlock('string_commas', ',');
+        defineStringOperatorBlock('string_cin', '>>');
+        defineStringOperatorBlock('string_cout', '<<');
 
         Blockly.Cpp = Blockly.Cpp || {};
 
@@ -657,7 +657,7 @@
         }
 
         // struct
-        Blockly.Cpp['def_struct'] = function(block) {
+        Blockly.Cpp['define_struct'] = function(block) {
             var struct_name = block.getFieldValue('struct_name');
             var def_var = Blockly.Cpp.statementToCode(block, 'def_var');
             return `struct ${struct_name} {\n${def_var}};`;
@@ -674,7 +674,7 @@
         };
 
         // class
-        Blockly.Cpp['def_class'] = function(block) {
+        Blockly.Cpp['define_class'] = function(block) {
             var class_name = block.getFieldValue('class_name');
             var public = Blockly.Cpp.statementToCode(block, 'public') || '';
             var private = Blockly.Cpp.statementToCode(block, 'private') || '';
@@ -1026,7 +1026,7 @@
             return ['nullptr', 1];
         };
 
-        Blockly.Cpp['declare_pointer'] = function(block) {
+        Blockly.Cpp['define_pointer'] = function(block) {
             var Const_ptr = block.getFieldValue('const_ptr');
             var Const_var = block.getFieldValue('const_var');
             var unsigned = block.getFieldValue('unsigned');
@@ -1058,7 +1058,7 @@
             return code;
         };
 
-        Blockly.Cpp['declare_reference'] = function(block) {
+        Blockly.Cpp['define_reference'] = function(block) {
             var Const_ptr = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
             var type = block.getFieldValue('TYPE');
@@ -1181,7 +1181,7 @@
         };
 
         // define variable
-        Blockly.Cpp['declare_variable'] = function(block) {
+        Blockly.Cpp['define_variable'] = function(block) {
             var Const = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
             var type = block.getFieldValue('TYPE');
@@ -1235,7 +1235,8 @@
 
         };
 
-        Blockly.Cpp['function_definition'] = function(block) {
+        //function
+        Blockly.Cpp['define_function'] = function(block) {
             var Type = block.getFieldValue('TYPE');
             var funcName = block.getFieldValue('funcName');
             var data = Blockly.Cpp.valueToCode(block, 'data', 1);
@@ -1254,45 +1255,7 @@
             return `${Type} ${funcName}(${data}) {\n${content}  return ${expression};\n}\n`;
         };
 
-        Blockly.Cpp['function_definition_void'] = function(block) {
-            var funcName = block.getFieldValue('funcName');
-            var data = Blockly.Cpp.valueToCode(block, 'data', 1);
-            var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
-            var expression = block.getFieldValue('expression');
-            if (data.startsWith('(') && data.endsWith(')')) {
-                data = data.slice(1, -1);
-            }
-            if (content.startsWith('(') && content.endsWith(')')) {
-                content = content.slice(1, -1);
-            }
-
-            if (expression === 'no') {
-                return `void ${funcName}(${data}) {\n${content}\n}\n`;
-            } else {
-                return `void ${funcName}(${data}) {\n${content}  return;\n}\n`;
-            }
-        };
-
-        Blockly.Cpp['def_fun'] = function(block) {
-            var Type = block.getFieldValue('TYPE');
-            var funcName = block.getFieldValue('funcName');
-            var data = Blockly.Cpp.valueToCode(block, 'data', 1);
-            var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
-            var expression = Blockly.Cpp.valueToCode(block, 'expression', 1);
-            if (data.startsWith('(') && data.endsWith(')')) {
-                data = data.slice(1, -1);
-            }
-            if (content.startsWith('(') && content.endsWith(')')) {
-                content = content.slice(1, -1);
-            }
-            if (expression.startsWith('(') && expression.endsWith(')')) {
-                expression = expression.slice(1, -1);
-            }
-
-            return `${Type} ${funcName}(${data}) {\n${content}  return ${expression};\n}\n`;
-        };
-
-        Blockly.Cpp['def_fun_void'] = function(block) {
+        Blockly.Cpp['define_function_void'] = function(block) {
             var funcName = block.getFieldValue('funcName');
             var data = Blockly.Cpp.valueToCode(block, 'data', 1);
             var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
@@ -1640,7 +1603,7 @@
         }
 
         // array
-        Blockly.Cpp['create_array'] = function(block) {
+        Blockly.Cpp['define_array'] = function(block) {
             var type = block.getFieldValue('TYPE');
             var array_name = block.getFieldValue('array_name');
             var size = Blockly.Cpp.valueToCode(block, 'size', 1) || '';
@@ -1670,7 +1633,7 @@
             return [`{${content}}`, 1];
         }
 
-        Blockly.Cpp['array[i]'] = function(block) {
+        Blockly.Cpp['array_operate[]'] = function(block) {
             var array_name = block.getFieldValue('array_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
             if (pos.startsWith('(') && pos.endsWith(')')) {
@@ -1681,7 +1644,7 @@
         }
 
         // map
-        Blockly.Cpp['create_map'] = function(block) {
+        Blockly.Cpp['define_map'] = function(block) {
             var type1 = block.getFieldValue('TYPE1');
             var type2 = block.getFieldValue('TYPE2');
             var map_name = block.getFieldValue('map_name');
@@ -1789,7 +1752,7 @@
 
 
         // pair
-        Blockly.Cpp['create_pair'] = function(block) {
+        Blockly.Cpp['define_pair'] = function(block) {
             var type1 = block.getFieldValue('TYPE1');
             var type2 = block.getFieldValue('TYPE2');
             var pair_name = block.getFieldValue('pair_name');
@@ -2646,7 +2609,7 @@
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('size', this.getFieldValue('size'));
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
@@ -2831,7 +2794,7 @@
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
         return container;
@@ -2988,7 +2951,7 @@
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
         return container;
@@ -3166,7 +3129,7 @@ Blockly.Blocks['define_deque'] = {
     
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('size', this.getFieldValue('size'));
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
@@ -3367,7 +3330,7 @@ Blockly.Blocks['deque_assign'] = {
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('count', this.getFieldValue('count'));
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
@@ -3513,7 +3476,7 @@ Blockly.Blocks['deque_assign'] = {
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
         return container;
@@ -3670,7 +3633,7 @@ Blockly.Blocks['deque_assign'] = {
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
         return container;
@@ -3839,7 +3802,7 @@ Blockly.Blocks['deque_assign'] = {
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
         return container;
@@ -4007,7 +3970,7 @@ Blockly.Blocks['deque_assign'] = {
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
         return container;
@@ -4180,7 +4143,7 @@ Blockly.Blocks['deque_assign'] = {
 
     // 儲存積木狀態
     mutationToDom: function() {
-        var container = document.createElement('mutation');
+        var container = document.defineElement('mutation');
         container.setAttribute('count', this.getFieldValue('count'));
         container.setAttribute('array', this.getFieldValue('array'));
         container.setAttribute('it', this.getFieldValue('it'));
