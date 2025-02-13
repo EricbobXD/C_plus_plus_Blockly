@@ -1368,7 +1368,7 @@
                     "message0": "vector 在 %1 新增 %2 在最後一個(只能輸入單個)",
                     "args0": [{
                             "type": "field_input",
-                            "name": "vec_name"
+                            "name": "vector_name"
                         },
                         {
                             "type": "input_value",
@@ -1378,108 +1378,9 @@
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "colour": "#3d7fd6",
+                    "colour": "#dde3b0",
                     "tooltip": "新增元素至 vector 的尾端，必要時會進行記憶體組態。",
                     "helpUrl": ""
-                },
-                { //vector pop back
-                    "type": "vector_pop_back",
-                    "message0": "vector 在 %1 刪除最後一個",
-                    "args0": [{
-                        "type": "field_input",
-                        "name": "vec_name"
-                    }, ],
-                    "inputsInline": true,
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": "#3d7fd6",
-                    "tooltip": "刪除 vector 最尾端的元素。",
-                    "helpUrl": ""
-                },
-                { //vector clear
-                    "type": "vector_clear",
-                    "message0": "vector 把 %1 的元素全部清除",
-                    "args0": [{
-                        "type": "field_input",
-                        "name": "vec_name"
-                    }, ],
-                    "inputsInline": true,
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": "#3d7fd6",
-                    "tooltip": "清空所有元素。",
-                    "helpUrl": ""
-                },
-                { //vector size
-                    "type": "vector_size",
-                    "message0": "vector %1 的陣列大小",
-                    "args0": [{
-                        "type": "field_input",
-                        "name": "vec_name"
-                    }],
-                    "inputsInline": true,
-                    "output": null,
-                    "colour": "#3d7fd6",
-                    "tooltip": "取得 vector 目前持有的元素個數。",
-                    "helpUrl": ""
-                },
-                { //vec empty
-                    "type": "vector_empty",
-                    "message0": "判斷vector %1 是否為空",
-                    "args0": [{
-                        "type": "field_input",
-                        "name": "vec_name"
-                    }],
-                    "colour": "#3d7fd6",
-                    "output": null,
-                    "tooltip": "如果 vector 內部為空，則傳回 true 值。",
-                    "helpUrl": ""
-                },
-                { //vector insert
-                    "type": "vector_insert",
-                    "message0": "vector %1 在 %2 位置插入 %3",
-                    "args0": [{
-                            "type": "field_input",
-                            "name": "vec_name"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "pos"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "value"
-                        }
-                    ],
-                    "colour": "#3d7fd6",
-                    "inputsInline": true,
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "插入一個或多個元素至 vector 內的任意位置。",
-                    "helpurl": ""
-                },
-                { //vector erase
-                    "type": "vector_erase",
-                    "message0": "vector %1 在 %2 位置刪除 %3",
-                    "args0": [{
-                            "type": "field_input",
-                            "name": "vec_name"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "pos"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "value"
-                        }
-                    ],
-                    "colour": "#3d7fd6",
-                    "inputsInline": true,
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "tooltip": "刪除 vector 中一個或多個元素。",
-                    "helpurl": ""
                 },
                 { //emplace back
                     "type": "vector_emplace_back",
@@ -1498,71 +1399,324 @@
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "colour": "#3d7fd6",
+                    "colour": "#dde3b0",
                     "tooltip": "直接在vector內建立物件",
                     "helpUrl": ""
                 },
-                { //vec begin
-                    "type": "vec_begin",
-                    "message0": "陣列 %1 (begin)",
+                { //vector append_range
+                    "type": "vector_append_range",
+                    "message0": "在 vector 名稱: %1 加陣列 %2 到最後 (append)",
                     "args0": [{
                             "type": "field_input",
-                            "name": "vec_name",
+                            "name": "vector_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到vector最後",
+                    "helpurl": ""
+                },
+                { //vector pop back
+                    "type": "vector_pop_back",
+                    "message0": "vector 在 %1 刪除最後一個",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "vector_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "刪除 vector 最尾端的元素。",
+                    "helpUrl": ""
+                },
+                { //vector insert
+                    "type": "vector_insert",
+                    "message0": "vector %1 在 %2 位置插入 %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "插入一個或多個元素至  內的任意位置。",
+                    "helpurl": ""
+                },
+                { //vector insert_range
+                    "type": "vector_insert_range",
+                    "message0": "在 vector 名稱: %1 在位置: %2 加陣列 %3 (insert)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "array"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到vector最後",
+                    "helpurl": ""
+                },
+                { //vector erase
+                    "type": "vector_erase",
+                    "message0": "vector %1 在 %2 位置刪除 %3",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "刪除 vector 中一個或多個元素。",
+                    "helpurl": ""
+                },
+                { //vector swap
+                    "type": "vector_swap",
+                    "message0": "交換 vector 名稱: %1, vector 名稱: %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "vector_name2"
+                        }
+                    ],
+                    "colour": "#dde3b0",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把兩個vector中的元素交換",
+                    "helpurl": ""
+                },
+                
+                //read
+                {//operate[]
+                    "type": "vector_operate[]",
+                    "message0": "vector 讀取名稱%1 第 %2 個元素",
+                    "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "vector_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "pos"
+                        },
+                    ],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "讀取vector[i]。",
+                    "helpurl": ""
+                },
+                {//vector_front
+                    "type": "vector_front",
+                    "message0": "vector 讀取名稱%1 第一個元素",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        }],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "讀取vector第一個元素。",
+                    "helpurl": ""
+                },
+                {//vector_back
+                    "type": "vector_back",
+                    "message0": "vector 讀取名稱%1 最後一個元素",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        }],
+                    "colour": "#dde3b0",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "讀取vector最後一個元素。",
+                    "helpurl": ""
+                },
+                
+                // condition
+                { //vector clear
+                    "type": "vector_clear",
+                    "message0": "把 %1 的元素全部清除",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "vector_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "清空所有元素。",
+                    "helpUrl": ""
+                },
+                { //vector size
+                    "type": "vector_size",
+                    "message0": "%1 的陣列大小",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "vector_name"
+                    }],
+                    "inputsInline": true,
+                    "output": null,
+                    "colour": "#dde3b0",
+                    "tooltip": "取得 vector 目前持有的元素個數。",
+                    "helpUrl": ""
+                },
+                { //vector empty
+                    "type": "vector_empty",
+                    "message0": "判斷vector %1 是否為空",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "vector_name"
+                    }],
+                    "colour": "#dde3b0",
+                    "output": null,
+                    "tooltip": "如果 vector 內部為空，則傳回 true 值。",
+                    "helpUrl": ""
+                },
+                { //vector reserve
+                    "type": "vector_reserve",
+                    "message0": "vector 名稱: %1 預設大小 %2",
+                    "args0": [
+                        {
+                            "type": "field_input",
+                            "name": "vector_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "size"
+                        }
+                    ],
+                    "colour": "#dde3b0",
+                    "output": null,
+                    "tooltip": "翻轉vector陣列",
+                    "helpUrl": ""
+                },
+                { //vector capacity
+                    "type": "vector_capacity",
+                    "message0": "vector 名稱: %1 內存容量",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        }],
+                    "colour": "#dde3b0",
+                    "output": null,
+                    "tooltip": "vector內存容量",
+                    "helpUrl": ""
+                },
+                { //vector max_size
+                    "type": "vector_max_size",
+                    "message0": "vector 名稱: %1 最大元素數量",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name"
+                        }],
+                    "colour": "#dde3b0",
+                    "output": null,
+                    "tooltip": "球vector最大元素數量",
+                    "helpUrl": ""
+                },
+                
+                
+                //iterator
+                { //vector begin
+                    "type": "vector_begin",
+                    "message0": "vector 陣列 %1 (begin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "vector_name",
                             "check": "String"
                         }
-
+                
                     ],
                     "colour": "#778899",
                     "output": null,
                     "tooltip": "回傳一個迭代器，它指向 vector 第一個元素。",
                     "helpUrl": ""
                 },
-                { //vec end
-                    "type": "vec_end",
-                    "message0": "陣列 %1 (end)",
+                { //vector end
+                    "type": "vector_end",
+                    "message0": "vector 陣列 %1 (end)",
                     "args0": [{
                             "type": "field_input",
-                            "name": "vec_name",
+                            "name": "vector_name",
                             "check": "String"
                         }
-
+                
                     ],
                     "colour": "#778899",
                     "output": null,
                     "tooltip": "回傳一個反向迭代器，它指向 vector 最尾端元素的下一個位置",
                     "helpUrl": ""
                 },
-                { //vec rbegin
-                    "type": "vec_rbegin",
-                    "message0": "陣列 %1 (rbegin)",
+                { //vector rbegin
+                    "type": "vector_rbegin",
+                    "message0": "vector 陣列 %1 (rbegin)",
                     "args0": [{
                             "type": "field_input",
-                            "name": "vec_name",
+                            "name": "vector_name",
                             "check": "String"
                         }
-
+                
                     ],
                     "colour": "#778899",
                     "output": null,
                     "tooltip": "回傳一個迭代器，它指向 vector 最尾端元素的。",
                     "helpUrl": ""
                 },
-                { //vec rend
-                    "type": "vec_rend",
-                    "message0": "陣列 %1 (rend)",
+                { //vector rend
+                    "type": "vector_rend",
+                    "message0": "vector 陣列 %1 (rend)",
                     "args0": [{
                             "type": "field_input",
-                            "name": "vec_name",
+                            "name": "vector_name",
                             "check": "String"
                         }
-
+                
                     ],
                     "colour": "#778899",
                     "output": null,
                     "tooltip": "回傳一個迭代器，它指向 vector 的第一個元素的前一個位置。",
                     "helpUrl": ""
                 },
-
                 //map
                 { //map insert
                     "type": "map_insert",
