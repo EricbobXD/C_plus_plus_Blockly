@@ -1162,6 +1162,10 @@
                             "type": "ptr_of"
                         },
                         {
+                            "kind": "block",
+                            "type": "ptr_to"
+                        },
+                        {
                             "kind": "label",
                             "text": "reference"
                         },
