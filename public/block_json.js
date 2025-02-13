@@ -132,7 +132,7 @@
 
                 //struct
                 { //def struct
-                    "type": "def_struct",
+                    "type": "define_struct",
                     "message0": "結構 名字: %1 ",
                     "args0": [{
                         "type": "field_input",
@@ -172,7 +172,7 @@
 
                 //class
                 { //class
-                    "type": "def_class",
+                    "type": "define_class",
                     "message0": "類別 名子: %1",
                     "args0": [{
                         "type": "field_input",
@@ -440,78 +440,8 @@
                 },
 
                 //function
-                { //def function void
-                    "type": "function_definition_void",
-                    "message0": "函式型態: void 名稱 %1 變數 %2",
-                    "args0": [{
-                            "type": "field_input",
-                            "name": "funcName",
-                            "text": "MyFunction"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "data",
-                        }
-                    ],
-                    "message1": "%1 回傳值%2",
-                    "args1": [{
-                            "type": "input_statement",
-                            "name": "DO"
-                        },
-                        {
-                            "type": "field_dropdown",
-                            "name": "expression",
-                            "options": [
-                                ["回傳", "return"],
-                                ["不回傳", "no"]
-                            ]
-                        }
-                    ],
-                    "colour": "#db00db",
-                    "tooltip": "定義一個沒有回傳值的函數",
-                    "helpUrl": ""
-                },
-                { //def function void
-                    "type": "function_definition",
-                    "message0": "函式型態: %1 名稱 %2 變數%3",
-                    "args0": [{
-                            "type": "field_dropdown",
-                            "name": "TYPE",
-                            "options": [
-                                ["整數", "int"],
-                                ["浮點數", "float"],
-                                ["雙重浮點數", "double"],
-                                ["字元", "char"],
-                                ["字串", "string"]
-                            ]
-                        },
-                        {
-                            "type": "field_input",
-                            "name": "funcName",
-                            "text": "MyFunction2"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "data",
-                        }
-                    ],
-                    "message1": "%1 回傳值 %2",
-                    "args1": [{
-                            "type": "input_statement",
-                            "name": "DO"
-                        },
-                        {
-                            "type": "input_value",
-                            "name": "expression"
-                        }
-                    ],
-                    "colour": "#db00db",
-                    "tooltip": "定義一個有回傳值的函數",
-                    "helpUrl": ""
-                },
-                //function
                 { //def_fun_void
-                    "type": "def_fun_void",
+                    "type": "define_function_void",
                     "message0": "函式型態: void 名稱 %1 變數 %2",
                     "args0": [{
                             "type": "field_input",
@@ -544,7 +474,7 @@
                     "helpUrl": ""
                 },
                 { //def_fun
-                    "type": "def_fun",
+                    "type": "define_function",
                     "message0": "函式型態: %1 名稱 %2 變數%3",
                     "args0": [{
                             "type": "field_dropdown",
@@ -633,7 +563,7 @@
 
                 //define variable
                 { //def variable
-                    "type": "declare_variable",
+                    "type": "define_variable",
                     "message0": "宣告 %1 %2 %3 變數名稱: %4 = %5",
                     "args0": [{
                             "type": "field_dropdown",
@@ -879,8 +809,8 @@
                     "tooltip": "空指標的常值",
                     "helpUrl": ""
                 },
-                { //declare_pointer
-                    "type": "declare_pointer",
+                { //define_pointer
+                    "type": "define_pointer",
                     "message0": "宣告 %1 %2 %3 %4指標名稱: %5 = %6",
                     "args0": [{
                             "type": "field_dropdown",
@@ -987,7 +917,7 @@
                     "helpurl": ""
                 },
                 { //declart_reference
-                    "type": "declare_reference",
+                    "type": "define_reference",
                     "message0": "宣告 %1 %2 %3 位置名稱: %4 = %5",
                     "args0": [{
                             "type": "field_dropdown",
@@ -1945,14 +1875,14 @@
                     "output": null,
                     "inputsInline": true,
                     "colour": "#49a34b",
-                    "tooltip": "create new pair has key and value",
+                    "tooltip": "define new pair has key and value",
                     "helpUrl": ""
                 },
 
 
                 //array
-                { //create array
-                    "type": "create_array",
+                { //define array
+                    "type": "define_array",
                     "message0": "資料型態 %1 , 陣列名稱 %2 , 大小 : %3 , 陣列內容 %4 (可加可不加)",
                     "args0": [{
                             "type": "field_dropdown",
@@ -2015,8 +1945,8 @@
                     "tooltip": "矩陣內容",
                     "helpurl": ""
                 },
-                { //array[i]
-                    "type": "array[i]",
+                { //array_operate[]
+                    "type": "array_operate[]",
                     "message0": "陣列 %1 [%2]",
                     "args0": [{
                             "type": "field_input",
