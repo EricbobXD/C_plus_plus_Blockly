@@ -1648,110 +1648,171 @@
             return [code, 1];
         }
 
-        // map
-        Blockly.Cpp['define_map'] = function(block) {
-            var type1 = block.getFieldValue('TYPE1');
-            var type2 = block.getFieldValue('TYPE2');
-            var map_name = block.getFieldValue('map_name');
-            var content = Blockly.Cpp.valueToCode(block, 'content', 1);
-            var code = `map<${type1}, ${type2}>${map_name}\n`;
-            if (content) {
-                if (content.startsWith('(') && content.endsWith(')')) {
-                    content = content.slice(1, -1);
-                }
-                code += `(${content})`;
-            }
-            code += ';\n';
-            return code;
-        }
-
         Blockly.Cpp['map_insert'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            var first = Blockly.Cpp.valueToCode(block, 'first', 1) || '';
-            var second = Blockly.Cpp.valueToCode(block, 'second', 1) || '';
-            if (first.startsWith('(') && first.endsWith(')')) {
-                first = first.slice(1, -1);
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
             }
-            if (second.startsWith('(') && second.endsWith(')')) {
-                second = second.slice(1, -1);
-            }
-            return `${map_name}.insert({${first}, ${second}});\n`;
+            return `${map_name}.insert(${value});\n`;
         }
-
-        Blockly.Cpp['map[i]'] = function(block) {
+        
+        Blockly.Cpp['map_insert_range'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            var map_key = block.getFieldValue('map_key');
-            var map_value = block.getFieldValue('map_value');
-            return `${map_name}[${map_key}] = ${map_value}\n`;
+            var array = Blockly.Cpp.valueToCode(block, 'array', 1);
+            if (array.startsWith('(') && value.endsWith(')')) {
+                array = array.slice(1, -1);
+            }
+            return `${map_name}.insert(${array});\n`;
         }
-
-        Blockly.Cpp['map_begin'] = function(block) {
-            var map_name = block.getFieldValue('map_name') || '';
-            var code = map_name + '.begin()\n';
-            return [code, 1];
+        
+        Blockly.Cpp['map_erase'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+             if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return `${map_name}.erase(${value});\n`;
         }
-
-        Blockly.Cpp['map_end'] = function(block) {
-            var map_name = block.getFieldValue('map_name') || '';
-            var code = map_name + 'end()\n';
-            return [code, 1];
+        
+        Blockly.Cpp['map_emplace'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return map_name + ".emplace(" + element + ");\n";
+        };
+        
+        
+        Blockly.Cpp['map_extract'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+             if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${map_name}.extract(${value});`, 1];
         }
-
-        Blockly.Cpp['map_rbegin'] = function(block) {
-            var map_name = block.getFieldValue('map_name') || '';
-            var code = map_name + '.rbegin()\n';
-            return [code, 1];
-        }
-
-        Blockly.Cpp['map_rend'] = function(block) {
-            var map_name = block.getFieldValue('map_name') || '';
-            var code = map_name + '.rend()\n';
-            return [code, 1];
-        }
-
+        
+        Blockly.Cpp['map_merge'] = function(block) {
+            var map_name1 = block.getFieldValue('map_name1');
+            var map_name2 = block.getFieldValue('map_name2');
+            return `${map_name1}.merge(${map_name2};\n`;
+        };
+        
+        Blockly.Cpp['map_swap'] = function(block) {
+            var map_name1 = block.getFieldValue('map_name1');
+            var map_name2 = block.getFieldValue('map_name2');
+            return `${map_name1}.swap(${map_name2};\n`;
+        };
+        
+        
+        
         Blockly.Cpp['map_clear'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            return map_name + ".clear();\n";
+            return map_name + ".clear();";
         };
-
+        
         Blockly.Cpp['map_size'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            return map_name + ".size();";
+            return [`${map_name}.size();`, 1];
         }
-
+        
         Blockly.Cpp['map_empty'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            var code = map_name + ".empty";
-            return [code, 1];
+            return [`${map_name}.empty();`, 1];
         }
-
-        Blockly.Cpp['map_first'] = function(block) {
+        
+        
+        Blockly.Cpp['map_max_size'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
-            if (key.startsWith('(') && key.endsWith(')')) {
-                key = key.slice(1, -1);
-            }
-            var code = `${map_name}[${key}].first`;
-            return [code, 1];
+            return [`${map_name}.max_size();`, 1];
         }
-
-        Blockly.Cpp['map_second'] = function(block) {
+        
+        Blockly.Cpp['map_count'] = function(block) {
             var map_name = block.getFieldValue('map_name');
-            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
-            if (key.startsWith('(') && key.endsWith(')')) {
-                key = key.slice(1, -1);
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
             }
-            var code = `${map_name}[${key}].second`;
-            return [code, 1];
+            return [`${map_name}.count(${value})`, 1];
         }
-
+        
         Blockly.Cpp['map_find'] = function(block) {
             var map_name = block.getFieldValue('map_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            var code = `${map_name}.find(${value})`;
+            return [`${map_name}.find(${value})`, 1];
+        }
+        
+        Blockly.Cpp['map_contains'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${map_name}.contains(${value})`, 1];
+        }
+        
+        Blockly.Cpp['map_equal_range'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${map_name}.equal_range(${value})`, 1];
+        }
+        
+        Blockly.Cpp['map_lower_bound'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${map_name}.lower_bound(${value})`, 1];
+        }
+        
+        Blockly.Cpp['map_upper_bound'] = function(block) {
+            var map_name = block.getFieldValue('map_name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            return [`${map_name}.upper_bound(${value})`, 1];
+        }
+        
+        Blockly.Cpp['map_begin'] = function(block) {
+            var map_name = block.getFieldValue('map_name') || '';
+            return [`${map_name}.begin();`, 1];
+        }
+        
+        Blockly.Cpp['map_end'] = function(block) {
+            var map_name = block.getFieldValue('map_name') || '';
+            return [`${map_name}.end();`, 1];
+        }
+        
+        Blockly.Cpp['map_rbegin'] = function(block) {
+            var map_name = block.getFieldValue('map_name') || '';
+            return [`${map_name}.rbegin();`, 1];
+        }
+        
+        Blockly.Cpp['map_rend'] = function(block) {
+            var map_name = block.getFieldValue('map_name') || '';
+            return [`${map_name}.rend();`, 1];
+        }
+        
+        Blockly.Cpp['make_map'] = function(block) {
+            var key = Blockly.Cpp.valueToCode(block, 'key', 1);
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1);
+            if (key.startsWith('(') && key.endsWith(')')) {
+                key = key.slice(1, -1);
+            }
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+            var code = `{${key}, ${value}}`;
             return [code, 1];
         }
 
