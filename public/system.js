@@ -423,7 +423,7 @@
                                 },
                                 {
                                     "kind": "label",
-                                    "type": "Vector 讀取元素"
+                                    "text": "Vector 讀取元素"
                                 },
                                 {
                                     "kind": "block",
@@ -439,7 +439,7 @@
                                 },
                                 {
                                     "kind": "label",
-                                    "type": "Vector 條件判斷"
+                                    "text": "Vector 條件判斷"
                                 },
                                 {
                                     "kind": "block",
