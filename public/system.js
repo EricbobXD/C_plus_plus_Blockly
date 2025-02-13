@@ -541,7 +541,7 @@
                                 },
                                 {
                                     "kind": "label",
-                                    "text": "Set 條件判斷"
+                                    "text": "Set 尋找元素"
                                 },
                                 {
                                     "kind": "block",
@@ -1082,11 +1082,11 @@
                     "colour": "#db00db",
                     "contents": [{
                             "kind": "block",
-                            "type": "function_definition_void"
+                            "type": "define_function_void"
                         },
                         {
                             "kind": "block",
-                            "type": "function_definition"
+                            "type": "define_function"
                         },
                         {
                             "kind": "block",
@@ -1125,7 +1125,7 @@
                     "colour": "#C9A200",
                     "contents": [{
                             "kind": "block",
-                            "type": "declare_variable"
+                            "type": "define_variable"
                         },
                         {
                             "kind": "block",
@@ -1147,7 +1147,7 @@
                         },
                         {
                             "kind": "block",
-                            "type": "declare_pointer"
+                            "type": "define_pointer"
                         },
                         {
                             "kind": "block",
@@ -1167,7 +1167,7 @@
                         },
                         {
                             "kind": "block",
-                            "type": "declare_reference"
+                            "type": "define_reference"
                         },
                         {
                             "kind": "block",
@@ -1189,7 +1189,7 @@
                     "colour": "#ff5757",
                     "contents": [{
                             "kind": "block",
-                            "type": "create_array"
+                            "type": "define_array"
                         },
                         {
                             "kind": "block",
@@ -1201,7 +1201,7 @@
                         },
                         {
                             "kind": "block",
-                            "type": "array[i]"
+                            "type": "array_operate[]"
                         }
                     ]
                 },
@@ -1215,7 +1215,7 @@
                         },
                         {
                             "kind": "block",
-                            "type": "def_struct"
+                            "type": "define_struct"
                         },
                         {
                             "kind": "block",
@@ -1228,7 +1228,7 @@
                         },
                         {
                             "kind": "block",
-                            "type": "def_class"
+                            "type": "define_class"
                         },
                         {
                             "kind": "block",
@@ -1240,11 +1240,11 @@
                         },
                         {
                             "kind": "block",
-                            "type": "def_fun"
+                            "type": "define_function"
                         },
                         {
                             "kind": "block",
-                            "type": "def_fun_void"
+                            "type": "define_function_void"
                         }
                     ]
                 },
