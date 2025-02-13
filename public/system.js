@@ -501,7 +501,35 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "set_insert_range"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "set_erase"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_extract"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_merge"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Set 條件判斷"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_clear"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_size"
                                 },
                                 {
                                     "kind": "block",
@@ -509,7 +537,35 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "set_max_size"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Set 條件判斷"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_count"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "set_find"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_contains"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_equal_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_lower_bound"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_upper_bound"
                                 },
                                 {
                                     "kind": "label",
@@ -522,6 +578,14 @@
                                 {
                                     "kind": "block",
                                     "type": "set_end"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_rbegin"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "set_rend"
                                 }
                             ]
                         },
