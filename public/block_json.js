@@ -1378,7 +1378,7 @@
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "tooltip": "新增元素至 vector 的尾端，必要時會進行記憶體組態。",
                     "helpUrl": ""
                 },
@@ -1399,7 +1399,7 @@
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "tooltip": "直接在vector內建立物件",
                     "helpUrl": ""
                 },
@@ -1415,7 +1415,7 @@
                             "name": "element"
                         },
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把陣列推到vector最後",
@@ -1431,7 +1431,7 @@
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "tooltip": "刪除 vector 最尾端的元素。",
                     "helpUrl": ""
                 },
@@ -1451,11 +1451,11 @@
                             "name": "value"
                         }
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "tooltip": "插入一個或多個元素至  內的任意位置。",
+                    "tooltip": "插入一個或多個元素至 vector 內的任意位置。",
                     "helpurl": ""
                 },
                 { //vector insert_range
@@ -1474,7 +1474,7 @@
                             "name": "array"
                         },
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把陣列推到vector最後",
@@ -1496,7 +1496,7 @@
                             "name": "value"
                         }
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
@@ -1515,7 +1515,7 @@
                             "name": "vector_name2"
                         }
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把兩個vector中的元素交換",
@@ -1536,7 +1536,7 @@
                             "name": "pos"
                         },
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
@@ -1550,7 +1550,7 @@
                             "type": "field_input",
                             "name": "vector_name"
                         }],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
@@ -1564,7 +1564,7 @@
                             "type": "field_input",
                             "name": "vector_name"
                         }],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
@@ -1583,7 +1583,7 @@
                     "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "tooltip": "清空所有元素。",
                     "helpUrl": ""
                 },
@@ -1596,7 +1596,7 @@
                     }],
                     "inputsInline": true,
                     "output": null,
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "tooltip": "取得 vector 目前持有的元素個數。",
                     "helpUrl": ""
                 },
@@ -1607,7 +1607,7 @@
                         "type": "field_input",
                         "name": "vector_name"
                     }],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "output": null,
                     "tooltip": "如果 vector 內部為空，則傳回 true 值。",
                     "helpUrl": ""
@@ -1625,7 +1625,7 @@
                             "name": "size"
                         }
                     ],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "output": null,
                     "tooltip": "翻轉vector陣列",
                     "helpUrl": ""
@@ -1637,7 +1637,7 @@
                             "type": "field_input",
                             "name": "vector_name"
                         }],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "output": null,
                     "tooltip": "vector內存容量",
                     "helpUrl": ""
@@ -1649,7 +1649,7 @@
                             "type": "field_input",
                             "name": "vector_name"
                         }],
-                    "colour": "#dde3b0",
+                    "colour": "#3d7fd6",
                     "output": null,
                     "tooltip": "球vector最大元素數量",
                     "helpUrl": ""
