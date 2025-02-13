@@ -2602,6 +2602,59 @@
             }
             return priority_queue_name + ".push_range(" + element + ");\n";
         };
+
+        Blockly.Cpp['char_bit'] = function() {
+            return 'CHAR_BIT';  
+        };
+        
+        Blockly.Cpp['schar_min'] = function() {
+            return 'SCHAR_MIN';  
+        };
+        
+        Blockly.Cpp['schar_max'] = function() {
+            return 'SCHAR_MAX';  
+        };
+        
+        Blockly.Cpp['uchar_max'] = function() {
+            return 'UCHAR_MAX';  
+        };
+        
+        Blockly.Cpp['char_min'] = function() {
+            return 'CHAR_MIN'; 
+        };
+        
+        Blockly.Cpp['char_max'] = function() {
+            return 'CHAR_MAX'; 
+        };
+        
+        Blockly.Cpp['mb_len_max'] = function() {
+            return 'MB_LEN_MAX'; 
+        };
+        
+        Blockly.Cpp['int_min'] = function() {
+            return 'INT_MIN';  
+        };
+        
+        Blockly.Cpp['int_max'] = function() {
+            return 'INT_MAX';  
+        };
+        
+        Blockly.Cpp['uint_max'] = function() {
+            return 'UINT_MAX';
+        };
+        
+        Blockly.Cpp['llong_min'] = function() {
+            return 'LLONG_MIN';  
+        };
+        
+        Blockly.Cpp['llong_max'] = function() {
+            return 'LLONG_MAX';  
+        };
+        
+        Blockly.Cpp['ullong_max'] = function() {
+            return 'ULLONG_MAX'; 
+        };
+
  Blockly.Blocks['define_vector'] = {  
               init: function() {
                   this.jsonInit({
