@@ -3803,5 +3803,110 @@
                     "tooltip": "把元素推到priority_queue最後",
                     "helpurl": ""
                 },
+                //climits
+                { //char_bit
+                    "type": "char_bit",
+                    "message0": "char 每個字節的位數",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "char 每個字節的位數",
+                    "helpUrl": ""
+                },
+                { //schar_min
+                    "type": "schar_min",
+                    "message0": "有正負 char 的最小值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "有正負 char 的最小值",
+                    "helpUrl": ""
+                },
+                { //schar_max
+                    "type": "schar_max",
+                    "message0": "有正負 char 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "有正負 char 的最大值",
+                    "helpUrl": ""
+                },
+                { //uchar_min
+                    "type": "uchar_min",
+                    "message0": "沒有正負 char 的最小值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "沒有正負 char 的最小值",
+                    "helpUrl": ""
+                },
+                { //uchar_max
+                    "type": "uchar_max",
+                    "message0": "沒有正負 char 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "沒有正負 char 的最大值",
+                    "helpUrl": ""
+                },
+                { //char_max
+                    "type": "char_max",
+                    "message0": "char 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "char 的最大值",
+                    "helpUrl": ""
+                },
+                { //char_min
+                    "type": "char_min",
+                    "message0": "char 的最小值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "char 的最小值",
+                    "helpUrl": ""
+                },
+                { //int_max
+                    "type": "int_max",
+                    "message0": "int 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "int 的最大值",
+                    "helpUrl": ""
+                },
+                { //uint_max
+                    "type": "uint_max",
+                    "message0": "unsigned int 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "int 的最大值",
+                    "helpUrl": ""
+                },
+                { //int_min
+                    "type": "int_min",
+                    "message0": "int 的最小值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "int 的最小值",
+                    "helpUrl": ""
+                },
+                { //llong_max
+                    "type": "llong_max",
+                    "message0": "long long 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "long long 的最大值",
+                    "helpUrl": ""
+                },
+                { //llong_min
+                    "type": "llong_min",
+                    "message0": "long long 的最小值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "long long 的最小值",
+                    "helpUrl": ""
+                },
+                { //ullong_max
+                    "type": "ullong_max",
+                    "message0": "unsigned long long 的最大值",
+                    "colour": "#000000",
+                    "output": null,
+                    "tooltip": "long long 的最大值",
+                    "helpUrl": ""
+                }
             ]
         );
