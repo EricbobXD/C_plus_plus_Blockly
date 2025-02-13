@@ -1093,6 +1093,72 @@
                         },
                         {
                             "kind": "category",
+                            "name": "climits",
+                            "colour": "#e67e22",
+                            "contents": [{
+                                    "kind": "label",
+                                    "text": "字元類型"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "char_bit"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "schar_min"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "schar_max"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "uchar_max"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "char_min"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "char_max"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "整數類型"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "int_min"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "int_max"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "uint_max"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "長整數類型"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "llong_min"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "llong_max"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "ullong_max"
+                                }
+                            ]
+                        },
+                        {
+                            "kind": "category",
                             "name": "math",
                             "colour": "#2980b9",
                             "contents": [{
