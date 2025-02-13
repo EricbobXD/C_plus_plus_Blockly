@@ -509,6 +509,10 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "set_emplace"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "set_extract"
                                 },
                                 {
@@ -683,10 +687,6 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "stack_top"
-                                },
-                                {
-                                    "kind": "block",
                                     "type": "stack_push"
                                 },
                                 {
@@ -703,12 +703,32 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "stack_size"
+                                    "type": "stack_emplace"
                                 },
                                 {
                                     "kind": "block",
                                     "type": "stack_swap"
-                                }
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Stack 讀取元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "stack_top"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Stack 條件判斷"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "stack_size"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "stack_empty"
+                                },
                             ]
                         },
                         {
@@ -718,10 +738,6 @@
                             "contents": [{
                                     "kind": "block",
                                     "type": "define_queue"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_front"
                                 },
                                 {
                                     "kind": "block",
@@ -737,16 +753,32 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "queue_emplace"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "queue_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Queue 讀取元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "queue_front"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Queue 條件判斷"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "queue_empty"
                                 },
                                 {
                                     "kind": "block",
                                     "type": "queue_size"
                                 },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_swap"
-                                }
                             ]
                         },
                         {
@@ -873,10 +905,6 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "priority_queue_front"
-                                },
-                                {
-                                    "kind": "block",
                                     "type": "priority_queue_push"
                                 },
                                 {
@@ -889,15 +917,31 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "priority_queue_emplace"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "priority_queue_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Priority_queue 讀取元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "priority_queue_front"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Priority_queue 判斷條件"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "priority_queue_empty"
                                 },
                                 {
                                     "kind": "block",
                                     "type": "priority_queue_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_swap"
                                 }
                             ]
                         },
