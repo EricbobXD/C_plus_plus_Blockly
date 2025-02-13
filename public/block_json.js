@@ -2209,6 +2209,24 @@
                     "tooltip": "刪除 set 中一個或多個元素。",
                     "helpurl": ""
                 },
+                { //set emplace
+                    "type": "set_emplace",
+                    "message0": "在 set 名稱: %1 加超過一個元素 %2 在最後一個(emplace)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到set最後",
+                    "helpurl": ""
+                },
                 { //set extract
                     "type": "set_extract",
                     "message0": "set %1 提取 %2",
@@ -2723,6 +2741,24 @@
                     "tooltip": "把元素推到stack最後",
                     "helpurl": ""
                 },
+                { //stack emplace
+                    "type": "stack_emplace",
+                    "message0": "在 stack 名稱: %1 加超過一個元素 %2 在最後一個(emplace)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "stack_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#b53c2f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到stack最後",
+                    "helpurl": ""
+                },
                 { //stack top
                     "type": "stack_top",
                     "message0": "在 stack 名稱: %1 取出最後一個元素()",
@@ -2805,6 +2841,24 @@
                         "name": "queue_name"
                     }],
                     "colour": "#cf5f87",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到queue最後",
+                    "helpurl": ""
+                },
+                { //queue emplace
+                    "type": "queue_emplace",
+                    "message0": "在 queue 名稱: %1 加超過一個元素 %2 在最後一個(emplace)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#b53c2f",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到queue最後",
@@ -3295,6 +3349,24 @@
                         "name": "priority_queue_name"
                     }],
                     "colour": "#d6af0f",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把元素推到priority_queue最後",
+                    "helpurl": ""
+                },
+                { //priority_queue emplace
+                    "type": "priority_queue_emplace",
+                    "message0": "在 priority_queue 名稱: %1 加超過一個元素 %2 在最後一個(emplace)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "priority_queue_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "element"
+                        },
+                    ],
+                    "colour": "#b53c2f",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "把元素推到priority_queue最後",
