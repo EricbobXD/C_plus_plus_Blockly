@@ -471,7 +471,7 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "vecttor_begin"
+                                    "type": "vector_begin"
                                 },
                                 {
                                     "kind": "block",
