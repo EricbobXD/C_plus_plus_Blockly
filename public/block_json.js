@@ -2224,9 +2224,28 @@
                         }
                     ],
                     "colour": "#f9943b",
+                    "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "tooltip": "插入元素",
+                    "tooltip": "插入一個或多個元素至 set 內的任意位置。",
+                    "helpurl": ""
+                },
+                { //set insert_range
+                    "type": "set_insert_range",
+                    "message0": "在 set 名稱: %1 加陣列 %2 (insert)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "array"
+                        },
+                    ],
+                    "colour": "#f9943b",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把陣列推到set最後",
                     "helpurl": ""
                 },
                 { //set erase
@@ -2242,39 +2261,95 @@
                         }
                     ],
                     "colour": "#f9943b",
+                    "inputsInline": true,
                     "previousStatement": null,
                     "nextStatement": null,
-                    "tooltip": "刪除元素",
+                    "tooltip": "刪除 set 中一個或多個元素。",
                     "helpurl": ""
                 },
-                { //set begin
-                    "type": "set_begin",
-                    "message0": "set %1 (begin)",
+                { //set extract
+                    "type": "set_extract",
+                    "message0": "set %1 提取 %2",
                     "args0": [{
                             "type": "field_input",
-                            "name": "set_name",
-                            "check": "String"
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
                         }
-
                     ],
-                    "colour": "#778899",
-                    "output": null,
-                    "tooltip": "返回容器開始處的迭代器",
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "set 提取元素",
+                    "helpurl": ""
+                },
+                { //set merge
+                    "type": "set_merge",
+                    "message0": "set1: %1 合併 set2: %2, 並set2 刪除 set1 有的元素",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "set_name2"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "set1合併set2, 並set2 刪除 set1 有的元素",
+                    "helpurl": ""
+                },
+                { //set swap
+                    "type": "set_swap",
+                    "message0": "交換 set 名稱: %1, set 名稱: %2",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "set_name2"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "把兩個set中的元素交換",
+                    "helpurl": ""
+                },
+                
+                // condition
+                { //set clear
+                    "type": "set_clear",
+                    "message0": "把 %1 的元素全部清除",
+                    "args0": [{
+                        "type": "field_input",
+                        "name": "set_name"
+                    }, ],
+                    "inputsInline": true,
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": "#f9943b",
+                    "tooltip": "清空所有元素。",
                     "helpUrl": ""
                 },
-                { //set end
-                    "type": "set_end",
-                    "message0": "set %1 (end)",
+                { //set size
+                    "type": "set_size",
+                    "message0": "%1 的陣列大小",
                     "args0": [{
-                            "type": "field_input",
-                            "name": "set_name",
-                            "check": "String"
-                        }
-
-                    ],
-                    "colour": "#778899",
+                        "type": "field_input",
+                        "name": "set_name"
+                    }],
+                    "inputsInline": true,
                     "output": null,
-                    "tooltip": "返回容器結束處的迭代器",
+                    "colour": "#f9943b",
+                    "tooltip": "取得 set 目前持有的元素個數。",
                     "helpUrl": ""
                 },
                 { //set empty
@@ -2286,12 +2361,26 @@
                     }],
                     "colour": "#f9943b",
                     "output": null,
-                    "tooltip": "檢查容器是否為空",
+                    "tooltip": "如果 set 內部為空，則傳回 true 值。",
                     "helpUrl": ""
                 },
-                { //set find
-                    "type": "set_find",
-                    "message0": "set: %1 中尋找有沒有 %2 (key)值",
+                { //set max_size
+                    "type": "set_max_size",
+                    "message0": "set 名稱: %1 最大元素數量",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        }],
+                    "colour": "#f9943b",
+                    "output": null,
+                    "tooltip": "球set最大元素數量",
+                    "helpUrl": ""
+                },
+                
+                //lookup
+                {//set count
+                    "type": "set_count",
+                    "message0": "set %1 尋找是否有元素: %2(返回 0, 1)",
                     "args0": [{
                             "type": "field_input",
                             "name": "set_name"
@@ -2302,8 +2391,161 @@
                         }
                     ],
                     "colour": "#f9943b",
+                    "inputsInline": true,
                     "output": null,
-                    "tooltip": "搜到特定鍵值的元素",
+                    "tooltip": "set尋找是否有元素(返回 0, 1)",
+                    "helpurl": ""
+                },
+                {//set find
+                    "type": "set_find",
+                    "message0": "set %1 尋找是否有元素: %2 (返回迭代器)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "set尋找是否有元素(返回迭代器)",
+                    "helpurl": ""
+                },
+                {//set contains
+                    "type": "set_contains",
+                    "message0": "set %1 尋找是否有元素: %2(返回 true, false)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "set尋找是否有元素(返回 true, false)",
+                    "helpurl": ""
+                },
+                {//set equal_range
+                    "type": "set_equal_range",
+                    "message0": "set %1 尋找是否有元素: %2(返回 first: 等於元素位置, second: 下一個元素位置)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "set尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
+                    "helpurl": ""
+                },
+                {//set lower_bound
+                    "type": "set_lower_bound",
+                    "message0": "set %1 尋找是否有元素1: %2(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "set判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
+                    "helpurl": ""
+                },
+                {//set upper_bound
+                    "type": "set_upper_bound",
+                    "message0": "set %1 尋找是否有元素1: %2(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "colour": "#f9943b",
+                    "inputsInline": true,
+                    "output": null,
+                    "tooltip": "set判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
+                    "helpurl": ""
+                },
+                
+                //iterator
+                { //set begin
+                    "type": "set_begin",
+                    "message0": "set 陣列 %1 (begin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 set 第一個元素。",
+                    "helpUrl": ""
+                },
+                { //set end
+                    "type": "set_end",
+                    "message0": "set 陣列 %1 (end)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個反向迭代器，它指向 set 最尾端元素的下一個位置",
+                    "helpUrl": ""
+                },
+                { //set rbegin
+                    "type": "set_rbegin",
+                    "message0": "set 陣列 %1 (rbegin)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 set 最尾端元素的。",
+                    "helpUrl": ""
+                },
+                { //set rend
+                    "type": "set_rend",
+                    "message0": "set 陣列 %1 (rend)",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "set_name",
+                            "check": "String"
+                        }
+                
+                    ],
+                    "colour": "#778899",
+                    "output": null,
+                    "tooltip": "回傳一個迭代器，它指向 set 的第一個元素的前一個位置。",
                     "helpUrl": ""
                 },
 
