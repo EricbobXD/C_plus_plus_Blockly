@@ -399,6 +399,10 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "vector_append_range"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "vector_pop_back"
                                 },
                                 {
@@ -407,7 +411,35 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "vector_insert_range"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "vector_erase"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "vector_swap"
+                                },
+                                {
+                                    "kind": "label",
+                                    "type": "Vector 讀取元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "vector_operate[]"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "vector_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "vector_back"
+                                },
+                                {
+                                    "kind": "label",
+                                    "type": "Vector 條件判斷"
                                 },
                                 {
                                     "kind": "block",
@@ -422,24 +454,36 @@
                                     "type": "vector_empty"
                                 },
                                 {
+                                    "kind": "block",
+                                    "type": "vector_reserve"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "vector_capacity"
+                                },
+                                 {
+                                    "kind": "block",
+                                    "type": "vector_max_size"
+                                },
+                                {
                                     "kind": "label",
                                     "text": "Vector 迭代器"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "vec_begin"
+                                    "type": "vecttor_begin"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "vec_end"
+                                    "type": "vector_end"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "vec_rbegin"
+                                    "type": "vector_rbegin"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "vec_rend"
+                                    "type": "vector_rend"
                                 }
                             ]
                         },
@@ -719,7 +763,7 @@
                                 },
                                 {
                                     "kind": "label",
-                                    "text": "Deque 判斷式"
+                                    "text": "Deque 條件判斷"
                                 },
                                 {
                                     "kind": "block",
