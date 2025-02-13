@@ -1823,6 +1823,16 @@
             }
             return `${set_name}.erase(${value});\n`;
         }
+
+        Blockly.Cpp['set_emplace'] = function(block) {
+            var set_name = block.getFieldValue('set_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return set_name + ".emplace(" + element + ");\n";
+        };
+
         
         Blockly.Cpp['set_extract'] = function(block) {
             var set_name = block.getFieldValue('set_name');
@@ -2220,6 +2230,14 @@
             return stack_name + ".pop();\n";
         };
 
+        Blockly.Cpp['stack_emplace'] = function(block) {
+            var stack_name = block.getFieldValue('stack_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return stack_name + ".emplace(" + element + ");\n";
+        };
         Blockly.Cpp['stack_top'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
             return stack_name + ".top();\n";
@@ -2254,6 +2272,15 @@
         Blockly.Cpp['queue_pop'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
             return queue_name + ".pop();\n";
+        };
+
+        Blockly.Cpp['queue_emplace'] = function(block) {
+            var queue_name = block.getFieldValue('queue_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return queue_name + ".emplace(" + element + ");\n";
         };
 
         Blockly.Cpp['queue_front'] = function(block) {
@@ -2473,6 +2500,16 @@
             var priority_queue_name = block.getFieldValue('priority_queue_name');
             return priority_queue_name + ".pop();\n";
         };
+
+        Blockly.Cpp['priority_queue_emplace'] = function(block) {
+            var priority_queue_name = block.getFieldValue('priority_queue_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return priority_queue_name + ".emplace(" + element + ");\n";
+        };
+
 
         Blockly.Cpp['priority_queue_front'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
