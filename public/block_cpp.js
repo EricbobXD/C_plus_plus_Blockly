@@ -1482,98 +1482,161 @@
 
         // vector
         Blockly.Cpp['vector_push_back'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
+            var vector_name = block.getFieldValue('vector_name');
             var number = Blockly.Cpp.valueToCode(block, 'number', 1) || '';
             if (number.startsWith('(') && number.endsWith(')')) {
                 number = number.slice(1, -1);
             }
-            return vec_name + ".push_back(" + number + ");\n";
+            return vector_name + ".push_back(" + number + ");\n";
         };
-
-        Blockly.Cpp['vector_pop_back'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
-            return vec_name + ".pop_back();\n";
-        };
-
+        
         Blockly.Cpp['vector_emplace_back'] = function(block) {
             var name = block.getFieldValue('NAME');
             var num = block.getFieldValue('number');
             return code = name + ".emplace_back(" + num + ");\n";
         };
-
-        Blockly.Cpp['vec_begin'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name') || '';
-            var code = vec_name + '.begin()';
-            return [code, 1];
-        }
-
-        Blockly.Cpp['vec_end'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name') || '';
-            var code = vec_name + 'end()';
-            return [code, 1];
-        }
-
-        Blockly.Cpp['vec_rbegin'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name') || '';
-            var code = vec_name + '.rbegin()';
-            return [code, 1];
-        }
-
-        Blockly.Cpp['vec_rend'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name') || '';
-            var code = vec_name + '.rend()';
-            return [code, 1];
-        }
-
+        
+        Blockly.Cpp['vector_append_range'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            var element = Blockly.Cpp.valueToCode(block, 'element', 1) || '';
+            if (element.startsWith('(') && element.endsWith(')')) {
+                element = element.slice(1, -1);
+            }
+            return vector_name + ".append_range(" + element + ");\n";
+        };
+        
+        Blockly.Cpp['vector_pop_back'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return vector_name + ".pop_back();\n";
+        };
+        
         Blockly.Cpp['vector_insert'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
+            var vector_name = block.getFieldValue('vector_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             if (pos === '0') {
-                return `${vec_name}.insert(${vec_name}.begin(), ${value});\n`
+                return `${vector_name}.insert(${vector_name}.begin(), ${value});\n`
             } else {
                 if (pos.startsWith('(') && pos.endsWith(')')) {
                     pos = '+' + pos.slice(1, -1);
                 }
             }
-
-            return `${vec_name}.insert(${vec_name}.begin()${pos}, ${value});\n`;
+        
+            return `${vector_name}.insert(${vector_name}.begin()${pos}, ${value});\n`;
         }
-
+        
+        Blockly.Cpp['vector_insert_range'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
+            var array = Blockly.Cpp.valueToCode(block, 'array', 1);
+            if (array.startsWith('(') && value.endsWith(')')) {
+                array = array.slice(1, -1);
+            }
+            if (pos === '0') {
+                return `${vector_name}.insert(${vector_name}.begin(), ${array});\n`
+            } else {
+                if (pos.startsWith('(') && pos.endsWith(')')) {
+                    pos = '+' + pos.slice(1, -1);
+                }
+            }
+        
+            return `${vector_name}.insert(${vector_name}.begin()${pos}, ${array});\n`;
+        }
+        
         Blockly.Cpp['vector_erase'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
+            var vector_name = block.getFieldValue('vector_name');
             var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
              if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
             if (pos === '0') {
-                 return `${vec_name}.erase(${vec_name}.begin(), ${value});\n`;
+                 return `${vector_name}.erase(${vector_name}.begin(), ${value});\n`;
             } else {
                 if (pos.startsWith('(') && pos.endsWith(')')) {
                     pos = pos.slice(1, -1);
                 }
             }
-            return `${vec_name}.erase(${vec_name}.begin()+${pos}, ${value});\n`;
+            return `${vector_name}.erase(${vector_name}.begin()+${pos}, ${value});\n`;
         }
-
-        Blockly.Cpp['vector_clear'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
-            return vec_name + ".clear();\n";
+        
+        Blockly.Cpp['vector_swap'] = function(block) {
+            var vector_name1 = block.getFieldValue('vector_name1');
+            var vector_name2 = block.getFieldValue('vector_name2');
+            return `${vector_name1}.swap(${vector_name2};`;
         };
-
-        Blockly.Cpp['vector_size'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
-            return vec_name + ".size();\n";
-        }
-
-        Blockly.Cpp['vector_empty'] = function(block) {
-            var vec_name = block.getFieldValue('vec_name');
-            var code = vec_name + ".empty\n";
+        
+        Blockly.Cpp['vector_oeprate[]'] = function(block){
+            var vector_name = block.getFieldValue('vector_name');
+            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1);
+            if (pos.startsWith('(') && pos.endsWith(')')) {
+                pos = pos.slice(1, -1);
+            }
+            var code = `${vector_name}[${pos}]`;
             return [code, 1];
+        }
+        
+        Blockly.Cpp['vector_front'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.front();`, 1];
+        }
+        
+        Blockly.Cpp['vector_back'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.back();`, 1];
+        };
+        
+        Blockly.Cpp['vector_clear'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return vector_name + ".clear();";
+        };
+        
+        Blockly.Cpp['vector_size'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.size();`, 1];
+        }
+        
+        Blockly.Cpp['vector_empty'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.empty();`, 1];
+        }
+        
+        Blockly.Cpp['vector_reserve'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.reserve();`, 1];
+        }
+        
+        Blockly.Cpp['vector_capacity'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.capacity();`, 1];
+        }
+        
+        Blockly.Cpp['vector_max_size'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name');
+            return [`${vector_name}.max_size();`, 1];
+        }
+        
+        Blockly.Cpp['vector_begin'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name') || '';
+            return [`${vector_name}.begin();`, 1];
+        }
+        
+        Blockly.Cpp['vector_end'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name') || '';
+            return [`${vector_name}.end();`, 1];
+        }
+        
+        Blockly.Cpp['vector_rbegin'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name') || '';
+            return [`${vector_name}.rbegin();`, 1];
+        }
+        
+        Blockly.Cpp['vector_rend'] = function(block) {
+            var vector_name = block.getFieldValue('vector_name') || '';
+            return [`${vector_name}.rend();`, 1];
         }
 
         // array
@@ -2104,13 +2167,12 @@
 
         Blockly.Cpp['stack_size'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
-            return stack_name + ".size();\n";
+            return [`${stack_name}.size();`, 1];
         };
 
         Blockly.Cpp['stack_empty'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
-            var code = stack_name + ".empty\n";
-            return [code, 1];
+            return [`${stack_name}.empty();`, 1];
         };
 
         //queue
@@ -2130,18 +2192,17 @@
 
         Blockly.Cpp['queue_front'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
-            return queue_name + ".front();\n";
+            return [`${queue_name}.front();`, 1];
         };
 
         Blockly.Cpp['queue_size'] = function(block) {
             var queue_name = block.getFieldValue('queue_name') || '';
-            return queue_name + ".size();\n";
+            return [`${queue_name}.size();`, 1];
         }
 
         Blockly.Cpp['queue_empty'] = function(block) {
             var queue_name = block.getFieldValue('queue_name') || '';
-            var code = queue_name + ".empty\n";
-            return [code, 1];
+            return [`${queue_name}.empty();`, 1];
         }
 
         Blockly.Cpp['queue_swap'] = function(block) {
@@ -2289,12 +2350,12 @@
 
         Blockly.Cpp['deque_front'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return deque_name + ".front();\n";
+            return [`${deque_name}.front();`, 1];
         };
 
         Blockly.Cpp['deque_back'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return deque_name + ".back();\n";
+            return [`${deque_name}.back();`, 1];
         };
 
         Blockly.Cpp['deque_clear'] = function(block) {
@@ -2304,37 +2365,32 @@
 
         Blockly.Cpp['deque_size'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return deque_name + ".size();\n";
+            return [`${deque_name}.size();`, 1];
         }
 
         Blockly.Cpp['deque_empty'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            var code = deque_name + ".empty\n";
-            return [code, 1];
+            return [`${deque_name}.empty();`, 1];
         }
 
         Blockly.Cpp['deque_begin'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            var code = deque_name + '.begin()';
-            return [code, 1];
+            return [`${deque_name}.begin();`, 1];
         }
 
         Blockly.Cpp['deque_end'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            var code = deque_name + 'end()';
-            return [code, 1];
+            return [`${deque_name}.end();`, 1];
         }
 
         Blockly.Cpp['deque_rbegin'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            var code = deque_name + '.rbegin()';
-            return [code, 1];
+           return [`${deque_name}.rbegin();`, 1];
         }
 
         Blockly.Cpp['deque_rend'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            var code = deque_name + '.rend()';
-            return [code, 1];
+            return [`${deque_name}.rend();`, 1];
         }
 
         //priority_queue
@@ -2354,18 +2410,18 @@
 
         Blockly.Cpp['priority_queue_front'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name');
-            return priority_queue_name + ".front();\n";
+            return [`${priority_queue_name}.front();`, 1];
         };
 
         Blockly.Cpp['priority_queue_size'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
-            return priority_queue_name + ".size();\n";
+            return [`${priority_queue_name}.size();`, 1];
         };
 
         Blockly.Cpp['priority_queue_empty'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
             var code = priority_queue_name + ".empty\n";
-            return [code, 1];
+            return [`${priority_queue_name}.empty();`, 1];
         };
 
         Blockly.Cpp['priority_queue_swap'] = function(block) {
