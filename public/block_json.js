@@ -1097,8 +1097,7 @@
                             "name": "var_name",
                         }],
                     "colour": "#5f9ea0",
-                    "previousStatement": null,
-                    "nextStatement": null,
+                    "output": null,
                     "tooltip": "*變數",
                     "helpUrl": ""
                 },
