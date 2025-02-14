@@ -390,6 +390,10 @@
                                     "type": "define_vector"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Vector 加入元素"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "vector_push_back"
                                 },
@@ -403,10 +407,6 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "vector_pop_back"
-                                },
-                                {
-                                    "kind": "block",
                                     "type": "vector_insert"
                                 },
                                 {
@@ -414,8 +414,20 @@
                                     "type": "vector_insert_range"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Vector 刪除元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "vector_pop_back"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "vector_erase"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Vector 集合操作"
                                 },
                                 {
                                     "kind": "block",
@@ -489,11 +501,141 @@
                         },
                         {
                             "kind": "category",
+                            "name": "deque",
+                            "colour": "#dde3b0",
+                            "contents": [{
+                                    "kind": "block",
+                                    "type": "define_deque"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 新增元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_push_back"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_emplace_back"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_append_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_push_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_emplace_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_prepend_range"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_insert"
+                                },
+                                 {
+                                    "kind": "block",
+                                    "type": "deque_insert_range"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 刪除元素"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_pop_back"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_pop_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_erase"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 集合操作"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_swap"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_assign"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 讀取元素"
+                                },
+                                 {
+                                    "kind": "block",
+                                    "type": "deque_operate[]"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_front"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_back"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 條件判斷"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_clear"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_size"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_empty"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Deque 迭代器"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_begin"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_end"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_rbegin"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "deque_rend"
+                                }
+                            ]
+                        },
+                        {
+                            "kind": "category",
                             "name": "set",
                             "colour": "#e67e22",
                             "contents": [{
                                     "kind": "block",
                                     "type": "define_set"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Set 加入元素"
                                 },
                                 {
                                     "kind": "block",
@@ -503,13 +645,21 @@
                                     "kind": "block",
                                     "type": "set_insert_range"
                                 },
+                                 {
+                                    "kind": "block",
+                                    "type": "set_emplace"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Set 刪除元素"
+                                },
                                 {
                                     "kind": "block",
                                     "type": "set_erase"
                                 },
                                 {
-                                    "kind": "block",
-                                    "type": "set_emplace"
+                                    "kind": "label",
+                                    "text": "Set 集合操作"
                                 },
                                 {
                                     "kind": "block",
@@ -602,6 +752,10 @@
                                     "type": "define_map"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Map 新增元素"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "map_insert"
                                 },
@@ -611,11 +765,19 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "map_erase"
+                                    "type": "map_emplace"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Map 刪除元素"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "map_emplace"
+                                    "type": "map_erase"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Map 集合元素"
                                 },
                                 {
                                     "kind": "block",
@@ -720,12 +882,20 @@
                                     "type": "define_pair"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Pair 讀取元素"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "pair_first"
                                 },
                                 {
                                     "kind": "block",
                                     "type": "pair_second"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Pair 創一個pair"
                                 },
                                 {
                                     "kind": "block",
@@ -742,6 +912,10 @@
                                     "type": "define_stack"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Stack 新增元素"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "stack_push"
                                 },
@@ -751,15 +925,19 @@
                                 },
                                 {
                                     "kind": "block",
+                                    "type": "stack_emplace"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Stack 刪除元素"
+                                },
+                                {
+                                    "kind": "block",
                                     "type": "stack_pop"
                                 },
                                 {
-                                    "kind": "block",
-                                    "type": "stack_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_emplace"
+                                    "kind": "label",
+                                    "text": "Stack 集合操作"
                                 },
                                 {
                                     "kind": "block",
@@ -796,6 +974,10 @@
                                     "type": "define_queue"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Queue 新增元素"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "queue_push"
                                 },
@@ -805,16 +987,24 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "queue_pop"
+                                    "type": "queue_emplace"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Queue 刪除元素"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "queue_emplace"
+                                    "type": "queue_pop"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Queue 集合操作"
                                 },
                                 {
                                     "kind": "block",
                                     "type": "queue_swap"
-                                },
+                                },        
                                 {
                                     "kind": "label",
                                     "text": "Queue 讀取元素"
@@ -839,125 +1029,15 @@
                         },
                         {
                             "kind": "category",
-                            "name": "deque",
-                            "colour": "#dde3b0",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_deque"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_push_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_emplace_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_append_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_pop_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_push_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_emplace_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_prepend_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_pop_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_insert"
-                                },
-                                 {
-                                    "kind": "block",
-                                    "type": "deque_insert_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_erase"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_swap"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_assign"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 讀取元素"
-                                },
-                                 {
-                                    "kind": "block",
-                                    "type": "deque_operate[]"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_back"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_clear"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_empty"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 迭代器"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_begin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_end"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_rbegin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_rend"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "priority_queue",
+                                    "name": "priority_queue",
                             "colour": "#f1c40f",
                             "contents": [{
                                     "kind": "block",
                                     "type": "define_priority_queue"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Priority_queue 新增元素"
                                 },
                                 {
                                     "kind": "block",
@@ -969,11 +1049,19 @@
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "priority_queue_pop"
+                                    "type": "priority_queue_emplace"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Priority_queue 刪除元素"
                                 },
                                 {
                                     "kind": "block",
-                                    "type": "priority_queue_emplace"
+                                    "type": "priority_queue_pop"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Priority_queue 集合操作"
                                 },
                                 {
                                     "kind": "block",
@@ -1010,8 +1098,16 @@
                                     "type": "define_bitset"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Bitset 讀取元素"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "bitset[i]"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Bitset 條件判斷"
                                 },
                                 {
                                     "kind": "block",
@@ -1040,6 +1136,10 @@
                                 {
                                     "kind": "block",
                                     "type": "bitset_none"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "Bitset 輔助工具"
                                 },
                                 {
                                     "kind": "block",
@@ -1162,6 +1262,10 @@
                             "name": "math",
                             "colour": "#2980b9",
                             "contents": [{
+                                    "kind": "label",
+                                    "text": "Math 基本計算"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "math_ceil"
                                 },
@@ -1182,6 +1286,10 @@
                                     "type": "math_random"
                                 },
                                 {
+                                    "kind": "label",
+                                    "text": "Math 三角函數"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "math_sine"
                                 },
@@ -1200,8 +1308,20 @@
                             "name": "ctime",
                             "colour": "#8e44ad",
                             "contents": [{
+                                    "kind": "label",
+                                    "text": "Ctime 取得時間"
+                                },
+                                {
                                     "kind": "block",
                                     "type": "get_current_timestamp"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "get_current_local_time"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "get_current_utc_time"
                                 },
                                 {
                                     "kind": "block",
@@ -1226,14 +1346,6 @@
                                 {
                                     "kind": "block",
                                     "type": "read_time_structure_member"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "get_current_local_time"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "get_current_utc_time"
                                 }
                             ]
                         }
@@ -1300,14 +1412,8 @@
                         {
                             "kind": "block",
                             "type": "get_var"
-                        }
-                    ]
-                },
-                { // pointer
-                    "kind": "category",
-                    "name": "自定義指標",
-                    "colour": "#5f9ea0",
-                    "contents": [{
+                        },
+                        {
                             "kind": "label",
                             "text": "pointer"
                         },
@@ -1498,24 +1604,16 @@
                     "name": "數學與運算",
                     "colour": "#1F91B5",
                     "contents": [{
+                            "kind": "label",
+                            "text": "條件判斷"
+                        },
+                        {
                             "kind": "block",
                             "type": "logic_operators"
                         },
                         {
                             "kind": "block",
                             "type": "or_and_xor"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_calculate"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_calculate"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "number"
                         },
                         {
                             "kind": "block",
@@ -1529,7 +1627,22 @@
                             "kind": "block",
                             "type": "logic_not"
                         },
-
+                        {
+                            "kind": "label",
+                            "text": "數學基本操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "number"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "var_calculate"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_calculate"
+                        },
                         {
                             "kind": "label",
                             "text": "擴充模組"
