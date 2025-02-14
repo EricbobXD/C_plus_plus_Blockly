@@ -144,6 +144,8 @@
                         "name": "def_var"
                     }],
                     "colour": "#f4a460",
+                    "previousStatement": null,
+                    "nextStatement": null,
                     "tooltip": "定義一個結構",
                     "helpurl": ""
                 },
@@ -189,6 +191,8 @@
                         "name": "private"
                     }],
                     "colour": "#e9967a",
+                    "previousStatement": null,
+                    "nextStatement": null,
                     "tooltip": "定義一個類別",
                     "helpurl": ""
                 },
@@ -1135,42 +1139,6 @@
                     "nextStatement": null,
                     "colour": "#123456",
                     "tooltip": "偷懶作法",
-                    "helpUrl": ""
-                },
-                {
-                    "type": "include_std_block",
-                    "message0": "引用所有std函式庫",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": "#123456",
-                    "tooltip": "引用所有std函式庫",
-                    "helpUrl": ""
-                },
-                {
-                    "type": "include_pbds_block",
-                    "message0": "引用所有pbds函式庫",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": "#123456",
-                    "tooltip": "引用所有pbds函式庫",
-                    "helpUrl": ""
-                },
-                {
-                    "type": "std_space_block",
-                    "message0": "引用std空間",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": "#123456",
-                    "tooltip": "引用std空間",
-                    "helpUrl": ""
-                },
-                {
-                    "type": "pbds_space_block",
-                    "message0": "引用pbds空間",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": "#123456",
-                    "tooltip": "引用pbds空間",
                     "helpUrl": ""
                 },
 
