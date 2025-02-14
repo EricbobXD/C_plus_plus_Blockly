@@ -852,8 +852,7 @@
             if (value !== '') {
                 code += ` = ${value}`;
             }
-            code += ';\n';
-            return code;
+            return [code, 1];
         };
         // input and output
         Blockly.Cpp['cin_block'] = function(block) {
