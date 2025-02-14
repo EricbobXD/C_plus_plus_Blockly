@@ -1621,26 +1621,11 @@
                         }
                     ]
                 },
-                { // another
+                { // define
                     "kind": "category",
-                    "name": "基本工具",
+                    "name": "定義",
                     "colour": "#123456",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "include_std_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "include_pbds_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "std_space_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "pbds_space_block"
-                        },
+                    "contents": [
                         {
                             "kind": "block",
                             "type": "define_block"
