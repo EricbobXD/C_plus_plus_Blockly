@@ -1300,22 +1300,6 @@
             return `typedef ${type_name} ${name}\n`;
         };
 
-        Blockly.Cpp['include_std_block'] = function(block) {
-            return `#include <bits/stdc++.h>\n`;
-        };
-
-        Blockly.Cpp['include_pbds_block'] = function(block) {
-            return `#include <bits/extc++.h>\n`;
-        };
-
-        Blockly.Cpp['std_space_block'] = function(block) {
-            return `using namespace std;\n`;
-        };
-
-        Blockly.Cpp['pbds_space_block'] = function(block) {
-            return `using namespace __gun_pbds;\n`;
-        };
-
         // Standard Library
         // math
         Blockly.Cpp['math_random'] = function(block) {
