@@ -1872,6 +1872,24 @@
                     "tooltip": "pair value(second)",
                     "helpUrl": ""
                 },
+                { //make_pair
+                    "type": "make_pair",
+                    "message0": "pair key: %1, value: %2",
+                    "args0": [{
+                            "type": "input_value",
+                            "name": "key"
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "value"
+                        }
+                    ],
+                    "output": null,
+                    "inputsInline": true,
+                    "colour": "#49a34b",
+                    "tooltip": "define new pair has key and value",
+                    "helpUrl": ""
+                },
                 //map
                 { //map insert
                     "type": "map_insert",
