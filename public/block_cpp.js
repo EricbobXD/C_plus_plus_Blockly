@@ -53,7 +53,7 @@
                 this.setOnChange(function(event) {
                     if (!this.workspace) return; // 防止 Blockly 初始化時觸發錯誤
 
-                    let allowedBlocks = ["define_block", "typedef_block"];
+                    let allowedBlocks = ["define_block", "typedef_block", "define_function", "define_function_void", "define_array", "define_vector", "define_set", "define_map", "define_pair", "define_stack", "define_queue", "define_deque", "define_priority_queue", "define_bitset", "define_struct", "define_class", "define_variable", "define_pointer", "define_reference"];
                     let connection = this.getInputTargetBlock("DEFINES");
 
                     while (connection) {
