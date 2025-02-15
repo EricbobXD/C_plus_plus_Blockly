@@ -861,7 +861,7 @@
                             "name": "value"
                         },
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "定義一個指標",
@@ -915,7 +915,7 @@
                             "name": "value"
                         },
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "output": true,
                     "tooltip": "定義一個指標",
                     "helpurl": ""
@@ -960,7 +960,7 @@
                             "name": "value"
                         },
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "宣告一個位置",
@@ -1006,7 +1006,7 @@
                             "name": "value"
                         },
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "output": true,
                     "tooltip": "宣告一個位置",
                     "helpurl": ""
@@ -1024,7 +1024,7 @@
                             "name": "VALUE"
                         }
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "賦予指標新的值或算式",
@@ -1043,7 +1043,7 @@
                             "name": "VALUE"
                         }
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "賦予位置新的值或算式",
@@ -1058,7 +1058,7 @@
                         "text": "i"
                     }],
                     "output": null,
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "tooltip": "獲取指標的值",
                     "helpUrl": ""
                 },
@@ -1071,7 +1071,7 @@
                         "text": "i"
                     }],
                     "output": null,
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "tooltip": "獲取位置的值",
                     "helpUrl": ""
                 },
@@ -1087,7 +1087,7 @@
                             "name": "of"
                         }
                     ],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "previousStatement": null,
                     "nextStatement": null,
                     "tooltip": "指標指向物件",
@@ -1100,7 +1100,7 @@
                             "type": "field_input",
                             "name": "var_name",
                         }],
-                    "colour": "#5f9ea0",
+                    "colour": "#DABD00",
                     "output": null,
                     "tooltip": "*變數",
                     "helpUrl": ""
