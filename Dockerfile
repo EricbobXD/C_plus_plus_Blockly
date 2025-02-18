@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --upgrade pip && \
-    pip install fastapi jinja2 uvicorn docker pydantic
+    pip install fastapi jinja2 uvicorn docker pydantic pymongo
 
 COPY . .
 RUN chmod +x /app/stop_website.sh
