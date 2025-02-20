@@ -7,8 +7,13 @@ from pydantic import BaseModel
 import subprocess
 import os
 import time
+from pymongo import MongoClient
 
+uri = "mongodb+srv://bosenyou:Zaqxswcde12345%40@cluster0.dhavj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
+client = MongoClient(uri)
+db_toolbox = client['db_toolbox']
+toolbox = db_toolbox['toolbox']
 
 app = FastAPI()
 
@@ -112,3 +117,7 @@ async def compile_and_run_code(code : Code_and_Text):
     except subprocess.CalledProcessError as e:
         error = f'{e.stderr}'.replace(f'{source_file}:', '')
         return {"status" : "error" , "message" : error}
+
+@app.post('/get_toolbox')
+async def get_toolbox():
+    return ''.join(map(str, [d for d in toolbox.find()]))
