@@ -377,15 +377,27 @@
 
         // 方塊分類
         let toolbox = null;
+        
         async function get_toolbox() {
-            const response = await fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
+            try {
+                const response = await fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-            });
-            toolbox = await response.text();
+        
+                toolbox = await response.text();
+                console.log("Toolbox loaded:", toolbox); // Debug 輸出
+            } catch (error) {
+                console.error("Failed to fetch toolbox:", error);
+            }
         }
+        
         document.addEventListener("DOMContentLoaded", get_toolbox);
 
         var workspace = Blockly.inject('blockly-workspace', {
