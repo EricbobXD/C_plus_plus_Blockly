@@ -31,7 +31,7 @@ templates = Jinja2Templates(directory='templates')
 public_dir = os.getenv('PUBLIC_DIR', 'public')
 app.mount("/public", StaticFiles(directory=public_dir), name="public")
 databases_dir = os.getenv('DATEBASES_DIR', 'databases')
-app.mount("/databases", StaticFiles(directory=datebases_dir), name="databases")
+app.mount("/databases", StaticFiles(directory=databases_dir), name="databases")
 
 class Code(BaseModel):
     id_code : str
