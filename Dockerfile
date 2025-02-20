@@ -21,14 +21,14 @@ RUN groupadd cppgroup && \
     useradd -m -g cppgroup -s /bin/bash cppuser && \
     passwd -l root
 
-RUN chown -R cppuser:cppgroup /app/databases /app/logs
+RUN chown -R cppuser:cppgroup /app/databases
 RUN chmod 700 /app
 RUN chmod 700 /root
 
 RUN chmod 555 /bin /boot /dev /media /mnt /opt /proc /run /sbin /srv /var
 RUN chmod 755 /etc /lib /lib32 /lib64
 
-RUN echo "cppuser ALL=(ALL) NOPASSWD: /usr/bin/g++, /bin/chmod /app/specific_script.sh" >> /etc/sudoers
+RUN echo "cppuser ALL=(ALL) NOPASSWD: /usr/bin/g++, /bin/chmod /app/*" >> /etc/sudoers
 
 USER cppuser
 
