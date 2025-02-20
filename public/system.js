@@ -384,7 +384,7 @@
                     "Content-Type": "application/json"
                 }
             });
-            const toolbox = await response.text();
+            toolbox = await response.text();
         }
         document.addEventListener("DOMContentLoaded", get_toolbox);
 
