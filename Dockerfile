@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     sudo \
     g++ \
-    coreutils\
+    coreutils \
     python3 \
     python3-pip \
     && apt-get clean \
@@ -15,23 +15,21 @@ RUN apt-get update && apt-get install -y \
 RUN python3 -m pip install --upgrade pip && \
     pip install fastapi jinja2 uvicorn docker pydantic pymongo
 
-COPY . .
+COPY . . 
 
-RUN usermod -s /sbin/nologin root
 RUN groupadd cppgroup && \
     useradd -m -g cppgroup -s /bin/bash cppuser && \
-    passwd -d root 
+    passwd -l root
 
+RUN chown -R cppuser:cppgroup /app/databases /app/logs
+RUN chmod 700 /app
+RUN chmod 700 /root
 
-RUN chown cppuser:cppgroup /app
-    
-RUN chmod 700 /app && \
-    chmod 000 /root && \
-    chmod 555 /bin /boot /dev /etc /lib /lib32 /lib64 /media /mnt /opt /proc /run /sbin /srv /var
+RUN chmod 555 /bin /boot /dev /media /mnt /opt /proc /run /sbin /srv /var
+RUN chmod 755 /etc /lib /lib32 /lib64
 
-RUN echo "cppuser ALL = (ALL) NOPASSWD: /usr/bin/g++, /bin/chmod, /app/*" >> /etc/sudoers
+RUN echo "cppuser ALL=(ALL) NOPASSWD: /usr/bin/g++, /bin/chmod /app/specific_script.sh" >> /etc/sudoers
 
-RUN chmod a-w /root
-# 切換為 cppuser，進入 chroot，然後執行 uvicorn
 USER cppuser
-CMD ["/bin/bash", "-c", "python3 /app/databases/toolbox.py && uvicorn main:app --host 0.0.0.0 --port 8080"]
+
+CMD ["/bin/bash", "-c", "python3 /app/databases/toolbox.py || true; uvicorn main:app --host 0.0.0.0 --port 8080"]
