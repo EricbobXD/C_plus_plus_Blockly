@@ -34,4 +34,4 @@ RUN echo "cppuser ALL = (ALL) NOPASSWD: /usr/bin/g++, /bin/chmod, /app/*" >> /et
 RUN chmod a-w /root
 # 切換為 cppuser，進入 chroot，然後執行 uvicorn
 USER cppuser
-CMD ["/bin/bash", "-c", "python3 /app/database/toolbox.py && uvicorn main:app --host 0.0.0.0 --port 8080"]
+CMD ["/bin/bash", "-c", "python3 /app/databases/toolbox.py && uvicorn main:app --host 0.0.0.0 --port 8080"]
