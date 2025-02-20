@@ -392,39 +392,13 @@
                 }
         
                 toolbox = await response.text();
-                console.log("Toolbox loaded:", toolbox); // 確保 toolbox 已成功獲取
-        
-                // 更新 Blockly 工作區
-                updateBlocklyToolbox(toolbox);
+                console.log("Toolbox loaded:", toolbox); // Debug 輸出
             } catch (error) {
                 console.error("Failed to fetch toolbox:", error);
             }
         }
         
-        // 初始化 Blockly
-        function initBlockly() {
-            const workspace = Blockly.inject('blocklyDiv', {
-                toolbox: '<xml></xml>', // 初始時先使用空的 toolbox
-            });
-        
-            // 將 workspace 存到全域變數，方便後續更新
-            window.blocklyWorkspace = workspace;
-        }
-        
-        // 更新 Blockly 的工具箱
-        function updateBlocklyToolbox(toolboxXml) {
-            if (window.blocklyWorkspace) {
-                window.blocklyWorkspace.updateToolbox(toolboxXml);
-            } else {
-                console.error("Blockly workspace not initialized!");
-            }
-        }
-        
-        // 當網頁載入時，初始化 Blockly 並獲取 toolbox
-        document.addEventListener("DOMContentLoaded", () => {
-            initBlockly();
-            get_toolbox();
-        });
+        document.addEventListener("DOMContentLoaded", get_toolbox);
 
         var workspace = Blockly.inject('blockly-workspace', {
             toolbox: toolbox,
