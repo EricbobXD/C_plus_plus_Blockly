@@ -1,8 +1,7 @@
 from pymongo import MongoClient
 
-uri = "mongodb+srv://bosenyou:Zaqxswcde12345%40@cluster0.dhavj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
-client = MongoClient(uri)
+url = "mongodb://mongo:jjjTvYJcsMeAsyoGycpBKTRjYgBTrDBF@yamabiko.proxy.rlwy.net:34669"
+client = MongoClient(url)
 db_toolbox = client['db_toolbox']
 toolbox = db_toolbox['toolbox']
 
