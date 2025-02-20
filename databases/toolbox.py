@@ -5,6 +5,7 @@ client = MongoClient(url)
 db_toolbox = client['db_toolbox']
 toolbox = db_toolbox['toolbox']
 
+print(client)
 blocks = {
     "kind": "categoryToolbox",
         "contents": [{
