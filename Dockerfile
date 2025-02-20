@@ -18,7 +18,7 @@ RUN python3 -m pip install --upgrade pip && \
 COPY . .
 RUN chmod +x /app/stop_website.sh
 ENTRYPOINT ["/app/stop_website.sh"]
-RUN python3 toolbox.py
+RUN python3 /app/databases/toolbox.py
 
 RUN usermod -s /sbin/nologin root
 RUN groupadd cppgroup && \
