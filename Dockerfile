@@ -38,3 +38,4 @@ RUN chmod a-w /root
 # 切換為 cppuser，進入 chroot，然後執行 uvicorn
 USER cppuser
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+
