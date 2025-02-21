@@ -12,5 +12,12 @@
         "convertedCode": "for (int i = 0; i < n; i++) { /* code */ }",
         "blocklyExample": "images/for_example.png",
         "cppExample": "for (int i = 0; i < 10; i++) {\n  std::cout << i;\n}"
+    },
+    "main_block": {
+        "blockName": "main block",
+        "brief": "主執行區塊。",
+        "convertedCode": "int main() { /* code */ }",
+        "blocklyExample": "images/for_example.png",
+        "cppExample": "null"
     }
 }
