@@ -382,7 +382,7 @@
                 "Content-Type": "application/json"
             }
         });
-        toolbox = await response.json();
+        const toolbox = await response.json();
         console.log(response);
         console.log("Toolbox loaded:", toolbox); // Debug 輸出
 
