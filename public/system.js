@@ -391,7 +391,7 @@
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
         
-                toolbox = await response.text();
+                toolbox = await response.json();
                 console.log(response);
                 console.log("Toolbox loaded:", toolbox); // Debug 輸出
             } catch (error) {
