@@ -400,7 +400,7 @@
 
         document.addEventListener("DOMContentLoaded", get_toolbox);
         if (toolbox){
-            console.logs(toolbox);
+            console.log(toolbox);
         }
         var workspace = Blockly.inject('blockly-workspace', {
                 toolbox: toolbox,
