@@ -424,6 +424,12 @@
                 const yOffset = (metrics.viewHeight - metrics.contentHeight * 0.5) / 2.2;
                 workspace.scroll(xOffset, yOffset);
             }, 100);
+
+            workspace.addChangeListener(() => {
+                if (!workspace) return;
+                initializeMainBlock();
+                updateCodeOutput();
+            });
         } catch (error) {
             console.error("Error loading toolbox:", error);
     }
