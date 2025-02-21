@@ -1,0 +1,16 @@
+{
+    "if_block": {
+        "blockName": "If Block",
+        "brief": "條件判斷，當條件為真時執行特定區塊。",
+        "convertedCode": "if (condition) {\n    /* code */\n}",
+        "blocklyExample": "images/if_example.png",
+        "cppExample": "if (a > b) {\n  std::cout << \"a > b\";\n}"
+    },
+    "for_block": {
+        "blockName": "For Block",
+        "brief": "迴圈重複執行區塊。",
+        "convertedCode": "for (int i = 0; i < n; i++) { /* code */ }",
+        "blocklyExample": "images/for_example.png",
+        "cppExample": "for (int i = 0; i < 10; i++) {\n  std::cout << i;\n}"
+    }
+}
