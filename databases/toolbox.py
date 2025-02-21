@@ -1381,6 +1381,8 @@ blocks = {
             },
         ]
 }
-for d in toolbox.find():
-    if blocks not in d:
-        toolbox.insert_one(blocks)
+exist = toolbox.find_one({})
+if not exist:
+    toolbox.insert_one(blocks)
+    for d in toolbox:
+        d.pop("id:", None)
