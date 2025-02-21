@@ -374,58 +374,58 @@
             alt: false,
             shift: false
         });
-
+        let workspace = null;
         // 方塊分類
-       async function initBlockly() {
-    try {
-        // 使用 await 等待 fetch 請求的結果
-        const response = await fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+        async function initBlockly() {
+            try {
+                // 使用 await 等待 fetch 請求的結果
+                const response = await fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+        
+            // 解析 JSON 數據
+            const toolbox = await response.json();
+            console.log("Toolbox loaded:", toolbox); // Debug 輸出
+            
+            // 初始化 Blockly workspace
+             workspace = Blockly.inject('blockly-workspace', {
+                toolbox: toolbox,
+                scrollbars: true,
+                trashcan: true,
+                grid: {
+                    spacing: 20,
+                    length: 3,
+                    colour: "#ccc",
+                    snap: true
+                },
+                zoom: {
+                    controls: true,
+                    wheel: true,
+                    startScale: 0.7,
+                    maxScale: 2.0,
+                    minScale: 0.1,
+                    scaleSpeed: 1.5
+                },
+                renderer: 'zelos'
+            });
 
-        // 解析 JSON 數據
-        const toolbox = await response.json();
-        console.log("Toolbox loaded:", toolbox); // Debug 輸出
-
-        // 初始化 Blockly workspace
-        let workspace = Blockly.inject('blockly-workspace', {
-            toolbox: toolbox,
-            scrollbars: true,
-            trashcan: true,
-            grid: {
-                spacing: 20,
-                length: 3,
-                colour: "#ccc",
-                snap: true
-            },
-            zoom: {
-                controls: true,
-                wheel: true,
-                startScale: 0.7,
-                maxScale: 2.0,
-                minScale: 0.1,
-                scaleSpeed: 1.5
-            },
-            renderer: 'zelos'
-        });
-
-        // 調整視圖
-        Blockly.svgResize(workspace);
-        workspace.zoomToFit();
-
-        // 設置縮放與偏移
-        setTimeout(() => {
-            workspace.setScale(0.68);
-            const metrics = workspace.getMetrics();
-            const xOffset = (metrics.viewWidth - metrics.contentWidth * 0.5) / 2.5;
-            const yOffset = (metrics.viewHeight - metrics.contentHeight * 0.5) / 2.2;
-            workspace.scroll(xOffset, yOffset);
-        }, 100);
-    } catch (error) {
-        console.error("Error loading toolbox:", error);
+            // 調整視圖
+            Blockly.svgResize(workspace);
+            workspace.zoomToFit();
+    
+            // 設置縮放與偏移
+            setTimeout(() => {
+                workspace.setScale(0.68);
+                const metrics = workspace.getMetrics();
+                const xOffset = (metrics.viewWidth - metrics.contentWidth * 0.5) / 2.5;
+                const yOffset = (metrics.viewHeight - metrics.contentHeight * 0.5) / 2.2;
+                workspace.scroll(xOffset, yOffset);
+            }, 100);
+        } catch (error) {
+            console.error("Error loading toolbox:", error);
     }
 }
 
