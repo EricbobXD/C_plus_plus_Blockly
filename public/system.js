@@ -417,11 +417,11 @@
                 },
                 renderer: 'zelos'
             });
+            Blockly.svgResize(workspace);
+            workspace.zoomToFit();
         }
 
         document.addEventListener("DOMContentLoaded", get_toolbox);
-        Blockly.svgResize(workspace);
-        workspace.zoomToFit();
         setTimeout(() => {
             workspace.setScale(0.68);
             const metrics = workspace.getMetrics();
