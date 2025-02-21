@@ -1381,4 +1381,6 @@ blocks = {
             },
         ]
 }
-toolbox.insert_one(blocks)
+for d in toolbox.find():
+    if blocks not in d:
+        toolbox.insert_one(blocks)
