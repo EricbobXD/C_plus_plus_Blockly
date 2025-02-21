@@ -1,4 +1,11 @@
 {
+    "main_block": {
+        "blockName": "main_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
     "define_array": {
         "blockName": "define_array",
         "brief": "",
