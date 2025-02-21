@@ -399,9 +399,8 @@
         }
 
         document.addEventListener("DOMContentLoaded", get_toolbox);
-        if (toolbox){
-            console.log(toolbox);
-        }
+        console.log("toolbox", toolbox);
+
         var workspace = Blockly.inject('blockly-workspace', {
                 toolbox: toolbox,
                 scrollbars: true,
