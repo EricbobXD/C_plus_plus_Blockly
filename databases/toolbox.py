@@ -1385,4 +1385,4 @@ exist = toolbox.find_one({})
 if not exist:
     toolbox.insert_one(blocks)
     for d in toolbox:
-        d.pop("id:", None)
+        d.pop("_id", None)
