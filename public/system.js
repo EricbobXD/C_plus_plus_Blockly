@@ -392,7 +392,7 @@
                 }
         
                 toolbox = await response.text();
-                alert(response);
+                console.log(response);
                 alert("Toolbox loaded:", toolbox); // Debug 輸出
             } catch (error) {
                 console.error("Failed to fetch toolbox:", error);
