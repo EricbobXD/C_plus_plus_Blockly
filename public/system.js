@@ -377,7 +377,7 @@
 
         // 方塊分類
         let toolbox = null;
-        
+        let workspace = null;
         async function get_toolbox() {
             try {
                 const response = await fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
