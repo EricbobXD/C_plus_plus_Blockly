@@ -391,7 +391,7 @@
         console.log("Toolbox loaded:", toolbox); // Debug 輸出
 
         // 初始化 Blockly workspace
-        var workspace = Blockly.inject('blockly-workspace', {
+        let workspace = Blockly.inject('blockly-workspace', {
             toolbox: toolbox,
             scrollbars: true,
             trashcan: true,
