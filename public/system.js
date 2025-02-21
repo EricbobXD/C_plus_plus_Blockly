@@ -398,8 +398,6 @@
                 console.error("Failed to fetch toolbox:", error);
             }
         }
-        
-        document.addEventListener("DOMContentLoaded", get_toolbox);
 
         var workspace = Blockly.inject('blockly-workspace', {
             toolbox: toolbox,
@@ -421,6 +419,8 @@
             },
             renderer: 'zelos'
         });
+
+        document.addEventListener("DOMContentLoaded", get_toolbox);
         Blockly.svgResize(workspace);
         workspace.zoomToFit();
         setTimeout(() => {
