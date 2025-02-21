@@ -124,4 +124,4 @@ async def compile_and_run_code(code : Code_and_Text):
 @app.post('/get_toolbox')
 async def get_toolbox():
     doc = toolbox.find({}, {"_id": 0})
-    return doc
+    return ''.join(map(str, [d for d in doc]))
