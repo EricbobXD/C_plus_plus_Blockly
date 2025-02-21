@@ -376,13 +376,13 @@
         });
 
         // 方塊分類
-        const response = await fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
+        const response = fetch('https://cplusplusblockly-production.up.railway.app/get_toolbox', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             }
         });
-        const toolbox = await response.json();
+        const toolbox = response.json();
         console.log(response);
         console.log("Toolbox loaded:", toolbox); // Debug 輸出
 
