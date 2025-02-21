@@ -1,23 +1,1598 @@
 {
+    "define_array": {
+        "blockName": "define_array",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "array_name_block": {
+        "blockName": "array_name_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "array_content": {
+        "blockName": "array_content",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "array_operate[]": {
+        "blockName": "array_operate[]",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "add_line": {
+        "blockName": "add_line",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "tab": {
+        "blockName": "tab",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "comment_block": {
+        "blockName": "comment_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "cin_block": {
+        "blockName": "cin_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "string_cin": {
+        "blockName": "string_cin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "cout_block": {
+        "blockName": "cout_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "string_cout": {
+        "blockName": "string_cout",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "boost_ios_sync": {
+        "blockName": "boost_ios_sync",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "boost_cin_cout_tie": {
+        "blockName": "boost_cin_cout_tie",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "logic_operators": {
+        "blockName": "logic_operators",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "or_and_xor": {
+        "blockName": "or_and_xor",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "false": {
+        "blockName": "false",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "true": {
+        "blockName": "true",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "logic_not": {
+        "blockName": "logic_not",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "number": {
+        "blockName": "number",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "var_calculate": {
+        "blockName": "var_calculate",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_calculate": {
+        "blockName": "math_calculate",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
     "if_block": {
-        "blockName": "If Block",
-        "brief": "條件判斷，當條件為真時執行特定區塊。",
-        "convertedCode": "if (condition) {\n    /* code */\n}",
-        "blocklyExample": "images/if_example.png",
-        "cppExample": "if (a > b) {\n  std::cout << \"a > b\";\n}"
+        "blockName": "if_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "switch_block": {
+        "blockName": "switch_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "break_block": {
+        "blockName": "break_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "continue_block": {
+        "blockName": "continue_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "return_block": {
+        "blockName": "return_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "while_block": {
+        "blockName": "while_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
     },
     "for_block": {
-        "blockName": "For Block",
-        "brief": "迴圈重複執行區塊。",
-        "convertedCode": "for (int i = 0; i < n; i++) { /* code */ }",
-        "blocklyExample": "images/for_example.png",
-        "cppExample": "for (int i = 0; i < 10; i++) {\n  std::cout << i;\n}"
+        "blockName": "for_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
     },
-    "main_block": {
-        "blockName": "main block",
-        "brief": "主執行區塊。",
-        "convertedCode": "int main() { /* code */ }",
-        "blocklyExample": "images/for_example.png",
-        "cppExample": "null"
+    "def_var": {
+        "blockName": "def_var",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "var_cal": {
+        "blockName": "var_cal",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_function": {
+        "blockName": "define_function",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_function_void": {
+        "blockName": "define_function_void",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "lambda": {
+        "blockName": "lambda",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_struct": {
+        "blockName": "define_struct",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_struct": {
+        "blockName": "get_struct",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_class": {
+        "blockName": "define_class",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_class": {
+        "blockName": "get_class",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_block": {
+        "blockName": "define_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "typedef_block": {
+        "blockName": "typedef_block",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "string_plus": {
+        "blockName": "string_plus",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "string_commas": {
+        "blockName": "string_commas",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_plus": {
+        "blockName": "math_plus",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_multiply": {
+        "blockName": "math_multiply",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_percent": {
+        "blockName": "math_percent",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_divide": {
+        "blockName": "math_divide",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_subtract": {
+        "blockName": "math_subtract",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_variable": {
+        "blockName": "define_variable",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "var_equal": {
+        "blockName": "var_equal",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_var": {
+        "blockName": "get_var",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_pointer": {
+        "blockName": "define_pointer",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "def_ptr": {
+        "blockName": "def_ptr",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "ptr_equal": {
+        "blockName": "ptr_equal",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_ptr": {
+        "blockName": "get_ptr",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "ptr_of": {
+        "blockName": "ptr_of",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "ptr_to": {
+        "blockName": "ptr_to",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_reference": {
+        "blockName": "define_reference",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "def_ref": {
+        "blockName": "def_ref",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "ref_equal": {
+        "blockName": "ref_equal",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_ref": {
+        "blockName": "get_ref",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "nullptr": {
+        "blockName": "nullptr",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_vector": {
+        "blockName": "define_vector",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_push_back": {
+        "blockName": "vector_push_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_emplace_back": {
+        "blockName": "vector_emplace_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_append_range": {
+        "blockName": "vector_append_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_insert": {
+        "blockName": "vector_insert",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_insert_range": {
+        "blockName": "vector_insert_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_pop_back": {
+        "blockName": "vector_pop_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_erase": {
+        "blockName": "vector_erase",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_swap": {
+        "blockName": "vector_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_operate[]": {
+        "blockName": "vector_operate[]",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_front": {
+        "blockName": "vector_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_back": {
+        "blockName": "vector_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_clear": {
+        "blockName": "vector_clear",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_size": {
+        "blockName": "vector_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_empty": {
+        "blockName": "vector_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_reserve": {
+        "blockName": "vector_reserve",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_capacity": {
+        "blockName": "vector_capacity",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_max_size": {
+        "blockName": "vector_max_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_begin": {
+        "blockName": "vector_begin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_end": {
+        "blockName": "vector_end",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_rbegin": {
+        "blockName": "vector_rbegin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "vector_rend": {
+        "blockName": "vector_rend",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_deque": {
+        "blockName": "define_deque",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_push_back": {
+        "blockName": "deque_push_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_emplace_back": {
+        "blockName": "deque_emplace_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_append_range": {
+        "blockName": "deque_append_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_push_front": {
+        "blockName": "deque_push_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_emplace_front": {
+        "blockName": "deque_emplace_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_prepend_range": {
+        "blockName": "deque_prepend_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_insert": {
+        "blockName": "deque_insert",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_insert_range": {
+        "blockName": "deque_insert_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_pop_back": {
+        "blockName": "deque_pop_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_pop_front": {
+        "blockName": "deque_pop_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_erase": {
+        "blockName": "deque_erase",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_swap": {
+        "blockName": "deque_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_assign": {
+        "blockName": "deque_assign",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_operate[]": {
+        "blockName": "deque_operate[]",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_front": {
+        "blockName": "deque_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_back": {
+        "blockName": "deque_back",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_clear": {
+        "blockName": "deque_clear",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_size": {
+        "blockName": "deque_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_empty": {
+        "blockName": "deque_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_begin": {
+        "blockName": "deque_begin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_end": {
+        "blockName": "deque_end",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_rbegin": {
+        "blockName": "deque_rbegin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "deque_rend": {
+        "blockName": "deque_rend",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_set": {
+        "blockName": "define_set",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_insert": {
+        "blockName": "set_insert",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_insert_range": {
+        "blockName": "set_insert_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_emplace": {
+        "blockName": "set_emplace",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_erase": {
+        "blockName": "set_erase",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_extract": {
+        "blockName": "set_extract",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_merge": {
+        "blockName": "set_merge",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_swap": {
+        "blockName": "set_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_clear": {
+        "blockName": "set_clear",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_size": {
+        "blockName": "set_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_empty": {
+        "blockName": "set_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_max_size": {
+        "blockName": "set_max_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_count": {
+        "blockName": "set_count",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_find": {
+        "blockName": "set_find",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_contains": {
+        "blockName": "set_contains",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_equal_range": {
+        "blockName": "set_equal_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_lower_bound": {
+        "blockName": "set_lower_bound",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_upper_bound": {
+        "blockName": "set_upper_bound",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_begin": {
+        "blockName": "set_begin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_end": {
+        "blockName": "set_end",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_rbegin": {
+        "blockName": "set_rbegin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_rend": {
+        "blockName": "set_rend",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_map": {
+        "blockName": "define_map",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_insert": {
+        "blockName": "map_insert",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_insert_range": {
+        "blockName": "map_insert_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_emplace": {
+        "blockName": "map_emplace",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_erase": {
+        "blockName": "map_erase",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_extract": {
+        "blockName": "map_extract",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_merge": {
+        "blockName": "map_merge",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_swap": {
+        "blockName": "map_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_clear": {
+        "blockName": "map_clear",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_size": {
+        "blockName": "map_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_empty": {
+        "blockName": "map_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_max_size": {
+        "blockName": "map_max_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_count": {
+        "blockName": "map_count",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_find": {
+        "blockName": "map_find",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_contains": {
+        "blockName": "map_contains",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_equal_range": {
+        "blockName": "map_equal_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_lower_bound": {
+        "blockName": "map_lower_bound",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_upper_bound": {
+        "blockName": "map_upper_bound",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_begin": {
+        "blockName": "map_begin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_end": {
+        "blockName": "map_end",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_rbegin": {
+        "blockName": "map_rbegin",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "map_rend": {
+        "blockName": "map_rend",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "make_map": {
+        "blockName": "make_map",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_stack": {
+        "blockName": "define_stack",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_push": {
+        "blockName": "stack_push",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_push_range": {
+        "blockName": "stack_push_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_emplace": {
+        "blockName": "stack_emplace",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_pop": {
+        "blockName": "stack_pop",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_swap": {
+        "blockName": "stack_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_top": {
+        "blockName": "stack_top",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_size": {
+        "blockName": "stack_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "stack_empty": {
+        "blockName": "stack_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_queue": {
+        "blockName": "define_queue",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_push": {
+        "blockName": "queue_push",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_push_range": {
+        "blockName": "queue_push_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_emplace": {
+        "blockName": "queue_emplace",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_pop": {
+        "blockName": "queue_pop",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_swap": {
+        "blockName": "queue_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_front": {
+        "blockName": "queue_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_size": {
+        "blockName": "queue_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "queue_empty": {
+        "blockName": "queue_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_priority_queue": {
+        "blockName": "define_priority_queue",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_push": {
+        "blockName": "priority_queue_push",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_push_range": {
+        "blockName": "priority_queue_push_range",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_emplace": {
+        "blockName": "priority_queue_emplace",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_pop": {
+        "blockName": "priority_queue_pop",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_swap": {
+        "blockName": "priority_queue_swap",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_front": {
+        "blockName": "priority_queue_front",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_size": {
+        "blockName": "priority_queue_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "priority_queue_empty": {
+        "blockName": "priority_queue_empty",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_pair": {
+        "blockName": "define_pair",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "pair_first": {
+        "blockName": "pair_first",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "pair_second": {
+        "blockName": "pair_second",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "make_pair": {
+        "blockName": "make_pair",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "define_bitset": {
+        "blockName": "define_bitset",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset[i]": {
+        "blockName": "bitset[i]",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_size": {
+        "blockName": "bitset_size",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_count": {
+        "blockName": "bitset_count",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_set": {
+        "blockName": "bitset_set",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_reset": {
+        "blockName": "bitset_reset",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_all": {
+        "blockName": "bitset_all",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_any": {
+        "blockName": "bitset_any",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "bitset_none": {
+        "blockName": "bitset_none",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "sort": {
+        "blockName": "sort",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "max": {
+        "blockName": "max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "min": {
+        "blockName": "min",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "find": {
+        "blockName": "find",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_ceil": {
+        "blockName": "math_ceil",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_floor": {
+        "blockName": "math_floor",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_sqrt": {
+        "blockName": "math_sqrt",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_abs": {
+        "blockName": "math_abs",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_random": {
+        "blockName": "math_random",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_sine": {
+        "blockName": "math_sine",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_cosine": {
+        "blockName": "math_cosine",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "math_tangent": {
+        "blockName": "math_tangent",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_current_timestamp": {
+        "blockName": "get_current_timestamp",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_current_local_time": {
+        "blockName": "get_current_local_time",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "get_current_utc_time": {
+        "blockName": "get_current_utc_time",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "calculate_time_difference": {
+        "blockName": "calculate_time_difference",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "convert_to_local_time": {
+        "blockName": "convert_to_local_time",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "convert_to_utc_time": {
+        "blockName": "convert_to_utc_time",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "format_time_string": {
+        "blockName": "format_time_string",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "set_time_structure": {
+        "blockName": "set_time_structure",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "read_time_structure_member": {
+        "blockName": "read_time_structure_member",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "setbase": {
+        "blockName": "setbase",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "setprecision": {
+        "blockName": "setprecision",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "setw": {
+        "blockName": "setw",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "setfill": {
+        "blockName": "setfill",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "char_bit": {
+        "blockName": "char_bit",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "schar_min": {
+        "blockName": "schar_min",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "schar_max": {
+        "blockName": "schar_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "uchar_max": {
+        "blockName": "uchar_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "char_min": {
+        "blockName": "char_min",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "char_max": {
+        "blockName": "char_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "int_min": {
+        "blockName": "int_min",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "int_max": {
+        "blockName": "int_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "uint_max": {
+        "blockName": "uint_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "llong_min": {
+        "blockName": "llong_min",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "llong_max": {
+        "blockName": "llong_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
+    "ullong_max": {
+        "blockName": "ullong_max",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
     }
 }
