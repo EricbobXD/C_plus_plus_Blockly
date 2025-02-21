@@ -397,28 +397,27 @@
             } catch (error) {
                 console.error("Failed to fetch toolbox:", error);
             }
+            var workspace = Blockly.inject('blockly-workspace', {
+                toolbox: toolbox,
+                scrollbars: true,
+                trashcan: true,
+                grid: {
+                    spacing: 20,
+                    length: 3,
+                    colour: "#ccc",
+                    snap: true
+                },
+                zoom: {
+                    controls: true,
+                    wheel: true,
+                    startScale: 0.7,
+                    maxScale: 2.0,
+                    minScale: 0.1,
+                    scaleSpeed: 1.5
+                },
+                renderer: 'zelos'
+            });
         }
-
-        var workspace = Blockly.inject('blockly-workspace', {
-            toolbox: toolbox,
-            scrollbars: true,
-            trashcan: true,
-            grid: {
-                spacing: 20,
-                length: 3,
-                colour: "#ccc",
-                snap: true
-            },
-            zoom: {
-                controls: true,
-                wheel: true,
-                startScale: 0.7,
-                maxScale: 2.0,
-                minScale: 0.1,
-                scaleSpeed: 1.5
-            },
-            renderer: 'zelos'
-        });
 
         document.addEventListener("DOMContentLoaded", get_toolbox);
         Blockly.svgResize(workspace);
