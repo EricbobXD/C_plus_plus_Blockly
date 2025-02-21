@@ -397,7 +397,13 @@
             } catch (error) {
                 console.error("Failed to fetch toolbox:", error);
             }
-            var workspace = Blockly.inject('blockly-workspace', {
+        }
+
+        document.addEventListener("DOMContentLoaded", get_toolbox);
+        if (toolbox){
+            console.logs(toolbox);
+        }
+        var workspace = Blockly.inject('blockly-workspace', {
                 toolbox: toolbox,
                 scrollbars: true,
                 trashcan: true,
@@ -417,11 +423,8 @@
                 },
                 renderer: 'zelos'
             });
-            Blockly.svgResize(workspace);
-            workspace.zoomToFit();
-        }
-
-        document.addEventListener("DOMContentLoaded", get_toolbox);
+        Blockly.svgResize(workspace);
+        workspace.zoomToFit();
         setTimeout(() => {
             workspace.setScale(0.68);
             const metrics = workspace.getMetrics();
