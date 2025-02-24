@@ -34,6 +34,13 @@
         "blocklyExample": "",
         "cppExample": ""
     },
+    "label": {
+        "blockName": "label",
+        "brief": "",
+        "convertedCode": "",
+        "blocklyExample": "",
+        "cppExample": ""
+    },
     "add_line": {
         "blockName": "add_line",
         "brief": "",
