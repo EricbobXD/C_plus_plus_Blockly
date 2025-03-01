@@ -1,3 +1,10 @@
+/*
+    blockname : block_name
+    brief : simple comment
+    convertedCode : transform block to c++ language
+    blockExample : sample of block for picture 
+    cppExample : sample of code for c++ 
+*/
 {
     "main_block": {
         "blockName": "main_block",
