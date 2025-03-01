@@ -8,10 +8,10 @@
 {
     "main_block": {
         "blockName": "main_block",
-        "brief": "",
-        "convertedCode": "",
-        "blocklyExample": "",
-        "cppExample": ""
+        "brief": "主函式架構",
+        "convertedCode": "int main() {\nreturn 0;\n}",
+        "blocklyExample": "./databases/pictures/main_block.png",
+        "cppExample": "int main() {\nreturn 0;\n}"
     },
     "define_array": {
         "blockName": "define_array",
