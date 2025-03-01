@@ -1,11 +1,11 @@
-/*
-    blockname : block_name
-    brief : simple comment
-    convertedCode : transform block to c++ language
-    blockExample : sample of block for picture 
-    cppExample : sample of code for c++ 
-*/
-{
+{    
+    "block_name": {
+        "blockName": "block_name",
+        "brief": "simple comment",
+        "convertedCode": "transform block to c++ language",
+        "blocklyExample": "sample of block for picture (.png)",
+        "cppExample": "sample of code for c++"
+    },
     "main_block": {
         "blockName": "main_block",
         "brief": "主函式架構",
