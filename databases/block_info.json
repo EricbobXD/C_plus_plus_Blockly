@@ -12,7 +12,7 @@
         "blockName": "main_block",
         "brief": "主函式架構",
         "notice": "🧐注意：每段程式碼都只能加一個喔",
-        "formatChinese": "固定方式👇",
+        "formatChinese": "同下👇",
         "formatEnglish": "int main() {\nreturn 0;\n}",
         "blocklyExample": "./databases/pictures/main_block.png",
         "cppExample": "int main() {\nreturn 0;\n}"
@@ -75,7 +75,7 @@
         "blockName": "tab",
         "brief": "控4格，跟電腦的Tab鍵一樣",
         "notice": "🧐注意：no",
-        "formatChinese": "如下👇",
+        "formatChinese": "同下👇",
         "formatEnglish": "    ",
         "blocklyExample": "",
         "cppExample": "    "
@@ -100,7 +100,7 @@
     },
     "string_cin": {
         "blockName": "string_cin",
-        "brief": "控衝cin功能",
+        "brief": "擴充cin功能",
         "notice": "🧐注意：搭配上面`cin`方塊",
         "formatChinese": "變數1 >> 變數2 >> 變數3",
         "formatEnglish": "var1 >> var2 >> var3",
@@ -114,47 +114,47 @@
         "formatChinese": "cout << 變數1 << 變數2 << 變數3;",
         "formatEnglish": "cout << var1 << var2 << var3;",
         "blocklyExample": "",
-        "cppExample": "cout << \"aaaa\""
+        "cppExample": "cout << \"Hello World!\""
     },
-    "string_cout": {
-        "blockName": "string_cout",
-        "brief": "",
-        "notice": "🧐注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+    "string_cout ": {
+        "blockName": "string_cout ",
+        "brief": "擴充 cout 功能",
+        "notice": "🧐注意：搭配上面`cout `方塊",
+        "formatChinese": "變數1 << 變數2 << 變數3",
+        "formatEnglish": "var1 << var2 << var3",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "a << b << c"
     },
     "boost_ios_sync": {
         "blockName": "boost_ios_sync",
-        "brief": "",
-        "notice": "🧐注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "關閉C++(cin, cout)與 C(scanf, printf) 同步 => 加速`cin`跟`cout`速度",
+        "notice": "🧐注意：用這串程式碼就不能有`scanf`跟`printf`喔",
+        "formatChinese": "同下👇",
+        "formatEnglish": "ios::sync_with_stdio(0);",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "ios::sync_with_stdio(0);"
     },
     "boost_cin_cout_tie": {
         "blockName": "boost_cin_cout_tie",
-        "brief": "",
-        "notice": "🧐注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "解除cim cout 綁定 => 再次加速`cin`跟`cout`",
+        "notice": "🧐注意：no",
+        "formatChinese": "同下👇",
+        "formatEnglish": "cin.tie(0);cout.tie(0);",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "cin.tie(0);cout.tie(0);"
     },
     "logic_operators": {
         "blockName": "logic_operators",
-        "brief": "",
-        "notice": "🧐注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "邏輯運算子 => 用來判斷條件",
+        "notice": "🧐注意：一般的`=`跟`==`意思一樣但功能不一樣喔，這是專門用來判斷的，",
+        "formatChinese": "變數1 不小於(大於等於) 變數2",
+        "formatEnglish": "var1 >= var2",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "a >= b"
     },
     "or_and_xor": {
         "blockName": "or_and_xor",
-        "brief": "",
+        "brief": "這也是專們用來段判斷的\n符號意思",
         "notice": "🧐注意：",
         "formatChinese": "",
         "formatEnglish": "",
