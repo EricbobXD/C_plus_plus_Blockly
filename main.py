@@ -120,9 +120,3 @@ async def compile_and_run_code(code : Code_and_Text):
     except subprocess.CalledProcessError as e:
         error = f'{e.stderr}'.replace(f'{source_file}:', '')
         return {"status" : "error" , "message" : error}
-
-@app.post('/get_toolbox')
-def get_toolbox():
-    doc = toolbox.find({}, {"_id": 0})
-    for d in doc:
-        return d
