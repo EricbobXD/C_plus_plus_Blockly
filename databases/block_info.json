@@ -2,7 +2,7 @@
     "block_name": {
         "blockName": "block_name",
         "brief": "simple comment",
-        "notice": "🧐注意：notice to coding detail",
+        "notice": "⚠️注意：notice to coding detail",
         "formatChinese": "c++ code famework for Chinese",
         "formatEnglish": "c++ code famework for English",
         "blocklyExample": "sample of block for picture (.png)",
@@ -11,7 +11,7 @@
     "main_block": {
         "blockName": "main_block",
         "brief": "主函式架構",
-        "notice": "🧐注意：每段程式碼都只能加一個喔",
+        "notice": "⚠️注意：每段程式碼都只能加一個喔",
         "formatChinese": "同下👇",
         "formatEnglish": "int main() {\nreturn 0;\n}",
         "blocklyExample": "./databases/pictures/main_block.png",
@@ -20,7 +20,7 @@
     "define_array": {
         "blockName": "define_array",
         "brief": "定義C++內建陣列",
-        "notice": "🧐注意：\n1. 需要宣告陣列型態\n2. 需要宣告陣列大小\n3. 宣告完不能再改變陣列大小\n4. 陣列內容不一定要加",
+        "notice": "⚠️注意：\n1. 需要宣告陣列型態\n2. 需要宣告陣列大小\n3. 宣告完不能再改變陣列大小\n4. 陣列內容不一定要加",
         "formatChinese": "資料型態 陣列名稱[陣列大小] = {陣列內容};",
         "formatEnglish": "type name[size] = {content}",
         "blocklyExample": "",
@@ -29,7 +29,7 @@
     "array_name_block": {
         "blockName": "array_name_block",
         "brief": "方便做C++內建鎮列基礎操作，像是sort, 取maxiuman之類的",
-        "notice": "🧐注意：no",
+        "notice": "⚠️注意：no",
         "formatChinese": "陣列名稱",
         "formatEnglish": "name",
         "blocklyExample": "array",
@@ -38,7 +38,7 @@
     "array_content": {
         "blockName": "array_content",
         "brief": "定義C++內建陣列裡面的內容",
-        "notice": "🧐注意：\n1. 不能超過宣告陣列大小2. 要用`{}`並且中間的元素都用`,`分開",
+        "notice": "⚠️注意：\n1. 不能超過宣告陣列大小2. 要用`{}`並且中間的元素都用`,`分開",
         "formatChinese": "{內容1, 內容2, 內容3}",
         "formatEnglish": "{content1,content2,content3}",
         "blocklyExample": "",
@@ -47,7 +47,7 @@
     "array_operate[]": {
         "blockName": "array_operate[]",
         "brief": "查詢C++內建陣列",
-        "notice": "🧐注意：\n1. 不能超過宣告陣列大小\n2. 如果索引值(index) = 4 會查到第5個元素喔(陣列元素從0開始)",
+        "notice": "⚠️注意：\n1. 不能超過宣告陣列大小\n2. 如果索引值(index) = 4 會查到第5個元素喔(陣列元素從0開始)",
         "formatChinese": "陣列名稱[索引值]",
         "formatEnglish": "name[index]",
         "blocklyExample": "",
@@ -56,7 +56,7 @@
     "label": {
         "blockName": "label",
         "brief": "字串(string)",
-        "notice": "🧐注意：記得要用\"\"",
+        "notice": "⚠️注意：記得要用\"\"",
         "formatChinese": "\"字串 (什麼文字、符號都可以)\"",
         "formatEnglish": "\"string(any word, mark or emoji are ok)\"",
         "blocklyExample": "",
@@ -65,7 +65,7 @@
     "add_line": {
         "blockName": "add_line",
         "brief": "換行",
-        "notice": "🧐注意：no",
+        "notice": "⚠️注意：no",
         "formatChinese": "換行",
         "formatEnglish": "newline",
         "blocklyExample": "",
@@ -74,7 +74,7 @@
     "tab": {
         "blockName": "tab",
         "brief": "控4格，跟電腦的Tab鍵一樣",
-        "notice": "🧐注意：no",
+        "notice": "⚠️注意：no",
         "formatChinese": "同下👇",
         "formatEnglish": "    ",
         "blocklyExample": "",
@@ -83,7 +83,7 @@
     "comment_block": {
         "blockName": "comment_block",
         "brief": "註解",
-        "notice": "🧐注意：no",
+        "notice": "⚠️注意：no",
         "formatChinese": "註解",
         "formatEnglish": "comnent",
         "blocklyExample": "",
@@ -92,7 +92,7 @@
     "cin_block": {
         "blockName": "cin_block",
         "brief": "其中一種輸入方式(新手推薦)",
-        "notice": "🧐注意：\n1. 多筆測資要用下面可以擴充`>>`的方塊2. 換行也可以讀到",
+        "notice": "⚠️注意：\n1. 多筆測資要用下面可以擴充`>>`的方塊2. 換行也可以讀到",
         "formatChinese": "cin >> 變數1 >> 變數2 >> 變數3;",
         "formatEnglish": "cin >> var1 >> var2 >> var3;",
         "blocklyExample": "",
@@ -101,7 +101,7 @@
     "string_cin": {
         "blockName": "string_cin",
         "brief": "擴充cin功能",
-        "notice": "🧐注意：搭配上面`cin`方塊",
+        "notice": "⚠️注意：搭配上面`cin`方塊",
         "formatChinese": "變數1 >> 變數2 >> 變數3",
         "formatEnglish": "var1 >> var2 >> var3",
         "blocklyExample": "",
@@ -110,7 +110,7 @@
     "cout_block": {
         "blockName": "cout_block",
         "brief": "其中一種輸出方式(新手推薦)",
-        "notice": "🧐注意：多筆測資要用下面可以擴充`<<`的方塊",
+        "notice": "⚠️注意：多筆測資要用下面可以擴充`<<`的方塊",
         "formatChinese": "cout << 變數1 << 變數2 << 變數3;",
         "formatEnglish": "cout << var1 << var2 << var3;",
         "blocklyExample": "",
@@ -119,7 +119,7 @@
     "string_cout ": {
         "blockName": "string_cout ",
         "brief": "擴充 cout 功能",
-        "notice": "🧐注意：搭配上面`cout `方塊",
+        "notice": "⚠️注意：搭配上面`cout `方塊",
         "formatChinese": "變數1 << 變數2 << 變數3",
         "formatEnglish": "var1 << var2 << var3",
         "blocklyExample": "",
@@ -128,7 +128,7 @@
     "boost_ios_sync": {
         "blockName": "boost_ios_sync",
         "brief": "關閉C++(cin, cout)與 C(scanf, printf) 同步 => 加速`cin`跟`cout`速度",
-        "notice": "🧐注意：用這串程式碼就不能有`scanf`跟`printf`喔",
+        "notice": "⚠️注意：用這串程式碼就不能有`scanf`跟`printf`喔",
         "formatChinese": "同下👇",
         "formatEnglish": "ios::sync_with_stdio(0);",
         "blocklyExample": "",
@@ -137,7 +137,7 @@
     "boost_cin_cout_tie": {
         "blockName": "boost_cin_cout_tie",
         "brief": "解除cim cout 綁定 => 再次加速`cin`跟`cout`",
-        "notice": "🧐注意：no",
+        "notice": "⚠️注意：no",
         "formatChinese": "同下👇",
         "formatEnglish": "cin.tie(0);cout.tie(0);",
         "blocklyExample": "",
@@ -146,7 +146,7 @@
     "logic_operators": {
         "blockName": "logic_operators",
         "brief": "邏輯運算子 => 用來判斷條件",
-        "notice": "🧐注意：一般的`=`跟`==`意思一樣但功能不一樣喔，這是專門用來判斷的，",
+        "notice": "⚠️注意：一般的`=`跟`==`意思一樣但功能不一樣喔，這是專門用來判斷的，",
         "formatChinese": "變數1 不小於(大於等於) 變數2",
         "formatEnglish": "var1 >= var2",
         "blocklyExample": "",
@@ -155,7 +155,7 @@
     "or_and_xor": {
         "blockName": "or_and_xor",
         "brief": "這也是專們用來段判斷的\n符號意思",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -164,7 +164,7 @@
     "false": {
         "blockName": "false",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -173,7 +173,7 @@
     "true": {
         "blockName": "true",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -182,7 +182,7 @@
     "logic_not": {
         "blockName": "logic_not",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -191,7 +191,7 @@
     "number": {
         "blockName": "number",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -200,7 +200,7 @@
     "var_calculate": {
         "blockName": "var_calculate",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -209,7 +209,7 @@
     "math_calculate": {
         "blockName": "math_calculate",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -218,7 +218,7 @@
     "if_block": {
         "blockName": "if_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -227,7 +227,7 @@
     "switch_block": {
         "blockName": "switch_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -236,7 +236,7 @@
     "break_block": {
         "blockName": "break_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -245,7 +245,7 @@
     "continue_block": {
         "blockName": "continue_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -254,7 +254,7 @@
     "return_block": {
         "blockName": "return_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -263,7 +263,7 @@
     "while_block": {
         "blockName": "while_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -272,7 +272,7 @@
     "for_block": {
         "blockName": "for_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -281,7 +281,7 @@
     "def_var": {
         "blockName": "def_var",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -290,7 +290,7 @@
     "var_cal": {
         "blockName": "var_cal",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -299,7 +299,7 @@
     "define_function": {
         "blockName": "define_function",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -308,7 +308,7 @@
     "define_function_void": {
         "blockName": "define_function_void",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -317,7 +317,7 @@
     "lambda": {
         "blockName": "lambda",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -326,7 +326,7 @@
     "define_struct": {
         "blockName": "define_struct",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -335,7 +335,7 @@
     "get_struct": {
         "blockName": "get_struct",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -344,7 +344,7 @@
     "define_class": {
         "blockName": "define_class",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -353,7 +353,7 @@
     "get_class": {
         "blockName": "get_class",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -362,7 +362,7 @@
     "define_block": {
         "blockName": "define_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -371,7 +371,7 @@
     "typedef_block": {
         "blockName": "typedef_block",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -380,7 +380,7 @@
     "string_plus": {
         "blockName": "string_plus",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -389,7 +389,7 @@
     "string_commas": {
         "blockName": "string_commas",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -398,7 +398,7 @@
     "math_plus": {
         "blockName": "math_plus",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -407,7 +407,7 @@
     "math_multiply": {
         "blockName": "math_multiply",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -416,7 +416,7 @@
     "math_percent": {
         "blockName": "math_percent",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -425,7 +425,7 @@
     "math_divide": {
         "blockName": "math_divide",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -434,7 +434,7 @@
     "math_subtract": {
         "blockName": "math_subtract",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -443,7 +443,7 @@
     "define_variable": {
         "blockName": "define_variable",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -452,7 +452,7 @@
     "var_equal": {
         "blockName": "var_equal",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -461,7 +461,7 @@
     "get_var": {
         "blockName": "get_var",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -470,7 +470,7 @@
     "define_pointer": {
         "blockName": "define_pointer",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -479,7 +479,7 @@
     "def_ptr": {
         "blockName": "def_ptr",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -488,7 +488,7 @@
     "ptr_equal": {
         "blockName": "ptr_equal",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -497,7 +497,7 @@
     "get_ptr": {
         "blockName": "get_ptr",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -506,7 +506,7 @@
     "ptr_of": {
         "blockName": "ptr_of",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -515,7 +515,7 @@
     "ptr_to": {
         "blockName": "ptr_to",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -524,7 +524,7 @@
     "define_reference": {
         "blockName": "define_reference",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -533,7 +533,7 @@
     "def_ref": {
         "blockName": "def_ref",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -542,7 +542,7 @@
     "ref_equal": {
         "blockName": "ref_equal",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -551,7 +551,7 @@
     "get_ref": {
         "blockName": "get_ref",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -560,7 +560,7 @@
     "nullptr": {
         "blockName": "nullptr",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -569,7 +569,7 @@
     "define_vector": {
         "blockName": "define_vector",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -578,7 +578,7 @@
     "vector_push_back": {
         "blockName": "vector_push_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -587,7 +587,7 @@
     "vector_emplace_back": {
         "blockName": "vector_emplace_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -596,7 +596,7 @@
     "vector_append_range": {
         "blockName": "vector_append_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -605,7 +605,7 @@
     "vector_insert": {
         "blockName": "vector_insert",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -614,7 +614,7 @@
     "vector_insert_range": {
         "blockName": "vector_insert_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -623,7 +623,7 @@
     "vector_pop_back": {
         "blockName": "vector_pop_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -632,7 +632,7 @@
     "vector_erase": {
         "blockName": "vector_erase",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -641,7 +641,7 @@
     "vector_swap": {
         "blockName": "vector_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -650,7 +650,7 @@
     "vector_operate[]": {
         "blockName": "vector_operate[]",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -659,7 +659,7 @@
     "vector_front": {
         "blockName": "vector_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -668,7 +668,7 @@
     "vector_back": {
         "blockName": "vector_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -677,7 +677,7 @@
     "vector_clear": {
         "blockName": "vector_clear",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -686,7 +686,7 @@
     "vector_size": {
         "blockName": "vector_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -695,7 +695,7 @@
     "vector_empty": {
         "blockName": "vector_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -704,7 +704,7 @@
     "vector_reserve": {
         "blockName": "vector_reserve",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -713,7 +713,7 @@
     "vector_capacity": {
         "blockName": "vector_capacity",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -722,7 +722,7 @@
     "vector_max_size": {
         "blockName": "vector_max_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -731,7 +731,7 @@
     "vector_begin": {
         "blockName": "vector_begin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -740,7 +740,7 @@
     "vector_end": {
         "blockName": "vector_end",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -749,7 +749,7 @@
     "vector_rbegin": {
         "blockName": "vector_rbegin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -758,7 +758,7 @@
     "vector_rend": {
         "blockName": "vector_rend",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -767,7 +767,7 @@
     "define_deque": {
         "blockName": "define_deque",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -776,7 +776,7 @@
     "deque_push_back": {
         "blockName": "deque_push_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -785,7 +785,7 @@
     "deque_emplace_back": {
         "blockName": "deque_emplace_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -794,7 +794,7 @@
     "deque_append_range": {
         "blockName": "deque_append_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -803,7 +803,7 @@
     "deque_push_front": {
         "blockName": "deque_push_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -812,7 +812,7 @@
     "deque_emplace_front": {
         "blockName": "deque_emplace_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -821,7 +821,7 @@
     "deque_prepend_range": {
         "blockName": "deque_prepend_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -830,7 +830,7 @@
     "deque_insert": {
         "blockName": "deque_insert",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -839,7 +839,7 @@
     "deque_insert_range": {
         "blockName": "deque_insert_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -848,7 +848,7 @@
     "deque_pop_back": {
         "blockName": "deque_pop_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -857,7 +857,7 @@
     "deque_pop_front": {
         "blockName": "deque_pop_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -866,7 +866,7 @@
     "deque_erase": {
         "blockName": "deque_erase",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -875,7 +875,7 @@
     "deque_swap": {
         "blockName": "deque_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -884,7 +884,7 @@
     "deque_assign": {
         "blockName": "deque_assign",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -893,7 +893,7 @@
     "deque_operate[]": {
         "blockName": "deque_operate[]",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -902,7 +902,7 @@
     "deque_front": {
         "blockName": "deque_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -911,7 +911,7 @@
     "deque_back": {
         "blockName": "deque_back",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -920,7 +920,7 @@
     "deque_clear": {
         "blockName": "deque_clear",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -929,7 +929,7 @@
     "deque_size": {
         "blockName": "deque_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -938,7 +938,7 @@
     "deque_empty": {
         "blockName": "deque_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -947,7 +947,7 @@
     "deque_begin": {
         "blockName": "deque_begin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -956,7 +956,7 @@
     "deque_end": {
         "blockName": "deque_end",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -965,7 +965,7 @@
     "deque_rbegin": {
         "blockName": "deque_rbegin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -974,7 +974,7 @@
     "deque_rend": {
         "blockName": "deque_rend",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -983,7 +983,7 @@
     "define_set": {
         "blockName": "define_set",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -992,7 +992,7 @@
     "set_insert": {
         "blockName": "set_insert",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1001,7 +1001,7 @@
     "set_insert_range": {
         "blockName": "set_insert_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1010,7 +1010,7 @@
     "set_emplace": {
         "blockName": "set_emplace",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1019,7 +1019,7 @@
     "set_erase": {
         "blockName": "set_erase",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1028,7 +1028,7 @@
     "set_extract": {
         "blockName": "set_extract",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1037,7 +1037,7 @@
     "set_merge": {
         "blockName": "set_merge",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1046,7 +1046,7 @@
     "set_swap": {
         "blockName": "set_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1055,7 +1055,7 @@
     "set_clear": {
         "blockName": "set_clear",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1064,7 +1064,7 @@
     "set_size": {
         "blockName": "set_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1073,7 +1073,7 @@
     "set_empty": {
         "blockName": "set_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1082,7 +1082,7 @@
     "set_max_size": {
         "blockName": "set_max_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1091,7 +1091,7 @@
     "set_count": {
         "blockName": "set_count",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1100,7 +1100,7 @@
     "set_find": {
         "blockName": "set_find",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1109,7 +1109,7 @@
     "set_contains": {
         "blockName": "set_contains",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1118,7 +1118,7 @@
     "set_equal_range": {
         "blockName": "set_equal_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1127,7 +1127,7 @@
     "set_lower_bound": {
         "blockName": "set_lower_bound",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1136,7 +1136,7 @@
     "set_upper_bound": {
         "blockName": "set_upper_bound",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1145,7 +1145,7 @@
     "set_begin": {
         "blockName": "set_begin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1154,7 +1154,7 @@
     "set_end": {
         "blockName": "set_end",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1163,7 +1163,7 @@
     "set_rbegin": {
         "blockName": "set_rbegin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1172,7 +1172,7 @@
     "set_rend": {
         "blockName": "set_rend",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1181,7 +1181,7 @@
     "define_map": {
         "blockName": "define_map",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1190,7 +1190,7 @@
     "map_insert": {
         "blockName": "map_insert",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1199,7 +1199,7 @@
     "map_insert_range": {
         "blockName": "map_insert_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1208,7 +1208,7 @@
     "map_emplace": {
         "blockName": "map_emplace",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1217,7 +1217,7 @@
     "map_erase": {
         "blockName": "map_erase",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1226,7 +1226,7 @@
     "map_extract": {
         "blockName": "map_extract",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1235,7 +1235,7 @@
     "map_merge": {
         "blockName": "map_merge",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1244,7 +1244,7 @@
     "map_swap": {
         "blockName": "map_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1253,7 +1253,7 @@
     "map_clear": {
         "blockName": "map_clear",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1262,7 +1262,7 @@
     "map_size": {
         "blockName": "map_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1271,7 +1271,7 @@
     "map_empty": {
         "blockName": "map_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1280,7 +1280,7 @@
     "map_max_size": {
         "blockName": "map_max_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1289,7 +1289,7 @@
     "map_count": {
         "blockName": "map_count",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1298,7 +1298,7 @@
     "map_find": {
         "blockName": "map_find",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1307,7 +1307,7 @@
     "map_contains": {
         "blockName": "map_contains",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1316,7 +1316,7 @@
     "map_equal_range": {
         "blockName": "map_equal_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1325,7 +1325,7 @@
     "map_lower_bound": {
         "blockName": "map_lower_bound",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1334,7 +1334,7 @@
     "map_upper_bound": {
         "blockName": "map_upper_bound",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1343,7 +1343,7 @@
     "map_begin": {
         "blockName": "map_begin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1352,7 +1352,7 @@
     "map_end": {
         "blockName": "map_end",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1361,7 +1361,7 @@
     "map_rbegin": {
         "blockName": "map_rbegin",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1370,7 +1370,7 @@
     "map_rend": {
         "blockName": "map_rend",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1379,7 +1379,7 @@
     "make_map": {
         "blockName": "make_map",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1388,7 +1388,7 @@
     "define_stack": {
         "blockName": "define_stack",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1397,7 +1397,7 @@
     "stack_push": {
         "blockName": "stack_push",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1406,7 +1406,7 @@
     "stack_push_range": {
         "blockName": "stack_push_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1415,7 +1415,7 @@
     "stack_emplace": {
         "blockName": "stack_emplace",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1424,7 +1424,7 @@
     "stack_pop": {
         "blockName": "stack_pop",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1433,7 +1433,7 @@
     "stack_swap": {
         "blockName": "stack_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1442,7 +1442,7 @@
     "stack_top": {
         "blockName": "stack_top",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1451,7 +1451,7 @@
     "stack_size": {
         "blockName": "stack_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1460,7 +1460,7 @@
     "stack_empty": {
         "blockName": "stack_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1469,7 +1469,7 @@
     "define_queue": {
         "blockName": "define_queue",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1478,7 +1478,7 @@
     "queue_push": {
         "blockName": "queue_push",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1487,7 +1487,7 @@
     "queue_push_range": {
         "blockName": "queue_push_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1496,7 +1496,7 @@
     "queue_emplace": {
         "blockName": "queue_emplace",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1505,7 +1505,7 @@
     "queue_pop": {
         "blockName": "queue_pop",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1514,7 +1514,7 @@
     "queue_swap": {
         "blockName": "queue_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1523,7 +1523,7 @@
     "queue_front": {
         "blockName": "queue_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1532,7 +1532,7 @@
     "queue_size": {
         "blockName": "queue_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1541,7 +1541,7 @@
     "queue_empty": {
         "blockName": "queue_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1550,7 +1550,7 @@
     "define_priority_queue": {
         "blockName": "define_priority_queue",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1559,7 +1559,7 @@
     "priority_queue_push": {
         "blockName": "priority_queue_push",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1568,7 +1568,7 @@
     "priority_queue_push_range": {
         "blockName": "priority_queue_push_range",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1577,7 +1577,7 @@
     "priority_queue_emplace": {
         "blockName": "priority_queue_emplace",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1586,7 +1586,7 @@
     "priority_queue_pop": {
         "blockName": "priority_queue_pop",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1595,7 +1595,7 @@
     "priority_queue_swap": {
         "blockName": "priority_queue_swap",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1604,7 +1604,7 @@
     "priority_queue_front": {
         "blockName": "priority_queue_front",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1613,7 +1613,7 @@
     "priority_queue_size": {
         "blockName": "priority_queue_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1622,7 +1622,7 @@
     "priority_queue_empty": {
         "blockName": "priority_queue_empty",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1631,7 +1631,7 @@
     "define_pair": {
         "blockName": "define_pair",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1640,7 +1640,7 @@
     "pair_first": {
         "blockName": "pair_first",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1649,7 +1649,7 @@
     "pair_second": {
         "blockName": "pair_second",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1658,7 +1658,7 @@
     "make_pair": {
         "blockName": "make_pair",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1667,7 +1667,7 @@
     "define_bitset": {
         "blockName": "define_bitset",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1676,7 +1676,7 @@
     "bitset[i]": {
         "blockName": "bitset[i]",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1685,7 +1685,7 @@
     "bitset_size": {
         "blockName": "bitset_size",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1694,7 +1694,7 @@
     "bitset_count": {
         "blockName": "bitset_count",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1703,7 +1703,7 @@
     "bitset_set": {
         "blockName": "bitset_set",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1712,7 +1712,7 @@
     "bitset_reset": {
         "blockName": "bitset_reset",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1721,7 +1721,7 @@
     "bitset_all": {
         "blockName": "bitset_all",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1730,7 +1730,7 @@
     "bitset_any": {
         "blockName": "bitset_any",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1739,7 +1739,7 @@
     "bitset_none": {
         "blockName": "bitset_none",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1748,7 +1748,7 @@
     "sort": {
         "blockName": "sort",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1757,7 +1757,7 @@
     "max": {
         "blockName": "max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1766,7 +1766,7 @@
     "min": {
         "blockName": "min",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1775,7 +1775,7 @@
     "find": {
         "blockName": "find",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1784,7 +1784,7 @@
     "math_ceil": {
         "blockName": "math_ceil",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1793,7 +1793,7 @@
     "math_floor": {
         "blockName": "math_floor",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1802,7 +1802,7 @@
     "math_sqrt": {
         "blockName": "math_sqrt",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1811,7 +1811,7 @@
     "math_abs": {
         "blockName": "math_abs",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1820,7 +1820,7 @@
     "math_random": {
         "blockName": "math_random",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1829,7 +1829,7 @@
     "math_sine": {
         "blockName": "math_sine",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1838,7 +1838,7 @@
     "math_cosine": {
         "blockName": "math_cosine",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1847,7 +1847,7 @@
     "math_tangent": {
         "blockName": "math_tangent",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1856,7 +1856,7 @@
     "get_current_timestamp": {
         "blockName": "get_current_timestamp",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1865,7 +1865,7 @@
     "get_current_local_time": {
         "blockName": "get_current_local_time",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1874,7 +1874,7 @@
     "get_current_utc_time": {
         "blockName": "get_current_utc_time",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1883,7 +1883,7 @@
     "calculate_time_difference": {
         "blockName": "calculate_time_difference",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1892,7 +1892,7 @@
     "convert_to_local_time": {
         "blockName": "convert_to_local_time",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1901,7 +1901,7 @@
     "convert_to_utc_time": {
         "blockName": "convert_to_utc_time",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1910,7 +1910,7 @@
     "format_time_string": {
         "blockName": "format_time_string",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1919,7 +1919,7 @@
     "set_time_structure": {
         "blockName": "set_time_structure",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1928,7 +1928,7 @@
     "read_time_structure_member": {
         "blockName": "read_time_structure_member",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1937,7 +1937,7 @@
     "setbase": {
         "blockName": "setbase",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1946,7 +1946,7 @@
     "setprecision": {
         "blockName": "setprecision",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1955,7 +1955,7 @@
     "setw": {
         "blockName": "setw",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1964,7 +1964,7 @@
     "setfill": {
         "blockName": "setfill",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1973,7 +1973,7 @@
     "char_bit": {
         "blockName": "char_bit",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1982,7 +1982,7 @@
     "schar_min": {
         "blockName": "schar_min",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -1991,7 +1991,7 @@
     "schar_max": {
         "blockName": "schar_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2000,7 +2000,7 @@
     "uchar_max": {
         "blockName": "uchar_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2009,7 +2009,7 @@
     "char_min": {
         "blockName": "char_min",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2018,7 +2018,7 @@
     "char_max": {
         "blockName": "char_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2027,7 +2027,7 @@
     "int_min": {
         "blockName": "int_min",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2036,7 +2036,7 @@
     "int_max": {
         "blockName": "int_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2045,7 +2045,7 @@
     "uint_max": {
         "blockName": "uint_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2054,7 +2054,7 @@
     "llong_min": {
         "blockName": "llong_min",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2063,7 +2063,7 @@
     "llong_max": {
         "blockName": "llong_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
@@ -2072,7 +2072,7 @@
     "ullong_max": {
         "blockName": "ullong_max",
         "brief": "",
-        "notice": "🧐注意：",
+        "notice": "⚠️注意：",
         "formatChinese": "",
         "formatEnglish": "",
         "blocklyExample": "",
