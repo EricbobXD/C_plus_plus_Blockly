@@ -952,10 +952,7 @@
                     operatorSymbol = '||';
                     break;
                 case 'XOR':
-                    operatorSymbol = '^';
-                    break;
-                case 'NOT':
-                    operatorSymbol = '!';
+                    operatorSymbol = '^^';
                     break;
                 default:
                     operatorSymbol = '&&';
