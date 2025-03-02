@@ -15,7 +15,7 @@
         "formatChinese": "同下👇",
         "formatEnglish": "1 | int main() {\n2 |     return 0;\n3 | }",
         "blocklyExample": "./databases/pictures/main_block.png",
-        "cppExample": "int main() {\nreturn 0;\n}"
+        "cppExample": "int main() {\n    return 0;\n}"
     },
     "define_array": {
         "blockName": "define_array",
