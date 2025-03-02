@@ -13,7 +13,7 @@
         "brief": "主函式架構",
         "notice": "⚠️注意：每段程式碼都只能加一個喔",
         "formatChinese": "同下👇",
-        "formatEnglish": "int main() {\n    return 0;\n}",
+        "formatEnglish": "1 | int main() {\n2 |     return 0;\n3 | }",
         "blocklyExample": "./databases/pictures/main_block.png",
         "cppExample": "int main() {\nreturn 0;\n}"
     },
