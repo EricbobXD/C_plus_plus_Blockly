@@ -73,7 +73,7 @@
     },
     "tab": {
         "blockName": "tab",
-        "brief": "控4格，跟電腦的Tab鍵一樣",
+        "brief": "空4格，跟電腦的Tab鍵一樣",
         "notice": "⚠️注意：no",
         "formatChinese": "同下👇",
         "formatEnglish": "    ",
@@ -150,61 +150,61 @@
         "formatChinese": "變數1 不小於(大於等於) 變數2",
         "formatEnglish": "var1 >= var2",
         "blocklyExample": "",
-        "cppExample": "a >= b"
+        "cppExample": "int a = 3, b = 4;\nif (a > b) cout << \"a > b\";\nelse cout << \"b > a\";\n//output:b > a"
     },
     "or_and_xor": {
         "blockName": "or_and_xor",
-        "brief": "這也是專們用來段判斷的\n符號意思",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "比較運算子 => 這也是專門來段判斷的\n符號意思：\n1. or: `||`\n2. and: `&&`\n3. xor: `^^`",
+        "notice": "⚠️注意：**一般的`|`, `&`, `^`跟`||`, `&&`, `^^`功能跟意思都不一樣喔**\n`|`, `&`, `^`是位元運算子(後面會講)，而||`, `&&`, `^^`是專門邏輯判斷的",
+        "formatChinese": "變數1 || 變數2",
+        "formatEnglish": "var1 || var2",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 3, b = 4, c = 3;\nif (a == b or a == c) cout << \"True\";\nelse cout << \"False\";\n//output : True"
     },
     "false": {
         "blockName": "false",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "0 也可以代表 false",
+        "notice": "⚠️注意：no",
+        "formatChinese": "如下👇",
+        "formatEnglish": "false",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "bool c = 0;\n if (c == false) cout << \"False\";\nelse cout << \"True\";\n//output : False"
     },
     "true": {
         "blockName": "true",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "1 也可以代表 true",
+        "notice": "⚠️注意：no",
+        "formatChinese": "如下👇",
+        "formatEnglish": "true",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "bool c = 1;\n if (c == false) cout << \"False\";\nelse cout << \"True\";\n//output : True"
     },
     "logic_not": {
         "blockName": "logic_not",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "本質上是`flase`，只是他是用來做判斷的，可以讓判斷是寫的更簡潔，符號`!`",
+        "notice": "⚠️注意：不一定要用在判斷式，變數定義也可以",
+        "formatChinese": "!變數1",
+        "formatEnglish": "!var1",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "//1\n bool c = 1;\nif (!c) cout << \"False\";\nelse cout << \"True\";\n//output : True\n\n//2\nbool c = 0;\nbool d = !c; //d = 1"
     },
     "number": {
         "blockName": "number",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "數字",
+        "notice": "⚠️注意：要記得C++數字有限制大寫喔",
+        "formatChinese": "0",
+        "formatEnglish": "0",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 5;"
     },
     "var_calculate": {
         "blockName": "var_calculate",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "賦值運算子 => 用來跟自己做運算的(是不是不太懂😅，繼續看下去)",
+        "notice": "⚠️注意：如果後面有一大串運算，記得要括號喔!!!",
+        "formatChinese": "變數1 += 變數2 //變數1 = 變數1 + 變數2",
+        "formatEnglish": "var1 += var2 // var1 = var1 + var2",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 5;\n a += 5; //a = 10"
     },
     "math_calculate": {
         "blockName": "math_calculate",
