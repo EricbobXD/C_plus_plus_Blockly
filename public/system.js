@@ -373,7 +373,8 @@
             scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK,
             alt: false,
             shift: false
-        });const toolbox = {
+        });
+        const toolbox = {
             "kind": "categoryToolbox",
             "contents": [{
                     "kind": "category",
