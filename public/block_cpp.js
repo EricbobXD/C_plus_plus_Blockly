@@ -721,16 +721,7 @@
 
         Blockly.Cpp['number'] = function(block) {
             return [block.getFieldValue('NUMBER') || '0', 1];
-        };
-
-        // initializaiton
-        Blockly.Cpp['boost_ios_sync'] = function(block) {
-            return 'ios::sync_with_stdio(0);\n';
-        };
-
-        Blockly.Cpp['boost_cin_cout_tie'] = function(block) {
-            return 'cin.tie(0); cout.tie(0);\n';
-        };
+        }
 
         Blockly.Cpp['main_block'] = function(block) {
             var include = block.getFieldValue('INCLUDE');
@@ -2633,6 +2624,19 @@
         
         Blockly.Cpp['ullong_max'] = function() {
             return 'ULLONG_MAX'; 
+        };
+
+        //ios
+        Blockly.Cpp['boost_ios_sync'] = function(block) {
+            return 'ios::sync_with_stdio(0);\n';
+        };
+
+        Blockly.Cpp['boost_cin_cout_tie'] = function(block) {
+            return 'cin.tie(0); cout.tie(0);\n';
+        };
+
+        Blockly.Cpp['cin.eof'] = function(block) {
+            return ['cin.eof', 1];
         };
 
  Blockly.Blocks['define_vector'] = {  
