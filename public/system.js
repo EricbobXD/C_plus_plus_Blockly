@@ -1192,7 +1192,7 @@
                         {
                             "kind": "category",
                             "name": "climits",
-                            "colour": "#e67e22",
+                            "colour": "#000000",
                             "contents": [{
                                     "kind": "label",
                                     "text": "字元類型"
