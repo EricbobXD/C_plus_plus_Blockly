@@ -325,21 +325,21 @@
     },
     "define_struct": {
         "blockName": "define_struct",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "把不同的資料型態整理再一起，方便變數傳遞",
+        "notice": "⚠️注意：\n1. 分成先宣告跟後宣告\n2. 裡面也可以放function之類\n3.記得結尾要加分號",
+        "formatChinese": "struct{\n 資料型態 變數1\n ...\n};",
+        "formatEnglish": "struct{\n type var1\n ...\n};",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "//1 未宣告\nstruct student {\n    int id;\n    string name;\n};\n\n//2 已宣告\nstruct student {\n    int id;\n    string name;\n} st1, st2; // 宣告 st1, st2 type 為 student"
     },
     "get_struct": {
         "blockName": "get_struct",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "把她當資料型態定義變數會陣列",
+        "notice": "⚠️注意：可以是變數也可以是陣列喔",
+        "formatChinese": "struct的名子 變數名",
+        "formatEnglish": "struct_name var_name",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "struct student {\n    int id;\n    string name;\n};\n\n\nint main() {\n    student st1, st2;\n    st1.id = 1, st1.name = \"hamichi\", st2 = {2, \"ericbob\"};\n    cout << \"st1.id = \" << st1.id << \", st1.name = \" << st1.name << \", st2.id = \" << st2.id << \", st2.name = \" << st2.name;\n}"
     },
     "define_class": {
         "blockName": "define_class",
