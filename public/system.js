@@ -1346,6 +1346,32 @@
                                     "type": "read_time_structure_member"
                                 }
                             ]
+                        },
+                        {
+                            "kind": "category",
+                            "name": "basic_ios",
+                            "colour": "#8e44ad",
+                            "contents": [{
+                                    "kind": "label",
+                                    "text": "解除限制"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "boost_ios_sync"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "boost_cin_cout_tie"
+                                },
+                                {
+                                    "kind": "label",
+                                    "text": "條件"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "cin.eof"
+                                },
+                            ]
                         }
                     ]
                 },
@@ -1568,19 +1594,6 @@
                         {
                             "kind": "block",
                             "type": "cout_block"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "解除限制"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "boost_ios_sync"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "boost_cin_cout_tie"
                         },
 
                         {
