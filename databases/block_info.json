@@ -226,102 +226,102 @@
     },
     "switch_block": {
         "blockName": "switch_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "多個相似的條件且只適用於`=`的if可以用switch替換",
+        "notice": "⚠️注意：1. 盡量都用`if`\n2. 他是很多個`if`組成的，所以如果要把它變成`else if`的話記得要加`break`",
+        "formatChinese": "switch(變數名稱或運算式)\n{\ncase:\n ...\ncase: ...\ndefault ...\n}",
+        "formatEnglish": "switch(var or Operational expression)\n{\ncase:\n ...\ncase: ...\ndefault ...\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "//1\nv = 10;\nswitch (v){\n    case 1:\n        cout << 1;\n        break;\n    case 2:\n        cout << 2;\n        break;\n    default:\n        cout << \"not 1 and 2\";\n        break;\n//output = not 1 and 2\n\n//2\n//a is a array, size is 3\nswitch (int len = a.size(); len){\n    case 1:\n        cout << \"len = 1\";\n        break;\n    case 2:\n        cout << \"len = 2\";\n        break;\n    default:\n        cout << \"len not 1 and 2\";\n        break;\n//output = len not 1 and 2"
     },
     "break_block": {
         "blockName": "break_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "用來終止條件、迴圈",
+        "notice": "⚠️注意：一定要把`break`包在條件、迴圈裡面喔",
+        "formatChinese": "if (條件){\n    ....\n    break;\n}",
+        "formatEnglish": "if (condition){\n    ....\n    break;\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "for (int i = 0; i < 5; i++) {\n    if (i) break;\n    cout << i << \" \";\ncout << \"6\";\n}\n//output = 0 6"
     },
     "continue_block": {
         "blockName": "continue_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "用來跳過條件、迴圈"
+        "notice": "⚠️注意：一定要把`continue`包在條件、迴圈裡面喔",
+        "formatChinese": "if (條件){\n    ....\n   continue;\n}",
+        "formatEnglish": "if (condition){\n    ....\n    continue;\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "for (int i = 0; i < 5; i++) {\n    if (i) continue;\n    cout << i << \" \";\ncout << \"6\";\n}\n//output = 0 2 3 4 6"
     },
     "return_block": {
         "blockName": "return_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
+        "brief": "用來終止程式碼",
+        "notice": "⚠️注意：只要寫到，就是把程式碼直接終止，除了在函式以內，在函式是回傳值",
+        "formatChinese": "if (條件){\n    ....\n   return 0;\n}",
+        "formatEnglish": "if (condition){\n    ....\n   return 0;\n}",
+        "blocklyExample": "for (int i = 0; i < 5; i++) {\n    if (i) continue;\n    cout << i << \" \";\ncout << \"6\";\n}\n//output = 0",
         "cppExample": ""
     },
     "while_block": {
         "blockName": "while_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "執行到不符合條件，才會終止",
+        "notice": "⚠️注意：是不符合條件喔",
+        "formatChinese": "while (條件1){\n    ...\n}",
+        "formatEnglish": "while (condition){\n    ...\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 1, b = 3;\nwhile (a != b)\n    a++;\ncout << \"a = \" << a << \", b = \" << b; // a = 3, b = 3"
     },
     "for_block": {
         "blockName": "for_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "執行到符合終止條件",
+        "notice": "⚠️注意：包含變數、終止條件以及變數運算(至少要有終止條件)",
+        "formatChinese": "如下👇",
+        "formatEnglish": "for (int i = 0; i < n; i++){\n    ...\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "for (int i = 0; i < 5; i++) cout << i;\n//output = 01234"
     },
     "def_var": {
         "blockName": "def_var",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "變數定義",
+        "notice": "⚠️注意：包含變數型態、變數名子以及變數值(可省略)",
+        "formatChinese": "資料型態 變數名子 = 變數值",
+        "formatEnglish": "type name = value",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "//1\n int a = 1;\n\n //2\n int b;"
     },
     "var_cal": {
         "blockName": "var_cal",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "改變先定義好變數的變數值",
+        "notice": "⚠️注意：一定要先定義好的變數喔，不然會抱錯",
+        "formatChinese": "變數1 = 值",
+        "formatEnglish": "var 1 = value",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 1;\n a = 4;\ncout << a;\n//a = 4"
     },
     "define_function": {
         "blockName": "define_function",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "可以做為遞迴，或是減少主程式程式碼行數",
+        "notice": "⚠️注意：1. 記得一定要回傳值(如果沒有回傳值用`void`)\n2. 使用時機：\n    (1)遞迴\n    (2)減少主程式程式碼行數\n    (3)有多個回傳值\n    (4)可以加速程式碼執行效率",
+        "formatChinese": "資料型態 函式名稱(引用變數值){\n    ...\n}",
+        "formatEnglish": "type name(var){\n    ...\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int a = 1, b = 2;\n    cout << add(a, b);\n    // output = 3\n}"
     },
     "define_function_void": {
         "blockName": "define_function_void",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "可以做為遞迴，或是減少主程式程式碼行數",
+        "notice": "⚠️注意：1. 記得不能有回傳值，只能有`return`當作終止函式(如果有回傳值不要用`void`)\n2. 使用時機：\n    (1)遞迴\n    (2)減少主程式程式碼行數\n    (3)有多個回傳值\n    (4)可以加速程式碼執行效率"",
+        "formatChinese": "void 函式名稱(引用變數值){\n    ...\n}",
+        "formatEnglish": "void name(var){\n    ...\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "void add(int a, int b, int &num) {\n    num = a + b;\n    return ;\n}\n\nint main() {\n    int a = 1, b = 2, num = 0;\n    add(a, b, num);\n    cout << num;\n    // output = 3\n}"
     },
     "lambda": {
         "blockName": "lambda",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "函式的省略版，可以把他定義在main裡面",
+        "notice": "⚠️注意：\n1.跟函式一樣的寫法\n2. `[]`裡面如果要直接使用變數記得要先定義3. `[]`裡面如果是`&`就代表後面變數都是reference，`=`代表一般的引用變數，為預設值",
+        "formatChinese": "如下👇",
+        "formatEnglish": "auto l = [](int a, int b){return a+b;}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 1, b = 2;\n    auto l = [](int a, int b) { return a + b; };\n    cout << l(a, b);"
     },
     "define_struct": {
         "blockName": "define_struct",
