@@ -219,26 +219,6 @@
                     "helpUrl": ""
                 },
 
-                //initializaiton
-                { //ios sync
-                    "type": "boost_ios_sync",
-                    "message0": "輸入輸出同步禁用",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": 160,
-                    "tooltip": "輸入輸出同步禁用",
-                    "helpUrl": ""
-                },
-                { //cin tie
-                    "type": "boost_cin_cout_tie",
-                    "message0": "解除 cin 和 cout 的速度綁定",
-                    "previousStatement": null,
-                    "nextStatement": null,
-                    "colour": 160,
-                    "tooltip": "解除 cin 和 cout 的綁定",
-                    "helpUrl": ""
-                },
-
                 //data
                 { //text
                     "type": "label",
@@ -3891,6 +3871,33 @@
                     "colour": "#000000",
                     "output": null,
                     "tooltip": "long long 的最大值",
+                    "helpUrl": ""
+                },
+                //basic ios
+                { //ios sync
+                    "type": "boost_ios_sync",
+                    "message0": "輸入輸出同步禁用",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": 160,
+                    "tooltip": "輸入輸出同步禁用",
+                    "helpUrl": ""
+                },
+                { //cin tie
+                    "type": "boost_cin_cout_tie",
+                    "message0": "解除 cin 和 cout 的速度綁定",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": 160,
+                    "tooltip": "解除 cin 和 cout 的綁定",
+                    "helpUrl": ""
+                },
+                {
+                    "type": "cin.eof",
+                    "message0": "判斷獨到eof停止",
+                    "output": true,
+                    "colour": 160,
+                    "tooltip": "",
                     "helpUrl": ""
                 }
             ]
