@@ -208,21 +208,21 @@
     },
     "math_calculate": {
         "blockName": "math_calculate",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "就是一般的加減乘除",
+        "notice": "⚠️注意：1. 除法是整數除法\n2. `%` 是取餘數的意思",
+        "formatChinese": "變數1 + 變數2",
+        "formatEnglish": "var1 + var2",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 2, b = 3;\ncout << a + b;"
     },
     "if_block": {
         "blockName": "if_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
+        "brief": "用來做條件判斷，判斷true 或是 false",
+        "notice": "⚠️注意：記得條件的地方`()`",
+        "formatChinese": "if (條件1){\n...\n}",
+        "formatEnglish": "if (condition){\n...\n}",
         "blocklyExample": "",
-        "cppExample": ""
+        "cppExample": "int a = 1, b = 2;\nif (a == b) cout << \"a = b\";\nelse cout << \"a != b\";"
     },
     "switch_block": {
         "blockName": "switch_block",
