@@ -1350,7 +1350,7 @@
                         {
                             "kind": "category",
                             "name": "basic_ios",
-                            "colour": "#8e44ad",
+                            "colour": 160,
                             "contents": [{
                                     "kind": "label",
                                     "text": "解除限制"
