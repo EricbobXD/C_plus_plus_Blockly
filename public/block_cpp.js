@@ -2253,6 +2253,93 @@ Blockly.Blocks['deque_assign'] = {
             }
         };
 
+        Blockly.Blocks['bitwise_generic'] = {
+            init: function() {
+                this.setColour("#abababa");
+                this.setOutput(true, "Number");
+                this.setInputsInline(true);
+                this.setMutator(new Blockly.Mutator(['bitwise_generic_item']));
+                this.itemCount_ = 2; // 預設至少兩個輸入欄位
+                this.operator_ = '+'; // 預設運算符為加法
+                this.updateShape_();
+            },
+            mutationToDom: function() {
+                const container = document.createElement('mutation');
+                container.setAttribute('items', this.itemCount_);
+                container.setAttribute('operator', this.operator_);
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                this.itemCount_ = bitwise.max(2, parseInt(xmlElement.getAttribute('items'), 10)); // 確保最少兩個
+                this.operator_ = xmlElement.getAttribute('operator') || '+';
+                this.updateShape_();
+            },
+            decompose: function(workspace) {
+                const containerBlock = workspace.newBlock('bitwise_generic_container');
+                containerBlock.initSvg();
+                let connection = containerBlock.getInput('STACK').connection;
+                for (let i = 0; i < this.itemCount_; i++) {
+                    const itemBlock = workspace.newBlock('bitwise_generic_item');
+                    itemBlock.initSvg();
+                    connection.connect(itemBlock.previousConnection);
+                    connection = itemBlock.nextConnection;
+                }
+                return containerBlock;
+            },
+            compose: function(containerBlock) {
+                let itemBlock = containerBlock.getInputTargetBlock('STACK');
+                const connections = [];
+                while (itemBlock) {
+                    connections.push(itemBlock.valueConnection_);
+                    itemBlock = itemBlock.nextConnection && itemBlock.nextConnection.targetBlock();
+                }
+                this.itemCount_ = bitwise.max(2, connections.length); // 確保最少兩個
+                this.updateShape_();
+                for (let i = 0; i < this.itemCount_; i++) {
+                    Blockly.Mutator.reconnect(connections[i], this, 'ADD' + i);
+                }
+            },
+            updateShape_: function() {
+                // 移除多餘的輸入
+                let i = 0;
+                while (this.getInput('ADD' + i)) {
+                    this.removeInput('ADD' + i);
+                    i++;
+                }
+
+                // 添加所需的輸入
+                for (let j = 0; j < this.itemCount_; j++) {
+                    const input = this.appendValueInput('ADD' + j).setCheck("Number");
+                    if (j > 0) {
+                        input.appendField(this.operator_);
+                    }
+                }
+            },
+            setOperator: function(operator) {
+                this.operator_ = operator;
+                this.updateShape_();
+            }
+        };
+
+        Blockly.Blocks['bitwise_generic_container'] = {
+            init: function() {
+                this.setColour("#abababa");
+                this.appendDummyInput().appendField("數字輸入");
+                this.appendStatementInput('STACK');
+                this.contextMenu = false;
+            }
+        };
+
+        Blockly.Blocks['bitwise_generic_item'] = {
+            init: function() {
+                this.setColour("#abababa");
+                this.appendDummyInput().appendField("項目");
+                this.setPreviousStatement(true);
+                this.setNextStatement(true);
+                this.contextMenu = false;
+            }
+        };
+
         function defineMathOperatorBlock(type, operatorSymbol) {
             Blockly.Blocks[type] = Object.assign({}, Blockly.Blocks['math_generic'], {
                 init: function() {
@@ -2270,6 +2357,16 @@ Blockly.Blocks['deque_assign'] = {
                 }
             });
         }
+
+        function defineBitwiseOperatorBlock(type, operatorSymbol) {
+            Blockly.Blocks[type] = Object.assign({}, Blockly.Blocks['bitwise_generic'], {
+                init: function() {
+                    Blockly.Blocks['bitwise_generic'].init.call(this);
+                    this.setOperator(operatorSymbol);
+                }
+            });
+        }
+
         //math
         defineMathOperatorBlock('math_plus', '+');
         defineMathOperatorBlock('math_multiply', '*');
@@ -2278,12 +2375,12 @@ Blockly.Blocks['deque_assign'] = {
         defineMathOperatorBlock('math_subtract', '-');
         
         //bool
-        defineMathOperatorBlock('bitwise_and', '&');
-        defineMathOperatorBlock('bitwise_or', '|');
-        defineMathOperatorBlock('bitwise_xor', '^');
-        defineMathOperatorBlock('bitwise_left', '>>');
-        defineMathOperatorBlock('bitwise_right', '<<');
-        defineMathOperatorBlock('bitwise_not', '~');
+        defineBitwiseOperatorBlock('bitwise_and', '&');
+        defineBitwiseOperatorBlock('bitwise_or', '|');
+        defineBitwiseOperatorBlock('bitwise_xor', '^');
+        defineBitwiseOperatorBlock('bitwise_left', '>>');
+        defineBitwiseOperatorBlock('bitwise_right', '<<');
+        defineBitwiseOperatorBlock('bitwise_not', '~');
 
         //string
         defineStringOperatorBlock('string_plus', '+');
