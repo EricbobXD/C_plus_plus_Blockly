@@ -376,7 +376,389 @@
         });
         const toolbox = {
             "kind": "categoryToolbox",
-            "contents": [{
+            "contents": [{ // function
+                    "kind": "category",
+                    "name": "自定義函式",
+                    "colour": "#db00db",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_function_void"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_function"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "function_call"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "lambda"
+                        },
+
+                        {
+                            "kind": "label",
+                            "text": "變數定義"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_var"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_ptr"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_ref"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_commas"
+                        }
+                    ]
+                },
+                { // variable
+                    "kind": "category",
+                    "name": "變數資料類型",
+                    "colour": "#C9A200",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_variable"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "var_equal"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_var"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "pointer"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_pointer"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ptr_equal"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_ptr"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ptr_of"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ptr_to"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "reference"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_reference"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ref_equal"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_ref"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "nullptr"
+                        }
+                    ]
+                },
+                { // array
+                    "kind": "category",
+                    "name": "陣列 Array",
+                    "colour": "#ff5757",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_array"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "array_name_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "array_content"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "array_operate[]"
+                        }
+                    ]
+                },
+                { // struct & class
+                    "kind": "category",
+                    "name": "結構與類別",
+                    "colour": "#f4a460",
+                    "contents": [{
+                            "kind": "label",
+                            "text": "Struct"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_struct"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_struct"
+                        },
+
+                        {
+                            "kind": "label",
+                            "text": "Class"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_class"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_class"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Function"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_function"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_function_void"
+                        }
+                    ]
+                },
+                { // text and more
+                    "kind": "category",
+                    "name": "文本操作",
+                    "colour": "#FF8C00",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "label"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "add_line"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "tab"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "comment_block"
+                        },
+
+                        {
+                            "kind": "label",
+                            "text": "擴充模組"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_plus"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_commas"
+                        }
+                    ]
+                },
+                { // input/output
+                    "kind": "category",
+                    "name": "資料輸入輸出",
+                    "colour": "#2EC832",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "cin_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "cout_block"
+                        },
+
+                        {
+                            "kind": "label",
+                            "text": "擴充模組"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_cin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_cout"
+                        }
+                    ]
+                },
+                { // math and caculate
+                    "kind": "category",
+                    "name": "數學與運算",
+                    "colour": "#1F91B5",
+                    "contents": [{
+                            "kind": "label",
+                            "text": "條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "logic_operators"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "or_and_xor"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "false"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "true"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "logic_not"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "數學基本操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "number"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "var_calculate"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_calculate"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "擴充模組"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_plus"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_multiply"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_percent"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_divide"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_subtract"
+                        }
+
+                    ]
+                },
+                { // condition and loop
+                    "kind": "category",
+                    "name": "條件與終止",
+                    "colour": "#00ABEA",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "if_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "switch_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "break_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "continue_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "return_block"
+                        }
+                    ]
+                },
+                { // loop
+                    "kind": "category",
+                    "name": "迴圈",
+                    "colour": "#2473c2",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "for_block"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "初始變數值"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_var"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "循環條件"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "logic_operators"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "迴圈條件"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "var_cal"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "while_block"
+                        }
+                    ]
+                },
+                { // define
+                    "kind": "category",
+                    "name": "定義",
+                    "colour": "#123456",
+                    "contents": [
+                        {
+                            "kind": "block",
+                            "type": "define_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "typedef_block"
+                        }
+                    ]
+                },
+                {
                     "kind": "category",
                     "name": "STL模組",
                     "contents": [{
@@ -1371,395 +1753,8 @@
                                     "kind": "block",
                                     "type": "cin.eof"
                                 },
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "kind": "sep"
-                },
-                { // function
-                    "kind": "category",
-                    "name": "自定義函式",
-                    "colour": "#db00db",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "define_function_void"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "function_call"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "lambda"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "變數定義"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_var"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_ptr"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_ref"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_commas"
-                        }
-                    ]
-                },
-                { // variable
-                    "kind": "category",
-                    "name": "變數資料類型",
-                    "colour": "#C9A200",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "define_variable"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_var"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "pointer"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_pointer"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_ptr"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_of"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_to"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "reference"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_reference"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ref_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_ref"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "nullptr"
-                        }
-                    ]
-                },
-                { // array
-                    "kind": "category",
-                    "name": "陣列 Array",
-                    "colour": "#ff5757",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "define_array"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "array_name_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "array_content"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "array_operate[]"
-                        }
-                    ]
-                },
-                { // struct & class
-                    "kind": "category",
-                    "name": "結構與類別",
-                    "colour": "#f4a460",
-                    "contents": [{
-                            "kind": "label",
-                            "text": "Struct"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_struct"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_struct"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "Class"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_class"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_class"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function_void"
-                        }
-                    ]
-                },
-                { // text and more
-                    "kind": "category",
-                    "name": "文本操作",
-                    "colour": "#FF8C00",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "label"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "add_line"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "tab"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "comment_block"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_plus"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_commas"
-                        }
-                    ]
-                },
-                { // input/output
-                    "kind": "category",
-                    "name": "資料輸入輸出",
-                    "colour": "#2EC832",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "cin_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "cout_block"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_cin"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_cout"
-                        }
-                    ]
-                },
-                { // math and caculate
-                    "kind": "category",
-                    "name": "數學與運算",
-                    "colour": "#1F91B5",
-                    "contents": [{
-                            "kind": "label",
-                            "text": "條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_operators"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "or_and_xor"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "false"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "true"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_not"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "數學基本操作"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "number"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_calculate"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_calculate"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_plus"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_multiply"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_percent"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_divide"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_subtract"
-                        }
-
-                    ]
-                },
-                { // condition and loop
-                    "kind": "category",
-                    "name": "條件與終止",
-                    "colour": "#00ABEA",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "if_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "switch_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "break_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "continue_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "return_block"
-                        }
-                    ]
-                },
-                { // loop
-                    "kind": "category",
-                    "name": "迴圈",
-                    "colour": "#2473c2",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "for_block"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "初始變數值"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_var"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "循環條件"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_operators"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "迴圈條件"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_cal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "while_block"
-                        }
-                    ]
-                },
-                { // define
-                    "kind": "category",
-                    "name": "定義",
-                    "colour": "#123456",
-                    "contents": [
-                        {
-                            "kind": "block",
-                            "type": "define_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "typedef_block"
-                        }
-                    ]
-                },
+                            ]}
+                        ]},
             ]
         };
 
