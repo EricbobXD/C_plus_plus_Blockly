@@ -654,7 +654,7 @@
                         },
                         {
                             "kind": "label",
-                            "text": "擴充模組"
+                            "text": "數學運算"
                         },
                         {
                             "kind": "block",
@@ -675,10 +675,38 @@
                         {
                             "kind": "block",
                             "type": "math_subtract"
-                        }
-
+                        },
+                        {
+                            "kind": "label",
+                            "text": "布林運算"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitwise_and"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitwise_or"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitwise_xor"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitwise_left"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitwise_right"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitwise_not"
+                        },
                     ]
                 },
+                
                 { // condition and loop
                     "kind": "category",
                     "name": "條件與終止",
@@ -1752,9 +1780,9 @@
                                 {
                                     "kind": "block",
                                     "type": "cin.eof"
-                                },
-                            ]}
-                        ]},
+                                }]
+                        }
+                ]},
             ]
         };
 
