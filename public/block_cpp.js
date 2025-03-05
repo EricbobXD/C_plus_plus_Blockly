@@ -2270,13 +2270,22 @@ Blockly.Blocks['deque_assign'] = {
                 }
             });
         }
-
+        //math
         defineMathOperatorBlock('math_plus', '+');
         defineMathOperatorBlock('math_multiply', '*');
         defineMathOperatorBlock('math_percent', '%');
         defineMathOperatorBlock('math_divide', '/');
         defineMathOperatorBlock('math_subtract', '-');
+        
+        //bool
+        defineMathOperatorBlock('bitwise_and', '&');
+        defineMathOperatorBlock('bitwise_or', '|');
+        defineMathOperatorBlock('bitwise_xor', '^');
+        defineMathOperatorBlock('bitwise_left', '>>');
+        defineMathOperatorBlock('bitwise_right', '<<');
+        defineMathOperatorBlock('bitwise_not', '~');
 
+        //string
         defineStringOperatorBlock('string_plus', '+');
         defineStringOperatorBlock('string_commas', ',');
         defineStringOperatorBlock('string_cin', '>>');
