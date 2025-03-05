@@ -2255,7 +2255,7 @@ Blockly.Blocks['deque_assign'] = {
 
         Blockly.Blocks['bitwise_generic'] = {
             init: function() {
-                this.setColour("#abababa");
+                this.setColour("#ababab");
                 this.setOutput(true, "Number");
                 this.setInputsInline(true);
                 this.setMutator(new Blockly.Mutator(['bitwise_generic_item']));
@@ -2323,7 +2323,7 @@ Blockly.Blocks['deque_assign'] = {
 
         Blockly.Blocks['bitwise_generic_container'] = {
             init: function() {
-                this.setColour("#abababa");
+                this.setColour("#ababab");
                 this.appendDummyInput().appendField("數字輸入");
                 this.appendStatementInput('STACK');
                 this.contextMenu = false;
@@ -2332,7 +2332,7 @@ Blockly.Blocks['deque_assign'] = {
 
         Blockly.Blocks['bitwise_generic_item'] = {
             init: function() {
-                this.setColour("#abababa");
+                this.setColour("#ababab");
                 this.appendDummyInput().appendField("項目");
                 this.setPreviousStatement(true);
                 this.setNextStatement(true);
