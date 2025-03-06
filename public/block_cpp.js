@@ -4444,3 +4444,15 @@ Blockly.Blocks['deque_assign'] = {
         Blockly.Cpp['cin.eof'] = function(block) {
             return ['cin.eof', 1];
         };
+
+        Blockly.Cpp['sstream_>>'] = function(block){
+            var var1 = Blockly.Cpp.valueToCode(block, 'var1', 1);
+            var var2 = Blockly.Cpp.valueToCode(block. 'var2', 1);
+            return `${var1} >> ${var2}`;
+        };
+
+        Blockly.Cpp['sstream_<<'] = function(block){
+            var var1 = Blockly.Cpp.valueToCode(block, 'var1', 1);
+            var var2 = Blockly.Cpp.valueToCode(block. 'var2', 1);
+            return `${var1} << ${var2}`;
+        };
