@@ -1781,6 +1781,23 @@
                                     "kind": "block",
                                     "type": "cin.eof"
                                 }]
+                        },
+                        {
+                            "kind": "category",
+                            "name": "sstream",
+                            "colour": 160,
+                            "contents": [{
+                                    "kind": "label",
+                                    "text": "stringstream"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "sstream_>>"
+                                },
+                                {
+                                    "kind": "block",
+                                    "type": "sstream_<<"
+                                }]
                         }
                 ]},
             ]
