@@ -3899,6 +3899,42 @@
                     "colour": 160,
                     "tooltip": "",
                     "helpUrl": ""
+                },
+                { //sstream_<<
+                    "type": "sstream_<<",
+                    "message0": "把變數 %1 移到 stringstream%2裡面",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "var1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "var2"
+                        }
+                    ],
+                    "colour": "#a13458",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "賦予變數值",
+                    "helpUrl": ""
+                },
+                { //sstream_<<
+                    "type": "sstream_>>",
+                    "message0": "把變數 %1 移到 stringstream%2裡面",
+                    "args0": [{
+                            "type": "field_input",
+                            "name": "var1"
+                        },
+                        {
+                            "type": "field_input",
+                            "name": "var2"
+                        }
+                    ],
+                    "colour": "#a13458",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "tooltip": "賦予變數值",
+                    "helpUrl": ""
                 }
             ]
         );
