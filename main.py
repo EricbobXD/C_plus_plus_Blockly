@@ -1,4 +1,3 @@
-from fastapi import FastAPI, Request
 from fastapi import FastAPI, Request,  BackgroundTasks, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
