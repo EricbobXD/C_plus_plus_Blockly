@@ -1785,7 +1785,7 @@
                         {
                             "kind": "category",
                             "name": "sstream",
-                            "colour": "a13458"
+                            "colour": "a13458",
                             "contents": [{
                                     "kind": "label",
                                     "text": "stringstream"
