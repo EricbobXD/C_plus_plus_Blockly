@@ -2260,7 +2260,7 @@ Blockly.Blocks['deque_assign'] = {
                 this.setInputsInline(true);
                 this.setMutator(new Blockly.Mutator(['bitwise_generic_item']));
                 this.itemCount_ = 2; // 預設至少兩個輸入欄位
-                this.operator_ = '+'; // 預設運算符為加法
+                this.operator_ = '&'; // 預設運算符為加法
                 this.updateShape_();
             },
             mutationToDom: function() {
@@ -2271,7 +2271,7 @@ Blockly.Blocks['deque_assign'] = {
             },
             domToMutation: function(xmlElement) {
                 this.itemCount_ = bitwise.max(2, parseInt(xmlElement.getAttribute('items'), 10)); // 確保最少兩個
-                this.operator_ = xmlElement.getAttribute('operator') || '+';
+                this.operator_ = xmlElement.getAttribute('operator') || '&';
                 this.updateShape_();
             },
             decompose: function(workspace) {
