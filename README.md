@@ -5,6 +5,7 @@
 **動機**: 本專案旨在以Blockly的形式撰寫C++代碼，避免艱深的代碼書寫。目前已有類似的專案，但功能仍受限，因此希望透過此專案進一步擴充Block至C++常用語法，提升Blockly的實用性。  
 **適用對象**: 初學者和有經驗的開發者皆適合。  
 **應用**: 教學或個人使用。  
+**網站**：[C++ Blockly](https://cplusplusblockly-production.up.railway.app/)
 
 ---
 
