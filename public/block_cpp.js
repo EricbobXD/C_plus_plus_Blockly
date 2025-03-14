@@ -4453,6 +4453,6 @@ Blockly.Blocks['deque_assign'] = {
 
         Blockly.Cpp['sstream_<<'] = function(block){
             var var1 = Blockly.Cpp.valueToCode(block, 'var1', 1);
-            var var2 = Blockly.Cpp.valueToCode(block. 'var2', 1);
+            var var2 = Blockly.Cpp.valueToCode(block, 'var2', 1);
             return `${var1} << ${var2}`;
         };
