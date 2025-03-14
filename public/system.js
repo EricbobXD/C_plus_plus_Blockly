@@ -374,118 +374,21 @@
             alt: false,
             shift: false
         });
+
+        // 方塊分類
         const toolbox = {
             "kind": "categoryToolbox",
-            "contents": [{ // function
+            "contents": [
+                { // 陣列
                     "kind": "category",
-                    "name": "自定義函式",
-                    "colour": "#db00db",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "define_function_void"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "function_call"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "lambda"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "變數定義"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_var"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_ptr"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_ref"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_commas"
-                        }
-                    ]
-                },
-                { // variable
-                    "kind": "category",
-                    "name": "變數資料類型",
-                    "colour": "#C9A200",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "define_variable"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_var"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "pointer"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_pointer"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_ptr"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_of"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_to"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "reference"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_reference"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ref_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_ref"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "nullptr"
-                        }
-                    ]
-                },
-                { // array
-                    "kind": "category",
-                    "name": "陣列 Array",
+                    "name": "陣列",
                     "colour": "#ff5757",
-                    "contents": [{
+                    "contents": [
+                        { // array
+                            "kind": "label",
+                            "text": "陣列(array)"
+                        },
+                        {
                             "kind": "block",
                             "type": "define_array"
                         },
@@ -502,55 +405,17 @@
                             "type": "array_operate[]"
                         }
                     ]
-                },
-                { // struct & class
+                },                
+                { // 文本
                     "kind": "category",
-                    "name": "結構與類別",
-                    "colour": "#f4a460",
-                    "contents": [{
-                            "kind": "label",
-                            "text": "Struct"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_struct"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_struct"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "Class"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_class"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_class"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function_void"
-                        }
-                    ]
-                },
-                { // text and more
-                    "kind": "category",
-                    "name": "文本操作",
+                    "name": "文本",
                     "colour": "#FF8C00",
-                    "contents": [{
+                    "contents": [
+                        { // 文本
+                            "kind": "label",
+                            "text": "文本"
+                        },
+                        {
                             "kind": "block",
                             "type": "label"
                         },
@@ -565,54 +430,58 @@
                         {
                             "kind": "block",
                             "type": "comment_block"
-                        },
-
-                        {
-                            "kind": "label",
-                            "text": "擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_plus"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_commas"
                         }
                     ]
                 },
-                { // input/output
+                { // 操作
                     "kind": "category",
-                    "name": "資料輸入輸出",
+                    "name": "操作",
                     "colour": "#2EC832",
-                    "contents": [{
+                    "contents": [
+                        { // 輸入
+                            "kind": "label",
+                            "text": "輸入"
+                        },
+                        {
                             "kind": "block",
                             "type": "cin_block"
                         },
                         {
                             "kind": "block",
-                            "type": "cout_block"
+                            "type": "string_cin"
                         },
-
-                        {
+                        { // 輸出
                             "kind": "label",
-                            "text": "擴充模組"
+                            "text": "輸出"
                         },
                         {
                             "kind": "block",
-                            "type": "string_cin"
+                            "type": "cout_block"
                         },
                         {
                             "kind": "block",
                             "type": "string_cout"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "解除限制"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "boost_ios_sync"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "boost_cin_cout_tie"
                         }
                     ]
                 },
-                { // math and caculate
+                { // 運算
                     "kind": "category",
-                    "name": "數學與運算",
+                    "name": "運算",
                     "colour": "#1F91B5",
-                    "contents": [{
+                    "contents": [
+                        {
                             "kind": "label",
                             "text": "條件判斷"
                         },
@@ -651,10 +520,122 @@
                         {
                             "kind": "block",
                             "type": "math_calculate"
-                        },
+                        }
+                    ]
+                },
+                { // 判斷
+                    "kind": "category",
+                    "name": "判斷",
+                    "colour": "#00ABEA",
+                    "contents": [
                         {
                             "kind": "label",
-                            "text": "數學運算"
+                            "text": "判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "if_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "switch_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "break_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "continue_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "return_block"
+                        }
+                    ]
+                },
+                { // 迴圈
+                    "kind": "category",
+                    "name": "迴圈",
+                    "colour": "#2473c2",
+                    "contents": [
+                        { // 迴圈(while/for)
+                            "kind": "label",
+                            "text": "迴圈(while/for)"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "while_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "for_block"
+                        },
+                        { // 初始變數值(for)
+                            "kind": "label",
+                            "text": "初始變數值(for)"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "def_var"
+                        },
+                        { // 循環條件(for)
+                            "kind": "label",
+                            "text": "循環條件(for)"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "logic_operators"
+                        },
+                        { // 迴圈條件(for)
+                            "kind": "label",
+                            "text": "迴圈條件(for)"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "var_cal"
+                        }
+                    ]
+                },
+                { // 定義
+                    "kind": "category",
+                    "name": "定義",
+                    "colour": "#123456",
+                    "contents": [
+                        { // 定義
+                            "kind": "label",
+                            "text": "定義"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_block"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "typedef_block"
+                        }
+                    ]
+                },
+                { // 擴充模組
+                    "kind": "category",
+                    "name": "擴充模組",
+                    "colour": "#135790",
+                    "contents": [
+                        { // 字串
+                            "kind": "label",
+                            "text": "字串擴充模組"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_plus"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_commas"
+                        },
+                        { // 數學
+                            "kind": "label",
+                            "text": "數學擴充模組"
                         },
                         {
                             "kind": "block",
@@ -678,7 +659,7 @@
                         },
                         {
                             "kind": "label",
-                            "text": "布林運算"
+                            "text": "布林運算擴充模組"
                         },
                         {
                             "kind": "block",
@@ -703,93 +684,143 @@
                         {
                             "kind": "block",
                             "type": "bitwise_not"
-                        },
-                    ]
-                },
-                
-                { // condition and loop
-                    "kind": "category",
-                    "name": "條件與終止",
-                    "colour": "#00ABEA",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "if_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "switch_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "break_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "continue_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "return_block"
                         }
                     ]
                 },
-                { // loop
+                { // 變數/指標/位置
                     "kind": "category",
-                    "name": "迴圈",
-                    "colour": "#2473c2",
-                    "contents": [{
-                            "kind": "block",
-                            "type": "for_block"
+                    "name": "變數/指標/位置",
+                    "colour": "#C9A200",
+                    "contents": [
+                        { // variable
+                            "kind": "label",
+                            "text": "變數(variable)"
                         },
                         {
-                            "kind": "label",
-                            "text": "初始變數值"
+                            "kind": "block",
+                            "type": "define_variable"
                         },
                         {
                             "kind": "block",
                             "type": "def_var"
+                        },                        
+                        {
+                            "kind": "block",
+                            "type": "var_equal"
                         },
                         {
+                            "kind": "block",
+                            "type": "get_var"
+                        },
+                        { // pointer
                             "kind": "label",
-                            "text": "循環條件"
+                            "text": "指標(pointer)"
                         },
                         {
                             "kind": "block",
-                            "type": "logic_operators"
+                            "type": "define_pointer"
                         },
                         {
+                            "kind": "block",
+                            "type": "def_ptr"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ptr_equal"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_ptr"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ptr_of"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ptr_to"
+                        },
+                        { // reference
                             "kind": "label",
-                            "text": "迴圈條件"
+                            "text": "位置(reference)"
                         },
                         {
                             "kind": "block",
-                            "type": "var_cal"
+                            "type": "define_reference"
                         },
                         {
                             "kind": "block",
-                            "type": "while_block"
+                            "type": "def_ref"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ref_equal"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_ref"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "nullptr"
                         }
                     ]
                 },
-                { // define
+                { // 函式/結構/類別
                     "kind": "category",
-                    "name": "定義",
-                    "colour": "#123456",
+                    "name": "函式/結構/類別",
+                    "colour": "#db00db",
                     "contents": [
-                        {
-                            "kind": "block",
-                            "type": "define_block"
+                        { // function
+                            "kind": "label",
+                            "text": "函式(function)"
                         },
                         {
                             "kind": "block",
-                            "type": "typedef_block"
+                            "type": "define_function"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_function_void"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "lambda"
+                        },
+                        { // struct
+                            "kind": "label",
+                            "text": "結構(struct)"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_struct"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_struct"
+                        },
+                        { // class
+                            "kind": "label",
+                            "text": "類別(class)"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_class"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_class"
                         }
                     ]
                 },
-                {
+                { // sep
+                    "kind": "sep"
+                },
+                { // STL
                     "kind": "category",
                     "name": "STL模組",
-                    "contents": [{
+                    "contents": [
+                        {
                             "kind": "category",
                             "name": "vector",
                             "colour": "#6c5ce7",
@@ -1799,13 +1830,21 @@
                                     "type": "sstream_<<"
                                 }]
                         }
-                ]},
+                    ]
+                },
+                { // sep
+                    "kind": "sep"
+                },
+                {
+                    "kind": "category",
+                    "name": "搜尋",
+                    "colour": "#A1A1A1",
+                    "contents": []
+                }
             ]
         };
 
-        
-        // 初始化 Blockly workspace
-         workspace = Blockly.inject('blockly-workspace', {
+        var workspace = Blockly.inject('blockly-workspace', {
             toolbox: toolbox,
             scrollbars: true,
             trashcan: true,
@@ -1825,12 +1864,9 @@
             },
             renderer: 'zelos'
         });
-
-        // 調整視圖
         Blockly.svgResize(workspace);
         workspace.zoomToFit();
-
-        // 設置縮放與偏移
+        
         setTimeout(() => {
             workspace.setScale(0.68);
             const metrics = workspace.getMetrics();
@@ -1971,82 +2007,74 @@
         });
 
         (function() {
-            // 定義所有方塊說明資料的 JSON 陣列
-            const blockExplanations = [{
-                    "blockName": "if_block",
-                    "convertedCode": "if (condition) {\n    /* code */\n}",
-                    "brief": "條件判斷，當條件為真時執行特定區塊。",
-                    "blocklyExample": "images/if_example.png",
-                    "cppExample": "if (a > b) {\n  std::cout << \"a > b\";\n}"
-                },
-                {
-                    "blockName": "for_block",
-                    "convertedCode": "for (int i = 0; i < n; i++) { /* code */ }",
-                    "brief": "迴圈重複執行區塊。",
-                    "blocklyExample": "images/for_example.png",
-                    "cppExample": "for (int i = 0; i < 10; i++) {\n  std::cout << i;\n}"
-                }
-                // 可依需求新增其他方塊的說明資料
-            ];
+            let blockExplanations = {}; // 存放 JSON 資料
 
-            // 更新「方塊說明」面板（假設該面板使用 id="blockly-view"）
-            function updateExplanationPanel(desc) {
+            // **載入 JSON 資料**
+            fetch("https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/block_info.json")
+                .then(response => response.json())
+                .then(data => {
+                    blockExplanations = data;
+
+                    // 確保資料載入後，再更新面板
+                    updateExplanationPanel('block_name'); // 用實際的 blockType 替代 'block_name'
+                })
+                .catch(error => console.error("載入 JSON 失敗:", error));
+
+            // **更新「方塊說明」面板**
+            function updateExplanationPanel(blockType) {
                 const panel = document.getElementById("blockly-view");
-                if (desc) {
+
+                // 確保 JSON 資料已載入，且 blockType 存在於 JSON 內
+                if (blockType && blockExplanations[blockType]) {
+                    const desc = blockExplanations[blockType];
                     panel.innerHTML = `
-            <header>
-              <span>方塊 ID：${desc.blockName}</span>
-            </header>
-            <div style="padding: 10px; overflow-y: auto; max-height: calc(100vh - 150px);">
-              <p><strong>簡單說明：</strong>${desc.brief}</p>
-              <p><strong>轉換程式碼：</strong></p>
-              <pre><code class="language-cpp">${desc.convertedCode}</code></pre>
-              <p><strong>使用範例：</strong></p>
-              <p><img src="${desc.blocklyExample}" alt="${desc.blockName}" style="max-width:100%; height:auto; margin-bottom:10px;"></p>
-              <p><strong>C++ 範例：</strong></p>
-              <pre><code class="language-cpp">${desc.cppExample}</code></pre>
-            </div>
-          `;
+                        <header>
+                            <span>方塊 ID：${desc.blockName}</span>
+                        </header>
+                        <div style="padding: 10px; overflow-y: auto; max-height: calc(100vh - 150px);">
+                            <p><strong>簡單說明：</strong>${desc.brief}</p>
+                            <p><strong>轉換程式碼：</strong></p>
+                            <pre><code class="language-cpp">${desc.convertedCode}</code></pre>
+                            <p><strong>使用範例：</strong></p>
+                            <p><img src="${desc.blocklyExample}" alt="${desc.blockName}" style="max-width:100%; height:auto; margin-bottom:10px;"></p>
+                            <p><strong>C++ 範例：</strong></p>
+                            <pre><code class="language-cpp">${desc.cppExample}</code></pre>
+                        </div>
+                    `;
                 } else {
-                    // 預設內容：當沒有點擊到任何方塊時顯示
+                    // **當沒有選擇方塊時，顯示預設內容**
                     panel.innerHTML = `
-            <header>
-              <span>Blockly 說明</span>
-            </header>
-            <div>
-              <p>點擊方塊查看說明。</p> 
-            </div>
-          `;
+                        <header>
+                            <span>Blockly 說明</span>
+                        </header>
+                        <div>
+                            <p>點擊方塊查看說明。</p> 
+                        </div>
+                    `;
                 }
-                // 呼叫 highlight.js 處理面板中所有程式碼區塊
+
+                // **呼叫 highlight.js 高亮程式碼**
                 panel.querySelectorAll('pre code').forEach((block) => {
                     hljs.highlightElement(block);
                 });
             }
 
-            // 根據方塊類型（block.type）尋找對應的說明資料
-            function getExplanationByBlockType(blockType) {
-                return blockExplanations.find(item => item.blockName === blockType);
-            }
-
-            // 取得 Blockly 工作區容器（使用 id="blockly-workspace"）
+            // **取得 Blockly 工作區容器（使用 id="blockly-workspace"）**
             const workspaceContainer = document.getElementById('blockly-workspace');
             if (workspaceContainer) {
                 workspaceContainer.addEventListener('click', function(e) {
-                    // 使用 closest() 判斷點擊位置是否位於包含 data-id 屬性的元素上
                     const elementWithId = e.target.closest('[data-id]');
                     if (elementWithId) {
                         const blockId = elementWithId.getAttribute('data-id');
                         if (blockId && typeof workspace !== 'undefined') {
                             const block = workspace.getBlockById(blockId);
                             if (block) {
-                                const explanation = getExplanationByBlockType(block.type);
-                                updateExplanationPanel(explanation);
-                                return; // 找到對應方塊後結束事件處理
+                                updateExplanationPanel(block.type);
+                                return; // **找到方塊後結束處理**
                             }
                         }
                     }
-                    // 若點擊位置不屬於任何方塊，則重置面板為預設內容
+                    // **若點擊位置不屬於任何方塊，則重置面板**
                     updateExplanationPanel(null);
                 });
             }
