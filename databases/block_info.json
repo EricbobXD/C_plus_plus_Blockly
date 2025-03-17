@@ -244,7 +244,7 @@
     },
     "continue_block": {
         "blockName": "continue_block",
-        "brief": "用來跳過條件、迴圈"
+        "brief": "用來跳過條件、迴圈",
         "notice": "⚠️注意：一定要把`continue`包在條件、迴圈裡面喔",
         "formatChinese": "if (條件){\n    ....\n   continue;\n}",
         "formatEnglish": "if (condition){\n    ....\n    continue;\n}",
@@ -308,7 +308,7 @@
     "define_function_void": {
         "blockName": "define_function_void",
         "brief": "可以做為遞迴，或是減少主程式程式碼行數",
-        "notice": "⚠️注意：1. 記得不能有回傳值，只能有`return`當作終止函式(如果有回傳值不要用`void`)\n2. 使用時機：\n    (1)遞迴\n    (2)減少主程式程式碼行數\n    (3)有多個回傳值\n    (4)可以加速程式碼執行效率"",
+        "notice": "⚠️注意：1. 記得不能有回傳值，只能有`return`當作終止函式(如果有回傳值不要用`void`)\n2. 使用時機：\n    (1)遞迴\n    (2)減少主程式程式碼行數\n    (3)有多個回傳值\n    (4)可以加速程式碼執行效率",
         "formatChinese": "void 函式名稱(引用變數值){\n    ...\n}",
         "formatEnglish": "void name(var){\n    ...\n}",
         "blocklyExample": "",
