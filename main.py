@@ -6,14 +6,6 @@ from pydantic import BaseModel
 import subprocess
 import os
 import time
-from pymongo import MongoClient
-
-url = "mongodb://mongo:jjjTvYJcsMeAsyoGycpBKTRjYgBTrDBF@yamabiko.proxy.rlwy.net:34669"
-
-client = MongoClient(url)
-db_toolbox = client['db_toolbox']
-toolbox = db_toolbox['toolbox']
-
 app = FastAPI()
 
 # CORS(處理跨域資源共享) : 允許不同領域的請求
