@@ -1,2081 +1,2081 @@
 {
-    "block_name": {
-        "blockName": "block_name",
-        "brief": "simple comment",
-        "notice": "⚠️注意：notice to coding detail",
-        "formatChinese": "c++ code famework for Chinese",
-        "formatEnglish": "c++ code famework for English",
-        "blocklyExample": "sample of block for picture (.png)",
-        "cppExample": "sample of code for c++"
-    },
-    "main_block": {
-        "blockName": "main_block",
-        "brief": "主函式架構",
-        "notice": "⚠️注意：每段程式碼都只能加一個喔",
-        "formatChinese": "同下👇",
-        "formatEnglish": "1 | int main() {\n2 |     return 0;\n3 | }",
-        "blocklyExample": "./databases/pictures/main_block.png",
-        "cppExample": "1 | int main() {\n2 |     return 0;\n3 | }"
-    },
-    "define_array": {
-        "blockName": "define_array",
-        "brief": "定義C++內建陣列",
-        "notice": "⚠️注意：\n1. 需要宣告陣列型態\n2. 需要宣告陣列大小\n3. 宣告完不能再改變陣列大小\n4. 陣列內容不一定要加",
-        "formatChinese": "資料型態 陣列名稱[陣列大小] = {陣列內容};",
-        "formatEnglish": "type name[size] = {content}",
-        "blocklyExample": "",
-        "cppExample": "int array[5];"
-    },
-    "array_name_block": {
-        "blockName": "array_name_block",
-        "brief": "方便做C++內建鎮列基礎操作，像是sort, 取maxiuman之類的",
-        "notice": "⚠️注意：no",
-        "formatChinese": "陣列名稱",
-        "formatEnglish": "name",
-        "blocklyExample": "array",
-        "cppExample": ""
-    },
-    "array_content": {
-        "blockName": "array_content",
-        "brief": "定義C++內建陣列裡面的內容",
-        "notice": "⚠️注意：\n1. 不能超過宣告陣列大小2. 要用`{}`並且中間的元素都用`,`分開",
-        "formatChinese": "{內容1, 內容2, 內容3}",
-        "formatEnglish": "{content1,content2,content3}",
-        "blocklyExample": "",
-        "cppExample": "{1, 2, 3, 4, 5}"
-    },
-    "array_operate[]": {
-        "blockName": "array_operate[]",
-        "brief": "查詢C++內建陣列",
-        "notice": "⚠️注意：\n1. 不能超過宣告陣列大小\n2. 如果索引值(index) = 4 會查到第5個元素喔(陣列元素從0開始)",
-        "formatChinese": "陣列名稱[索引值]",
-        "formatEnglish": "name[index]",
-        "blocklyExample": "",
-        "cppExample": "a[5]"
-    },
-    "label": {
-        "blockName": "label",
-        "brief": "字串(string)",
-        "notice": "⚠️注意：記得要用\"\"",
-        "formatChinese": "\"字串 (什麼文字、符號都可以)\"",
-        "formatEnglish": "\"string(any word, mark or emoji are ok)\"",
-        "blocklyExample": "",
-        "cppExample": "\"Hello, World!\""
-    },
-    "add_line": {
-        "blockName": "add_line",
-        "brief": "換行",
-        "notice": "⚠️注意：no",
-        "formatChinese": "換行",
-        "formatEnglish": "newline",
-        "blocklyExample": "",
-        "cppExample":  "\\n"
-    },
-    "tab": {
-        "blockName": "tab",
-        "brief": "空4格，跟電腦的Tab鍵一樣",
-        "notice": "⚠️注意：no",
-        "formatChinese": "同下👇",
-        "formatEnglish": "    ",
-        "blocklyExample": "",
-        "cppExample": "    "
-    },
-    "comment_block": {
-        "blockName": "comment_block",
-        "brief": "註解",
-        "notice": "⚠️注意：no",
-        "formatChinese": "註解",
-        "formatEnglish": "comnent",
-        "blocklyExample": "",
-        "cppExample": "//打註解內容"
-    },
-    "cin_block": {
-        "blockName": "cin_block",
-        "brief": "其中一種輸入方式(新手推薦)",
-        "notice": "⚠️注意：\n1. 多筆測資要用下面可以擴充`>>`的方塊2. 換行也可以讀到",
-        "formatChinese": "cin >> 變數1 >> 變數2 >> 變數3;",
-        "formatEnglish": "cin >> var1 >> var2 >> var3;",
-        "blocklyExample": "",
-        "cppExample": "cin >> a >> b >> c;"
-    },
-    "string_cin": {
-        "blockName": "string_cin",
-        "brief": "擴充cin功能",
-        "notice": "⚠️注意：搭配上面`cin`方塊",
-        "formatChinese": "變數1 >> 變數2 >> 變數3",
-        "formatEnglish": "var1 >> var2 >> var3",
-        "blocklyExample": "",
-        "cppExample": "a >> b >> c"
-    },
-    "cout_block": {
-        "blockName": "cout_block",
-        "brief": "其中一種輸出方式(新手推薦)",
-        "notice": "⚠️注意：多筆測資要用下面可以擴充`<<`的方塊",
-        "formatChinese": "cout << 變數1 << 變數2 << 變數3;",
-        "formatEnglish": "cout << var1 << var2 << var3;",
-        "blocklyExample": "",
-        "cppExample": "cout << \"Hello World!\""
-    },
-    "string_cout ": {
-        "blockName": "string_cout ",
-        "brief": "擴充 cout 功能",
-        "notice": "⚠️注意：搭配上面`cout `方塊",
-        "formatChinese": "變數1 << 變數2 << 變數3",
-        "formatEnglish": "var1 << var2 << var3",
-        "blocklyExample": "",
-        "cppExample": "a << b << c"
-    },
-    "boost_ios_sync": {
-        "blockName": "boost_ios_sync",
-        "brief": "關閉C++(cin, cout)與 C(scanf, printf) 同步 => 加速`cin`跟`cout`速度",
-        "notice": "⚠️注意：用這串程式碼就不能有`scanf`跟`printf`喔",
-        "formatChinese": "同下👇",
-        "formatEnglish": "ios::sync_with_stdio(0);",
-        "blocklyExample": "",
-        "cppExample": "ios::sync_with_stdio(0);"
-    },
-    "boost_cin_cout_tie": {
-        "blockName": "boost_cin_cout_tie",
-        "brief": "解除cim cout 綁定 => 再次加速`cin`跟`cout`",
-        "notice": "⚠️注意：no",
-        "formatChinese": "同下👇",
-        "formatEnglish": "cin.tie(0);cout.tie(0);",
-        "blocklyExample": "",
-        "cppExample": "cin.tie(0);cout.tie(0);"
-    },
-    "logic_operators": {
-        "blockName": "logic_operators",
-        "brief": "邏輯運算子 => 用來判斷條件",
-        "notice": "⚠️注意：一般的`=`跟`==`意思一樣但功能不一樣喔，這是專門用來判斷的，",
-        "formatChinese": "變數1 不小於(大於等於) 變數2",
-        "formatEnglish": "var1 >= var2",
-        "blocklyExample": "",
-        "cppExample": "int a = 3, b = 4;\nif (a > b) cout << \"a > b\";\nelse cout << \"b > a\";\n//output:b > a"
-    },
-    "or_and_xor": {
-        "blockName": "or_and_xor",
-        "brief": "比較運算子 => 這也是專門來段判斷的\n符號意思：\n1. or: `||`\n2. and: `&&`\n3. xor: `^^`",
-        "notice": "⚠️注意：**一般的`|`, `&`, `^`跟`||`, `&&`, `^^`功能跟意思都不一樣喔**\n`|`, `&`, `^`是位元運算子(後面會講)，而||`, `&&`, `^^`是專門邏輯判斷的",
-        "formatChinese": "變數1 || 變數2",
-        "formatEnglish": "var1 || var2",
-        "blocklyExample": "",
-        "cppExample": "int a = 3, b = 4, c = 3;\nif (a == b or a == c) cout << \"True\";\nelse cout << \"False\";\n//output : True"
-    },
-    "false": {
-        "blockName": "false",
-        "brief": "0 也可以代表 false",
-        "notice": "⚠️注意：no",
-        "formatChinese": "如下👇",
-        "formatEnglish": "false",
-        "blocklyExample": "",
-        "cppExample": "bool c = 0;\n if (c == false) cout << \"False\";\nelse cout << \"True\";\n//output : False"
-    },
-    "true": {
-        "blockName": "true",
-        "brief": "1 也可以代表 true",
-        "notice": "⚠️注意：no",
-        "formatChinese": "如下👇",
-        "formatEnglish": "true",
-        "blocklyExample": "",
-        "cppExample": "bool c = 1;\n if (c == false) cout << \"False\";\nelse cout << \"True\";\n//output : True"
-    },
-    "logic_not": {
-        "blockName": "logic_not",
-        "brief": "本質上是`flase`，只是他是用來做判斷的，可以讓判斷是寫的更簡潔，符號`!`",
-        "notice": "⚠️注意：不一定要用在判斷式，變數定義也可以",
-        "formatChinese": "!變數1",
-        "formatEnglish": "!var1",
-        "blocklyExample": "",
-        "cppExample": "//1\n bool c = 1;\nif (!c) cout << \"False\";\nelse cout << \"True\";\n//output : True\n\n//2\nbool c = 0;\nbool d = !c; //d = 1"
-    },
-    "number": {
-        "blockName": "number",
-        "brief": "數字",
-        "notice": "⚠️注意：要記得C++數字有限制大寫喔",
-        "formatChinese": "0",
-        "formatEnglish": "0",
-        "blocklyExample": "",
-        "cppExample": "int a = 5;"
-    },
-    "var_calculate": {
-        "blockName": "var_calculate",
-        "brief": "賦值運算子 => 用來跟自己做運算的(是不是不太懂😅，繼續看下去)",
-        "notice": "⚠️注意：如果後面有一大串運算，記得要括號喔!!!",
-        "formatChinese": "變數1 += 變數2 //變數1 = 變數1 + 變數2",
-        "formatEnglish": "var1 += var2 // var1 = var1 + var2",
-        "blocklyExample": "",
-        "cppExample": "int a = 5;\n a += 5; //a = 10"
-    },
-    "math_calculate": {
-        "blockName": "math_calculate",
-        "brief": "就是一般的加減乘除",
-        "notice": "⚠️注意：1. 除法是整數除法\n2. `%` 是取餘數的意思",
-        "formatChinese": "變數1 + 變數2",
-        "formatEnglish": "var1 + var2",
-        "blocklyExample": "",
-        "cppExample": "int a = 2, b = 3;\ncout << a + b;"
-    },
-    "if_block": {
-        "blockName": "if_block",
-        "brief": "用來做條件判斷，判斷true 或是 false",
-        "notice": "⚠️注意：記得條件的地方`()`",
-        "formatChinese": "if (條件1){\n...\n}",
-        "formatEnglish": "if (condition){\n...\n}",
-        "blocklyExample": "",
-        "cppExample": "int a = 1, b = 2;\nif (a == b) cout << \"a = b\";\nelse cout << \"a != b\";"
-    },
-    "switch_block": {
-        "blockName": "switch_block",
-        "brief": "多個相似的條件且只適用於`=`的if可以用switch替換",
-        "notice": "⚠️注意：1. 盡量都用`if`\n2. 他是很多個`if`組成的，所以如果要把它變成`else if`的話記得要加`break`",
-        "formatChinese": "switch(變數名稱或運算式)\n{\ncase:\n ...\ncase: ...\ndefault ...\n}",
-        "formatEnglish": "switch(var or Operational expression)\n{\ncase:\n ...\ncase: ...\ndefault ...\n}",
-        "blocklyExample": "",
-        "cppExample": "//1\nv = 10;\nswitch (v){\n    case 1:\n        cout << 1;\n        break;\n    case 2:\n        cout << 2;\n        break;\n    default:\n        cout << \"not 1 and 2\";\n        break;\n//output = not 1 and 2\n\n//2\n//a is a array, size is 3\nswitch (int len = a.size(); len){\n    case 1:\n        cout << \"len = 1\";\n        break;\n    case 2:\n        cout << \"len = 2\";\n        break;\n    default:\n        cout << \"len not 1 and 2\";\n        break;\n//output = len not 1 and 2"
-    },
-    "break_block": {
-        "blockName": "break_block",
-        "brief": "用來終止條件、迴圈",
-        "notice": "⚠️注意：一定要把`break`包在條件、迴圈裡面喔",
-        "formatChinese": "if (條件){\n    ....\n    break;\n}",
-        "formatEnglish": "if (condition){\n    ....\n    break;\n}",
-        "blocklyExample": "",
-        "cppExample": "for (int i = 0; i < 5; i++) {\n    if (i) break;\n    cout << i << \" \";\ncout << \"6\";\n}\n//output = 0 6"
-    },
-    "continue_block": {
-        "blockName": "continue_block",
-        "brief": "用來跳過條件、迴圈",
-        "notice": "⚠️注意：一定要把`continue`包在條件、迴圈裡面喔",
-        "formatChinese": "if (條件){\n    ....\n   continue;\n}",
-        "formatEnglish": "if (condition){\n    ....\n    continue;\n}",
-        "blocklyExample": "",
-        "cppExample": "for (int i = 0; i < 5; i++) {\n    if (i) continue;\n    cout << i << \" \";\ncout << \"6\";\n}\n//output = 0 2 3 4 6"
-    },
-    "return_block": {
-        "blockName": "return_block",
-        "brief": "用來終止程式碼",
-        "notice": "⚠️注意：只要寫到，就是把程式碼直接終止，除了在函式以內，在函式是回傳值",
-        "formatChinese": "if (條件){\n    ....\n   return 0;\n}",
-        "formatEnglish": "if (condition){\n    ....\n   return 0;\n}",
-        "blocklyExample": "for (int i = 0; i < 5; i++) {\n    if (i) continue;\n    cout << i << \" \";\ncout << \"6\";\n}\n//output = 0",
-        "cppExample": ""
-    },
-    "while_block": {
-        "blockName": "while_block",
-        "brief": "執行到不符合條件，才會終止",
-        "notice": "⚠️注意：是不符合條件喔",
-        "formatChinese": "while (條件1){\n    ...\n}",
-        "formatEnglish": "while (condition){\n    ...\n}",
-        "blocklyExample": "",
-        "cppExample": "int a = 1, b = 3;\nwhile (a != b)\n    a++;\ncout << \"a = \" << a << \", b = \" << b; // a = 3, b = 3"
-    },
-    "for_block": {
-        "blockName": "for_block",
-        "brief": "執行到符合終止條件",
-        "notice": "⚠️注意：包含變數、終止條件以及變數運算(至少要有終止條件)",
-        "formatChinese": "如下👇",
-        "formatEnglish": "for (int i = 0; i < n; i++){\n    ...\n}",
-        "blocklyExample": "",
-        "cppExample": "for (int i = 0; i < 5; i++) cout << i;\n//output = 01234"
-    },
-    "def_var": {
-        "blockName": "def_var",
-        "brief": "變數定義",
-        "notice": "⚠️注意：包含變數型態、變數名子以及變數值(可省略)",
-        "formatChinese": "資料型態 變數名子 = 變數值",
-        "formatEnglish": "type name = value",
-        "blocklyExample": "",
-        "cppExample": "//1\n int a = 1;\n\n //2\n int b;"
-    },
-    "var_cal": {
-        "blockName": "var_cal",
-        "brief": "改變先定義好變數的變數值",
-        "notice": "⚠️注意：一定要先定義好的變數喔，不然會抱錯",
-        "formatChinese": "變數1 = 值",
-        "formatEnglish": "var 1 = value",
-        "blocklyExample": "",
-        "cppExample": "int a = 1;\n a = 4;\ncout << a;\n//a = 4"
-    },
-    "define_function": {
-        "blockName": "define_function",
-        "brief": "可以做為遞迴，或是減少主程式程式碼行數",
-        "notice": "⚠️注意：1. 記得一定要回傳值(如果沒有回傳值用`void`)\n2. 使用時機：\n    (1)遞迴\n    (2)減少主程式程式碼行數\n    (3)有多個回傳值\n    (4)可以加速程式碼執行效率",
-        "formatChinese": "資料型態 函式名稱(引用變數值){\n    ...\n}",
-        "formatEnglish": "type name(var){\n    ...\n}",
-        "blocklyExample": "",
-        "cppExample": "int add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int a = 1, b = 2;\n    cout << add(a, b);\n    // output = 3\n}"
-    },
-    "define_function_void": {
-        "blockName": "define_function_void",
-        "brief": "可以做為遞迴，或是減少主程式程式碼行數",
-        "notice": "⚠️注意：1. 記得不能有回傳值，只能有`return`當作終止函式(如果有回傳值不要用`void`)\n2. 使用時機：\n    (1)遞迴\n    (2)減少主程式程式碼行數\n    (3)有多個回傳值\n    (4)可以加速程式碼執行效率",
-        "formatChinese": "void 函式名稱(引用變數值){\n    ...\n}",
-        "formatEnglish": "void name(var){\n    ...\n}",
-        "blocklyExample": "",
-        "cppExample": "void add(int a, int b, int &num) {\n    num = a + b;\n    return ;\n}\n\nint main() {\n    int a = 1, b = 2, num = 0;\n    add(a, b, num);\n    cout << num;\n    // output = 3\n}"
-    },
-    "lambda": {
-        "blockName": "lambda",
-        "brief": "函式的省略版，可以把他定義在main裡面",
-        "notice": "⚠️注意：\n1.跟函式一樣的寫法\n2. `[]`裡面如果要直接使用變數記得要先定義3. `[]`裡面如果是`&`就代表後面變數都是reference，`=`代表一般的引用變數，為預設值",
-        "formatChinese": "如下👇",
-        "formatEnglish": "auto l = [](int a, int b){return a+b;}",
-        "blocklyExample": "",
-        "cppExample": "int a = 1, b = 2;\n    auto l = [](int a, int b) { return a + b; };\n    cout << l(a, b);"
-    },
-    "define_struct": {
-        "blockName": "define_struct",
-        "brief": "把不同的資料型態整理再一起，方便變數傳遞",
-        "notice": "⚠️注意：\n1. 分成先宣告跟後宣告\n2. 裡面也可以放function之類\n3.記得結尾要加分號",
-        "formatChinese": "struct{\n 資料型態 變數1\n ...\n};",
-        "formatEnglish": "struct{\n type var1\n ...\n};",
-        "blocklyExample": "",
-        "cppExample": "//1 未宣告\nstruct student {\n    int id;\n    string name;\n};\n\n//2 已宣告\nstruct student {\n    int id;\n    string name;\n} st1, st2; // 宣告 st1, st2 type 為 student"
-    },
-    "get_struct": {
-        "blockName": "get_struct",
-        "brief": "把她當資料型態定義變數會陣列",
-        "notice": "⚠️注意：可以是變數也可以是陣列喔",
-        "formatChinese": "struct的名子 變數名",
-        "formatEnglish": "struct_name var_name",
-        "blocklyExample": "",
-        "cppExample": "struct student {\n    int id;\n    string name;\n};\n\n\nint main() {\n    student st1, st2;\n    st1.id = 1, st1.name = \"hamichi\", st2 = {2, \"ericbob\"};\n    cout << \"st1.id = \" << st1.id << \", st1.name = \" << st1.name << \", st2.id = \" << st2.id << \", st2.name = \" << st2.name;\n}"
-    },
-    "define_class": {
-        "blockName": "define_class",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_class": {
-        "blockName": "get_class",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_block": {
-        "blockName": "define_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "typedef_block": {
-        "blockName": "typedef_block",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "string_plus": {
-        "blockName": "string_plus",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "string_commas": {
-        "blockName": "string_commas",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_plus": {
-        "blockName": "math_plus",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_multiply": {
-        "blockName": "math_multiply",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_percent": {
-        "blockName": "math_percent",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_divide": {
-        "blockName": "math_divide",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_subtract": {
-        "blockName": "math_subtract",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_variable": {
-        "blockName": "define_variable",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "var_equal": {
-        "blockName": "var_equal",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_var": {
-        "blockName": "get_var",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_pointer": {
-        "blockName": "define_pointer",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "def_ptr": {
-        "blockName": "def_ptr",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "ptr_equal": {
-        "blockName": "ptr_equal",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_ptr": {
-        "blockName": "get_ptr",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "ptr_of": {
-        "blockName": "ptr_of",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "ptr_to": {
-        "blockName": "ptr_to",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_reference": {
-        "blockName": "define_reference",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "def_ref": {
-        "blockName": "def_ref",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "ref_equal": {
-        "blockName": "ref_equal",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_ref": {
-        "blockName": "get_ref",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "nullptr": {
-        "blockName": "nullptr",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_vector": {
-        "blockName": "define_vector",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_push_back": {
-        "blockName": "vector_push_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_emplace_back": {
-        "blockName": "vector_emplace_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_append_range": {
-        "blockName": "vector_append_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_insert": {
-        "blockName": "vector_insert",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_insert_range": {
-        "blockName": "vector_insert_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_pop_back": {
-        "blockName": "vector_pop_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_erase": {
-        "blockName": "vector_erase",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_swap": {
-        "blockName": "vector_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_operate[]": {
-        "blockName": "vector_operate[]",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_front": {
-        "blockName": "vector_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_back": {
-        "blockName": "vector_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_clear": {
-        "blockName": "vector_clear",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_size": {
-        "blockName": "vector_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_empty": {
-        "blockName": "vector_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_reserve": {
-        "blockName": "vector_reserve",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_capacity": {
-        "blockName": "vector_capacity",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_max_size": {
-        "blockName": "vector_max_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_begin": {
-        "blockName": "vector_begin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_end": {
-        "blockName": "vector_end",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_rbegin": {
-        "blockName": "vector_rbegin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "vector_rend": {
-        "blockName": "vector_rend",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_deque": {
-        "blockName": "define_deque",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_push_back": {
-        "blockName": "deque_push_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_emplace_back": {
-        "blockName": "deque_emplace_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_append_range": {
-        "blockName": "deque_append_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_push_front": {
-        "blockName": "deque_push_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_emplace_front": {
-        "blockName": "deque_emplace_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_prepend_range": {
-        "blockName": "deque_prepend_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_insert": {
-        "blockName": "deque_insert",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_insert_range": {
-        "blockName": "deque_insert_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_pop_back": {
-        "blockName": "deque_pop_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_pop_front": {
-        "blockName": "deque_pop_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_erase": {
-        "blockName": "deque_erase",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_swap": {
-        "blockName": "deque_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_assign": {
-        "blockName": "deque_assign",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_operate[]": {
-        "blockName": "deque_operate[]",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_front": {
-        "blockName": "deque_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_back": {
-        "blockName": "deque_back",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_clear": {
-        "blockName": "deque_clear",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_size": {
-        "blockName": "deque_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_empty": {
-        "blockName": "deque_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_begin": {
-        "blockName": "deque_begin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_end": {
-        "blockName": "deque_end",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_rbegin": {
-        "blockName": "deque_rbegin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "deque_rend": {
-        "blockName": "deque_rend",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_set": {
-        "blockName": "define_set",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_insert": {
-        "blockName": "set_insert",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_insert_range": {
-        "blockName": "set_insert_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_emplace": {
-        "blockName": "set_emplace",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_erase": {
-        "blockName": "set_erase",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_extract": {
-        "blockName": "set_extract",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_merge": {
-        "blockName": "set_merge",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_swap": {
-        "blockName": "set_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_clear": {
-        "blockName": "set_clear",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_size": {
-        "blockName": "set_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_empty": {
-        "blockName": "set_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_max_size": {
-        "blockName": "set_max_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_count": {
-        "blockName": "set_count",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_find": {
-        "blockName": "set_find",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_contains": {
-        "blockName": "set_contains",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_equal_range": {
-        "blockName": "set_equal_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_lower_bound": {
-        "blockName": "set_lower_bound",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_upper_bound": {
-        "blockName": "set_upper_bound",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_begin": {
-        "blockName": "set_begin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_end": {
-        "blockName": "set_end",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_rbegin": {
-        "blockName": "set_rbegin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_rend": {
-        "blockName": "set_rend",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_map": {
-        "blockName": "define_map",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_insert": {
-        "blockName": "map_insert",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_insert_range": {
-        "blockName": "map_insert_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_emplace": {
-        "blockName": "map_emplace",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_erase": {
-        "blockName": "map_erase",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_extract": {
-        "blockName": "map_extract",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_merge": {
-        "blockName": "map_merge",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_swap": {
-        "blockName": "map_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_clear": {
-        "blockName": "map_clear",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_size": {
-        "blockName": "map_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_empty": {
-        "blockName": "map_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_max_size": {
-        "blockName": "map_max_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_count": {
-        "blockName": "map_count",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_find": {
-        "blockName": "map_find",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_contains": {
-        "blockName": "map_contains",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_equal_range": {
-        "blockName": "map_equal_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_lower_bound": {
-        "blockName": "map_lower_bound",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_upper_bound": {
-        "blockName": "map_upper_bound",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_begin": {
-        "blockName": "map_begin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_end": {
-        "blockName": "map_end",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_rbegin": {
-        "blockName": "map_rbegin",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "map_rend": {
-        "blockName": "map_rend",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "make_map": {
-        "blockName": "make_map",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_stack": {
-        "blockName": "define_stack",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_push": {
-        "blockName": "stack_push",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_push_range": {
-        "blockName": "stack_push_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_emplace": {
-        "blockName": "stack_emplace",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_pop": {
-        "blockName": "stack_pop",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_swap": {
-        "blockName": "stack_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_top": {
-        "blockName": "stack_top",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_size": {
-        "blockName": "stack_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "stack_empty": {
-        "blockName": "stack_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_queue": {
-        "blockName": "define_queue",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_push": {
-        "blockName": "queue_push",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_push_range": {
-        "blockName": "queue_push_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_emplace": {
-        "blockName": "queue_emplace",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_pop": {
-        "blockName": "queue_pop",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_swap": {
-        "blockName": "queue_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_front": {
-        "blockName": "queue_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_size": {
-        "blockName": "queue_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "queue_empty": {
-        "blockName": "queue_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_priority_queue": {
-        "blockName": "define_priority_queue",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_push": {
-        "blockName": "priority_queue_push",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_push_range": {
-        "blockName": "priority_queue_push_range",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_emplace": {
-        "blockName": "priority_queue_emplace",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_pop": {
-        "blockName": "priority_queue_pop",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_swap": {
-        "blockName": "priority_queue_swap",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_front": {
-        "blockName": "priority_queue_front",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_size": {
-        "blockName": "priority_queue_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "priority_queue_empty": {
-        "blockName": "priority_queue_empty",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_pair": {
-        "blockName": "define_pair",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "pair_first": {
-        "blockName": "pair_first",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "pair_second": {
-        "blockName": "pair_second",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "make_pair": {
-        "blockName": "make_pair",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "define_bitset": {
-        "blockName": "define_bitset",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset[i]": {
-        "blockName": "bitset[i]",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_size": {
-        "blockName": "bitset_size",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_count": {
-        "blockName": "bitset_count",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_set": {
-        "blockName": "bitset_set",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_reset": {
-        "blockName": "bitset_reset",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_all": {
-        "blockName": "bitset_all",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_any": {
-        "blockName": "bitset_any",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "bitset_none": {
-        "blockName": "bitset_none",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "sort": {
-        "blockName": "sort",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "max": {
-        "blockName": "max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "min": {
-        "blockName": "min",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "find": {
-        "blockName": "find",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_ceil": {
-        "blockName": "math_ceil",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_floor": {
-        "blockName": "math_floor",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_sqrt": {
-        "blockName": "math_sqrt",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_abs": {
-        "blockName": "math_abs",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_random": {
-        "blockName": "math_random",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_sine": {
-        "blockName": "math_sine",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_cosine": {
-        "blockName": "math_cosine",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "math_tangent": {
-        "blockName": "math_tangent",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_current_timestamp": {
-        "blockName": "get_current_timestamp",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_current_local_time": {
-        "blockName": "get_current_local_time",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "get_current_utc_time": {
-        "blockName": "get_current_utc_time",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "calculate_time_difference": {
-        "blockName": "calculate_time_difference",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "convert_to_local_time": {
-        "blockName": "convert_to_local_time",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "convert_to_utc_time": {
-        "blockName": "convert_to_utc_time",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "format_time_string": {
-        "blockName": "format_time_string",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "set_time_structure": {
-        "blockName": "set_time_structure",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "read_time_structure_member": {
-        "blockName": "read_time_structure_member",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "setbase": {
-        "blockName": "setbase",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "setprecision": {
-        "blockName": "setprecision",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "setw": {
-        "blockName": "setw",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "setfill": {
-        "blockName": "setfill",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "char_bit": {
-        "blockName": "char_bit",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "schar_min": {
-        "blockName": "schar_min",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "schar_max": {
-        "blockName": "schar_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "uchar_max": {
-        "blockName": "uchar_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "char_min": {
-        "blockName": "char_min",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "char_max": {
-        "blockName": "char_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "int_min": {
-        "blockName": "int_min",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "int_max": {
-        "blockName": "int_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "uint_max": {
-        "blockName": "uint_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "llong_min": {
-        "blockName": "llong_min",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "llong_max": {
-        "blockName": "llong_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    },
-    "ullong_max": {
-        "blockName": "ullong_max",
-        "brief": "",
-        "notice": "⚠️注意：",
-        "formatChinese": "",
-        "formatEnglish": "",
-        "blocklyExample": "",
-        "cppExample": ""
-    }
+  "block_name": {
+    "blockName": "block_name",
+    "brief": "定義 block_name 的功能",
+    "notice": "⚠️注意：請依照語法規則使用 block_name",
+    "formatChinese": "格式(中文) for block_name",
+    "formatEnglish": "format (English) for block_name",
+    "blocklyExample": "",
+    "cppExample": "// 範例程式碼 for block_name"
+  },
+  "main_block": {
+    "blockName": "main_block",
+    "brief": "定義 main_block 的功能",
+    "notice": "⚠️注意：main_block 為主要執行區塊",
+    "formatChinese": "main 函式內的主要區塊",
+    "formatEnglish": "main function block",
+    "blocklyExample": "",
+    "cppExample": "int main() {\n    // 主要程式碼\n    return 0;\n}"
+  },
+  "define_array": {
+    "blockName": "define_array",
+    "brief": "定義一個C++內建陣列",
+    "notice": "⚠️注意：\n1. 需要宣告陣列型態\n2. 需要宣告陣列大小\n3. 宣告完不能再改變陣列大小\n4. 陣列內容不一定要加",
+    "formatChinese": "資料型態 陣列名[大小] = {陣列內容};",
+    "formatEnglish": "type array_name[size] = {content}",
+    "blocklyExample": "",
+    "cppExample": "int arr[10];"
+  },
+  "array_name_block": {
+    "blockName": "array_name_block",
+    "brief": "方便做C++內建鎮列基礎操作，像是sort, 取maxiuman之類的",
+    "notice": "⚠️注意：請正確命名陣列",
+    "formatChinese": "陣列名稱",
+    "formatEnglish": "array name",
+    "blocklyExample": "",
+    "cppExample": "// 陣列名稱範例\n int arr[5] = {4, 2, 3, 1, 5};\nsort(begin(arr), end(arr)); \\ arr = {1, 2, 3, 4, 5}"
+  },
+  "array_content": {
+    "blockName": "array_content",
+    "brief": "定義陣列內容",
+    "notice": "⚠️注意：\n1. 不能超過宣告陣列大小2. 要用`{}`並且中間的元素都用`,`分開\n3. 提供正確資料型態的初始值",
+    "formatChinese": "{元素1, 元素2, ...}",
+    "formatEnglish": "{element1, element2, ...}",
+    "blocklyExample": "",
+    "cppExample": "int arr[4] = {1, 2, 3, 4};"
+  },
+  "array_operate[]": {
+    "blockName": "array_operate[]",
+    "brief": "對陣列進行索引值操作",
+    "notice": "⚠️注意：\n1. 不能超過宣告陣列大小\n2. 如果索引值(index) = 4 會查到第5個元素喔(陣列元素從0開始)",
+    "formatChinese": "陣列名稱[索引值]",
+    "formatEnglish": "array_name[index]",
+    "blocklyExample": "",
+    "cppExample": "// 陣列操作範例 int arr[5] = {1, 2, 3, 4 ,5};\n arr[3] = 6 \\ arr = {1, 2, 3, 6, 5}"
+  },
+  "label": {
+    "blockName": "label",
+    "brief": "字串(string)",
+    "notice": "⚠️注意：記得要用\"\"",
+    "formatChinese": "\"字串 (什麼文字、符號都可以)\"",
+    "formatEnglish": "\"string(any word, mark or emoji are ok)\"",
+    "blocklyExample": "",
+    "cppExample": "string s = \"Hello, World!\""
+  },
+  "add_line": {
+    "blockName": "add_line",
+    "brief": "新增一行程式碼",
+    "notice": "⚠️注意：確保語句正確結束",
+    "formatChinese": "換行",
+    "formatEnglish": "newline",
+    "blocklyExample": "",
+    "cppExample": "cout << \"Hello World\" << '\n';"
+  },
+  "tab": {
+    "blockName": "tab",
+    "brief": "插入縮排",
+    "notice": "⚠️注意：用於程式碼排版",
+    "formatChinese": "縮排空格或 tab",
+    "formatEnglish": "indentation (tab/spaces)",
+    "blocklyExample": "",
+    "cppExample": "    // 4 個空格代表一個 tab"
+  },
+  "comment_block": {
+    "blockName": "comment_block",
+    "brief": "註解區塊",
+    "notice": "⚠️注意：註解不會被編譯",
+    "formatChinese": "/* 註解內容 */ 或 // 註解",
+    "formatEnglish": "/* comment */ or // comment",
+    "blocklyExample": "",
+    "cppExample": "// 單行註解, /* */ 多行註解"
+  },
+  "cin_block": {
+    "blockName": "cin_block",
+    "brief": "其中一種輸入方式(新手推薦)，使用`cin`輸入",
+    "notice": "⚠️注意：1. 多筆測資要用下面可以擴充`>>`的方塊2. 換行也可以讀到",
+    "formatChinese": "cin >> 變數;",
+    "formatEnglish": "cin >> variable;",
+    "blocklyExample": "",
+    "cppExample": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a;\n    cin >> a;\n    return 0;\n}"
+  },
+  "string_cin": {
+    "blockName": "string_cin",
+    "brief": "擴充cin功能",
+    "notice": "⚠️注意：一定要搭配上面`cin`方塊",
+    "formatChinese": "cin >> 字串變數;",
+    "formatEnglish": "cin >> string_variable;",
+    "blocklyExample": "",
+    "cppExample": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    return 0;\n}"
+  },
+  "cout_block": {
+    "blockName": "cout_block",
+    "brief": "其中一種輸出方式(新手推薦)，使用`cout`輸入",
+    "notice": "⚠️注意：多筆測資要用下面可以擴充`<<`的方塊",
+    "formatChinese": "cout << 內容;",
+    "formatEnglish": "cout << content;",
+    "blocklyExample": "",
+    "cppExample": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Hello\";\n    return 0;\n}"
+  },
+  "string_cout": {
+    "blockName": "string_cout",
+    "brief": "擴充 cout 功能",
+    "notice": "⚠️注意：搭配上面`cout `方塊",
+    "formatChinese": "cout << 字串變數;",
+    "formatEnglish": "cout << string_variable;",
+    "blocklyExample": "",
+    "cppExample": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"Hello\";\n    cout << s;\n    return 0;\n}"
+  },
+  "boost_ios_sync": {
+    "blockName": "boost_ios_sync",
+    "brief": "加速 C++ IO 同步",
+    "notice": "⚠️注意：用於加速 cin 與 cout",
+    "formatChinese": "ios_base::sync_with_stdio(false);",
+    "formatEnglish": "ios_base::sync_with_stdio(false);",
+    "blocklyExample": "",
+    "cppExample": "#include <iostream>\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    return 0;\n}"
+  },
+  "boost_cin_cout_tie": {
+    "blockName": "boost_cin_cout_tie",
+    "brief": "解除 cin 與 cout 綁定",
+    "notice": "⚠️注意：可提升 IO 效能",
+    "formatChinese": "cin.tie(0);",
+    "formatEnglish": "cin.tie(0);",
+    "blocklyExample": "",
+    "cppExample": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    return 0;\n}"
+  },
+  "logic_operators": {
+    "blockName": "logic_operators",
+    "brief": "邏輯運算子",
+    "notice": "⚠️注意：包含 &&、|| 等運算子",
+    "formatChinese": "運算式1 && 運算式2",
+    "formatEnglish": "expression1 && expression2",
+    "blocklyExample": "",
+    "cppExample": "bool result = (true && false);"
+  },
+  "or_and_xor": {
+    "blockName": "or_and_xor",
+    "brief": "位元或、與、異或",
+    "notice": "⚠️注意：分別為 |、&、^",
+    "formatChinese": "數字1 | 數字2",
+    "formatEnglish": "number1 | number2",
+    "blocklyExample": "",
+    "cppExample": "int a = 5, b = 3;\nint c = a ^ b;"
+  },
+  "false": {
+    "blockName": "false",
+    "brief": "布林值 false",
+    "notice": "⚠️注意：代表假",
+    "formatChinese": "false",
+    "formatEnglish": "false",
+    "blocklyExample": "",
+    "cppExample": "bool flag = false;"
+  },
+  "true": {
+    "blockName": "true",
+    "brief": "布林值 true",
+    "notice": "⚠️注意：代表真",
+    "formatChinese": "true",
+    "formatEnglish": "true",
+    "blocklyExample": "",
+    "cppExample": "bool flag = true;"
+  },
+  "logic_not": {
+    "blockName": "logic_not",
+    "brief": "邏輯非運算",
+    "notice": "⚠️注意：用於反轉布林值",
+    "formatChinese": "!布林值",
+    "formatEnglish": "!boolean",
+    "blocklyExample": "",
+    "cppExample": "bool flag = !true;"
+  },
+  "number": {
+    "blockName": "number",
+    "brief": "數字常數",
+    "notice": "⚠️注意：直接輸入數字",
+    "formatChinese": "例如：123",
+    "formatEnglish": "e.g., 123",
+    "blocklyExample": "",
+    "cppExample": "int a = 123;"
+  },
+  "var_calculate": {
+    "blockName": "var_calculate",
+    "brief": "變數計算",
+    "notice": "⚠️注意：進行變數間運算",
+    "formatChinese": "變數1 運算子 變數2",
+    "formatEnglish": "var1 operator var2",
+    "blocklyExample": "",
+    "cppExample": "int a = 5, b = 10;\nint c = a + b;"
+  },
+  "math_calculate": {
+    "blockName": "math_calculate",
+    "brief": "數學運算計算",
+    "notice": "⚠️注意：支持各類數學運算",
+    "formatChinese": "數字1 運算子 數字2",
+    "formatEnglish": "number1 operator number2",
+    "blocklyExample": "",
+    "cppExample": "cout << (10 * 2);"
+  },
+  "if_block": {
+    "blockName": "if_block",
+    "brief": "if 條件判斷區塊",
+    "notice": "⚠️注意：請提供正確的條件式",
+    "formatChinese": "if (條件) { 程式碼 }",
+    "formatEnglish": "if (condition) { code }",
+    "blocklyExample": "",
+    "cppExample": "if(a > b) {\n    cout << \"a is greater\";\n}"
+  },
+  "switch_block": {
+    "blockName": "switch_block",
+    "brief": "switch 多分支選擇區塊",
+    "notice": "⚠️注意：請確保 case 完整",
+    "formatChinese": "switch(變數) { case 值: 程式碼; break; ... }",
+    "formatEnglish": "switch(variable) { case value: code; break; ... }",
+    "blocklyExample": "",
+    "cppExample": "switch(num) {\n    case 1:\n        cout << \"One\";\n        break;\n    default:\n        break;\n}"
+  },
+  "break_block": {
+    "blockName": "break_block",
+    "brief": "中斷流程區塊",
+    "notice": "⚠️注意：用於跳出迴圈或 switch",
+    "formatChinese": "break;",
+    "formatEnglish": "break;",
+    "blocklyExample": "",
+    "cppExample": "while(true) {\n    if(condition) break;\n}"
+  },
+  "continue_block": {
+    "blockName": "continue_block",
+    "brief": "跳過當前迴圈區塊",
+    "notice": "⚠️注意：用於迴圈中跳過本次迭代",
+    "formatChinese": "continue;",
+    "formatEnglish": "continue;",
+    "blocklyExample": "",
+    "cppExample": "for(int i=0;i<10;i++){\n    if(i==5) continue;\n    cout << i;\n}"
+  },
+  "return_block": {
+    "blockName": "return_block",
+    "brief": "回傳區塊",
+    "notice": "⚠️注意：用於函數回傳值",
+    "formatChinese": "return 值;",
+    "formatEnglish": "return value;",
+    "blocklyExample": "",
+    "cppExample": "int func(){\n    return 0;\n}"
+  },
+  "while_block": {
+    "blockName": "while_block",
+    "brief": "while 迴圈區塊",
+    "notice": "⚠️注意：確保條件正確以避免無窮迴圈",
+    "formatChinese": "while (條件) { 程式碼 }",
+    "formatEnglish": "while (condition) { code }",
+    "blocklyExample": "",
+    "cppExample": "while(n > 0){\n    n--;\n}"
+  },
+  "for_block": {
+    "blockName": "for_block",
+    "brief": "for 迴圈區塊",
+    "notice": "⚠️注意：迴圈變數的初始化與更新",
+    "formatChinese": "for (初始; 條件; 更新) { 程式碼 }",
+    "formatEnglish": "for (initialization; condition; update) { code }",
+    "blocklyExample": "",
+    "cppExample": "for(int i=0;i<10;i++){\n    cout << i;\n}"
+  },
+  "def_var": {
+    "blockName": "def_var",
+    "brief": "定義變數區塊",
+    "notice": "⚠️注意：請指定正確型別",
+    "formatChinese": "型別 變數名;",
+    "formatEnglish": "type variable_name;",
+    "blocklyExample": "",
+    "cppExample": "int a;"
+  },
+  "var_cal": {
+    "blockName": "var_cal",
+    "brief": "變數運算區塊",
+    "notice": "⚠️注意：用於變數之間的運算",
+    "formatChinese": "變數1 運算子 變數2",
+    "formatEnglish": "var1 operator var2",
+    "blocklyExample": "",
+    "cppExample": "int sum = a + b;"
+  },
+  "define_function": {
+    "blockName": "define_function",
+    "brief": "定義有回傳值的函數",
+    "notice": "⚠️注意：請指定回傳型別及參數",
+    "formatChinese": "回傳型別 函數名(參數) { 程式碼 }",
+    "formatEnglish": "return_type function_name(parameters) { code }",
+    "blocklyExample": "",
+    "cppExample": "int add(int a, int b) {\n    return a + b;\n}"
+  },
+  "define_function_void": {
+    "blockName": "define_function_void",
+    "brief": "定義無回傳值的函數",
+    "notice": "⚠️注意：函數不需回傳值",
+    "formatChinese": "void 函數名(參數) { 程式碼 }",
+    "formatEnglish": "void function_name(parameters) { code }",
+    "blocklyExample": "",
+    "cppExample": "void printHello() {\n    cout << \"Hello\";\n}"
+  },
+  "lambda": {
+    "blockName": "lambda",
+    "brief": "定義 Lambda 表達式",
+    "notice": "⚠️注意：使用 [] capture 列表",
+    "formatChinese": "[capture](參數) -> 回傳型別 { 程式碼 }",
+    "formatEnglish": "[capture](parameters) -> return_type { code }",
+    "blocklyExample": "",
+    "cppExample": "auto add = [](int a, int b) { return a + b; };"
+  },
+  "define_struct": {
+    "blockName": "define_struct",
+    "brief": "定義結構體",
+    "notice": "⚠️注意：請列出成員變數",
+    "formatChinese": "struct 結構名 { 成員定義 };",
+    "formatEnglish": "struct struct_name { member_definitions };",
+    "blocklyExample": "",
+    "cppExample": "struct Student {\n    int id;\n    string name;\n};"
+  },
+  "get_struct": {
+    "blockName": "get_struct",
+    "brief": "把結構體當作資料型態來定義變數或陣列",
+    "notice": "⚠️注意：可以是變數也可以是陣列喔",
+    "formatChinese": "struct的名子 變數名",
+    "formatEnglish": "struct_name var_name",
+    "blocklyExample": "",
+    "cppExample": "struct student {\n    int id;\n    string name;\n};\n\nint main() {\n    student st1, st2;\n    st1.id = 1, st1.name = \"hamichi\", st2 = {2, \"ericbob\"};\n    cout << \"st1.id = \" << st1.id << \", st1.name = \" << st1.name << \", st2.id = \" << st2.id << \", st2.name = \" << st2.name;\n}"
+  },
+  "define_class": {
+    "blockName": "define_class",
+    "brief": "定義一個類別",
+    "notice": "⚠️注意：類別可以包含成員變數與成員函數",
+    "formatChinese": "class的名子 { 成員定義 }",
+    "formatEnglish": "class_name { member_definitions }",
+    "blocklyExample": "",
+    "cppExample": "class Student {\npublic:\n    int id;\n    string name;\n    void print() {\n        cout << \"ID: \" << id << \", Name: \" << name << endl;\n    }\n};\n\nint main() {\n    Student st1;\n    st1.id = 1;\n    st1.name = \"Alice\";\n    st1.print();\n}"
+  },
+  "get_class": {
+    "blockName": "get_class",
+    "brief": "使用已定義的類別來建立物件",
+    "notice": "⚠️注意：可以定義變數或建立物件陣列",
+    "formatChinese": "class的名子 變數名",
+    "formatEnglish": "class_name var_name",
+    "blocklyExample": "",
+    "cppExample": "class Car {\npublic:\n    string brand;\n    int year;\n};\n\nint main() {\n    Car car1, car2;\n    car1.brand = \"Toyota\";\n    car1.year = 2020;\n    car2 = {\"Honda\", 2022};\n    cout << car1.brand << \" (\" << car1.year << \"), \" << car2.brand << \" (\" << car2.year << \")\";\n}"
+  },
+  "define_block": {
+    "blockName": "define_block",
+    "brief": "定義新的 Blockly 積木",
+    "notice": "⚠️注意：需提供積木的格式與行為",
+    "formatChinese": "block名稱 { 設定與行為 }",
+    "formatEnglish": "block_name { settings_and_behavior }",
+    "blocklyExample": "",
+    "cppExample": "// 這部分與 Blockly 的 JS 相關，省略 C++ 範例"
+  },
+  "typedef_block": {
+    "blockName": "typedef_block",
+    "brief": "定義新的型別別名",
+    "notice": "⚠️注意：typedef 可用來簡化型別名稱",
+    "formatChinese": "typedef 原始型別 新型別名",
+    "formatEnglish": "typedef original_type new_type_name",
+    "blocklyExample": "",
+    "cppExample": "typedef unsigned long ulong;\n\nint main() {\n    ulong value = 100000;\n    cout << value;\n}"
+  },
+  "string_plus": {
+    "blockName": "string_plus",
+    "brief": "字串相加",
+    "notice": "⚠️注意：可用於連接兩個字串",
+    "formatChinese": "字串1 + 字串2",
+    "formatEnglish": "string1 + string2",
+    "blocklyExample": "",
+    "cppExample": "string a = \"Hello\";\nstring b = \" World\";\nstring c = a + b;\ncout << c;"
+  },
+  "string_commas": {
+    "blockName": "string_commas",
+    "brief": "使用逗號分隔字串",
+    "notice": "⚠️注意：可用於輸出多個字串",
+    "formatChinese": "字串1, 字串2",
+    "formatEnglish": "string1, string2",
+    "blocklyExample": "",
+    "cppExample": "cout << \"Hello\" << \", \" << \"World\";"
+  },
+  "math_plus": {
+    "blockName": "math_plus",
+    "brief": "數學加法",
+    "notice": "⚠️注意：用於數值相加",
+    "formatChinese": "數字1 + 數字2",
+    "formatEnglish": "number1 + number2",
+    "blocklyExample": "",
+    "cppExample": "int a = 5, b = 10;\ncout << a + b;"
+  },
+  "math_multiply": {
+    "blockName": "math_multiply",
+    "brief": "數學乘法",
+    "notice": "⚠️注意：用於數值相乘",
+    "formatChinese": "數字1 * 數字2",
+    "formatEnglish": "number1 * number2",
+    "blocklyExample": "",
+    "cppExample": "int a = 5, b = 10;\ncout << a * b;"
+  },
+  "math_percent": {
+    "blockName": "math_percent",
+    "brief": "數學取餘數",
+    "notice": "⚠️注意：用於取得除法餘數",
+    "formatChinese": "數字1 % 數字2",
+    "formatEnglish": "number1 % number2",
+    "blocklyExample": "",
+    "cppExample": "int a = 10, b = 3;\ncout << a % b;"
+  },
+  "math_divide": {
+    "blockName": "math_divide",
+    "brief": "數學除法",
+    "notice": "⚠️注意：用於數值相除",
+    "formatChinese": "數字1 / 數字2",
+    "formatEnglish": "number1 / number2",
+    "blocklyExample": "",
+    "cppExample": "int a = 10, b = 2;\ncout << a / b;"
+  },
+  "math_subtract": {
+    "blockName": "math_subtract",
+    "brief": "數學減法",
+    "notice": "⚠️注意：用於數值相減",
+    "formatChinese": "數字1 - 數字2",
+    "formatEnglish": "number1 - number2",
+    "blocklyExample": "",
+    "cppExample": "int a = 10, b = 3;\ncout << a - b;"
+  },
+  "define_variable": {
+    "blockName": "define_variable",
+    "brief": "定義變數",
+    "notice": "⚠️注意：必須指定變數型態與名稱",
+    "formatChinese": "型態 變數名;",
+    "formatEnglish": "type var_name;",
+    "blocklyExample": "",
+    "cppExample": "int num = 0;"
+  },
+  "var_equal": {
+    "blockName": "var_equal",
+    "brief": "變數賦值",
+    "notice": "⚠️注意：左邊必須為已定義變數",
+    "formatChinese": "變數 = 值;",
+    "formatEnglish": "var = value;",
+    "blocklyExample": "",
+    "cppExample": "int a;\na = 5;"
+  },
+  "get_var": {
+    "blockName": "get_var",
+    "brief": "取得變數值",
+    "notice": "⚠️注意：請確保變數已定義",
+    "formatChinese": "變數名",
+    "formatEnglish": "var_name",
+    "blocklyExample": "",
+    "cppExample": "cout << a;"
+  },
+  "define_pointer": {
+    "blockName": "define_pointer",
+    "brief": "定義指標",
+    "notice": "⚠️注意：必須指定指標型態",
+    "formatChinese": "型態* 指標名;",
+    "formatEnglish": "type* ptr_name;",
+    "blocklyExample": "",
+    "cppExample": "int* p;"
+  },
+  "def_ptr": {
+    "blockName": "def_ptr",
+    "brief": "定義與初始化指標",
+    "notice": "⚠️注意：可同時定義與初始化",
+    "formatChinese": "型態* 指標名 = &變數;",
+    "formatEnglish": "type* ptr_name = &variable;",
+    "blocklyExample": "",
+    "cppExample": "int a = 10;\nint* p = &a;"
+  },
+  "ptr_equal": {
+    "blockName": "ptr_equal",
+    "brief": "指標賦值",
+    "notice": "⚠️注意：確保左右型態一致",
+    "formatChinese": "指標 = 目標地址;",
+    "formatEnglish": "ptr = target_address;",
+    "blocklyExample": "",
+    "cppExample": "int a = 5;\nint* p;\np = &a;"
+  },
+  "get_ptr": {
+    "blockName": "get_ptr",
+    "brief": "取得指標所指物件",
+    "notice": "⚠️注意：請確認指標不為空",
+    "formatChinese": "*指標名",
+    "formatEnglish": "*ptr_name",
+    "blocklyExample": "",
+    "cppExample": "cout << *p;"
+  },
+  "ptr_of": {
+    "blockName": "ptr_of",
+    "brief": "取得變數的位址",
+    "notice": "⚠️注意：使用 & 取得位址",
+    "formatChinese": "&變數名",
+    "formatEnglish": "&variable",
+    "blocklyExample": "",
+    "cppExample": "int a;\nint* p = &a;"
+  },
+  "ptr_to": {
+    "blockName": "ptr_to",
+    "brief": "指標指向某個變數",
+    "notice": "⚠️注意：確保指標型態正確",
+    "formatChinese": "指標指向變數",
+    "formatEnglish": "pointer to variable",
+    "blocklyExample": "",
+    "cppExample": "int a = 5;\nint* p = &a;"
+  },
+  "define_reference": {
+    "blockName": "define_reference",
+    "brief": "定義參考",
+    "notice": "⚠️注意：參考必須在定義時初始化",
+    "formatChinese": "型態& 參考名 = 變數;",
+    "formatEnglish": "type& ref_name = variable;",
+    "blocklyExample": "",
+    "cppExample": "int a = 5;\nint& ref = a;"
+  },
+  "def_ref": {
+    "blockName": "def_ref",
+    "brief": "定義與初始化參考",
+    "notice": "⚠️注意：參考不可改變綁定",
+    "formatChinese": "型態& 參考名 = 變數;",
+    "formatEnglish": "type& ref_name = variable;",
+    "blocklyExample": "",
+    "cppExample": "string s = \"Hello\";\nstring& ref = s;"
+  },
+  "ref_equal": {
+    "blockName": "ref_equal",
+    "brief": "參考賦值",
+    "notice": "⚠️注意：參考一經定義後不可改變",
+    "formatChinese": "參考 = 變數;",
+    "formatEnglish": "ref = variable;",
+    "blocklyExample": "",
+    "cppExample": "// 通常參考賦值表示改變原變數值"
+  },
+  "get_ref": {
+    "blockName": "get_ref",
+    "brief": "取得參考的值",
+    "notice": "⚠️注意：請確保參考已正確定義",
+    "formatChinese": "參考名",
+    "formatEnglish": "ref_name",
+    "blocklyExample": "",
+    "cppExample": "cout << ref;"
+  },
+  "nullptr": {
+    "blockName": "nullptr",
+    "brief": "空指標",
+    "notice": "⚠️注意：代表不指向任何物件",
+    "formatChinese": "nullptr",
+    "formatEnglish": "nullptr",
+    "blocklyExample": "",
+    "cppExample": "int* p = nullptr;"
+  },
+  "define_vector": {
+    "blockName": "define_vector",
+    "brief": "定義向量容器",
+    "notice": "⚠️注意：需要包含 <vector> 標頭檔",
+    "formatChinese": "vector<型態> 容器名;",
+    "formatEnglish": "vector<type> container_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <vector>\nusing namespace std;\n\nvector<int> vec;"
+  },
+  "vector_push_back": {
+    "blockName": "vector_push_back",
+    "brief": "向量尾端新增元素",
+    "notice": "⚠️注意：確保容器已定義",
+    "formatChinese": "容器.push_back(元素);",
+    "formatEnglish": "container.push_back(element);",
+    "blocklyExample": "",
+    "cppExample": "vec.push_back(10);"
+  },
+  "vector_emplace_back": {
+    "blockName": "vector_emplace_back",
+    "brief": "原地構造新元素於向量尾端",
+    "notice": "⚠️注意：可避免不必要的複製",
+    "formatChinese": "容器.emplace_back(參數);",
+    "formatEnglish": "container.emplace_back(arguments);",
+    "blocklyExample": "",
+    "cppExample": "vec.emplace_back(20);"
+  },
+  "vector_append_range": {
+    "blockName": "vector_append_range",
+    "brief": "向量追加一段範圍的元素",
+    "notice": "⚠️注意：需提供迭代器範圍",
+    "formatChinese": "容器.insert(容器.end(), 起始, 結束);",
+    "formatEnglish": "container.insert(container.end(), start, end);",
+    "blocklyExample": "",
+    "cppExample": "vec.insert(vec.end(), otherVec.begin(), otherVec.end());"
+  },
+  "vector_insert": {
+    "blockName": "vector_insert",
+    "brief": "向量指定位置插入元素",
+    "notice": "⚠️注意：插入位置必須有效",
+    "formatChinese": "容器.insert(位置, 元素);",
+    "formatEnglish": "container.insert(position, element);",
+    "blocklyExample": "",
+    "cppExample": "vec.insert(vec.begin() + 1, 100);"
+  },
+  "vector_insert_range": {
+    "blockName": "vector_insert_range",
+    "brief": "向量指定位置插入一段元素",
+    "notice": "⚠️注意：請提供正確的範圍",
+    "formatChinese": "容器.insert(位置, 起始, 結束);",
+    "formatEnglish": "container.insert(position, start, end);",
+    "blocklyExample": "",
+    "cppExample": "vec.insert(vec.begin(), otherVec.begin(), otherVec.end());"
+  },
+  "vector_pop_back": {
+    "blockName": "vector_pop_back",
+    "brief": "移除向量尾端元素",
+    "notice": "⚠️注意：向量必須非空",
+    "formatChinese": "容器.pop_back();",
+    "formatEnglish": "container.pop_back();",
+    "blocklyExample": "",
+    "cppExample": "vec.pop_back();"
+  },
+  "vector_erase": {
+    "blockName": "vector_erase",
+    "brief": "刪除向量中指定元素",
+    "notice": "⚠️注意：使用正確的迭代器",
+    "formatChinese": "容器.erase(迭代器);",
+    "formatEnglish": "container.erase(iterator);",
+    "blocklyExample": "",
+    "cppExample": "vec.erase(vec.begin());"
+  },
+  "vector_swap": {
+    "blockName": "vector_swap",
+    "brief": "交換兩個向量內容",
+    "notice": "⚠️注意：兩個向量型態必須相同",
+    "formatChinese": "容器1.swap(容器2);",
+    "formatEnglish": "container1.swap(container2);",
+    "blocklyExample": "",
+    "cppExample": "vec.swap(otherVec);"
+  },
+  "vector_operate[]": {
+    "blockName": "vector_operate[]",
+    "brief": "向量操作集合",
+    "notice": "⚠️注意：請依據需求選用操作",
+    "formatChinese": "向量操作語法",
+    "formatEnglish": "vector operation syntax",
+    "blocklyExample": "",
+    "cppExample": "// 範例：vec.front(), vec.back() 等"
+  },
+  "vector_front": {
+    "blockName": "vector_front",
+    "brief": "取得向量第一個元素",
+    "notice": "⚠️注意：向量必須非空",
+    "formatChinese": "容器.front()",
+    "formatEnglish": "container.front()",
+    "blocklyExample": "",
+    "cppExample": "cout << vec.front();"
+  },
+  "vector_back": {
+    "blockName": "vector_back",
+    "brief": "取得向量最後一個元素",
+    "notice": "⚠️注意：向量必須非空",
+    "formatChinese": "容器.back()",
+    "formatEnglish": "container.back()",
+    "blocklyExample": "",
+    "cppExample": "cout << vec.back();"
+  },
+  "vector_clear": {
+    "blockName": "vector_clear",
+    "brief": "清空向量內容",
+    "notice": "⚠️注意：此操作不可回復",
+    "formatChinese": "容器.clear()",
+    "formatEnglish": "container.clear()",
+    "blocklyExample": "",
+    "cppExample": "vec.clear();"
+  },
+  "vector_size": {
+    "blockName": "vector_size",
+    "brief": "取得向量大小",
+    "notice": "⚠️注意：返回元素個數",
+    "formatChinese": "容器.size()",
+    "formatEnglish": "container.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << vec.size();"
+  },
+  "vector_empty": {
+    "blockName": "vector_empty",
+    "brief": "檢查向量是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "容器.empty()",
+    "formatEnglish": "container.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(vec.empty()) { /* ... */ }"
+  },
+  "vector_reserve": {
+    "blockName": "vector_reserve",
+    "brief": "預先配置向量容量",
+    "notice": "⚠️注意：提升效能時使用",
+    "formatChinese": "容器.reserve(大小);",
+    "formatEnglish": "container.reserve(size);",
+    "blocklyExample": "",
+    "cppExample": "vec.reserve(100);"
+  },
+  "vector_capacity": {
+    "blockName": "vector_capacity",
+    "brief": "取得向量當前容量",
+    "notice": "⚠️注意：容量可能大於 size()",
+    "formatChinese": "容器.capacity()",
+    "formatEnglish": "container.capacity()",
+    "blocklyExample": "",
+    "cppExample": "cout << vec.capacity();"
+  },
+  "vector_max_size": {
+    "blockName": "vector_max_size",
+    "brief": "取得向量最大可能大小",
+    "notice": "⚠️注意：此值依系統而異",
+    "formatChinese": "容器.max_size()",
+    "formatEnglish": "container.max_size()",
+    "blocklyExample": "",
+    "cppExample": "cout << vec.max_size();"
+  },
+  "vector_begin": {
+    "blockName": "vector_begin",
+    "brief": "取得向量起始迭代器",
+    "notice": "⚠️注意：用於迭代器操作",
+    "formatChinese": "容器.begin()",
+    "formatEnglish": "container.begin()",
+    "blocklyExample": "",
+    "cppExample": "auto it = vec.begin();"
+  },
+  "vector_end": {
+    "blockName": "vector_end",
+    "brief": "取得向量結尾迭代器",
+    "notice": "⚠️注意：通常用於迭代結束判斷",
+    "formatChinese": "容器.end()",
+    "formatEnglish": "container.end()",
+    "blocklyExample": "",
+    "cppExample": "auto it = vec.end();"
+  },
+  "vector_rbegin": {
+    "blockName": "vector_rbegin",
+    "brief": "取得向量反向起始迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "容器.rbegin()",
+    "formatEnglish": "container.rbegin()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = vec.rbegin();"
+  },
+  "vector_rend": {
+    "blockName": "vector_rend",
+    "brief": "取得向量反向結尾迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "容器.rend()",
+    "formatEnglish": "container.rend()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = vec.rend();"
+  },
+  "define_deque": {
+    "blockName": "define_deque",
+    "brief": "定義雙端佇列",
+    "notice": "⚠️注意：需要包含 <deque> 標頭檔",
+    "formatChinese": "deque<型態> 佇列名;",
+    "formatEnglish": "deque<type> container_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <deque>\nusing namespace std;\n\ndeque<int> dq;"
+  },
+  "deque_push_back": {
+    "blockName": "deque_push_back",
+    "brief": "在雙端佇列尾端新增元素",
+    "notice": "⚠️注意：請確認佇列已定義",
+    "formatChinese": "佇列.push_back(元素);",
+    "formatEnglish": "deque.push_back(element);",
+    "blocklyExample": "",
+    "cppExample": "dq.push_back(10);"
+  },
+  "deque_emplace_back": {
+    "blockName": "deque_emplace_back",
+    "brief": "在雙端佇列尾端原地構造新元素",
+    "notice": "⚠️注意：可提升效能",
+    "formatChinese": "佇列.emplace_back(參數);",
+    "formatEnglish": "deque.emplace_back(arguments);",
+    "blocklyExample": "",
+    "cppExample": "dq.emplace_back(20);"
+  },
+  "deque_append_range": {
+    "blockName": "deque_append_range",
+    "brief": "向雙端佇列追加一段範圍的元素",
+    "notice": "⚠️注意：需提供正確的迭代器範圍",
+    "formatChinese": "佇列.insert(佇列.end(), 起始, 結束);",
+    "formatEnglish": "deque.insert(deque.end(), start, end);",
+    "blocklyExample": "",
+    "cppExample": "dq.insert(dq.end(), otherDq.begin(), otherDq.end());"
+  },
+  "deque_push_front": {
+    "blockName": "deque_push_front",
+    "brief": "在雙端佇列前端新增元素",
+    "notice": "⚠️注意：請確認佇列已定義",
+    "formatChinese": "佇列.push_front(元素);",
+    "formatEnglish": "deque.push_front(element);",
+    "blocklyExample": "",
+    "cppExample": "dq.push_front(5);"
+  },
+  "deque_emplace_front": {
+    "blockName": "deque_emplace_front",
+    "brief": "在雙端佇列前端原地構造新元素",
+    "notice": "⚠️注意：可提升效能",
+    "formatChinese": "佇列.emplace_front(參數);",
+    "formatEnglish": "deque.emplace_front(arguments);",
+    "blocklyExample": "",
+    "cppExample": "dq.emplace_front(3);"
+  },
+  "deque_prepend_range": {
+    "blockName": "deque_prepend_range",
+    "brief": "向雙端佇列前端插入一段元素",
+    "notice": "⚠️注意：需提供正確的範圍",
+    "formatChinese": "佇列.insert(佇列.begin(), 起始, 結束);",
+    "formatEnglish": "deque.insert(deque.begin(), start, end);",
+    "blocklyExample": "",
+    "cppExample": "dq.insert(dq.begin(), otherDq.begin(), otherDq.end());"
+  },
+  "deque_insert": {
+    "blockName": "deque_insert",
+    "brief": "在雙端佇列指定位置插入元素",
+    "notice": "⚠️注意：插入位置必須有效",
+    "formatChinese": "佇列.insert(位置, 元素);",
+    "formatEnglish": "deque.insert(position, element);",
+    "blocklyExample": "",
+    "cppExample": "dq.insert(dq.begin() + 1, 100);"
+  },
+  "deque_insert_range": {
+    "blockName": "deque_insert_range",
+    "brief": "在雙端佇列指定位置插入一段元素",
+    "notice": "⚠️注意：請提供正確的範圍",
+    "formatChinese": "佇列.insert(位置, 起始, 結束);",
+    "formatEnglish": "deque.insert(position, start, end);",
+    "blocklyExample": "",
+    "cppExample": "dq.insert(dq.begin(), otherDq.begin(), otherDq.end());"
+  },
+  "deque_pop_back": {
+    "blockName": "deque_pop_back",
+    "brief": "移除雙端佇列尾端元素",
+    "notice": "⚠️注意：佇列必須非空",
+    "formatChinese": "佇列.pop_back();",
+    "formatEnglish": "deque.pop_back();",
+    "blocklyExample": "",
+    "cppExample": "dq.pop_back();"
+  },
+  "deque_pop_front": {
+    "blockName": "deque_pop_front",
+    "brief": "移除雙端佇列前端元素",
+    "notice": "⚠️注意：佇列必須非空",
+    "formatChinese": "佇列.pop_front();",
+    "formatEnglish": "deque.pop_front();",
+    "blocklyExample": "",
+    "cppExample": "dq.pop_front();"
+  },
+  "deque_erase": {
+    "blockName": "deque_erase",
+    "brief": "刪除雙端佇列中指定元素",
+    "notice": "⚠️注意：使用正確的迭代器",
+    "formatChinese": "佇列.erase(迭代器);",
+    "formatEnglish": "deque.erase(iterator);",
+    "blocklyExample": "",
+    "cppExample": "dq.erase(dq.begin());"
+  },
+  "deque_swap": {
+    "blockName": "deque_swap",
+    "brief": "交換兩個雙端佇列內容",
+    "notice": "⚠️注意：兩個佇列型態必須相同",
+    "formatChinese": "佇列1.swap(佇列2);",
+    "formatEnglish": "deque1.swap(deque2);",
+    "blocklyExample": "",
+    "cppExample": "dq.swap(otherDq);"
+  },
+  "deque_assign": {
+    "blockName": "deque_assign",
+    "brief": "指定雙端佇列內容",
+    "notice": "⚠️注意：覆蓋原有內容",
+    "formatChinese": "佇列.assign(數量, 值);",
+    "formatEnglish": "deque.assign(count, value);",
+    "blocklyExample": "",
+    "cppExample": "dq.assign(5, 10);"
+  },
+  "deque_operate[]": {
+    "blockName": "deque_operate[]",
+    "brief": "雙端佇列操作集合",
+    "notice": "⚠️注意：請依據需求選用操作",
+    "formatChinese": "雙端佇列操作語法",
+    "formatEnglish": "deque operation syntax",
+    "blocklyExample": "",
+    "cppExample": "// 範例：dq.front(), dq.back() 等"
+  },
+  "deque_front": {
+    "blockName": "deque_front",
+    "brief": "取得雙端佇列第一個元素",
+    "notice": "⚠️注意：佇列必須非空",
+    "formatChinese": "佇列.front()",
+    "formatEnglish": "deque.front()",
+    "blocklyExample": "",
+    "cppExample": "cout << dq.front();"
+  },
+  "deque_back": {
+    "blockName": "deque_back",
+    "brief": "取得雙端佇列最後一個元素",
+    "notice": "⚠️注意：佇列必須非空",
+    "formatChinese": "佇列.back()",
+    "formatEnglish": "deque.back()",
+    "blocklyExample": "",
+    "cppExample": "cout << dq.back();"
+  },
+  "deque_clear": {
+    "blockName": "deque_clear",
+    "brief": "清空雙端佇列",
+    "notice": "⚠️注意：此操作不可回復",
+    "formatChinese": "佇列.clear()",
+    "formatEnglish": "deque.clear()",
+    "blocklyExample": "",
+    "cppExample": "dq.clear();"
+  },
+  "deque_size": {
+    "blockName": "deque_size",
+    "brief": "取得雙端佇列大小",
+    "notice": "⚠️注意：返回元素個數",
+    "formatChinese": "佇列.size()",
+    "formatEnglish": "deque.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << dq.size();"
+  },
+  "deque_empty": {
+    "blockName": "deque_empty",
+    "brief": "檢查雙端佇列是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "佇列.empty()",
+    "formatEnglish": "deque.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(dq.empty()) { /* ... */ }"
+  },
+  "deque_begin": {
+    "blockName": "deque_begin",
+    "brief": "取得雙端佇列起始迭代器",
+    "notice": "⚠️注意：用於迭代器操作",
+    "formatChinese": "佇列.begin()",
+    "formatEnglish": "deque.begin()",
+    "blocklyExample": "",
+    "cppExample": "auto it = dq.begin();"
+  },
+  "deque_end": {
+    "blockName": "deque_end",
+    "brief": "取得雙端佇列結尾迭代器",
+    "notice": "⚠️注意：通常用於迭代結束判斷",
+    "formatChinese": "佇列.end()",
+    "formatEnglish": "deque.end()",
+    "blocklyExample": "",
+    "cppExample": "auto it = dq.end();"
+  },
+  "deque_rbegin": {
+    "blockName": "deque_rbegin",
+    "brief": "取得雙端佇列反向起始迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "佇列.rbegin()",
+    "formatEnglish": "deque.rbegin()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = dq.rbegin();"
+  },
+  "deque_rend": {
+    "blockName": "deque_rend",
+    "brief": "取得雙端佇列反向結尾迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "佇列.rend()",
+    "formatEnglish": "deque.rend()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = dq.rend();"
+  },
+  "define_set": {
+    "blockName": "define_set",
+    "brief": "定義集合",
+    "notice": "⚠️注意：需要包含 <set> 標頭檔",
+    "formatChinese": "set<型態> 集合名;",
+    "formatEnglish": "set<type> set_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <set>\nusing namespace std;\n\nset<int> s;"
+  },
+  "set_insert": {
+    "blockName": "set_insert",
+    "brief": "向集合中插入元素",
+    "notice": "⚠️注意：自動忽略重複元素",
+    "formatChinese": "集合.insert(元素);",
+    "formatEnglish": "set.insert(element);",
+    "blocklyExample": "",
+    "cppExample": "s.insert(5);"
+  },
+  "set_insert_range": {
+    "blockName": "set_insert_range",
+    "brief": "向集合中插入一段範圍的元素",
+    "notice": "⚠️注意：需提供迭代器範圍",
+    "formatChinese": "集合.insert(起始, 結束);",
+    "formatEnglish": "set.insert(start, end);",
+    "blocklyExample": "",
+    "cppExample": "s.insert(otherSet.begin(), otherSet.end());"
+  },
+  "set_emplace": {
+    "blockName": "set_emplace",
+    "brief": "在集合中原地構造元素",
+    "notice": "⚠️注意：避免不必要的複製",
+    "formatChinese": "集合.emplace(參數);",
+    "formatEnglish": "set.emplace(arguments);",
+    "blocklyExample": "",
+    "cppExample": "s.emplace(10);"
+  },
+  "set_erase": {
+    "blockName": "set_erase",
+    "brief": "從集合中移除元素",
+    "notice": "⚠️注意：請確保元素存在",
+    "formatChinese": "集合.erase(元素);",
+    "formatEnglish": "set.erase(element);",
+    "blocklyExample": "",
+    "cppExample": "s.erase(5);"
+  },
+  "set_extract": {
+    "blockName": "set_extract",
+    "brief": "從集合中提取元素",
+    "notice": "⚠️注意：提取後元素會從集合中移除",
+    "formatChinese": "集合.extract(元素);",
+    "formatEnglish": "set.extract(element);",
+    "blocklyExample": "",
+    "cppExample": "auto node = s.extract(5);"
+  },
+  "set_merge": {
+    "blockName": "set_merge",
+    "brief": "合併兩個集合",
+    "notice": "⚠️注意：來源集合會被清空相應元素",
+    "formatChinese": "集合1.merge(集合2);",
+    "formatEnglish": "set1.merge(set2);",
+    "blocklyExample": "",
+    "cppExample": "s.merge(otherSet);"
+  },
+  "set_swap": {
+    "blockName": "set_swap",
+    "brief": "交換兩個集合內容",
+    "notice": "⚠️注意：兩個集合型態必須相同",
+    "formatChinese": "集合1.swap(集合2);",
+    "formatEnglish": "set1.swap(set2);",
+    "blocklyExample": "",
+    "cppExample": "s.swap(otherSet);"
+  },
+  "set_clear": {
+    "blockName": "set_clear",
+    "brief": "清空集合",
+    "notice": "⚠️注意：此操作不可回復",
+    "formatChinese": "集合.clear();",
+    "formatEnglish": "set.clear();",
+    "blocklyExample": "",
+    "cppExample": "s.clear();"
+  },
+  "set_size": {
+    "blockName": "set_size",
+    "brief": "取得集合大小",
+    "notice": "⚠️注意：返回元素個數",
+    "formatChinese": "集合.size()",
+    "formatEnglish": "set.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << s.size();"
+  },
+  "set_empty": {
+    "blockName": "set_empty",
+    "brief": "檢查集合是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "集合.empty()",
+    "formatEnglish": "set.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(s.empty()) { /* ... */ }"
+  },
+  "set_max_size": {
+    "blockName": "set_max_size",
+    "brief": "取得集合最大可能大小",
+    "notice": "⚠️注意：依系統而異",
+    "formatChinese": "集合.max_size()",
+    "formatEnglish": "set.max_size()",
+    "blocklyExample": "",
+    "cppExample": "cout << s.max_size();"
+  },
+  "set_count": {
+    "blockName": "set_count",
+    "brief": "計算集合中某元素數量",
+    "notice": "⚠️注意：對於 set，數量僅為 0 或 1",
+    "formatChinese": "集合.count(元素)",
+    "formatEnglish": "set.count(element)",
+    "blocklyExample": "",
+    "cppExample": "cout << s.count(5);"
+  },
+  "set_find": {
+    "blockName": "set_find",
+    "brief": "在集合中查找元素",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "集合.find(元素)",
+    "formatEnglish": "set.find(element)",
+    "blocklyExample": "",
+    "cppExample": "auto it = s.find(5);"
+  },
+  "set_contains": {
+    "blockName": "set_contains",
+    "brief": "檢查集合是否包含指定元素",
+    "notice": "⚠️注意：C++20 開始支援",
+    "formatChinese": "集合.contains(元素)",
+    "formatEnglish": "set.contains(element)",
+    "blocklyExample": "",
+    "cppExample": "if(s.contains(5)) { /* ... */ }"
+  },
+  "set_equal_range": {
+    "blockName": "set_equal_range",
+    "brief": "取得集合中等值範圍",
+    "notice": "⚠️注意：返回 pair 迭代器",
+    "formatChinese": "集合.equal_range(元素)",
+    "formatEnglish": "set.equal_range(element)",
+    "blocklyExample": "",
+    "cppExample": "auto range = s.equal_range(5);"
+  },
+  "set_lower_bound": {
+    "blockName": "set_lower_bound",
+    "brief": "取得集合中不小於指定值的第一個位置",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "集合.lower_bound(元素)",
+    "formatEnglish": "set.lower_bound(element)",
+    "blocklyExample": "",
+    "cppExample": "auto it = s.lower_bound(5);"
+  },
+  "set_upper_bound": {
+    "blockName": "set_upper_bound",
+    "brief": "取得集合中大於指定值的第一個位置",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "集合.upper_bound(元素)",
+    "formatEnglish": "set.upper_bound(element)",
+    "blocklyExample": "",
+    "cppExample": "auto it = s.upper_bound(5);"
+  },
+  "set_begin": {
+    "blockName": "set_begin",
+    "brief": "取得集合起始迭代器",
+    "notice": "⚠️注意：用於遍歷集合",
+    "formatChinese": "集合.begin()",
+    "formatEnglish": "set.begin()",
+    "blocklyExample": "",
+    "cppExample": "auto it = s.begin();"
+  },
+  "set_end": {
+    "blockName": "set_end",
+    "brief": "取得集合結尾迭代器",
+    "notice": "⚠️注意：用於遍歷結束判斷",
+    "formatChinese": "集合.end()",
+    "formatEnglish": "set.end()",
+    "blocklyExample": "",
+    "cppExample": "auto it = s.end();"
+  },
+  "set_rbegin": {
+    "blockName": "set_rbegin",
+    "brief": "取得集合反向起始迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "集合.rbegin()",
+    "formatEnglish": "set.rbegin()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = s.rbegin();"
+  },
+  "set_rend": {
+    "blockName": "set_rend",
+    "brief": "取得集合反向結尾迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "集合.rend()",
+    "formatEnglish": "set.rend()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = s.rend();"
+  },
+  "define_map": {
+    "blockName": "define_map",
+    "brief": "定義映射容器",
+    "notice": "⚠️注意：需要包含 <map> 標頭檔",
+    "formatChinese": "map<鍵, 值> 映射名;",
+    "formatEnglish": "map<key, value> map_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <map>\nusing namespace std;\n\nmap<int, string> m;"
+  },
+  "map_insert": {
+    "blockName": "map_insert",
+    "brief": "向映射中插入元素",
+    "notice": "⚠️注意：若鍵重複，將不會覆蓋",
+    "formatChinese": "映射.insert({鍵, 值});",
+    "formatEnglish": "map.insert({key, value});",
+    "blocklyExample": "",
+    "cppExample": "m.insert({1, \"one\"});"
+  },
+  "map_insert_range": {
+    "blockName": "map_insert_range",
+    "brief": "向映射中插入一段範圍的元素",
+    "notice": "⚠️注意：需提供正確的範圍",
+    "formatChinese": "映射.insert(起始, 結束);",
+    "formatEnglish": "map.insert(start, end);",
+    "blocklyExample": "",
+    "cppExample": "m.insert(otherMap.begin(), otherMap.end());"
+  },
+  "map_emplace": {
+    "blockName": "map_emplace",
+    "brief": "在映射中原地構造元素",
+    "notice": "⚠️注意：避免不必要的複製",
+    "formatChinese": "映射.emplace(鍵, 值);",
+    "formatEnglish": "map.emplace(key, value);",
+    "blocklyExample": "",
+    "cppExample": "m.emplace(2, \"two\");"
+  },
+  "map_erase": {
+    "blockName": "map_erase",
+    "brief": "從映射中移除元素",
+    "notice": "⚠️注意：使用正確的鍵",
+    "formatChinese": "映射.erase(鍵);",
+    "formatEnglish": "map.erase(key);",
+    "blocklyExample": "",
+    "cppExample": "m.erase(1);"
+  },
+  "map_extract": {
+    "blockName": "map_extract",
+    "brief": "從映射中提取元素",
+    "notice": "⚠️注意：提取後元素會從映射中移除",
+    "formatChinese": "映射.extract(鍵);",
+    "formatEnglish": "map.extract(key);",
+    "blocklyExample": "",
+    "cppExample": "auto node = m.extract(2);"
+  },
+  "map_merge": {
+    "blockName": "map_merge",
+    "brief": "合併兩個映射",
+    "notice": "⚠️注意：來源映射會被清空相應元素",
+    "formatChinese": "映射1.merge(映射2);",
+    "formatEnglish": "map1.merge(map2);",
+    "blocklyExample": "",
+    "cppExample": "m.merge(otherMap);"
+  },
+  "map_swap": {
+    "blockName": "map_swap",
+    "brief": "交換兩個映射內容",
+    "notice": "⚠️注意：兩個映射型態必須相同",
+    "formatChinese": "映射1.swap(映射2);",
+    "formatEnglish": "map1.swap(map2);",
+    "blocklyExample": "",
+    "cppExample": "m.swap(otherMap);"
+  },
+  "map_clear": {
+    "blockName": "map_clear",
+    "brief": "清空映射",
+    "notice": "⚠️注意：此操作不可回復",
+    "formatChinese": "映射.clear();",
+    "formatEnglish": "map.clear();",
+    "blocklyExample": "",
+    "cppExample": "m.clear();"
+  },
+  "map_size": {
+    "blockName": "map_size",
+    "brief": "取得映射大小",
+    "notice": "⚠️注意：返回鍵值對數量",
+    "formatChinese": "映射.size()",
+    "formatEnglish": "map.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << m.size();"
+  },
+  "map_empty": {
+    "blockName": "map_empty",
+    "brief": "檢查映射是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "映射.empty()",
+    "formatEnglish": "map.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(m.empty()) { /* ... */ }"
+  },
+  "map_max_size": {
+    "blockName": "map_max_size",
+    "brief": "取得映射最大可能大小",
+    "notice": "⚠️注意：依系統而異",
+    "formatChinese": "映射.max_size()",
+    "formatEnglish": "map.max_size()",
+    "blocklyExample": "",
+    "cppExample": "cout << m.max_size();"
+  },
+  "map_count": {
+    "blockName": "map_count",
+    "brief": "計算映射中指定鍵出現次數",
+    "notice": "⚠️注意：通常為 0 或 1",
+    "formatChinese": "映射.count(鍵)",
+    "formatEnglish": "map.count(key)",
+    "blocklyExample": "",
+    "cppExample": "cout << m.count(1);"
+  },
+  "map_find": {
+    "blockName": "map_find",
+    "brief": "在映射中查找鍵",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "映射.find(鍵)",
+    "formatEnglish": "map.find(key)",
+    "blocklyExample": "",
+    "cppExample": "auto it = m.find(1);"
+  },
+  "map_contains": {
+    "blockName": "map_contains",
+    "brief": "檢查映射是否包含指定鍵",
+    "notice": "⚠️注意：C++20 開始支援",
+    "formatChinese": "映射.contains(鍵)",
+    "formatEnglish": "map.contains(key)",
+    "blocklyExample": "",
+    "cppExample": "if(m.contains(1)) { /* ... */ }"
+  },
+  "map_equal_range": {
+    "blockName": "map_equal_range",
+    "brief": "取得映射中等值範圍",
+    "notice": "⚠️注意：返回 pair 迭代器",
+    "formatChinese": "映射.equal_range(鍵)",
+    "formatEnglish": "map.equal_range(key)",
+    "blocklyExample": "",
+    "cppExample": "auto range = m.equal_range(1);"
+  },
+  "map_lower_bound": {
+    "blockName": "map_lower_bound",
+    "brief": "取得映射中不小於指定鍵的第一個位置",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "映射.lower_bound(鍵)",
+    "formatEnglish": "map.lower_bound(key)",
+    "blocklyExample": "",
+    "cppExample": "auto it = m.lower_bound(1);"
+  },
+  "map_upper_bound": {
+    "blockName": "map_upper_bound",
+    "brief": "取得映射中大於指定鍵的第一個位置",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "映射.upper_bound(鍵)",
+    "formatEnglish": "map.upper_bound(key)",
+    "blocklyExample": "",
+    "cppExample": "auto it = m.upper_bound(1);"
+  },
+  "map_begin": {
+    "blockName": "map_begin",
+    "brief": "取得映射起始迭代器",
+    "notice": "⚠️注意：用於遍歷映射",
+    "formatChinese": "映射.begin()",
+    "formatEnglish": "map.begin()",
+    "blocklyExample": "",
+    "cppExample": "auto it = m.begin();"
+  },
+  "map_end": {
+    "blockName": "map_end",
+    "brief": "取得映射結尾迭代器",
+    "notice": "⚠️注意：用於遍歷結束判斷",
+    "formatChinese": "映射.end()",
+    "formatEnglish": "map.end()",
+    "blocklyExample": "",
+    "cppExample": "auto it = m.end();"
+  },
+  "map_rbegin": {
+    "blockName": "map_rbegin",
+    "brief": "取得映射反向起始迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "映射.rbegin()",
+    "formatEnglish": "map.rbegin()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = m.rbegin();"
+  },
+  "map_rend": {
+    "blockName": "map_rend",
+    "brief": "取得映射反向結尾迭代器",
+    "notice": "⚠️注意：用於反向遍歷",
+    "formatChinese": "映射.rend()",
+    "formatEnglish": "map.rend()",
+    "blocklyExample": "",
+    "cppExample": "auto rit = m.rend();"
+  },
+  "make_map": {
+    "blockName": "make_map",
+    "brief": "建立映射",
+    "notice": "⚠️注意：利用 make_pair 建立映射元素",
+    "formatChinese": "make_pair(鍵, 值)",
+    "formatEnglish": "make_pair(key, value)",
+    "blocklyExample": "",
+    "cppExample": "auto p = make_pair(1, \"one\");"
+  },
+  "define_stack": {
+    "blockName": "define_stack",
+    "brief": "定義堆疊容器",
+    "notice": "⚠️注意：需要包含 <stack> 標頭檔",
+    "formatChinese": "stack<型態> 堆疊名;",
+    "formatEnglish": "stack<type> stack_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <stack>\nusing namespace std;\n\nstack<int> st;"
+  },
+  "stack_push": {
+    "blockName": "stack_push",
+    "brief": "向堆疊中推入元素",
+    "notice": "⚠️注意：請確認堆疊已定義",
+    "formatChinese": "堆疊.push(元素);",
+    "formatEnglish": "stack.push(element);",
+    "blocklyExample": "",
+    "cppExample": "st.push(10);"
+  },
+  "stack_push_range": {
+    "blockName": "stack_push_range",
+    "brief": "向堆疊中推入一系列元素",
+    "notice": "⚠️注意：依需求逐一推入",
+    "formatChinese": "依次呼叫 push()",
+    "formatEnglish": "call push() repeatedly",
+    "blocklyExample": "",
+    "cppExample": "st.push(1); st.push(2); st.push(3);"
+  },
+  "stack_emplace": {
+    "blockName": "stack_emplace",
+    "brief": "在堆疊中原地構造元素",
+    "notice": "⚠️注意：避免不必要的複製",
+    "formatChinese": "堆疊.emplace(參數);",
+    "formatEnglish": "stack.emplace(arguments);",
+    "blocklyExample": "",
+    "cppExample": "st.emplace(100);"
+  },
+  "stack_pop": {
+    "blockName": "stack_pop",
+    "brief": "從堆疊中移除頂端元素",
+    "notice": "⚠️注意：堆疊必須非空",
+    "formatChinese": "堆疊.pop();",
+    "formatEnglish": "stack.pop();",
+    "blocklyExample": "",
+    "cppExample": "st.pop();"
+  },
+  "stack_swap": {
+    "blockName": "stack_swap",
+    "brief": "交換兩個堆疊內容",
+    "notice": "⚠️注意：兩個堆疊型態必須相同",
+    "formatChinese": "堆疊1.swap(堆疊2);",
+    "formatEnglish": "stack1.swap(stack2);",
+    "blocklyExample": "",
+    "cppExample": "st.swap(otherSt);"
+  },
+  "stack_top": {
+    "blockName": "stack_top",
+    "brief": "取得堆疊頂端元素",
+    "notice": "⚠️注意：堆疊必須非空",
+    "formatChinese": "堆疊.top()",
+    "formatEnglish": "stack.top()",
+    "blocklyExample": "",
+    "cppExample": "cout << st.top();"
+  },
+  "stack_size": {
+    "blockName": "stack_size",
+    "brief": "取得堆疊大小",
+    "notice": "⚠️注意：返回元素個數",
+    "formatChinese": "堆疊.size()",
+    "formatEnglish": "stack.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << st.size();"
+  },
+  "stack_empty": {
+    "blockName": "stack_empty",
+    "brief": "檢查堆疊是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "堆疊.empty()",
+    "formatEnglish": "stack.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(st.empty()) { /* ... */ }"
+  },
+  "define_queue": {
+    "blockName": "define_queue",
+    "brief": "定義佇列容器",
+    "notice": "⚠️注意：需要包含 <queue> 標頭檔",
+    "formatChinese": "queue<型態> 佇列名;",
+    "formatEnglish": "queue<type> queue_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <queue>\nusing namespace std;\n\nqueue<int> q;"
+  },
+  "queue_push": {
+    "blockName": "queue_push",
+    "brief": "向佇列中推入元素",
+    "notice": "⚠️注意：請確認佇列已定義",
+    "formatChinese": "佇列.push(元素);",
+    "formatEnglish": "queue.push(element);",
+    "blocklyExample": "",
+    "cppExample": "q.push(10);"
+  },
+  "queue_push_range": {
+    "blockName": "queue_push_range",
+    "brief": "向佇列中推入一系列元素",
+    "notice": "⚠️注意：依需求逐一推入",
+    "formatChinese": "依次呼叫 push()",
+    "formatEnglish": "call push() repeatedly",
+    "blocklyExample": "",
+    "cppExample": "q.push(1); q.push(2); q.push(3);"
+  },
+  "queue_emplace": {
+    "blockName": "queue_emplace",
+    "brief": "在佇列中原地構造元素",
+    "notice": "⚠️注意：避免不必要的複製",
+    "formatChinese": "佇列.emplace(參數);",
+    "formatEnglish": "queue.emplace(arguments);",
+    "blocklyExample": "",
+    "cppExample": "q.emplace(100);"
+  },
+  "queue_pop": {
+    "blockName": "queue_pop",
+    "brief": "從佇列中移除前端元素",
+    "notice": "⚠️注意：佇列必須非空",
+    "formatChinese": "佇列.pop();",
+    "formatEnglish": "queue.pop();",
+    "blocklyExample": "",
+    "cppExample": "q.pop();"
+  },
+  "queue_swap": {
+    "blockName": "queue_swap",
+    "brief": "交換兩個佇列內容",
+    "notice": "⚠️注意：兩個佇列型態必須相同",
+    "formatChinese": "佇列1.swap(佇列2);",
+    "formatEnglish": "queue1.swap(queue2);",
+    "blocklyExample": "",
+    "cppExample": "q.swap(otherQ);"
+  },
+  "queue_front": {
+    "blockName": "queue_front",
+    "brief": "取得佇列前端元素",
+    "notice": "⚠️注意：佇列必須非空",
+    "formatChinese": "佇列.front()",
+    "formatEnglish": "queue.front()",
+    "blocklyExample": "",
+    "cppExample": "cout << q.front();"
+  },
+  "queue_size": {
+    "blockName": "queue_size",
+    "brief": "取得佇列大小",
+    "notice": "⚠️注意：返回元素個數",
+    "formatChinese": "佇列.size()",
+    "formatEnglish": "queue.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << q.size();"
+  },
+  "queue_empty": {
+    "blockName": "queue_empty",
+    "brief": "檢查佇列是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "佇列.empty()",
+    "formatEnglish": "queue.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(q.empty()) { /* ... */ }"
+  },
+  "define_priority_queue": {
+    "blockName": "define_priority_queue",
+    "brief": "定義優先佇列",
+    "notice": "⚠️注意：需要包含 <queue> 標頭檔",
+    "formatChinese": "priority_queue<型態> 佇列名;",
+    "formatEnglish": "priority_queue<type> pq_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <queue>\nusing namespace std;\n\npriority_queue<int> pq;"
+  },
+  "priority_queue_push": {
+    "blockName": "priority_queue_push",
+    "brief": "向優先佇列中推入元素",
+    "notice": "⚠️注意：請確認優先佇列已定義",
+    "formatChinese": "佇列.push(元素);",
+    "formatEnglish": "pq.push(element);",
+    "blocklyExample": "",
+    "cppExample": "pq.push(10);"
+  },
+  "priority_queue_push_range": {
+    "blockName": "priority_queue_push_range",
+    "brief": "向優先佇列中推入一系列元素",
+    "notice": "⚠️注意：依需求逐一推入",
+    "formatChinese": "依次呼叫 push()",
+    "formatEnglish": "call push() repeatedly",
+    "blocklyExample": "",
+    "cppExample": "pq.push(1); pq.push(2); pq.push(3);"
+  },
+  "priority_queue_emplace": {
+    "blockName": "priority_queue_emplace",
+    "brief": "在優先佇列中原地構造元素",
+    "notice": "⚠️注意：避免不必要的複製",
+    "formatChinese": "佇列.emplace(參數);",
+    "formatEnglish": "pq.emplace(arguments);",
+    "blocklyExample": "",
+    "cppExample": "pq.emplace(100);"
+  },
+  "priority_queue_pop": {
+    "blockName": "priority_queue_pop",
+    "brief": "從優先佇列中移除頂端元素",
+    "notice": "⚠️注意：優先佇列必須非空",
+    "formatChinese": "佇列.pop();",
+    "formatEnglish": "pq.pop();",
+    "blocklyExample": "",
+    "cppExample": "pq.pop();"
+  },
+  "priority_queue_swap": {
+    "blockName": "priority_queue_swap",
+    "brief": "交換兩個優先佇列內容",
+    "notice": "⚠️注意：兩個優先佇列型態必須相同",
+    "formatChinese": "佇列1.swap(佇列2);",
+    "formatEnglish": "pq1.swap(pq2);",
+    "blocklyExample": "",
+    "cppExample": "pq.swap(otherPq);"
+  },
+  "priority_queue_front": {
+    "blockName": "priority_queue_front",
+    "brief": "取得優先佇列頂端元素",
+    "notice": "⚠️注意：優先佇列必須非空",
+    "formatChinese": "佇列.top()",
+    "formatEnglish": "pq.top()",
+    "blocklyExample": "",
+    "cppExample": "cout << pq.top();"
+  },
+  "priority_queue_size": {
+    "blockName": "priority_queue_size",
+    "brief": "取得優先佇列大小",
+    "notice": "⚠️注意：返回元素個數",
+    "formatChinese": "佇列.size()",
+    "formatEnglish": "pq.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << pq.size();"
+  },
+  "priority_queue_empty": {
+    "blockName": "priority_queue_empty",
+    "brief": "檢查優先佇列是否為空",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "佇列.empty()",
+    "formatEnglish": "pq.empty()",
+    "blocklyExample": "",
+    "cppExample": "if(pq.empty()) { /* ... */ }"
+  },
+  "define_pair": {
+    "blockName": "define_pair",
+    "brief": "定義 pair 組合",
+    "notice": "⚠️注意：用於儲存一對值",
+    "formatChinese": "pair<型態1, 型態2> 變數名;",
+    "formatEnglish": "pair<type1, type2> var_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <utility>\nusing namespace std;\n\npair<int, string> p = {1, \"one\"};"
+  },
+  "pair_first": {
+    "blockName": "pair_first",
+    "brief": "取得 pair 的第一個值",
+    "notice": "⚠️注意：請確認 pair 已定義",
+    "formatChinese": "pair.first",
+    "formatEnglish": "pair.first",
+    "blocklyExample": "",
+    "cppExample": "cout << p.first;"
+  },
+  "pair_second": {
+    "blockName": "pair_second",
+    "brief": "取得 pair 的第二個值",
+    "notice": "⚠️注意：請確認 pair 已定義",
+    "formatChinese": "pair.second",
+    "formatEnglish": "pair.second",
+    "blocklyExample": "",
+    "cppExample": "cout << p.second;"
+  },
+  "make_pair": {
+    "blockName": "make_pair",
+    "brief": "建立一個 pair",
+    "notice": "⚠️注意：自動推導型態",
+    "formatChinese": "make_pair(值1, 值2)",
+    "formatEnglish": "make_pair(value1, value2)",
+    "blocklyExample": "",
+    "cppExample": "auto p = make_pair(2, \"two\");"
+  },
+  "define_bitset": {
+    "blockName": "define_bitset",
+    "brief": "定義位集合",
+    "notice": "⚠️注意：需要包含 <bitset> 標頭檔",
+    "formatChinese": "bitset<大小> 變數名;",
+    "formatEnglish": "bitset<size> var_name;",
+    "blocklyExample": "",
+    "cppExample": "#include <bitset>\nusing namespace std;\n\nbitset<8> bs;"
+  },
+  "bitset[i]": {
+    "blockName": "bitset[i]",
+    "brief": "存取 bitset 中第 i 個位元",
+    "notice": "⚠️注意：索引從 0 開始",
+    "formatChinese": "bitset[i]",
+    "formatEnglish": "bitset[i]",
+    "blocklyExample": "",
+    "cppExample": "bool bit = bs[3];"
+  },
+  "bitset_size": {
+    "blockName": "bitset_size",
+    "brief": "取得 bitset 大小",
+    "notice": "⚠️注意：返回固定大小",
+    "formatChinese": "bitset.size()",
+    "formatEnglish": "bitset.size()",
+    "blocklyExample": "",
+    "cppExample": "cout << bs.size();"
+  },
+  "bitset_count": {
+    "blockName": "bitset_count",
+    "brief": "計算 bitset 中設為 1 的位元數",
+    "notice": "⚠️注意：返回計數值",
+    "formatChinese": "bitset.count()",
+    "formatEnglish": "bitset.count()",
+    "blocklyExample": "",
+    "cppExample": "cout << bs.count();"
+  },
+  "bitset_set": {
+    "blockName": "bitset_set",
+    "brief": "設定 bitset 中某位為 1",
+    "notice": "⚠️注意：請指定索引",
+    "formatChinese": "bitset.set(索引);",
+    "formatEnglish": "bitset.set(index);",
+    "blocklyExample": "",
+    "cppExample": "bs.set(2);"
+  },
+  "bitset_reset": {
+    "blockName": "bitset_reset",
+    "brief": "重設 bitset 中某位為 0",
+    "notice": "⚠️注意：請指定索引",
+    "formatChinese": "bitset.reset(索引);",
+    "formatEnglish": "bitset.reset(index);",
+    "blocklyExample": "",
+    "cppExample": "bs.reset(2);"
+  },
+  "bitset_all": {
+    "blockName": "bitset_all",
+    "brief": "檢查 bitset 所有位是否皆為 1",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "bitset.all()",
+    "formatEnglish": "bitset.all()",
+    "blocklyExample": "",
+    "cppExample": "cout << bs.all();"
+  },
+  "bitset_any": {
+    "blockName": "bitset_any",
+    "brief": "檢查 bitset 是否至少有一個位為 1",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "bitset.any()",
+    "formatEnglish": "bitset.any()",
+    "blocklyExample": "",
+    "cppExample": "cout << bs.any();"
+  },
+  "bitset_none": {
+    "blockName": "bitset_none",
+    "brief": "檢查 bitset 是否所有位皆為 0",
+    "notice": "⚠️注意：返回布林值",
+    "formatChinese": "bitset.none()",
+    "formatEnglish": "bitset.none()",
+    "blocklyExample": "",
+    "cppExample": "cout << bs.none();"
+  },
+  "sort": {
+    "blockName": "sort",
+    "brief": "排序演算法",
+    "notice": "⚠️注意：需要包含 <algorithm> 標頭檔",
+    "formatChinese": "sort(起始, 結束);",
+    "formatEnglish": "sort(start, end);",
+    "blocklyExample": "",
+    "cppExample": "#include <algorithm>\n\nsort(arr, arr + n);"
+  },
+  "max": {
+    "blockName": "max",
+    "brief": "取得兩者中的最大值",
+    "notice": "⚠️注意：確保提供兩個參數",
+    "formatChinese": "max(值1, 值2)",
+    "formatEnglish": "max(value1, value2)",
+    "blocklyExample": "",
+    "cppExample": "cout << max(3, 5);"
+  },
+  "min": {
+    "blockName": "min",
+    "brief": "取得兩者中的最小值",
+    "notice": "⚠️注意：確保提供兩個參數",
+    "formatChinese": "min(值1, 值2)",
+    "formatEnglish": "min(value1, value2)",
+    "blocklyExample": "",
+    "cppExample": "cout << min(3, 5);"
+  },
+  "find": {
+    "blockName": "find",
+    "brief": "查找容器中的元素",
+    "notice": "⚠️注意：返回迭代器",
+    "formatChinese": "find(起始, 結束, 值)",
+    "formatEnglish": "find(start, end, value)",
+    "blocklyExample": "",
+    "cppExample": "#include <algorithm>\n\nfind(arr, arr+n, target);"
+  },
+  "math_ceil": {
+    "blockName": "math_ceil",
+    "brief": "向上取整",
+    "notice": "⚠️注意：需要包含 <cmath> 標頭檔",
+    "formatChinese": "ceil(數值)",
+    "formatEnglish": "ceil(number)",
+    "blocklyExample": "",
+    "cppExample": "cout << ceil(3.2);"
+  },
+  "math_floor": {
+    "blockName": "math_floor",
+    "brief": "向下取整",
+    "notice": "⚠️注意：需要包含 <cmath> 標頭檔",
+    "formatChinese": "floor(數值)",
+    "formatEnglish": "floor(number)",
+    "blocklyExample": "",
+    "cppExample": "cout << floor(3.8);"
+  },
+  "math_sqrt": {
+    "blockName": "math_sqrt",
+    "brief": "求平方根",
+    "notice": "⚠️注意：需要包含 <cmath> 標頭檔",
+    "formatChinese": "sqrt(數值)",
+    "formatEnglish": "sqrt(number)",
+    "blocklyExample": "",
+    "cppExample": "cout << sqrt(9);"
+  },
+  "math_abs": {
+    "blockName": "math_abs",
+    "brief": "求絕對值",
+    "notice": "⚠️注意：適用於整數與浮點數",
+    "formatChinese": "abs(數值)",
+    "formatEnglish": "abs(number)",
+    "blocklyExample": "",
+    "cppExample": "cout << abs(-10);"
+  },
+  "math_random": {
+    "blockName": "math_random",
+    "brief": "產生隨機數",
+    "notice": "⚠️注意：需包含 <cstdlib> 與 <ctime>",
+    "formatChinese": "rand()",
+    "formatEnglish": "rand()",
+    "blocklyExample": "",
+    "cppExample": "#include <cstdlib>\n#include <ctime>\n\nsrand(time(0));\ncout << rand();"
+  },
+  "math_sine": {
+    "blockName": "math_sine",
+    "brief": "計算正弦值",
+    "notice": "⚠️注意：需要包含 <cmath> 標頭檔",
+    "formatChinese": "sin(角度)",
+    "formatEnglish": "sin(angle)",
+    "blocklyExample": "",
+    "cppExample": "cout << sin(3.14/2);"
+  },
+  "math_cosine": {
+    "blockName": "math_cosine",
+    "brief": "計算餘弦值",
+    "notice": "⚠️注意：需要包含 <cmath> 標頭檔",
+    "formatChinese": "cos(角度)",
+    "formatEnglish": "cos(angle)",
+    "blocklyExample": "",
+    "cppExample": "cout << cos(0);"
+  },
+  "math_tangent": {
+    "blockName": "math_tangent",
+    "brief": "計算正切值",
+    "notice": "⚠️注意：需要包含 <cmath> 標頭檔",
+    "formatChinese": "tan(角度)",
+    "formatEnglish": "tan(angle)",
+    "blocklyExample": "",
+    "cppExample": "cout << tan(3.14/4);"
+  },
+  "get_current_timestamp": {
+    "blockName": "get_current_timestamp",
+    "brief": "取得當前時間戳",
+    "notice": "⚠️注意：返回秒數或毫秒數",
+    "formatChinese": "time(0)",
+    "formatEnglish": "time(0)",
+    "blocklyExample": "",
+    "cppExample": "#include <ctime>\n\ncout << time(0);"
+  },
+  "get_current_local_time": {
+    "blockName": "get_current_local_time",
+    "brief": "取得當前本地時間",
+    "notice": "⚠️注意：使用 localtime 轉換",
+    "formatChinese": "localtime(&t)",
+    "formatEnglish": "localtime(&t)",
+    "blocklyExample": "",
+    "cppExample": "#include <ctime>\n\ntime_t t = time(0);\ncout << asctime(localtime(&t));"
+  },
+  "get_current_utc_time": {
+    "blockName": "get_current_utc_time",
+    "brief": "取得當前 UTC 時間",
+    "notice": "⚠️注意：使用 gmtime 轉換",
+    "formatChinese": "gmtime(&t)",
+    "formatEnglish": "gmtime(&t)",
+    "blocklyExample": "",
+    "cppExample": "#include <ctime>\n\ntime_t t = time(0);\ncout << asctime(gmtime(&t));"
+  },
+  "calculate_time_difference": {
+    "blockName": "calculate_time_difference",
+    "brief": "計算時間差",
+    "notice": "⚠️注意：返回秒數差",
+    "formatChinese": "difftime(t2, t1)",
+    "formatEnglish": "difftime(t2, t1)",
+    "blocklyExample": "",
+    "cppExample": "#include <ctime>\n\ndouble diff = difftime(t2, t1);"
+  },
+  "convert_to_local_time": {
+    "blockName": "convert_to_local_time",
+    "brief": "將時間轉為本地時間",
+    "notice": "⚠️注意：使用 localtime",
+    "formatChinese": "localtime(&t)",
+    "formatEnglish": "localtime(&t)",
+    "blocklyExample": "",
+    "cppExample": "cout << asctime(localtime(&t));"
+  },
+  "convert_to_utc_time": {
+    "blockName": "convert_to_utc_time",
+    "brief": "將時間轉為 UTC 時間",
+    "notice": "⚠️注意：使用 gmtime",
+    "formatChinese": "gmtime(&t)",
+    "formatEnglish": "gmtime(&t)",
+    "blocklyExample": "",
+    "cppExample": "cout << asctime(gmtime(&t));"
+  },
+  "format_time_string": {
+    "blockName": "format_time_string",
+    "brief": "格式化時間字串",
+    "notice": "⚠️注意：使用 strftime",
+    "formatChinese": "strftime(buffer, size, format, timeptr);",
+    "formatEnglish": "strftime(buffer, size, format, timeptr);",
+    "blocklyExample": "",
+    "cppExample": "char buf[80];\nstrftime(buf, sizeof(buf), \"%Y-%m-%d %H:%M:%S\", localtime(&t));\ncout << buf;"
+  },
+  "set_time_structure": {
+    "blockName": "set_time_structure",
+    "brief": "設定時間結構",
+    "notice": "⚠️注意：修改 tm 結構成員",
+    "formatChinese": "tm 結構設定",
+    "formatEnglish": "set tm structure",
+    "blocklyExample": "",
+    "cppExample": "// 修改 tm 結構成員的範例"
+  },
+  "read_time_structure_member": {
+    "blockName": "read_time_structure_member",
+    "brief": "讀取時間結構成員",
+    "notice": "⚠️注意：請確認結構已初始化",
+    "formatChinese": "tm.成員",
+    "formatEnglish": "tm.member",
+    "blocklyExample": "",
+    "cppExample": "cout << tstruct.tm_year;"
+  },
+  "setbase": {
+    "blockName": "setbase",
+    "brief": "設定數字輸出進位",
+    "notice": "⚠️注意：用於改變輸出格式",
+    "formatChinese": "setbase(進位);",
+    "formatEnglish": "setbase(base);",
+    "blocklyExample": "",
+    "cppExample": "cout << setbase(16) << 255;"
+  },
+  "setprecision": {
+    "blockName": "setprecision",
+    "brief": "設定浮點數輸出精度",
+    "notice": "⚠️注意：影響後續浮點數輸出",
+    "formatChinese": "setprecision(位數);",
+    "formatEnglish": "setprecision(digits);",
+    "blocklyExample": "",
+    "cppExample": "cout << setprecision(4) << 3.1415926;"
+  },
+  "setw": {
+    "blockName": "setw",
+    "brief": "設定欄位寬度",
+    "notice": "⚠️注意：用於格式化輸出",
+    "formatChinese": "setw(寬度);",
+    "formatEnglish": "setw(width);",
+    "blocklyExample": "",
+    "cppExample": "cout << setw(10) << 123;"
+  },
+  "setfill": {
+    "blockName": "setfill",
+    "brief": "設定填充字元",
+    "notice": "⚠️注意：用於格式化輸出",
+    "formatChinese": "setfill(字元);",
+    "formatEnglish": "setfill(character);",
+    "blocklyExample": "",
+    "cppExample": "cout << setfill('0') << setw(5) << 42;"
+  },
+  "char_bit": {
+    "blockName": "char_bit",
+    "brief": "字元位元操作",
+    "notice": "⚠️注意：用於處理 char 的位元",
+    "formatChinese": "char 的位元操作",
+    "formatEnglish": "bit operations on char",
+    "blocklyExample": "",
+    "cppExample": "// 範例程式碼"
+  },
+  "schar_min": {
+    "blockName": "schar_min",
+    "brief": "有號 char 最小值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<char>::min()",
+    "formatEnglish": "numeric_limits<char>::min()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << (int)numeric_limits<signed char>::min();"
+  },
+  "schar_max": {
+    "blockName": "schar_max",
+    "brief": "有號 char 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<char>::max()",
+    "formatEnglish": "numeric_limits<char>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << (int)numeric_limits<signed char>::max();"
+  },
+  "uchar_max": {
+    "blockName": "uchar_max",
+    "brief": "無號 char 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<unsigned char>::max()",
+    "formatEnglish": "numeric_limits<unsigned char>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << (int)numeric_limits<unsigned char>::max();"
+  },
+  "char_min": {
+    "blockName": "char_min",
+    "brief": "char 最小值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<char>::min()",
+    "formatEnglish": "numeric_limits<char>::min()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << (int)numeric_limits<char>::min();"
+  },
+  "char_max": {
+    "blockName": "char_max",
+    "brief": "char 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<char>::max()",
+    "formatEnglish": "numeric_limits<char>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << (int)numeric_limits<char>::max();"
+  },
+  "int_min": {
+    "blockName": "int_min",
+    "brief": "int 最小值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<int>::min()",
+    "formatEnglish": "numeric_limits<int>::min()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << numeric_limits<int>::min();"
+  },
+  "int_max": {
+    "blockName": "int_max",
+    "brief": "int 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<int>::max()",
+    "formatEnglish": "numeric_limits<int>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << numeric_limits<int>::max();"
+  },
+  "uint_max": {
+    "blockName": "uint_max",
+    "brief": "unsigned int 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<unsigned int>::max()",
+    "formatEnglish": "numeric_limits<unsigned int>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << numeric_limits<unsigned int>::max();"
+  },
+  "llong_min": {
+    "blockName": "llong_min",
+    "brief": "long long 最小值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<long long>::min()",
+    "formatEnglish": "numeric_limits<long long>::min()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << numeric_limits<long long>::min();"
+  },
+  "llong_max": {
+    "blockName": "llong_max",
+    "brief": "long long 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<long long>::max()",
+    "formatEnglish": "numeric_limits<long long>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << numeric_limits<long long>::max();"
+  },
+  "ullong_max": {
+    "blockName": "ullong_max",
+    "brief": "unsigned long long 最大值",
+    "notice": "⚠️注意：使用 numeric_limits",
+    "formatChinese": "numeric_limits<unsigned long long>::max()",
+    "formatEnglish": "numeric_limits<unsigned long long>::max()",
+    "blocklyExample": "",
+    "cppExample": "#include <limits>\ncout << numeric_limits<unsigned long long>::max();"
+  }
 }
