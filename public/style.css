@@ -128,6 +128,7 @@
         .test_compiler,
         .code-view,
         .blockly-view,
+        .type-view,
         .info {
             position: absolute;
             top: 50px;
