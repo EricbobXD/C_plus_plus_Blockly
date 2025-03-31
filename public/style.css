@@ -148,6 +148,7 @@
         .test_compiler.active,
         .code-view.active,
         .blockly-view.active,
+        .type-view.active,
         .info.active {
             transform: translateX(0);
             opacity: 1;
