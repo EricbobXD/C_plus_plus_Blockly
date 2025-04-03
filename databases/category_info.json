@@ -1,5 +1,5 @@
 {
-  "categories": {
+  "category1": {
     "topic": "",
     "content": "這是一道美味的料理！\n<img1>", 
     "img": {
@@ -7,7 +7,7 @@
       "img2": "https://example.com/image2.jpg"
     }
   },
-  "categories_2": {
+  "category2": {
     "topic": "",
     "content": "這是一道美味的料理！<img2>",
     "img": {
