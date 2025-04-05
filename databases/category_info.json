@@ -1,11 +1,9 @@
 {
     "category1":{
         "topic": "array",
-        "content": "## 基本概念\n是一種資料結構，它能夠儲存固定大小的相同資料型態元素的集合，並透過索引存取每個元素\n<img1>\n## 索引規則\n陣列的開始值為0不是1，結尾是n-1\n## 陣列維度\n如果是一維陣列，定義就是`a[n]`\n<img2>\n二維就是`a[n][m]`，像是在xy平面上\n<img3>\n其他維度依此類推\n## 使用時機\n1. 當輸入測資很多時，並且都同一種資料型態\n2. 簡化程式碼\n    - 以免太有多變數\n3. dp式\n    - dynamic programing常用，這裡就先不介紹了",
-        "img":{
-            "img1": "photo/array_introduction.png",
-            "img2": "photo/array_1d_dynamic.png",
-            "img3": "photo/array_2d_dynamic.png"
+        "content": "<pdf1>",
+        "dpf":{
+            "pdf1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/無標題.pdf"
         }
     },
     "category2":{
