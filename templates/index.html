@@ -75,15 +75,6 @@
         </div>
     </div>
 
-    <div class="type-view" id="type-view">
-        <header>
-            <span>Blockly 說明</span>
-        </header>
-        <div>
-            <p>👉 點擊方塊查看說明。</p>
-        </div>
-    </div>
-
     <div class="info" id="info">
         <header>
             <span>關於我們以及網站</span>
@@ -101,6 +92,20 @@
                 <li><p>👉 <a href="https://github.com/EricbobXD/C_plus_plus_Blockly">Github</a></p></li>
                 <img src="public/b_w_b.png" style="height: 100px;" style="width: auto;"><img>
             </ul>
+        </div>
+    </div>
+
+    <!-- 新增分類說明面板 -->
+    <div class="class-view" id="class-view">
+        <!-- 左側標籤（靜態定義） -->
+        <div class="class-tabs" id="class-tabs">
+        </div>
+        <!-- 右側內容區 -->
+        <div class="class-content">
+        <header id="topic">
+        </header>
+        <div id="category-details" style="padding: 10px; overflow-y: auto; max-height: calc(100vh - 150px);">
+        </div>
         </div>
     </div>
 
@@ -123,7 +128,6 @@
     <footer>
         &copy; 2024 Bosen &amp; EricbobXD. All Rights Reserved.
     </footer>
-
 
     <script src="public/system.js" defer></script>
     <script src="public/block_cpp.js" defer></script>
