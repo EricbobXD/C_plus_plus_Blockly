@@ -1,9 +1,164 @@
 {
     "category1":{
         "topic": "array",
-        "content": "<pdf1>",
-        "pdf":{
-            "pdf1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/無標題.pdf"
+        "content": "## 基本概念\n是一種資料結構，它能夠儲存固定大小的相同資料型態元素的集合，並透過索引存取每個元素\n<img1>\n## 索引規則\n陣列的開始值為0不是1，結尾是n-1\n## 陣列維度\n如果是一維陣列，定義就是`a[n]`\n<img2>\n二維就是`a[n][m]`，像是在xy平面上\n<img3>\n其他維度依此類推\n## 使用時機\n1. 當輸入測資很多時，並且都同一種資料型態\n2. 簡化程式碼\n    - 以免太有多變數\n3. dp式\n    - dynamic programing常用，這裡就先不介紹了",
+        "img":{
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/array_introduction.png",
+            "img2": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/array_1d_dynamic.png",
+            "img3": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/array_2d_dynamic.png"
         }
+    },
+    "category2":{
+        "topic": "text",
+        "content": "## 基本概念\n處理字串（String）、字元（Char）的操作\n## 規則 & 比較\n| 文本類型| 字元（Char） | 字串（String） | 字元陣列 |\n| - | - | - | - |\n| 字數 | 只能儲存一個字 | 能儲存多個字（不用宣告字串長度）| 能儲存多個字（需宣告字串長度）|\n| 程式碼表示| `''`單引號 | `\"\"`雙引號 | `c[n] = '字串內容'`|\n| 模組 | C++內建 | `string` | C++內建|\n| 索引 | - | 支援索引值查詢 | 支援索引值查詢|",
+        "img":{}
+    },
+    "category3":{
+        "topic": "input & output",
+        "content": "## 基本概念\n輸入與輸出（I/O），通常是透過 `cin`讀取資料、`cout`顯示資料\n## 加速套件\n在basic_ios裡面喔",
+        "img":{}
+    },
+    "category4":{
+        "topic": "calculate",
+        "content": "## 基本概念\n一些條件判斷以及運算\n## 條件判斷\n字面意思，用於判斷式的成立條件或迴圈的中止條件\n- 否的符號: `!`\n## 數學運算\n就是一般的數學運算，`%`是取餘數\n## 布林運算\n最難學也最麻煩的\n1. AND `&`\n要兩個都是`true(1)`才會是`true(1)`，其他都是`false(0)`  \n⚠️注意: 0, 1 是`false(0)`跟`true(1)`的概念，不是數字0, 1  \n\n    |   | 0 | 1 |\n    | - | - | -|\n    | 0 | 0 | 0 |\n    | 1 | 0 | 1 |\n\n2. OR `|`\n只要一個是`true(1)`就是`true(1)`，其餘是`false(0)`  \n⚠️注意: 0, 1 是`false(0)`跟`true(1)`的概念，不是數字0, 1  \n\n    |   | 0 | 1 |\n    | - | - | - |\n    | 0 | 0 | 1 |\n    | 1 | 1 | 1 |\n\n3. XOR `^`\n兩個不一樣就是`true(1)`，一樣是`false(0)`  \n⚠️注意: 0, 1 是`false(0)`跟`true(1)`的概念，不是數字0, 1  \n\n    |   | 0 | 1 |\n    | - | - | - |\n    | 0 | 0 | 1 |\n    | 1 | 1 | 0 |\n\n4. 右移 `>>`\n<img1>\n5. 左移 `<<`\n<img2>",
+        "img":{
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/shift-expression.png",
+            "img2": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/additive-expression.png"
+        }
+    },
+    "category5":{
+        "topic": "condition",
+        "content": "## 基本概念\n用於條件判斷，當條件成立會執行`{}`或是下一行程式碼(沒有`｛}`時，但只能讀一行)\n\n## 條件判斷\n`if`, `else if `, `else`, `switch`, `case`之類的",
+        "img":{}
+    },
+    "category6":{
+        "topic": "loop",
+        "content": "## 基本概念\n用於重複執行特定程式碼\n## 迴圈\n`for`, `while`, `do-while`\n## 中止條件\n`continue`, `break`, `return`",
+        "img":{}
+    },
+    "category7":{
+        "topic": "define",
+        "content": "## 基本概念\n預處理程式碼\n## define\n`變數 = 某函式`\n## typedef\n`資料型態 = 資料型態縮寫`",
+        "img":{}
+    },
+    "category8": {
+        "topic": "variable",
+        "content": "## 基本概念\n變數是一個一個有名稱的記憶體儲存空間，可以用來儲存值或函式，並且用來做運算\n## 常數\n`const`: 固定變數值，宣告後就無法改變\n## 資料型態以及值範圍限制\n1. `int`: 整數 (值範圍: -2,147,483,648 (最小值: $-2^{31}$) 到 2,147,483,647 (最大值: $2^{31} - 1$))\n2. `unsigned int`: 無符號整數 (值範圍: 0 (最小值: $0$) 到 4,294,967,295 (最大值: $2^{32} - 1$))\n3. `long long`: 長長整數 (值範圍: -9,223,372,036,854,775,808 (最小值: $-2^{63}$) 到 9,223,372,036,854,775,807 (最大值: $2^{63} - 1$))\n4. `unsigned long long`: 無符號長長整數 (值範圍: 0 (最小值: $0$) 到 18,446,744,073,709,551,615 (最大值: $2^{64} - 1$))\n5. `float`: 單精度浮點數 (值範圍: 約 1.2E-38 (最小值: 約 $1.2 \\times 10^{-38}$) 到 3.4E+38 (最大值: 約 $3.4 \\times 10^{38}$))\n6. `double`: 雙精度浮點數 (值範圍: 約 2.3E-308 (最小值: 約 $2.3 \\times 10^{-308}$) 到 1.7E+308 (最大值: 約 $1.7 \\times 10^{308}$))\n7. `long double`: 長雙精度浮點數 (值範圍: 約 3.4E-4932 (最小值: 約 $3.4 \\times 10^{-4932}$) 到 1.1E+4932 (最大值: 約 $1.1 \\times 10^{4932}$，依實作而定))\n8. `char`: 字符 (值範圍: -128 (最小值: $-2^{7}$) 到 127 (最大值: $2^{7} - 1$) 或 0 到 255 (最大值: $2^{8} - 1$，依實作而定))\n9. `unsigned char`: 無符號字符 (值範圍: 0 (最小值: $0$) 到 255 (最大值: $2^{8} - 1$))\n10. `bool`: 布爾值 (值範圍: false (0) (最小值: $0$) 到 true (1) (最大值: $2^{1} - 1$))\n11. `auto`: 讓編譯器自行判斷，以下為使用條件\n    - 簡化複雜類型 (把像是 `map<std::string, std::vector<int>>::iterator`)\n    - 與 STL 容器一起使用 (定義 begin, end)\n    - 無法得知函式回傳值\n    - lambda\n    - for 迴圈循環\n## 變數名稱\n不能取保留字(自己查)、單純特殊符號、表情符號",
+        "img": {}
+    },
+    "category9": {
+        "topic": "pointer",
+        "content": "## 基本概念\n搭配參考(reference)，儲存記憶體位址，可用於動態記憶體配置與資料結構操作，用`*`表示\n## 其他跟變數差不多\n##解釋圖片\n<img1>",
+        "img": {
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/pointer & reference.png"
+        }
+    },
+    "category10": {
+        "topic": "reference",
+        "content": "## 基本概念\n搭配指標(pointer)使用，跟指標相反，用`&`表示\n##解釋圖片\n<img1>",
+        "img": {
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/pointer & reference.png"
+        }
+    },
+    "category11": {
+        "topic": "function",
+        "content": "## 基本概念\n一個可重複使用的程式區塊，透過參數與回傳值來傳遞資料\n## lambda\n就是一個函式只是他的寫法比函式更簡潔，而且更加的好用和維護。\n### 格式\n```cpp=\nauto l = [ captures ] ( parameters ) -> return_type { body }\n```\n:::success\n1. auto 可以用 `std::function` 中的 `std::function<int(int, int)>` 代替\n2. `[]` 裡面可以放 `&`、`=` 或是不放也可以(預設取副本變數)\n    - `&` : 引用變數 => **改變**變數數值 (全部)\n    - `=` : 取變數副本 => 複製原本變數數值 (全部)\n    - 變數值: 如果要放的話要**事先定義**喔\n3. `-> return_type` **可以省略** (通常不會寫)\n:::\n\n## operate\n用來預處理不是預設資料型態比較的方式\n## 使用時機\n1. 遞迴\n2. 減少主程式程式碼行數 (如果某個函式要執行多次)\n3. 有多個回傳值\n4. 可以加速程式碼執行效率\n5. 讓主程式碼更簡潔\n<img1>",
+        "img": {
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/function.png"
+        }
+    },
+    "category12": {
+        "topic": "struct",
+        "content": "## 基本概念\n是一種用來組織多個變數的資料型態，適用於群組化相關數據，類似不同資料型態的陣列，只是裡面的變數都要先定義，並且都是公有(`public`)\n\n## 使用時機\n1. 當題目有大量相似資料但不同資料型態時\nex:\n```shell=\n1 \"1\" '1' 0.1\n2 \"2\" '2' 0.2\n...```\n- cpp定義\n```cpp=\nstruct s{\n    int n;\n    std::string s;\n    char c;\n    float f;\n};```",
+        "img": {}
+    },
+    "category13": {
+        "topic": "class",
+        "content": "## 基礎概念\n跟`struct`差不多，只是多了需要定義公有(`public`)跟私有(`private`)\n\n## 判斷是要公有(`public`)還是私有(`private`)\n- 公有(`public`)：會被外部訪問\n1. 建構子(`Constructors`): 需要在外部創建物件(變數、陣列等)\n2. 對外功能: 像是查詢, 操作資料等\n- 私有(`private`)\n1. 資料成員(`data member`): 無法修改class的狀態\n2. 只用在內部函式",
+        "img": {}
+    },
+    "category14": {
+        "topic": "vector",
+        "content": "## 基本概念\nc++ 中的`vector`其實也是一個陣列(array)，只是它是一個**動態**陣列(dynamic array)，提供高效的方法來儲存及管理大小**可變**的陣列\n## 特性\n1. **動態**調整記憶體大小(不用事先定義大小)\n2. 連續記憶體分配(跟內建`array`一樣，快速訪問每個元素)\n3. **自動管理**記憶體(不需要手動釋放)\n4. 可以用索引`index`存取\n5. 只能在**尾端**可以高效的新增或刪除資料\n## 使用時機\n1. **未知陣列大小**\n2. 需要`STL`的其他功能(如演算法`algorithm`、模組陣列`set`, `stack`等)合併使用時\n<img1>",
+        "img": {
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/std-vector.png"
+        }
+    },
+    "category15": {
+        "topic": "deque",
+        "content": "## 基本概念\nc++ 中的`deque`其實也是一個陣列(array)，只是它是一個**動態**陣列(dynamic array)，提供高效的方法來儲存及管理大小**可變**的陣列\n## 特性\n1. **動態**調整記憶體大小(不用事先定義大小)\n2. 底層是**一系列小型固定大小的記憶體區段**\n3. **自動管理**記憶體(不需要手動釋放)\n4. 記憶體不一定是連續的\n5. 不能用索引`index`存取\n6. **前後**都可以高效的新增或刪除資料\n## 使用時機\n1. **未知陣列大小**\n2. 需要`STL`的其他功能(如演算法`algorithm`、模組陣列`set`, `stack`等)合併使用時",
+        "img": {}
+    },
+    "category16": {
+        "topic": "set",
+        "content": "## 基礎概念\n是一種`STL`容器，用於儲存不重複的元素，並提供高效的查找與排序\n## 特性\n1. 儲存**不重複**元素\n2. 會由**小到大**排序\n3. 無法查找索引`index`，但可以用`begin`跟`end`查詢\n## 使用時機\n1. 需要排序且不需要知道每個位置有什麼元素\n2. **查找**元素是否存在\n3. 隨機存取數值並**排序**",
+        "img": {}
+    },
+    "category17": {
+        "topic": "map",
+        "content": "## 基本概念\n`map`是鍵值對容器，就是多個`pair`何在一起，並把第一個令為鍵`key`，第二個是值`value`\n## 特性\n1. 可用於關聯式資料存取\n2. 用`{key, value}`來表示(裡面一定要放兩個元素)\n3. 可以用`first`, `second`去查看第一筆或第二筆數據\n4. 可以用`map[key]`得到值`value`，並快速查找資料\n5. 會依照鍵`key`做排序\n## 使用時機\n1. 依照鍵`key`找資料\n2. 保持鍵`key`的排序\n3. 不要有重複鍵`key`\n4. `key`可以是任意資料型態\n<img1>",
+        "img": {
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/std-map.png"
+        }
+    },
+    "category18": {
+        "topic": "pair",
+        "content": "## 基礎概念\n儲存兩個相關數據的結構\n## 使用時機\n1. 可以同時儲存兩個變數\n2. 常用在迴圈時遍歷`map`",
+        "img": {}
+    },
+    "category19": {
+        "topic": "stack",
+        "content": "## 基本概念\n是一種後進先出`LIFO`的資料結構\n## 主要操作\n1. push\n2. pop\n## 特性\n1. LIFO\n2. 空間限制: 可以用陣列或是鏈結串列擴充\n## 使用時機\n1. 函式呼叫 / 遞迴\n2. 反轉資料\n3. 括號題目\n4. 樹`Tree`或深度搜尋法`DFS`",
+        "img": {}
+    },
+    "category20": {
+        "topic": "queue",
+        "content": "## 基本概念\n是一種先進先出`FIFO`的資料結構\n## 主要操作\n1. Enqueue: 隊尾插入\n2. Dequeue: 隊首取出\n## 特性\n1. FIFO: First In First Out\n## 使用時機\n1. 排程系統\n2. 封包處理\n3. 廣度優先搜尋`BFS`",
+        "img": {}
+    },
+    "category21": {
+        "topic": "priority_queue",
+        "content": "## 基礎概念\n**元素不會依照加入順序取出**，而是依照**修先權**`priority`大小決定，由大排到小\n## 特性\n1. 常用`heap`實作\n    - Min heap: 優先處理最小\n    - Max heap: 優先處理最大\n## 使用時機\n1. 最短路徑演算法`dijkstra`",
+        "img": {}
+    },
+    "category22": {
+        "topic": "iterator",
+        "content": "## 基本概念\n1. 迭代器的作用類似於指標，指向容器中的元素。\n2. 可以通過迭代器來進行容器中的元素訪問、遍歷等操作。\n3. 迭代器可以與各種標準容器配合使用，包括 `vector`、`list`、`set`、`map` 等。\n## 常見操作\n1. `begin()`：返回指向容器中第一個元素的迭代器。\n2. `end()`：返回指向容器中最後一個元素後面位置的迭代器。\n3. `++``：向後移動迭代器。\n4. `*`：解引用迭代器，獲取迭代器指向的元素。",
+        "img": {}
+    },
+    "category23": {
+        "topic": "bitset",
+        "content": "## 基礎概念\n可高效儲存與操作固定大小的二進位制集合\n## 特性\n1. 要先定義陣列長度\n2. 可以用索引`index`\n3. 只能有1跟0\n## 使用時機\n1. 需要用二進位制且要改變某一個值\n2. 加速過的布林陣列",
+        "img": {}
+    },
+    "category24": {
+        "topic": "algorithm",
+        "content": "##作用\n主要就是提供基礎演算法的模組，像是`sort`, `find`, `max`, `min`等",
+        "img": {}
+    },
+    "category25": {
+        "topic": "iomanip",
+        "content": "##作用\n主要就是用在處理輸出格式",
+        "img": {}
+    },
+    "category26": {
+        "topic": "climits",
+        "content": "##作用\n主要就是用在求最大值和最小值，用這格可以不需要手打資料型態最大及最小值",
+        "img": {}
+    },
+    "category27": {
+        "topic": "ctime",
+        "content": "",
+        "img": {}
+    },
+    "category28": {
+        "topic": "basic_ios",
+        "content": "##基礎概念\n最基礎的函式`<iostream>\n## 作用\n可以用來做`cin`, `cout`的東西，像是加速",
+        "img": {}
+    },
+    "category29": {
+        "topic": "sstream",
+        "content": "## 作用\n提供了將數據格式化到字符串或從字符串讀取數據的功能。常用的類別有：\n## 常用操作\n1. `std::istringstream`：用來從字符串中提取數據（類似於從 cin 讀取數據）\n2. `std::ostringstream`：用來將數據寫入字符串（類似於將數據輸出到 cout）\n3. `std::stringstream`(推薦)：既能讀取字符串也能寫入字符串，具備以上兩者的功能",
+        "img": {}
     }
 }
