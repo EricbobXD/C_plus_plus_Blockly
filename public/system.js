@@ -7,7 +7,7 @@
         function togglePanel(panelId) {
             if (teachingMode) return; // 教學中不允許切換
             // 關閉其他面板
-            ['test_compiler', 'code-view', 'blockly-view', 'info'].forEach(id => {
+            ['test_compiler', 'code-view', 'blockly-view', 'info', 'class-view'].forEach(id => {
                 if (id !== panelId) document.getElementById(id).classList.remove("active");
             });
             const panel = document.getElementById(panelId);
@@ -27,7 +27,7 @@
         }
 
         function closeAllPanels() {
-            ['test_compiler', 'code-view', 'blockly-view', 'info'].forEach(id => {
+            ['test_compiler', 'code-view', 'blockly-view', 'info', 'class-view'].forEach(id => {
                 closePanel(id);
             });
         }
@@ -76,6 +76,10 @@
                     text: "【方塊說明】：點此查看積木詳細說明。"
                 },
                 {
+                    element: document.getElementById("menu-class-intro"),
+                    text: "【分類說明】：點此查看模組詳細說明。"
+                },
+                {
                     element: document.getElementById("menu-info"),
                     text: "【關於我們】：點此顯示網站與團隊資訊。"
                 },
@@ -110,6 +114,14 @@
                 },
                 {
                     preAction: () => {
+                        openPanel("class-view");
+                    },
+                    element: document.getElementById("class-view"),
+                    text: "【分類說明面板】：提供查詢模組說明。"
+                },
+                {
+                    preAction: () => {
+                        closePanel("class-view");
                         openPanel("info");
                     },
                     element: document.getElementById("info"),
@@ -182,7 +194,7 @@
                             if (step.element.id === "blockly-workspace") {
                                 chosenPosition.top = rect.top + scrollY + (rect.height - ttHeight) / 2;
                                 chosenPosition.left = rect.left + (rect.width - ttWidth) / 2;
-                            } else if (["test_compiler", "code-view", "blockly-view", "info"].includes(step.element.id)) {
+                            } else if (["test_compiler", "code-view", "blockly-view", "info", "class-view"].includes(step.element.id)) {
                                 chosenPosition.top = rect.top + scrollY + (rect.height - ttHeight) / 2;
                                 chosenPosition.left = rect.left - ttWidth - margin;
                                 if (chosenPosition.left < margin) {
@@ -288,6 +300,9 @@
         });
         document.getElementById("menu-info").addEventListener("click", function() {
             togglePanel("info");
+        });
+        document.getElementById("menu-class-intro").addEventListener("click", function() {
+            togglePanel("class-view");
         });
 
         /***** 其他原有功能保持不變 *****/
@@ -2079,3 +2094,90 @@
                 });
             }
         })();
+
+        // 讀取分類介紹的 JSON
+        let categoryData = {};
+
+        fetch("https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category_info.json")
+            .then(response => response.json())
+            .then(data => {
+                categoryData = data;
+                renderTabs();
+                bindCategoryEvents();
+                autoClickFirst();
+            })
+            .catch(error => console.error("載入分類 JSON 失敗:", error));
+
+        function renderTabs() {
+            const tabContainer = document.getElementById('class-tabs');
+            if (!tabContainer) {
+                console.warn('找不到 #class-tabs 元素');
+                return;
+            }
+
+            tabContainer.innerHTML = '';
+            for (const key in categoryData) {
+                const tabButton = document.createElement('button');
+                tabButton.className = 'class-tab';
+                tabButton.setAttribute('data-category', key);
+                tabButton.innerText = categoryData[key].topic || "No topic";
+                tabContainer.appendChild(tabButton);
+            }
+        }
+
+        function bindCategoryEvents() {
+            document.querySelectorAll('.class-tab').forEach(button => {
+                button.addEventListener('click', function () {
+                    const category = this.getAttribute('data-category');
+                    updateCategoryDetails(category);
+                });
+            });
+        }
+
+        function autoClickFirst() {
+            const firstBtn = document.querySelector('.class-tab');
+            if (firstBtn) firstBtn.click();
+        }
+
+        function updateCategoryDetails(category) {
+            const detailsContainer = document.getElementById('category-details');
+            const topicContainer = document.getElementById('topic');
+
+            if (categoryData && categoryData[category]) {
+                const data = categoryData[category];
+                let content = data.content || "NO data.";
+
+                // 處理換行符號成 <br>
+                content = content.replace(/\\n/g, "<br>");
+
+                // 解析 <pdf> 標籤為 iframe
+                if (data.pdf) {
+                    for (let key in data.pdf) {
+                        const customTag = `<${key}>`;
+                        const url = data.pdf[key];
+
+                        // ✅ 使用 iframe 嵌入 PDF 預覽
+                        const pdfEmbed = `
+                            <iframe 
+                                src="${url}#toolbar=0&navpanes=0&scrollbar=0#zoom=200%" 
+                                width="100%" 
+                                height="600px" 
+                                style="border: 1px solid #ccc; border-radius: 8px;"
+                            ></iframe>`;
+
+                        content = content.replaceAll(customTag, pdfEmbed);
+                    }
+                }
+
+                // 插入解析後內容
+                detailsContainer.innerHTML = `<div>${content}</div>`;
+            } else {
+                detailsContainer.innerHTML = '<p>無相關分類介紹。</p>';
+            }
+
+            if (categoryData[category].topic) {
+                topicContainer.innerHTML = `
+                    <header><h3>${categoryData[category].topic}</h3></header>
+                `;
+            }
+        }
