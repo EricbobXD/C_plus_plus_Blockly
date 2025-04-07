@@ -1,7 +1,7 @@
         /* ------------------------------
        基本版面設定（現代且協調配色）
        ------------------------------ */
-        html,
+       html,
         body {
             margin: 0;
             padding: 0;
@@ -103,7 +103,7 @@
             background-color: #545454;
             color: #ecf0f1;
             text-align: center;
-            padding: 10px 0;
+            padding: 5px 0;
             z-index: 3000;
         }
 
@@ -128,7 +128,7 @@
         .test_compiler,
         .code-view,
         .blockly-view,
-        .type-view,
+        .class-view,
         .info {
             position: absolute;
             top: 50px;
@@ -148,7 +148,7 @@
         .test_compiler.active,
         .code-view.active,
         .blockly-view.active,
-        .type-view.active,
+        .class-view.active,
         .info.active {
             transform: translateX(0);
             opacity: 1;
@@ -215,8 +215,40 @@
             pointer-events: auto;
         }
 
+        /* 左側標籤區（容器空間，由 JS 動態插入標籤） */
+        .class-tabs {
+            position: absolute;
+            left: -100px;
+            top: 0;
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            padding-top: 10px;
+        }
+
+        .class-tab {
+            padding: 10px;
+            border: none;
+            background-color: #8a8a8a;
+            color: #ecf0f1;
+            cursor: pointer;
+            margin-bottom: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .class-tab:hover {
+            background-color: #6c6c6c;
+            transform: translateY(-2px); /* 滑過時微微上移 */
+        }
+
+        .class-content {
+            width: auto;
+            overflow-y: auto;
+        }
+
         .menu-btn,
         .menu-intro,
+        .menu-class-intro,
         .menu-info {
             width: 100%;
             padding: 10px;
@@ -232,6 +264,7 @@
 
         .menu-btn:hover,
         .menu-intro:hover,
+        .menu-class-intro:hover,
         .menu-info:hover {
             background-color: #8b8b8b;
             transform: scale(1.02);
@@ -294,4 +327,3 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
