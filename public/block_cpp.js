@@ -2270,7 +2270,7 @@ Blockly.Blocks['deque_assign'] = {
                 return container;
             },
             domToMutation: function(xmlElement) {
-                this.itemCount_ = bitwise.max(2, parseInt(xmlElement.getAttribute('items'), 10)); // 確保最少兩個
+                this.itemCount_ = Math.max(2, parseInt(xmlElement.getAttribute('items'), 10)); // 確保最少兩個
                 this.operator_ = xmlElement.getAttribute('operator') || '&';
                 this.updateShape_();
             },
