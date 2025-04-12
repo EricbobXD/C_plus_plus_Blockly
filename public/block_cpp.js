@@ -1,4 +1,3 @@
-    <script>
     Blockly.Blocks['main_block'] = {
         init: function() {
             this.jsonInit({
@@ -6245,4 +6244,3 @@
             Blockly.Cpp['llabs_block'] = function(block) {
                 return [`llabs(${Blockly.Cpp.valueToCode(block, 'value', 1) || '0'})`, 1];
             }
-    </script>
