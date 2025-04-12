@@ -3,9 +3,9 @@
         "topic": "array",
         "content": "## 基本概念\n是一種資料結構，它能夠儲存固定大小的相同資料型態元素的集合，並透過索引存取每個元素\n<img1>\n## 索引規則\n陣列的開始值為0不是1，結尾是n-1\n## 陣列維度\n如果是一維陣列，定義就是`a[n]`\n<img2>\n二維就是`a[n][m]`，像是在xy平面上\n<img3>\n其他維度依此類推\n## 使用時機\n1. 當輸入測資很多時，並且都同一種資料型態\n2. 簡化程式碼\n    - 以免太有多變數\n3. dp式\n    - dynamic programing常用，這裡就先不介紹了",
         "img":{
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/array_introduction.png",
-            "img2": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/array_1d_dynamic.png",
-            "img3": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/array_2d_dynamic.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/array_introduction.png",
+            "img2": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/array_1d_dynamic.png",
+            "img3": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/array_2d_dynamic.png"
         }
     },
     "category2":{
@@ -22,13 +22,13 @@
         "topic": "calculate",
         "content": "## 基本概念\n一些條件判斷以及運算\n## 條件判斷\n字面意思，用於判斷式的成立條件或迴圈的中止條件\n- 否的符號: `!`\n## 數學運算\n就是一般的數學運算，`%`是取餘數\n## 布林運算\n最難學也最麻煩的\n1. AND `&`\n要兩個都是`true(1)`才會是`true(1)`，其他都是`false(0)`  \n⚠️注意: 0, 1 是`false(0)`跟`true(1)`的概念，不是數字0, 1  \n\n    |   | 0 | 1 |\n    | - | - | -|\n    | 0 | 0 | 0 |\n    | 1 | 0 | 1 |\n\n2. OR `|`\n只要一個是`true(1)`就是`true(1)`，其餘是`false(0)`  \n⚠️注意: 0, 1 是`false(0)`跟`true(1)`的概念，不是數字0, 1  \n\n    |   | 0 | 1 |\n    | - | - | - |\n    | 0 | 0 | 1 |\n    | 1 | 1 | 1 |\n\n3. XOR `^`\n兩個不一樣就是`true(1)`，一樣是`false(0)`  \n⚠️注意: 0, 1 是`false(0)`跟`true(1)`的概念，不是數字0, 1  \n\n    |   | 0 | 1 |\n    | - | - | - |\n    | 0 | 0 | 1 |\n    | 1 | 1 | 0 |\n\n4. 右移 `>>`\n<img1>\n5. 左移 `<<`\n<img2>",
         "img":{
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/shift-expression.png",
-            "img2": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/additive-expression.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/shift-expression.png",
+            "img2": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/additive-expression.png"
         }
     },
     "category5":{
         "topic": "condition",
-        "content": "## 基本概念\n用於條件判斷，當條件成立會執行`{}`或是下一行程式碼(沒有`｛}`時，但只能讀一行)\n\n## 條件判斷\n`if`, `else if `, `else`, `switch`, `case`之類的",
+        "content": "## 基本概念\n用於條件判斷，當條件成立會執行`{}`或是下一行程式碼(沒有`{}`時，但只能讀一行)\n\n## 條件判斷\n`if`, `else if `, `else`, `switch`, `case`之類的",
         "img":{}
     },
     "category6":{
@@ -50,21 +50,21 @@
         "topic": "pointer",
         "content": "## 基本概念\n搭配參考(reference)，儲存記憶體位址，可用於動態記憶體配置與資料結構操作，用`*`表示\n## 其他跟變數差不多\n##解釋圖片\n<img1>",
         "img": {
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/pointer & reference.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/pointer & reference.png"
         }
     },
     "category10": {
         "topic": "reference",
         "content": "## 基本概念\n搭配指標(pointer)使用，跟指標相反，用`&`表示\n##解釋圖片\n<img1>",
         "img": {
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/pointer & reference.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/pointer & reference.png"
         }
     },
     "category11": {
         "topic": "function",
         "content": "## 基本概念\n一個可重複使用的程式區塊，透過參數與回傳值來傳遞資料\n## lambda\n就是一個函式只是他的寫法比函式更簡潔，而且更加的好用和維護。\n### 格式\n```cpp=\nauto l = [ captures ] ( parameters ) -> return_type { body }\n```\n:::success\n1. auto 可以用 `std::function` 中的 `std::function<int(int, int)>` 代替\n2. `[]` 裡面可以放 `&`、`=` 或是不放也可以(預設取副本變數)\n    - `&` : 引用變數 => **改變**變數數值 (全部)\n    - `=` : 取變數副本 => 複製原本變數數值 (全部)\n    - 變數值: 如果要放的話要**事先定義**喔\n3. `-> return_type` **可以省略** (通常不會寫)\n:::\n\n## operate\n用來預處理不是預設資料型態比較的方式\n## 使用時機\n1. 遞迴\n2. 減少主程式程式碼行數 (如果某個函式要執行多次)\n3. 有多個回傳值\n4. 可以加速程式碼執行效率\n5. 讓主程式碼更簡潔\n<img1>",
         "img": {
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/function.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/function.png"
         }
     },
     "category12": {
@@ -81,7 +81,7 @@
         "topic": "vector",
         "content": "## 基本概念\nc++ 中的`vector`其實也是一個陣列(array)，只是它是一個**動態**陣列(dynamic array)，提供高效的方法來儲存及管理大小**可變**的陣列\n## 特性\n1. **動態**調整記憶體大小(不用事先定義大小)\n2. 連續記憶體分配(跟內建`array`一樣，快速訪問每個元素)\n3. **自動管理**記憶體(不需要手動釋放)\n4. 可以用索引`index`存取\n5. 只能在**尾端**可以高效的新增或刪除資料\n## 使用時機\n1. **未知陣列大小**\n2. 需要`STL`的其他功能(如演算法`algorithm`、模組陣列`set`, `stack`等)合併使用時\n<img1>",
         "img": {
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/std-vector.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/std-vector.png"
         }
     },
     "category15": {
@@ -98,7 +98,7 @@
         "topic": "map",
         "content": "## 基本概念\n`map`是鍵值對容器，就是多個`pair`何在一起，並把第一個令為鍵`key`，第二個是值`value`\n## 特性\n1. 可用於關聯式資料存取\n2. 用`{key, value}`來表示(裡面一定要放兩個元素)\n3. 可以用`first`, `second`去查看第一筆或第二筆數據\n4. 可以用`map[key]`得到值`value`，並快速查找資料\n5. 會依照鍵`key`做排序\n## 使用時機\n1. 依照鍵`key`找資料\n2. 保持鍵`key`的排序\n3. 不要有重複鍵`key`\n4. `key`可以是任意資料型態\n<img1>",
         "img": {
-            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/std-map.png"
+            "img1": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/photo/category_info/std-map.png"
         }
     },
     "category18": {
