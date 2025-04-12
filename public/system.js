@@ -1,3 +1,4 @@
+
         /***** 全域變數 *****/
         let teachingMode = false; // 教學進行時禁止一般操作
         let tutorialSteps = [];
@@ -391,93 +392,2021 @@
         });
 
         // 方塊分類
-        const toolbox = {
-            "kind": "categoryToolbox",
+const toolbox = {
+    "kind": "categoryToolbox",
+    "contents": [
+        { // 陣列
+            "kind": "category",
+            "name": "陣列",
+            "colour": "#ff5757",
             "contents": [
-                { // 陣列
-                    "kind": "category",
-                    "name": "陣列",
-                    "colour": "#ff5757",
-                    "contents": [
-                        { // array
-                            "kind": "label",
-                            "text": "陣列(array)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_array"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "array_name_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "array_content"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "array_operate[]"
-                        }
-                    ]
-                },                
+                { // array
+                    "kind": "label",
+                    "text": "陣列(array)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_array"
+                },
+                {
+                    "kind": "block",
+                    "type": "array_name_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "array_content"
+                },
+                {
+                    "kind": "block",
+                    "type": "array_operate[]"
+                }
+            ]
+        },                
+        { // 文本
+            "kind": "category",
+            "name": "文本",
+            "colour": "#FF8C00",
+            "contents": [
                 { // 文本
+                    "kind": "label",
+                    "text": "文本"
+                },
+                {
+                    "kind": "block",
+                    "type": "string"
+                },
+                {
+                    "kind": "block",
+                    "type": "char"
+                },
+                {
+                    "kind": "block",
+                    "type": "comment_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "add_line"
+                },
+                {
+                    "kind": "label",
+                    "text": "字串擴充模組"
+                },
+                {
+                    "kind": "block",
+                    "type": "string_plus"
+                },
+                {
+                    "kind": "block",
+                    "type": "string_commas"
+                }
+            ]
+        },
+        { // 操作
+            "kind": "category",
+            "name": "操作",
+            "colour": "#2EC832",
+            "contents": [
+                { // 輸入
+                    "kind": "label",
+                    "text": "輸入"
+                },
+                {
+                    "kind": "block",
+                    "type": "cin_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "string_cin"
+                },
+                { // 輸出
+                    "kind": "label",
+                    "text": "輸出"
+                },
+                {
+                    "kind": "block",
+                    "type": "cout_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "string_cout"
+                }
+            ]
+        },
+        { // 運算
+            "kind": "category",
+            "name": "運算",
+            "colour": "#1F91B5",
+            "contents": [
+                {
+                    "kind": "label",
+                    "text": "條件判斷"
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_operators"
+                },
+                {
+                    "kind": "block",
+                    "type": "or_and_xor"
+                },
+                {
+                    "kind": "block",
+                    "type": "false"
+                },
+                {
+                    "kind": "block",
+                    "type": "true"
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_not"
+                },
+                {
+                    "kind": "label",
+                    "text": "數學基本操作"
+                },
+                {
+                    "kind": "block",
+                    "type": "number"
+                },
+                {
+                    "kind": "block",
+                    "type": "abs_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "var_calculate"
+                },
+                {
+                    "kind": "block",
+                    "type": "math_calculate"
+                },
+                {
+                    "kind": "block",
+                    "type": "math_plus"
+                },
+                {
+                    "kind": "block",
+                    "type": "math_multiply"
+                },
+                {
+                    "kind": "block",
+                    "type": "math_percent"
+                },
+                {
+                    "kind": "block",
+                    "type": "math_divide"
+                },
+                {
+                    "kind": "block",
+                    "type": "math_subtract"
+                },
+                {
+                    "kind": "label",
+                    "text": "布林運算"
+                },
+                {
+                    "kind": "block",
+                    "type": "bitwise_and"
+                },
+                {
+                    "kind": "block",
+                    "type": "bitwise_or"
+                },
+                {
+                    "kind": "block",
+                    "type": "bitwise_xor"
+                },
+                {
+                    "kind": "block",
+                    "type": "bitwise_left"
+                },
+                {
+                    "kind": "block",
+                    "type": "bitwise_right"
+                },
+                {
+                    "kind": "block",
+                    "type": "bitwise_not"
+                }
+            ]
+        },
+        { // 判斷
+            "kind": "category",
+            "name": "判斷",
+            "colour": "#00ABEA",
+            "contents": [
+                {
+                    "kind": "label",
+                    "text": "判斷"
+                },
+                {
+                    "kind": "block",
+                    "type": "if_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "switch_block"
+                }
+            ]
+        },
+        { // 迴圈
+            "kind": "category",
+            "name": "迴圈",
+            "colour": "#2473c2",
+            "contents": [
+                { // 迴圈(while/for)
+                    "kind": "label",
+                    "text": "迴圈(while/for)"
+                },
+                {
+                    "kind": "block",
+                    "type": "while_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "for_block"
+                },
+                {
+                    "kind": "label",
+                    "text": "終止工具"
+                },
+                {
+                    "kind": "block",
+                    "type": "break_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "continue_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "return_block"
+                }
+            ]
+        },
+        { // 定義
+            "kind": "category",
+            "name": "定義",
+            "colour": "#123456",
+            "contents": [
+                { // 定義
+                    "kind": "label",
+                    "text": "定義"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "typedef_block"
+                }
+            ]
+        },
+        { // 變數/指標/位置
+            "kind": "category",
+            "name": "變數/指標/位置",
+            "colour": "#C9A200",
+            "contents": [
+                { // variable
+                    "kind": "label",
+                    "text": "變數(variable)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_variable"
+                },
+                {
+                    "kind": "block",
+                    "type": "def_var"
+                },                        
+                {
+                    "kind": "block",
+                    "type": "var_equal"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_var"
+                },
+                { // pointer
+                    "kind": "label",
+                    "text": "指標(pointer)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_pointer"
+                },
+                {
+                    "kind": "block",
+                    "type": "def_ptr"
+                },
+                {
+                    "kind": "block",
+                    "type": "ptr_equal"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_ptr"
+                },
+                {
+                    "kind": "block",
+                    "type": "ptr_of"
+                },
+                {
+                    "kind": "block",
+                    "type": "ptr_to"
+                },
+                { // reference
+                    "kind": "label",
+                    "text": "位置(reference)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_reference"
+                },
+                {
+                    "kind": "block",
+                    "type": "def_ref"
+                },
+                {
+                    "kind": "block",
+                    "type": "ref_equal"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_ref"
+                },
+                {
+                    "kind": "block",
+                    "type": "nullptr"
+                },
+                { //dynamic random-access memory
+                    "kind": "label",
+                    "text": "動態記憶體"
+                },
+                {
+                    "kind": "block",
+                    "type": "new_block"
+                },
+                {
+                    "kind": "block",
+                    "type": "delete_block"
+                },
+            ]
+        },
+        { // 函式/結構/類別
+            "kind": "category",
+            "name": "函式/結構/類別",
+            "colour": "#db00db",
+            "contents": [
+                { // function
+                    "kind": "label",
+                    "text": "函式(function)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_function"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_function_void"
+                },
+                {
+                    "kind": "block",
+                    "type": "lambda"
+                },
+                { // struct
+                    "kind": "label",
+                    "text": "結構(struct)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_struct"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_struct"
+                },
+                { // class
+                    "kind": "label",
+                    "text": "類別(class)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_class"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_class"
+                },
+                { // operator
+                    "kind": "label",
+                    "text": "operator"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_operator"
+                }
+            ]
+        },
+        { // sep
+            "kind": "sep"
+        },
+        { // STL
+            "kind": "category",
+            "name": "STL模組",
+            "contents": [
+                {
                     "kind": "category",
-                    "name": "文本",
-                    "colour": "#FF8C00",
-                    "contents": [
-                        { // 文本
+                    "name": "vector",
+                    "colour": "#6c5ce7",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_vector"
+                        },
+                        {
                             "kind": "label",
-                            "text": "文本"
+                            "text": "Vector 加入元素"
                         },
                         {
                             "kind": "block",
-                            "type": "label"
+                            "type": "vector_push_back"
                         },
                         {
                             "kind": "block",
-                            "type": "add_line"
+                            "type": "vector_emplace_back"
                         },
                         {
                             "kind": "block",
-                            "type": "tab"
+                            "type": "vector_append_range"
                         },
                         {
                             "kind": "block",
-                            "type": "comment_block"
+                            "type": "vector_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_insert_range"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Vector 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_pop_back"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Vector 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_swap"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_assign"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Vector 讀取元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_operate[]"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_front"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_back"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Vector 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_reserve"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_capacity"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "vector_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Vector 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "vector_rend"
                         }
                     ]
                 },
-                { // 操作
+                {
                     "kind": "category",
-                    "name": "操作",
-                    "colour": "#2EC832",
-                    "contents": [
-                        { // 輸入
+                    "name": "deque",
+                    "colour": "#dde3b0",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_deque"
+                        },
+                        {
                             "kind": "label",
-                            "text": "輸入"
+                            "text": "Deque 新增元素"
                         },
                         {
                             "kind": "block",
-                            "type": "cin_block"
+                            "type": "deque_push_back"
                         },
                         {
                             "kind": "block",
-                            "type": "string_cin"
+                            "type": "deque_emplace_back"
                         },
-                        { // 輸出
+                        {
+                            "kind": "block",
+                            "type": "deque_append_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_push_front"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_emplace_front"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_prepend_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_insert"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "deque_insert_range"
+                        },
+                        {
                             "kind": "label",
-                            "text": "輸出"
+                            "text": "Deque 刪除元素"
                         },
                         {
                             "kind": "block",
-                            "type": "cout_block"
+                            "type": "deque_pop_back"
                         },
                         {
                             "kind": "block",
-                            "type": "string_cout"
+                            "type": "deque_pop_front"
                         },
                         {
+                            "kind": "block",
+                            "type": "deque_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Deque 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_swap"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_assign"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Deque 讀取元素"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "deque_operate[]"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_front"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_back"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Deque 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_empty"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Deque 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "deque_rend"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "set",
+                    "colour": "#e67e22",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_set"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Set 加入元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_insert_range"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "set_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Set 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Set 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_extract"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_merge"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Set 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Set 尋找元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_find"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_contains"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_lower_bound"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_upper_bound"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "set::extract / set::node-type"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_extract_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_extract_is_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_extract_release"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "set::equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_equal_range_first"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_equal_range_second"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "set 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_rend"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "unordered_set",
+                    "colour": "#5F9EA0",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_unordered_set"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set 加入元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_insert_range"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "unordered_set_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_extract"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_merge"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set 尋找元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_find"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_contains"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_equal_range"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set::extract / unordered_set::node-type"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_extract_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_extract_is_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_extract_release"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set::equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_equal_range_first"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_equal_range_second"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_set 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_set_rend"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "multiset",
+                    "colour": "#00FA9A",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_multiset"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset 加入元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_insert_range"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "multiset_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_extract"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_merge"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset 尋找元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_find"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_contains"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_lower_bound"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_upper_bound"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset::extract / multiset::node-type"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_extract_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_extract_is_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_extract_release"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset::equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_equal_range_first"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_equal_range_second"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "multiset 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "multiset_rend"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "flat_set",
+                    "colour": "#DAA520",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_flat_set"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set 加入元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_insert_range"
+                        },
+                         {
+                            "kind": "block",
+                            "type": "flat_set_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_extract"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_merge"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set 尋找元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_find"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_contains"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_lower_bound"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_upper_bound"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set::extract / flat_set::node-type"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_extract_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_extract_is_value"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_extract_release"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set::equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_equal_range_first"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_equal_range_second"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "flat_set 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "flat_set_rend"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "map",
+                    "colour": "#1abc9c",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_map"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Map 新增元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_insert_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_insert_or_assign"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_emplace"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_try_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Map 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Map 集合元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_extract"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_merge"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Map 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Map 尋找元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_find"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_contains"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_lower_bound"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_upper_bound"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "map 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "map_rend"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "map 輔助工具"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "make_map"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_commas"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "unordered_map",
+                    "colour": "#191970",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_unordered_map"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 新增元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_insert"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_insert_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_insert_or_assign"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_emplace"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_try_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_erase"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 集合元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_extract"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_merge"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_clear"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_max_size"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 尋找元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_find"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_contains"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_equal_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_lower_bound"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_upper_bound"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 迭代器"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_begin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_end"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_rbegin"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "unordered_map_rend"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "unordered_map 輔助工具"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "make_map"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "string_commas"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "pair",
+                    "colour": "#338f35",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_pair"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Pair 讀取元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "pair_first"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "pair_second"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Pair 創一個pair"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "make_pair"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "stack",
+                    "colour": "#c74134",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_stack"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Stack 新增元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_push"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_push_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Stack 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_pop"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Stack 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Stack 讀取元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_top"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Stack 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "stack_empty"
+                        },
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "queue",
+                    "colour": "#fd79a8",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_queue"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Queue 新增元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_push"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_push_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Queue 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_pop"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Queue 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_swap"
+                        },        
+                        {
+                            "kind": "label",
+                            "text": "Queue 讀取元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_front"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Queue 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "queue_size"
+                        },
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "priority_queue",
+                    "colour": "#f1c40f",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_priority_queue"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Priority_queue 新增元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_push"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_push_range"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_emplace"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Priority_queue 刪除元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_pop"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Priority_queue 集合操作"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_swap"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Priority_queue 讀取元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_top"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Priority_queue 判斷條件"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_empty"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "priority_queue_size"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "bitset",
+                    "colour": "#d35400",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "define_bitset"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Bitset 讀取元素"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset[i]"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Bitset 條件判斷"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_size"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_count"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_set"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_reset"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_all"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_any"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "bitset_none"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Bitset 輔助工具"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_var"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "algorithm",
+                    "colour": "#247bb5",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "sort"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "max"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "min"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "find"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "iomanip",
+                    "colour": "#00bab6",
+                    "contents": [{
+                            "kind": "block",
+                            "type": "setbase"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "setprecision"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "setw"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "setfill"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "climits",
+                    "colour": "#000000",
+                    "contents": [{
+                            "kind": "label",
+                            "text": "字元類型"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "char_bit"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "schar_min"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "schar_max"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "uchar_max"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "char_min"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "char_max"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "整數類型"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "int_min"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "int_max"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "uint_max"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "長整數類型"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "llong_min"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "llong_max"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "ullong_max"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "math",
+                    "colour": "#2980b9",
+                    "contents": [{
+                            "kind": "label",
+                            "text": "Math 基本計算"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_ceil"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_floor"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_sqrt"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_abs"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_random"
+                        },
+                        {
+                            "kind": "label",
+                            "text": "Math 三角函數"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_sine"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_cosine"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "math_tangent"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "cstdlib",
+                    "colour": "#AFEEEE",
+                    "contents": [{
+                        "kind": "block",
+                        "type": "llabs_block"
+                    }]
+                },
+                {
+                    "kind": "category",
+                    "name": "ctime",
+                    "colour": "#8e44ad",
+                    "contents": [{
+                            "kind": "label",
+                            "text": "Ctime 取得時間"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_current_timestamp"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_current_local_time"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "get_current_utc_time"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "calculate_time_difference"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "convert_to_local_time"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "convert_to_utc_time"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "format_time_string"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "set_time_structure"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "read_time_structure_member"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "name": "basic_ios",
+                    "colour": 160,
+                    "contents": [{
                             "kind": "label",
                             "text": "解除限制"
                         },
@@ -488,1376 +2417,50 @@
                         {
                             "kind": "block",
                             "type": "boost_cin_cout_tie"
-                        }
-                    ]
-                },
-                { // 運算
-                    "kind": "category",
-                    "name": "運算",
-                    "colour": "#1F91B5",
-                    "contents": [
-                        {
-                            "kind": "label",
-                            "text": "條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_operators"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "or_and_xor"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "false"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "true"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_not"
                         },
                         {
                             "kind": "label",
-                            "text": "數學基本操作"
+                            "text": "條件"
                         },
                         {
                             "kind": "block",
-                            "type": "number"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_calculate"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_calculate"
-                        }
-                    ]
-                },
-                { // 判斷
-                    "kind": "category",
-                    "name": "判斷",
-                    "colour": "#00ABEA",
-                    "contents": [
-                        {
-                            "kind": "label",
-                            "text": "判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "if_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "switch_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "break_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "continue_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "return_block"
-                        }
-                    ]
-                },
-                { // 迴圈
-                    "kind": "category",
-                    "name": "迴圈",
-                    "colour": "#2473c2",
-                    "contents": [
-                        { // 迴圈(while/for)
-                            "kind": "label",
-                            "text": "迴圈(while/for)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "while_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "for_block"
-                        },
-                        { // 初始變數值(for)
-                            "kind": "label",
-                            "text": "初始變數值(for)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_var"
-                        },
-                        { // 循環條件(for)
-                            "kind": "label",
-                            "text": "循環條件(for)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "logic_operators"
-                        },
-                        { // 迴圈條件(for)
-                            "kind": "label",
-                            "text": "迴圈條件(for)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "var_cal"
-                        }
-                    ]
-                },
-                { // 定義
-                    "kind": "category",
-                    "name": "定義",
-                    "colour": "#123456",
-                    "contents": [
-                        { // 定義
-                            "kind": "label",
-                            "text": "定義"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_block"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "typedef_block"
-                        }
-                    ]
-                },
-                { // 擴充模組
-                    "kind": "category",
-                    "name": "擴充模組",
-                    "colour": "#135790",
-                    "contents": [
-                        { // 字串
-                            "kind": "label",
-                            "text": "字串擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_plus"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "string_commas"
-                        },
-                        { // 數學
-                            "kind": "label",
-                            "text": "數學擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_plus"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_multiply"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_percent"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_divide"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "math_subtract"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "布林運算擴充模組"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitwise_and"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitwise_or"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitwise_xor"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitwise_left"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitwise_right"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitwise_not"
-                        }
-                    ]
-                },
-                { // 變數/指標/位置
-                    "kind": "category",
-                    "name": "變數/指標/位置",
-                    "colour": "#C9A200",
-                    "contents": [
-                        { // variable
-                            "kind": "label",
-                            "text": "變數(variable)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_variable"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_var"
-                        },                        
-                        {
-                            "kind": "block",
-                            "type": "var_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_var"
-                        },
-                        { // pointer
-                            "kind": "label",
-                            "text": "指標(pointer)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_pointer"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_ptr"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_ptr"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_of"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ptr_to"
-                        },
-                        { // reference
-                            "kind": "label",
-                            "text": "位置(reference)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_reference"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "def_ref"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "ref_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_ref"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "nullptr"
-                        }
-                    ]
-                },
-                { // 函式/結構/類別
-                    "kind": "category",
-                    "name": "函式/結構/類別",
-                    "colour": "#db00db",
-                    "contents": [
-                        { // function
-                            "kind": "label",
-                            "text": "函式(function)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_function_void"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "lambda"
-                        },
-                        { // struct
-                            "kind": "label",
-                            "text": "結構(struct)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_struct"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_struct"
-                        },
-                        { // class
-                            "kind": "label",
-                            "text": "類別(class)"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "define_class"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_class"
-                        }
-                    ]
-                },
-                { // sep
-                    "kind": "sep"
-                },
-                { // STL
-                    "kind": "category",
-                    "name": "STL模組",
-                    "contents": [
-                        {
-                            "kind": "category",
-                            "name": "vector",
-                            "colour": "#6c5ce7",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_vector"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Vector 加入元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_push_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_emplace_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_append_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_insert"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_insert_range"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Vector 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_pop_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_erase"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Vector 集合操作"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_swap"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Vector 讀取元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_operate[]"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_back"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Vector 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_clear"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_reserve"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_capacity"
-                                },
-                                 {
-                                    "kind": "block",
-                                    "type": "vector_max_size"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Vector 迭代器"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_begin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_end"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_rbegin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "vector_rend"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "deque",
-                            "colour": "#dde3b0",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_deque"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 新增元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_push_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_emplace_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_append_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_push_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_emplace_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_prepend_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_insert"
-                                },
-                                 {
-                                    "kind": "block",
-                                    "type": "deque_insert_range"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_pop_back"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_pop_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_erase"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 集合操作"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_swap"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_assign"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 讀取元素"
-                                },
-                                 {
-                                    "kind": "block",
-                                    "type": "deque_operate[]"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_front"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_back"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_clear"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_empty"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Deque 迭代器"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_begin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_end"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_rbegin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "deque_rend"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "set",
-                            "colour": "#e67e22",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_set"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 加入元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_insert"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_insert_range"
-                                },
-                                 {
-                                    "kind": "block",
-                                    "type": "set_emplace"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_erase"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 集合操作"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_extract"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_merge"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_swap"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_clear"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_max_size"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 尋找元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_count"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_find"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_contains"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_equal_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_lower_bound"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_upper_bound"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "set 迭代器"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_begin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_end"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_rbegin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_rend"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "map",
-                            "colour": "#1abc9c",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_map"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Map 新增元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_insert"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_insert_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_emplace"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Map 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_erase"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Map 集合元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_extract"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_merge"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_swap"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_clear"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_max_size"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Set 尋找元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_count"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_find"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_contains"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_equal_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_lower_bound"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_upper_bound"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "map 迭代器"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_begin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_end"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_rbegin"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "map_rend"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "map 輔助工具"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "make_map"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "string_commas"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "pair",
-                            "colour": "#338f35",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_pair"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Pair 讀取元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "pair_first"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "pair_second"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Pair 創一個pair"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "make_pair"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "stack",
-                            "colour": "#c74134",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_stack"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Stack 新增元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_push"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_push_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_emplace"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Stack 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_pop"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Stack 集合操作"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_swap"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Stack 讀取元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_top"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Stack 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "stack_empty"
-                                },
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "queue",
-                            "colour": "#fd79a8",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_queue"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Queue 新增元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_push"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_push_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_emplace"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Queue 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_pop"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Queue 集合操作"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_swap"
-                                },        
-                                {
-                                    "kind": "label",
-                                    "text": "Queue 讀取元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_front"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Queue 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "queue_size"
-                                },
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                                    "name": "priority_queue",
-                            "colour": "#f1c40f",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_priority_queue"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Priority_queue 新增元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_push"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_push_range"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_emplace"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Priority_queue 刪除元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_pop"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Priority_queue 集合操作"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_swap"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Priority_queue 讀取元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_front"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Priority_queue 判斷條件"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_empty"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "priority_queue_size"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "bitset",
-                            "colour": "#d35400",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "define_bitset"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Bitset 讀取元素"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset[i]"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Bitset 條件判斷"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_size"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_count"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_set"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_reset"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_all"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_any"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "bitset_none"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Bitset 輔助工具"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "get_var"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "algorithm",
-                            "colour": "#247bb5",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "sort"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "max"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "min"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "find"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "iomanip",
-                            "colour": "#00bab6",
-                            "contents": [{
-                                    "kind": "block",
-                                    "type": "setbase"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "setprecision"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "setw"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "setfill"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "climits",
-                            "colour": "#000000",
-                            "contents": [{
-                                    "kind": "label",
-                                    "text": "字元類型"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "char_bit"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "schar_min"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "schar_max"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "uchar_max"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "char_min"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "char_max"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "整數類型"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "int_min"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "int_max"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "uint_max"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "長整數類型"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "llong_min"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "llong_max"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "ullong_max"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "math",
-                            "colour": "#2980b9",
-                            "contents": [{
-                                    "kind": "label",
-                                    "text": "Math 基本計算"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_ceil"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_floor"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_sqrt"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_abs"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_random"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "Math 三角函數"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_sine"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_cosine"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "math_tangent"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "ctime",
-                            "colour": "#8e44ad",
-                            "contents": [{
-                                    "kind": "label",
-                                    "text": "Ctime 取得時間"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "get_current_timestamp"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "get_current_local_time"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "get_current_utc_time"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "calculate_time_difference"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "convert_to_local_time"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "convert_to_utc_time"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "format_time_string"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "set_time_structure"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "read_time_structure_member"
-                                }
-                            ]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "basic_ios",
-                            "colour": 160,
-                            "contents": [{
-                                    "kind": "label",
-                                    "text": "解除限制"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "boost_ios_sync"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "boost_cin_cout_tie"
-                                },
-                                {
-                                    "kind": "label",
-                                    "text": "條件"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "cin.eof"
-                                }]
-                        },
-                        {
-                            "kind": "category",
-                            "name": "sstream",
-                            "colour": "a13458",
-                            "contents": [{
-                                    "kind": "label",
-                                    "text": "stringstream"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "sstream_>>"
-                                },
-                                {
-                                    "kind": "block",
-                                    "type": "sstream_<<"
-                                }]
-                        }
-                    ]
-                },
-                { // sep
-                    "kind": "sep"
+                            "type": "cin.eof"
+                        }]
                 },
                 {
                     "kind": "category",
-                    "name": "搜尋",
-                    "colour": "#A1A1A1",
-                    "contents": []
+                    "name": "sstream",
+                    "colour": "a13458",
+                    "contents": [{
+                            "kind": "label",
+                            "text": "stringstream"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "define_sstream"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "sstream_>>"
+                        },
+                        {
+                            "kind": "block",
+                            "type": "sstream_<<"
+                        }]
                 }
             ]
-        };
+        },
+        { // sep
+            "kind": "sep"
+        },
+        {
+            "kind": "category",
+            "name": "搜尋",
+            "colour": "#A1A1A1",
+            "contents": []
+        }
+    ]
+};
 
         var workspace = Blockly.inject('blockly-workspace', {
             toolbox: toolbox,
@@ -2095,89 +2698,100 @@
             }
         })();
 
-        // 讀取分類介紹的 JSON
-        let categoryData = {};
-
+        let categoryData = {}; // 載入分類資料
         fetch("https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category_info.json")
-            .then(response => response.json())
-            .then(data => {
-                categoryData = data;
-                renderTabs();
-                bindCategoryEvents();
-                autoClickFirst();
-            })
-            .catch(error => console.error("載入分類 JSON 失敗:", error));
+        .then(response => response.json())
+        .then(data => {
+            categoryData = data;
+            renderCategoryMainView();
+        })
+        .catch(error => console.error("載入分類 JSON 失敗:", error));
 
-        function renderTabs() {
-            const tabContainer = document.getElementById('class-tabs');
-            if (!tabContainer) {
-                console.warn('找不到 #class-tabs 元素');
-                return;
-            }
+        // 渲染分類主頁面，動態產生所有分類按鈕
+        function renderCategoryMainView() {
+            const container = document.getElementById("category-details");
+            container.innerHTML = "";
+            // 設定為 grid，每行 5 個
+            container.style.display = "grid";
+            container.style.gridTemplateColumns = "repeat(3, 1fr)";
+            container.style.gap = "10px";
+            
+            // 清空 header（主頁面不顯示返回鍵）
+            document.getElementById("topic").innerHTML = "";
 
-            tabContainer.innerHTML = '';
-            for (const key in categoryData) {
-                const tabButton = document.createElement('button');
-                tabButton.className = 'class-tab';
-                tabButton.setAttribute('data-category', key);
-                tabButton.innerText = categoryData[key].topic || "No topic";
-                tabContainer.appendChild(tabButton);
-            }
-        }
+            // 依照 categoryData 的順序產生分類按鈕
+            for (const catName in categoryData) {
+                const btn = document.createElement("button");
+                btn.className = "category-button";
+                btn.style.borderRadius = "10px"; // 按鈕圓角
+                btn.style.display = "flex";
+                btn.style.alignItems = "center";
+                btn.style.justifyContent = "center";
+                btn.style.padding = "10px";
+                // 你可以設定固定高度或寬度，讓按鈕在網格中看起來一致
+                btn.style.height = "80px";
+                
+                // 圖片部分
+                const img = document.createElement("img");
+                img.src = categoryData[catName].image || "images/default.png";
+                img.style.borderRadius = "50%"; // 圖片圓角
+                img.style.width = "50px";
+                img.style.height = "50px";
+                img.style.marginRight = "5px";
+                btn.appendChild(img);
 
-        function bindCategoryEvents() {
-            document.querySelectorAll('.class-tab').forEach(button => {
-                button.addEventListener('click', function () {
-                    const category = this.getAttribute('data-category');
-                    updateCategoryDetails(category);
+                // 文字部分
+                const span = document.createElement("span");
+                span.textContent = catName;
+                btn.appendChild(span);
+
+                // 點擊後切換到該分類詳細頁面
+                btn.addEventListener("click", () => {
+                renderCategoryDetail(catName);
                 });
-            });
+
+                container.appendChild(btn);
+            }
         }
 
-        function autoClickFirst() {
-            const firstBtn = document.querySelector('.class-tab');
-            if (firstBtn) firstBtn.click();
+        // 渲染分類詳細頁面，顯示該分類的介紹，並在 header 加入返回按鈕
+        function renderCategoryDetail(categoryName) {
+        const container = document.getElementById("category-details");
+        container.innerHTML = "";
+
+        // ➤ 詳細頁恢復正常段落排版
+        container.style.display = "block";
+        container.style.gridTemplateColumns = ""; // 清除 grid 設定
+        container.style.gap = ""; // 清除間距
+
+        // 在 header 中加入返回按鈕
+        const header = document.getElementById("topic");
+        header.innerHTML = "";
+        const backBtn = document.createElement("button");
+        backBtn.textContent = "返回";
+        backBtn.style.borderRadius = "10px";
+        backBtn.style.padding = "5px 10px";
+        backBtn.style.marginRight = "10px";
+        backBtn.addEventListener("click", renderCategoryMainView);
+        header.appendChild(backBtn);
+
+        // 顯示分類標題與介紹
+        const title = document.createElement("h3");
+        title.textContent = categoryData[categoryName].topic;
+        container.appendChild(title);
+
+        const descPara = document.createElement("p");
+        let contentStr = categoryData[categoryName].content || "此分類尚無說明。";
+        // 替換換行符號成 <br>
+        contentStr = contentStr.replace(/\n/g, "<br>");
+        // 處理 <imgX> 標籤替換為對應圖片
+        if (categoryData[categoryName].img) { // 確保 `img` 存在
+            for (let key in categoryData[categoryName].img) {
+                let imgTag = `<${key}>`;
+                let imgElement = `<img src="${categoryData[categoryName].img[key]}" alt="${key}" style="max-width:100%;">`;
+                contentStr = contentStr.replace(imgTag, imgElement);
+            }
         }
-
-        function updateCategoryDetails(category) {
-            const detailsContainer = document.getElementById('category-details');
-            const topicContainer = document.getElementById('topic');
-
-            if (categoryData && categoryData[category]) {
-                const data = categoryData[category];
-                let content = data.content || "NO data.";
-
-                // 處理換行符號成 <br>
-                content = content.replace(/\\n/g, "<br>");
-
-                // 解析 <pdf> 標籤為 iframe
-                if (data.pdf) {
-                    for (let key in data.pdf) {
-                        const customTag = `<${key}>`;
-                        const url = data.pdf[key];
-
-                        // ✅ 使用 iframe 嵌入 PDF 預覽
-                        const pdfEmbed = `
-                            <iframe 
-                                src="${url}#toolbar=0&navpanes=0&scrollbar=0#zoom=200%" 
-                                width="100%" 
-                                height="600px" 
-                                style="border: 1px solid #ccc; border-radius: 8px;"
-                            ></iframe>`;
-
-                        content = content.replaceAll(customTag, pdfEmbed);
-                    }
-                }
-
-                // 插入解析後內容
-                detailsContainer.innerHTML = `<div>${content}</div>`;
-            } else {
-                detailsContainer.innerHTML = '<p>無相關分類介紹。</p>';
-            }
-
-            if (categoryData[category].topic) {
-                topicContainer.innerHTML = `
-                    <header><h3>${categoryData[category].topic}</h3></header>
-                `;
-            }
+        descPara.innerHTML = contentStr;
+        container.appendChild(descPara);
         }
