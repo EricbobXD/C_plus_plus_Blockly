@@ -4,14 +4,42 @@ Blockly.defineBlocksWithJsonArray(
     [
         //date-type
         {
-            "options": [
-                ["整數", "int"],
-                ["浮點數", "float"],
-                ["雙重浮點數", "double"],
-                ["字元", "char"],
-                ["字串", "string"],
-                ["更長的整數", "long long"]
-            ]
+            "type": "data_type",
+            "message0": "資料型態%1",
+            "args0": [{
+                "type": "field_dropdown",
+                "name": "TYPE",
+                "options": [
+                    ["整數", "int"],
+                    ["浮點數", "float"],
+                    ["雙重浮點數", "double"],
+                    ["字元", "char"],
+                    ["字串", "string"],
+                    ["更長的整數", "long long"]
+                ]
+            }],
+            "colour": "#EB5160",
+            "output": "null"
+        },
+        {
+            "type": "struct_type",
+            "message0": "struct %1",
+            "args0": [{
+                "type": "field_input",
+                "name": "TYPE",
+            }],
+            "colour": "#f4a460",
+            "output": "null"
+        },
+        {
+            "type": "class_type",
+            "message0": "class %1",
+            "args0": [{
+                "type": "field_input",
+                "name": "TYPE",
+            }],
+            "colour": "#e9967a",
+            "output": "null"
         },
 
         //bitset
@@ -5881,7 +5909,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "input_value",
                 "name": "TYPE"
             }],
-            "colour": "#urj329",
+            "colour": "#3EABF4",
             "output": null
         },
         {
@@ -5891,7 +5919,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "input_value",
                 "name": "TYPE"
             }],
-            "colour": "#urj329",
+            "colour": "#3EABF4",
             "output": null
         },
         {
@@ -5901,7 +5929,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "input_value",
                 "name": "TYPE"
             }],
-            "colour": "#urj329",
+            "colour": "#3EABF4",
             "output": null
         },
         {
@@ -5911,7 +5939,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "input_value",
                 "name": "TYPE"
             }],
-            "colour": "#urj329",
+            "colour": "#3EABF4",
             "output": null
         },
         {
@@ -5921,17 +5949,17 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "input_value",
                 "name": "TYPE"
             }],
-            "colour": "#urj329",
+            "colour": "#3EABF4",
             "output": null
         },
         {
-            "type": "equal_to",
+            "type": "less_equal",
             "message0": "陣列專用, 資料型態%1, 排序方式 a <= b",
             "args0": [{
                 "type": "input_value",
                 "name": "TYPE"
             }],
-            "colour": "#urj329",
+            "colour": "#3EABF4",
             "output": null
         },
     ]
