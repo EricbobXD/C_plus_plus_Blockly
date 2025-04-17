@@ -678,7 +678,7 @@ Blockly.defineBlocksWithJsonArray(
             ],
             "previousStatement": true,
             "nextStatement": true,
-            "colour": "#FFD700",
+            "colour": "#DAA520",
             "tooltip": "",
             "helpUrl": ""
         },
@@ -2337,7 +2337,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "unordered_map_value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "path 2 to insert key and value in unordered_map"
@@ -2349,7 +2349,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_map_name"
             }, ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -2363,7 +2363,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_map_name"
             }],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map size",
@@ -2376,7 +2376,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_map_name"
             }],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "helpUrl": ""
         },
@@ -2393,7 +2393,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             ],
             "output": null,
-            "colour": "#191970",
+            "colour": "#1282A2",
             "tooltip": "unordered_map key(first)",
             "helpUrl": ""
         },
@@ -2410,7 +2410,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             ],
             "output": null,
-            "colour": "#191970",
+            "colour": "#1282A2",
             "tooltip": "unordered_map value(second)",
             "helpUrl": ""
         },
@@ -2427,7 +2427,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             ],
             "output": null,
-            "colour": "#191970",
+            "colour": "#1282A2",
             "tooltip": "尋找元素",
             "helpUrl": ""
         },
@@ -2490,7 +2490,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 },
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -2509,7 +2509,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "array"
                 },
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到unordered_map最後",
@@ -2531,7 +2531,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 },
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": ""
@@ -2548,7 +2548,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -2571,7 +2571,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 },
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到unordered_map最後",
@@ -2593,7 +2593,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 },
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到unordered_map最後",
@@ -2611,7 +2611,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map 提取元素",
@@ -2629,7 +2629,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "unordered_map_name2"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -2648,7 +2648,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "unordered_map_name2"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把兩個unordered_map中的元素交換",
@@ -2666,7 +2666,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#191970",
+            "colour": "#1282A2",
             "tooltip": "清空所有元素。",
             "helpUrl": ""
         },
@@ -2679,7 +2679,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#191970",
+            "colour": "#1282A2",
             "tooltip": "取得 unordered_map 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -2690,7 +2690,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_map_name"
             }],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "tooltip": "如果 unordered_map 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -2702,7 +2702,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "unordered_map_name"
                 }],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "tooltip": "球unordered_map最大元素數量",
             "helpUrl": ""
@@ -2721,7 +2721,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map尋找是否有元素(返回 0, 1)",
@@ -2739,7 +2739,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map尋找是否有元素(返回迭代器)",
@@ -2757,7 +2757,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map尋找是否有元素(返回 true, false)",
@@ -2775,7 +2775,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
@@ -2793,7 +2793,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
@@ -2811,7 +2811,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_map判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
@@ -2829,7 +2829,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 unordered_map 第一個元素。",
             "helpUrl": ""
@@ -2844,7 +2844,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "tooltip": "回傳一個反向迭代器，它指向 unordered_map 最尾端元素的下一個位置",
             "helpUrl": ""
@@ -2859,7 +2859,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 unordered_map 最尾端元素的。",
             "helpUrl": ""
@@ -2874,7 +2874,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#191970",
+            "colour": "#1282A2",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 unordered_map 的第一個元素的前一個位置。",
             "helpUrl": ""
@@ -3148,7 +3148,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3167,7 +3167,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "array"
                 },
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到set最後",
@@ -3185,7 +3185,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3204,7 +3204,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到set最後",
@@ -3222,7 +3222,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set 提取元素",
@@ -3240,7 +3240,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "set_name2"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3259,7 +3259,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "set_name2"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把兩個set中的元素交換",
@@ -3277,7 +3277,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "tooltip": "清空所有元素。",
             "helpUrl": ""
         },
@@ -3290,7 +3290,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "tooltip": "取得 set 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -3301,7 +3301,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "set_name"
             }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "如果 set 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -3313,7 +3313,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "set_name"
                 }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "球set最大元素數量",
             "helpUrl": ""
@@ -3332,7 +3332,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set尋找是否有元素(返回 0, 1)",
@@ -3350,7 +3350,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set尋找是否有元素(返回迭代器)",
@@ -3368,7 +3368,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set尋找是否有元素(返回 true, false)",
@@ -3386,7 +3386,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
@@ -3404,7 +3404,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
@@ -3422,7 +3422,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "inputsInline": true,
             "output": null,
             "tooltip": "set判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
@@ -3440,7 +3440,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 set 第一個元素。",
             "helpUrl": ""
@@ -3455,7 +3455,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "回傳一個反向迭代器，它指向 set 最尾端元素的下一個位置",
             "helpUrl": ""
@@ -3470,7 +3470,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 set 最尾端元素的。",
             "helpUrl": ""
@@ -3485,7 +3485,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 set 的第一個元素的前一個位置。",
             "helpUrl": ""
@@ -3497,7 +3497,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "set_name"
             }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -3509,7 +3509,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "set_name"
             }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -3521,7 +3521,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "set_name"
             }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -3533,7 +3533,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "set_name"
             }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -3545,7 +3545,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "set_name"
             }],
-            "colour": "#f9943b",
+            "colour": "#DAA520",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -3564,7 +3564,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3583,7 +3583,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "array"
                 },
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到unordered_set最後",
@@ -3601,7 +3601,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3620,7 +3620,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到unordered_set最後",
@@ -3638,7 +3638,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_set 提取元素",
@@ -3656,7 +3656,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "unordered_set_name2"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3675,7 +3675,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "unordered_set_name2"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把兩個unordered_set中的元素交換",
@@ -3693,7 +3693,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "tooltip": "清空所有元素。",
             "helpUrl": ""
         },
@@ -3706,7 +3706,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "tooltip": "取得 unordered_set 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -3717,7 +3717,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_set_name"
             }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "如果 unordered_set 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -3729,7 +3729,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "unordered_set_name"
                 }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "球unordered_set最大元素數量",
             "helpUrl": ""
@@ -3748,7 +3748,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_set尋找是否有元素(返回 0, 1)",
@@ -3766,7 +3766,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_set尋找是否有元素(返回迭代器)",
@@ -3784,7 +3784,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_set尋找是否有元素(返回 true, false)",
@@ -3802,7 +3802,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "inputsInline": true,
             "output": null,
             "tooltip": "unordered_set尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
@@ -3820,7 +3820,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 unordered_set 第一個元素。",
             "helpUrl": ""
@@ -3835,7 +3835,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "回傳一個反向迭代器，它指向 unordered_set 最尾端元素的下一個位置",
             "helpUrl": ""
@@ -3850,7 +3850,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 unordered_set 最尾端元素的。",
             "helpUrl": ""
@@ -3865,7 +3865,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             
             ],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 unordered_set 的第一個元素的前一個位置。",
             "helpUrl": ""
@@ -3877,7 +3877,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_set_name"
             }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -3889,7 +3889,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_set_name"
             }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -3901,7 +3901,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_set_name"
             }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -3913,7 +3913,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_set_name"
             }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -3925,7 +3925,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "unordered_set_name"
             }],
-            "colour": "#5F9EA0",
+            "colour": "#FFD700",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -3944,7 +3944,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -3963,7 +3963,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "array"
                 },
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到multiset最後",
@@ -3981,7 +3981,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -4000,7 +4000,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到multiset最後",
@@ -4018,7 +4018,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset 提取元素",
@@ -4036,7 +4036,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "multiset_name2"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -4055,7 +4055,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "multiset_name2"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把兩個multiset中的元素交換",
@@ -4073,7 +4073,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "tooltip": "清空所有元素。",
             "helpUrl": ""
         },
@@ -4086,7 +4086,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "tooltip": "取得 multiset 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -4097,7 +4097,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "multiset_name"
             }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "如果 multiset 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -4109,7 +4109,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "multiset_name"
                 }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "球multiset最大元素數量",
             "helpUrl": ""
@@ -4128,7 +4128,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset尋找是否有元素(返回 0, 1)",
@@ -4146,7 +4146,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset尋找是否有元素(返回迭代器)",
@@ -4164,7 +4164,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset尋找是否有元素(返回 true, false)",
@@ -4182,7 +4182,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
@@ -4200,7 +4200,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
@@ -4218,7 +4218,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "inputsInline": true,
             "output": null,
             "tooltip": "multiset判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
@@ -4236,7 +4236,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
 
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 multiset 第一個元素。",
             "helpUrl": ""
@@ -4251,7 +4251,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
 
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "回傳一個反向迭代器，它指向 multiset 最尾端元素的下一個位置",
             "helpUrl": ""
@@ -4266,7 +4266,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
 
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 multiset 最尾端元素的。",
             "helpUrl": ""
@@ -4281,7 +4281,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
 
             ],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 multiset 的第一個元素的前一個位置。",
             "helpUrl": ""
@@ -4293,7 +4293,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "multiset_name"
             }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -4305,7 +4305,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "multiset_name"
             }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -4317,7 +4317,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "multiset_name"
             }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -4329,7 +4329,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "multiset_name"
             }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -4341,7 +4341,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "multiset_name"
             }],
-            "colour": "#00FA9A",
+            "colour": "#FACA16",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -4360,7 +4360,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -4379,7 +4379,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "array"
                 },
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到flat_set最後",
@@ -4397,7 +4397,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -4416,7 +4416,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到flat_set最後",
@@ -4434,7 +4434,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set 提取元素",
@@ -4452,7 +4452,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "flat_set_name2"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -4471,7 +4471,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "flat_set_name2"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把兩個flat_set中的元素交換",
@@ -4489,7 +4489,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "tooltip": "清空所有元素。",
             "helpUrl": ""
         },
@@ -4502,7 +4502,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "tooltip": "取得 flat_set 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -4513,7 +4513,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "flat_set_name"
             }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "如果 flat_set 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -4525,7 +4525,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "flat_set_name"
                 }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "球flat_set最大元素數量",
             "helpUrl": ""
@@ -4544,7 +4544,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set尋找是否有元素(返回 0, 1)",
@@ -4562,7 +4562,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set尋找是否有元素(返回迭代器)",
@@ -4580,7 +4580,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set尋找是否有元素(返回 true, false)",
@@ -4598,7 +4598,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set尋找是否有元素(返回 first: 等於元素位置, second: 下一個元素位置)",
@@ -4616,7 +4616,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個不小於元素1的元素2)",
@@ -4634,7 +4634,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "inputsInline": true,
             "output": null,
             "tooltip": "flat_set判斷是否有元素(回傳迭代器, 有元素1回傳元素1位置, 沒元素1為傳第一個大於元素1的元素2)",
@@ -4652,7 +4652,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 flat_set 第一個元素。",
             "helpUrl": ""
@@ -4667,7 +4667,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "回傳一個反向迭代器，它指向 flat_set 最尾端元素的下一個位置",
             "helpUrl": ""
@@ -4682,7 +4682,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 flat_set 最尾端元素的。",
             "helpUrl": ""
@@ -4697,7 +4697,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 flat_set 的第一個元素的前一個位置。",
             "helpUrl": ""
@@ -4709,7 +4709,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "flat_set_name"
             }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -4721,7 +4721,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "flat_set_name"
             }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -4733,7 +4733,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "flat_set_name"
             }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "",
             "helpurl": ""
@@ -4745,7 +4745,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "flat_set_name"
             }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -4757,7 +4757,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "flat_set_name"
             }],
-            "colour": "#DAA520",
+            "colour": "#F8DE7E",
             "output": null,
             "tooltip": "",
             "helpurl": "" 
@@ -5206,7 +5206,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "新增元素至 deque 的尾端，必要時會進行記憶體組態。",
             "helpUrl": ""
         },
@@ -5227,7 +5227,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "直接在deque內建立物件",
             "helpUrl": ""
         },
@@ -5243,7 +5243,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到deque最後",
@@ -5259,7 +5259,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "刪除 deque 最尾端的元素。",
             "helpUrl": ""
         },
@@ -5278,7 +5278,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "新增元素至 deque 的前端，必要時會進行記憶體組態。",
             "helpUrl": ""
         },
@@ -5299,7 +5299,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "直接在deque內建立物件",
             "helpUrl": ""
         },
@@ -5315,7 +5315,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到deque最後",
@@ -5331,7 +5331,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "刪除 deque 最前端的元素。",
             "helpUrl": ""
         },
@@ -5351,7 +5351,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -5374,7 +5374,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "array"
                 },
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到deque最後",
@@ -5396,7 +5396,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "value"
                 }
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
@@ -5415,7 +5415,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "deque_name2"
                 }
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把兩個deque中的元素交換",
@@ -5436,7 +5436,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "pos"
                 },
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "inputsInline": true,
             "output": null,
             "tooltip": "讀取deque[i]。",
@@ -5449,7 +5449,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "deque_name"
                 }],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "inputsInline": true,
             "output": null,
             "tooltip": "讀取deque第一個元素。",
@@ -5462,7 +5462,7 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "field_input",
                     "name": "deque_name"
                 }],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "inputsInline": true,
             "output": null,
             "tooltip": "讀取deque最後一個元素。",
@@ -5480,7 +5480,7 @@ Blockly.defineBlocksWithJsonArray(
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "清空所有元素。",
             "helpUrl": ""
         },
@@ -5493,7 +5493,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "tooltip": "取得 deque 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -5504,7 +5504,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "deque_name"
             }],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "output": null,
             "tooltip": "如果 deque 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -5521,7 +5521,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 deque 第一個元素。",
             "helpUrl": ""
@@ -5536,7 +5536,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "output": null,
             "tooltip": "回傳一個反向迭代器，它指向 deque 最尾端元素的下一個位置",
             "helpUrl": ""
@@ -5551,7 +5551,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 deque 最尾端元素的。",
             "helpUrl": ""
@@ -5566,7 +5566,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
         
             ],
-            "colour": "#dde3b0",
+            "colour": "#85B09A",
             "output": null,
             "tooltip": "回傳一個迭代器，它指向 deque 的第一個元素的前一個位置。",
             "helpUrl": ""
@@ -5584,7 +5584,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到priority_queue最後",
@@ -5597,7 +5597,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "priority_queue_name"
             }],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到priority_queue最後",
@@ -5615,7 +5615,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到priority_queue最後",
@@ -5628,7 +5628,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "priority_queue_name"
             }],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "output": null,
             "tooltip": "把元素推到priority_queue最後",
             "helpurl": ""
@@ -5642,7 +5642,7 @@ Blockly.defineBlocksWithJsonArray(
             }],
             "inputsInline": true,
             "output": null,
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "tooltip": "取得 priority_queue 目前持有的元素個數。",
             "helpUrl": ""
         },
@@ -5653,7 +5653,7 @@ Blockly.defineBlocksWithJsonArray(
                 "type": "field_input",
                 "name": "priority_queue_name"
             }],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "output": null,
             "tooltip": "如果 priority_queue 內部為空，則傳回 true 值。",
             "helpUrl": ""
@@ -5670,7 +5670,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "element"
                 },
             ],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把陣列推到priority_queue最後",
@@ -5688,7 +5688,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "priority_queue_name2"
                 }
             ],
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "把元素推到priority_queue最後",
@@ -5697,7 +5697,7 @@ Blockly.defineBlocksWithJsonArray(
         {
             "type": "greater<int>",
             "message0": "陣列反向專用",
-            "colour": "#d6af0f",
+            "colour": "#F56FA1",
             "output": null
         },
 
@@ -5890,7 +5890,7 @@ Blockly.defineBlocksWithJsonArray(
         },
         {//llabs
             "type": "llabs_block",
-            "message0": "long lnog絕對值: %1",
+            "message0": "long long絕對值: %1",
             "args0": [{
                 "type": "input_value",
                 "name": "value"
