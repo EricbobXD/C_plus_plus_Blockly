@@ -2,6 +2,18 @@
 // 方塊定義&轉換程式碼
 Blockly.defineBlocksWithJsonArray(
     [
+        //date-type
+        {
+            "options": [
+                ["整數", "int"],
+                ["浮點數", "float"],
+                ["雙重浮點數", "double"],
+                ["字元", "char"],
+                ["字串", "string"],
+                ["更長的整數", "long long"]
+            ]
+        },
+
         //bitset
         { //define bitset
             "type": "define_bitset",
@@ -334,6 +346,44 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "For 迴圈",
             "helpUrl": ""
         },
+        { //while
+            "type": "while_block",
+            "message0": "當 %1",
+            "args0": [{
+                "type": "input_value",
+                "name": "CONDITION",
+                "check": "Boolean"
+            }],
+            "message1": "重複執行 %1",
+            "args1": [{
+                "type": "input_statement",
+                "name": "DO"
+            }],
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "While 迴圈",
+            "colour": "#00abea"
+        },
+        {
+            "type": "if_else",
+            "message0": "條件: %1, true回傳值: %2, false回傳值: %3",
+            "args0": [{
+                "type": "input_value",
+                "name": "CONDITION",
+                "check": "Boolean"
+            },{
+                "type": "input_value",
+                "name": "r1"
+            },
+            {
+                "type": "input_value",
+                "name": "r2"
+            }],
+            "inputsInline": true,
+            "colour": "#00abea",
+            "output": null,
+            "tooltip": ""
+        },
 
         //define variable
         { //def variable
@@ -402,24 +452,6 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "簡化運算符",
             "helpUrl": ""
         },
-        { //while
-            "type": "while_block",
-            "message0": "當 %1",
-            "args0": [{
-                "type": "input_value",
-                "name": "CONDITION",
-                "check": "Boolean"
-            }],
-            "message1": "重複執行 %1",
-            "args1": [{
-                "type": "input_statement",
-                "name": "DO"
-            }],
-            "previousStatement": null,
-            "nextStatement": null,
-            "tooltip": "While 迴圈",
-            "colour": "#00abea"
-        },
 
         //stop
         { //break
@@ -480,6 +512,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             ],
             "colour": "#db00db",
+            "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "定義一個沒有回傳值的函數",
@@ -489,15 +522,8 @@ Blockly.defineBlocksWithJsonArray(
             "type": "define_function",
             "message0": "函式型態: %1 名稱 %2 變數%3",
             "args0": [{
-                    "type": "field_dropdown",
+                    "type": "input_value",
                     "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"]
-                    ]
                 },
                 {
                     "type": "field_input",
@@ -519,6 +545,7 @@ Blockly.defineBlocksWithJsonArray(
                     "name": "expression"
                 }
             ],
+            "inputsInline": true,
             "colour": "#db00db",
             "previousStatement": null,
             "nextStatement": null,
@@ -547,7 +574,7 @@ Blockly.defineBlocksWithJsonArray(
         },
         { //lambda
             "type": "lambda",
-            "message0": "lambda [%1](引用變數: %2)",
+            "message0": "lambda [%1](引用變數: %2)，多行%3",
             "args0": [{
                     "type": "field_dropdown",
                     "name": "captures",
@@ -561,6 +588,11 @@ Blockly.defineBlocksWithJsonArray(
                     "type": "input_value",
                     "name": "VAR"
                 },
+                {
+                    "type": "field_checkbox",
+                    "name": "line",
+                    "checked": false
+                }
             ],
             "message1": "%1 ",
             "args1": [{
@@ -644,17 +676,8 @@ Blockly.defineBlocksWithJsonArray(
                     ]
                 },
                 {
-                    "type": "field_dropdown",
-                    "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"],
-                        ["更長的整數", "long long"],
-                        ["編譯器自動判斷", "auto"]
-                    ]
+                    "type": "input_value",
+                    "name": "type"
                 },
                 {
                     "type": "field_input",
@@ -891,16 +914,8 @@ Blockly.defineBlocksWithJsonArray(
                     ]
                 },
                 {
-                    "type": "field_dropdown",
-                    "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"],
-                        ["更長的整數", "long long"]
-                    ]
+                    "type": "input_value",
+                    "name": "type"
                 },
                 {
                     "type": "field_dropdown",
@@ -945,16 +960,8 @@ Blockly.defineBlocksWithJsonArray(
                     ]
                 },
                 {
-                    "type": "field_dropdown",
-                    "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"],
-                        ["更長的整數", "long long"]
-                    ]
+                    "type": "input_value",
+                    "name": "type"
                 },
                 {
                     "type": "field_dropdown",
@@ -974,6 +981,7 @@ Blockly.defineBlocksWithJsonArray(
                 },
             ],
             "colour": "#DABD00",
+            "inputsInline": true,
             "output": true,
             "tooltip": "定義一個指標",
             "helpurl": ""
@@ -998,16 +1006,8 @@ Blockly.defineBlocksWithJsonArray(
                     ]
                 },
                 {
-                    "type": "field_dropdown",
-                    "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"],
-                        ["更長的整數", "long long"],
-                    ]
+                    "type": "input_value",
+                    "name": "type"
                 },
                 {
                     "type": "field_input",
@@ -1019,6 +1019,7 @@ Blockly.defineBlocksWithJsonArray(
                 },
             ],
             "colour": "#DABD00",
+            "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "宣告一個位置",
@@ -1044,16 +1045,8 @@ Blockly.defineBlocksWithJsonArray(
                     ]
                 },
                 {
-                    "type": "field_dropdown",
-                    "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"],
-                        ["更長的整數", "long long"],
-                    ]
+                    "type": "input_value",
+                    "name": "type"
                 },
                 {
                     "type": "field_input",
@@ -1065,6 +1058,7 @@ Blockly.defineBlocksWithJsonArray(
                 },
             ],
             "colour": "#DABD00",
+            "inputsInline": true,
             "output": true,
             "tooltip": "宣告一個位置",
             "helpurl": ""
@@ -2863,16 +2857,8 @@ Blockly.defineBlocksWithJsonArray(
             "type": "define_array",
             "message0": "定義C++內建陣列資料型態 %1 , 陣列名稱 %2 , 大小 : %3 , 陣列內容 %4 (可加可不加)",
             "args0": [{
-                    "type": "field_dropdown",
+                    "type": "input_value",
                     "name": "TYPE",
-                    "options": [
-                        ["整數", "int"],
-                        ["浮點數", "float"],
-                        ["雙重浮點數", "double"],
-                        ["字元", "char"],
-                        ["字串", "string"],
-                        ["更長的整數", "long long"]
-                    ]
                 },
                 {
                     "type": "field_input",
@@ -2892,6 +2878,7 @@ Blockly.defineBlocksWithJsonArray(
                 }
             ],
             "colour": "#ff5757",
+            "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "創建一個矩陣",
@@ -5679,6 +5666,13 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "把元素推到priority_queue最後",
             "helpurl": ""
         },
+        {
+            "type": "greater<int>",
+            "message0": "陣列反向專用",
+            "colour": "#d6af0f",
+            "output": null
+        },
+
         //climits
         { //char_bit
             "type": "char_bit",
@@ -5877,6 +5871,68 @@ Blockly.defineBlocksWithJsonArray(
             "colour": "#AFEEEE",
             "tooltip": "long long absolute",
             "helpurl": ""
+        },
+        
+        //functional
+        {
+            "type": "less",
+            "message0": "陣列專用, 資料型態%1, 排序方式 a < b",
+            "args0": [{
+                "type": "input_value",
+                "name": "TYPE"
+            }],
+            "colour": "#urj329",
+            "output": null
+        },
+        {
+            "type": "greater",
+            "message0": "陣列專用, 資料型態%1, 排序方式 a < b",
+            "args0": [{
+                "type": "input_value",
+                "name": "TYPE"
+            }],
+            "colour": "#urj329",
+            "output": null
+        },
+        {
+            "type": "equal_to",
+            "message0": "陣列專用, 資料型態%1, 排序方式 a == b",
+            "args0": [{
+                "type": "input_value",
+                "name": "TYPE"
+            }],
+            "colour": "#urj329",
+            "output": null
+        },
+        {
+            "type": "not_equal_to",
+            "message0": "陣列專用, 資料型態%1, 排序方式 a != b",
+            "args0": [{
+                "type": "input_value",
+                "name": "TYPE"
+            }],
+            "colour": "#urj329",
+            "output": null
+        },
+        {
+            "type": "greater_equal",
+            "message0": "陣列專用, 資料型態%1, 排序方式 a >= b",
+            "args0": [{
+                "type": "input_value",
+                "name": "TYPE"
+            }],
+            "colour": "#urj329",
+            "output": null
+        },
+        {
+            "type": "equal_to",
+            "message0": "陣列專用, 資料型態%1, 排序方式 a <= b",
+            "args0": [{
+                "type": "input_value",
+                "name": "TYPE"
+            }],
+            "colour": "#urj329",
+            "output": null
         },
     ]
 );
