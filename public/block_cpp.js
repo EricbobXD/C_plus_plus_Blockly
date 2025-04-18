@@ -262,7 +262,7 @@ Blockly.Blocks['main_block'] = {
       if (size || array || it){
           code += ')';
       }
-      code += ';';
+      code += ';\n';
       return code;
   };
         
@@ -3647,7 +3647,7 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['define_variable'] = function(block) {
             var Const = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
-            var type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'type', 1) || '';
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
@@ -3656,6 +3656,10 @@ Blockly.Blocks['new_block'] = {
             }
             if (unsigned === 'unsigned') {
                 code += 'unsigned ';
+            }
+             
+            if (type.startsWith('(') && type.endsWith(')')) {
+                type = type.slice(1, -1);
             }
 
             code += type + ' ' + var_name;
@@ -3700,7 +3704,7 @@ Blockly.Blocks['new_block'] = {
 
         //function
         Blockly.Cpp['define_function'] = function(block) {
-            var Type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'type', 1);
             var funcName = block.getFieldValue('funcName');
             var data = Blockly.Cpp.valueToCode(block, 'data', 1);
             var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
@@ -3715,8 +3719,10 @@ Blockly.Blocks['new_block'] = {
             if (expression.startsWith('(') && expression.endsWith(')')) {
                 expression = expression.slice(1, -1);
             }
-
-            return `${Type} ${funcName}(${data}) {\n${content}    return ${expression};\n}\n`;
+            if (type.startsWith('(') && type.endsWith(')')) {
+                type = type.slice(1, -1);
+            }
+            return `${type} ${funcName}(${data}) {\n${content}    return ${expression};\n}\n`;
         };
 
         Blockly.Cpp['define_function_void'] = function(block) {
