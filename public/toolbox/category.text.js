@@ -190,3 +190,21 @@ Blockly.Cpp['string_cout'] = function(block) {
 Blockly.Cpp['string_cin'] = function(block) {
     return string_generateCode(block, ' >> ');
 };
+
+function string_generateCode(block, operator) {
+    let code = '';
+    for (let i = 0; i < block.itemCount_; i++) {
+        let argument = Blockly.Cpp.valueToCode(block, 'ADD' + i, Blockly.Cpp.ORDER_ATOMIC) || '';
+        if (argument.startsWith('(') && argument.endsWith(')')) {
+            argument = argument.slice(1, -1);
+        }
+
+        code += argument;
+        if (i < block.itemCount_ - 1) {
+            code += operator;
+        }
+    }
+
+
+    return [`${code}`, Blockly.Cpp.ORDER_ATOMIC];
+}
