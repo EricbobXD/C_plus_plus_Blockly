@@ -9,23 +9,6 @@
 
 ---
 
-## 專案流程圖
-
-1. 設計網站雛形
-2. 設計Blockly for C++功能
-3. 製作XML文件的上傳下載功能並擴展更多的Block
-4. 製作.cpp文件的上傳下載功能並擴展更多的Block
-5. 美化並架設網站，同時持續新增更多Block
-6. 持續新增更多Block和更新功能
-
----
-
-## 目前進度
-
-持續新增更多Block和更新功能
-
----
-
 ## 參考資源
 
 - [C Blockly](https://hueyanchen.github.io/)
