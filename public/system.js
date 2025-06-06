@@ -2770,12 +2770,12 @@
 
         let categoryData = {}; // 載入分類資料
         fetch("https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category_info.json")
-        .then(response => response.json())
-        .then(data => {
-            categoryData = data;
-            renderCategoryMainView();
-        })
-        .catch(error => console.error("載入分類 JSON 失敗:", error));
+            .then(response => response.json())
+            .then(data => {
+                categoryData = data;
+                renderCategoryMainView();
+            })
+            .catch(error => console.error("載入分類 JSON 失敗:", error));
 
         // 渲染分類主頁面，動態產生所有分類按鈕
         function renderCategoryMainView() {
@@ -2788,7 +2788,7 @@
             // 清空 header（主頁面不顯示返回鍵）
             document.getElementById("topic").innerHTML = "";
 
-            // 將分類資料依 topic 排序（轉成陣列）
+            // 將分類資料依 topic 排序
             const sortedEntries = Object.entries(categoryData).sort((a, b) => {
                 const topicA = a[1].topic?.toLowerCase() || "";
                 const topicB = b[1].topic?.toLowerCase() || "";
@@ -2806,7 +2806,6 @@
                 btn.style.padding = "10px";
                 btn.style.height = "80px";
 
-                // 文字部分：顯示 topic
                 const span = document.createElement("span");
                 span.textContent = catData.topic || catName;
                 btn.appendChild(span);
@@ -2819,114 +2818,39 @@
             }
         }
 
+        // 嵌入分類內容（改為 iframe 模式）
         function renderCategoryDetail(categoryName) {
-    // 取得主要內容容器，清空內容，並取消 grid 排版
-    const container = document.getElementById("category-details");
-    container.innerHTML = "";
-    container.style.display = "block";
-    container.style.gridTemplateColumns = ""; // 清除 grid 設定
-    container.style.gap = "";
+            const container = document.getElementById("category-details");
+            container.innerHTML = "";
+            container.style.display = "block";
+            container.style.gridTemplateColumns = "";
+            container.style.gap = "";
 
-    // 設定 header（主頁面 header 內包含返回按鈕）
-    const header = document.getElementById("topic");
-    header.innerHTML = "";
-    const backBtn = document.createElement("button");
-    backBtn.textContent = "返回";
-    backBtn.style.borderRadius = "10px";
-    backBtn.style.padding = "5px 10px";
-    backBtn.style.marginRight = "10px";
-    backBtn.addEventListener("click", renderCategoryMainView);
-    header.appendChild(backBtn);
+            const header = document.getElementById("topic");
+            header.innerHTML = "";
 
-    // 處理分類標題（topic）：若非字串則轉成 JSON 文字
-    let topicText = categoryData[categoryName].topic || "";
-    if (typeof topicText !== "string") {
-        topicText = JSON.stringify(topicText, null, 2);
-    }
-    const titleElement = document.createElement("h3");
-    titleElement.innerText = topicText;
-    container.appendChild(titleElement);
+            const backBtn = document.createElement("button");
+            backBtn.textContent = "返回";
+            backBtn.style.borderRadius = "10px";
+            backBtn.style.padding = "5px 10px";
+            backBtn.style.marginRight = "10px";
+            backBtn.addEventListener("click", renderCategoryMainView);
+            header.appendChild(backBtn);
 
-    // 處理分類內容（content）
-    let contentStr = categoryData[categoryName].content || "此分類尚無說明。";
-    if (typeof contentStr !== "string") {
-        contentStr = JSON.stringify(contentStr, null, 2);
-    }
-    // 此處不再直接將換行符號替換為 <br>，而是由 Markdown 處理
+            const titleElement = document.createElement("h3");
+            titleElement.innerText = categoryData[categoryName].topic || categoryName;
+            container.appendChild(titleElement);
 
-    // 先處理內容中可能出現的 <imgX> 標籤替換
-    if (categoryData[categoryName].img && typeof categoryData[categoryName].img === "object") {
-        for (let key in categoryData[categoryName].img) {
-            const imgTag = `<${key}>`;
-            const imgElement = `<img src="${categoryData[categoryName].img[key]}" alt="${key}" style="max-width:100%; border-radius: 10px;">`;
-            // 全局替換：使用正則
-            contentStr = contentStr.replace(new RegExp(imgTag, "g"), imgElement);
+            const url = categoryData[categoryName].url;
+            if (url) {
+                const iframe = document.createElement("iframe");
+                iframe.src = url;
+                iframe.style.width = "100%";
+                iframe.style.height = "calc(100vh - 200px)";
+                iframe.style.border = "none";
+                iframe.loading = "lazy";
+                container.appendChild(iframe);
+            } else {
+                container.innerHTML += `<p style="color: gray;">❗ 此分類尚未提供說明連結。</p>`;
+            }
         }
-    }
-
-    // 建立自訂的 marked Renderer
-    const renderer = new marked.Renderer();
-
-    // 自訂標題：依照 Markdown 層級 (# 至 ######)
-    renderer.heading = function(text, level) {
-        const sizeMap = {
-            1: "2.5em",
-            2: "2em",
-            3: "1.75em",
-            4: "1.5em",
-            5: "1.25em",
-            6: "1em"
-        };
-        return `<h${level} style="font-size: ${sizeMap[level]}; margin: 0.5em 0;">${text}</h${level}>`;
-    };
-
-    // 自訂程式碼區塊：支援語言設定與行號（格式如： ```cpp<=:3）
-    renderer.code = function(code, language) {
-        let lang = language || "";
-        let lineNums = false;
-        let startLine = 1;
-        const match = lang.match(/^(.*?)<=:(\d+)$/);
-        if (match) {
-            lang = match[1];
-            lineNums = true;
-            startLine = parseInt(match[2], 10);
-        }
-        let highlighted;
-        if (lang && hljs.getLanguage(lang)) {
-            highlighted = hljs.highlight(code, { language: lang }).value;
-        } else {
-            highlighted = hljs.highlightAuto(code).value;
-        }
-        if (lineNums) {
-            const lines = code.split("\n");
-            const numberedLines = lines.map((line, idx) => {
-                return `<span class="line-number" style="display: inline-block; width: 2em; text-align: right; padding-right: 0.5em; color: #999;">${startLine + idx}</span> ${line}`;
-            });
-            return `<pre style="overflow-x: auto;"><code class="hljs ${lang}">${numberedLines.join("\n")}</code></pre>`;
-        } else {
-            return `<pre style="overflow-x: auto;"><code class="hljs ${lang}">${highlighted}</code></pre>`;
-        }
-    };
-
-    // 處理自訂警示區塊： :::success, :::warning, :::info, :::danger
-    function parseCustomAlerts(markdown) {
-        return markdown.replace(/::: *(success|warning|info|danger) *\n([\s\S]*?)\n:::/g, (match, alertType, innerContent) => {
-            return `<div class="alert alert-${alertType}">${marked.parse(innerContent)}</div>`;
-        });
-    }
-
-    // 定義 Markdown 內容處理函式，先處理自訂警示，再使用 marked
-    function processMarkdown(input) {
-        input = parseCustomAlerts(input);
-        return marked.parse(input, { renderer: renderer, breaks: true });
-    }
-
-    // 轉換 Markdown 內容為 HTML
-    const processedHTML = processMarkdown(contentStr);
-
-    // 將轉換後的內容插入到一個 div 中，再加入容器
-    const descContainer = document.createElement("div");
-    descContainer.innerHTML = processedHTML;
-    container.appendChild(descContainer);
-}
-
