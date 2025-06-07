@@ -2769,7 +2769,7 @@
         })();
 
         let categoryData = {}; // 載入分類資料
-        fetch("https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category_info.json")
+        fetch("https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category_info.json") // ← 這裡是新版 JSON 網址
             .then(response => response.json())
             .then(data => {
                 categoryData = data;
@@ -2777,7 +2777,7 @@
             })
             .catch(error => console.error("載入分類 JSON 失敗:", error));
 
-        // 渲染分類主頁面，動態產生所有分類按鈕
+        // 顯示主分類按鈕
         function renderCategoryMainView() {
             const container = document.getElementById("category-details");
             container.innerHTML = "";
@@ -2785,18 +2785,12 @@
             container.style.gridTemplateColumns = "repeat(3, 1fr)";
             container.style.gap = "10px";
 
-            // 清空 header（主頁面不顯示返回鍵）
-            document.getElementById("topic").innerHTML = "";
+            const topic = document.getElementById("topic");
+            if (topic) topic.innerHTML = "";
 
-            // 將分類資料依 topic 排序
-            const sortedEntries = Object.entries(categoryData).sort((a, b) => {
-                const topicA = a[1].topic?.toLowerCase() || "";
-                const topicB = b[1].topic?.toLowerCase() || "";
-                return topicA.localeCompare(topicB);
-            });
+            const sortedKeys = Object.keys(categoryData).sort((a, b) => a.localeCompare(b));
 
-            // 根據排序後的陣列建立按鈕
-            for (const [catName, catData] of sortedEntries) {
+            for (const catName of sortedKeys) {
                 const btn = document.createElement("button");
                 btn.className = "category-button";
                 btn.style.borderRadius = "10px";
@@ -2807,7 +2801,7 @@
                 btn.style.height = "80px";
 
                 const span = document.createElement("span");
-                span.textContent = catData.topic || catName;
+                span.textContent = formatDisplayName(catName);
                 btn.appendChild(span);
 
                 btn.addEventListener("click", () => {
@@ -2818,30 +2812,30 @@
             }
         }
 
-        // 嵌入分類內容（改為 iframe 模式）
+        // 顯示分類詳細內容（iframe 模式）
         function renderCategoryDetail(categoryName) {
             const container = document.getElementById("category-details");
             container.innerHTML = "";
             container.style.display = "block";
-            container.style.gridTemplateColumns = "";
-            container.style.gap = "";
 
             const header = document.getElementById("topic");
-            header.innerHTML = "";
+            if (header) {
+                header.innerHTML = "";
 
-            const backBtn = document.createElement("button");
-            backBtn.textContent = "返回";
-            backBtn.style.borderRadius = "10px";
-            backBtn.style.padding = "5px 10px";
-            backBtn.style.marginRight = "10px";
-            backBtn.addEventListener("click", renderCategoryMainView);
-            header.appendChild(backBtn);
+                const backBtn = document.createElement("button");
+                backBtn.textContent = "返回";
+                backBtn.style.borderRadius = "10px";
+                backBtn.style.padding = "5px 10px";
+                backBtn.style.marginRight = "10px";
+                backBtn.addEventListener("click", renderCategoryMainView);
+                header.appendChild(backBtn);
+            }
 
             const titleElement = document.createElement("h3");
-            titleElement.innerText = categoryData[categoryName].topic || categoryName;
+            titleElement.innerText = formatDisplayName(categoryName);
             container.appendChild(titleElement);
 
-            const url = categoryData[categoryName].url;
+            const url = categoryData[categoryName]?.url;
             if (url) {
                 const iframe = document.createElement("iframe");
                 iframe.src = url;
@@ -2853,4 +2847,11 @@
             } else {
                 container.innerHTML += `<p style="color: gray;">❗ 此分類尚未提供說明連結。</p>`;
             }
+        }
+
+        // 格式化顯示名稱（自動首字大寫 + 去底線）
+        function formatDisplayName(name) {
+            return name
+                .replace(/_/g, ' ')
+                .replace(/\b\w/g, char => char.toUpperCase());
         }
