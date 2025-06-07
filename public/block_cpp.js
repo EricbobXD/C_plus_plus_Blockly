@@ -5196,7 +5196,7 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['flat_set_begin'] = function(block) {
             var flat_set_name = block.getFieldValue('flat_set_name') || '';
-            return [`${flat_set_name}.begin();`, 1];
+            return [`${flat_set_name}.begin()`, 1];
         }
 
         Blockly.Cpp['flat_set_end'] = function(block) {
@@ -5206,12 +5206,12 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['flat_set_rbegin'] = function(block) {
             var flat_set_name = block.getFieldValue('flat_set_name') || '';
-            return [`${flat_set_name}.rbegin();`, 1];
+            return [`${flat_set_name}.rbegin()`, 1];
         }
 
         Blockly.Cpp['flat_set_rend'] = function(block) {
             var flat_set_name = block.getFieldValue('flat_set_name') || '';
-            return [`${flat_set_name}.rend();`, 1];
+            return [`${flat_set_name}.rend()`, 1];
         }
 
         Blockly.Cpp['flat_set_extract_value'] = function(block) {
@@ -5527,7 +5527,7 @@ Blockly.Blocks['new_block'] = {
         };
         Blockly.Cpp['stack_top'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
-            return stack_name + ".top();\n";
+            return [`${stack_name}.top()`, 1];
         };
 
         Blockly.Cpp['stack_swap'] = function(block) {
@@ -5538,12 +5538,12 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['stack_size'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
-            return [`${stack_name}.size();`, 1];
+            return [`${stack_name}.size()`, 1];
         };
 
         Blockly.Cpp['stack_empty'] = function(block) {
             var stack_name = block.getFieldValue('stack_name');
-            return [`${stack_name}.empty();`, 1];
+            return [`${stack_name}.empty()`, 1];
         };
 
         //queue
@@ -5572,17 +5572,17 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['queue_front'] = function(block) {
             var queue_name = block.getFieldValue('queue_name');
-            return [`${queue_name}.front();`, 1];
+            return [`${queue_name}.front()`, 1];
         };
 
         Blockly.Cpp['queue_size'] = function(block) {
             var queue_name = block.getFieldValue('queue_name') || '';
-            return [`${queue_name}.size();`, 1];
+            return [`${queue_name}.size()`, 1];
         }
 
         Blockly.Cpp['queue_empty'] = function(block) {
             var queue_name = block.getFieldValue('queue_name') || '';
-            return [`${queue_name}.empty();`, 1];
+            return [`${queue_name}.empty()`, 1];
         }
 
         Blockly.Cpp['queue_swap'] = function(block) {
@@ -5674,7 +5674,7 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['deque_insert_range'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
+            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | 0;
             var array = Blockly.Cpp.valueToCode(block, 'array', 1);
             if (array.startsWith('(') && value.endsWith(')')) {
                 array = array.slice(1, -1);
@@ -5720,12 +5720,12 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['deque_front'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return [`${deque_name}.front();`, 1];
+            return [`${deque_name}.front()`, 1];
         };
 
         Blockly.Cpp['deque_back'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return [`${deque_name}.back();`, 1];
+            return [`${deque_name}.back()`, 1];
         };
 
         Blockly.Cpp['deque_clear'] = function(block) {
@@ -5735,32 +5735,32 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['deque_size'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return [`${deque_name}.size();`, 1];
+            return [`${deque_name}.size()`, 1];
         }
 
         Blockly.Cpp['deque_empty'] = function(block) {
             var deque_name = block.getFieldValue('deque_name');
-            return [`${deque_name}.empty();`, 1];
+            return [`${deque_name}.empty()`, 1];
         }
 
         Blockly.Cpp['deque_begin'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            return [`${deque_name}.begin();`, 1];
+            return [`${deque_name}.begin()`, 1];
         }
 
         Blockly.Cpp['deque_end'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            return [`${deque_name}.end();`, 1];
+            return [`${deque_name}.end()`, 1];
         }
 
         Blockly.Cpp['deque_rbegin'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-           return [`${deque_name}.rbegin();`, 1];
+           return [`${deque_name}.rbegin()`, 1];
         }
 
         Blockly.Cpp['deque_rend'] = function(block) {
             var deque_name = block.getFieldValue('deque_name') || '';
-            return [`${deque_name}.rend();`, 1];
+            return [`${deque_name}.rend()`, 1];
         }
 
         //priority_queue
@@ -5790,18 +5790,17 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['priority_queue_top'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || "";
-            return [`${priority_queue_name}.top();`, 1];
+            return [`${priority_queue_name}.top()`, 1];
         };
 
         Blockly.Cpp['priority_queue_size'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
-            return [`${priority_queue_name}.size();`, 1];
+            return [`${priority_queue_name}.size()`, 1];
         };
 
         Blockly.Cpp['priority_queue_empty'] = function(block) {
             var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
-            var code = priority_queue_name + ".empty\n";
-            return [`${priority_queue_name}.empty();`, 1];
+            return [`${priority_queue_name}.empty()`, 1];
         };
 
         Blockly.Cpp['priority_queue_swap'] = function(block) {
