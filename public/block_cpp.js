@@ -3727,7 +3727,7 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Cpp['define_function_void'] = function(block) {
             var funcName = block.getFieldValue('funcName');
-            var data = Blockly.Cpp.valueToCode(block, 'data', 1);
+            var data = Blockly.Cpp.valueToCode(block, 'data', 1) || '';
             var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
             var expression = block.getFieldValue('expression');
             content = content.replace(/^ {2}/gm, '    ');
@@ -3741,7 +3741,7 @@ Blockly.Blocks['new_block'] = {
             if (expression === 'no') {
                 return `void ${funcName}(${data}) {\n${content}\n}\n`;
             } else {
-                return `void ${funcName}(${data}) {\n${content}  return;\n}\n`, 1;
+                return `void ${funcName}(${data}) {\n${content}  return;\n}\n`;
             }
         };
         Blockly.Cpp['lambda'] = function(block) {
