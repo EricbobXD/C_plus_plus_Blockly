@@ -1,71 +1,71 @@
 {
   "array": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/array.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/array.html"
   },
   "bitset": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/bitset.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/bitset.html"
   },
   "calculate": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/calculate.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/calculate.html"
   },
   "class": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/class.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/class.html"
   },
   "condition": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/condition.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/condition.html"
   },
   "define": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/define.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/define.html"
   },
   "deque": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/deque.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/deque.html"
   },
   "function": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/function.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/function.html"
   },
   "input & output": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/input%20%26%20output.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/input%20%26%20output.html"
   },
   "iterator": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/iterator.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/iterator.html"
   },
   "loop": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/loop.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/loop.html"
   },
   "map": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/map.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/map.html"
   },
   "pair": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/pair.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/pair.html"
   },
   "pointer": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/pointer.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/pointer.html"
   },
   "priority_queue": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/priority_queue.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/priority_queue.html"
   },
   "reference": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/reference.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/reference.html"
   },
   "set": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/set.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/set.html"
   },
   "sstream": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/sstream.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/sstream.html"
   },
   "stack": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/stack.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/stack.html"
   },
   "struct": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/struct.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/struct.html"
   },
   "text": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/text.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/text.html"
   },
   "variable": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/variable.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/variable.html"
   },
   "vector": {
-    "url": "https://raw.githubusercontent.com/EricbobXD/C_plus_plus_Blockly/main/databases/category/vector.html"
+    "url": "https://ericbobxd.github.io/C_plus_plus_Blockly/databases/category/vector.html"
   }
 }
