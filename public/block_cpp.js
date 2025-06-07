@@ -1523,9 +1523,15 @@ Blockly.Blocks['define_flat_set'] = {
             var map_name = block.getFieldValue('map_name');
             var code = `map<${type1}, ${type2}>${map_name}`;
 
+            if (type1.startsWith('(') && type1.endsWith(')')) {
+                    type1 = type1.slice(1, -1);
+            }
+            if (type2.startsWith('(') && type2.endsWith(')')) {
+                    type2 = type2.slice(1, -1);
+            }
             var array = block.getFieldValue('array') === "TRUE";
             var it = block.getFieldValue('it') === "TRUE";
-
+            
             if (array){
                 var array_name = block.getFieldValue('array_name');
                 if (array_name.startsWith('(') && array_name.endsWith(')')) {
@@ -4495,11 +4501,19 @@ Blockly.Blocks['new_block'] = {
 
         // pair
         Blockly.Cpp['define_pair'] = function(block) {
-            var type1 = block.getFieldValue('TYPE1');
-            var type2 = block.getFieldValue('TYPE2');
+            var type1 = Blockly.Cpp.valueToCode(block, 'TYPE1', 1) || 'int';
+            var type2 = Blockly.Cpp.valueToCode(block, 'TYPE2', 1) || 'int';
             var pair_name = block.getFieldValue('pair_name');
             var content = Blockly.Cpp.valueToCode(block, 'content', 1);
+
+            if (type1.startsWith('(') && type1.endsWith(')')) {
+                    type1 = type1.slice(1, -1);
+            }
+            if (type2.startsWith('(') && type2.endsWith(')')) {
+                    type2 = type2.slice(1, -1);
+            }
             var code = `pair<${type1}, ${type2}>${pair_name}`;
+            
             if (content) {
                 if (content.startsWith('(') && content.endsWith(')')) {
                     content = content.slice(1, -1);
@@ -4550,7 +4564,7 @@ Blockly.Blocks['new_block'] = {
             if (array.startsWith('(') && value.endsWith(')')) {
                 array = array.slice(1, -1);
             }
-            return `${set_name}.insert(${array});\n`;
+            return `${set_name}.insert_range(${array});\n`;
         }
         
         Blockly.Cpp['set_erase'] = function(block) {
@@ -4584,13 +4598,13 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['set_merge'] = function(block) {
             var set_name1 = block.getFieldValue('set_name1');
             var set_name2 = block.getFieldValue('set_name2');
-            return `${set_name1}.merge(${set_name2};\n`;
+            return `${set_name1}.merge(${set_name2});\n`;
         };
         
         Blockly.Cpp['set_swap'] = function(block) {
             var set_name1 = block.getFieldValue('set_name1');
             var set_name2 = block.getFieldValue('set_name2');
-            return `${set_name1}.swap(${set_name2})\n`;
+            return `${set_name1}.swap(${set_name2});\n`;
         };
         
         
@@ -4731,7 +4745,7 @@ Blockly.Blocks['new_block'] = {
             if (array.startsWith('(') && value.endsWith(')')) {
                 array = array.slice(1, -1);
             }
-            return `${unordered_set_name}.insert(${array});\n`;
+            return `${unordered_set_name}.insert_range(${array});\n`;
         }
 
         Blockly.Cpp['unordered_set_erase'] = function(block) {
@@ -4765,7 +4779,7 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['unordered_set_merge'] = function(block) {
             var unordered_set_name1 = block.getFieldValue('unordered_set_name1');
             var unordered_set_name2 = block.getFieldValue('unordered_set_name2');
-            return `${unordered_set_name1}.merge(${unordered_set_name2};\n`;
+            return `${unordered_set_name1}.merge(${unordered_set_name2});\n`;
         };
 
         Blockly.Cpp['unordered_set_swap'] = function(block) {
@@ -4927,7 +4941,7 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['multiset_merge'] = function(block) {
             var multiset_name1 = block.getFieldValue('multiset_name1');
             var multiset_name2 = block.getFieldValue('multiset_name2');
-            return `${multiset_name1}.merge(${multiset_name2};\n`;
+            return `${multiset_name1}.merge(${multiset_name2});\n`;
         };
 
         Blockly.Cpp['multiset_swap'] = function(block) {
@@ -5074,7 +5088,7 @@ Blockly.Blocks['new_block'] = {
             if (array.startsWith('(') && value.endsWith(')')) {
                 array = array.slice(1, -1);
             }
-            return `${flat_set_name}.insert(${array});\n`;
+            return `${flat_set_name}.insert_range(${array});\n`;
         }
 
         Blockly.Cpp['flat_set_erase'] = function(block) {
@@ -5880,7 +5894,7 @@ Blockly.Blocks['new_block'] = {
         };
 
         Blockly.Cpp['cin.eof'] = function(block) {
-            return ['cin.eof', 1];
+            return ['cin.eof()', 1];
         };
 
         Blockly.Cpp['define_sstream'] = function(block) {
