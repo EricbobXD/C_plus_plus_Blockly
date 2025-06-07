@@ -3943,20 +3943,15 @@ Blockly.Blocks['new_block'] = {
         
         Blockly.Cpp['vector_insert'] = function(block) {
             var vector_name = block.getFieldValue('vector_name');
-            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | '0';
+            var pos = Blockly.Cpp.valueToCode(block, 'pos', 1) | 0;
             var value = Blockly.Cpp.valueToCode(block, 'value', 1);
             if (value.startsWith('(') && value.endsWith(')')) {
                 value = value.slice(1, -1);
             }
-            if (pos === '0') {
+            if (pos === 0) {
                 return `${vector_name}.insert(${vector_name}.begin(), ${value});\n`
-            } else {
-                if (pos.startsWith('(') && pos.endsWith(')')) {
-                    pos = '+' + pos.slice(1, -1);
-                }
-            }
-        
-            return `${vector_name}.insert(${vector_name}.begin()${pos}, ${value});\n`;
+            }   
+            return `${vector_name}.insert(${vector_name}.begin()+${pos}, ${value});\n`;
         }
         
         Blockly.Cpp['vector_insert_range'] = function(block) {
@@ -3966,15 +3961,10 @@ Blockly.Blocks['new_block'] = {
             if (array.startsWith('(') && value.endsWith(')')) {
                 array = array.slice(1, -1);
             }
-            if (pos === '0') {
-                return `${vector_name}.insert(${vector_name}.begin(), ${array});\n`
-            } else {
-                if (pos.startsWith('(') && pos.endsWith(')')) {
-                    pos = '+' + pos.slice(1, -1);
-                }
-            }
-        
-            return `${vector_name}.insert(${vector_name}.begin()${pos}, ${array});\n`;
+           if (pos === 0) {
+                return `${vector_name}.insert_range(${vector_name}.begin(), ${value});\n`
+            }   
+            return `${vector_name}.insert_range(${vector_name}.begin()+${pos}, ${value});\n`;
         }
         
         Blockly.Cpp['vector_erase'] = function(block) {
