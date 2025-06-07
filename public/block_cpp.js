@@ -1,4 +1,3 @@
-
 Blockly.Blocks['main_block'] = {
     init: function() {
         this.jsonInit({
@@ -2668,7 +2667,7 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Blocks['string_generic'] = {
             init: function() {
-                this.setColour("#71b700");
+                this.setColour("#FF8C00");
                 this.setOutput(true, "String");
                 this.setInputsInline(true);
                 this.setMutator(new Blockly.Mutator(['string_generic_item']));
@@ -2736,7 +2735,7 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Blocks['string_generic_container'] = {
             init: function() {
-                this.setColour("#71b700");
+                this.setColour("#FF8C00");
                 this.appendDummyInput().appendField("輸入");
                 this.appendStatementInput('STACK');
                 this.contextMenu = false;
@@ -2745,7 +2744,7 @@ Blockly.Blocks['new_block'] = {
 
         Blockly.Blocks['string_generic_item'] = {
             init: function() {
-                this.setColour("#71b700");
+                this.setColour("#FF8C00");
                 this.appendDummyInput().appendField("項目");
                 this.setPreviousStatement(true);
                 this.setNextStatement(true);
@@ -3156,7 +3155,7 @@ Blockly.Blocks['new_block'] = {
         };
 
         Blockly.Cpp['comment_block'] = function(block) {
-            return `// ${block.getFieldValue('COMMENT')}`;
+            return `// ${block.getFieldValue('COMMENT')}\n`;
         };
 
         Blockly.Cpp['number'] = function(block) {
@@ -3481,7 +3480,7 @@ Blockly.Blocks['new_block'] = {
             var Const_ptr = block.getFieldValue('const_ptr');
             var Const_var = block.getFieldValue('const_var');
             var unsigned = block.getFieldValue('unsigned');
-            var type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'TYPE', 1) || 'int';
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
@@ -3512,7 +3511,7 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['define_reference'] = function(block) {
             var Const_ptr = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
-            var type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'TYPE', 1) || 'int';
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
@@ -3542,7 +3541,7 @@ Blockly.Blocks['new_block'] = {
             var Const_ptr = block.getFieldValue('const_ptr');
             var Const_var = block.getFieldValue('const_var');
             var unsigned = block.getFieldValue('unsigned');
-            var type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'TYPE', 1) || 'int';
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
@@ -3572,7 +3571,7 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['def_ref'] = function(block) {
             var Const_ptr = block.getFieldValue('const');
             var unsigned = block.getFieldValue('unsigned');
-            var type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'TYPE', 1) || 'int';
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
@@ -3652,10 +3651,10 @@ Blockly.Blocks['new_block'] = {
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
             if (Const === 'const') {
-                code += 'const ';
+                code += 'const';
             }
             if (unsigned === 'unsigned') {
-                code += 'unsigned ';
+                code += ' unsigned';
             }
              
             if (type.startsWith('(') && type.endsWith(')')) {
@@ -3777,7 +3776,7 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['typedef_block'] = function(block) {
             var type_name = block.getFieldValue('type_name');
             var name = block.getFieldValue('name');
-            return `typedef ${type_name} ${name}\n`;
+            return `typedef ${type_name} ${name};\n`;
         };
 
         // Standard Library
@@ -4073,7 +4072,7 @@ Blockly.Blocks['new_block'] = {
 
         // array
         Blockly.Cpp['define_array'] = function(block) {
-            var type = block.getFieldValue('TYPE');
+            var type = Blockly.Cpp.valueToCode(block, 'TYPE', 1) || 'int';
             var array_name = block.getFieldValue('array_name');
             var size = Blockly.Cpp.valueToCode(block, 'size', 1) || '';
             var content = Blockly.Cpp.valueToCode(block, 'content', 1) || '';
