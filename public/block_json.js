@@ -1262,7 +1262,68 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "偷懶作法",
             "helpUrl": ""
         },
-
+        // 好用的東西
+        {//define_template
+            "type": "define_template",
+            "message0": "template<%1>",
+            "args0": [{
+                "type": "input_value",
+                "name": "var",
+            }],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": "#4A9BFF",
+            "tooltip": "偷懶作法",
+            "helpUrl": ""
+        },
+        {//define_typename
+            "type": "define_typename",
+            "message0": "typename <%1>",
+            "args0": [{
+                "type": "input_value",
+                "name": "var",
+            }],
+            "output": null,
+            "colour": "#4A9BFF",
+            "tooltip": "偷懶作法",
+            "helpUrl": ""
+        },
+        {//define_using
+            "type": "define_using",
+            "message0": "using %1 %2",
+            "args0": [{
+                    "type": "input_value",
+                    "name": "var",
+                }, 
+                {
+                    "type": "field_input",
+                    "name": "change_var",
+                }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": "#4A9BFF",
+            "tooltip": "偷懶作法",
+            "helpUrl": ""
+        },
+        {//define_namespace 
+            "type": "define_namespace",
+            "message0": "namespace %1 ",
+            "args0": [{
+                "type": "field_input",
+                "name": "var",
+            }],
+            "message1": "%1",
+            "args1": [{
+                "type": "input_statement",
+                "name": "statement"
+            }],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": "#4A9BFF",
+            "tooltip": "偷懶作法",
+            "helpUrl": ""
+        },
         //Standard Library
         //math
         { //math caculacte

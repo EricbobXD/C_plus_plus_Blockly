@@ -3132,7 +3132,7 @@ Blockly.Blocks['new_block'] = {
             var class_name = block.getFieldValue('class_name');
             var public = Blockly.Cpp.statementToCode(block, 'public').replace(/^ {2}/gm, '    ') || '';
             var private = Blockly.Cpp.statementToCode(block, 'private').replace(/^ {2}/gm, '    ') || '';
-            
+
             var code = `class ${class_name} {\n`;
             if (public !== '') {
                 code += `  public:\n${public}\n`;
@@ -3803,6 +3803,47 @@ Blockly.Blocks['new_block'] = {
             var name = block.getFieldValue('name');
             return `typedef ${type_name} ${name};\n`;
         };
+
+
+        // good things
+        Blockly.Cpp['define_template'] = function(block) {
+            var Var = Blockly.Cpp.valueToCode(block, 'var', 1);
+
+            if (Var.startsWith('(') && Var.endsWith(')')) {
+                Var = Var.slice(1, -1);
+            }
+
+            return `template <${Var}>\n`;
+        };
+
+        Blockly.Cpp['define_typename'] = function(block) {
+            var Var = Blockly.Cpp.valueToCode(block, 'var', 1);
+
+            if (Var.startsWith('(') && Var.endsWith(')')) {
+                Var = Var.slice(1, -1);
+            }
+
+            return [`typename <${Var}>`, 1];
+        };
+
+        Blockly.Cpp['define_using'] = function(block) {
+            var Var = Blockly.Cpp.valueToCode(block, 'var', 1);
+            var change_Var = block.getFieldValue('change_var') || '';
+
+            if (Var.startsWith('(') && Var.endsWith(')')) {
+                Var = Var.slice(1, -1);
+            }
+
+
+            return `using ${Var} ${change_Var};`;
+        };
+
+        Blockly.Cpp['define_namespace'] = function(block) {
+            var var_name = block.getFieldValue('var');
+            var code = Blockly.Cpp.statementToCode(block, 'statement').replace(/^ {2}/gm, '    ');
+            
+            return `namespce ${var_name} {\n${code}};`;
+        }
 
         // Standard Library
         // math

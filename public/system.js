@@ -833,6 +833,29 @@
                     }
                 ]
             },
+             { // 函式/結構/類別
+                "kind": "category",
+                "name": "好用的東西",
+                "colour": "#4A9BFF",
+                "contents": [
+                    {
+                        "kind": "block",
+                        "type": "define_template"
+                    },
+                    {
+                        "kind": "block",
+                        "type": "define_typename"
+                    },
+                    {
+                        "kind": "block",
+                        "type": "define_using"
+                    },
+                    {
+                        "kind": "block",
+                        "type": "define_namespace"
+                    },
+                ]
+            }, 
             { // sep
                 "kind": "sep"
             },
