@@ -3099,7 +3099,16 @@ Blockly.Blocks['new_block'] = {
         // struct
         Blockly.Cpp['define_struct'] = function(block) {
             var struct_name = block.getFieldValue('struct_name');
+            var heritage = Blockly.Cpp.valueToCode(block, 'heritage', 1);
             var def_var = Blockly.Cpp.statementToCode(block, 'def_var').replace(/^ {2}/gm, '    ');
+            
+            if (heritage.startsWith('(') && heritage.endsWith(')')) {
+                heritage = heritage.slice(1, -1);
+            }
+
+            if (heritage){
+                return `struct ${struct_name}: ${heritage} {\n${def_var}};`;
+            }
             return `struct ${struct_name} {\n${def_var}};`;
         }
 
@@ -3107,6 +3116,11 @@ Blockly.Blocks['new_block'] = {
             var struct_name = block.getFieldValue('struct_name');
             var var_name = block.getFieldValue('var_name');
             var size = Blockly.Cpp.valueToCode(block, 'size', 1);
+
+            if (size.startsWith('(') && size.endsWith(')')) {
+                size = size.slice(1, -1);
+            }
+
             if (size) {
                 return `${struct_name} ${var_name}[${size}];`
             }
@@ -3118,7 +3132,7 @@ Blockly.Blocks['new_block'] = {
             var class_name = block.getFieldValue('class_name');
             var public = Blockly.Cpp.statementToCode(block, 'public').replace(/^ {2}/gm, '    ') || '';
             var private = Blockly.Cpp.statementToCode(block, 'private').replace(/^ {2}/gm, '    ') || '';
-
+            
             var code = `class ${class_name} {\n`;
             if (public !== '') {
                 code += `  public:\n${public}\n`;
@@ -3135,6 +3149,11 @@ Blockly.Blocks['new_block'] = {
             var class_name = block.getFieldValue('class_name');
             var var_name = block.getFieldValue('var_name');
             var size = Blockly.Cpp.valueToCode(block, 'size', 1);
+
+            if (size.startsWith('(') && size.endsWith(')')) {
+                size = size.slice(1, -1);
+            }
+
             if (size) {
                 return `${class_name} ${var_name}[${size}];`
             }

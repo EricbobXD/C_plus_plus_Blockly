@@ -177,11 +177,17 @@ Blockly.defineBlocksWithJsonArray(
         //struct
         { //def struct
             "type": "define_struct",
-            "message0": "結構 名字: %1 ",
+            "message0": "結構 名字: %1, 繼承 %2",
             "args0": [{
-                "type": "field_input",
-                "name": "struct_name"
-            }],
+                    "type": "field_input",
+                    "name": "struct_name"
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "heritage"
+                }
+        
+            ],
             "message1": "%1",
             "args1": [{
                 "type": "input_statement",

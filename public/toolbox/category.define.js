@@ -1,7 +1,8 @@
 // category.define.js
 // === 分類：定義 (Define) ===
 
-// 定義方塊：define_block\Blockly.Blocks['define_block'] = {
+// 定義方塊：define_block\
+Blockly.Blocks['define_block'] = {
   init: function() {
     this.appendDummyInput()
         .appendField('定義 自定義名子: ')
