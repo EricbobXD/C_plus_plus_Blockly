@@ -3096,6 +3096,19 @@ Blockly.Blocks['new_block'] = {
             return [`${code}`, Blockly.Cpp.ORDER_ATOMIC];
         }
 
+        // date_type
+        Blockly.Cpp['data_type'] = function(block) {
+            return [`${block.getFieldValue('TYPE')}`, 1];
+        }
+
+        Blockly.Cpp['struct_type'] = function(block) {
+            return [`struct ${block.getFieldValue('TYPE')}`, 1];
+        }
+
+        Blockly.Cpp['class_type'] = function(block) {
+            return [`class ${block.getFieldValue('TYPE')}`, 1];
+        }
+
         // struct
         Blockly.Cpp['define_struct'] = function(block) {
             var struct_name = block.getFieldValue('struct_name');
@@ -3805,7 +3818,7 @@ Blockly.Blocks['new_block'] = {
         };
 
 
-        // good things
+        // useful things
         Blockly.Cpp['define_template'] = function(block) {
             var Var = Blockly.Cpp.valueToCode(block, 'var', 1);
 
@@ -5988,37 +6001,52 @@ Blockly.Blocks['new_block'] = {
 
         //functional
         Blockly.Cpp['greater'] = function(block) {
+            if (block.getFieldValue('func') === "TRUE") 
+                return [`greater<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
             return [`greater<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
         }
 
         Blockly.Cpp['less'] = function(block) {
+            if (block.getFieldValue('func') === "TRUE") 
+                return [`less<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
             return [`less<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
         }
 
         Blockly.Cpp['equal_to'] = function(block) {
-            return [`equal_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
-        }
+            if (block.getFieldValue('func') === "TRUE") 
+                return [`equal_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
+            return [`equal_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];        }
 
         Blockly.Cpp['not_equal_to'] = function(block) {
-            return [`not_eqaul_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
+            if (block.getFieldValue('func') === "TRUE") 
+                return [`not_equal_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
+            return [`not_equal_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
         }
         
         Blockly.Cpp['greater_equal'] = function(block) {
-            return [`greater_to<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
-        }
+            if (block.getFieldValue('func') === "TRUE") 
+                return [`greater_equal<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
+            return [`greater_equal<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];        }
 
         Blockly.Cpp['less_equal'] = function(block) {
+            if (block.getFieldValue('func') === "TRUE") 
+                return [`less_equal<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
             return [`less_equal<${Blockly.Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
         }
 
-        Blockly.Cpp['data_type'] = function(block) {
-            return [`${block.getFieldValue('TYPE')}`, 1];
+        Blockly.Cpp['bind'] = function(block) {
+            var func = Blockly.Cpp.valueToCode(block, 'func', 1);
+            var param = Blockly.Cpp.valueToCode(block, 'param', 1);
+            if (func.startsWith('(') && func.endsWith(')')) {
+                func = func.slice(1, -1);
+            }
+            
+            if (param.startsWith('(') && param.endsWith(')')) {
+                param = param.slice(1, -1);
+            }
+            return [`bind(${func}, ${param})`, 1];
         }
 
-        Blockly.Cpp['struct_type'] = function(block) {
-            return [`struct ${block.getFieldValue('TYPE')}`, 1];
-        }
-
-        Blockly.Cpp['class_type'] = function(block) {
-            return [`class ${block.getFieldValue('TYPE')}`, 1];
+        Blockly.Cpp['placeholder'] = function(block){
+            return [`placeholder::_${block.getFieldValue('number')}`, 1]
         }

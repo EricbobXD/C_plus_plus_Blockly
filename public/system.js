@@ -853,7 +853,7 @@
                     {
                         "kind": "block",
                         "type": "define_namespace"
-                    },
+                    }
                 ]
             }, 
             { // sep
@@ -2508,10 +2508,6 @@
                         "colour": "#3EABF4",
                         "contents": [
                             {
-                                "kind": "label",
-                                "text": "陣列用途"
-                            },
-                            {
                                 "kind": "block",
                                 "type": "less"
                             },
@@ -2535,6 +2531,14 @@
                                 "kind": "block",
                                 "type": "less_equal"
                             },
+                            {
+                                "kind": "block",
+                                "type": "bind"
+                            },
+                            {
+                                "kind": "block",
+                                "type": "placeholder"
+                            }
                         ]
                     }
                 ]

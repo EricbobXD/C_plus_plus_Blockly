@@ -1262,7 +1262,7 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "偷懶作法",
             "helpUrl": ""
         },
-        // 好用的東西
+        // useful things
         {//define_template
             "type": "define_template",
             "message0": "template<%1>",
@@ -5971,63 +5971,126 @@ Blockly.defineBlocksWithJsonArray(
         //functional
         {
             "type": "less",
-            "message0": "陣列專用, 資料型態%1, 排序方式 a < b",
-            "args0": [{
-                "type": "input_value",
-                "name": "TYPE"
-            }],
+            "message0": "資料型態%1, 函式: %2, 排序方式 a < b",
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_checkbox",
+                    "name": "func"
+                }
+            ],
             "colour": "#3EABF4",
             "output": null
         },
         {
             "type": "greater",
-            "message0": "陣列專用, 資料型態%1, 排序方式 a < b",
-            "args0": [{
-                "type": "input_value",
-                "name": "TYPE"
-            }],
+            "message0": "資料型態%1, 函式: %2, 排序方式 a < b",
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_checkbox",
+                    "name": "func"
+                }
+            ],
             "colour": "#3EABF4",
             "output": null
         },
         {
             "type": "equal_to",
-            "message0": "陣列專用, 資料型態%1, 排序方式 a == b",
-            "args0": [{
-                "type": "input_value",
-                "name": "TYPE"
-            }],
+            "message0": "資料型態%1, 函式: %2, 排序方式 a == b",
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_checkbox",
+                    "name": "func"
+                }
+            ],
             "colour": "#3EABF4",
             "output": null
         },
         {
             "type": "not_equal_to",
-            "message0": "陣列專用, 資料型態%1, 排序方式 a != b",
-            "args0": [{
-                "type": "input_value",
-                "name": "TYPE"
-            }],
+            "message0": "資料型態%1, 函式: %2, 排序方式 a != b",
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_checkbox",
+                    "name": "func"
+                }
+            ],
             "colour": "#3EABF4",
             "output": null
         },
         {
             "type": "greater_equal",
-            "message0": "陣列專用, 資料型態%1, 排序方式 a >= b",
-            "args0": [{
-                "type": "input_value",
-                "name": "TYPE"
-            }],
+            "message0": "資料型態%1, 函式: %2, 排序方式 a >= b",
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_checkbox",
+                    "name": "func"
+                }
+            ],
             "colour": "#3EABF4",
             "output": null
         },
         {
             "type": "less_equal",
-            "message0": "陣列專用, 資料型態%1, 排序方式 a <= b",
-            "args0": [{
-                "type": "input_value",
-                "name": "TYPE"
-            }],
+            "message0": "資料型態%1, 函式: %2, 排序方式 a <= b",
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_checkbox",
+                    "name": "func"
+                }
+            ],
             "colour": "#3EABF4",
             "output": null
         },
+        {
+            "type": "bind",
+            "message0": "函式: %1, 參數%2",
+            "args0": [{
+                    "type": "input_value",
+                    "name": "func"
+                },
+                {
+                    "type": "input_value",
+                    "name": "param"
+                }
+            ],
+            "output": null,
+            "inputsInline": true,
+            "colour": "#3EABF4"
+        }, 
+        {
+            "type": "placeholder",
+            "message0": "placeholder: %1",
+            "args0": [{
+                "type": "field_input",
+                "name": "number"
+            }],
+            "output": null,
+            "inputsInline": true,
+            "colour": "#3EABF4"
+        }
     ]
 );
