@@ -651,6 +651,10 @@
                         "type": "for_block"
                     },
                     {
+                        "kind": "block",
+                        "type": "for_range_block"
+                    },
+                    {
                         "kind": "label",
                         "text": "終止工具"
                     },
@@ -759,6 +763,10 @@
                     {
                         "kind": "block",
                         "type": "get_ref"
+                    },
+                    {
+                        "kind": "block",
+                        "type": "ref_to"
                     },
                     {
                         "kind": "block",
@@ -2264,6 +2272,22 @@
                             {
                                 "kind": "block",
                                 "type": "find"
+                            }, 
+                            {
+                                "kind": "block",
+                                "type": "binary_search"
+                            },
+                            {
+                                "kind": "block",
+                                "type": "lower_bound"
+                            }, 
+                            {
+                                "kind": "block",
+                                "type": "upper_bound"
+                            }, 
+                            {
+                                "kind": "block", 
+                                "type": "reverse"
                             }
                         ]
                     },

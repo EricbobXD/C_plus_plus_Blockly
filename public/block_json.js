@@ -380,6 +380,30 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "For 迴圈",
             "helpUrl": ""
         },
+        { //for
+            "type": "for_range_block",
+            "message0": "迭代物件, 參考: %1, 迭代容器: %2",
+            "args0": [{
+                    "type": "input_value",
+                    "name": "VAR"
+                },
+                {
+                    "type": "input_value",
+                    "name": "cotainer"
+                },
+            ], 
+            "message1": "執行 %1", 
+            "args1": [{
+                "type": "input_statement",
+                "name": "DO"
+            }], 
+            "previousStatement": null,
+            "nextStatement": null,
+            "inputsInline": true,
+            "colour": "#2473c2",
+            "tooltip": "For 迴圈",
+            "helpUrl": ""
+        },
         { //while
             "type": "while_block",
             "message0": "當 %1",
@@ -1182,6 +1206,18 @@ Blockly.defineBlocksWithJsonArray(
         { //ptr to
             "type": "ptr_to",
             "message0": "* 變數 %1",
+            "args0": [{
+                    "type": "field_input",
+                    "name": "var_name",
+                }],
+            "colour": "#DABD00",
+            "output": null,
+            "tooltip": "*變數",
+            "helpUrl": ""
+        },
+        { //ref to
+            "type": "ref_to",
+            "message0": "& 變數 %1",
             "args0": [{
                     "type": "field_input",
                     "name": "var_name",
@@ -4950,6 +4986,127 @@ Blockly.defineBlocksWithJsonArray(
             "previousStatement": null,
             "nextStatement": null,
             "tooltip": "在陣列中尋找元素"
+        },
+        { //algorithm binary search
+            "type": "binary_search",
+            "message0": "%1 陣列 %2 用2分搜尋找 %3 範圍(頭: %4, 尾: %5)",
+            "args0": [{
+                    "type": "field_dropdown",
+                    "name": "TYPE",
+                    "options": [
+                        ["內建陣列", "內建陣列"],
+                        ["模組陣列", "模組陣列"]
+                    ]
+                },
+                {
+                    "type": "field_input",
+                    "name": "name"
+                },
+                {
+                    "type": "input_value",
+                    "name": "value"
+                },
+                {
+                    "type": "input_value",
+                    "name": "start"
+                },
+                {
+                    "type": "input_value",
+                    "name": "end"
+                }
+            ],
+            "colour": "#226ea1",
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "在陣列中用二分搜尋找元素"
+        },
+        { //algorithm lower_bound
+            "type": "lower_bound",
+            "message0": "%1 陣列 %2 尋找第一個 ≥ %3 範圍(頭: %4, 尾: %5)",
+            "args0": [{
+                    "type": "field_dropdown",
+                    "name": "TYPE",
+                    "options": [
+                        ["內建陣列", "內建陣列"],
+                        ["模組陣列", "模組陣列"]
+                    ]
+                },
+                {
+                    "type": "field_input",
+                    "name": "name"
+                },
+                {
+                    "type": "input_value",
+                    "name": "value"
+                },
+                {
+                    "type": "input_value",
+                    "name": "start"
+                },
+                {
+                    "type": "input_value",
+                    "name": "end"
+                }
+            ],
+            "colour": "#226ea1",
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "在陣列中尋找元素第一個 ≥ x 的數"
+        },
+        { //algorithm upper_bound
+            "type": "upper_bound",
+            "message0": "%1 陣列 %2 尋找第一個 > %3 範圍(頭: %4, 尾: %5)",
+            "args0": [{
+                    "type": "field_dropdown",
+                    "name": "TYPE",
+                    "options": [
+                        ["內建陣列", "內建陣列"],
+                        ["模組陣列", "模組陣列"]
+                    ]
+                },
+                {
+                    "type": "field_input",
+                    "name": "name"
+                },
+                {
+                    "type": "input_value",
+                    "name": "value"
+                },
+                {
+                    "type": "input_value",
+                    "name": "start"
+                },
+                {
+                    "type": "input_value",
+                    "name": "end"
+                }
+            ],
+            "colour": "#226ea1",
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "在陣列中尋找元素第一個 > x 的數"
+        },
+        { //algorithm reverse
+            "type": "reverse",
+            "message0": "翻轉%1 變數: %2",
+            "args0": [{
+                    "type": "field_dropdown",
+                    "name": "TYPE",
+                    "options": [
+                        ["字串", "字串"],
+                        ["內建陣列", "內建陣列"],
+                        ["模組陣列", "模組陣列"]
+                    ]
+                },
+                {
+                    "type": "field_input", 
+                    "name": "name"
+                }
+            ], 
+            "colour": "#226ea1",
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "翻轉"
         },
         // iomanip
         { // setbase 

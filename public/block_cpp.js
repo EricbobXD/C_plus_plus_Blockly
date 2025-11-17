@@ -3255,6 +3255,18 @@ Blockly.Blocks['new_block'] = {
             return `for (${init}; ${condition}; ${var_cal}){\n${statements_body}}\n`;
         };
 
+        Blockly.Cpp['for_range_block'] = function(block) {
+            var VAR = Blockly.Cpp.valueToCode(block, 'VAR', Blockly.Cpp.ORDER_ATOMIC) || '';
+            var container = Blockly.Cpp.valueToCode(block, 'container', Blockly.Cpp.ORDER_ATOMIC) || '';
+            var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
+
+            VAR = VAR.replace(/^\(?|\)?$/g, '');
+            container = container.replace(/^\(?|\)?$/g, '');
+            statements_body = statements_body.replace(/^ {2}/gm, '    ');
+
+            return `for (auto ${VAR}: ${container}) {\n ${statements_body}}\n`;
+        };
+
         Blockly.Cpp['if_else'] = function(block) {
             var condition = Blockly.Cpp.valueToCode(block, 'CONDITION', 1);
             var r1 = Blockly.Cpp.valueToCode(block, 'r1', 1);
@@ -3671,6 +3683,11 @@ Blockly.Blocks['new_block'] = {
         Blockly.Cpp['ptr_to'] = function(block) {
             var var_name = block.getFieldValue('var_name');
             return [`*${var_name}`, 1];
+        };
+
+        Blockly.Cpp['ref_to'] = function(block) {
+            var var_name = block.getFieldValue('var_name');
+            return [`&${var_name}`, 1];
         };
 
         Blockly.Cpp['delete_block'] = function(block){
@@ -5431,6 +5448,102 @@ Blockly.Blocks['new_block'] = {
             }
         }
 
+        Blockly.Cpp['binary_searchd'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var name = block.getFieldValue('name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
+            var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
+            if (start.startsWith('(') && start.endsWith(')')) {
+                start = start.slice(1, -1);
+            }
+            if (end.startsWith('(') && end.endsWith(')')) {
+                end = end.slice(1, -1);
+            }
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+
+            if (start === '0') {
+                start = '';
+            } else {
+                start = '+' + start;
+            }
+
+            if (type === "內建陣列") {
+                return `binary_search(${name}${start}, ${name}+${end}, ${value})\n`;
+            } else {
+                return `binary_search(${name}.begin()${start}, ${name}.begin()+${end}, ${value})\n`;
+            }
+        }
+
+        Blockly.Cpp['lower_bound'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var name = block.getFieldValue('name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
+            var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
+            if (start.startsWith('(') && start.endsWith(')')) {
+                start = start.slice(1, -1);
+            }
+            if (end.startsWith('(') && end.endsWith(')')) {
+                end = end.slice(1, -1);
+            }
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+
+            if (start === '0') {
+                start = '';
+            } else {
+                start = '+' + start;
+            }
+
+            if (type === "內建陣列") {
+                return `lower_bound(${name}${start}, ${name}+${end}, ${value})\n`;
+            } else {
+                return `lower_bound(${name}.begin()${start}, ${name}.begin()+${end}, ${value})\n`;
+            }
+        }
+
+        Blockly.Cpp['upper_bound'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var name = block.getFieldValue('name');
+            var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
+            var start = Blockly.Cpp.valueToCode(block, 'start', 1) || '';
+            var end = Blockly.Cpp.valueToCode(block, 'end', 1) || '';
+            if (start.startsWith('(') && start.endsWith(')')) {
+                start = start.slice(1, -1);
+            }
+            if (end.startsWith('(') && end.endsWith(')')) {
+                end = end.slice(1, -1);
+            }
+            if (value.startsWith('(') && value.endsWith(')')) {
+                value = value.slice(1, -1);
+            }
+
+            if (start === '0') {
+                start = '';
+            } else {
+                start = '+' + start;
+            }
+
+            if (type === "內建陣列") {
+                return `upper_bound(${name}${start}, ${name}+${end}, ${value})\n`;
+            } else {
+                return `upper_bound(${name}.begin()${start}, ${name}.begin()+${end}, ${value})\n`;
+            }
+        }
+
+        Blockly.Cpp['reverse'] = function(block) {
+            var type = block.getFieldValue('TYPE');
+            var name = block.getFieldValue('name');
+            if (type === "內建陣列") {
+                return `reverse(${name}, ${name} + ${name}.size())\n`;
+            } else {
+                return `reverse(${name}.begin(), ${name}.end())\n`;
+            }
+        }
         // time
         Blockly.Cpp['get_current_timestamp'] = function(block) {
             return 'time_t currentTime = time(nullptr);\n';
