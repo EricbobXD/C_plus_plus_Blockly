@@ -696,94 +696,11 @@
                 "name": "變數/指標/位置",
                 "colour": "#C9A200",
                 "contents": [
-                    { // variable
-                        "kind": "label",
-                        "text": "變數(variable)"
-                    },
                     {
-                        "kind": "block",
-                        "type": "define_variable"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "def_var"
-                    },                        
-                    {
-                        "kind": "block",
-                        "type": "var_equal"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "get_var"
-                    },
-                    { // pointer
-                        "kind": "label",
-                        "text": "指標(pointer)"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "define_pointer"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "def_ptr"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "ptr_equal"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "get_ptr"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "ptr_of"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "ptr_to"
-                    },
-                    { // reference
-                        "kind": "label",
-                        "text": "位置(reference)"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "define_reference"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "def_ref"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "ref_equal"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "get_ref"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "ref_to"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "nullptr"
-                    },
-                    { //dynamic random-access memory
-                        "kind": "label",
-                        "text": "動態記憶體"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "new_block"
-                    },
-                    {
-                        "kind": "block",
-                        "type": "delete_block"
-                    },
+                        "kind": "button", 
+                        "text": "新增變數",
+                        "callbackKey": "var_category"
+                    }
                 ]
             },
             { // 函式/結構/類別
@@ -2578,7 +2495,7 @@
             }
         ]
     };
-            
+        
         var workspace = Blockly.inject('blockly-workspace', {
             toolbox: toolbox,
             scrollbars: true,
@@ -2599,9 +2516,10 @@
             },
             renderer: 'zelos'
         });
+        
         Blockly.svgResize(workspace);
         workspace.zoomToFit();
-        
+
         setTimeout(() => {
             workspace.setScale(0.68);
             const metrics = workspace.getMetrics();
@@ -2631,6 +2549,11 @@
 
         Blockly.Cpp = new Blockly.Generator('Cpp');
         Blockly.Cpp.ORDER_ATOMIC = 1;
+        
+        Blockly.Cpp.nameDB_ = new Blockly.Names(Blockly.Generator.prototype.RESERVED_WORDS_);
+        Blockly.Cpp.nameDB_.setVariableMap(workspace.getVariableMap());
+        Blockly.Cpp.init(workspace);
+
         const originalBlockToCode = Blockly.Cpp.blockToCode;
         Blockly.Cpp.blockToCode = function(block) {
             if (!block) {
@@ -2905,4 +2828,37 @@
             return name
                 .replace(/_/g, ' ')
                 .replace(/\b\w/g, char => char.toUpperCase());
+        }
+
+        workspace.registerButtonCallback('var_category', Var_button);
+
+        function Var_button(){
+            const name = prompt("輸入變數名稱: ");
+            if (!name) return;
+
+            Blockly.Blocks[`get_${name}`] = {
+                init: function() {
+                    this.appendDummyInput()
+                        .appendField("變數")
+                        .appendField(new Blockly.FieldVariable(name), 'VAR');
+                    this.setOutput(true, null);
+                    this.setColour('#DABD00');
+                    this.setTooltip('定義 struct 類型');
+                    this.setHelpUrl('');
+                }
+            }
+
+            Blockly.Cpp[`get_${name}`] = function(block){
+                var VAR = Blockly.Cpp.nameDB_.getName(block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+                return [VAR, Blockly.Cpp.ORDER_ATOMIC];
+            }
+
+            const category = toolbox.contents.find(cat => cat.name === '變數/指標/位置');
+            if (category){
+                category.contents.push({kind: "block", type: `get_${name}`});
+            }
+
+            const newToolbox = JSON.parse(JSON.stringify(toolbox));
+            console.log(toolbox.contents.find(c => c.name === '變數/指標/位置').contents);
+            workspace.updateToolbox(newToolbox);
         }

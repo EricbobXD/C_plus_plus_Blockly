@@ -3530,8 +3530,8 @@ Blockly.Blocks['new_block'] = {
             var Const_ptr = block.getFieldValue('const_ptr');
             var Const_var = block.getFieldValue('const_var');
             var unsigned = block.getFieldValue('unsigned');
-            var type = Blockly.Cpp.valueToCode(block, 'TYPE', 1) || 'int';
-            var var_name = block.getFieldValue('var_name');
+            var type = Blockly.Cpp.valueToCode(block, 'type', 1) || 'int';
+            var var_name = Blockly.Cpp.nameDB_.getName(block.getFieldValue('var_name'), Blockly.VARIABLE_CATEGORY_NAME);
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
             code = '';
             if (Const_ptr === 'const_ptr') {
@@ -6159,7 +6159,6 @@ Blockly.Blocks['new_block'] = {
             }
             return [`bind(${func}, ${param})`, 1];
         }
-
         Blockly.Cpp['placeholder'] = function(block){
             return [`placeholder::_${block.getFieldValue('number')}`, 1]
         }

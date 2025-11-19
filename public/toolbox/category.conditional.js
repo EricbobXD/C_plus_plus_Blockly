@@ -1,7 +1,6 @@
 // category.conditional.js
 // === 分類：條件 (Conditional) ===
 
-// 定義方塊：if_block (多分支 if-elif-else)
 Blockly.Blocks['if_block'] = {
   init: function() {
     this.setPreviousStatement(true);
@@ -111,7 +110,6 @@ Blockly.Blocks['if_block'] = {
   }
 };
 
-// 定義方塊：if_else (三元運算)
 Blockly.Blocks['if_else'] = {
   init: function() {
     this.appendValueInput('CONDITION')
@@ -129,12 +127,10 @@ Blockly.Blocks['if_else'] = {
   }
 };
 
-// 定義方塊：if_mutator、elif_mutator、else_mutator
 Blockly.Blocks['if_mutator'] = { init: function() { this.setColour('#00abea'); this.appendDummyInput().appendField('如果'); this.setNextStatement(true);} };
 Blockly.Blocks['elif_mutator'] = { init: function() { this.setColour('#00abea'); this.appendDummyInput().appendField('否則如果'); this.setPreviousStatement(true); this.setNextStatement(true); this.valueConnection_ = null; this.statementConnection_ = null;} };
 Blockly.Blocks['else_mutator'] = { init: function() { this.setColour('#00abea'); this.appendDummyInput().appendField('否則'); this.setPreviousStatement(true);} };
 
-// C++ 生成器：if_block
 Blockly.Cpp['if_block'] = function(block) {
   const cond = Blockly.Cpp.valueToCode(block, 'IF_VALUE', Blockly.Cpp.ORDER_ATOMIC) || 'false';
   let code = 'if (' + cond + ') {\n' + Blockly.Cpp.statementToCode(block, 'IF_DO');
@@ -147,7 +143,17 @@ Blockly.Cpp['if_block'] = function(block) {
   return code;
 };
 
-// 定義方塊：switch_block (多 case)
+Blockly.Cpp['if_else'] = function(block) {
+  var cond = Blockly.Cpp.valueToCode(block, 'CONDITION', Blockly.Cpp.ORDER_ATOMIC) || 'false';
+  var r1 = Blockly.Cpp.valueToCode(block, 'r1', Blockly.Cpp.ORDER_ATOMIC) || '';
+  var r2 = Blockly.Cpp.valueToCode(block, 'r2', Blockly.Cpp.ORDER_ATOMIC) || '';
+  cond = cond.replace(/^\(?|\)?$/g, '');
+  r1 = r1.replace(/^\(?|\)?$/g, '');
+  r2 = r2.replace(/^\(?|\)?$/g, '');
+  return [cond + '?' + r1 + ':' + r2, Blockly.Cpp.ORDER_ATOMIC];
+};
+
+
 Blockly.Blocks['switch_block'] = {
   init: function() {
     this.setPreviousStatement(true);
@@ -229,7 +235,6 @@ Blockly.Blocks['switch_block'] = {
 Blockly.Blocks['switch_mutator'] = { init: function() { this.appendDummyInput().appendField('切換狀況數量').appendField(new Blockly.FieldNumber(0,0,Infinity,1), 'CASE_COUNT'); this.setNextStatement(true); this.setColour('#00abea'); } };
 Blockly.Blocks['case_mutator'] = { init: function() { this.appendDummyInput().appendField('狀況'); this.setPreviousStatement(true); this.setNextStatement(true); this.valueConnection_ = null; this.statementConnection_ = null; this.setColour('#00abea'); } };
 
-// C++ 生成器：switch_block
 Blockly.Cpp['switch_block'] = function(block) {
   let val = Blockly.Cpp.valueToCode(block, 'SWITCH_VALUE', Blockly.Cpp.ORDER_ATOMIC) || '()';
   let code = 'switch (' + val + ') {\n';
@@ -245,15 +250,4 @@ Blockly.Cpp['switch_block'] = function(block) {
   if (block.getFieldValue('CHECKBOX-1') === 'TRUE') code += '    break;\n';
   code += '}\n';
   return code;
-};
-
-// C++ 生成器：if_else (三元運算)
-Blockly.Cpp['if_else'] = function(block) {
-  var cond = Blockly.Cpp.valueToCode(block, 'CONDITION', Blockly.Cpp.ORDER_ATOMIC) || 'false';
-  var r1 = Blockly.Cpp.valueToCode(block, 'r1', Blockly.Cpp.ORDER_ATOMIC) || '';
-  var r2 = Blockly.Cpp.valueToCode(block, 'r2', Blockly.Cpp.ORDER_ATOMIC) || '';
-  cond = cond.replace(/^\(?|\)?$/g, '');
-  r1 = r1.replace(/^\(?|\)?$/g, '');
-  r2 = r2.replace(/^\(?|\)?$/g, '');
-  return [cond + '?' + r1 + ':' + r2, Blockly.Cpp.ORDER_ATOMIC];
 };

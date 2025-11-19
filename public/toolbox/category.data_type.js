@@ -1,7 +1,6 @@
 // category.data_type.js
 // === 分類：資料型態 (Data Types) ===
 
-// 定義方塊：data_type
 Blockly.Blocks['data_type'] = {
   init: function() {
     this.appendDummyInput()
@@ -21,7 +20,11 @@ Blockly.Blocks['data_type'] = {
   }
 };
 
-// 定義方塊：struct_type
+Blockly.Cpp['data_type'] = function(block) {
+  var type = block.getFieldValue('TYPE');
+  return [type, Blockly.Cpp.ORDER_ATOMIC];
+};
+
 Blockly.Blocks['struct_type'] = {
   init: function() {
     this.appendDummyInput()
@@ -34,7 +37,11 @@ Blockly.Blocks['struct_type'] = {
   }
 };
 
-// 定義方塊：class_type
+Blockly.Cpp['struct_type'] = function(block) {
+  var name = block.getFieldValue('TYPE');
+  return ['struct ' + name, Blockly.Cpp.ORDER_ATOMIC];
+};
+
 Blockly.Blocks['class_type'] = {
   init: function() {
     this.appendDummyInput()
@@ -47,19 +54,6 @@ Blockly.Blocks['class_type'] = {
   }
 };
 
-// C++ 語法生成器：data_type
-Blockly.Cpp['data_type'] = function(block) {
-  var type = block.getFieldValue('TYPE');
-  return [type, Blockly.Cpp.ORDER_ATOMIC];
-};
-
-// C++ 語法生成器：struct_type
-Blockly.Cpp['struct_type'] = function(block) {
-  var name = block.getFieldValue('TYPE');
-  return ['struct ' + name, Blockly.Cpp.ORDER_ATOMIC];
-};
-
-// C++ 語法生成器：class_type
 Blockly.Cpp['class_type'] = function(block) {
   var name = block.getFieldValue('TYPE');
   return ['class ' + name, Blockly.Cpp.ORDER_ATOMIC];

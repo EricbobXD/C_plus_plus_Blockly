@@ -984,7 +984,7 @@ Blockly.defineBlocksWithJsonArray(
                     ]
                 },
                 {
-                    "type": "field_input",
+                    "type": "field_variable",
                     "name": "var_name"
                 },
                 {
