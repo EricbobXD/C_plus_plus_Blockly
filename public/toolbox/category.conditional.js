@@ -1,6 +1,3 @@
-// category.conditional.js
-// === 分類：條件 (Conditional) ===
-
 Blockly.Blocks['if_block'] = {
   init: function() {
     this.setPreviousStatement(true);

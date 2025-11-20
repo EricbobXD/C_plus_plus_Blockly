@@ -1,7 +1,3 @@
-// category.operation.js
-// === 分類：運算 (Operation) ===
-
-// 定義方塊：logic_operators
 Blockly.Blocks['logic_operators'] = {
   init: function() {
     this.appendValueInput('A');
@@ -23,7 +19,15 @@ Blockly.Blocks['logic_operators'] = {
   }
 };
 
-// 定義方塊：or_and_xor
+Blockly.Cpp['logic_operators'] = function(block) {
+  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  const op = block.getFieldValue('OPERATOR');
+  const map = { EQUAL:'==', NOT_EQUAL:'!=', GREATER:'>', LESS:'<', GREATER_EQUAL:'>=', LESS_EQUAL:'<=' };
+  a = a.replace(/^\(?|\)?$/g, ''); b = b.replace(/^\(?|\)?$/g, '');
+  return [a + ' ' + (map[op] || '==') + ' ' + b, Blockly.Cpp.ORDER_ATOMIC];
+};
+
 Blockly.Blocks['or_and_xor'] = {
   init: function() {
     this.appendValueInput('A');
@@ -42,7 +46,15 @@ Blockly.Blocks['or_and_xor'] = {
   }
 };
 
-// 定義方塊：true
+Blockly.Cpp['or_and_xor'] = function(block) {
+  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  const op = block.getFieldValue('OPERATOR');
+  const map = { AND:'&&', OR:'||', XOR:'^' };
+  a = a.replace(/^\(?|\)?$/g, ''); b = b.replace(/^\(?|\)?$/g, '');
+  return [a + ' ' + (map[op] || '&&') + ' ' + b, Blockly.Cpp.ORDER_ATOMIC];
+};
+
 Blockly.Blocks['true'] = {
   init: function() {
     this.appendDummyInput().appendField('True');
@@ -52,8 +64,8 @@ Blockly.Blocks['true'] = {
     this.setHelpUrl('');
   }
 };
+Blockly.Cpp['true'] = () => ['true', Blockly.Cpp.ORDER_ATOMIC];
 
-// 定義方塊：false
 Blockly.Blocks['false'] = {
   init: function() {
     this.appendDummyInput().appendField('False');
@@ -64,7 +76,8 @@ Blockly.Blocks['false'] = {
   }
 };
 
-// 定義方塊：logic_not
+Blockly.Cpp['false'] = () => ['false', Blockly.Cpp.ORDER_ATOMIC];
+
 Blockly.Blocks['logic_not'] = {
   init: function() {
     this.appendValueInput('A').appendField('否');
@@ -75,7 +88,8 @@ Blockly.Blocks['logic_not'] = {
   }
 };
 
-// 定義方塊：number
+Blockly.Cpp['logic_not'] = block => ['!' + Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, ''), Blockly.Cpp.ORDER_ATOMIC];
+
 Blockly.Blocks['number'] = {
   init: function() {
     this.appendDummyInput()
@@ -88,7 +102,8 @@ Blockly.Blocks['number'] = {
   }
 };
 
-// 定義方塊：abs_block
+Blockly.Cpp['number'] = block => [block.getFieldValue('NUMBER').toString(), Blockly.Cpp.ORDER_ATOMIC];
+
 Blockly.Blocks['abs_block'] = {
   init: function() {
     this.appendValueInput('value').appendField('絕對值:');
@@ -99,7 +114,8 @@ Blockly.Blocks['abs_block'] = {
   }
 };
 
-// 定義方塊：var_calculate
+Blockly.Cpp['abs_block'] = block => ['abs(' + Blockly.Cpp.valueToCode(block, 'value', Blockly.Cpp.ORDER_ATOMIC) + ')', Blockly.Cpp.ORDER_ATOMIC];
+
 Blockly.Blocks['var_calculate'] = {
   init: function() {
     this.appendValueInput('A');
@@ -120,7 +136,16 @@ Blockly.Blocks['var_calculate'] = {
   }
 };
 
-// 定義方塊：math_calculate
+Blockly.Cpp['var_calculate'] = function(block) {
+  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  const op = block.getFieldValue('OPERATOR');
+  const map = { ADD_EQUALS:'+=', SUBTRACT_EQUALS:'-=', MUTIPLY_EQUALS:'*=', DEVIDE_EQUALS:'/=', MODULO_EQUALS:'%=' };
+  a = a.replace(/^\(?|\)?$/g, ''); b = b.replace(/^\(?|\)?$/g, '');
+  return [a + ' ' + (map[op] || '+=') + ' ' + b, Blockly.Cpp.ORDER_ATOMIC];
+};
+
+// math 
 Blockly.Blocks['math_calculate'] = {
   init: function() {
     this.appendValueInput('A');
@@ -143,7 +168,15 @@ Blockly.Blocks['math_calculate'] = {
   }
 };
 
-// Mutator: math_generic
+Blockly.Cpp['math_calculate'] = block => {
+  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
+  const op = block.getFieldValue('OPERATOR');
+  const map = { ADD:'+', SUBTRACT:'-', MUTIPLY:'*', DEVIDE:'/', DEVIDE_INT:'//', MODULO:'%', POWER:'^' };
+  if(op==='POWER') return ['pow(' + a + ', ' + b + ')', Blockly.Cpp.ORDER_ATOMIC];
+  return ['(' + a + ' ' + (map[op]||'+') + ' ' + b + ')', Blockly.Cpp.ORDER_ATOMIC];
+};
+
 Blockly.Blocks['math_generic'] = {
   init: function() {
     this.setColour('#277ace');
@@ -266,45 +299,6 @@ defineBitwiseOperatorBlock('bitwise_left', ' << ');
 defineBitwiseOperatorBlock('bitwise_right', ' >> ');
 defineBitwiseOperatorBlock('bitwise_not', ' ~ ');
 
-// C++ 生成器
-Blockly.Cpp['logic_operators'] = function(block) {
-  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  const op = block.getFieldValue('OPERATOR');
-  const map = { EQUAL:'==', NOT_EQUAL:'!=', GREATER:'>', LESS:'<', GREATER_EQUAL:'>=', LESS_EQUAL:'<=' };
-  a = a.replace(/^\(?|\)?$/g, ''); b = b.replace(/^\(?|\)?$/g, '');
-  return [a + ' ' + (map[op] || '==') + ' ' + b, Blockly.Cpp.ORDER_ATOMIC];
-};
-Blockly.Cpp['or_and_xor'] = function(block) {
-  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  const op = block.getFieldValue('OPERATOR');
-  const map = { AND:'&&', OR:'||', XOR:'^' };
-  a = a.replace(/^\(?|\)?$/g, ''); b = b.replace(/^\(?|\)?$/g, '');
-  return [a + ' ' + (map[op] || '&&') + ' ' + b, Blockly.Cpp.ORDER_ATOMIC];
-};
-Blockly.Cpp['var_calculate'] = function(block) {
-  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  const op = block.getFieldValue('OPERATOR');
-  const map = { ADD_EQUALS:'+=', SUBTRACT_EQUALS:'-=', MUTIPLY_EQUALS:'*=', DEVIDE_EQUALS:'/=', MODULO_EQUALS:'%=' };
-  a = a.replace(/^\(?|\)?$/g, ''); b = b.replace(/^\(?|\)?$/g, '');
-  return [a + ' ' + (map[op] || '+=') + ' ' + b, Blockly.Cpp.ORDER_ATOMIC];
-};
-Blockly.Cpp['true'] = () => ['true', Blockly.Cpp.ORDER_ATOMIC];
-Blockly.Cpp['false'] = () => ['false', Blockly.Cpp.ORDER_ATOMIC];
-Blockly.Cpp['logic_not'] = block => ['!' + Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, ''), Blockly.Cpp.ORDER_ATOMIC];
-Blockly.Cpp['number'] = block => [block.getFieldValue('NUMBER').toString(), Blockly.Cpp.ORDER_ATOMIC];
-Blockly.Cpp['abs_block'] = block => ['abs(' + Blockly.Cpp.valueToCode(block, 'value', Blockly.Cpp.ORDER_ATOMIC) + ')', Blockly.Cpp.ORDER_ATOMIC];
-Blockly.Cpp['math_calculate'] = block => {
-  let a = Blockly.Cpp.valueToCode(block, 'A', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  let b = Blockly.Cpp.valueToCode(block, 'B', Blockly.Cpp.ORDER_ATOMIC) || '0';
-  const op = block.getFieldValue('OPERATOR');
-  const map = { ADD:'+', SUBTRACT:'-', MUTIPLY:'*', DEVIDE:'/', DEVIDE_INT:'//', MODULO:'%', POWER:'^' };
-  if(op==='POWER') return ['pow(' + a + ', ' + b + ')', Blockly.Cpp.ORDER_ATOMIC];
-  return ['(' + a + ' ' + (map[op]||'+') + ' ' + b + ')', Blockly.Cpp.ORDER_ATOMIC];
-};
-// math_generic and bitwise generic reuse math_generateCode/bitwise_generateCode
 ['math_plus','math_subtract','math_multiply','math_divide','math_percent','math_power'].forEach(type => {
   Blockly.Cpp[type] = block => math_generateCode(block, type.replace('math_',' ').trim());
 });

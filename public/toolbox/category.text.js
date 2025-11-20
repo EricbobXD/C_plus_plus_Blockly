@@ -1,7 +1,4 @@
-// category.text.js
-// === 分類：文本 (Text) ===
-
-// 定義方塊：string
+// string
 Blockly.Blocks['string'] = {
   init: function() {
     this.appendDummyInput()
@@ -14,7 +11,12 @@ Blockly.Blocks['string'] = {
   }
 };
 
-// 定義方塊：char
+Blockly.Cpp['string'] = function(block) {
+  var text = block.getFieldValue('TEXT') || '';
+  return ['"' + text + '"', Blockly.Cpp.ORDER_ATOMIC];
+};
+
+// char
 Blockly.Blocks['char'] = {
   init: function() {
     this.appendDummyInput()
@@ -27,7 +29,11 @@ Blockly.Blocks['char'] = {
   }
 };
 
-// 定義方塊：add_line
+Blockly.Cpp['char'] = function(block) {
+  var text = block.getFieldValue('TEXT') || '';
+  return ['\'' + text + '\'', Blockly.Cpp.ORDER_ATOMIC];
+};
+
 Blockly.Blocks['add_line'] = {
   init: function() {
     this.appendDummyInput()
@@ -38,6 +44,10 @@ Blockly.Blocks['add_line'] = {
     this.setTooltip('換行符\n');
     this.setHelpUrl('');
   }
+};
+
+Blockly.Cpp['add_line'] = function(block) {
+  return '\n';
 };
 
 // 定義方塊：string_generic
@@ -139,54 +149,23 @@ function defineStringOperatorBlock(type, operatorSymbol) {
     });
 }
 
-//string
 defineStringOperatorBlock('string_plus', '+');
 defineStringOperatorBlock('string_commas', ',');
 defineStringOperatorBlock('string_cin', '>>');
 defineStringOperatorBlock('string_cout', '<<');
 
-Blockly.Cpp = Blockly.Cpp || {};
-
-// C++ 語法生成器：add_line
-Blockly.Cpp['add_line'] = function(block) {
-  // 產生換行符號
-  return '\n';
-};
-
-// C++ 語法生成器：string
-Blockly.Cpp['string'] = function(block) {
-  var text = block.getFieldValue('TEXT') || '';
-  return ['"' + text + '"', Blockly.Cpp.ORDER_ATOMIC];
-};
-
-// C++ 語法生成器：char
-Blockly.Cpp['char'] = function(block) {
-  var text = block.getFieldValue('TEXT') || '';
-  return ['\'' + text + '\'', Blockly.Cpp.ORDER_ATOMIC];
-};
-
-// C++ 語法生成器：comment_block
-Blockly.Cpp['comment_block'] = function(block) {
-  var comment = block.getFieldValue('COMMENT') || '';
-  return '// ' + comment + '\n';
-};
-
-// C++ 語法生成器：string_plus
 Blockly.Cpp['string_plus'] = function(block) {
     return string_generateCode(block, ' + ');
 };
 
-// C++ 語法生成器：string_commas
 Blockly.Cpp['string_commas'] = function(block) {
     return string_generateCode(block, ' , ');
 };
 
-// C++ 語法生成器：string_cout
 Blockly.Cpp['string_cout'] = function(block) {
     return string_generateCode(block, ' << ');
 };
 
-// C++ 語法生成器：string_cin
 Blockly.Cpp['string_cin'] = function(block) {
     return string_generateCode(block, ' >> ');
 };
@@ -208,3 +187,20 @@ function string_generateCode(block, operator) {
 
     return [`${code}`, Blockly.Cpp.ORDER_ATOMIC];
 }
+
+Blockly.Blocks['comment_block'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField('註解')
+            .appendField(new Blockly.FieldTextInput('comment'), 'COMMENT');
+        this.setOutput(true, 'String');
+        this.setColour('#FF8C00');
+        this.setTooltip('註解');
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Cpp['comment_block'] = function(block) {
+  var comment = block.getFieldValue('COMMENT') || '';
+  return '// ' + comment + '\n';
+};

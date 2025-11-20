@@ -1,6 +1,3 @@
-// category.data_type.js
-// === 分類：資料型態 (Data Types) ===
-
 Blockly.Blocks['data_type'] = {
   init: function() {
     this.appendDummyInput()

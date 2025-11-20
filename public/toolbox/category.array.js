@@ -1,6 +1,3 @@
-// category.array.js
-// === 分類：陣列 (Array) ===
-
 Blockly.Blocks['define_array'] = {
   init: function() {
     this.appendValueInput('TYPE')

@@ -1,5 +1,4 @@
-// 📁 category.var_ptr_ref_memory.js
-
+// variable
 Blockly.Blocks['define_variable'] = {
     init: function() {
         this.jsonInit({

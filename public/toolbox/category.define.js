@@ -1,7 +1,3 @@
-// category.define.js
-// === 分類：定義 (Define) ===
-
-// 定義方塊：define_block\
 Blockly.Blocks['define_block'] = {
   init: function() {
     this.appendDummyInput()
@@ -17,7 +13,13 @@ Blockly.Blocks['define_block'] = {
   }
 };
 
-// 定義方塊：typedef_block
+
+Blockly.Cpp['define_block'] = function(block) {
+  var name = block.getFieldValue('name');
+  var func_name = block.getFieldValue('func_name');
+  return '#define ' + name + ' ' + func_name + '\n';
+};
+
 Blockly.Blocks['typedef_block'] = {
   init: function() {
     this.appendDummyInput()
@@ -33,14 +35,6 @@ Blockly.Blocks['typedef_block'] = {
   }
 };
 
-// C++ 語法生成器：define_block
-Blockly.Cpp['define_block'] = function(block) {
-  var name = block.getFieldValue('name');
-  var func_name = block.getFieldValue('func_name');
-  return '#define ' + name + ' ' + func_name + '\n';
-};
-
-// C++ 語法生成器：typedef_block
 Blockly.Cpp['typedef_block'] = function(block) {
   var type_name = block.getFieldValue('type_name');
   var name = block.getFieldValue('name');
