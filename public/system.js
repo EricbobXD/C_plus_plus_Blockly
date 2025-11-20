@@ -2549,7 +2549,7 @@
 
         Blockly.Cpp = new Blockly.Generator('Cpp');
         Blockly.Cpp.ORDER_ATOMIC = 1;
-        
+
         Blockly.Cpp.nameDB_ = new Blockly.Names(Blockly.Generator.prototype.RESERVED_WORDS_);
         Blockly.Cpp.nameDB_.setVariableMap(workspace.getVariableMap());
         Blockly.Cpp.init(workspace);
@@ -2833,23 +2833,36 @@
         workspace.registerButtonCallback('var_category', Var_button);
 
         function Var_button(){
-            const name = prompt("輸入變數名稱: ");
+            document.getElementById("model").style.display = "block";
+        }
+
+        const data_type = {"var": "變數", "ptr": "指標", "ref": "參考"};
+        const type_output = [];
+        function confirmVar(){
+            const name = document.getElementById("varName").value;
+            const type = document.querySelector('input[name="vartype"]:checked').value;
             if (!name) return;
+            document.getElementById("model").style.display = "none";
+
+            if (type_output.includes(type)){ return; }
+            type_output.push(type);
 
             Blockly.Blocks[`get_${name}`] = {
                 init: function() {
                     this.appendDummyInput()
-                        .appendField("變數")
+                        .appendField(data_type[type])
                         .appendField(new Blockly.FieldVariable(name), 'VAR');
                     this.setOutput(true, null);
                     this.setColour('#DABD00');
-                    this.setTooltip('定義 struct 類型');
+                    this.setTooltip(`定義 ${data_type[type]} 類型`);
                     this.setHelpUrl('');
                 }
             }
 
             Blockly.Cpp[`get_${name}`] = function(block){
                 var VAR = Blockly.Cpp.nameDB_.getName(block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+                if (type === "ptr") {VAR = '*' + VAR;}
+                else if (type === "ref") {VAR = '&' + VAR;}
                 return [VAR, Blockly.Cpp.ORDER_ATOMIC];
             }
 
@@ -2859,6 +2872,9 @@
             }
 
             const newToolbox = JSON.parse(JSON.stringify(toolbox));
-            console.log(toolbox.contents.find(c => c.name === '變數/指標/位置').contents);
             workspace.updateToolbox(newToolbox);
+        }
+
+        function cancelVar(){
+            document.getElementById("model").style.display = "none";
         }

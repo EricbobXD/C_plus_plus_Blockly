@@ -129,6 +129,20 @@
         &copy; 2024 Bosen &amp; EricbobXD. All Rights Reserved.
     </footer>
     
+    <div id="model">
+
+        <label>輸入變數名稱: </label><br>
+        <input type="text" id="varName"><br><br>
+
+        <label>選擇類型：</label><br>
+        <input type="radio" name="vartype" value="var" checked> 變數<br>
+        <input type="radio" name="vartype" value="ptr"> 指標<br>
+        <input type="radio" name="vartype" value="ref"> 參考<br><br>
+
+        <button onclick="confirmVar()">確定</button>
+        <button onclick="cancelVar()">取消</button>
+    </div>
+
     <script src="public/system.js" defer></script>
     <script src="public/block_cpp.js" defer></script>
     <script src="public/block_json.js" defer></script>
