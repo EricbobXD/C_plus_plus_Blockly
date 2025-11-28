@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon">
     <!-- Blockly -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.2.1/blockly.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.2.1/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
     <!-- Markdown & Highlight -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
@@ -135,17 +136,17 @@
         <input type="text" id="varName"><br><br>
 
         <label>選擇類型：</label><br>
-        <input type="radio" name="vartype" value="var" checked> 變數<br>
-        <input type="radio" name="vartype" value="ptr"> 指標<br>
-        <input type="radio" name="vartype" value="ref"> 參考<br><br>
+        <input type="radio" name="vartype" value="VAR" checked> 變數<br>
+        <input type="radio" name="vartype" value="PTR"> 指標<br>
+        <input type="radio" name="vartype" value="REF"> 參考<br><br>
 
         <button  onclick="confirmVar()">確定</button>
         <button  onclick="cancelVar()">取消</button>
     </div>
 
     <script type="module" src="public/system.js" defer></script>
-    <script src="public/block_cpp.js" defer></script>
     <script src="public/block_json.js" defer></script>
+    <script type="module" src="public/block_cpp.js" defer></script>
 </body>
 </html>
 
