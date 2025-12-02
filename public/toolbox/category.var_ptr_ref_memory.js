@@ -1,6 +1,7 @@
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
 export function Create_variable(name, Block_type, toolbox, workspace){
     const block_array = [];
+    if (window.var_type_check[Block_type]) return;
     Blockly.Blocks[`define_${Block_type}_${name}`] = {
         init: function() {
             this.appendDummyInput()
@@ -231,6 +232,8 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             if (!block_array.includes(`nullptr`)) block_array.push(`nullptr`);
         }
     }
+
+    window.var_type_check[Block_type] = true;
 
     const category = toolbox.contents.find(cat => cat.name === '變數/指標/位置');
     if (category) {
