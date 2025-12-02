@@ -757,7 +757,6 @@ function Var_button(){
     document.getElementById("model").style.display = "block";
 }
 
-// TODO
 const usedName = new Set();
 if (!window.var_type_check){ window.var_type_check = {"VAR": false, "PTR": false, "REF": false};}
 
