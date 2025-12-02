@@ -1,4 +1,5 @@
 import { toolbox } from "./toolbox.js";
+import { Create_variable } from "./toolbox/category.var_ptr_ref_memory.js";
 /***** 全域變數 *****/
 let teachingMode = false; // 教學進行時禁止一般操作
 let tutorialSteps = [];
@@ -440,18 +441,36 @@ workspace.addChangeListener(() => {
     updateCodeOutput();
 });
 
+// 在 workspace 創建之後添加
+workspace.addChangeListener(function(event) {
+    // 監聽變數選擇器關閉
+    if (event.type === Blockly.Events.BLOCK_CHANGE || 
+        event.type === Blockly.Events.CLICK) {
+        
+        // 檢查 dropdown 是否關閉
+        const dropdownDiv = document.querySelector('.blocklyDropDownDiv');
+        if (dropdownDiv && dropdownDiv.style.display === 'none') {
+            // 釋放卡住的手勢
+            setTimeout(() => {
+                if (Blockly.Gesture.inProgress()) {
+                    const gesture = Blockly.Gesture.inProgress();
+                    // 只取消沒有開始拖曳的手勢
+                    if (gesture && !gesture.isDragging_) {
+                        gesture.cancel();
+                    }
+                }
+            }, 50);
+        }
+    }
+});
+
 Blockly.Cpp = new Blockly.Generator('Cpp');
 Blockly.Cpp.ORDER_ATOMIC = 1;
 Blockly.Cpp.ORDER_NONE = 99;
 
-Blockly.Cpp.VarDB = new Blockly.Names(Blockly.Cpp.RESERVED_WORDS_);
-Blockly.Cpp.PtrDB = new Blockly.Names(Blockly.Cpp.RESERVED_WORDS_);
-Blockly.Cpp.RefDB = new Blockly.Names(Blockly.Cpp.RESERVED_WORDS_);
-
-Blockly.Cpp.varMap = workspace.getVariableMap();
-Blockly.Cpp.ptrMap = workspace.getVariableMap();
-Blockly.Cpp.refMap = workspace.getVariableMap();
-
+Blockly.Cpp.VAR = [];   
+Blockly.Cpp.PTR = [];   
+Blockly.Cpp.REF = [];  
 Blockly.Cpp.init(workspace);
 
 const originalBlockToCode = Blockly.Cpp.blockToCode;
@@ -739,8 +758,6 @@ function Var_button(){
 }
 
 // TODO
-
-const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
 const usedName = new Set();
 if (!window.var_type_check){ window.var_type_check = {"VAR": false, "PTR": false, "REF": false};}
 
@@ -753,58 +770,16 @@ export function confirmVar() {
         alert("此變數名稱已被使用於其他種類！");
         return;
     }
-
-    document.getElementById("model").style.display = "none";
+    
     usedName.add(name);
+    document.getElementById("model").style.display = "none";
+    document.getElementById("varName").value = "";
 
-    let name_DB;
-
-    if (type === "VAR") {
-        name_DB = Blockly.Cpp.VarDB;
-        const var_name = name_DB.getDistinctName(name);
-        workspace.getVariableMap().createVariable(var_name, 'VAR');
-    } else if (type === "PTR") {
-        name_DB = Blockly.Cpp.PtrDB;
-        const var_name = name_DB.getDistinctName(name);
-        workspace.getVariableMap().createVariable(var_name, 'PTR');
-    } else {
-        name_DB = Blockly.Cpp.RefDB;
-        const var_name = name_DB.getDistinctName(name);
-        workspace.getVariableMap().createVariable(var_name, 'REF');
+    if (!Blockly.Cpp[type].includes(name)) {
+        Blockly.Cpp[type].push(name);
+        Create_variable(name, type, toolbox, workspace);
     }
-
-    if (!window.var_type_check[type]) {
-        const blockType = `get_${type}`;
-        Blockly.Blocks[blockType] = {
-            init: function() {
-                this.appendDummyInput()
-                    .appendField(data_type[type])
-                    .appendField(new Blockly.FieldVariable(name, null, [type], type), 'VARIABLE');
-                this.setOutput(true, null);
-                this.setColour('#DABD00');
-                this.setTooltip(`定義 ${data_type[type]} 類型`);
-                this.setHelpUrl('');
-            }
-        };
-
-        Blockly.Cpp.forBlock[blockType] = function(block) {
-            const map = { VAE: Blockly.Cpp.varMap, PTR: Blockly.Cpp.ptrMap, REF: Blockly.Cpp.refMap }[type];
-            const name_DB = { VAE: Blockly.Cpp.VarDB, PTR: Blockly.Cpp.PtrDB, REF: Blockly.Cpp.RefDB }[type];
-            name_DB.setVariableMap(map); 
-
-            let VAR = name_DB.getName(block.getFieldValue('VARIABLE'), Blockly.VARIABLE_CATEGORY_NAME);
-            if (type === "PTR") VAR = '*' + VAR;
-            else if (type === "REF") VAR = '&' + VAR;
-            return [VAR, Blockly.Cpp.ORDER_ATOMIC];
-        };
-
-        const category = toolbox.contents.find(cat => cat.name === '變數/指標/位置');
-        if (category) category.contents.push({kind: "block", type: blockType});
-    }
-
-    // 更新 toolbox
-    const newToolbox = JSON.parse(JSON.stringify(toolbox));
-    workspace.updateToolbox(newToolbox);
+    Blockly.getMainWorkspace().refreshToolboxSelection();
 }
 window.confirmVar = confirmVar;
 

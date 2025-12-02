@@ -300,6 +300,7 @@ export const toolbox = {
         { // 變數/指標/位置
             "kind": "category",
             "name": "變數/指標/位置",
+            "id": "變數/指標/位置",
             "colour": "#C9A200",
             "contents": [
                 {

@@ -998,7 +998,7 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "定義一個指標",
             "helpurl": ""
         },
-            { //def_ptr
+        { //def_ptr
             "type": "def_ptr",
             "message0": "宣告 %1 %2 %3 %4指標名稱: %5 = %6",
             "args0": [{
