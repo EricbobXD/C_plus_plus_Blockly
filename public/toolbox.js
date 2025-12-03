@@ -24,28 +24,11 @@ export const toolbox = {
             "kind": "category",
             "name": "陣列",
             "colour": "#ff5757",
-            "contents": [
-                { // array
-                    "kind": "label",
-                    "text": "陣列(array)"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_array"
-                },
-                {
-                    "kind": "block",
-                    "type": "array_name_block"
-                },
-                {
-                    "kind": "block",
-                    "type": "array_content"
-                },
-                {
-                    "kind": "block",
-                    "type": "array_operate[]"
-                }
-            ]
+            "contents": [{
+                "kind": "button", 
+                "text": "新增變數",
+                "callbackKey": "array_category"
+            }]
         },                
         { // 文本
             "kind": "category",
@@ -300,7 +283,6 @@ export const toolbox = {
         { // 變數/指標/位置
             "kind": "category",
             "name": "變數/指標/位置",
-            "id": "變數/指標/位置",
             "colour": "#C9A200",
             "contents": [
                 {

@@ -3914,47 +3914,6 @@ function bitwise_generateCode(block, operator) {
         return [`${vector_name}.rend()`, 1];
     }
 
-    // array
-    Cpp.forBlock['define_array'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1) || 'int';
-        var array_name = block.getFieldValue('array_name');
-        var size = Cpp.valueToCode(block, 'size', 1) || '';
-        var content = Cpp.valueToCode(block, 'content', 1) || '';
-        if (size.startsWith('(') && size.endsWith(')')) {
-            size = size.slice(1, -1);
-        }
-        if (content === '') {
-            return `${type} ${array_name}[${size}];`
-        }
-        if (content.startsWith('(') && content.endsWith(')')) {
-            content = content.slice(1, -1);
-        }
-        return `${type} ${array_name}[${size}] = ${content};\n`
-    }
-
-    Cpp.forBlock['array_name_block'] = function(block) {
-        var array_name = block.getFieldValue('array_name');
-        return [`${array_name}`, 1];
-    }
-
-    Cpp.forBlock['array_content'] = function(block) {
-        var content = Cpp.valueToCode(block, 'content', 1);
-        if (content.startsWith('(') && content.endsWith(')')) {
-            content = content.slice(1, -1);
-        }
-        return [`{${content}}`, 1];
-    }
-
-    Cpp.forBlock['array_operate[]'] = function(block) {
-        var array_name = block.getFieldValue('array_name');
-        var pos = Cpp.valueToCode(block, 'pos', 1);
-        if (pos.startsWith('(') && pos.endsWith(')')) {
-            pos = pos.slice(1, -1);
-        }
-        var code = `${array_name}[${pos}]`;
-        return [code, 1];
-    }
-
     Cpp.forBlock['map_insert'] = function(block) {
         var map_name = block.getFieldValue('map_name');
         var key = Cpp.valueToCode(block, 'key', 1);

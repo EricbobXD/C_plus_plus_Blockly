@@ -1,5 +1,5 @@
 import { toolbox } from "./toolbox.js";
-import { Create_variable } from "./toolbox/category.var_ptr_ref_memory.js";
+import * as Utils from './block_category/index.js' 
 /***** 全域變數 *****/
 let teachingMode = false; // 教學進行時禁止一般操作
 let tutorialSteps = [];
@@ -468,9 +468,6 @@ Blockly.Cpp = new Blockly.Generator('Cpp');
 Blockly.Cpp.ORDER_ATOMIC = 1;
 Blockly.Cpp.ORDER_NONE = 99;
 
-Blockly.Cpp.VAR = [];   
-Blockly.Cpp.PTR = [];   
-Blockly.Cpp.REF = [];  
 Blockly.Cpp.init(workspace);
 
 const originalBlockToCode = Blockly.Cpp.blockToCode;
@@ -751,18 +748,22 @@ function formatDisplayName(name) {
         .replace(/\b\w/g, char => char.toUpperCase());
 }
 
-workspace.registerButtonCallback('var_category', Var_button);
-
-function Var_button(){
-    document.getElementById("model").style.display = "block";
-}
+workspace.registerButtonCallback('var_category', function(){document.getElementById("var_model").style.display = "block";});
+workspace.registerButtonCallback('array_category', function(){document.getElementById("array_model").style.display = "block";});
+    
+const CategoryType = ["VAR", "PTR", "REF", 
+                      "Array", "Vector", "Deque", 
+                      "Stack", "Queue", "Priority_queue", 
+                      "Set", "Unordered_set", "Flat_set", "Multiset", 
+                      "Map", "Unordered_map", "Pair", 
+                      "Bitset"];
+CategoryType.forEach(t => Blockly.Cpp[t] = []);
 
 const usedName = new Set();
-if (!window.var_type_check){ window.var_type_check = {"VAR": false, "PTR": false, "REF": false};}
+if (!window.date_type_checked){ window.date_type_checked = {"VAR": false, "PTR": false, "REF": false, "Array": false};}
 
-export function confirmVar() {
-    const name = document.getElementById("varName").value;
-    const type = document.querySelector('input[name="vartype"]:checked').value;
+export function confirmArray() {
+    const name = document.getElementById("ArrayName").value;
 
     if (!name) return;
     if (usedName.has(name)) {
@@ -771,20 +772,46 @@ export function confirmVar() {
     }
     
     usedName.add(name);
-    document.getElementById("model").style.display = "none";
-    document.getElementById("varName").value = "";
+    document.getElementById("array_model").style.display = "none";
+    document.getElementById("ArrayName").value = "";
+
+    if (!Blockly.Cpp["Array"].includes(name)) {
+        Blockly.Cpp["Array"].push(name);
+        Utils.Create_Array(toolbox, workspace);
+    }
+    Blockly.getMainWorkspace().refreshToolboxSelection();
+};
+
+function Confirm(text_name, type_name, model_name, Func) {
+    const name = document.getElementById(text_name).value;
+    const type = document.querySelector(`input[name="${type_name}"]:checked`).value;
+
+    if (!name) return;
+    if (usedName.has(name)) {
+        alert("此變數名稱已被使用於其他種類！");
+        return;
+    }
+    
+    usedName.add(name);
+    document.getElementById(model_name).style.display = "none";
+    document.getElementById(text_name).value = "";
 
     if (!Blockly.Cpp[type].includes(name)) {
         Blockly.Cpp[type].push(name);
-        Create_variable(name, type, toolbox, workspace);
+        if (window.date_type_checked[type]) return;
+        Func(type, toolbox, workspace);
     }
     Blockly.getMainWorkspace().refreshToolboxSelection();
-}
-window.confirmVar = confirmVar;
+};
 
-export function cancelVar(){
-    document.getElementById("model").style.display = "none";
-}
+export function confirmVar(){
+    Confirm("VarName", "vartype", "var_model", Utils.Create_variable);
+};
+export function cancel(type){
+    document.getElementById(type).style.display = "none";
+};
 
-window.cancelVar = cancelVar;
-
+const button_callback = { confirmArray, confirmVar, cancel };
+Object.keys(button_callback).forEach(key => {
+  window[key] = button_callback[key];
+});

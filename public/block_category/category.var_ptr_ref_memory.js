@@ -1,8 +1,14 @@
+function VarDropdown(type) {
+    return new Blockly.FieldDropdown(
+        Blockly.Cpp[type].map(v => [v, v])
+    );
+}
+
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
-export function Create_variable(name, Block_type, toolbox, workspace){
-    const block_array = [];
-    if (window.var_type_check[Block_type]) return;
-    Blockly.Blocks[`define_${Block_type}_${name}`] = {
+export function Create_variable(Block_type, toolbox, workspace){
+    const blockSet = new Set();
+
+    Blockly.Blocks[`define_${Block_type}`] = {
         init: function() {
             this.appendDummyInput()
                 .appendField("宣告")
@@ -18,9 +24,7 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             this.appendValueInput('type');
             this.appendDummyInput()
                 .appendField(`${data_type[Block_type]}名稱: `)
-                .appendField(new Blockly.FieldDropdown(
-                    Blockly.Cpp[Block_type].map(item => [item, item]))
-                , "var_name");
+                .appendField(VarDropdown(Block_type), "var_name");
             this.appendValueInput("value")
                 .appendField(" = ");
             this.setInputsInline(true);
@@ -32,7 +36,7 @@ export function Create_variable(name, Block_type, toolbox, workspace){
         }
     }
 
-    Blockly.Cpp.forBlock[`define_${Block_type}_${name}`] = function(block) {
+    Blockly.Cpp.forBlock[`define_${Block_type}`] = function(block) {
         var Const = block.getFieldValue('const');
         var unsigned = block.getFieldValue('unsigned');
         var type = Blockly.Cpp.valueToCode(block, 'type', 1) || '';
@@ -64,13 +68,11 @@ export function Create_variable(name, Block_type, toolbox, workspace){
         return code;
     };
 
-    Blockly.Blocks[`${Block_type}_eqaul_${name}`] = {
+    Blockly.Blocks[`${Block_type}_equal`] = {
         init: function() {
             this.appendDummyInput()
                 .appendField(`${data_type[Block_type]}`)
-                .appendField(new Blockly.FieldDropdown(
-                    Blockly.Cpp[Block_type].map(item => [item, item]))
-                , "var_name");
+                .appendField(VarDropdown(Block_type), "var_name");
             this.appendValueInput("value")
                 .appendField(" = ");
             this.setInputsInline(true);
@@ -82,7 +84,7 @@ export function Create_variable(name, Block_type, toolbox, workspace){
         }
     };
 
-    Blockly.Cpp.forBlock[`${Block_type}_eqaul_${name}`] = function(block) {
+    Blockly.Cpp.forBlock[`${Block_type}_equal`] = function(block) {
         var var_name = block.getFieldValue('var_name');
         var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '0';
         if (value.startsWith('(') && value.endsWith(')')) {
@@ -91,13 +93,11 @@ export function Create_variable(name, Block_type, toolbox, workspace){
         return `${var_name} = ${value};\n`;
     };
 
-    Blockly.Blocks[`get_${Block_type}_${name}`] = {
+    Blockly.Blocks[`get_${Block_type}`] = {
             init: function() {
                 this.appendDummyInput()
                     .appendField(data_type[Block_type])
-                    .appendField(new Blockly.FieldDropdown(
-                        Blockly.Cpp[Block_type].map(item => [item, item]))
-                    , "var_name");
+                    .appendField(VarDropdown(Block_type), "var_name");
                 this.setInputsInline(true);
                 this.setOutput(true, null);
                 this.setColour('#DABD00');
@@ -106,14 +106,14 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             }
     };
 
-    Blockly.Cpp.forBlock[`get_${Block_type}_${name}`] = function(block) {
+    Blockly.Cpp.forBlock[`get_${Block_type}`] = function(block) {
         var var_name = block.getFieldValue('var_name');
         if (type === "PTR") var_name = '*' + var_name;
         else if (type === "REF") var_name = '&' + var_name;
         return [var_name, Blockly.Cpp.ORDER_ATOMIC];
     };
 
-    Blockly.Blocks[`def_${Block_type}_${name}`] = {
+    Blockly.Blocks[`def_${Block_type}`] = {
         init: function() {
             this.appendDummyInput()
                 .appendField("宣告")
@@ -129,9 +129,7 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             this.appendValueInput('type');
             this.appendDummyInput()
                 .appendField(`${data_type[Block_type]}名稱: `)
-                .appendField(new Blockly.FieldDropdown(
-                    Blockly.Cpp[Block_type].map(item => [item, item]))
-                , "var_name");
+                .appendField(VarDropdown(Block_type), "var_name");
             this.appendValueInput("value")
                 .appendField(" = ");
             this.setInputsInline(true);
@@ -142,7 +140,7 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             }
     }
 
-    Blockly.Cpp.forBlock[`def_${Block_type}_${name}`] = function(block) {
+    Blockly.Cpp.forBlock[`def_${Block_type}`] = function(block) {
         var unsigned = block.getFieldValue('unsigned');
         var type = block.getFieldValue('TYPE');
         var var_name = block.getFieldValue('var_name');
@@ -164,10 +162,15 @@ export function Create_variable(name, Block_type, toolbox, workspace){
         }
         return [code, Blockly.Cpp.ORDER_ATOMIC];
     };
-    if (!block_array.includes(`define_${Block_type}_${name}`)) block_array.push(`define_${Block_type}_${name}`, `${Block_type}_eqaul_${name}`, `get_${Block_type}_${name}`, `def_${Block_type}_${name}`);
+    [
+    `define_${Block_type}`,
+    `${Block_type}_equal`,
+    `get_${Block_type}`,
+    `def_${Block_type}`
+    ].forEach(t => blockSet.add(t));
 
     if (Block_type === "PTR" || Block_type === "REF"){
-        Blockly.Blocks[`${Block_type}_of_${name}`] = {
+        Blockly.Blocks[`${Block_type}_of`] = {
             init: function() {
                 this.appendDummyInput()
                     .appendField("變數")
@@ -184,7 +187,7 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             }
         };
 
-        Blockly.Cpp.forBlock[`${Block_type}_of_${name}`] = function(block) {
+        Blockly.Cpp.forBlock[`${Block_type}_of`] = function(block) {
             var var_name = block.getFieldValue('var_name');
             var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '0';
             if (value.startsWith('(') && value.endsWith(')')) {
@@ -193,13 +196,11 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             return [`${var_name} -> ${value}`, Blockly.Cpp.ORDER_ATOMIC];
         };
 
-        Blockly.Blocks[`${Block_type}_to_${name}`] = {
+        Blockly.Blocks[`${Block_type}_to`] = {
             init: function() {
                 this.appendDummyInput()
                     .appendField(data_type[Block_type])
-                    .appendField(new Blockly.FieldDropdown(
-                        Blockly.Cpp[Block_type].map(item => [item, item]))
-                    , "var_name");
+                    .appendField(VarDropdown(Block_type), "var_name");
                 this.setInputsInline(true);
                 this.setOutput(true, null);
                 this.setColour('#DABD00');
@@ -208,12 +209,13 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             }
         };
 
-        Blockly.Cpp.forBlock[`${Block_type}_to_${name}`] = function(block) {
+        Blockly.Cpp.forBlock[`${Block_type}_to`] = function(block) {
             var var_name = block.getFieldValue('var_name');
             return [`*${var_name}`, 1];
         };
 
-        if (!block_array.includes(`${Block_type}_of_${name}`)) block_array.push(`${Block_type}_of_${name}`, `${Block_type}_to_${name}`);
+        blockSet.add(`${Block_type}_of`)
+        blockSet.add(`${Block_type}_to`);
         if (Block_type === "PTR"){
             Blockly.Blocks[`nullptr`] = {
                 init:function() {
@@ -229,15 +231,13 @@ export function Create_variable(name, Block_type, toolbox, workspace){
             Blockly.Cpp.forBlock[`nullptr`] = function(block){
                 return [`nullptr`, Blockly.Cpp.ORDER_ATOMIC];
             }
-            if (!block_array.includes(`nullptr`)) block_array.push(`nullptr`);
+            blockSet.add(`nullptr`);
         }
     }
 
-    window.var_type_check[Block_type] = true;
-
     const category = toolbox.contents.find(cat => cat.name === '變數/指標/位置');
     if (category) {
-        block_array.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
+        blockSet.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
     }
     
     const newToolbox = JSON.parse(JSON.stringify(toolbox));

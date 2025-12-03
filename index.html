@@ -130,18 +130,40 @@
         &copy; 2024 Bosen &amp; EricbobXD. All Rights Reserved.
     </footer>
     
-    <div id="model">
-
+    <div id="var_model" class="model">
         <label>輸入變數名稱: </label><br>
-        <input type="text" id="varName"><br><br>
+        <input type="text" id="VarName"><br><br>
 
         <label>選擇類型：</label><br>
         <input type="radio" name="vartype" value="VAR" checked> 變數<br>
         <input type="radio" name="vartype" value="PTR"> 指標<br>
         <input type="radio" name="vartype" value="REF"> 參考<br><br>
 
-        <button  onclick="confirmVar()">確定</button>
-        <button  onclick="cancelVar()">取消</button>
+        <button onclick="confirmVar()">確定</button>
+        <button onclick="cancel('var_model')">取消</button>
+    </div>
+
+    <div id="array_model" class="model">
+        <label>輸入陣列名稱: </label><br>
+        <input type="text" id="ArrayName"><br><br>
+
+        <button onclick="confirmArray()">確定</button>
+        <button onclick="cancel('array_model')">取消</button>
+    </div>
+    
+    <div id="func_model" class="model">
+        <label>輸入函數名稱: </label><br>
+        <input type="text" id="VarName"><br><br>
+
+        <label>選擇類型：</label><br>
+        <input type="radio" name="functype" value="func" checked> 函式<br>
+        <input type="radio" name="functype" value="lambda"> lambda<br>
+        <input type="radio" name="functype" value="struct"> struct<br><br>
+        <input type="radio" name="functype" value="class"> class<br><br>
+        <input type="radio" name="functype" value="operation"> operation<br><br>
+
+        <button onclick="confirmFunc()">確定</button>
+        <button onclick="cancel('func_model')">取消</button>
     </div>
 
     <script type="module" src="public/system.js" defer></script>
