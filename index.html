@@ -153,17 +153,29 @@
     
     <div id="func_model" class="model">
         <label>輸入函數名稱: </label><br>
-        <input type="text" id="VarName"><br><br>
+        <input type="text" id="FuncName"><br><br>
 
         <label>選擇類型：</label><br>
-        <input type="radio" name="functype" value="func" checked> 函式<br>
-        <input type="radio" name="functype" value="lambda"> lambda<br>
-        <input type="radio" name="functype" value="struct"> struct<br><br>
-        <input type="radio" name="functype" value="class"> class<br><br>
-        <input type="radio" name="functype" value="operation"> operation<br><br>
+        <input type="radio" name="functype" value="Function" checked> 函式<br>
+        <input type="radio" name="functype" value="Lambda"> lambda<br>
+        <input type="radio" name="functype" value="Struct"> struct<br>
+        <input type="radio" name="functype" value="Class"> class<br>
+        <input type="radio" name="functype" value="Operation"> operation<br>
 
-        <button onclick="confirmFunc()">確定</button>
+        <button onclick="confirmFunction()">確定</button>
         <button onclick="cancel('func_model')">取消</button>
+    </div>
+
+    <div id="get_model" class="model">
+        <label>輸入變數名稱: </label><br>
+        <input type="text" id="GetName"><br><br>
+
+        <label>選擇類型：</label><br>
+        <input type="radio" name="gettype" value="Struct_Name" checked> 結構變數<br>
+        <input type="radio" name="gettype" value="Class_Name"> 類別變數<br>
+
+        <button onclick="confirmGet()">確定</button>
+        <button onclick="cancel('get_model')">取消</button>
     </div>
 
     <script type="module" src="public/system.js" defer></script>

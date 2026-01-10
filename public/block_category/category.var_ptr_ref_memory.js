@@ -237,6 +237,7 @@ export function Create_variable(Block_type, toolbox, workspace){
 
     const category = toolbox.contents.find(cat => cat.name === '變數/指標/位置');
     if (category) {
+        category.contents.push({kind: "label", text: data_type[Block_type]})
         blockSet.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
     }
     

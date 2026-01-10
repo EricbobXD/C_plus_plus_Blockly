@@ -2279,7 +2279,7 @@ Blockly.Blocks['new_block'] = {
         return [code, 1];
     }
     
-
+/*
 Blockly.Blocks['if_block'] = {
     init: function() {
         this.setPreviousStatement(true);
@@ -2414,7 +2414,6 @@ Blockly.Blocks['if_block'] = {
         }
     }
 };
-
 Blockly.Blocks['if_else'] = {
     init: function () {
         this.appendValueInput("CONDITION")
@@ -2483,7 +2482,7 @@ Blockly.Blocks['if_mutator'] = {
         code += '}\n';
         return code;
     };
-
+*/
 Blockly.Blocks['switch_block'] = {
     init: function() {
         this.setPreviousStatement(true);
@@ -3119,6 +3118,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     // class
+    /*
     Cpp.forBlock['define_class'] = function(block) {
         var class_name = block.getFieldValue('class_name');
         var Public = Cpp.statementToCode(block, 'public').replace(/^ {2}/gm, '    ') || '';
@@ -3135,6 +3135,7 @@ function bitwise_generateCode(block, operator) {
 
         return code;
     };
+    */
 
     Cpp.forBlock['get_class'] = function(block) {
         var class_name = block.getFieldValue('class_name');
@@ -5882,3 +5883,39 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['placeholder'] = function(block){
         return [`placeholder::_${block.getFieldValue('number')}`, 1]
     }
+
+    Cpp.forBlock['define_class'] = function(block) {
+        const name = "Calass"
+        let code = `class ${name} {\n`;
+        if (block.hasPublic_) {
+            code += '  // public\n' + Blockly.Cpp.statementToCode(block, 'Public');
+        }
+        if (block.hasPrivate_) {
+            code += '  // private\n' + Blockly.Cpp.statementToCode(block, 'Private');
+        }
+        if (block.hasProtected_) {
+            code += '  // protected\n' + Blockly.Cpp.statementToCode(block, 'Protected');
+        }
+        code += '}\n';
+        return code;
+    };
+    
+    Cpp.forBlock['if_block'] = function(block) {
+        const ifValue = Cpp.valueToCode(block, 'IF_VALUE', Cpp.ORDER_ATOMIC) || 'false';
+        let code = `if ${ifValue} {\n`;
+        code += Cpp.statementToCode(block, 'IF_DO').replace(/^ {2}/gm, '    ');
+
+        for (let i = 0; i < block.elifCount_; i++) {
+            const elifValue = Cpp.valueToCode(block, 'ELIF' + i, Cpp.ORDER_ATOMIC) || 'false';
+            code += `}\nelse if (${elifValue}) {\n`;
+            code += Cpp.statementToCode(block, 'ELIF_DO' + i).replace(/^ {2}/gm, '    ');
+        }
+
+        if (block.hasElse_) {
+            code += '}\nelse{\n';
+            code += Cpp.statementToCode(block, 'ELSE').replace(/^ {2}/gm, '    ');
+        }
+
+        code += '}\n';
+        return code;
+    };

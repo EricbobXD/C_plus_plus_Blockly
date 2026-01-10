@@ -223,6 +223,7 @@ Blockly.defineBlocksWithJsonArray(
         },
 
         //class
+        /*
         { //class
             "type": "define_class",
             "message0": "類別 名子: %1",
@@ -246,6 +247,7 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "定義一個類別",
             "helpurl": ""
         },
+        */
         { //get class
             "type": "get_class",
             "message0": "類別 名字: %1, 變數名: %2, 大小%3",

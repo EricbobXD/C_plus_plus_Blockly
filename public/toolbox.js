@@ -2,6 +2,14 @@ export const toolbox = {
     "kind": "categoryToolbox",
     "contents": [
         {
+            "kind": "category", 
+            "name": "測試", 
+            "contents": [{
+                "kind": "block", 
+                "type": "define_class"
+            }]
+        },
+        {
             "kind": "category",
             "name": "資料型態",
             "colour": "#EB5160",
@@ -297,53 +305,10 @@ export const toolbox = {
             "name": "函式/結構/類別",
             "colour": "#db00db",
             "contents": [
-                { // function
-                    "kind": "label",
-                    "text": "函式(function)"
-                },
                 {
-                    "kind": "block",
-                    "type": "define_function"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_function_void"
-                },
-                {
-                    "kind": "block",
-                    "type": "lambda"
-                },
-                { // struct
-                    "kind": "label",
-                    "text": "結構(struct)"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_struct"
-                },
-                {
-                    "kind": "block",
-                    "type": "get_struct"
-                },
-                { // class
-                    "kind": "label",
-                    "text": "類別(class)"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_class"
-                },
-                {
-                    "kind": "block",
-                    "type": "get_class"
-                },
-                { // operator
-                    "kind": "label",
-                    "text": "operator"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_operator"
+                    "kind": "button", 
+                    "text": "新增函數、結構、類別",
+                    "callbackKey": "func_category"
                 }
             ]
         },
@@ -2084,3 +2049,56 @@ export const toolbox = {
         }
     ]
 };
+
+/*
+
+                { // function
+                    "kind": "label",
+                    "text": "函式(function)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_function"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_function_void"
+                },
+                {
+                    "kind": "block",
+                    "type": "lambda"
+                },
+                { // struct
+                    "kind": "label",
+                    "text": "結構(struct)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_struct"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_struct"
+                },
+                { // class
+                    "kind": "label",
+                    "text": "類別(class)"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_class"
+                },
+                {
+                    "kind": "block",
+                    "type": "get_class"
+                },
+                { // operator
+                    "kind": "label",
+                    "text": "operator"
+                },
+                {
+                    "kind": "block",
+                    "type": "define_operator"
+                }
+            
+*/
