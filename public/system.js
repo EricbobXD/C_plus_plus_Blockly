@@ -1,5 +1,5 @@
 import { toolbox } from "./toolbox.js";
-import * as Utils from './block_category/index.js' 
+import * as Utils from './block_category/function.js' 
 /***** 全域變數 *****/
 let teachingMode = false; // 教學進行時禁止一般操作
 let tutorialSteps = [];
@@ -692,7 +692,6 @@ Blockly.Extensions.registerMutator(
     undefined, 
     ["public_mutator", "private_mutator", "protected_mutator"]
 );
-
 
 var workspace = Blockly.inject('blockly-workspace', {
     toolbox: toolbox,

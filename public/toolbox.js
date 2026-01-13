@@ -5,8 +5,6 @@ export const toolbox = {
             "kind": "category", 
             "name": "測試", 
             "contents": [{
-                "kind": "block", 
-                "type": "define_class"
             }]
         },
         {
@@ -2049,56 +2047,3 @@ export const toolbox = {
         }
     ]
 };
-
-/*
-
-                { // function
-                    "kind": "label",
-                    "text": "函式(function)"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_function"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_function_void"
-                },
-                {
-                    "kind": "block",
-                    "type": "lambda"
-                },
-                { // struct
-                    "kind": "label",
-                    "text": "結構(struct)"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_struct"
-                },
-                {
-                    "kind": "block",
-                    "type": "get_struct"
-                },
-                { // class
-                    "kind": "label",
-                    "text": "類別(class)"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_class"
-                },
-                {
-                    "kind": "block",
-                    "type": "get_class"
-                },
-                { // operator
-                    "kind": "label",
-                    "text": "operator"
-                },
-                {
-                    "kind": "block",
-                    "type": "define_operator"
-                }
-            
-*/
