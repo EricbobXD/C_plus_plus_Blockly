@@ -1,0 +1,8 @@
+// import file in html
+import './system.js'
+import './web.js'
+import './block_category/category.array.js'
+import './block_category/category.func_strct_class_oper.js'
+import './block_category/category.var_ptr_ref_memory.js'
+import './block_json.js'
+import './block_cpp.js'

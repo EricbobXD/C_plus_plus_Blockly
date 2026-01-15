@@ -222,5 +222,3 @@ Blockly.Blocks[`nullptr`] = {
 Blockly.Cpp.forBlock[`nullptr`] = function(block){
     return [`nullptr`, Blockly.Cpp.ORDER_ATOMIC];
 }
-
-console.log("111");

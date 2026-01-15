@@ -76,9 +76,9 @@ export function Create_getName(Block_type, toolbox, workspace){
     const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
     if (category) {
         var block_index = category.contents.findIndex(button => ( button.id === `${Block_type}_id`));
-
         if (block_index !== -1)
             category.contents.splice(block_index+1, 0, {"kind": "block", "type": `get_${Block_type}`});
+            
     }
 
     const newToolbox = JSON.parse(JSON.stringify(toolbox));

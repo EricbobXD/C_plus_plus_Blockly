@@ -186,7 +186,23 @@ Blockly.Cpp.forBlock['define_struct'] = function(block) {
     return `struct ${struct_name} {\n${DO}};`;
 }
 
-Blockly.Blocks['get_struct'] = {
+Blockly.Cpp.forBlock['define_class'] = function(block) {
+    const name = block.getFieldValue("class_name");
+    let code = `class ${name} {\n`;
+    if (block.hasPublic_) {
+        code += '  public:\n'+ Blockly.Cpp.statementToCode(block, 'Public').replace(/^ {2}/gm, '    ');
+    }
+    if (block.hasPrivate_) {
+        code += '  private:\n' + Blockly.Cpp.statementToCode(block, 'Private').replace(/^ {2}/gm, '    ');
+    }
+    if (block.hasProtected_) {
+        code += '  protected:\n' + Blockly.Cpp.statementToCode(block, 'Protected').replace(/^ {2}/gm, '    ')   ;
+    }
+    code += '}\n';
+    return code;
+};
+
+Blockly.Blocks['get_Struct'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("結構名字: ")
@@ -195,15 +211,16 @@ Blockly.Blocks['get_struct'] = {
             .appendField("變數名: ")
             .appendField(VarDropdown("Struct_Name"), "var_name");
         this.appendValueInput("size");
+        this.setInputsInline(true);
         this.setPreviousStatement(true); 
         this.setNextStatement(true);    
         this.setColour('#f4a460');
-        this.setTooltip(`取得一個${str}的資料`);
+        this.setTooltip("取得一個 Struct 的資料");
         this.setHelpUrl(''); 
     }
 };
 
-Blockly.Cpp.forBlock['get_struct'] = function(block) {
+Blockly.Cpp.forBlock['get_Struct'] = function(block) {
     var struct_name = block.getFieldValue('struct_name');
     var var_name = block.getFieldValue('var_name');
     var size = Blockly.Cpp.valueToCode(block, 'size', 1);
@@ -213,7 +230,7 @@ Blockly.Cpp.forBlock['get_struct'] = function(block) {
     return `${struct_name} ${var_name};`;
 };
 
-Blockly.Blocks['get_class'] = {
+Blockly.Blocks['get_Class'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("類別名字: ")
@@ -222,15 +239,16 @@ Blockly.Blocks['get_class'] = {
             .appendField("變數名: ")
             .appendField(VarDropdown("Class_Name"), "var_name");
         this.appendValueInput("size");
+        this.setInputsInline(true);
         this.setPreviousStatement(true); 
         this.setNextStatement(true);    
         this.setColour('#f4a460');
-        this.setTooltip(`取得一個${str}的資料`);
+        this.setTooltip("取得一個 Class 的資料");
         this.setHelpUrl(''); 
     }
 };
 
-Blockly.Cpp.forBlock['get_class'] = function(block) {
+Blockly.Cpp.forBlock['get_Class'] = function(block) {
     var class_name = block.getFieldValue('class_Name');
     var var_name = block.getFieldValue('var_name');
     var size = Blockly.Cpp.valueToCode(block, 'size', 1);

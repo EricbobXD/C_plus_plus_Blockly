@@ -5884,21 +5884,7 @@ function bitwise_generateCode(block, operator) {
         return [`placeholder::_${block.getFieldValue('number')}`, 1]
     }
 
-    Cpp.forBlock['define_class'] = function(block) {
-        const name = "Calass"
-        let code = `class ${name} {\n`;
-        if (block.hasPublic_) {
-            code += '  // public\n' + Blockly.Cpp.statementToCode(block, 'Public');
-        }
-        if (block.hasPrivate_) {
-            code += '  // private\n' + Blockly.Cpp.statementToCode(block, 'Private');
-        }
-        if (block.hasProtected_) {
-            code += '  // protected\n' + Blockly.Cpp.statementToCode(block, 'Protected');
-        }
-        code += '}\n';
-        return code;
-    };
+    
     
     Cpp.forBlock['if_block'] = function(block) {
         const ifValue = Cpp.valueToCode(block, 'IF_VALUE', Cpp.ORDER_ATOMIC) || 'false';
