@@ -1,46 +1,12 @@
-export function Create_Function(Block_type, toolbox, workspace) {
-    const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
-    if (Block_type === "Function") {
-        const blockSet = ["define_function_void", "define_function", "function_call"];
-        if (category) {
-            category.contents.push({kind: "label", text: "函式"});
-            blockSet.forEach(t => category.contents.push({kind: "block", type: t}));
-        }
-    } else if (Block_type === "Lambda") {
-        if (category) {
-            category.contents.push({"kind": "label", "text": "Lambda"});
-            category.contents.push({"kind": "block", "type": "lambda"});
-        }
-    } else if (Block_type === "Struct"){
-        if (category){
-            category.contents.push({"kind": "label", "text": "Struct"});
-            category.contents.push({"kind": "block", "type": "define_struct"})
-            category.contents.push({"kind": "button", "id": "Struct_id", "text": `創建${Block_type}變數`, "callbackKey": "get_category"});
-        }
-    } else if (Block_type === "Class") {
-        if (category){
-             category.contents.push({"kind": "label", "text": "Class"});
-            category.contents.push({"kind": "block", "type": "define_class"})
-            category.contents.push({"kind": "button", "id": "Class_id", "text": `創建${Block_type}變數`, "callbackKey": "get_category"});
-        }
-    } else {
-    }
-
-    const newToolbox = JSON.parse(JSON.stringify(toolbox));
-    workspace.updateToolbox(newToolbox);
-};
-
-export function Create_getName(Block_type, toolbox, workspace){
-    const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
-    if (category) {
-        var block_index = category.contents.findIndex(button => ( button.id === `${Block_type}_id`));
-
-        if (block_index !== -1)
-            category.contents.splice(block_index+1, 0, {"kind": "block", "type": `get_${Block_type}`});
-    }
-
-    const newToolbox = JSON.parse(JSON.stringify(toolbox));
-    workspace.updateToolbox(newToolbox);
+export function Create_Array(toolbox, workspace) {
+  const category = toolbox.contents.find(cat => cat.name === '陣列');
+  const blockSet = ['define_array', 'array_name_block', 'array_content', 'array_operate[]'];
+  if (category) {
+      blockSet.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
+  }
+  
+  const newToolbox = JSON.parse(JSON.stringify(toolbox));
+  workspace.updateToolbox(newToolbox);
 }
 
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
@@ -70,13 +36,51 @@ export function Create_variable(Block_type, toolbox, workspace){
     workspace.updateToolbox(newToolbox);
 };
 
-export function Create_Array(toolbox, workspace) {
-  const category = toolbox.contents.find(cat => cat.name === '陣列');
-  const blockSet = ['define_array', 'array_name_block', 'array_content', 'array_operate[]'];
-  if (category) {
-      blockSet.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
-  }
-  
-  const newToolbox = JSON.parse(JSON.stringify(toolbox));
-  workspace.updateToolbox(newToolbox);
+export function Create_Function(Block_type, toolbox, workspace) {
+    const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
+    if (Block_type === "Function") {
+        const blockSet = ["define_function_void", "define_function", "function_call"];
+        if (category) {
+            category.contents.push({kind: "label", text: "函式"});
+            blockSet.forEach(t => category.contents.push({kind: "block", type: t}));
+        }
+    } else if (Block_type === "Lambda") {
+        if (category) {
+            category.contents.push({"kind": "label", "text": "Lambda"});
+            category.contents.push({"kind": "block", "type": "lambda"});
+        }
+    } else if (Block_type === "Struct"){
+        if (category){
+            category.contents.push({"kind": "label", "text": "Struct"});
+            category.contents.push({"kind": "block", "type": "define_struct"})
+            category.contents.push({"kind": "button", "id": "Struct_id", "text": `創建${Block_type}變數`, "callbackKey": "get_category"});
+        }
+    } else if (Block_type === "Class") {
+        if (category){
+            category.contents.push({"kind": "label", "text": "Class"});
+            category.contents.push({"kind": "block", "type": "define_class"})
+            category.contents.push({"kind": "button", "id": "Class_id", "text": `創建${Block_type}變數`, "callbackKey": "get_category"});
+        }
+    } else {
+        if (category){
+            category.contents.push({"kind": "label", "text": "Operation"});
+            category.contents.push({"kind": "block", "type": "define_operator"});
+        }
+    }
+
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
+};
+
+export function Create_getName(Block_type, toolbox, workspace){
+    const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
+    if (category) {
+        var block_index = category.contents.findIndex(button => ( button.id === `${Block_type}_id`));
+
+        if (block_index !== -1)
+            category.contents.splice(block_index+1, 0, {"kind": "block", "type": `get_${Block_type}`});
+    }
+
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
 }

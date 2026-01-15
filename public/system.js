@@ -1058,7 +1058,7 @@ const CategoryType = ["VAR", "PTR", "REF",
                       "Set", "Unordered_set", "Flat_set", "Multiset", 
                       "Map", "Unordered_map", "Pair", 
                       "Bitset", 
-                      "Function", "Lambda", 
+                      "Function", "Lambda", "Operation", 
                       "Struct", "Struct_Name", "Class", "Class_Name"
                      ];
 CategoryType.forEach(t => Blockly.Cpp[t] = []);

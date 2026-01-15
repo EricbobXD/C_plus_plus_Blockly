@@ -1,12 +1,14 @@
 export const toolbox = {
     "kind": "categoryToolbox",
     "contents": [
+        /*
         {
             "kind": "category", 
             "name": "測試", 
             "contents": [{
             }]
         },
+        */
         {
             "kind": "category",
             "name": "資料型態",
