@@ -1,7 +1,7 @@
 export const toolbox = {
     "kind": "categoryToolbox",
     "contents": [
-        /*
+        /* 
         {
             "kind": "category", 
             "name": "測試", 
