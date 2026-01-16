@@ -407,6 +407,62 @@ workspace.addChangeListener(function(event) {
 
 Blockly.Cpp.init(workspace);
 
+var id_code = '';
+async function updateCodeOutput() {
+    id_code = Blockly.Cpp.workspaceToCode(workspace);
+    var convElement = document.getElementById('code');
+    if (convElement) {
+        convElement.innerHTML = '';
+        var codeBlock = document.createElement('pre');
+        var codeContent = document.createElement('code');
+        codeContent.className = 'language-cpp';
+        codeContent.textContent = id_code;
+        codeBlock.appendChild(codeContent);
+        convElement.appendChild(codeBlock);
+        hljs.highlightElement(codeContent);
+    }
+
+    function renderMarkdown() {
+        const markdownInput = document.getElementById('markdown-input');
+        const markdownOutput = document.getElementById('output');
+        if (markdownInput && markdownOutput) {
+            const markdownText = markdownInput.value;
+            const htmlContent = marked.parse(markdownText);
+            markdownOutput.innerHTML = htmlContent;
+            markdownOutput.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        }
+    }
+    marked.setOptions({
+        highlight: function(id_code, lang) {
+            const validLang = hljs.getLanguage(lang) ? lang : 'plaintext';
+            return hljs.highlight(id_code, {
+                language: validLang
+            }).value;
+        }
+    });
+    renderMarkdown();
+}
+
+export function copyText(elementId) {
+    const text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+}
+
+export function downloadText(elementId, filename) {
+    const text = document.getElementById(elementId).textContent;
+    const blob = new Blob([text], {
+        type: "text/plain"
+    });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+window.copyText = copyText;
+window.downloadText = downloadText;
+
 const originalBlockToCode = Blockly.Cpp.blockToCode;
 Blockly.Cpp.blockToCode = function(block) {
     if (!block) {
