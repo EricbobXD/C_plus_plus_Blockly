@@ -307,10 +307,6 @@ document.getElementById("menu-class-intro").addEventListener("click", function()
     togglePanel("class-view");
 });
 
-/***** 其他原有功能保持不變 *****/
-window.addEventListener("resize", function() {
-    Blockly.svgResize(workspace);
-});
 
 // 搜尋系統
 function findBlocksRecursively(contents, searchTerms) {
@@ -405,35 +401,25 @@ reset_2.addEventListener('click', () => {
     report.value = '結果將顯示在這裡...';
     alert('編譯執行結果歷史紀錄已刪除');
 });
-document.getElementById('c').addEventListener('click', async () => {
-    alert(`編譯以下代碼:\n${id_code}`);
-    const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            id_code: id_code
-        })
+
+export function copyText(elementId) {
+    const text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+}
+
+export function downloadText(elementId, filename) {
+    const text = document.getElementById(elementId).textContent;
+    const blob = new Blob([text], {
+        type: "text/plain"
     });
-    const result = await response.json();
-    report.value = result.message;
-});
-document.getElementById('c_r').addEventListener('click', async () => {
-    alert('編譯並執行');
-    const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile_and_run', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            id_code: id_code,
-            test_file: textarea.value
-        })
-    });
-    const result = await response.json();
-    report.value = result.message;
-});
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+
+window.copyText = copyText;
+window.downloadText = downloadText;
 
 (function() {
     let blockExplanations = {}; // 存放 JSON 資料

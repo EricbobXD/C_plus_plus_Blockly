@@ -351,6 +351,7 @@ var workspace = Blockly.inject('blockly-workspace', {
         minScale: 0.1,
         scaleSpeed: 1.5
     },
+    undo: true, 
     renderer: 'zelos'
 });
 workspace.resizeContents();
@@ -405,9 +406,14 @@ workspace.addChangeListener(function(event) {
     }
 });
 
+/***** 其他原有功能保持不變 *****/
+window.addEventListener("resize", function() {
+    Blockly.svgResize(workspace);
+});
+
 Blockly.Cpp.init(workspace);
 
-var id_code = '';
+let id_code = '';
 async function updateCodeOutput() {
     id_code = Blockly.Cpp.workspaceToCode(workspace);
     var convElement = document.getElementById('code');
@@ -445,23 +451,35 @@ async function updateCodeOutput() {
     renderMarkdown();
 }
 
-export function copyText(elementId) {
-    const text = document.getElementById(elementId).textContent;
-    navigator.clipboard.writeText(text).then(() => alert("Copied!"));
-}
-
-export function downloadText(elementId, filename) {
-    const text = document.getElementById(elementId).textContent;
-    const blob = new Blob([text], {
-        type: "text/plain"
+document.getElementById('c').addEventListener('click', async () => {
+    alert(`編譯以下代碼:\n${id_code}`);
+    const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id_code: id_code
+        })
     });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    link.click();
-}
-window.copyText = copyText;
-window.downloadText = downloadText;
+    const result = await response.json();
+    report.value = result.message;
+});
+document.getElementById('c_r').addEventListener('click', async () => {
+    alert('編譯並執行');
+    const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile_and_run', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id_code: id_code,
+            test_file: textarea.value
+        })
+    });
+    const result = await response.json();
+    report.value = result.message;
+}); 
 
 const originalBlockToCode = Blockly.Cpp.blockToCode;
 Blockly.Cpp.blockToCode = function(block) {
@@ -475,6 +493,15 @@ Blockly.Cpp.blockToCode = function(block) {
     }
     return code;
 };
+
+document.getElementById('undoBtn').addEventListener('click', async ()=>{
+    if (workspace.getUndoStack().length === 0) alert("CANNOT UNDO");
+    else workspace.undo(false);
+});
+document.getElementById('redoBtn').addEventListener('click', async ()=>{
+    if (!workspace.getRedoStack().length === 0) alert("CANNOT REDO");
+    else workspace.undo(true);
+});
 
 const model = ['var', 'array', 'func', 'get'];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));

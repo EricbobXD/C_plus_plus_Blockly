@@ -76,6 +76,13 @@
             color: #ecf0f1;
         }
 
+        header .actions button.undo {
+            background-color: #A5C89E;
+        }
+
+        header .actions button.redo {
+            background-color: #4B9DA9;
+        }
         header .actions button.compile {
             background-color: #3498db;
         }
