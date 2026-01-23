@@ -344,251 +344,23 @@ export const toolbox = {
             "contents": [
                 {
                     "kind": "category",
-                    "name": "vector",
+                    "name": "Vector",
                     "colour": "#3d7fd6",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_vector"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Vector 加入元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_push_back"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_emplace_back"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_append_range"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_insert"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_insert_range"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Vector 刪除元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_pop_back"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_erase"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Vector 集合操作"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_swap"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_assign"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Vector 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_operate[]"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_front"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_back"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Vector 條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_clear"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_size"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_empty"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_reserve"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_capacity"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_max_size"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Vector 迭代器"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_begin"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_end"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_rbegin"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "vector_rend"
-                        }
-                    ]
+                        "kind": "button", 
+                        "text": "新增 Vector",
+                        "callbackKey": "rac_category"
+                    }]
                 },
                 {
                     "kind": "category",
                     "name": "deque",
                     "colour": "#85B09A",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_deque"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Deque 新增元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_push_back"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_emplace_back"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_append_range"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_push_front"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_emplace_front"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_prepend_range"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_insert"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_insert_range"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Deque 刪除元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_pop_back"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_pop_front"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_erase"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Deque 集合操作"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_swap"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_assign"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Deque 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_operate[]"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_front"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_back"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Deque 條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_clear"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_size"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_empty"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Deque 迭代器"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_begin"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_end"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_rbegin"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "deque_rend"
-                        }
-                    ]
+                        "kind": "button", 
+                        "text": "新增 Deque",
+                        "callbackKey": "deq_category"
+                    }]
                 },
                 {    
                     "kind": "category",
@@ -1714,14 +1486,6 @@ export const toolbox = {
                             "kind": "block",
                             "type": "bitset_none"
                         },
-                        {
-                            "kind": "label",
-                            "text": "Bitset 輔助工具"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_var"
-                        }
                     ]
                 },
                 {

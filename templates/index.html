@@ -137,9 +137,9 @@
         <input type="text" id="VarName"><br><br>
 
         <label>選擇類型：</label><br>
-        <input type="radio" name="vartype" value="VAR" checked> 變數<br>
-        <input type="radio" name="vartype" value="PTR"> 指標<br>
-        <input type="radio" name="vartype" value="REF"> 參考<br><br>
+        <input type="radio" name="var_type" value="VAR" checked> 變數<br>
+        <input type="radio" name="var_type" value="PTR"> 指標<br>
+        <input type="radio" name="var_type" value="REF"> 參考<br><br>
 
         <button onclick="confirmVar()">確定</button>
         <button onclick="cancel('var_model')">取消</button>
@@ -147,7 +147,7 @@
 
     <div id="array_model" class="model">
         <label>輸入陣列名稱: </label><br>
-        <input type="text" id="ArrayName"><br><br>
+        <input type="text" id="arrayName"><br><br>
 
         <button onclick="confirmArray()">確定</button>
         <button onclick="cancel('array_model')">取消</button>
@@ -158,11 +158,11 @@
         <input type="text" id="FuncName"><br><br>
 
         <label>選擇類型：</label><br>
-        <input type="radio" name="functype" value="Function" checked> 函式<br>
-        <input type="radio" name="functype" value="Lambda"> lambda<br>
-        <input type="radio" name="functype" value="Struct"> struct<br>
-        <input type="radio" name="functype" value="Class"> class<br>
-        <input type="radio" name="functype" value="Operation"> operation<br>
+        <input type="radio" name="func_type" value="Function" checked> 函式<br>
+        <input type="radio" name="func_type" value="Lambda"> lambda<br>
+        <input type="radio" name="func_type" value="Struct"> struct<br>
+        <input type="radio" name="func_type" value="Class"> class<br>
+        <input type="radio" name="func_type" value="Operation"> operation<br>
 
         <button onclick="confirmFunction()">確定</button>
         <button onclick="cancel('func_model')">取消</button>
@@ -173,11 +173,23 @@
         <input type="text" id="GetName"><br><br>
 
         <label>選擇類型：</label><br>
-        <input type="radio" name="gettype" value="Struct_Name" checked> 結構變數<br>
-        <input type="radio" name="gettype" value="Class_Name"> 類別變數<br>
+        <input type="radio" name="get_type" value="Struct_Name" checked> 結構變數<br>
+        <input type="radio" name="get_type" value="Class_Name"> 類別變數<br>
 
         <button onclick="confirmGet()">確定</button>
         <button onclick="cancel('get_model')">取消</button>
+    </div>
+
+    <div id="rac_model" class="model">
+        <label>輸入陣列名稱: </label><br>
+        <input type="text" id="RacName"><br><br>
+
+        <label>選擇類型：</label><br>
+        <input type="radio" name="rac_type" value="Vector" checked> Vector<br>
+        <input type="radio" name="rac_type" value="Deque"> Deque<br>
+
+        <button onclick="ConfirmRAC()">確定</button>
+        <button onclick="cancel('rac_model')">取消</button>
     </div>
 
     <script type="module" src="public/index.js" defer></script>

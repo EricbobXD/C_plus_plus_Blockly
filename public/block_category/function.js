@@ -10,7 +10,7 @@ export function Create_Array(toolbox, workspace) {
 }
 
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
-export function Create_variable(Block_type, toolbox, workspace){
+export function Create_Variable(Block_type, toolbox, workspace){
     let blockSet = new Set([
         `define_${Block_type}`,
         `${Block_type}_equal`,
@@ -79,6 +79,28 @@ export function Create_getName(Block_type, toolbox, workspace){
         if (block_index !== -1)
             category.contents.splice(block_index+1, 0, {"kind": "block", "type": `get_${Block_type}`});
             
+    }
+
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
+}
+
+export function Create_Random_Access_Containers(Block_type, toolbox, workspace){
+    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
+
+    let blockSet = new Set([   
+            `define_${Block_type}`, 
+            `${Block_type}_push_back`, `${Block_type}_emplace_back`, `${Block_type}_append_range`, `${Block_type}_insert`, `${Block_type}_insert_range`, 
+            `${Block_type}_pop_back`, `${Block_type}_erase`, 
+            `${Block_type}_swap`, `${Block_type}_assign`, 
+            `${Block_type}_operate[]`, `${Block_type}_front`, `${Block_type}_back`,
+            `${Block_type}_clear`, `${Block_type}_size`, `${Block_type}_empty`,
+            `${Block_type}_begin`, `${Block_type}_end`, `${Block_type}_rbegin`, `${Block_type}_rend`, `${Block_type}_cbegin`, `${Block_type}_end`
+        ]);
+    if(category){
+        if (Block_type === 'Deque') 
+            blockSet.add(`${Block_type}_push_front`, `${Block_type}_emplace_front`, `${Block_type}_prepend_range`, `${Block_type}_pop_front`);
+        blockSet.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
     }
 
     const newToolbox = JSON.parse(JSON.stringify(toolbox));

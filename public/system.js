@@ -13,6 +13,10 @@ const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
     }
 };
 
+Blockly.Cpp = new Blockly.Generator('Cpp');
+Blockly.Cpp.ORDER_ATOMIC = 1;
+Blockly.Cpp.ORDER_NONE = 99;
+
 Blockly.Blocks['if_block'] = {
         init: function() {
             this.jsonInit({
@@ -65,18 +69,6 @@ Blockly.Extensions.registerMutator(
             }
             clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
             }
-        },
-        mutationToDom: function() {
-            if (!this.elifCount_ && !this.hasElse_) return null;
-            const container = Blockly.utils.xml.createElement('mutation');
-            container.setAttribute('elifCount', this.elifCount_);
-            container.setAttribute('hasElse', this.hasElse_);
-            return container;
-        },
-        domToMutation: function(xmlElement) {
-            this.elifCount_ = parseInt(xmlElement.getAttribute('elifCount'), 10) || 0;
-            this.hasElse_ = xmlElement.getAttribute('hasElse') === 'true';
-            this.updateShape_();
         },
         decompose: function(workspace) {
             const containerBlock = workspace.newBlock('if_mutator');
@@ -161,10 +153,6 @@ Blockly.Extensions.registerMutator(
     undefined, 
     ['elif_mutator', 'else_mutator']
 );
-
-Blockly.Cpp = new Blockly.Generator('Cpp');
-Blockly.Cpp.ORDER_ATOMIC = 1;
-Blockly.Cpp.ORDER_NONE = 99;
  
 const CategoryType = ["VAR", "PTR", "REF", 
                       "Array", "Vector", "Deque", 
@@ -173,7 +161,11 @@ const CategoryType = ["VAR", "PTR", "REF",
                       "Map", "Unordered_map", "Pair", 
                       "Bitset", 
                       "Function", "Lambda", "Operation", 
-                      "Struct", "Struct_Name", "Class", "Class_Name"
+                      "Struct", "Struct_Name", "Class", "Class_Name", 
+                      "Vector", "Deque", 
+                      "Stack", "Queue", "Priority_queue", 
+                      "Map", "Unordered_map", "Pair", 
+                      "Set", "Unordered_set", "Flat_set", "multiset"
                      ];
 CategoryType.forEach(t => Blockly.Cpp[t] = []);
 
@@ -503,11 +495,11 @@ document.getElementById('redoBtn').addEventListener('click', async ()=>{
     else workspace.undo(true);
 });
 
-const model = ['var', 'array', 'func', 'get'];
+const model = ['var', 'array', 'func', 'get', 'rac'];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
 
 export function confirmArray() {
-    const name = document.getElementById("ArrayName").value;
+    const name = document.getElementById("ContainerName").value;
 
     if (!name) return;
     if (usedName.has(name)) {
@@ -516,8 +508,8 @@ export function confirmArray() {
     }
     
     usedName.add(name);
-    document.getElementById("array_model").style.display = "none";
-    document.getElementById("ArrayName").value = "";
+    document.getElementById("container_model").style.display = "none";
+    document.getElementById("ContainerName").value = "";
 
     if (!Blockly.Cpp["Array"].includes(name)) {
         Blockly.Cpp["Array"].push(name);
@@ -551,15 +543,17 @@ function Confirm(text_name, type_name, model_name, Func) {
     Blockly.getMainWorkspace().refreshToolboxSelection();
 };
 
-export function confirmVar(){ Confirm("VarName", "vartype", "var_model", Utils.Create_variable); };
+export function confirmVar(){ Confirm("VarName", "var_type", "var_model", Utils.Create_Variable); };
 
-export function confirmFunction(){ Confirm("FuncName", "functype", "func_model", Utils.Create_Function); }
+export function confirmFunction(){ Confirm("FuncName", "func_type", "func_model", Utils.Create_Function); }
 
-export function confirmGet(){ Confirm("GetName", "gettype", "get_model", Utils.Create_getName); }
+export function confirmGet(){ Confirm("GetName", "get_type", "get_model", Utils.Create_getName); }
+
+export function ConfirmRAC(){ Confirm("RacName", "rac_type", "rac_model", Utils.Create_Random_Access_Containers); }
 
 export function cancel(type){ document.getElementById(type).style.display = "none"; };
 
-const button_callback = { confirmArray, confirmVar, confirmFunction, confirmGet, cancel };
+const button_callback = { confirmArray, confirmVar, confirmFunction, confirmGet, ConfirmRAC, cancel };
 Object.keys(button_callback).forEach(key => {
   window[key] = button_callback[key];
 });
