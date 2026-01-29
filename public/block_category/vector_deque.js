@@ -1,10 +1,11 @@
+const Cpp = Blockly.Cpp;
+
 function VarDropdown(type) {
     return new Blockly.FieldDropdown(
-        Blockly.Cpp[type].map(v => [v, v])
+        Cpp[type].map(v => [v, v])
     );
 }
 
-const Cpp = Blockly.Cpp;
 ["Vector", "Deque"].forEach(Block_type =>{
     const color = (Block_type === "Vector")?"#3d7fd6": "#85B09A";
     Blockly.Blocks[`define_${Block_type}`] = {  
@@ -12,8 +13,11 @@ const Cpp = Blockly.Cpp;
             this.appendValueInput("TYPE")
                 .appendField(`定義 ${Block_type} 資料型態: `);
 
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
 
             this.jsonInit({
                 "type": `define_${Block_type}`,
@@ -39,12 +43,9 @@ const Cpp = Blockly.Cpp;
                 "helpUrl": ""
             }), 
             
-            // 監聽積木變更
             this.setOnChange(function(e) {
                 if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
             });
-
-            this.updateInProgress_ = false; 
         },
         saveExtraState: function(){
             return {'mode': this.getFieldValue('contents')};
@@ -55,7 +56,9 @@ const Cpp = Blockly.Cpp;
         UpdateShape_: function(mode){
             if (!mode) mode = this.getFieldValue('contents');
             const allinput = ["size", "element", "array", "start", "end"];
-            allinput.forEach(name => { if (this.getInput(name))  this.removeInput(name); });
+            allinput.forEach(name => {
+                if (this.getInput(name))  this.removeInput(name); 
+            });
 
             switch (mode){
                 case "size": 
@@ -80,7 +83,7 @@ const Cpp = Blockly.Cpp;
     };
         
     Cpp.forBlock[`define_${Block_type}`] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
+        var type = Cpp.valueToCode(block, 'TYPE', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         var Name = block.getFieldValue('Name');
         var contents = block.getFieldValue('contents');
         var code = `vector<${type}>${Name}`;
@@ -88,13 +91,13 @@ const Cpp = Blockly.Cpp;
         switch (contents){
             case "size": 
                 if (!this.getInput("size")) break;
-                var size = Cpp.valueToCode(block, "size", 1);
+                var size = Cpp.valueToCode(block, "size", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '');
                 code += `(${size})`;
                 break;
             case "size_element": 
                 if (!this.getInput("size") || !this.getInput("element")) break;
-                var size = Cpp.valueToCode(block, "size", 1);
-                var element = Cpp.valueToCode(block, "element", 1);
+                var size = Cpp.valueToCode(block, "size", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+                var element = Cpp.valueToCode(block, "element", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
                 code += `(${size}, ${element})`;
                 break;
             case "array": 
@@ -104,8 +107,8 @@ const Cpp = Blockly.Cpp;
             case "iter":
                 if (!this.getInput("start") || !this.getInput("end")) break;
                 var Name2 = block.getFieldValue('Name2');
-                var start = Cpp.valueToCode(block, "start", 1);
-                var end = Cpp.valueToCode(block, "end", 1);
+                var start = Cpp.valueToCode(block, "start", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+                var end = Cpp.valueToCode(block, "end", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
                 code += `(${Name2}.begin${(start === 0)?'':`+${start}`}, ${Name2}.end${(end === 0)?'':`+${end}`}`;
                 break;
             default: 
@@ -118,8 +121,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_push_back`] = {
         init:function(){
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_push_back`,
                 "message0": "在 新增 %1 在最尾端(只能輸入單個)",
@@ -143,17 +149,17 @@ const Cpp = Blockly.Cpp;
 
     Cpp.forBlock[`${Block_type}_push_back`] = function(block) {
         var Name = block.getFieldValue('Name');
-        var value = Cpp.valueToCode(block, 'value', 1) || '';
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
+        var value = Cpp.valueToCode(block, 'value', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         return Name + ".push_back(" + value + ");\n";
     };
 
     Blockly.Blocks[`${Block_type}_emplace_back`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_emplace_back`,
                 "message0": "新增 %1 在最尾端(可輸入多個 , 用空白分開)",
@@ -181,8 +187,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_append_range`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_append_range`,
                 "message0": "加陣列 %1 到最尾端 (append)",
@@ -202,17 +211,17 @@ const Cpp = Blockly.Cpp;
 
     Cpp.forBlock[`${Block_type}_append_range`] = function(block) {
         var Name = block.getFieldValue('Name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
+        var element = Cpp.valueToCode(block, 'element', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         return Name + ".append_range(" + element + ");\n";
     };
 
     Blockly.Blocks[`${Block_type}_pop_back`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
 
             this.appendDummyInput()
                 .appendField("刪除最後一個");
@@ -236,8 +245,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_insert`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_insert`,
                 "message0": "在 %1 位置插入 %2",
@@ -264,11 +276,8 @@ const Cpp = Blockly.Cpp;
 
     Cpp.forBlock[`${Block_type}_insert`] = function(block) {
         var Name = block.getFieldValue('Name');
-        var pos = Cpp.valueToCode(block, 'pos', 1) | 0;
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
+        var pos = Cpp.valueToCode(block, 'pos', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+        var value = Cpp.valueToCode(block, 'value', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         if (pos === 0) {
             return `${Name}.insert(${Name}.begin(), ${value});\n`
         }   
@@ -277,8 +286,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_insert_range`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_insert_range`,
                 "message0": "在位置: %1 加陣列 %2 (insert)",
@@ -304,21 +316,21 @@ const Cpp = Blockly.Cpp;
 
     Cpp.forBlock[`${Block_type}_insert_range`] = function(block) {
         var Name = block.getFieldValue('Name');
-        var pos = Cpp.valueToCode(block, 'pos', 1) | '0';
-        var array = Cpp.valueToCode(block, 'array', 1);
-        if (array.startsWith('(') && value.endsWith(')')) {
-            array = array.slice(1, -1);
-        }
+        var pos = Cpp.valueToCode(block, 'pos', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+        var array = Cpp.valueToCode(block, 'array', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         if (pos === 0) {
-            return `${Name}.insert_range(${Name}.begin(), ${value});\n`
+            return `${Name}.insert_range(${Name}.begin(), ${array});\n`
         }   
-        return `${Name}.insert_range(${Name}.begin()+${pos}, ${value});\n`;
+        return `${Name}.insert_range(${Name}.begin()+${pos}, ${array});\n`;
     }
 
     Blockly.Blocks[`${Block_type}_erase`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_erase`,
                 "message0": "在 %1 位置刪除 %2",
@@ -345,25 +357,21 @@ const Cpp = Blockly.Cpp;
 
     Cpp.forBlock[`${Block_type}_erase`] = function(block) {
         var Name = block.getFieldValue('Name');
-        var pos = Cpp.valueToCode(block, 'pos', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
-            if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        if (pos === '0') {
-                return `${Name}.erase(${Name}.begin(), ${value});\n`;
-        } else {
-            if (pos.startsWith('(') && pos.endsWith(')')) {
-                pos = pos.slice(1, -1);
-            }
-        }
-        return `${Name}.erase(${Name}.begin()+${pos}, ${value});\n`;
+        var pos = Cpp.valueToCode(block, 'pos', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+        var value = Cpp.valueToCode(block, 'value', Blockly.Cpp.ORDER_ATOMIC1).replace(/^\(?|\)?$/g, '') || '';
+        if (pos === '0') 
+            return `${Name}.erase(${Name}.begin(), ${value});\n`;
+        else 
+            return `${Name}.erase(${Name}.begin()+${pos}, ${value});\n`;
     }    
 
     Blockly.Blocks[`${Block_type}_assign`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": "vector_assign",
                     "message0": "清空並插入 1. 重複次數: %1, 2. 陣列: %2, 3. 迭代器: %3",
@@ -530,34 +538,20 @@ const Cpp = Blockly.Cpp;
         var code = `${Name}.assign(`;
         
         if (count){
-            var count_num = Cpp.valueToCode(block, 'count_num', 1);
-            var str = Cpp.valueToCode(block, 'str', 1);
-            if (count_num.startsWith('(') && count_num.endsWith(')')) {
-                count_num = count_num.slice(1, -1);
-            }   
-            if (str.startsWith('(') && str.endsWith(')')) {
-                str = str.slice(1, -1);
-            }   
+            var count_num = Cpp.valueToCode(block, 'count_num', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+            var str = Cpp.valueToCode(block, 'str', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
             code += `${str}, ${count_num}`;
         }
         if (array){
-            var array_content = Cpp.valueToCode(block, 'array_name', 1);
-            if (array_content.startsWith('(') && array_content.endsWith(')')) {
-                array_content = array_content.slice(1, -1);
-            }   
+            var array_content = Cpp.valueToCode(block, 'array_name', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || ''; 
             code += `${array_content}`;
         }
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
-            if (begin.startsWith('(') && begin.endsWith(')')) {
-                begin = begin.slice(1, -1);
-            }   
-            if (end.startsWith('(') && end.endsWith(')')) {
-                end = end.slice(1, -1);
-            }   
+            var begin = Cpp.valueToCode(block, 'begin', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+            var end = Cpp.valueToCode(block, 'end', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+
             if (begin === '0'){
                 begin = '';
             }
@@ -572,8 +566,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_operate[]`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_operate[]`,
                 "message0": "讀取第 %1 個元素",
@@ -593,10 +590,7 @@ const Cpp = Blockly.Cpp;
 
     Cpp.forBlock[`${Block_type}_operate[]`] = function(block){
         var Name = block.getFieldValue('Name');
-        var pos = Cpp.valueToCode(block, 'pos', 1);
-        if (pos.startsWith('(') && pos.endsWith(')')) {
-            pos = pos.slice(1, -1);
-        }
+        var pos = Cpp.valueToCode(block, 'pos', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         var code = `${Name}[${pos}]`;
         return [code, 1];
     };
@@ -626,8 +620,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_back`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
 
             this.appendDummyInput()
                 .appendField("讀取最後一個元素");
@@ -650,8 +647,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_resize`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
 
             this.appendDummyInput()
                 .appendField("可容納元素個數")
@@ -672,11 +672,13 @@ const Cpp = Blockly.Cpp;
         return [`${Name}.resize()`, 1];
     }
 
-
     Blockly.Blocks[`${Block_type}_capacity`] = {  
         init: function() {
+            this.text = "Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
 
             this.appendDummyInput()
                 .appendField("內存容量");
@@ -698,11 +700,11 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_reserve`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField("改變");
-
+            this.text = "改變 Vector 名稱: ";
             this.Block_type = "Vector";
-            this.appendDummyInput("Name_Input");
+            this.appendDummyInput("Name_Input")
+                .appendField("Vector 名稱: ")
+                .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": "vector_reserve",
                 "message0": "容量 >= %1",
@@ -750,10 +752,7 @@ Blockly.Blocks['Deque_push_front'] = {
 
 Cpp.forBlock['Deque_push_front'] = function(block) {
     var Name = block.getFieldValue('Name');
-    var value = Cpp.valueToCode(block, 'value', 1) || '';
-    if (value.startsWith('(') && value.endsWith(')')) {
-        value = value.slice(1, -1);
-    }
+    var value = Cpp.valueToCode(block, 'value', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
     return Name + ".push_front(" + value + ");\n";
 };
 
@@ -805,9 +804,6 @@ Blockly.Blocks['Deque_prepend_range'] = {
 
 Cpp.forBlock['Deque_prepend_range'] = function(block) {
     var Name = block.getFieldValue('Name');
-    var element = Cpp.valueToCode(block, 'element', 1) || '';
-    if (element.startsWith('(') && element.endsWith(')')) {
-        element = element.slice(1, -1);
-    }
+    var element = Cpp.valueToCode(block, 'element', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
     return Name + ".prepend_range(" + element + ");\n";
 };

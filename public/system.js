@@ -181,18 +181,19 @@ if (!window.data_type_checked) {
 // save all variable names, to prevent the repeating name and lead to error
 const usedName = new Set();
 
+function VarDropdown(type) {
+    return new Blockly.FieldDropdown(
+        Blockly.Cpp[type].map(v => [v, v])
+    );
+}
+
 Blockly.Blocks['define_class'] = {
     init: function() {
+        this.appendDummyInput()
+            .appendField("類別 名稱: ")
+            .appendField(VarDropdown("Class"), "class_name")
         this.jsonInit({
             "type": "define_class",
-            "message0": "類別 名稱: %1", 
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "class_name",
-                    "options": () => Blockly.Cpp["Class"].map(v => [v, v])
-                }
-            ],
             "previousStatement": null,
             "nextStatement": null,
             "colour": "#e9967a",
@@ -332,18 +333,21 @@ Blockly.Extensions.registerMutator(
 
 // regist extensions
 Blockly.Extensions.register('dynamic_dropdown', function(){
-    this.updateShape_ = function(){
+    this.updateDropdown_ = function(){
         const targetInput = this.getInput("Name_Input");
         if (!targetInput) return;
 
-        while (targetInput.fieldRow.length > 0)
-            targetInput.removeField(targetInput.fieldRow[0].name || targetInput.fieldRow[0].fieldGroup_);
+        while (targetInput.fieldRow.length > 0){
+            targetInput.fieldRow[0].dispose();
+            targetInput.fieldRow.splice(0, 1);
+        }
 
-        targetInput.appendField(`${this.Block_type}名稱: `)
+        if (targetInput.sourceBlock && targetInput.sourceBlock.render) {
+            targetInput.sourceBlock.render();
+        }
+
+        targetInput.appendField(this.text)
                    .appendField(VarDropdown(this.Block_type), "Name");
-        console.log(this.Block_type);
-
-        if (this.rendered) this.render();
     }
 });
 
@@ -582,10 +586,11 @@ export function Confirm(text_name, type, model_name, Func) {
     if (!Blockly.Cpp[type].includes(name)) {
         Blockly.Cpp[type].push(name);
 
-        
         if (window.data_type_checked[type]) {
-            const newToolbox = JSON.parse(JSON.stringify(toolbox));
-            workspace.updateToolbox(newToolbox);
+            workspace.getAllBlocks().forEach(block => { 
+                if (block.updateDropdown_) 
+                    block.updateDropdown_(); 
+            });
             return;
         }
         Func(type, toolbox, workspace);

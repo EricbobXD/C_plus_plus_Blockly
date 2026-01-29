@@ -1,14 +1,18 @@
+const Cpp = Blockly.Cpp;
+
 function VarDropdown(type) {
     return new Blockly.FieldDropdown(
-        Blockly.Cpp[type].map(v => [v, v])
+        Cpp[type].map(v => [v, v])
     );
 }
 
 Blockly.Blocks['define_function_void'] = {
     init: function() {
-        this.appendDummyInput()
+        this.text = "函式型態: void, 名稱"; 
+        this.Block_type = "Fuction";
+        this.appendDummyInput("Name_Input")
             .appendField("函式型態: void, 名稱")
-            .appendField(VarDropdown("Function"), "func_name");
+            .appendField(VarDropdown("Function"), "Name");
         this.appendValueInput('data');
         this.appendStatementInput("DO")
             .setCheck(null)
@@ -29,10 +33,10 @@ Blockly.Blocks['define_function_void'] = {
     }
 };
 
-Blockly.Cpp.forBlock['define_function_void'] = function(block) {
+Cpp.forBlock['define_function_void'] = function(block) {
     var funcName = block.getFieldValue('func_name');
-    var data = Blockly.Cpp.valueToCode(block, 'data', 1);
-    var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
+    var data = Cpp.valueToCode(block, 'data', 1);
+    var content = Cpp.statementToCode(block, 'DO') || '';
     var expression = block.getFieldValue('expression');
     content = content.replace(/^ {2}/gm, '    ');
     if (data.startsWith('(') && data.endsWith(')')) {
@@ -71,12 +75,12 @@ Blockly.Blocks['define_function'] = {
     }
 };
 
-Blockly.Cpp.forBlock['define_function'] = function(block) {
+Cpp.forBlock['define_function'] = function(block) {
     var Type = block.getFieldValue('TYPE');
     var funcName = block.getFieldValue('func_name');
-    var data = Blockly.Cpp.valueToCode(block, 'data', 1);
-    var content = Blockly.Cpp.statementToCode(block, 'DO') || '';
-    var expression = Blockly.Cpp.valueToCode(block, 'expression', 1);
+    var data = Cpp.valueToCode(block, 'data', 1);
+    var content = Cpp.statementToCode(block, 'DO') || '';
+    var expression = Cpp.valueToCode(block, 'expression', 1);
     content = content.replace(/^ {2}/gm, '    ');
     if (data.startsWith('(') && data.endsWith(')')) {
         data = data.slice(1, -1);
@@ -106,9 +110,9 @@ Blockly.Blocks['function_call'] = {
     }
 };
 
-Blockly.Cpp.forBlock['function_call'] = function(block) {
+Cpp.forBlock['function_call'] = function(block) {
     var funcName = block.getFieldValue('funcName');
-    var value = Blockly.Cpp.valueToCode(block, 'VALUE', 1);
+    var value = Cpp.valueToCode(block, 'VALUE', 1);
     if (value.startsWith('(') && value.endsWith(')')) {
         value = value.slice(1, -1);
     }
@@ -143,10 +147,10 @@ Blockly.Blocks['lambda'] = {
         this.setHelpUrl(''); 
     }
 };
-Blockly.Cpp.forBlock['lambda'] = function(block) {
+Cpp.forBlock['lambda'] = function(block) {
     var capture = block.getFieldValue('captures');
-    var VAR = Blockly.Cpp.valueToCode(block, 'var_name', 1);
-    var statement = Blockly.Cpp.statementToCode(block, 'DO') || '';
+    var VAR = Cpp.valueToCode(block, 'var_name', 1);
+    var statement = Cpp.statementToCode(block, 'DO') || '';
     var line = block.getFieldValue('line') === "TRUE";
     if (VAR.startsWith('(') && VAR.endsWith(')')) {
         VAR = VAR.slice(1, -1);
@@ -180,23 +184,23 @@ Blockly.Blocks['define_struct'] = {
     }
 };
 
-Blockly.Cpp.forBlock['define_struct'] = function(block) {
+Cpp.forBlock['define_struct'] = function(block) {
     var struct_name = block.getFieldValue('struct_name');
-    var DO = Blockly.Cpp.statementToCode(block, 'DO').replace(/^ {2}/gm, '    ');
+    var DO = Cpp.statementToCode(block, 'DO').replace(/^ {2}/gm, '    ');
     return `struct ${struct_name} {\n${DO}};`;
 }
 
-Blockly.Cpp.forBlock['define_class'] = function(block) {
+Cpp.forBlock['define_class'] = function(block) {
     const name = block.getFieldValue("class_name");
     let code = `class ${name} {\n`;
     if (block.hasPublic_) {
-        code += '  public:\n'+ Blockly.Cpp.statementToCode(block, 'Public').replace(/^ {2}/gm, '    ');
+        code += '  public:\n'+ Cpp.statementToCode(block, 'Public').replace(/^ {2}/gm, '    ');
     }
     if (block.hasPrivate_) {
-        code += '  private:\n' + Blockly.Cpp.statementToCode(block, 'Private').replace(/^ {2}/gm, '    ');
+        code += '  private:\n' + Cpp.statementToCode(block, 'Private').replace(/^ {2}/gm, '    ');
     }
     if (block.hasProtected_) {
-        code += '  protected:\n' + Blockly.Cpp.statementToCode(block, 'Protected').replace(/^ {2}/gm, '    ')   ;
+        code += '  protected:\n' + Cpp.statementToCode(block, 'Protected').replace(/^ {2}/gm, '    ')   ;
     }
     code += '}\n';
     return code;
@@ -220,10 +224,10 @@ Blockly.Blocks['get_Struct'] = {
     }
 };
 
-Blockly.Cpp.forBlock['get_Struct'] = function(block) {
+Cpp.forBlock['get_Struct'] = function(block) {
     var struct_name = block.getFieldValue('struct_name');
     var var_name = block.getFieldValue('var_name');
-    var size = Blockly.Cpp.valueToCode(block, 'size', 1);
+    var size = Cpp.valueToCode(block, 'size', 1);
     if (size) {
         return `${struct_name} ${var_name}[${size}];`
     }
@@ -248,10 +252,10 @@ Blockly.Blocks['get_Class'] = {
     }
 };
 
-Blockly.Cpp.forBlock['get_Class'] = function(block) {
+Cpp.forBlock['get_Class'] = function(block) {
     var class_name = block.getFieldValue('class_Name');
     var var_name = block.getFieldValue('var_name');
-    var size = Blockly.Cpp.valueToCode(block, 'size', 1);
+    var size = Cpp.valueToCode(block, 'size', 1);
     if (size) {
         return `${class_name} ${var_name}[${size}];`
     }
@@ -313,12 +317,12 @@ Blockly.Blocks['define_operator'] = {
 };
 
 
-Blockly.Cpp.forBlock['define_operator'] = function(block) {
+Cpp.forBlock['define_operator'] = function(block) {
     var type1 = block.getFieldValue('TYPE1');
-    var var1_1 = Blockly.Cpp.valueToCode(block, 'var1_1', 1);
-    var var1_2 = Blockly.Cpp.valueToCode(block, 'var1_2', 1);
+    var var1_1 = Cpp.valueToCode(block, 'var1_1', 1);
+    var var1_2 = Cpp.valueToCode(block, 'var1_2', 1);
     var type2 = block.getFieldValue('TYPE2');
-    var var2_1 = Blockly.Cpp.valueToCode(block, 'var2_1', 1);
-    var var2_2 = Blockly.Cpp.valueToCode(block, 'var2_2', 1);
+    var var2_1 = Cpp.valueToCode(block, 'var2_1', 1);
+    var var2_2 = Cpp.valueToCode(block, 'var2_2', 1);
     return `bool operator${type1}(${var1_1}, ${var1_2}){\n    return ${var2_1} ${type2} ${var2_2};\n}`;
 }
