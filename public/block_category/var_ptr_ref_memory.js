@@ -104,11 +104,8 @@ Blockly.Blocks[`get_${Block_type}`] = {
         }
 };
 
-Blockly.Cpp.forBlock[`get_${Block_type}`] = function(block) {
-    var var_name = block.getFieldValue('var_name');
-    if (type === "PTR") var_name = '*' + var_name;
-    else if (type === "REF") var_name = '&' + var_name;
-    return [var_name, Blockly.Cpp.ORDER_ATOMIC];
+Blockly.Cpp.forBlock[`get_${Block_type}`] = function(block){
+    return [block.getFieldValue('var_name'), Blockly.Cpp.ORDER_ATOMIC];
 };
 
 Blockly.Blocks[`def_${Block_type}`] = {
@@ -124,7 +121,7 @@ Blockly.Blocks[`def_${Block_type}`] = {
                 ["有正有負", "no"],
                 ["全部取正", "unsigned"]])
             , "unsigned");
-        this.appendValueInput('type');
+        this.appendValueInput('TYPE');
         this.appendDummyInput()
             .appendField(`${data_type[Block_type]}名稱: `)
             .appendField(VarDropdown(Block_type), "var_name");
@@ -135,7 +132,20 @@ Blockly.Blocks[`def_${Block_type}`] = {
         this.setColour('#DABD00');
         this.setTooltip(`定義一個${data_type[Block_type]}`);
         this.setHelpUrl('');
+
+         this.setOnChange = function(e){
+            if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
         }
+    }, 
+    saveExtraState: function(){
+        return {'mode': block.getFieldValue('TYPE')};
+    }, 
+    loadExtraState: function(state){
+        this.UpdateShape_(state.mode);
+    }, 
+    UpdateShape_: function(){
+        if (!mode) mode = block.getFieldValue('TYPE'); 
+    }
 }
 
 Blockly.Cpp.forBlock[`def_${Block_type}`] = function(block) {
@@ -148,7 +158,7 @@ Blockly.Cpp.forBlock[`def_${Block_type}`] = function(block) {
         code += 'unsigned ';
     }
 
-        if (type === "PTR") code = '*' + code;
+    if (type === "PTR") code = '*' + code;
     else if (type === "REF") code = '&' + code;
 
     code += ' ' + var_name;

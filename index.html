@@ -9,9 +9,11 @@
     <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
     <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
     <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/msg/zh-hant.js"></script>
     <!-- Markdown & Highlight -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/blockly/blockly_compressed.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <link rel="stylesheet" href="public/style.css">
@@ -132,6 +134,7 @@
         &copy; 2024 Bosen &amp; EricbobXD. All Rights Reserved.
     </footer>
     
+    <!-- Don't touch!!! -->
     <div id="var_model" class="model">
         <label>輸入變數名稱: </label><br>
         <input type="text" id="VarName"><br><br>
@@ -141,16 +144,8 @@
         <input type="radio" name="var_type" value="PTR"> 指標<br>
         <input type="radio" name="var_type" value="REF"> 參考<br><br>
 
-        <button onclick="confirmVar()">確定</button>
-        <button onclick="cancel('var_model')">取消</button>
-    </div>
-
-    <div id="array_model" class="model">
-        <label>輸入陣列名稱: </label><br>
-        <input type="text" id="arrayName"><br><br>
-
-        <button onclick="confirmArray()">確定</button>
-        <button onclick="cancel('array_model')">取消</button>
+        <button onclick="ConfirmVar()">確定</button>
+        <button onclick="Cancel('var_model')">取消</button>
     </div>
     
     <div id="func_model" class="model">
@@ -164,8 +159,8 @@
         <input type="radio" name="func_type" value="Class"> class<br>
         <input type="radio" name="func_type" value="Operation"> operation<br>
 
-        <button onclick="confirmFunction()">確定</button>
-        <button onclick="cancel('func_model')">取消</button>
+        <button onclick="ConfirmFunction()">確定</button>
+        <button onclick="Cancel('func_model')">取消</button>
     </div>
 
     <div id="get_model" class="model">
@@ -176,21 +171,21 @@
         <input type="radio" name="get_type" value="Struct_Name" checked> 結構變數<br>
         <input type="radio" name="get_type" value="Class_Name"> 類別變數<br>
 
-        <button onclick="confirmGet()">確定</button>
-        <button onclick="cancel('get_model')">取消</button>
+        <button onclick="ConfirmGet()">確定</button>
+        <button onclick="Cancel('get_model')">取消</button>
     </div>
+    
+    <template id="callback_template">
+        <div class="model">
+            <label class="label_model"></label>
+            <input type="text" class="input_model">
 
-    <div id="rac_model" class="model">
-        <label>輸入陣列名稱: </label><br>
-        <input type="text" id="RacName"><br><br>
+            <button class="confirm_btn">確定</button>
+            <button class="cancel_btn">取消</button>
+        </div>
+    </template>
 
-        <label>選擇類型：</label><br>
-        <input type="radio" name="rac_type" value="Vector" checked> Vector<br>
-        <input type="radio" name="rac_type" value="Deque"> Deque<br>
-
-        <button onclick="ConfirmRAC()">確定</button>
-        <button onclick="cancel('rac_model')">取消</button>
-    </div>
+    <div id="callback_container"></div>
 
     <script type="module" src="public/index.js" defer></script>
 </html>

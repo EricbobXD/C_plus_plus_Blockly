@@ -349,7 +349,7 @@ export const toolbox = {
                     "contents": [{
                         "kind": "button", 
                         "text": "新增 Vector",
-                        "callbackKey": "rac_category"
+                        "callbackKey": "vec_category"
                     }]
                 },
                 {

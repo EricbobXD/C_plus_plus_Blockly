@@ -1,7 +1,7 @@
-// initialize toolbox, Mutator, Blockly, and Name Pool 
+// init toolbox, Mutator, Blockly, Name Pool, background connection
 
 import { toolbox } from "./toolbox.js";
-import * as Utils from './block_category/function.js' 
+import * as Utils from './block_category/button.function.js' 
 
 const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
     if (!targetConnection || !targetConnection.getSourceBlock().workspace) {
@@ -13,10 +13,12 @@ const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
     }
 };
 
+// init Blockly and define the constant
 Blockly.Cpp = new Blockly.Generator('Cpp');
 Blockly.Cpp.ORDER_ATOMIC = 1;
 Blockly.Cpp.ORDER_NONE = 99;
 
+// regist Mutator ( Must init before the workspace )
 Blockly.Blocks['if_block'] = {
         init: function() {
             this.jsonInit({
@@ -153,8 +155,9 @@ Blockly.Extensions.registerMutator(
     undefined, 
     ['elif_mutator', 'else_mutator']
 );
- 
-const CategoryType = ["VAR", "PTR", "REF", 
+
+// define the Name Pool to save variable names of different type
+const CategoryType = ["VAR", "PTR", "REF",  
                       "Array", "Vector", "Deque", 
                       "Stack", "Queue", "Priority_queue", 
                       "Set", "Unordered_set", "Flat_set", "Multiset", 
@@ -169,11 +172,13 @@ const CategoryType = ["VAR", "PTR", "REF",
                      ];
 CategoryType.forEach(t => Blockly.Cpp[t] = []);
 
+// checked the data_type whether it's a global variable
 if (!window.data_type_checked) {
     window.data_type_checked = {};
     CategoryType.forEach(t => window.data_type_checked[t] = false);
 }
 
+// save all variable names, to prevent the repeating name and lead to error
 const usedName = new Set();
 
 Blockly.Blocks['define_class'] = {
@@ -325,6 +330,24 @@ Blockly.Extensions.registerMutator(
     ["public_mutator", "private_mutator", "protected_mutator"]
 );
 
+// regist extensions
+Blockly.Extensions.register('dynamic_dropdown', function(){
+    this.updateShape_ = function(){
+        const targetInput = this.getInput("Name_Input");
+        if (!targetInput) return;
+
+        while (targetInput.fieldRow.length > 0)
+            targetInput.removeField(targetInput.fieldRow[0].name || targetInput.fieldRow[0].fieldGroup_);
+
+        targetInput.appendField(`${this.Block_type}名稱: `)
+                   .appendField(VarDropdown(this.Block_type), "Name");
+        console.log(this.Block_type);
+
+        if (this.rendered) this.render();
+    }
+});
+
+// define, set, init workspace setting
 var workspace = Blockly.inject('blockly-workspace', {
     toolbox: toolbox,
     scrollbars: true,
@@ -344,6 +367,8 @@ var workspace = Blockly.inject('blockly-workspace', {
         scaleSpeed: 1.5
     },
     undo: true, 
+    contextMenu: true, 
+    readOnly: false, 
     renderer: 'zelos'
 });
 workspace.resizeContents();
@@ -375,7 +400,7 @@ workspace.addChangeListener(() => {
     updateCodeOutput();
 });
 
-// 在 workspace 創建之後添加
+// add after the workspace created
 workspace.addChangeListener(function(event) {
     // 監聽變數選擇器關閉
     if (event.type === Blockly.Events.BLOCK_CHANGE || 
@@ -398,9 +423,20 @@ workspace.addChangeListener(function(event) {
     }
 });
 
-/***** 其他原有功能保持不變 *****/
 window.addEventListener("resize", function() {
     Blockly.svgResize(workspace);
+});
+
+// helping note options and setting
+Blockly.ContextMenuRegistry.registry.register({
+    id: 'help_custom',
+    weight: 100,
+    displayText: '我們的網頁', 
+    preconditionFn: () =>'enabled',
+    callback: function(scope) {
+        window.open("https://hackmd.io/@cpp-blockly", "_blank");
+    },
+    scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK
 });
 
 Blockly.Cpp.init(workspace);
@@ -443,6 +479,7 @@ async function updateCodeOutput() {
     renderMarkdown();
 }
 
+// connect the background and compile the code 
 document.getElementById('c').addEventListener('click', async () => {
     alert(`編譯以下代碼:\n${id_code}`);
     const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile', {
@@ -457,6 +494,8 @@ document.getElementById('c').addEventListener('click', async () => {
     const result = await response.json();
     report.value = result.message;
 });
+
+// connect the background,  compile and run the code 
 document.getElementById('c_r').addEventListener('click', async () => {
     alert('編譯並執行');
     const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile_and_run', {
@@ -486,6 +525,7 @@ Blockly.Cpp.blockToCode = function(block) {
     return code;
 };
 
+// initialize undo and redo button
 document.getElementById('undoBtn').addEventListener('click', async ()=>{
     if (workspace.getUndoStack().length === 0) alert("CANNOT UNDO");
     else workspace.undo(false);
@@ -495,32 +535,73 @@ document.getElementById('redoBtn').addEventListener('click', async ()=>{
     else workspace.undo(true);
 });
 
-const model = ['var', 'array', 'func', 'get', 'rac'];
+// template (declate html div)
+const configs = [
+    {id: "array", label: "輸入陣列名稱：", name: "Array", Func: ConfirmArray}, 
+    {id: "vec", label: "輸入 Vector 名稱：", name: "Vec", Func: ConfirmVector}, 
+    {id: "deq", label: "輸入 Deque 名稱：", name: "Deq", Func: ConfirmDeque}
+]
+
+const temp = document.getElementById('callback_template');
+const contanier = document.getElementById('callback_container');
+
+window.onload = function(){
+configs.forEach( conf =>{
+    const clone = temp.content.cloneNode(true);
+    const div = clone.querySelector('.model');
+
+    div.id = conf.id + "_model";
+    clone.querySelector('.label_model').innerText = conf.label;
+    clone.querySelector('.input_model').id = conf.name + "Name";
+    clone.querySelector('.confirm_btn').onclick = conf.Func;
+    clone.querySelector('.cancel_btn').onclick = () => Cancel(conf.id + "_model");
+
+    contanier.appendChild(clone);
+});
+};
+// regist the call back button and control the web open and close 
+const model = ['var', 'array', 'func', 'get', 'vec', 'deq'];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
 
-export function confirmArray() {
-    const name = document.getElementById("ContainerName").value;
+// have only one options 
+export function Confirm(text_name, type, model_name, Func) {
+    const name = document.getElementById(text_name).value;
 
     if (!name) return;
     if (usedName.has(name)) {
         alert("此變數名稱已被使用於其他種類！");
         return;
     }
-    
     usedName.add(name);
-    document.getElementById("container_model").style.display = "none";
-    document.getElementById("ContainerName").value = "";
 
-    if (!Blockly.Cpp["Array"].includes(name)) {
-        Blockly.Cpp["Array"].push(name);
-        if (window.data_type_checked["Array"]) return;
-        Utils.Create_Array(toolbox, workspace);
-        window.data_type_checked["Array"] = true;
+    // make the web close and clear all the blank
+    document.getElementById(model_name).style.display = "none";
+    document.getElementById(text_name).value = "";
+
+    // to prevent repeating name add in the Name Pool
+    if (!Blockly.Cpp[type].includes(name)) {
+        Blockly.Cpp[type].push(name);
+
+        
+        if (window.data_type_checked[type]) {
+            const newToolbox = JSON.parse(JSON.stringify(toolbox));
+            workspace.updateToolbox(newToolbox);
+            return;
+        }
+        Func(type, toolbox, workspace);
+        window.data_type_checked[type] = true;
     }
+
+    // refresh the toolbox making the blocks exist 
     Blockly.getMainWorkspace().refreshToolboxSelection();
 };
 
-function Confirm(text_name, type_name, model_name, Func) {
+export function ConfirmArray(){ Confirm("ArrayName", "Array", "array_model", Utils.Create_Array); }
+export function ConfirmVector(){ Confirm("VecName", "Vector", "vec_model", Utils.Create_Random_Access_Containers); }
+export function ConfirmDeque(){ Confirm("DeqName", "Deque", "deq_model", Utils.Create_Random_Access_Containers); }
+
+// have more than one options 
+function Confirm_Choose(text_name, type_name, model_name, Func) {
     const name = document.getElementById(text_name).value;
     const type = document.querySelector(`input[name="${type_name}"]:checked`).value;
 
@@ -536,24 +617,20 @@ function Confirm(text_name, type_name, model_name, Func) {
 
     if (!Blockly.Cpp[type].includes(name)) {
         Blockly.Cpp[type].push(name);
-        if (window.data_type_checked[type]) return;
-        Func(type, toolbox, workspace);
-        window.data_type_checked[type] = true;
+
+        if (window.data_type_checked[type]) Func(type, toolbox, workspace, true);
+        else Func(type, toolbox, workspace); window.data_type_checked[type] = true;
     }
     Blockly.getMainWorkspace().refreshToolboxSelection();
 };
 
-export function confirmVar(){ Confirm("VarName", "var_type", "var_model", Utils.Create_Variable); };
+export function ConfirmVar(){ Confirm_Choose("VarName", "var_type", "var_model", Utils.Create_Variable); };
+export function ConfirmFunction(){ Confirm_Choose("FuncName", "func_type", "func_model", Utils.Create_Function); }
+export function ConfirmGet(){ Confirm_Choose("GetName", "get_type", "get_model", Utils.Create_getName); }
+export function Cancel(type){ document.getElementById(type).style.display = "none"; };
 
-export function confirmFunction(){ Confirm("FuncName", "func_type", "func_model", Utils.Create_Function); }
-
-export function confirmGet(){ Confirm("GetName", "get_type", "get_model", Utils.Create_getName); }
-
-export function ConfirmRAC(){ Confirm("RacName", "rac_type", "rac_model", Utils.Create_Random_Access_Containers); }
-
-export function cancel(type){ document.getElementById(type).style.display = "none"; };
-
-const button_callback = { confirmArray, confirmVar, confirmFunction, confirmGet, ConfirmRAC, cancel };
+// to init the callback function from local to global 
+const button_callback = { ConfirmArray, ConfirmVector, ConfirmVar, ConfirmFunction, ConfirmGet, Cancel };
 Object.keys(button_callback).forEach(key => {
   window[key] = button_callback[key];
 });

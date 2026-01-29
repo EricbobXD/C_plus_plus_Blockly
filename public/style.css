@@ -347,3 +347,14 @@
             border: 1px solid #aaa;
             z-index: 1000; 
         }
+
+        
+        .input_model, .label_model {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .confirn_btn, .cancel_btn {
+            display: inline-block;
+        }

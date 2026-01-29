@@ -10,34 +10,41 @@ const Cpp = Blockly.Cpp;
     Blockly.Blocks[`define_${Block_type}`] = {  
         init: function() {
             this.appendValueInput("TYPE")
-                .appendField(`定義${Block_type}資料型態: `);
+                .appendField(`定義 ${Block_type} 資料型態: `);
 
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
 
-            this.appendDummyInput()
-                .appendField("初始化方式: ")
-                .appendField(new Blockly.FieldDropdown([
-                    ["空", "empty"],
-                    ["大小", "size"],
-                    ["大小+指定元素", "size_element"],
-                    ["陣列", "array"],
-                    ["迭代器範圍", "iter"],
-                    ["複製", "copy"]
-                ]), "contents");
-
-            this.setColour(color);
-            this.setInputsInline(true);
-            this.setPreviousStatement(true);
-            this.setNextStatement(true);
-            this.setTooltip(`創建一個 ${Block_type} 陣列，${Block_type} 是會自動擴展容量的陣列`);
-            this.setHelpUrl();
-
+            this.jsonInit({
+                "type": `define_${Block_type}`,
+                "message0": "初始化方式: %1",
+                "args0": [{
+                    "type": "field_dropdown",
+                    "name": "contents",
+                    "options": [
+                        ["空", "empty"],
+                        ["大小", "size"],
+                        ["大小+指定元素", "size_element"],
+                        ["陣列", "array"],
+                        ["迭代器範圍", "iter"],
+                        ["複製Vector內容", "copy"]
+                    ]
+                }],
+                "inputsInline": true,
+                "previousStatement": null,
+                "nextStatement": null,
+                "colour": color,
+                "extensions": ["dynamic_dropdown"],
+                "tooltip": `創建一個 ${Block_type} 陣列，${Block_type} 是會自動擴展容量的陣列`,
+                "helpUrl": ""
+            }), 
+            
             // 監聽積木變更
             this.setOnChange(function(e) {
                 if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
             });
+
+            this.updateInProgress_ = false; 
         },
         saveExtraState: function(){
             return {'mode': this.getFieldValue('contents')};
@@ -45,29 +52,24 @@ const Cpp = Blockly.Cpp;
         loadExtraState: function(state){
             this.UpdateShape_(state.mode);
         }, 
-        UpdateShape_: function(){
-            const mode = this.getFieldValue('contents');
+        UpdateShape_: function(mode){
+            if (!mode) mode = this.getFieldValue('contents');
             const allinput = ["size", "element", "array", "start", "end"];
-            allinput.forEach(name => {
-                if (this.getInput(name)) {
-                    console.log(111);
-                    this.removeInput(name);
-                }
-            });
+            allinput.forEach(name => { if (this.getInput(name))  this.removeInput(name); });
 
             switch (mode){
-                case 'size': 
-                    this.appendValueInput('size').appendField("元素個數");
+                case "size": 
+                    this.appendValueInput("size").appendField("元素個數");
                     break;
                 case "size_element": 
                     this.appendValueInput("size").appendField("元素個數");
                     this.appendValueInput("element").appendField("元素");
                     break;
                 case "array": 
-                    this.appendValueInput("array").appendField(VarDropdown(Block_type), "Name2").appendField("Vector陣列");
+                    this.appendDummyInput("array").appendField("Vector陣列").appendField(VarDropdown(Block_type), "Name2");
                     break;
                 case "iter":
-                    this.appendValueInput("array").appendField("Vector陣列").appendField(VarDropdown(Block_type), "Name2");
+                    this.appendDummyInput("array").appendField("Vector陣列").appendField(VarDropdown(Block_type), "Name2");
                     this.appendValueInput("start").appendField("開始位置");
                     this.appendValueInput("end").appendField("結束位置");
                     break;
@@ -80,17 +82,19 @@ const Cpp = Blockly.Cpp;
     Cpp.forBlock[`define_${Block_type}`] = function(block) {
         var type = Cpp.valueToCode(block, 'TYPE', 1);
         var Name = block.getFieldValue('Name');
-        var contents = block.getFieldValue('contents')
+        var contents = block.getFieldValue('contents');
         var code = `vector<${type}>${Name}`;
 
         switch (contents){
-            case 'size': 
+            case "size": 
+                if (!this.getInput("size")) break;
                 var size = Cpp.valueToCode(block, "size", 1);
                 code += `(${size})`;
                 break;
             case "size_element": 
+                if (!this.getInput("size") || !this.getInput("element")) break;
                 var size = Cpp.valueToCode(block, "size", 1);
-                var element = Cpp.valueToCode(block, "element");
+                var element = Cpp.valueToCode(block, "element", 1);
                 code += `(${size}, ${element})`;
                 break;
             case "array": 
@@ -98,6 +102,7 @@ const Cpp = Blockly.Cpp;
                 code += `(${Name2})`;
                 break;
             case "iter":
+                if (!this.getInput("start") || !this.getInput("end")) break;
                 var Name2 = block.getFieldValue('Name2');
                 var start = Cpp.valueToCode(block, "start", 1);
                 var end = Cpp.valueToCode(block, "end", 1);
@@ -113,9 +118,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_push_back`] = {
         init:function(){
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_push_back`,
                 "message0": "在 新增 %1 在最尾端(只能輸入單個)",
@@ -128,10 +132,13 @@ const Cpp = Blockly.Cpp;
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `新增元素至 ${Block_type} 的最尾端，必要時會進行記憶體組態。`,
                 "helpUrl": ""
             });
-        }
+
+            if (this.UpdateShape_) this.UpdateShape_();
+        }, 
     }
 
     Cpp.forBlock[`${Block_type}_push_back`] = function(block) {
@@ -145,9 +152,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_emplace_back`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_emplace_back`,
                 "message0": "新增 %1 在最尾端(可輸入多個 , 用空白分開)",
@@ -160,6 +166,7 @@ const Cpp = Blockly.Cpp;
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `新增物件至 ${Block_type} 的最尾端，必要時會進行記憶體組態。`,
                 "helpUrl": ""
             });
@@ -174,9 +181,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_append_range`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_append_range`,
                 "message0": "加陣列 %1 到最尾端 (append)",
@@ -185,6 +191,7 @@ const Cpp = Blockly.Cpp;
                         "name": "element"
                     }],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "previousStatement": null,
                 "nextStatement": null,
                 "tooltip": `把陣列推到 ${Block_type} 最尾端`,
@@ -204,9 +211,10 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_pop_back`] = {  
         init: function() {
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
+
             this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
                 .appendField("刪除最後一個");
             this.jsonInit({
                 "type": `${Block_type}_pop_back`,
@@ -214,6 +222,7 @@ const Cpp = Blockly.Cpp;
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `刪除 ${Block_type} 最尾端的元素。`,
                 "helpUrl": ""
             });
@@ -227,9 +236,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_insert`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_insert`,
                 "message0": "在 %1 位置插入 %2",
@@ -244,6 +252,7 @@ const Cpp = Blockly.Cpp;
                     }
                 ],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "inputsInline": true,
                 "previousStatement": null,
                 "nextStatement": null,
@@ -268,9 +277,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_insert_range`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_insert_range`,
                 "message0": "在位置: %1 加陣列 %2 (insert)",
@@ -285,6 +293,7 @@ const Cpp = Blockly.Cpp;
                     },
                 ],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "previousStatement": null,
                 "nextStatement": null,
                 "tooltip": `在 ${Block_type} 把陣列加到特定位置`,
@@ -308,9 +317,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_erase`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_erase`,
                 "message0": "在 %1 位置刪除 %2",
@@ -325,6 +333,7 @@ const Cpp = Blockly.Cpp;
                     }
                 ],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "inputsInline": true,
                 "previousStatement": null,
                 "nextStatement": null,
@@ -353,9 +362,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_assign`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": "vector_assign",
                     "message0": "清空並插入 1. 重複次數: %1, 2. 陣列: %2, 3. 迭代器: %3",
@@ -377,6 +385,7 @@ const Cpp = Blockly.Cpp;
                     }
                 ],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "previousStatement": null,
                 "nextStatement": null,
                 "tooltip": "",
@@ -563,9 +572,8 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_operate[]`] = {  
         init: function() {
-            this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": `${Block_type}_operate[]`,
                 "message0": "讀取第 %1 個元素",
@@ -574,6 +582,7 @@ const Cpp = Blockly.Cpp;
                     "name": "pos"
                 }],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "inputsInline": true,
                 "output": null,
                 "tooltip": `讀取 ${Block_type} 索引值。`,
@@ -601,6 +610,7 @@ const Cpp = Blockly.Cpp;
             this.jsonInit({
                 "type": `${Block_type}_front`,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "inputsInline": true,
                 "output": null,
                 "tooltip": `讀取 ${Block_type} 第一個元素。`,
@@ -616,13 +626,15 @@ const Cpp = Blockly.Cpp;
 
     Blockly.Blocks[`${Block_type}_back`] = {  
         init: function() {
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
+
             this.appendDummyInput()
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
                 .appendField("讀取最後一個元素");
             this.jsonInit({
                 "type": `${Block_type}_back`,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "inputsInline": true,
                 "output": null,
                 "tooltip": `讀取 ${Block_type} 最後一個元素。`,
@@ -636,37 +648,42 @@ const Cpp = Blockly.Cpp;
         return [`${Name}.back()`, 1];
     };
 
-    Cpp.forBlock[`${Block_type}_resize`] = function(block) {
-        var Name = block.getFieldValue('Name');
-        return [`${Name}.size()`, 1];
-    }
-
     Blockly.Blocks[`${Block_type}_resize`] = {  
         init: function() {
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
+
             this.appendDummyInput()
-                .appendField(`改變${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
                 .appendField("可容納元素個數")
             this.jsonInit({
                 "type": `${Block_type}_resize`,
                 "inputsInline": true,
                 "output": null,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `改變 ${Block_type} 可容納元素個數。`,
                 "helpUrl": ""
             });
         }
     };
 
+    Cpp.forBlock[`${Block_type}_resize`] = function(block) {
+        var Name = block.getFieldValue('Name');
+        return [`${Name}.resize()`, 1];
+    }
+
+
     Blockly.Blocks[`${Block_type}_capacity`] = {  
         init: function() {
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
+
             this.appendDummyInput()
-                .appendField(`讀取 ${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
                 .appendField("內存容量");
             this.jsonInit({
                 "type": `${Block_type}_capacity`,
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "output": null,
                 "tooltip": `${Block_type} 內存容量`,
                 "helpUrl": ""
@@ -682,8 +699,10 @@ const Cpp = Blockly.Cpp;
     Blockly.Blocks[`${Block_type}_reserve`] = {  
         init: function() {
             this.appendDummyInput()
-                .appendField(`改變 ${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
+                .appendField("改變");
+
+            this.Block_type = "Vector";
+            this.appendDummyInput("Name_Input");
             this.jsonInit({
                 "type": "vector_reserve",
                 "message0": "容量 >= %1",
@@ -694,6 +713,7 @@ const Cpp = Blockly.Cpp;
                     }
                 ],
                 "colour": color,
+                "extensions": ["dynamic_dropdown"],
                 "output": null,
                 "tooltip": `強制讓 ${Block_type} 容量 >= n`,
                 "helpUrl": ""
@@ -709,9 +729,7 @@ const Cpp = Blockly.Cpp;
 
 Blockly.Blocks['Deque_push_front'] = {
     init:function(){
-        this.appendDummyInput()
-            .appendField('Deque名稱: ')
-            .appendField(VarDropdown(Block_type), "Name");
+        this.appendDummyInput("DeqName");
         this.jsonInit({
             "type": 'Deque_push_front',
             "message0": "新增 %1 在最前端(只能輸入單個)",
@@ -741,9 +759,7 @@ Cpp.forBlock['Deque_push_front'] = function(block) {
 
 Blockly.Blocks['Deque_emplace_front'] = {  
     init: function() {
-        this.appendDummyInput()
-            .appendField('Deque名稱: ')
-            .appendField(VarDropdown(Block_type), "Name");
+        this.appendDummyInput("DeqName");
         this.jsonInit({
             "type": 'Deque_emplace_front',
             "message0": "新增 %1 在最前端(可輸入多個 , 用空白分開)",
@@ -770,9 +786,7 @@ Cpp.forBlock['Deque_emplace_front'] = function(block) {
 
 Blockly.Blocks['Deque_prepend_range'] = {  
     init: function() {
-        this.appendDummyInput()
-            .appendField(`${Block_type}名稱: `)
-            .appendField(VarDropdown(Block_type), "Name");
+        this.appendDummyInput("DeqName");
         this.jsonInit({
             "type": `${Block_type}_prepend_range`,
             "message0": "加陣列 %1 到最前端 (append)",

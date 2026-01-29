@@ -10,7 +10,7 @@ export function Create_Array(toolbox, workspace) {
 }
 
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
-export function Create_Variable(Block_type, toolbox, workspace){
+export function Create_Variable(Block_type, toolbox, workspace, check=false){
     let blockSet = new Set([
         `define_${Block_type}`,
         `${Block_type}_equal`,
@@ -27,6 +27,7 @@ export function Create_Variable(Block_type, toolbox, workspace){
     }
 
     const category = toolbox.contents.find(cat => cat.name === '變數/指標/位置');
+
     if (category) {
         category.contents.push({kind: "label", text: data_type[Block_type]})
         blockSet.forEach(blockType => category.contents.push({kind: "block", type: blockType}))
@@ -36,7 +37,7 @@ export function Create_Variable(Block_type, toolbox, workspace){
     workspace.updateToolbox(newToolbox);
 };
 
-export function Create_Function(Block_type, toolbox, workspace) {
+export function Create_Function(Block_type, toolbox, workspace, check=false) {
     const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
     if (Block_type === "Function") {
         const blockSet = ["define_function_void", "define_function", "function_call"];
@@ -72,7 +73,7 @@ export function Create_Function(Block_type, toolbox, workspace) {
     workspace.updateToolbox(newToolbox);
 };
 
-export function Create_getName(Block_type, toolbox, workspace){
+export function Create_getName(Block_type, toolbox, workspace, check=false){
     const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
     if (category) {
         var block_index = category.contents.findIndex(button => ( button.id === `${Block_type}_id`));
@@ -85,9 +86,21 @@ export function Create_getName(Block_type, toolbox, workspace){
     workspace.updateToolbox(newToolbox);
 }
 
-export function Create_Random_Access_Containers(Block_type, toolbox, workspace){
+export function Create_Random_Access_Containers(Block_type, toolbox, workspace, check=false){
     const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
 
+    /*
+    if (check) {
+        const update_cat = category.contents;
+        category.contents = [];
+        const newToolbox = JSON.parse(JSON.stringify(toolbox));
+        workspace.updateToolbox(newToolbox);
+
+        category.contents = update_cat;
+        const newToolbox2 = JSON.parse(JSON.stringify(toolbox));
+        workspace.updateToolbox(newToolbox2);
+    }
+    */
     let blockSet = new Set([   
             `define_${Block_type}`, 
             `${Block_type}_push_back`, `${Block_type}_emplace_back`, `${Block_type}_append_range`, `${Block_type}_insert`, `${Block_type}_insert_range`, 

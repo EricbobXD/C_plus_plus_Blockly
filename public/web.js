@@ -1,4 +1,4 @@
-// for the UI/UX, guideline, background connection
+// for the UI/UX, guideline, help
 
 /***** 全域變數 *****/
 let teachingMode = false; // 教學進行時禁止一般操作
@@ -307,7 +307,6 @@ document.getElementById("menu-class-intro").addEventListener("click", function()
     togglePanel("class-view");
 });
 
-
 // 搜尋系統
 function findBlocksRecursively(contents, searchTerms) {
     const results = [];
@@ -370,25 +369,6 @@ document.getElementById('searchButton').addEventListener('click', () => {
     workspace.updateToolbox(updatedToolbox);
 });
 
-// 幫助筆記選項
-Blockly.ContextMenuRegistry.registry.register({
-    id: 'help_custom',
-    weight: 100,
-    displayText: function() {
-        return "help?";
-    },
-    preconditionFn: function(scope) {
-        return 'enabled'; // 確保選項顯示
-    },
-    callback: function(scope) {
-        window.open("https://hackmd.io/@cpp-blockly", "_blank");
-    },
-    scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK,
-    alt: false,
-    shift: false
-});
-
-const sent_data = document.getElementById('sent_data');
 const reset = document.getElementById('reset');
 const textarea = document.getElementById('textarea');
 reset.addEventListener('click', () => {
