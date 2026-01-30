@@ -24,7 +24,7 @@ function VarDropdown(type) {
                 "message0": "初始化方式: %1",
                 "args0": [{
                     "type": "field_dropdown",
-                    "name": "contents",
+                    "name": "mode",
                     "options": [
                         ["空", "empty"],
                         ["大小", "size"],
@@ -48,13 +48,13 @@ function VarDropdown(type) {
             });
         },
         saveExtraState: function(){
-            return {'mode': this.getFieldValue('contents')};
+            return {'mode': this.getFieldValue('mode')};
         },
         loadExtraState: function(state){
             this.UpdateShape_(state.mode);
         }, 
         UpdateShape_: function(mode){
-            if (!mode) mode = this.getFieldValue('contents');
+            if (!mode) mode = this.getFieldValue('mode');
             const allinput = ["size", "element", "array", "start", "end"];
             allinput.forEach(name => {
                 if (this.getInput(name))  this.removeInput(name); 
@@ -85,10 +85,10 @@ function VarDropdown(type) {
     Cpp.forBlock[`define_${Block_type}`] = function(block) {
         var type = Cpp.valueToCode(block, 'TYPE', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         var Name = block.getFieldValue('Name');
-        var contents = block.getFieldValue('contents');
+        var mode = block.getFieldValue('mode');
         var code = `vector<${type}>${Name}`;
 
-        switch (contents){
+        switch (mode){
             case "size": 
                 if (!this.getInput("size")) break;
                 var size = Cpp.valueToCode(block, "size", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '');

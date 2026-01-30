@@ -189,14 +189,17 @@ function VarDropdown(type) {
 
 Blockly.Blocks['define_class'] = {
     init: function() {
+        this.text = "類別 名稱: ";
+        this.Block_type = "Class";
         this.appendDummyInput()
             .appendField("類別 名稱: ")
-            .appendField(VarDropdown("Class"), "class_name")
+            .appendField(VarDropdown("Class"), "Name")
         this.jsonInit({
             "type": "define_class",
             "previousStatement": null,
             "nextStatement": null,
             "colour": "#e9967a",
+            "extensions": ["dynamic_dropdown"],
             "mutator": "class_mutator"
         });
     }
@@ -334,20 +337,24 @@ Blockly.Extensions.registerMutator(
 // regist extensions
 Blockly.Extensions.register('dynamic_dropdown', function(){
     this.updateDropdown_ = function(){
-        const targetInput = this.getInput("Name_Input");
-        if (!targetInput) return;
+        const update_dropdown = (targetInput, Name) =>{
+            if (targetInput.fieldRow.length === 0) return;
+            
+            while (targetInput.fieldRow.length > 0){
+                targetInput.fieldRow[0].dispose();
+                targetInput.fieldRow.splice(0, 1);
+            }
 
-        while (targetInput.fieldRow.length > 0){
-            targetInput.fieldRow[0].dispose();
-            targetInput.fieldRow.splice(0, 1);
+            if (targetInput.sourceBlock && targetInput.sourceBlock.render) {
+                targetInput.sourceBlock.render();
+            }
+
+            targetInput.appendField(this.text)
+                    .appendField(VarDropdown(this.Block_type), Name);
         }
 
-        if (targetInput.sourceBlock && targetInput.sourceBlock.render) {
-            targetInput.sourceBlock.render();
-        }
-
-        targetInput.appendField(this.text)
-                   .appendField(VarDropdown(this.Block_type), "Name");
+        if (this.getInput("Name_Input")) update_dropdown(this.getInput("Name_Input"), "Name");
+        if (this.getInput("Name_Input2")) update_dropdown(this.getInput("Name_Input2"), "Name2");
     }
 });
 
@@ -623,8 +630,15 @@ function Confirm_Choose(text_name, type_name, model_name, Func) {
     if (!Blockly.Cpp[type].includes(name)) {
         Blockly.Cpp[type].push(name);
 
-        if (window.data_type_checked[type]) Func(type, toolbox, workspace, true);
-        else Func(type, toolbox, workspace); window.data_type_checked[type] = true;
+        if (window.data_type_checked[type]) {
+            workspace.getAllBlocks().forEach(block => { 
+                if (block.updateDropdown_) 
+                    block.updateDropdown_(); 
+            });
+            return;
+        }
+        Func(type, toolbox, workspace);
+        window.data_type_checked[type] = true;
     }
     Blockly.getMainWorkspace().refreshToolboxSelection();
 };

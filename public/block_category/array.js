@@ -13,7 +13,7 @@ Blockly.Blocks['define_array'] = {
 
         this.text = "陣列名稱: ";
         this.Block_type = "Array";
-        this.appendDummyInput()
+        this.appendDummyInput("Name_Input")
             .appendField('陣列名稱: ')
             .appendField(Dropdown(), 'Name');
 
@@ -22,7 +22,7 @@ Blockly.Blocks['define_array'] = {
             "message0": ", %1",
             "args0": [{
                     "type": "field_dropdown", 
-                    "name": "contents", 
+                    "name": "mode", 
                     "options": [
                         ["元素個數", "size"], 
                         ["元素個數+元素", "size_element"]
@@ -43,13 +43,13 @@ Blockly.Blocks['define_array'] = {
       
     }, 
     saveExtraState: function(){
-        return {"mode": this.getFieldValue("contents")};
+        return {"mode": this.getFieldValue("mode")};
     }, 
     loadExtraState: function(state){
         this.UpdateShape_(state.mode);
     }, 
     UpdateShape_: function(mode){
-        if (!mode) mode = this.getFieldValue("contents");
+        if (!mode) mode = this.getFieldValue("mode");
         const allinput = ["size", "element"]; 
         allinput.forEach(name => { 
             if (this.getInput(name)) this.removeInput(name); 
@@ -67,13 +67,13 @@ Blockly.Blocks['define_array'] = {
 Cpp.forBlock['define_array'] = function(block) {
     var type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
     var Name = block.getFieldValue('Name');
-    var contents = block.getFieldValue('contents');
+    var mode = block.getFieldValue('mode');
 
     
-    if (contents === "size") {
+    if (mode === "size") {
         var size = Cpp.valueToCode(block, 'size', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
         return type + ' ' + Name + '[' + size + '];';
-    } else if (contents === "size_element"){
+    } else if (mode === "size_element"){
         if (!this.getInput("element")) return '';
         console.log(111);
         var size = Cpp.valueToCode(block, 'size', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
@@ -87,7 +87,7 @@ Blockly.Blocks['array_name'] = {
 
         this.text = "陣列名稱: ";
         this.Block_type = "Array";
-        this.appendDummyInput()
+        this.appendDummyInput("Name_Input")
             .appendField('陣列名稱: ')
             .appendField(Dropdown(), 'Name');
         this.jsonInit({
@@ -113,7 +113,7 @@ Blockly.Blocks['array_content'] = {
             "message0": "陣列內容 { %1 }",
             "args0": [{
                 "type": "input_value", 
-                "name": "contents"
+                "name": "mode"
             }], 
             "output": null, 
             "colour": "#ff5757",
@@ -124,7 +124,7 @@ Blockly.Blocks['array_content'] = {
 };
 
 Cpp.forBlock['array_content'] = function(block) {
-    var content = Cpp.valueToCode(block, 'contents', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    var content = Cpp.valueToCode(block, 'mode', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
     return ['{' + content + '}', Cpp.ORDER_ATOMIC];
 };
 
@@ -132,7 +132,7 @@ Blockly.Blocks['array_operate[]'] = {
     init: function() {
         this.text = "陣列名稱: ";
         this.Block_type = "Array";
-        this.appendDummyInput()
+        this.appendDummyInput("Name_Input")
             .appendField('陣列')
             .appendField(Dropdown(), 'Name');
         this.jsonInit({

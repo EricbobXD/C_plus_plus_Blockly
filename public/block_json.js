@@ -22,6 +22,14 @@ Blockly.defineBlocksWithJsonArray(
             "output": "null"
         },
         {
+            "type": "void", 
+            "message0": "void", 
+            "output": null,
+            "colour": "#db00db", 
+            "tootip": "特別資料型態", 
+            "helpurl": ""
+        },
+        {
             "type": "struct_type",
             "message0": "struct %1",
             "args0": [{

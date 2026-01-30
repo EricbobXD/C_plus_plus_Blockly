@@ -40,7 +40,7 @@ export function Create_Variable(Block_type, toolbox, workspace){
 export function Create_Function(Block_type, toolbox, workspace) {
     const category = toolbox.contents.find(cat => cat.name === '函式/結構/類別');
     if (Block_type === "Function") {
-        const blockSet = ["define_function_void", "define_function", "function_call"];
+        const blockSet = ["define_function", "function_call"];
         if (category) {
             category.contents.push({kind: "label", text: "函式"});
             blockSet.forEach(t => category.contents.push({kind: "block", type: t}));

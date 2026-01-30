@@ -6,188 +6,193 @@ function VarDropdown(type) {
     );
 }
 
-Blockly.Blocks['define_function_void'] = {
-    init: function() {
-        this.text = "函式型態: void, 名稱"; 
-        this.Block_type = "Fuction";
-        this.appendDummyInput("Name_Input")
-            .appendField("函式型態: void, 名稱")
-            .appendField(VarDropdown("Function"), "Name");
-        this.appendValueInput('data');
-        this.appendStatementInput("DO")
-            .setCheck(null)
-            .appendField("回傳值")
-            .appendField(
-                new Blockly.FieldDropdown([
-                    ["回傳", "return"],
-                    ["不回傳", "no"]
-                ]), "expression"
-            );
-        this.setInputsInline(true);
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-        this.setColour('#db00db');
-        this.setTooltip(`定義一個沒有回傳值的函數`);
-        this.setHelpUrl(''); 
-
-    }
-};
-
-Cpp.forBlock['define_function_void'] = function(block) {
-    var funcName = block.getFieldValue('func_name');
-    var data = Cpp.valueToCode(block, 'data', 1);
-    var content = Cpp.statementToCode(block, 'DO') || '';
-    var expression = block.getFieldValue('expression');
-    content = content.replace(/^ {2}/gm, '    ');
-    if (data.startsWith('(') && data.endsWith(')')) {
-        data = data.slice(1, -1);
-    }
-    if (content.startsWith('(') && content.endsWith(')')) {
-        content = content.slice(1, -1);
-    }
-
-    if (expression === 'no') {
-        return `void ${funcName}(${data}) {\n${content}\n}\n`;
-    } else {
-        return `void ${funcName}(${data}) {\n${content}  return;\n}\n`;
-    }
-};
-
 Blockly.Blocks['define_function'] = {
     init: function() {
-        this.appendDummyInput()
-            .appendField("函式型態:");
-        this.appendValueInput("TYPE");
-        this.appendDummyInput()
-            .appendField("名稱: ")
-            .appendField(VarDropdown("Function"), "func_name");
-        this.appendValueInput('data');
-        this.appendStatementInput("DO")
-            .setCheck(null)
-            .appendField("回傳值");
-        this.appendValueInput("expression");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-        this.setColour('#db00db');
-        this.setTooltip(`定義一個沒有回傳值的函數`);
-        this.setHelpUrl(''); 
+        this.appendValueInput("TYPE")
+            .appendField("函式型態: ");
+
+        this.text = "函式名稱"; 
+        this.Block_type = "Function";
+        this.appendDummyInput("Name_Input")
+            .appendField("函式名稱")
+            .appendField(VarDropdown("Function"), "Name");
+
+        this.jsonInit({
+            "type": "define_function",
+            "message0": "變數%1",
+            "args0": [{
+                "type": "input_value",
+                "name": "data",
+            }],
+            "message1": "%1",
+            "args1": [{
+                    "type": "input_statement",
+                    "name": "DO"
+                },
+            ],
+            "inputsInline": true,
+            "colour": "#db00db",
+            "extensions": ["dynamic_dropdown"],
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "定義一個函數",
+            "helpUrl": ""
+        })
     }
 };
 
 Cpp.forBlock['define_function'] = function(block) {
-    var Type = block.getFieldValue('TYPE');
-    var funcName = block.getFieldValue('func_name');
-    var data = Cpp.valueToCode(block, 'data', 1);
-    var content = Cpp.statementToCode(block, 'DO') || '';
-    var expression = Cpp.valueToCode(block, 'expression', 1);
-    content = content.replace(/^ {2}/gm, '    ');
-    if (data.startsWith('(') && data.endsWith(')')) {
-        data = data.slice(1, -1);
-    }
-    if (content.startsWith('(') && content.endsWith(')')) {
-        content = content.slice(1, -1);
-    }
-    if (expression.startsWith('(') && expression.endsWith(')')) {
-        expression = expression.slice(1, -1);
-    }
-
-    return `${Type} ${funcName}(${data}) {\n${content}    return ${expression};\n}\n`;
+    var Type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    var Name = block.getFieldValue('Name');
+    var data = Cpp.valueToCode(block, 'data', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '');
+    var DO = Cpp.statementToCode(block, 'DO', Cpp.ORDER_ATOMIC).replace(/^ {2}/gm, '    ') || '';
+    return `${Type} ${Name}(${data}) {\n${DO}}\n`;
 };
 
 Blockly.Blocks['function_call'] = {
     init: function() {
-        this.appendDummyInput()
+        this.text = "函式名稱"; 
+        this.Block_type = "Function";
+        this.appendDummyInput("Name_Input")
             .appendField("函式名稱: ")
-            .appendField(VarDropdown("Function"), "func_name");
-        this.appendValueInput("VALUE");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-        this.setColour('#db00db');
-        this.setTooltip(`定義一個沒有回傳值的函數`);
-        this.setHelpUrl(''); 
+            .appendField(VarDropdown("Function"), "Name");
+        
+        this.jsonInit({
+            "type": "function_call",
+            "message0": "%1",
+            "args0": [{
+                "type": "input_value",
+                "name": "func_name",
+                "text": "這裡放置變數"
+            }],
+            "colour": "#db00db",
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "呼叫函數",
+            "helpUrl": ""
+        })
     }
 };
 
 Cpp.forBlock['function_call'] = function(block) {
-    var funcName = block.getFieldValue('funcName');
-    var value = Cpp.valueToCode(block, 'VALUE', 1);
-    if (value.startsWith('(') && value.endsWith(')')) {
-        value = value.slice(1, -1);
-    }
-    if (value) {
-        return `${funcName}(${value});\n`;
-    } else {
-        return funcName + '\n';
-    }
-
+    var Name = block.getFieldValue('Name');
+    var func_name = Cpp.valueToCode(block, 'func_name', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    return `${Name} ${func_name};`;
 };
 
 Blockly.Blocks['lambda'] = {
     init: function() {
-        this.appendDummyInput()
-            .appendField("lambda [")
-            .appendField(
-                new Blockly.FieldDropdown([
-                    ["都不要", ""],
-                    ["&", "&"],
-                    ["=", "="]
-                ], "captures")
-            )
-            .appendField("] 引用變數: %2")
-        this.appendValueInput("var_name");
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldCheckbox(false), "line")
-        this.appendStatementInput("DO")
-            .setCheck(null);
-        this.setOutput(true, null);  
-        this.setColour('#db00db');
-        this.setTooltip(`定義一個lambda`);
-        this.setHelpUrl(''); 
+        this.jsonInit({
+            "type": "lambda",
+            "message0": "lambda [%1](引用變數: %2)，多行%3",
+            "args0": [{
+                    "type": "field_dropdown",
+                    "name": "captures",
+                    "options": [
+                        ["都不要", ""],
+                        ["&", "&"],
+                        ["=", "="]
+                    ]
+                },
+                {
+                    "type": "input_value",
+                    "name": "var_name"
+                },
+                {
+                    "type": "field_checkbox",
+                    "name": "line",
+                    "checked": false
+                }
+            ],
+            "message1": "%1 ",
+            "args1": [{
+                "type": "input_statement",
+                "name": "DO"
+            }],
+            "colour": "#db00db",
+            "output": null,
+            "tooltip": "定義一個lambda",
+            "helpurl": ""
+        })
     }
 };
+
 Cpp.forBlock['lambda'] = function(block) {
-    var capture = block.getFieldValue('captures');
-    var VAR = Cpp.valueToCode(block, 'var_name', 1);
-    var statement = Cpp.statementToCode(block, 'DO') || '';
+    var captures = block.getFieldValue('captures');
+    var var_name = Cpp.valueToCode(block, 'var_name', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    var DO = Cpp.statementToCode(block, 'DO', Cpp.ORDER_ATOMIC) || '';
     var line = block.getFieldValue('line') === "TRUE";
-    if (VAR.startsWith('(') && VAR.endsWith(')')) {
-        VAR = VAR.slice(1, -1);
+    if (line) { 
+        DO = DO.replace(/^ {2}/gm, '    '); 
+        return [`[${captures}](${var_name}){\n${DO}}`, Cpp.ORDER_ATOMIC];
     }
-    if (line) {
-        if (statement.startsWith('(') && statement.endsWith(')')) {
-            statement = statement.slice(1, -1);
-        }
-        statement = statement.replace(/^ {2}/gm, '    ')
-        return [`[${capture}](${VAR}){\n${statement}\n}`, 1];
-    } else {
-        if (statement.startsWith('(') && statement.endsWith(')')) {
-            statement = statement.slice(1, -1);
-        }
-        statement = statement.replace(/\n/g, '');
-        return [`[${capture}](${VAR}){${statement}}`, 1];
-    }
+    else {
+        DO = DO.replace(/^\(?|\)?$/g, '');
+        return [`[${captures}](${var_name}){${DO}}`, Cpp.ORDER_ATOMIC];
+    } 
 };
 
 Blockly.Blocks['define_struct'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("結構 名字: ")
-            .appendField(VarDropdown("Struct"), "struct_name");
-        this.appendStatementInput("DO");
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-        this.setColour('#f4a460');
-        this.setTooltip(`定義一個結構`);
-        this.setHelpUrl(''); 
+            .appendField("結構")
+
+        this.text = "結構 名字: ";
+        this.Block_type = "Struct"; 
+        
+        this.jsonInit({
+            "type": "define_struct",
+            "message0": "%1",
+            "args0": [{
+                "type": "field_dropdown", 
+                "name": "mode", 
+                "options": [
+                    ["一般", "basic"], 
+                    ["繼承", "heritage"], 
+                    ["匿名", "anonymity"] 
+                ]
+            }],
+            "inputsInline": true,
+            "colour": "#f4a460",
+            "extensions": ["dynamic_dropdown"],
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "定義一個結構",
+            "helpurl": ""
+        }), 
+
+        this.setOnChange(function(e) {
+            if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
+        })
+    }, 
+    saveExtraState: function(){
+        return {"mode": this.getFieldValue("mode")};
+    }, 
+    loadExtraState: function(state){
+        this.UpdateShape_(state.mode);
+    }, 
+    UpdateShape_: function(mode){
+        if (!mode) mode = this.getFieldValue("mode");
+
+        if (mode === "basic" ){
+            this.appendDummyInput("Name_Input")
+                .appendField("結構 名字: ")
+                .appendField(VarDropdown("Struct"), "Name");
+
+            this.appendValueInput("Name2")
+                .appendField("變數名: ");
+        } else if (mode === "heritage" && NameInput){
+            NameInput.appendField("結構 名字: ")
+                     .appendField(VarDropdown("Struct"), "Name");
+            
+        }
     }
 };
 
 Cpp.forBlock['define_struct'] = function(block) {
-    var struct_name = block.getFieldValue('struct_name');
-    var DO = Cpp.statementToCode(block, 'DO').replace(/^ {2}/gm, '    ');
-    return `struct ${struct_name} {\n${DO}};`;
+    var Name = block.getFieldValue('Name');
+    var DO = Cpp.statementToCode(block, 'DO', Cpp.ORDER_ATOMIC).replace(/^ {2}/gm, '    ');
+    return `struct ${Name} {\n${DO}};`;
 }
 
 Cpp.forBlock['define_class'] = function(block) {
@@ -208,40 +213,66 @@ Cpp.forBlock['define_class'] = function(block) {
 
 Blockly.Blocks['get_Struct'] = {
     init: function() {
-        this.appendDummyInput()
+        this.text = "結構名字: ";
+        this.Block_type = "Struct";
+        this.appendDummyInput("Name_Input")
             .appendField("結構名字: ")
-            .appendField(VarDropdown("Struct"), "stuct_name");
-        this.appendDummyInput()
-            .appendField("變數名: ")
-            .appendField(VarDropdown("Struct_Name"), "var_name");
-        this.appendValueInput("size");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-        this.setColour('#f4a460');
-        this.setTooltip("取得一個 Struct 的資料");
-        this.setHelpUrl(''); 
+            .appendField(VarDropdown("Struct"), "Name");
+
+        this.appendDummyInput("Name_Input2")
+            .appendField("結構名子: ")
+            .appendField(VarDropdown("Struct"), "Name2");
+        this.jsonInit({
+            "type": "get_struct",
+            "message0": "元素數量%1",
+            "args0": [{
+                "type": "input_value",
+                "name": "size"
+            }],
+            "colour": "#f4a460",
+            "extensions": ["dynamic_dropdown"],
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "取得一個 Struct 的資料",
+            "helpUrl": ""
+        })
     }
 };
 
 Cpp.forBlock['get_Struct'] = function(block) {
-    var struct_name = block.getFieldValue('struct_name');
-    var var_name = block.getFieldValue('var_name');
-    var size = Cpp.valueToCode(block, 'size', 1);
-    if (size) {
-        return `${struct_name} ${var_name}[${size}];`
-    }
-    return `${struct_name} ${var_name};`;
+    var Name = block.getFieldValue('Name');
+    var Name2 = block.getFieldValue('Name2');
+    var size = Cpp.valueToCode(block, 'size', Cpp.ORDER_ATOMIC) || '';
+    if (size) 
+        return `${Name} ${Name2}[${size}];`
+    return `${Name} ${Name2};`;
 };
 
 Blockly.Blocks['get_Class'] = {
     init: function() {
-        this.appendDummyInput()
+        this.text = "類別名字: ";
+        this.Block_type = "Class";
+        this.appendDummyInput("Name_Input")
             .appendField("類別名字: ")
-            .appendField(VarDropdown("Class"), "class_Name");
-        this.appendDummyInput()
-            .appendField("變數名: ")
-            .appendField(VarDropdown("Class_Name"), "var_name");
+            .appendField(VarDropdown("Class"), "Name");
+
+        this.appendDummyInput("Name_Input2")
+            .appendField("類別名字: ")
+            .appendField(VarDropdown("Class"), "Name2");
+        this.jsonInit({
+            "type": "get_class",
+            "message0": "元素數量: %2",
+            "args0": [{
+                "type": "input_value",
+                "name": "size"
+            }],
+            "colour": "#e9967a",
+            "extensions": ["dynamic_dropdown"],
+            "previousStatement": null,
+            "nextStatement": null,
+            "tooltip": "取得一個 Class 的資料",
+            "helpUrl": ""
+        })
         this.appendValueInput("size");
         this.setInputsInline(true);
         this.setPreviousStatement(true); 

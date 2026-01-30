@@ -2678,6 +2678,10 @@ function bitwise_generateCode(block, operator) {
         return [`${block.getFieldValue('TYPE')}`, 1];
     }
 
+    Cpp.forBlock["void"] = function(){
+        return ["void", Cpp.ORDER_ATOMIC];
+    }
+
     Cpp.forBlock['struct_type'] = function(block) {
         return [`struct ${block.getFieldValue('TYPE')}`, 1];
     }
@@ -2686,71 +2690,6 @@ function bitwise_generateCode(block, operator) {
         return [`class ${block.getFieldValue('TYPE')}`, 1];
     }
 
-    // struct
-    Cpp.forBlock['define_struct'] = function(block) {
-        var struct_name = block.getFieldValue('struct_name');
-        var heritage = Cpp.valueToCode(block, 'heritage', 1);
-        var def_var = Cpp.statementToCode(block, 'def_var').replace(/^ {2}/gm, '    ');
-        
-        if (heritage.startsWith('(') && heritage.endsWith(')')) {
-            heritage = heritage.slice(1, -1);
-        }
-
-        if (heritage){
-            return `struct ${struct_name}: ${heritage} {\n${def_var}};`;
-        }
-        return `struct ${struct_name} {\n${def_var}};`;
-    }
-
-    Cpp.forBlock['get_struct'] = function(block) {
-        var struct_name = block.getFieldValue('struct_name');
-        var var_name = block.getFieldValue('var_name');
-        var size = Cpp.valueToCode(block, 'size', 1);
-
-        if (size.startsWith('(') && size.endsWith(')')) {
-            size = size.slice(1, -1);
-        }
-
-        if (size) {
-            return `${struct_name} ${var_name}[${size}];`
-        }
-        return `${struct_name} ${var_name};`;
-    };
-
-    // class
-    /*
-    Cpp.forBlock['define_class'] = function(block) {
-        var class_name = block.getFieldValue('class_name');
-        var Public = Cpp.statementToCode(block, 'public').replace(/^ {2}/gm, '    ') || '';
-        var Private = Cpp.statementToCode(block, 'private').replace(/^ {2}/gm, '    ') || '';
-
-        var code = `class ${class_name} {\n`;
-        if (Public !== '') {
-            code += `  public:\n${Public}\n`;
-        }
-        if (Private !== '') {
-            code += `  private:\n${Private}\n`;
-        }
-        code += `};`;
-
-        return code;
-    };
-    */
-
-    Cpp.forBlock['get_class'] = function(block) {
-        var class_name = block.getFieldValue('class_name');
-        var var_name = block.getFieldValue('var_name');
-        var size = Cpp.valueToCode(block, 'size', 1);
-
-        if (size.startsWith('(') && size.endsWith(')')) {
-            size = size.slice(1, -1);
-        }
-
-        if (size) {
-            return `${class_name} ${var_name}[${size}];`
-        }
-        return `${class_name} ${var_name};`;
-    };
 
     // data
     Cpp.forBlock['add_line'] = function(block) {
@@ -2845,22 +2784,6 @@ function bitwise_generateCode(block, operator) {
 
         return `for (auto ${VAR}: ${container}) {\n ${statements_body}}\n`;
     };
-
-    Cpp.forBlock['if_else'] = function(block) {
-        var condition = Cpp.valueToCode(block, 'CONDITION', 1);
-        var r1 = Cpp.valueToCode(block, 'r1', 1);
-        var r2 = Cpp.valueToCode(block, 'r2', 1);  
-        if (condition.startsWith('(') && condition.endsWith(')')) {
-            condition = condition.slice(1, -1);
-        }
-        if (r1.startsWith('(') && r1.endsWith(')')) {
-            r1 = r1.slice(1, -1);
-        }
-        if (r2.startsWith('(') && r2.endsWith(')')) {
-            r2 = r2.slice(1, -1);
-        }
-        return [`${condition}?${r1}:${r2}`, 1];
-    }
 
     Cpp.forBlock['var_cal'] = function(block) {
         var Value1 = Cpp.valueToCode(block, 'A', 1) || '0';
@@ -3098,86 +3021,6 @@ function bitwise_generateCode(block, operator) {
 
     Cpp.forBlock['false'] = function() {
         return ['false', 1];
-    };
-
-    // function
-    Cpp.forBlock['function_call'] = function(block) {
-        var funcName = block.getFieldValue('funcName');
-        var value = Cpp.valueToCode(block, 'VALUE', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        if (value) {
-            return `${funcName}(${value});\n`;
-        } else {
-            return funcName + '\n';
-        }
-
-    };
-
-    //function
-    Cpp.forBlock['define_function'] = function(block) {
-        var type = Cpp.valueToCode(block, 'type', 1);
-        var funcName = block.getFieldValue('funcName');
-        var data = Cpp.valueToCode(block, 'data', 1);
-        var content = Cpp.statementToCode(block, 'DO') || '';
-        var expression = Cpp.valueToCode(block, 'expression', 1);
-        content = content.replace(/^ {2}/gm, '    ');
-        if (data.startsWith('(') && data.endsWith(')')) {
-            data = data.slice(1, -1);
-        }
-        if (content.startsWith('(') && content.endsWith(')')) {
-            content = content.slice(1, -1);
-        }
-        if (expression.startsWith('(') && expression.endsWith(')')) {
-            expression = expression.slice(1, -1);
-        }
-        if (type.startsWith('(') && type.endsWith(')')) {
-            type = type.slice(1, -1);
-        }
-        return `${type} ${funcName}(${data}) {\n${content}    return ${expression};\n}\n`;
-    };
-
-    Cpp.forBlock['define_function_void'] = function(block) {
-        var funcName = block.getFieldValue('funcName');
-        var data = Cpp.valueToCode(block, 'data', 1) || '';
-        var content = Cpp.statementToCode(block, 'DO') || '';
-        var expression = block.getFieldValue('expression');
-        content = content.replace(/^ {2}/gm, '    ');
-        if (data.startsWith('(') && data.endsWith(')')) {
-            data = data.slice(1, -1);
-        }
-        if (content.startsWith('(') && content.endsWith(')')) {
-            content = content.slice(1, -1);
-        }
-
-        if (expression === 'no') {
-            return `void ${funcName}(${data}) {\n${content}\n}\n`;
-        } else {
-            return `void ${funcName}(${data}) {\n${content}  return;\n}\n`;
-        }
-    };
-    Cpp.forBlock['lambda'] = function(block) {
-        var capture = block.getFieldValue('captures');
-        var VAR = Cpp.valueToCode(block, 'VAR', 1);
-        var statement = Cpp.statementToCode(block, 'DO') || '';
-        var line = block.getFieldValue('line') === "TRUE";
-        if (VAR.startsWith('(') && VAR.endsWith(')')) {
-            VAR = VAR.slice(1, -1);
-        }
-        if (line){
-            if (statement.startsWith('(') && statement.endsWith(')')) {
-                statement = statement.slice(1, -1);
-            }
-            statement = statement.replace(/^ {2}/gm, '    ')
-            return [`[${capture}](${VAR}){\n${statement}\n}`, 1];
-        }else{
-            if (statement.startsWith('(') && statement.endsWith(')')) {
-                statement = statement.slice(1, -1);
-            }
-            statement = statement.replace(/\n/g, '');
-            return [`[${capture}](${VAR}){${statement}}`, 1];
-        }
     };
 
 

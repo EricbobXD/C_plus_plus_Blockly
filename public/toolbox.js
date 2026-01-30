@@ -19,6 +19,10 @@ export const toolbox = {
                     "type": "data_type"
                 },
                 {
+                    "kind": "block", 
+                    "type": "void"
+                },
+                {
                     "kind": "block",
                     "type": "struct_type"
                 },
