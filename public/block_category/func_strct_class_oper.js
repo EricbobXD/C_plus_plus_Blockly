@@ -174,7 +174,7 @@ Blockly.Blocks['define_struct'] = {
     UpdateShape_: function(mode){
         if (!mode) mode = this.getFieldValue("mode");
 
-        if (mode === "basic" ){
+        if (mode === "basic"){
             this.appendDummyInput("Name_Input")
                 .appendField("結構 名字: ")
                 .appendField(VarDropdown("Struct"), "Name");

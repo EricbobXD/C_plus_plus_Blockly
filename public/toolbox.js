@@ -1,15 +1,7 @@
 export const toolbox = {
     "kind": "categoryToolbox",
     "contents": [
-        /* 
-        {
-            "kind": "category", 
-            "name": "測試", 
-            "contents": [{
-            }]
-        },
-        */
-        {
+        { //data type
             "kind": "category",
             "name": "資料型態",
             "colour": "#EB5160",
@@ -32,7 +24,7 @@ export const toolbox = {
                 }
             ] 
         },
-        { // 陣列
+        { // array
             "kind": "category",
             "name": "陣列",
             "colour": "#ff5757",
@@ -42,7 +34,7 @@ export const toolbox = {
                 "callbackKey": "array_category"
             }]
         },                
-        { // 文本
+        { // text
             "kind": "category",
             "name": "文本",
             "colour": "#FF8C00",
@@ -81,7 +73,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 操作
+        { // operation
             "kind": "category",
             "name": "操作",
             "colour": "#2EC832",
@@ -112,7 +104,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 運算
+        { // calculation
             "kind": "category",
             "name": "運算",
             "colour": "#1F91B5",
@@ -211,7 +203,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 判斷
+        { // condition
             "kind": "category",
             "name": "判斷",
             "colour": "#00ABEA",
@@ -234,7 +226,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 迴圈
+        { // loop
             "kind": "category",
             "name": "迴圈",
             "colour": "#2473c2",
@@ -273,7 +265,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 定義
+        { // define
             "kind": "category",
             "name": "定義",
             "colour": "#123456",
@@ -292,7 +284,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 變數/指標/位置
+        { // variable/pointer/reference
             "kind": "category",
             "name": "變數/指標/位置",
             "colour": "#C9A200",
@@ -304,7 +296,7 @@ export const toolbox = {
                 }
             ]
         },
-        { // 函式/結構/類別
+        { // function/struct/class
             "kind": "category",
             "name": "函式/結構/類別",
             "colour": "#db00db",
@@ -316,7 +308,7 @@ export const toolbox = {
                 }
             ]
         },
-            { // 函式/結構/類別
+        { // good thing
             "kind": "category",
             "name": "好用的東西",
             "colour": "#4A9BFF",
@@ -346,7 +338,7 @@ export const toolbox = {
             "kind": "category",
             "name": "STL模組",
             "contents": [
-                {
+                { //vector
                     "kind": "category",
                     "name": "Vector",
                     "colour": "#3d7fd6",
@@ -356,9 +348,9 @@ export const toolbox = {
                         "callbackKey": "vec_category"
                     }]
                 },
-                {
+                { //deque
                     "kind": "category",
-                    "name": "deque",
+                    "name": "Deque",
                     "colour": "#85B09A",
                     "contents": [{
                         "kind": "button", 
@@ -366,12 +358,12 @@ export const toolbox = {
                         "callbackKey": "deq_category"
                     }]
                 },
-                {    
+                { //set
                     "kind": "category",
                     "name": "set函式庫",
                     "contents":[{
                         "kind": "category",
-                        "name": "set",
+                        "name": "Set",
                         "colour": "#DAA520",
                         "contents": [{
                                 "kind": "block",
@@ -517,7 +509,7 @@ export const toolbox = {
                     },
                     {
                         "kind": "category",
-                        "name": "unordered_set",
+                        "name": "Unordered_set",
                         "colour": "#FFD700",
                         "contents": [{
                                 "kind": "block",
@@ -655,7 +647,7 @@ export const toolbox = {
                     },
                     {
                         "kind": "category",
-                        "name": "multiset",
+                        "name": "Multiset",
                         "colour": "#FACA16",
                         "contents": [{
                                 "kind": "block",
@@ -801,7 +793,7 @@ export const toolbox = {
                     },
                     {
                         "kind": "category",
-                        "name": "flat_set",
+                        "name": "Flat_set",
                         "colour": "#F8DE7E",
                         "contents": [{
                                 "kind": "block",
@@ -946,12 +938,12 @@ export const toolbox = {
                         ]
                     }]
                 },
-                {    
+                { //map
                     "kind": "category",
-                    "name": "map函式庫",
+                    "name": "Map函式庫",
                     "contents":[{
                         "kind": "category",
-                        "name": "map",
+                        "name": "Map",
                         "colour": "#1abc9c",
                         "contents": [{
                                 "kind": "block",
@@ -1089,7 +1081,7 @@ export const toolbox = {
                     },
                     {
                         "kind": "category",
-                        "name": "unordered_map",
+                        "name": "Unordered_map",
                         "colour": "#1282A2",
                         "contents": [{
                                 "kind": "block",
@@ -1226,9 +1218,9 @@ export const toolbox = {
                         ]
                     }]
                 },
-                {
+                { //pair
                     "kind": "category",
-                    "name": "pair",
+                    "name": "Pair",
                     "colour": "#338f35",
                     "contents": [{
                             "kind": "block",
@@ -1256,193 +1248,37 @@ export const toolbox = {
                         }
                     ]
                 },
-                {
+                { //stack
                     "kind": "category",
-                    "name": "stack",
+                    "name": "Stack",
                     "colour": "#c74134",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_stack"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Stack 新增元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_push"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_push_range"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_emplace"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Stack 刪除元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_pop"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Stack 集合操作"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_swap"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Stack 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_top"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Stack 條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_size"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "stack_empty"
-                        },
-                    ]
+                        "kind": "button", 
+                        "text": "新增 Stack",
+                        "callbackKey": "st_category"
+                    }]
                 },
-                {
+                { //queue
                     "kind": "category",
-                    "name": "queue",
+                    "name": "Queue",
                     "colour": "#fd79a8",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_queue"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Queue 新增元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_push"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_push_range"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_emplace"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Queue 刪除元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_pop"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Queue 集合操作"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_swap"
-                        },        
-                        {
-                            "kind": "label",
-                            "text": "Queue 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_front"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Queue 條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_empty"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "queue_size"
-                        },
-                    ]
+                        "kind": "button", 
+                        "text": "新增 Queue",
+                        "callbackKey": "qu_category"
+                    }]
                 },
-                {
+                { //priority_queue
                     "kind": "category",
-                    "name": "priority_queue",
+                    "name": "Priority_queue",
                     "colour": "#F56FA1",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_priority_queue"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Priority_queue 新增元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_push"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_push_range"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_emplace"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Priority_queue 刪除元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_pop"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Priority_queue 集合操作"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_swap"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Priority_queue 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_top"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Priority_queue 判斷條件"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_empty"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "priority_queue_size"
-                        }
-                    ]
+                        "kind": "button", 
+                        "text": "新增 Priority_queue",
+                        "callbackKey": "pq_category"
+                    }]
                 },
-                {
+                { //bitset
                     "kind": "category",
                     "name": "bitset",
                     "colour": "#d35400",
@@ -1492,7 +1328,7 @@ export const toolbox = {
                         },
                     ]
                 },
-                {
+                { //algorithm
                     "kind": "category",
                     "name": "algorithm",
                     "colour": "#247bb5",
@@ -1530,7 +1366,7 @@ export const toolbox = {
                         }
                     ]
                 },
-                {
+                { //iomanip
                     "kind": "category",
                     "name": "iomanip",
                     "colour": "#00bab6",
@@ -1552,7 +1388,7 @@ export const toolbox = {
                         }
                     ]
                 },
-                {
+                { //climits
                     "kind": "category",
                     "name": "climits",
                     "colour": "#000000",
@@ -1618,7 +1454,7 @@ export const toolbox = {
                         }
                     ]
                 },
-                {
+                { //math
                     "kind": "category",
                     "name": "math",
                     "colour": "#2980b9",
@@ -1664,7 +1500,7 @@ export const toolbox = {
                         }
                     ]
                 },
-                {
+                { //cstdlib
                     "kind": "category",
                     "name": "cstdlib",
                     "colour": "#AFEEEE",
@@ -1673,53 +1509,7 @@ export const toolbox = {
                         "type": "llabs_block"
                     }]
                 },
-                {
-                    "kind": "category",
-                    "name": "ctime",
-                    "colour": "#8e44ad",
-                    "contents": [{
-                            "kind": "label",
-                            "text": "Ctime 取得時間"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_current_timestamp"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_current_local_time"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "get_current_utc_time"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "calculate_time_difference"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "convert_to_local_time"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "convert_to_utc_time"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "format_time_string"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "set_time_structure"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "read_time_structure_member"
-                        }
-                    ]
-                },
-                {
+                { //basic_ios
                     "kind": "category",
                     "name": "basic_ios",
                     "colour": 160,
@@ -1744,7 +1534,7 @@ export const toolbox = {
                             "type": "cin.eof"
                         }]
                 },
-                {
+                { //sstream
                     "kind": "category",
                     "name": "sstream",
                     "colour": "a13458",
@@ -1765,7 +1555,7 @@ export const toolbox = {
                         "type": "sstream_<<"
                     }]
                 },
-                {
+                { //functional
                     "kind": "category",
                     "name": "functional",
                     "colour": "#3EABF4",

@@ -58,647 +58,6 @@ Blockly.Blocks['main_block'] = {
         return `#include <bits/stdc++.h>\nusing namespace std;\n${define_code}\nint main() {\n${statements_body}\n    return 0;\n}`;
     };
 
-
-        
-Blockly.Blocks['define_stack'] = {  
-    init: function() {
-        this.jsonInit({
-            "type": "define_stack",
-            "message0": "定義stack資料型態 %1 , 名字: %2, 陣列: %3, 迭代器: %4",
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "TYPE",
-                },
-                {
-                    "type": "field_input",
-                    "name": "stack_name"
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "array",
-                    "checked": false
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "it",
-                    "checked": false
-                }
-            ],
-            "colour": "#b53c2f",
-            "previousStatement": null,
-            "nextStatement": null,
-            "inputsInline": true,
-            "tooltip": "創建一個 stack 陣列，stack 是會自動擴展容量的陣列",
-            "helpurl": "",
-            "inputsInline": false  // 確保預設排列方式為換行
-        });
-
-    // 監聽積木變更
-    this.setOnChange(function(event) {
-        const block = this;
-        if (!block) return;
-
-        var arrayChecked = block.getFieldValue("array") === "TRUE";
-        var itChecked    = block.getFieldValue("it") === "TRUE";
-
-        if (arrayChecked && itChecked){
-            alert("陣列不能跟迭代器不能一起使用喔😘");
-        }
-        // 確保 inputsInline 為 false，讓輸入項目換行排列
-        block.setInputsInline(false);
-
-        // 動態新增 / 移除 array 輸入
-        if (arrayChecked && !block.getInput("array_name")) {
-            block.appendDummyInput("array_name")
-            .appendField("輸入陣列名稱: ")
-            .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-        } else if (!arrayChecked && block.getInput("array_name")) {
-            block.removeInput("array_name", true);
-        }
-
-        // 動態新增 / 移除 iterator 輸入
-        if (itChecked && !block.getInput("iterator_name")) {
-            block.appendDummyInput("iterator_name")
-                .appendField("輸入名稱: ")
-                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-            block.appendValueInput("begin")
-                .setCheck("Number")
-                .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-    
-            block.appendValueInput("end")
-                .setCheck("Number")
-                .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-        } else if (!itChecked && block.getInput("iterator_name")) {
-            block.removeInput("iterator_name", true);
-            block.removeInput("begin", true);
-            block.removeInput("end", true);
-        }
-    });
-    },
-
-    // 儲存積木狀態
-    mutationToDom: function() {
-        var container = document.createElement('mutation');
-        container.setAttribute('array', this.getFieldValue('array'));
-        container.setAttribute('it', this.getFieldValue('it'));
-        return container;
-    },
-
-    // 讀取積木狀態
-    domToMutation: function(xmlElement) {
-        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
-        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
-
-        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
-        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
-
-        // 確保 inputsInline 為 false，避免縮成一行
-        this.setInputsInline(false);
-
-        if (arrayChecked && !this.getInput("array_name")) {
-            this.appendDummyInput("array_name")
-                    .appendField("輸入陣列名稱: ")
-                    .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-        }
-
-        if (itChecked && !this.getInput("iterator_name")) {
-            this.appendDummyInput("iterator_name")
-                .appendField("輸入名稱: ")
-                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-            this.appendValueInput("begin")
-                .setCheck("Number")
-                .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-
-            this.appendValueInput("end")
-                .setCheck("Number")
-                .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-    }
-};
-    Cpp.forBlock['define_stack'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1)
-        var stack_name = block.getFieldValue('stack_name');
-        var code = `stack<${type}>${stack_name}`;
-
-        var array = block.getFieldValue('array') === "TRUE";
-        var it = block.getFieldValue('it') === "TRUE";
-
-        if (array){
-            var array_name = block.getFieldValue('array_name');
-            if (array_name.startsWith('(') && array_name.endsWith(')')) {
-                array_name = array_name.slice(1, -1);
-            }
-            code += `(${array_name})`;
-        }
-
-        if (it){
-            var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
-            code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-        }
-        code += ';';
-        return code;
-    };
-
-Blockly.Blocks['define_queue'] = {  
-    init: function() {
-        this.jsonInit({
-            "type": "define_queue",
-            "message0": "定義queue資料型態 %1 , 名字: %2, 陣列: %3, 迭代器: %4",
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "TYPE",
-                },
-                {
-                    "type": "field_input",
-                    "name": "queue_name"
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "array",
-                    "checked": false
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "it",
-                    "checked": false
-                }
-            ],
-            "colour": "#cf5f87",
-            "inputsInline": true,
-            "previousStatement": null,
-            "nextStatement": null,
-            "tooltip": "創建一個 queue 陣列，queue 是會自動擴展容量的陣列",
-            "helpurl": "",
-            "inputsInline": false  // 確保預設排列方式為換行
-        });
-
-        // 監聽積木變更
-        this.setOnChange(function(event) {
-            const block = this;
-            if (!block) return;
-
-            var arrayChecked = block.getFieldValue("array") === "TRUE";
-            var itChecked    = block.getFieldValue("it") === "TRUE";
-
-            if (arrayChecked && itChecked){
-                alert("陣列不能跟迭代器不能一起使用喔😘");
-            }
-            // 確保 inputsInline 為 false，讓輸入項目換行排列
-            block.setInputsInline(false);
-
-            // 動態新增 / 移除 array 輸入
-            if (arrayChecked && !block.getInput("array_name")) {
-                block.appendDummyInput("array_name")
-                .appendField("輸入陣列名稱: ")
-                .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-            } else if (!arrayChecked && block.getInput("array_name")) {
-                block.removeInput("array_name", true);
-            }
-
-            // 動態新增 / 移除 iterator 輸入
-            if (itChecked && !block.getInput("iterator_name")) {
-                block.appendDummyInput("iterator_name")
-                    .appendField("輸入名稱: ")
-                    .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-                block.appendValueInput("begin")
-                    .setCheck("Number")
-                    .appendField("迭代器 開始: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-        
-                block.appendValueInput("end")
-                    .setCheck("Number")
-                    .appendField("結束: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!itChecked && block.getInput("iterator_name")) {
-                block.removeInput("iterator_name", true);
-                block.removeInput("begin", true);
-                block.removeInput("end", true);
-            }
-        });
-    },
-
-    // 儲存積木狀態
-    mutationToDom: function() {
-        var container = document.createElement('mutation');
-        container.setAttribute('array', this.getFieldValue('array'));
-        container.setAttribute('it', this.getFieldValue('it'));
-        return container;
-    },
-
-    // 讀取積木狀態
-    domToMutation: function(xmlElement) {
-        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
-        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
-
-        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
-        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
-
-        // 確保 inputsInline 為 false，避免縮成一行
-        this.setInputsInline(false);
-
-        if (arrayChecked && !this.getInput("array_name")) {
-            this.appendDummyInput("array_name")
-            .appendField("輸入陣列名稱: ")
-            .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-        }
-
-        if (itChecked && !this.getInput("iterator_name")) {
-            this.appendDummyInput("iterator_name")
-                .appendField("輸入名稱: ")
-                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-            this.appendValueInput("begin")
-                .setCheck("Number")
-                .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-    
-            this.appendValueInput("end")
-                .setCheck("Number")
-                .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-    }
-};
-    Cpp.forBlock['define_queue'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
-        var queue_name = block.getFieldValue('queue_name');
-        var code = `queue<${type}>${queue_name}`;
-
-        var array = block.getFieldValue('array') === "TRUE";
-        var it = block.getFieldValue('it') === "TRUE";
-
-        if (array){
-            var array_name = block.getFieldValue('array_name');
-            if (array_name.startsWith('(') && array_name.endsWith(')')) {
-                array_name = array_name.slice(1, -1);
-            }
-            code += `(${array_name})`;
-        }
-
-        if (it){
-            var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
-            code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-        }
-        code += ';';
-        return code;
-    };
-Blockly.Blocks['define_deque'] = {  
-    init: function() {
-        this.jsonInit({
-            "type": "define_deque",
-            "message0": "定義deque資料型態 %1 , 名字: %2 , 大小: %3, 陣列: %4, 迭代器: %5",
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "TYPE",
-                },
-                {
-                    "type": "field_input",
-                    "name": "vec_name"
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "size",
-                    "checked": false
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "array",
-                    "checked": false
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "it",
-                    "checked": false
-                }
-            ],
-            "colour": "#85B09A",
-            "previousStatement": null,
-            "inputsInline": true,
-            "nextStatement": null,
-            "tooltip": "創建一個 deque 陣列，deque 是會自動擴展容量的陣列",
-            "helpurl": "",
-            "inputsInline": false  // 確保預設排列方式為換行
-        });
-
-        // 監聽積木變更
-        this.setOnChange(function(event) {
-            const block = this;
-            if (!block) return;
-
-            var sizeChecked  = block.getFieldValue("size") === "TRUE";
-            var arrayChecked = block.getFieldValue("array") === "TRUE";
-            var itChecked    = block.getFieldValue("it") === "TRUE";
-
-            if (sizeChecked && itChecked){
-                alert("大小跟迭代器不能一起使用喔😘");
-            }
-
-            if (arrayChecked && itChecked){
-                alert("陣列不能跟迭代器不能一起使用喔😘");
-            }
-            // 確保 inputsInline 為 false，讓輸入項目換行排列
-            block.setInputsInline(false);
-
-            // 動態新增 / 移除 size 輸入
-            if (sizeChecked && !block.getInput("size")) {
-                block.appendValueInput('size')
-                    .setCheck("Number")
-                    .appendField('大小')
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!sizeChecked && block.getInput("size")) {
-                block.removeInput("size", true);
-            }
-
-            // 動態新增 / 移除 array 輸入
-            if (arrayChecked && !block.getInput("array_name")) {
-                block.appendDummyInput("array_name")
-                    .appendField("輸入陣列名稱: ")
-                    .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-            } else if (!arrayChecked && block.getInput("array_name")) {
-                block.removeInput("array_name", true);
-            }
-
-            // 動態新增 / 移除 iterator 輸入
-            if (itChecked && !block.getInput("iterator_name")) {
-                block.appendDummyInput("iterator_name")
-                    .appendField("輸入名稱: ")
-                    .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-                block.appendValueInput("begin")
-                    .setCheck("Number")
-                    .appendField("迭代器 開始: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-        
-                block.appendValueInput("end")
-                    .setCheck("Number")
-                    .appendField("結束: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!itChecked && block.getInput("iterator_name")) {
-                block.removeInput("iterator_name", true);
-                block.removeInput("begin", true);
-                block.removeInput("end", true);
-            }
-        });
-    },
-
-    // 儲存積木狀態
-    mutationToDom: function() {
-        var container = document.createElement('mutation');
-        container.setAttribute('size', this.getFieldValue('size'));
-        container.setAttribute('array', this.getFieldValue('array'));
-        container.setAttribute('it', this.getFieldValue('it'));
-        return container;
-    },
-
-    // 讀取積木狀態
-    domToMutation: function(xmlElement) {
-        this.setFieldValue(xmlElement.getAttribute('size'), 'size');
-        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
-        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
-
-        const sizeChecked  = xmlElement.getAttribute('size') === "TRUE";
-        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
-        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
-
-        // 確保 inputsInline 為 false，避免縮成一行
-        this.setInputsInline(false);
-
-        if (sizeChecked && !this.getInput("size")) {
-            this.appendValueInput('size')
-                .setCheck("Number")
-                .appendField('大小')
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-
-        if (arrayChecked && !this.getInput("array_name")) {
-        this.appendDummyInput("array_name")
-        .appendField("輸入陣列名稱: ")
-        .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-        }
-
-        if (itChecked && !this.getInput("iterator_name")) {
-            this.appendDummyInput("iterator_name")
-                .appendField("輸入名稱: ")
-                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-            this.appendValueInput("begin")
-                .setCheck("Number")
-                .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-    
-            this.appendValueInput("end")
-                .setCheck("Number")
-                .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-    }
-};
-    Cpp.forBlock['define_deque'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
-        var vec_name = block.getFieldValue('vec_name');
-        var code = `deque<${type}>${vec_name}`;
-
-        var size = block.getFieldValue('size') === "TRUE";
-        var array = block.getFieldValue('array') === "TRUE";
-        var it = block.getFieldValue('it') === "TRUE";
-
-        if (size){
-            var size_value = Cpp.valueToCode(block, 'size', 1);
-            if (size_value.startsWith('(') && size_value.endsWith(')')) {
-                size_value = size_value.slice(1, -1);
-            }
-            code += `(${size_value}`;
-        }
-
-        if (array){
-        var array_name = block.getFieldValue('array_name');
-            if (array_name.startsWith('(') && array_name.endsWith(')')) {
-                array_name = array_name.slice(1, -1);
-            }
-            if (size){
-                code += `, ${array_name}`;
-            } 
-            else{
-                code += `(${array_name}`;
-            }
-        }
-
-        if (it){
-            var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
-            code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-        }
-            
-        if (size || array || it){
-            code += ')';
-        }
-        code += ';';
-        return code;
-    };
-
-Blockly.Blocks['define_priority_queue'] = {  
-    init: function() {
-        this.jsonInit({
-            "type": "define_priority_queue",
-            "message0": "定義priority_queue資料型態 %1 , 名字: %2, 陣列: %3, 迭代器: %4",
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "TYPE",
-                },
-                {
-                    "type": "field_input",
-                    "name": "priority_queue_name"
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "array",
-                    "checked": false
-                },
-                {
-                    "type": "field_checkbox",
-                    "name": "it",
-                    "checked": false
-                }
-            ],
-            "colour": "#F56FA1",
-            "previousStatement": null,
-            "nextStatement": null,
-            "inputsInline": true,
-            "tooltip": "創建一個 priority_queue 陣列，priority_queue 是會自動擴展容量的陣列",
-            "helpurl": "",
-            "inputsInline": false  // 確保預設排列方式為換行
-        });
-
-        // 監聽積木變更
-        this.setOnChange(function(event) {
-            const block = this;
-            if (!block) return;
-
-            var arrayChecked = block.getFieldValue("array") === "TRUE";
-            var itChecked    = block.getFieldValue("it") === "TRUE";
-
-            if (arrayChecked && itChecked){
-                alert("陣列不能跟迭代器不能一起使用喔😘");
-            }
-            // 確保 inputsInline 為 false，讓輸入項目換行排列
-            block.setInputsInline(false);
-
-            // 動態新增 / 移除 array 輸入
-            if (arrayChecked && !block.getInput("array_name")) {
-                block.appendDummyInput("array_name")
-                .appendField("輸入陣列名稱: ")
-                .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-            } else if (!arrayChecked && block.getInput("array_name")) {
-                block.removeInput("array_name", true);
-            }
-
-            // 動態新增 / 移除 iterator 輸入
-            if (itChecked && !block.getInput("iterator_name")) {
-                block.appendDummyInput("iterator_name")
-                    .appendField("輸入名稱: ")
-                    .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-                block.appendValueInput("begin")
-                    .setCheck("Number")
-                    .appendField("迭代器 開始: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-        
-                block.appendValueInput("end")
-                    .setCheck("Number")
-                    .appendField("結束: ")
-                    .setAlign(Blockly.ALIGN_LEFT);
-            } else if (!itChecked && block.getInput("iterator_name")) {
-                block.removeInput("iterator_name", true);
-                block.removeInput("begin", true);
-                block.removeInput("end", true);
-            }
-        });
-    },
-
-    // 儲存積木狀態
-    mutationToDom: function() {
-        var container = document.createElement('mutation');
-        container.setAttribute('array', this.getFieldValue('array'));
-        container.setAttribute('it', this.getFieldValue('it'));
-        return container;
-    },
-
-    // 讀取積木狀態
-    domToMutation: function(xmlElement) {
-        this.setFieldValue(xmlElement.getAttribute('array'), 'array');
-        this.setFieldValue(xmlElement.getAttribute('it'), 'it');
-
-        const arrayChecked = xmlElement.getAttribute('array') === "TRUE";
-        const itChecked    = xmlElement.getAttribute('it') === "TRUE";
-
-        // 確保 inputsInline 為 false，避免縮成一行
-        this.setInputsInline(false);
-
-        if (arrayChecked && !this.getInput("array_name")) {
-            this.appendDummyInput("array_name")
-            .appendField("輸入陣列名稱: ")
-            .appendField(new Blockly.FieldTextInput('array_name'), "array_name");
-        }
-
-        if (itChecked && !this.getInput("iterator_name")) {
-            this.appendDummyInput("iterator_name")
-                .appendField("輸入名稱: ")
-                .appendField(new Blockly.FieldTextInput('array2_name'), "array2_name");
-
-            this.appendValueInput("begin")
-                .setCheck("Number")
-                .appendField("迭代器 開始: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-    
-            this.appendValueInput("end")
-                .setCheck("Number")
-                .appendField("結束: ")
-                .setAlign(Blockly.ALIGN_LEFT);
-        }
-    }
-};
-    Cpp.forBlock['define_priority_queue'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1)
-        var priority_queue_name = block.getFieldValue('priority_queue_name');
-        var code = `priority_queue<${type}>${priority_queue_name}`;
-
-        var array = block.getFieldValue('array') === "TRUE";
-        var it = block.getFieldValue('it') === "TRUE";
-
-        if (array){
-            var array_name = block.getFieldValue('array_name');
-            if (array_name.startsWith('(') && array_name.endsWith(')')) {
-                array_name = array_name.slice(1, -1);
-            }
-            code += `(${array_name})`;
-        }
-
-        if (it){
-            var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
-            code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
-        }
-        code += ';';
-        return code;
-    };
-
 Blockly.Blocks['define_set'] = {  
     init: function() {
         this.jsonInit({
@@ -711,7 +70,7 @@ Blockly.Blocks['define_set'] = {
                 },
                 {
                     "type": "field_input",
-                    "name": "set_name"
+                    "name": "Name"
                 },
                 {
                     "type": "field_checkbox",
@@ -822,9 +181,9 @@ Blockly.Blocks['define_set'] = {
     }
 };
     Cpp.forBlock['define_set'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
-        var set_name = block.getFieldValue('set_name');
-        var code = `set<${type}>${set_name}`;
+        var type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var Name = block.getFieldValue('Name');
+        var code = `set<${type}>${Name}`;
 
         var array = block.getFieldValue('array') === "TRUE";
         var it = block.getFieldValue('it') === "TRUE";
@@ -839,8 +198,8 @@ Blockly.Blocks['define_set'] = {
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
+            var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
         }
         code += ';';
@@ -858,7 +217,7 @@ Blockly.Blocks['define_unordered_set'] = {
                 },
                 {
                     "type": "field_input",
-                    "name": "set_name"
+                    "name": "Name"
                 },
                 {
                     "type": "field_checkbox",
@@ -969,9 +328,9 @@ Blockly.Blocks['define_unordered_set'] = {
     }
 };
     Cpp.forBlock['define_unordered_set'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var code = `unordered_set<${type}>${unordered_set_name}`;
+        var type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var unordered_Name = block.getFieldValue('unordered_Name');
+        var code = `unordered_set<${type}>${unordered_Name}`;
 
         var array = block.getFieldValue('array') === "TRUE";
         var it = block.getFieldValue('it') === "TRUE";
@@ -986,8 +345,8 @@ Blockly.Blocks['define_unordered_set'] = {
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
+            var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
         }
         code += ';';
@@ -1005,7 +364,7 @@ Blockly.Blocks['define_multiset'] = {
                 },
                 {
                     "type": "field_input",
-                    "name": "set_name"
+                    "name": "Name"
                 },
                 {
                     "type": "field_checkbox",
@@ -1116,9 +475,9 @@ Blockly.Blocks['define_multiset'] = {
     }
 };
     Cpp.forBlock['define_multiset'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
-        var multiset_name = block.getFieldValue('multiset_name');
-        var code = `multiset<${type}>${multiset_name}`;
+        var type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var multiName = block.getFieldValue('multiName');
+        var code = `multiset<${type}>${multiName}`;
 
         var array = block.getFieldValue('array') === "TRUE";
         var it = block.getFieldValue('it') === "TRUE";
@@ -1133,8 +492,8 @@ Blockly.Blocks['define_multiset'] = {
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
+            var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
         }
         code += ';';
@@ -1152,7 +511,7 @@ Blockly.Blocks['define_flat_set'] = {
                 },
                 {
                     "type": "field_input",
-                    "name": "set_name"
+                    "name": "Name"
                 },
                 {
                     "type": "field_checkbox",
@@ -1263,9 +622,9 @@ Blockly.Blocks['define_flat_set'] = {
     }
 };
     Cpp.forBlock['define_flat_set'] = function(block) {
-        var type = Cpp.valueToCode(block, 'TYPE', 1);
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var code = `flat_set<${type}>${flat_set_name}`;
+        var type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var flat_Name = block.getFieldValue('flat_Name');
+        var code = `flat_set<${type}>${flat_Name}`;
 
         var array = block.getFieldValue('array') === "TRUE";
         var it = block.getFieldValue('it') === "TRUE";
@@ -1280,8 +639,8 @@ Blockly.Blocks['define_flat_set'] = {
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
+            var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
         }
         code += ';';
@@ -1394,8 +753,8 @@ Blockly.Blocks['define_map'] = {
 };
 
     Cpp.forBlock['define_map'] = function(block) {
-        var type1 = Cpp.valueToCode(block, 'TYPE1', 1);
-        var type2 = Cpp.valueToCode(block, 'TYPE2', 1);
+        var type1 = Cpp.valueToCode(block, 'TYPE1', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var type2 = Cpp.valueToCode(block, 'TYPE2', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         var map_name = block.getFieldValue('map_name');
         var code = `map<${type1}, ${type2}>${map_name}`;
 
@@ -1418,8 +777,8 @@ Blockly.Blocks['define_map'] = {
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
+            var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
         }
         code += ';';
@@ -1451,8 +810,8 @@ Blockly.Blocks['define_unordered_map'] = {
 };       
 
     Cpp.forBlock['define_unordered_map'] = function(block) {
-                var type1 = Cpp.valueToCode(block, 'TYPE1', 1);
-                var type2 = Cpp.valueToCode(block, 'TYPE2', 1);
+                var type1 = Cpp.valueToCode(block, 'TYPE1', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                var type2 = Cpp.valueToCode(block, 'TYPE2', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
                 var unordered_map_name = block.getFieldValue('unordered_map_name');
                 var code = `unordered_map<${type1}, ${type2}>${unordered_map_name}`;
     
@@ -1469,8 +828,8 @@ Blockly.Blocks['define_unordered_map'] = {
     
                 if (it){
                     var array2_name = block.getFieldValue('array2_name');
-                    var begin = Cpp.valueToCode(block, 'begin', 1);
-                    var end = Cpp.valueToCode(block, 'end', 1);
+                    var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                    var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
                     code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
                 }
                 code += ';';
@@ -1502,8 +861,8 @@ Blockly.Blocks['define_pair'] = {
 };
                 
 Cpp.forBlock['define_pair'] = function(block) {
-    var type1 = Cpp.valueToCode(block, 'TYPE1', 1);
-    var type2 = Cpp.valueToCode(block, 'TYPE2', 1);
+    var type1 = Cpp.valueToCode(block, 'TYPE1', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    var type2 = Cpp.valueToCode(block, 'TYPE2', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
     var pair_name = block.getFieldValue('pair_name');
     var code = `pair<${type1}, ${type2}>${pair_name}`;
 
@@ -1520,8 +879,8 @@ Cpp.forBlock['define_pair'] = function(block) {
 
     if (it){
         var array2_name = block.getFieldValue('array2_name');
-        var begin = Cpp.valueToCode(block, 'begin', 1);
-        var end = Cpp.valueToCode(block, 'end', 1);
+        var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         code += `(${array2_name}.begin()+${begin}, ${array2_name}.end()+${end})`;
     }
     code += ';';
@@ -1698,8 +1057,8 @@ Blockly.Blocks['deque_assign'] = {
         var code = `${deque_name}.assign(`;
         
         if (count){
-            var count_num = Cpp.valueToCode(block, 'count_num', 1);
-            var str = Cpp.valueToCode(block, 'str', 1);
+            var count_num = Cpp.valueToCode(block, 'count_num', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var str = Cpp.valueToCode(block, 'str', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (count_num.startsWith('(') && count_num.endsWith(')')) {
                 count_num = count_num.slice(1, -1);
             }   
@@ -1709,7 +1068,7 @@ Blockly.Blocks['deque_assign'] = {
             code += `${str}, ${count_num}`;
         }
         if (array){
-            var array_content = Cpp.valueToCode(block, 'array_name', 1);
+            var array_content = Cpp.valueToCode(block, 'array_name', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (array_content.startsWith('(') && array_content.endsWith(')')) {
                 array_content = array_content.slice(1, -1);
             }   
@@ -1718,8 +1077,8 @@ Blockly.Blocks['deque_assign'] = {
 
         if (it){
             var array2_name = block.getFieldValue('array2_name');
-            var begin = Cpp.valueToCode(block, 'begin', 1);
-            var end = Cpp.valueToCode(block, 'end', 1);
+            var begin = Cpp.valueToCode(block, 'begin', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (begin.startsWith('(') && begin.endsWith(')')) {
                 begin = begin.slice(1, -1);
             }   
@@ -1860,14 +1219,14 @@ Blockly.Blocks['new_block'] = {
         var array = block.getFieldValue('array') === 'TRUE';
         var code = `new ${type}`;
         if (value){
-            var val = Cpp.valueToCode(block, 'val', 1);
+            var val = Cpp.valueToCode(block, 'val', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (val.startsWith('(') && val.endsWith(')')){
                 val = val.slice(1, -1);
             }
             code += `(${val})`;
         }else if (array){
-            var sizes = Cpp.valueToCode(block, 'sizes2', 1);
-            var content = Cpp.valueToCode(block, 'array_content', 1);
+            var sizes = Cpp.valueToCode(block, 'sizes2', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            var content = Cpp.valueToCode(block, 'array_content', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (sizes.startsWith('(') && sizes.endsWith(')')){
                 sizes = sizes.slice(1, -1);
             }
@@ -2732,7 +2091,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['return_block'] = function(block) {
-        var returnValue = Cpp.valueToCode(block, 'RETURN_VALUE', 1);
+        var returnValue = Cpp.valueToCode(block, 'RETURN_VALUE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (returnValue.startsWith('(') && returnValue.endsWith(')')) {
             returnValue = returnValue.slice(1, -1);
@@ -2755,9 +2114,9 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['for_block'] = function(block) {
-        var init = Cpp.valueToCode(block, 'INIT', 1) || '';
-        var condition = Cpp.valueToCode(block, 'CONDITION', 1) || '';
-        var var_cal = Cpp.valueToCode(block, 'var_cal', 1) || '';
+        var init = Cpp.valueToCode(block, 'INIT', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var condition = Cpp.valueToCode(block, 'CONDITION', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var var_cal = Cpp.valueToCode(block, 'var_cal', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         var statements_body = Cpp.statementToCode(block, 'DO')
         statements_body = statements_body.replace(/^ {2}/gm, '    ');
 
@@ -2825,7 +2184,7 @@ function bitwise_generateCode(block, operator) {
         var unsigned = block.getFieldValue('unsigned');
         var type = block.getFieldValue('TYPE');
         var var_name = block.getFieldValue('var_name');
-        var value = Cpp.valueToCode(block, 'value', 1) || '';
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         code = '';
         if (unsigned === 'unsigned') {
             code += 'unsigned ';
@@ -2842,7 +2201,7 @@ function bitwise_generateCode(block, operator) {
     };
     // input and output
     Cpp.forBlock['cin_block'] = function(block) {
-        var value_var = Cpp.valueToCode(block, 'VARIABLES', 1);
+        var value_var = Cpp.valueToCode(block, 'VARIABLES', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value_var.startsWith('(') && value_var.endsWith(')')) {
             value_var = value_var.slice(1, -1);
         }
@@ -2851,7 +2210,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['cout_block'] = function(block) {
-        var argument = Cpp.valueToCode(block, 'INPUT', 1) || '';
+        var argument = Cpp.valueToCode(block, 'INPUT', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (argument.startsWith('(') && argument.endsWith(')')) {
             argument = argument.slice(1, -1);
@@ -3039,7 +2398,7 @@ function bitwise_generateCode(block, operator) {
 
     // useful things
     Cpp.forBlock['define_template'] = function(block) {
-        var Var = Cpp.valueToCode(block, 'var', 1);
+        var Var = Cpp.valueToCode(block, 'var', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Var.startsWith('(') && Var.endsWith(')')) {
             Var = Var.slice(1, -1);
@@ -3049,7 +2408,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['define_typename'] = function(block) {
-        var Var = Cpp.valueToCode(block, 'var', 1);
+        var Var = Cpp.valueToCode(block, 'var', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Var.startsWith('(') && Var.endsWith(')')) {
             Var = Var.slice(1, -1);
@@ -3059,7 +2418,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['define_using'] = function(block) {
-        var Var = Cpp.valueToCode(block, 'var', 1);
+        var Var = Cpp.valueToCode(block, 'var', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         var change_Var = block.getFieldValue('change_var') || '';
 
         if (Var.startsWith('(') && Var.endsWith(')')) {
@@ -3080,7 +2439,7 @@ function bitwise_generateCode(block, operator) {
     // Standard Library
     // math
     Cpp.forBlock['math_random'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'RANGE', 1);
+        var Value = Cpp.valueToCode(block, 'RANGE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3090,7 +2449,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_floor'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'X', 1);
+        var Value = Cpp.valueToCode(block, 'X', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3100,7 +2459,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_ceil'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'X', 1);
+        var Value = Cpp.valueToCode(block, 'X', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3110,7 +2469,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_tangent'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'ANGLE', 1);
+        var Value = Cpp.valueToCode(block, 'ANGLE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3120,7 +2479,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_cosine'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'ANGLE', 1);
+        var Value = Cpp.valueToCode(block, 'ANGLE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3130,7 +2489,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_sine'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'ANGLE', 1);
+        var Value = Cpp.valueToCode(block, 'ANGLE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3140,7 +2499,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_abs'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'A', 1);
+        var Value = Cpp.valueToCode(block, 'A', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3150,7 +2509,7 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['math_sqrt'] = function(block) {
-        var Value = Cpp.valueToCode(block, 'X', 1);
+        var Value = Cpp.valueToCode(block, 'X', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (Value.startsWith('(') && Value.endsWith(')')) {
             Value = Value.slice(1, -1);
@@ -3211,8 +2570,8 @@ function bitwise_generateCode(block, operator) {
 
     Cpp.forBlock['map_insert'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3224,7 +2583,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_insert_range'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var array = Cpp.valueToCode(block, 'array', 1);
+        var array = Cpp.valueToCode(block, 'array', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (array.startsWith('(') && value.endsWith(')')) {
             array = array.slice(1, -1);
         }
@@ -3233,8 +2592,8 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_insert_or_assign'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3246,7 +2605,7 @@ function bitwise_generateCode(block, operator) {
 
     Cpp.forBlock['map_erase'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3255,8 +2614,8 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_emplace'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3268,8 +2627,8 @@ function bitwise_generateCode(block, operator) {
 
     Cpp.forBlock['map_try_emplace'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3282,7 +2641,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_extract'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3326,7 +2685,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_count'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3335,7 +2694,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_find'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3344,7 +2703,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_contains'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3353,7 +2712,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_equal_range'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3362,7 +2721,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_lower_bound'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3371,7 +2730,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['map_upper_bound'] = function(block) {
         var map_name = block.getFieldValue('map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3399,8 +2758,8 @@ function bitwise_generateCode(block, operator) {
     }
     
     Cpp.forBlock['make_map'] = function(block) {
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3414,8 +2773,8 @@ function bitwise_generateCode(block, operator) {
     //unoredered_map
     Cpp.forBlock['unordered_map_insert'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3427,7 +2786,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_insert_range'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var array = Cpp.valueToCode(block, 'array', 1);
+        var array = Cpp.valueToCode(block, 'array', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (array.startsWith('(') && value.endsWith(')')) {
             array = array.slice(1, -1);
         }
@@ -3436,8 +2795,8 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_insert_or_assign'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3449,7 +2808,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_erase'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3458,8 +2817,8 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_emplace'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3471,8 +2830,8 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_try_emplace'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3485,7 +2844,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_extract'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3529,7 +2888,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_count'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3538,7 +2897,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_find'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3547,7 +2906,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_contains'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3556,7 +2915,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_equal_range'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3565,7 +2924,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_lower_bound'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3574,7 +2933,7 @@ function bitwise_generateCode(block, operator) {
     
     Cpp.forBlock['unordered_map_upper_bound'] = function(block) {
         var unordered_map_name = block.getFieldValue('unordered_map_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
@@ -3606,7 +2965,7 @@ function bitwise_generateCode(block, operator) {
         var type1 = Cpp.valueToCode(block, 'TYPE1', 1) || 'int';
         var type2 = Cpp.valueToCode(block, 'TYPE2', 1) || 'int';
         var pair_name = block.getFieldValue('pair_name');
-        var content = Cpp.valueToCode(block, 'content', 1);
+        var content = Cpp.valueToCode(block, 'content', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
 
         if (type1.startsWith('(') && type1.endsWith(')')) {
                 type1 = type1.slice(1, -1);
@@ -3638,8 +2997,8 @@ function bitwise_generateCode(block, operator) {
     }
 
     Cpp.forBlock['make_pair'] = function(block) {
-        var key = Cpp.valueToCode(block, 'key', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (key.startsWith('(') && key.endsWith(')')) {
             key = key.slice(1, -1);
         }
@@ -3650,717 +3009,39 @@ function bitwise_generateCode(block, operator) {
         return [code, 1];
     }
 
-    // set
-    Cpp.forBlock['set_insert'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${set_name}.insert(${value});\n`;
-    }
-    
-    Cpp.forBlock['set_insert_range'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var array = Cpp.valueToCode(block, 'array', 1);
-        if (array.startsWith('(') && value.endsWith(')')) {
-            array = array.slice(1, -1);
-        }
-        return `${set_name}.insert_range(${array});\n`;
-    }
-    
-    Cpp.forBlock['set_erase'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-            if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${set_name}.erase(${value});\n`;
-    }
-
-    Cpp.forBlock['set_emplace'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return set_name + ".emplace(" + element + ");\n";
-    };
-
-    
-    Cpp.forBlock['set_extract'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-            if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.extract(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_merge'] = function(block) {
-        var set_name1 = block.getFieldValue('set_name1');
-        var set_name2 = block.getFieldValue('set_name2');
-        return `${set_name1}.merge(${set_name2});\n`;
-    };
-    
-    Cpp.forBlock['set_swap'] = function(block) {
-        var set_name1 = block.getFieldValue('set_name1');
-        var set_name2 = block.getFieldValue('set_name2');
-        return `${set_name1}.swap(${set_name2});\n`;
-    };
-    
-    
-    
-    Cpp.forBlock['set_clear'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return set_name + ".clear();";
-    };
-    
-    Cpp.forBlock['set_size'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.size()`, 1];
-    }
-    
-    Cpp.forBlock['set_empty'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.empty()`, 1];
-    }
-    
-    
-    Cpp.forBlock['set_max_size'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.max_size()`, 1];
-    }
-    
-    Cpp.forBlock['set_count'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.count(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_find'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.find(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_contains'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.contains(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_equal_range'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.equal_range(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_lower_bound'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.lower_bound(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_upper_bound'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${set_name}.upper_bound(${value})`, 1];
-    }
-    
-    Cpp.forBlock['set_begin'] = function(block) {
-        var set_name = block.getFieldValue('set_name') || '';
-        return [`${set_name}.begin()`, 1];
-    }
-    
-    Cpp.forBlock['set_end'] = function(block) {
-        var set_name = block.getFieldValue('set_name') || '';
-        return [`${set_name}.end()`, 1];
-    }
-    
-    Cpp.forBlock['set_rbegin'] = function(block) {
-        var set_name = block.getFieldValue('set_name') || '';
-        return [`${set_name}.rbegin()`, 1];
-    }
-    
-    Cpp.forBlock['set_rend'] = function(block) {
-        var set_name = block.getFieldValue('set_name') || '';
-        return [`${set_name}.rend()`, 1];
-    }
-    
+    /* set 
     Cpp.forBlock['set_extract_value'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.value`, 1];
+        var Name = block.getFieldValue('Name');
+        return [`${Name}.value`, 1];
     }
 
     Cpp.forBlock['set_extract_is_value'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.is_value`, 1];
+        var Name = block.getFieldValue('Name');
+        return [`${Name}.is_value`, 1];
     }
 
     Cpp.forBlock['set_extract_release'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.release`, 1];
+        var Name = block.getFieldValue('Name');
+        return [`${Name}.release`, 1];
     }
 
     Cpp.forBlock['set_equal_range_first'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.first`, 1];
+        var Name = block.getFieldValue('Name');
+        return [`${Name}.first`, 1];
     }
 
     Cpp.forBlock['set_equal_range_second'] = function(block) {
-        var set_name = block.getFieldValue('set_name');
-        return [`${set_name}.second`, 1];
+        var Name = block.getFieldValue('Name');
+        return [`${Name}.second`, 1];
     }
-
-    // unordered_set
-    Cpp.forBlock['unordered_set_insert'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${unordered_set_name}.insert(${value});\n`;
-    }
-
-    Cpp.forBlock['unordered_set_insert_range'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var array = Cpp.valueToCode(block, 'array', 1);
-        if (array.startsWith('(') && value.endsWith(')')) {
-            array = array.slice(1, -1);
-        }
-        return `${unordered_set_name}.insert_range(${array});\n`;
-    }
-
-    Cpp.forBlock['unordered_set_erase'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${unordered_set_name}.erase(${value});\n`;
-    }
-
-    Cpp.forBlock['unordered_set_emplace'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return unordered_set_name + ".emplace(" + element + ");\n";
-    };
-
-
-    Cpp.forBlock['unordered_set_extract'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${unordered_set_name}.extract(${value})`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_merge'] = function(block) {
-        var unordered_set_name1 = block.getFieldValue('unordered_set_name1');
-        var unordered_set_name2 = block.getFieldValue('unordered_set_name2');
-        return `${unordered_set_name1}.merge(${unordered_set_name2});\n`;
-    };
-
-    Cpp.forBlock['unordered_set_swap'] = function(block) {
-        var unordered_set_name1 = block.getFieldValue('unordered_set_name1');
-        var unordered_set_name2 = block.getFieldValue('unordered_set_name2');
-        return `${unordered_set_name1}.swap(${unordered_set_name2});\n`;
-    };
-
-
-
-    Cpp.forBlock['unordered_set_clear'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return unordered_set_name + ".clear();";
-    };
-
-    Cpp.forBlock['unordered_set_size'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.size()`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_empty'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.empty()`, 1];
-    }
-
-
-    Cpp.forBlock['unordered_set_max_size'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.max_size()`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_count'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${unordered_set_name}.count(${value})`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_find'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${unordered_set_name}.find(${value})`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_contains'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${unordered_set_name}.contains(${value})`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_equal_range'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${unordered_set_name}.equal_range(${value})`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_begin'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name') || '';
-        return [`${unordered_set_name}.begin()`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_end'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name') || '';
-        return [`${unordered_set_name}.end()`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_rbegin'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name') || '';
-        return [`${unordered_set_name}.rbegin()`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_rend'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name') || '';
-        return [`${unordered_set_name}.rend()`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_extract_value'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.value`, 1];
-    }
-    Cpp.forBlock['unordered_set_extract_is_value'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.is_value`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_extract_release'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.release`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_equal_range_first'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.first`, 1];
-    }
-
-    Cpp.forBlock['unordered_set_equal_range_second'] = function(block) {
-        var unordered_set_name = block.getFieldValue('unordered_set_name');
-        return [`${unordered_set_name}.second`, 1];
-    }
-
-    // multiset
-    Cpp.forBlock['multiset_insert'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${multiset_name}.insert(${value});\n`;
-    }
-
-    Cpp.forBlock['multiset_insert_range'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var array = Cpp.valueToCode(block, 'array', 1);
-        if (array.startsWith('(') && value.endsWith(')')) {
-            array = array.slice(1, -1);
-        }
-        return `${multiset_name}.insert_range(${array});\n`;
-    }
-
-    Cpp.forBlock['multiset_erase'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${multiset_name}.erase(${value});\n`;
-    }
-
-    Cpp.forBlock['multiset_emplace'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return multiset_name + ".emplace(" + element + ");\n";
-    };
-
-
-    Cpp.forBlock['multiset_extract'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.extract(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_merge'] = function(block) {
-        var multiset_name1 = block.getFieldValue('multiset_name1');
-        var multiset_name2 = block.getFieldValue('multiset_name2');
-        return `${multiset_name1}.merge(${multiset_name2});\n`;
-    };
-
-    Cpp.forBlock['multiset_swap'] = function(block) {
-        var multiset_name1 = block.getFieldValue('multiset_name1');
-        var multiset_name2 = block.getFieldValue('multiset_name2');
-        return `${multiset_name1}.swap(${multiset_name2});\n`;
-    };
-
-
-
-    Cpp.forBlock['multiset_clear'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return multiset_name + ".clear();";
-    };
-
-    Cpp.forBlock['multiset_size'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.size()`, 1];
-    }
-
-    Cpp.forBlock['multiset_empty'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.empty()`, 1];
-    }
-
-
-    Cpp.forBlock['multiset_max_size'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.max_size()`, 1];
-    }
-
-    Cpp.forBlock['multiset_count'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.count(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_find'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.find(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_contains'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.contains(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_equal_range'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.equal_range(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_lower_bound'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.lower_bound(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_upper_bound'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${multiset_name}.upper_bound(${value})`, 1];
-    }
-
-    Cpp.forBlock['multiset_begin'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name') || '';
-        return [`${multiset_name}.begin()`, 1];
-    }
-
-    Cpp.forBlock['multiset_end'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name') || '';
-        return [`${multiset_name}.end()`, 1];
-    }
-
-    Cpp.forBlock['multiset_rbegin'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name') || '';
-        return [`${multiset_name}.rbegin()`, 1];
-    }
-
-    Cpp.forBlock['multiset_rend'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name') || '';
-        return [`${multiset_name}.rend()`, 1];
-    }
-
-    Cpp.forBlock['multiset_extract_value'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.value`, 1];
-    }
-
-    Cpp.forBlock['multiset_extract_is_value'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.is_value`, 1];
-    }
-
-    Cpp.forBlock['multiset_extract_release'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.release`, 1];
-    }
-
-    Cpp.forBlock['multiset_equal_range_first'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.first`, 1];
-    }
-
-    Cpp.forBlock['multiset_equal_range_second'] = function(block) {
-        var multiset_name = block.getFieldValue('multiset_name');
-        return [`${multiset_name}.second`, 1];
-    }
-
-    // flat_set
-    Cpp.forBlock['flat_set_insert'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${flat_set_name}.insert(${value});\n`;
-    }
-
-    Cpp.forBlock['flat_set_insert_range'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var array = Cpp.valueToCode(block, 'array', 1);
-        if (array.startsWith('(') && value.endsWith(')')) {
-            array = array.slice(1, -1);
-        }
-        return `${flat_set_name}.insert_range(${array});\n`;
-    }
-
-    Cpp.forBlock['flat_set_erase'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return `${flat_set_name}.erase(${value});\n`;
-    }
-
-    Cpp.forBlock['flat_set_emplace'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return flat_set_name + ".emplace(" + element + ");\n";
-    };
-
-
-    Cpp.forBlock['flat_set_extract'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.extract(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_merge'] = function(block) {
-        var flat_set_name1 = block.getFieldValue('flat_set_name1');
-        var flat_set_name2 = block.getFieldValue('flat_set_name2');
-        return `${flat_set_name1}.merge(${flat_set_name2};\n`;
-    };
-
-    Cpp.forBlock['flat_set_swap'] = function(block) {
-        var flat_set_name1 = block.getFieldValue('flat_set_name1');
-        var flat_set_name2 = block.getFieldValue('flat_set_name2');
-        return `${flat_set_name1}.swap(${flat_set_name2});\n`;
-    };
-
-
-
-    Cpp.forBlock['flat_set_clear'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return flat_set_name + ".clear();";
-    };
-
-    Cpp.forBlock['flat_set_size'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.size()`, 1];
-    }
-
-    Cpp.forBlock['flat_set_empty'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.empty()`, 1];
-    }
-
-
-    Cpp.forBlock['flat_set_max_size'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.max_size()`, 1];
-    }
-
-    Cpp.forBlock['flat_set_count'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.count(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_find'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.find(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_contains'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.contains(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_equal_range'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.equal_range(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_lower_bound'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.lower_bound(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_upper_bound'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${flat_set_name}.upper_bound(${value})`, 1];
-    }
-
-    Cpp.forBlock['flat_set_begin'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name') || '';
-        return [`${flat_set_name}.begin()`, 1];
-    }
-
-    Cpp.forBlock['flat_set_end'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name') || '';
-        return [`${flat_set_name}.end();`, 1];
-    }
-
-    Cpp.forBlock['flat_set_rbegin'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name') || '';
-        return [`${flat_set_name}.rbegin()`, 1];
-    }
-
-    Cpp.forBlock['flat_set_rend'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name') || '';
-        return [`${flat_set_name}.rend()`, 1];
-    }
-
-    Cpp.forBlock['flat_set_extract_value'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.value`, 1];
-    }
-
-    Cpp.forBlock['flat_set_extract_is_value'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.is_value`, 1];
-    }
-
-    Cpp.forBlock['flat_set_extract_release'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.release`, 1];
-    }
-
-    Cpp.forBlock['flat_set_equal_range_first'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.first`, 1];
-    }
-    
-    Cpp.forBlock['flat_set_equal_range_second'] = function(block) {
-        var flat_set_name = block.getFieldValue('flat_set_name');
-        return [`${flat_set_name}.second`, 1];
-    }
+    */
 
     // algorithm
     Cpp.forBlock['sort'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4384,8 +3065,8 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['max'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4409,8 +3090,8 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['min'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4434,9 +3115,9 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['find'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var value = Cpp.valueToCode(block, 'value', 1) || '';
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4463,9 +3144,9 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['binary_searchd'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var value = Cpp.valueToCode(block, 'value', 1) || '';
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4492,9 +3173,9 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['lower_bound'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var value = Cpp.valueToCode(block, 'value', 1) || '';
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4521,9 +3202,9 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock['upper_bound'] = function(block) {
         var type = block.getFieldValue('TYPE');
         var name = block.getFieldValue('name');
-        var value = Cpp.valueToCode(block, 'value', 1) || '';
-        var start = Cpp.valueToCode(block, 'start', 1) || '';
-        var end = Cpp.valueToCode(block, 'end', 1) || '';
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var start = Cpp.valueToCode(block, 'start', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var end = Cpp.valueToCode(block, 'end', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (start.startsWith('(') && start.endsWith(')')) {
             start = start.slice(1, -1);
         }
@@ -4640,13 +3321,13 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['define_bitset'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        var bitset_size = Cpp.valueToCode(block, 'bitset_size', 1);
-        var bitset_content = Cpp.valueToCode(block, 'bitset_content', 1) || '';
+        var bitName = block.getFieldValue('bitName');
+        var bitset_size = Cpp.valueToCode(block, 'bitset_size', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var bitset_content = Cpp.valueToCode(block, 'bitset_content', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (bitset_size.startsWith('(') && bitset_size.endsWith(')')) {
             bitset_size = bitset_size.slice(1, -1);
         }
-        var code = `bitset<${bitset_size}>${bitset_name}`;
+        var code = `bitset<${bitset_size}>${bitName}`;
         if (bitset_content !== '') {
             if (bitset_content.startsWith('(') && bitset_content.endsWith(')')) {
                 bitset_content = bitset_content.slice(1, -1);
@@ -4657,377 +3338,52 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['bitset[i]'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        var pos = Cpp.valueToCode(block, 'pos', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
+        var bitName = block.getFieldValue('bitName');
+        var pos = Cpp.valueToCode(block, 'pos', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (pos.startsWith('(') && pos.endsWith(')')) {
             pos = pos.slice(1, -1);
         }
         if (value.startsWith('(') && value.endsWith(')')) {
             value = value.slice(1, -1);
         }
-        var code = `${bitset_name}[${pos}] = ${value}`;
+        var code = `${bitName}[${pos}] = ${value}`;
         return [code, 1];
     };
 
     Cpp.forBlock['bitset_set'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.set()`, 1];
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.set()`, 1];
     };
 
     Cpp.forBlock['bitset_reset'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.reset()`, 1];
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.reset()`, 1];
     };
 
     Cpp.forBlock['bitset_size'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.size()`, 1];
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.size()`, 1];
     };
 
     Cpp.forBlock['bitset_count'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.count()`, 1];
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.count()`, 1];
     };
 
     Cpp.forBlock['bitset_all'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.all()`, 1];
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.all()`, 1];
     };
 
     Cpp.forBlock['bitset_any'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.any()`, 1];
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.any()`, 1];
     };
 
     Cpp.forBlock['bitset_none'] = function(block) {
-        var bitset_name = block.getFieldValue('bitset_name');
-        return [`${bitset_name}.none()`, 1];
-    };
-
-    //stack
-    Cpp.forBlock['stack_push'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return stack_name + ".push(" + element + ");\n";
-    };
-
-    Cpp.forBlock['stack_push_range'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return stack_name + ".push_range(" + element + ");\n";
-    };
-
-    Cpp.forBlock['stack_pop'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        return stack_name + ".pop();\n";
-    };
-
-    Cpp.forBlock['stack_emplace'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return stack_name + ".emplace(" + element + ");\n";
-    };
-    Cpp.forBlock['stack_top'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        return [`${stack_name}.top()`, 1];
-    };
-
-    Cpp.forBlock['stack_swap'] = function(block) {
-        var stack_name1 = block.getFieldValue('stack_name1');
-        var stack_name2 = block.getFieldValue('stack_name2');
-        return `${stack_name1}.swap(${stack_name2});\n`;
-    };
-
-    Cpp.forBlock['stack_size'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        return [`${stack_name}.size()`, 1];
-    };
-
-    Cpp.forBlock['stack_empty'] = function(block) {
-        var stack_name = block.getFieldValue('stack_name');
-        return [`${stack_name}.empty()`, 1];
-    };
-
-    //queue
-    Cpp.forBlock['queue_push'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return queue_name + ".push(" + element + ");\n";
-    };
-
-    Cpp.forBlock['queue_pop'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name');
-        return queue_name + ".pop();\n";
-    };
-
-    Cpp.forBlock['queue_emplace'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return queue_name + ".emplace(" + element + ");\n";
-    };
-
-    Cpp.forBlock['queue_front'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name');
-        return [`${queue_name}.front()`, 1];
-    };
-
-    Cpp.forBlock['queue_size'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name') || '';
-        return [`${queue_name}.size()`, 1];
-    }
-
-    Cpp.forBlock['queue_empty'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name') || '';
-        return [`${queue_name}.empty()`, 1];
-    }
-
-    Cpp.forBlock['queue_swap'] = function(block) {
-        var queue_name1 = block.getFieldValue('queue_name1');
-        var queue_name2 = block.getFieldValue('queue_name2');
-        return `${queue_name1}.swap(${queue_name2});\n`;
-    };
-
-    Cpp.forBlock['queue_push_range'] = function(block) {
-        var queue_name = block.getFieldValue('queue_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return queue_name + ".push_range(" + element + ");\n";
-    };
-
-    // deque
-    Cpp.forBlock['deque_push_back'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var number = Cpp.valueToCode(block, 'number', 1) || '';
-        if (number.startsWith('(') && number.endsWith(')')) {
-            number = number.slice(1, -1);
-        }
-        return deque_name + ".push_back(" + number + ");\n";
-    };
-
-    Cpp.forBlock['deque_emplace_back'] = function(block) {
-        var name = block.getFieldValue('NAME');
-        var num = block.getFieldValue('number');
-        return code = name + ".emplace_back(" + num + ");\n";
-    };
-
-    Cpp.forBlock['deque_append_range'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return deque_name + ".append_range(" + element + ");\n";
-    };
-
-    Cpp.forBlock['deque_pop_back'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return deque_name + ".pop_back();\n";
-    };
-
-    Cpp.forBlock['deque_push_front'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var number = Cpp.valueToCode(block, 'number', 1) || '';
-        if (number.startsWith('(') && number.endsWith(')')) {
-            number = number.slice(1, -1);
-        }
-        return deque_name + ".push_front(" + number + ");\n";
-    };
-    
-    Cpp.forBlock['deque_emplace_front'] = function(block) {
-        var name = block.getFieldValue('NAME');
-        var num = block.getFieldValue('number');
-        return code = name + ".emplace_front(" + num + ");\n";
-    };
-    
-    Cpp.forBlock['deque_prepend_range'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return deque_name + ".prepend_range(" + element + ");\n";
-    };
-    
-    Cpp.forBlock['deque_pop_front'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return deque_name + ".pop_front();\n";
-    };
-
-    Cpp.forBlock['deque_insert'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var pos = Cpp.valueToCode(block, 'pos', 1) | '0';
-        var value = Cpp.valueToCode(block, 'value', 1);
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        if (pos === 0) {
-            return `${deque_name}.insert(${deque_name}.begin(), ${value});\n`
-        }   
-        return `${deque_name}.insert(${deque_name}.begin()+${pos}, ${value});\n`;
-    }
-
-    Cpp.forBlock['deque_insert_range'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var pos = Cpp.valueToCode(block, 'pos', 1) | 0;
-        var array = Cpp.valueToCode(block, 'array', 1);
-        if (array.startsWith('(') && value.endsWith(')')) {
-            array = array.slice(1, -1);
-        }
-        if (pos === 0) {
-            return `${deque_name}.insert_range(${deque_name}.begin(), ${value});\n`
-        }   
-        return `${deque_name}.insert_range(${deque_name}.begin()+${pos}, ${value});\n`;
-    }
-
-    Cpp.forBlock['deque_erase'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        var pos = Cpp.valueToCode(block, 'pos', 1);
-        var value = Cpp.valueToCode(block, 'value', 1);
-            if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        if (pos === '0') {
-                return `${deque_name}.erase(${deque_name}.begin(), ${value});\n`;
-        } else {
-            if (pos.startsWith('(') && pos.endsWith(')')) {
-                pos = pos.slice(1, -1);
-            }
-        }
-        return `${deque_name}.erase(${deque_name}.begin()+${pos}, ${value});\n`;
-    }
-
-    Cpp.forBlock['deque_swap'] = function(block) {
-        var deque_name1 = block.getFieldValue('deque_name1');
-        var deque_name2 = block.getFieldValue('deque_name2');
-        return `${deque_name1}.swap(${deque_name2});\n`;
-    };
-
-    Cpp.forBlock['deque_oeprate[]'] = function(block){
-        var deque_name = block.getFieldValue('deque_name');
-        var pos = Cpp.valueToCode(block, 'pos', 1);
-        if (pos.startsWith('(') && pos.endsWith(')')) {
-            pos = pos.slice(1, -1);
-        }
-        var code = `${deque_name}[${pos}]`;
-        return [code, 1];
-    }
-
-    Cpp.forBlock['deque_front'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return [`${deque_name}.front()`, 1];
-    };
-
-    Cpp.forBlock['deque_back'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return [`${deque_name}.back()`, 1];
-    };
-
-    Cpp.forBlock['deque_clear'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return deque_name + ".clear();\n";
-    };
-
-    Cpp.forBlock['deque_size'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return [`${deque_name}.size()`, 1];
-    }
-
-    Cpp.forBlock['deque_empty'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name');
-        return [`${deque_name}.empty()`, 1];
-    }
-
-    Cpp.forBlock['deque_begin'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name') || '';
-        return [`${deque_name}.begin()`, 1];
-    }
-
-    Cpp.forBlock['deque_end'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name') || '';
-        return [`${deque_name}.end()`, 1];
-    }
-
-    Cpp.forBlock['deque_rbegin'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name') || '';
-        return [`${deque_name}.rbegin()`, 1];
-    }
-
-    Cpp.forBlock['deque_rend'] = function(block) {
-        var deque_name = block.getFieldValue('deque_name') || '';
-        return [`${deque_name}.rend()`, 1];
-    }
-
-    //priority_queue
-    Cpp.forBlock['priority_queue_push'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return priority_queue_name + ".push(" + element + ");\n";
-    };
-
-    Cpp.forBlock['priority_queue_pop'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name');
-        return priority_queue_name + ".pop();\n";
-    };
-
-    Cpp.forBlock['priority_queue_emplace'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return priority_queue_name + ".emplace(" + element + ");\n";
-    };
-
-
-    Cpp.forBlock['priority_queue_top'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name') || "";
-        return [`${priority_queue_name}.top()`, 1];
-    };
-
-    Cpp.forBlock['priority_queue_size'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
-        return [`${priority_queue_name}.size()`, 1];
-    };
-
-    Cpp.forBlock['priority_queue_empty'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name') || '';
-        return [`${priority_queue_name}.empty()`, 1];
-    };
-
-    Cpp.forBlock['priority_queue_swap'] = function(block) {
-        var priority_queue_name1 = block.getFieldValue('priority_queue_name1');
-        var priority_queue_name2 = block.getFieldValue('priority_queue_name2');
-        return `${priority_queue_name1}.swap(${priority_queue_name2});\n`;
-    };
-
-    Cpp.forBlock['priority_queue_push_range'] = function(block) {
-        var priority_queue_name = block.getFieldValue('priority_queue_name');
-        var element = Cpp.valueToCode(block, 'element', 1) || '';
-        if (element.startsWith('(') && element.endsWith(')')) {
-            element = element.slice(1, -1);
-        }
-        return priority_queue_name + ".push_range(" + element + ");\n";
+        var bitName = block.getFieldValue('bitName');
+        return [`${bitName}.none()`, 1];
     };
 
     Cpp.forBlock['char_bit'] = function() {
@@ -5097,7 +3453,7 @@ function bitwise_generateCode(block, operator) {
 
     Cpp.forBlock['define_sstream'] = function(block) {
         var sstream_name = block.getFieldValue('sstream_name');
-        var sstream_content = Cpp.valueToCode(block, 'sstream_content', 1) || '';
+        var sstream_content = Cpp.valueToCode(block, 'sstream_content', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         var code = `stringstream ${sstream_name}`;
         if (sstream_content) {
             if (sstream_content.startsWith('(') && sstream_content.endsWith(')')) {
@@ -5109,14 +3465,14 @@ function bitwise_generateCode(block, operator) {
     };
 
     Cpp.forBlock['sstream_>>'] = function(block){
-        var var1 = Cpp.valueToCode(block, 'var1', 1);
-        var var2 = Cpp.valueToCode(block, 'var2', 1);
+        var var1 = Cpp.valueToCode(block, 'var1', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var var2 = Cpp.valueToCode(block, 'var2', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return `${var1} >> ${var2}`;
     };
 
     Cpp.forBlock['sstream_<<'] = function(block){
-        var var1 = Cpp.valueToCode(block, 'var1', 1);
-        var var2 = Cpp.valueToCode(block, 'var2', 1);
+        var var1 = Cpp.valueToCode(block, 'var1', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var var2 = Cpp.valueToCode(block, 'var2', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return `${var1} << ${var2}`;
     };
 
@@ -5124,62 +3480,6 @@ function bitwise_generateCode(block, operator) {
         return [`llabs(${Cpp.valueToCode(block, 'value', 1) || '0'})`, 1];
     }
 
-    //functional
-    Cpp.forBlock['greater'] = function(block) {
-        if (block.getFieldValue('func') === "TRUE") 
-            return [`greater<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
-        return [`greater<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
-    }
-
-    Cpp.forBlock['less'] = function(block) {
-        if (block.getFieldValue('func') === "TRUE") 
-            return [`less<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
-        return [`less<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
-    }
-
-    Cpp.forBlock['equal_to'] = function(block) {
-        if (block.getFieldValue('func') === "TRUE") 
-            return [`equal_to<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
-        return [`equal_to<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];     
-    }
-
-    Cpp.forBlock['not_equal_to'] = function(block) {
-        if (block.getFieldValue('func') === "TRUE") 
-            return [`not_equal_to<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
-        return [`not_equal_to<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
-    }
-    
-    Cpp.forBlock['greater_equal'] = function(block) {
-        if (block.getFieldValue('func') === "TRUE") 
-            return [`greater_equal<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
-        return [`greater_equal<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];     
-    }
-
-    Cpp.forBlock['less_equal'] = function(block) {
-        if (block.getFieldValue('func') === "TRUE") 
-            return [`less_equal<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>()`, 1];
-        return [`less_equal<${Cpp.valueToCode(block, 'TYPE', 1).slice(1, -1)}>`, 1];
-    }
-
-    Cpp.forBlock['bind'] = function(block) {
-        var func = Cpp.valueToCode(block, 'func', 1);
-        var param = Cpp.valueToCode(block, 'param', 1);
-        if (func.startsWith('(') && func.endsWith(')')) {
-            func = func.slice(1, -1);
-        }
-        
-        if (param.startsWith('(') && param.endsWith(')')) {
-            param = param.slice(1, -1);
-        }
-        return [`bind(${func}, ${param})`, 1];
-    }
-    
-    Cpp.forBlock['placeholder'] = function(block){
-        return [`placeholder::_${block.getFieldValue('number')}`, 1]
-    }
-
-    
-    
     Cpp.forBlock['if_block'] = function(block) {
         const ifValue = Cpp.valueToCode(block, 'IF_VALUE', Cpp.ORDER_ATOMIC) || 'false';
         let code = `if ${ifValue} {\n`;
@@ -5199,3 +3499,5 @@ function bitwise_generateCode(block, operator) {
         code += '}\n';
         return code;
     };
+
+

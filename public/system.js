@@ -1,7 +1,7 @@
-// init toolbox, Mutator, Blockly, Name Pool, background connection
+/** init toolbox, Mutator, Blockly, Name Pool, background connection **/
 
 import { toolbox } from "./toolbox.js";
-import * as Utils from './block_category/button.function.js' 
+import * as Utils from "./block_category/button.function.js" 
 
 const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
     if (!targetConnection || !targetConnection.getSourceBlock().workspace) {
@@ -13,13 +13,13 @@ const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
     }
 };
 
-// init Blockly and define the constant
-Blockly.Cpp = new Blockly.Generator('Cpp');
+/**  init Blockly and define the constant **/
+Blockly.Cpp = new Blockly.Generator("Cpp");
 Blockly.Cpp.ORDER_ATOMIC = 1;
 Blockly.Cpp.ORDER_NONE = 99;
 
-// regist Mutator ( Must init before the workspace )
-Blockly.Blocks['if_block'] = {
+/**  regist Mutator ( Must init before the workspace ) **/
+Blockly.Blocks["if_block"] = {
         init: function() {
             this.jsonInit({
                 "type": "if_block",
@@ -37,54 +37,54 @@ Blockly.Blocks['if_block'] = {
             this.hasElse_ = false;
         }
     }
-    Blockly.Blocks['if_mutator'] = { init: function() { this.setColour('#00abea'); this.appendDummyInput().appendField('如果'); this.setNextStatement(true);} };
-    Blockly.Blocks['elif_mutator'] = { init: function() { this.setColour('#00abea'); this.appendDummyInput().appendField('否則如果'); this.setPreviousStatement(true); this.setNextStatement(true); this.valueConnection_ = null; this.statementConnection_ = null;} };
-    Blockly.Blocks['else_mutator'] = { init: function() { this.setColour('#00abea'); this.appendDummyInput().appendField('否則'); this.setPreviousStatement(true); this.contextMenu = false;} };
+    Blockly.Blocks["if_mutator"] = { init: function() { this.setColour("#00abea"); this.appendDummyInput().appendField("如果"); this.setNextStatement(true);} };
+    Blockly.Blocks["elif_mutator"] = { init: function() { this.setColour("#00abea"); this.appendDummyInput().appendField("否則如果"); this.setPreviousStatement(true); this.setNextStatement(true); this.valueConnection_ = null; this.statementConnection_ = null;} };
+    Blockly.Blocks["else_mutator"] = { init: function() { this.setColour("#00abea"); this.appendDummyInput().appendField("否則"); this.setPreviousStatement(true); this.contextMenu = false;} };
 
 Blockly.Extensions.registerMutator(
-    'if_mutator', 
+    "if_mutator", 
     {
         saveExtraState: function() {
             return {
-                'elifCount': this.elifCount_,
-                'hasElse': this.hasElse_
+                "elifCount": this.elifCount_,
+                "hasElse": this.hasElse_
             };
         },
         loadExtraState: function(state) {
-            this.elifCount_ = state['elifCount'] || 0;
-            this.hasElse_ = state['hasElse'] || false;
+            this.elifCount_ = state["elifCount"] || 0;
+            this.hasElse_ = state["hasElse"] || false;
             this.updateShape_();
         },
         saveConnections: function(containerBlock) {
             let clauseBlock = containerBlock.nextConnection.targetBlock();
             let i = 0;
             while (clauseBlock) {
-            if (clauseBlock.type === 'elif_mutator') {
-                const valueInput = this.getInput('ELIF' + i);
-                const stmtInput = this.getInput('ELIF_DO' + i);
-                clauseBlock.valueConnection_ = valueInput && valueInput.connection.targetConnection;
-                clauseBlock.statementConnection_ = stmtInput && stmtInput.connection.targetConnection;
-                i++;
-            } else if (clauseBlock.type === 'else_mutator') {
-                const elseInput = this.getInput('ELSE');
-                clauseBlock.statementConnection_ = elseInput && elseInput.connection.targetConnection;
-            }
-            clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
+                if (clauseBlock.type === "elif_mutator") {
+                    const valueInput = this.getInput("ELIF" + i);
+                    const stmtInput = this.getInput("ELIF_DO" + i);
+                    clauseBlock.valueConnection_ = valueInput && valueInput.connection.targetConnection;
+                    clauseBlock.statementConnection_ = stmtInput && stmtInput.connection.targetConnection;
+                    i++;
+                } else if (clauseBlock.type === "else_mutator") {
+                    const elseInput = this.getInput("ELSE");
+                    clauseBlock.statementConnection_ = elseInput && elseInput.connection.targetConnection;
+                }
+                clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
             }
         },
         decompose: function(workspace) {
-            const containerBlock = workspace.newBlock('if_mutator');
+            const containerBlock = workspace.newBlock("if_mutator");
             containerBlock.initSvg();
             let connection = containerBlock.nextConnection;
             for (let i = 0; i < this.elifCount_; i++) {
-                const elifBlock = workspace.newBlock('elif_mutator');
+                const elifBlock = workspace.newBlock("elif_mutator");
                 elifBlock.initSvg();
                 connection.connect(elifBlock.previousConnection);
                 connection = elifBlock.nextConnection;
             }
 
             if (this.hasElse_) {
-                const elseBlock = workspace.newBlock('else_mutator');
+                const elseBlock = workspace.newBlock("else_mutator");
                 elseBlock.initSvg();
                 connection.connect(elseBlock.previousConnection);
             }
@@ -93,7 +93,7 @@ Blockly.Extensions.registerMutator(
                 const blocks = workspace.getAllBlocks(false);
                 let elseCheck = false;
                 blocks.forEach(b => {
-                    if (b.type === 'else_mutator'){
+                    if (b.type === "else_mutator"){
                         if (elseCheck) b.dispose();
                         elseCheck = true;
                     } 
@@ -110,11 +110,11 @@ Blockly.Extensions.registerMutator(
             const valueConns = [];
             const stmtConns = [];
             while (clauseBlock) {
-                if (clauseBlock.type === 'elif_mutator') {
+                if (clauseBlock.type === "elif_mutator") {
                     valueConns[elifCount] = clauseBlock.valueConnection_;
                     stmtConns[elifCount] = clauseBlock.statementConnection_;
                     elifCount++;
-                } else if (clauseBlock.type === 'else_mutator') {
+                } else if (clauseBlock.type === "else_mutator") {
                     hasElse = true;
                     var elseConn = clauseBlock.statementConnection_;
                 }
@@ -127,40 +127,41 @@ Blockly.Extensions.registerMutator(
             this.updateShape_();
 
             for (let i = 0; i < this.elifCount_; i++) {
-                Reconnect_Block(valueConns[i], this, 'ELIF' + i);
-                Reconnect_Block(stmtConns[i], this, 'ELIF_DO' + i);
+                Reconnect_Block(valueConns[i], this, "ELIF" + i);
+                Reconnect_Block(stmtConns[i], this, "ELIF_DO" + i);
             }
-            if (this.hasElse_) Reconnect_Block(elseConn, this, 'ELSE');
+            if (this.hasElse_) Reconnect_Block(elseConn, this, "ELSE");
         },
         updateShape_: function() {
-            for (let i = 0; this.getInput('ELIF' + i); i++) {
-                this.removeInput('ELIF' + i);
-                this.removeInput('ELIF_DO' + i);
+            for (let i = 0; this.getInput("ELIF" + i); i++) {
+                this.removeInput("ELIF" + i);
+                this.removeInput("ELIF_DO" + i);
             }
-            if (this.getInput('ELSE')) this.removeInput('ELSE');
+            if (this.getInput("ELSE")) this.removeInput("ELSE");
             for (let i = 0; i < this.elifCount_; i++) {
-                this.appendValueInput('ELIF' + i)
-                    .setCheck('Boolean')
-                    .appendField('否則如果');
-                this.appendStatementInput('ELIF_DO' + i)
-                    .appendField('執行');
+                this.appendValueInput("ELIF" + i)
+                    .setCheck("Boolean")
+                    .appendField("否則如果");
+                this.appendStatementInput("ELIF_DO" + i)
+                    .appendField("執行");
             }
 
             if (this.hasElse_) {
-                this.appendStatementInput('ELSE')
-                    .appendField('否則執行');
+                this.appendStatementInput("ELSE")
+                    .appendField("否則執行");
             }
         }
     }, 
     undefined, 
-    ['elif_mutator', 'else_mutator']
+    ["elif_mutator", "else_mutator"]
 );
 
-// define the Name Pool to save variable names of different type
+/** define the Name Pool**/
+// to save a;l variable names of different type  
 const CategoryType = ["VAR", "PTR", "REF",  
                       "Array", "Vector", "Deque", 
                       "Stack", "Queue", "Priority_queue", 
-                      "Set", "Unordered_set", "Flat_set", "Multiset", 
+                      "Set", "Unordered_set", "Multiset", "Flat_set", 
                       "Map", "Unordered_map", "Pair", 
                       "Bitset", 
                       "Function", "Lambda", "Operation", 
@@ -172,7 +173,7 @@ const CategoryType = ["VAR", "PTR", "REF",
                      ];
 CategoryType.forEach(t => Blockly.Cpp[t] = []);
 
-// checked the data_type whether it's a global variable
+// checked the data_type whether it"s a global variable
 if (!window.data_type_checked) {
     window.data_type_checked = {};
     CategoryType.forEach(t => window.data_type_checked[t] = false);
@@ -187,7 +188,7 @@ function VarDropdown(type) {
     );
 }
 
-Blockly.Blocks['define_class'] = {
+Blockly.Blocks["define_class"] = {
     init: function() {
         this.text = "類別 名稱: ";
         this.Block_type = "Class";
@@ -205,10 +206,10 @@ Blockly.Blocks['define_class'] = {
     }
 };
 
-    Blockly.Blocks['class_mutator'] = {init: function(){this.setColour('#e9967a'); this.appendDummyInput().appendField("Class"); this.setNextStatement(true);}}
-    Blockly.Blocks['public_mutator'] = {init: function(){this.setColour('#e9967a'); this.appendDummyInput().appendField("Public"); this.setNextStatement(true); this.setPreviousStatement(true); this.contextMenu = false;}};
-    Blockly.Blocks['private_mutator'] = {init: function(){this.setColour('#e9967a'); this.appendDummyInput().appendField("Private"); this.setNextStatement(true); this.setPreviousStatement(true); this.contextMenu = false;}};
-    Blockly.Blocks['protected_mutator'] = {init: function(){this.setColour('#e9967a'); this.appendDummyInput().appendField("Protected"); this.setPreviousStatement(true); this.contextMenu = false;}};
+    Blockly.Blocks["class_mutator"] = {init: function(){this.setColour("#e9967a"); this.appendDummyInput().appendField("Class"); this.setNextStatement(true);}}
+    Blockly.Blocks["public_mutator"] = {init: function(){this.setColour("#e9967a"); this.appendDummyInput().appendField("Public"); this.setNextStatement(true); this.setPreviousStatement(true); this.contextMenu = false;}};
+    Blockly.Blocks["private_mutator"] = {init: function(){this.setColour("#e9967a"); this.appendDummyInput().appendField("Private"); this.setNextStatement(true); this.setPreviousStatement(true); this.contextMenu = false;}};
+    Blockly.Blocks["protected_mutator"] = {init: function(){this.setColour("#e9967a"); this.appendDummyInput().appendField("Protected"); this.setPreviousStatement(true); this.contextMenu = false;}};
 
 Blockly.Extensions.registerMutator(
     "class_mutator",
@@ -216,15 +217,15 @@ Blockly.Extensions.registerMutator(
         saveExtraState: function(){
             if (!this.hasPublic_ && !this.hasPrivate_ && !this.hasProtected_) return null;
             return {
-                'hasPublic': this.hasPublic_,
-                'hasPrivate': this.hasPrivate_,
-                'hasProtected': this.hasProtected_
+                "hasPublic": this.hasPublic_,
+                "hasPrivate": this.hasPrivate_,
+                "hasProtected": this.hasProtected_
             };
         }, 
         loadExtraState: function(state) {
-            this.hasPublic_ = state['hasPublic'] || false;
-            this.hasPrivate_ = state['hasPrivate'] || false;
-            this.hasProtected_ = state['hasProtected'] || false;
+            this.hasPublic_ = state["hasPublic"] || false;
+            this.hasPrivate_ = state["hasPrivate"] || false;
+            this.hasProtected_ = state["hasProtected"] || false;
             
             this.updateShape_();
         }, 
@@ -238,37 +239,37 @@ Blockly.Extensions.registerMutator(
             while (clauseBlock){
                 if (clauseBlock.type === "public_mutator") this.hasPublic_ = true; var publicConn = clauseBlock.statementConnection_;
                 if (clauseBlock.type === "private_mutator") this.hasPrivate_ = true; var privateConn = clauseBlock.statementConnection_;
-                if (clauseBlock.type === 'protected_mutator') this.hasProtected_ = true; var protectedConn = clauseBlock.statementConnection_;
+                if (clauseBlock.type === "protected_mutator") this.hasProtected_ = true; var protectedConn = clauseBlock.statementConnection_;
 
                 clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
             }
             this.updateShape_();
 
-            if (this.hasPublic_) Reconnect_Block(publicConn, this, 'Public');
-            if (this.hasPrivate_) Reconnect_Block(privateConn, this, 'Private');
-            if (this.hasProtected_) Reconnect_Block(protectedConn, this, 'Protected');
+            if (this.hasPublic_) Reconnect_Block(publicConn, this, "Public");
+            if (this.hasPrivate_) Reconnect_Block(privateConn, this, "Private");
+            if (this.hasProtected_) Reconnect_Block(protectedConn, this, "Protected");
         }, 
         decompose: function(workspace){
-            const containerBlock = workspace.newBlock('class_mutator');
+            const containerBlock = workspace.newBlock("class_mutator");
             containerBlock.initSvg();
             let connection = containerBlock.nextConnection;
 
             if (this.hasPublic_){
-                const publicBlock = workspace.newBlock('public_mutator');
+                const publicBlock = workspace.newBlock("public_mutator");
                 publicBlock.initSvg();
                 connection.connect(publicBlock.previousConnection);
                 connection = publicBlock.nextConnection;
             } 
             
             if (this.hasPrivate_){
-                const privateBlock = workspace.newBlock('private_mutator');
+                const privateBlock = workspace.newBlock("private_mutator");
                 privateBlock.initSvg();
                 connection.connect(privateBlock.previousConnection);
                 connection = privateBlock.nextConnection;
             }
 
             if (this.hasProtected_){
-                const protectedBlock = workspace.newBlock('protected_mutator');
+                const protectedBlock = workspace.newBlock("protected_mutator");
                 protectedBlock.initSvg();
                 connection.connect(protectedBlock.previousConnection);
                 connection = protectedBlock.nextConnection;
@@ -279,11 +280,11 @@ Blockly.Extensions.registerMutator(
                 let publicCheck = false;
                 let privateCheck = false;
                 blocks.forEach(b => {
-                    if (b.type === 'public_mutator'){
+                    if (b.type === "public_mutator"){
                         if (publicCheck) b.dispose();
                         publicCheck = true;
                     } 
-                    if (b.type === 'private_mutator'){
+                    if (b.type === "private_mutator"){
                         if(privateCheck) b.dispose();
                         privateCheck = true;
                     }
@@ -294,9 +295,9 @@ Blockly.Extensions.registerMutator(
         }, 
         updateShape_: function(){
             const inputs = [
-                { key: 'hasPublic_', name: 'Public', label: 'public:' },
-                { key: 'hasPrivate_', name: 'Private', label: 'private:' },
-                { key: 'hasProtected_', name: 'Protected', label: 'protected:' }
+                { key: "hasPublic_", name: "Public", label: "public:" },
+                { key: "hasPrivate_", name: "Private", label: "private:" },
+                { key: "hasProtected_", name: "Protected", label: "protected:" }
             ];
 
             inputs.forEach(input => {
@@ -334,12 +335,13 @@ Blockly.Extensions.registerMutator(
     ["public_mutator", "private_mutator", "protected_mutator"]
 );
 
-// regist extensions
-Blockly.Extensions.register('dynamic_dropdown', function(){
+/** regist extensions **/
+// to update the Name Pool when adding the new name of same type
+Blockly.Extensions.register("dynamic_dropdown", function(){
     this.updateDropdown_ = function(){
         const update_dropdown = (targetInput, Name) =>{
             if (targetInput.fieldRow.length === 0) return;
-            
+
             while (targetInput.fieldRow.length > 0){
                 targetInput.fieldRow[0].dispose();
                 targetInput.fieldRow.splice(0, 1);
@@ -358,8 +360,27 @@ Blockly.Extensions.register('dynamic_dropdown', function(){
     }
 });
 
-// define, set, init workspace setting
-var workspace = Blockly.inject('blockly-workspace', {
+// to change the type when press the options on context menu
+Blockly.Extensions.register("change_block_type", function(){
+    this.updateModeShape_ = function(isOutput){
+        [this.OutputConnection, this.previousConnection, this.nextConnection].forEach(c => c?.disconnect());
+
+        if (isOutput){
+            this.setPreviousStatement(false);
+            this.setNextStatement(false);
+            this.setOutput(true, null);
+        } else {
+            this.setOutput(false);
+            this.setPreviousStatement(true, null);
+            this.setNextStatement(true, null);  
+        };
+        this.render();
+    }
+});
+
+/** workspace setting **/ 
+//  define, set, init 
+var workspace = Blockly.inject("blockly-workspace", {
     toolbox: toolbox,
     scrollbars: true,
     trashcan: true,
@@ -380,7 +401,7 @@ var workspace = Blockly.inject('blockly-workspace', {
     undo: true, 
     contextMenu: true, 
     readOnly: false, 
-    renderer: 'zelos'
+    renderer: "zelos"
 });
 workspace.resizeContents();
 
@@ -393,17 +414,19 @@ setTimeout(() => {
 }, 100);
 
 function initializeMainBlock() {
-    const existingMainBlock = workspace.getBlocksByType('main_block', false);
+    const existingMainBlock = workspace.getBlocksByType("main_block", false);
     if (existingMainBlock.length === 0) {
-        const mainBlock = workspace.newBlock('main_block');
+        const mainBlock = workspace.newBlock("main_block");
         mainBlock.initSvg();
         mainBlock.render();
         mainBlock.setMovable(true);
         mainBlock.setDeletable(false);
     }
 }
+
+// to initalize setting of main_block 
 workspace.addChangeListener(() => {
-    const mainBlocks = workspace.getBlocksByType('main_block', false);
+    const mainBlocks = workspace.getBlocksByType("main_block", false);
     if (mainBlocks.length > 1) {
         mainBlocks.slice(1).forEach(block => block.dispose());
     }
@@ -411,15 +434,15 @@ workspace.addChangeListener(() => {
     updateCodeOutput();
 });
 
-// add after the workspace created
+// to force quit the not released properly gesture and prevent the dropdown to shut down"
 workspace.addChangeListener(function(event) {
     // 監聽變數選擇器關閉
     if (event.type === Blockly.Events.BLOCK_CHANGE || 
         event.type === Blockly.Events.CLICK) {
         
         // 檢查 dropdown 是否關閉
-        const dropdownDiv = document.querySelector('.blocklyDropDownDiv');
-        if (dropdownDiv && dropdownDiv.style.display === 'none') {
+        const dropdownDiv = document.querySelector(".blocklyDropDownDiv");
+        if (dropdownDiv && dropdownDiv.style.display === "none") {
             // 釋放卡住的手勢
             setTimeout(() => {
                 if (Blockly.Gesture.inProgress()) {
@@ -434,33 +457,59 @@ workspace.addChangeListener(function(event) {
     }
 });
 
+// to resize the svg
 window.addEventListener("resize", function() {
     Blockly.svgResize(workspace);
 });
 
-// helping note options and setting
+/**  regist the context menu **/ 
+// to point our website
 Blockly.ContextMenuRegistry.registry.register({
-    id: 'help_custom',
+    id: "website_cutsom",
     weight: 100,
-    displayText: '我們的網頁', 
-    preconditionFn: () =>'enabled',
+    displayText: "我們的網頁", 
+    preconditionFn: () =>"enabled",
     callback: function(scope) {
         window.open("https://hackmd.io/@cpp-blockly", "_blank");
     },
     scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK
 });
 
+// to change the block type 
+Blockly.ContextMenuRegistry.registry.register({
+    id: "change_block_custom", 
+    weight: 100, 
+    displayText: function(scope){return scope.block.outputConnection?"圓形模式": "方塊模式"; },
+    preconditionFn: function(scope){
+        if (scope.block && scope.block.updateModeShape_)
+            return "enabled";
+        return "hidden";
+    }, 
+    callback: function(scope){
+        const block = scope.block;
+        const isOutput = !block.outputConnection;
+        console.log(isOutput);
+        block.updateModeShape_(isOutput);
+
+        // manually update the block
+        Blockly.Events.fire(new Blockly.Events.BlockChange(
+            block, "mutation", null, "", `update ${block} mode to ${isOutput?"to_output": "to_statement"}`
+        ));
+    }
+});
+
 Blockly.Cpp.init(workspace);
 
-let id_code = '';
+/** background connection **/
+let id_code = "";
 async function updateCodeOutput() {
     id_code = Blockly.Cpp.workspaceToCode(workspace);
-    var convElement = document.getElementById('code');
+    var convElement = document.getElementById("code");
     if (convElement) {
-        convElement.innerHTML = '';
-        var codeBlock = document.createElement('pre');
-        var codeContent = document.createElement('code');
-        codeContent.className = 'language-cpp';
+        convElement.innerHTML = "";
+        var codeBlock = document.createElement("pre");
+        var codeContent = document.createElement("code");
+        codeContent.className = "language-cpp";
         codeContent.textContent = id_code;
         codeBlock.appendChild(codeContent);
         convElement.appendChild(codeBlock);
@@ -468,20 +517,20 @@ async function updateCodeOutput() {
     }
 
     function renderMarkdown() {
-        const markdownInput = document.getElementById('markdown-input');
-        const markdownOutput = document.getElementById('output');
+        const markdownInput = document.getElementById("markdown-input");
+        const markdownOutput = document.getElementById("output");
         if (markdownInput && markdownOutput) {
             const markdownText = markdownInput.value;
             const htmlContent = marked.parse(markdownText);
             markdownOutput.innerHTML = htmlContent;
-            markdownOutput.querySelectorAll('pre code').forEach((el) => {
+            markdownOutput.querySelectorAll("pre code").forEach((el) => {
                 hljs.highlightElement(el);
             });
         }
     }
     marked.setOptions({
         highlight: function(id_code, lang) {
-            const validLang = hljs.getLanguage(lang) ? lang : 'plaintext';
+            const validLang = hljs.getLanguage(lang) ? lang : "plaintext";
             return hljs.highlight(id_code, {
                 language: validLang
             }).value;
@@ -490,10 +539,10 @@ async function updateCodeOutput() {
     renderMarkdown();
 }
 
-// connect the background and compile the code 
-document.getElementById('c').addEventListener('click', async () => {
+// compile the code 
+document.getElementById("c").addEventListener("click", async () => {
     alert(`編譯以下代碼:\n${id_code}`);
-    const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile', {
+    const response = await fetch("https://cplusplusblockly-production.up.railway.app/compile", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -506,10 +555,10 @@ document.getElementById('c').addEventListener('click', async () => {
     report.value = result.message;
 });
 
-// connect the background,  compile and run the code 
-document.getElementById('c_r').addEventListener('click', async () => {
-    alert('編譯並執行');
-    const response = await fetch('https://cplusplusblockly-production.up.railway.app/compile_and_run', {
+// compile and run the code 
+document.getElementById("c_r").addEventListener("click", async () => {
+    alert("編譯並執行");
+    const response = await fetch("https://cplusplusblockly-production.up.railway.app/compile_and_run", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -526,7 +575,7 @@ document.getElementById('c_r').addEventListener('click', async () => {
 const originalBlockToCode = Blockly.Cpp.blockToCode;
 Blockly.Cpp.blockToCode = function(block) {
     if (!block) {
-        return '';
+        return "";
     }
     let code = originalBlockToCode.call(this, block);
     const nextBlock = block.getNextBlock();
@@ -536,42 +585,19 @@ Blockly.Cpp.blockToCode = function(block) {
     return code;
 };
 
-// initialize undo and redo button
-document.getElementById('undoBtn').addEventListener('click', async ()=>{
+/** initialize undo and redo button **/
+document.getElementById("undoBtn").addEventListener("click", async ()=>{
     if (workspace.getUndoStack().length === 0) alert("CANNOT UNDO");
     else workspace.undo(false);
 });
-document.getElementById('redoBtn').addEventListener('click', async ()=>{
+document.getElementById("redoBtn").addEventListener("click", async ()=>{
     if (!workspace.getRedoStack().length === 0) alert("CANNOT REDO");
     else workspace.undo(true);
 });
 
-// template (declate html div)
-const configs = [
-    {id: "array", label: "輸入陣列名稱：", name: "Array", Func: ConfirmArray}, 
-    {id: "vec", label: "輸入 Vector 名稱：", name: "Vec", Func: ConfirmVector}, 
-    {id: "deq", label: "輸入 Deque 名稱：", name: "Deq", Func: ConfirmDeque}
-]
-
-const temp = document.getElementById('callback_template');
-const contanier = document.getElementById('callback_container');
-
-window.onload = function(){
-configs.forEach( conf =>{
-    const clone = temp.content.cloneNode(true);
-    const div = clone.querySelector('.model');
-
-    div.id = conf.id + "_model";
-    clone.querySelector('.label_model').innerText = conf.label;
-    clone.querySelector('.input_model').id = conf.name + "Name";
-    clone.querySelector('.confirm_btn').onclick = conf.Func;
-    clone.querySelector('.cancel_btn').onclick = () => Cancel(conf.id + "_model");
-
-    contanier.appendChild(clone);
-});
-};
-// regist the call back button and control the web open and close 
-const model = ['var', 'array', 'func', 'get', 'vec', 'deq'];
+/** Different type name pools setting **/
+//regist the call back button and control the web open and close
+const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq"];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
 
 // have only one options 
@@ -608,12 +634,23 @@ export function Confirm(text_name, type, model_name, Func) {
     Blockly.getMainWorkspace().refreshToolboxSelection();
 };
 
-export function ConfirmArray(){ Confirm("ArrayName", "Array", "array_model", Utils.Create_Array); }
-export function ConfirmVector(){ Confirm("VecName", "Vector", "vec_model", Utils.Create_Random_Access_Containers); }
-export function ConfirmDeque(){ Confirm("DeqName", "Deque", "deq_model", Utils.Create_Random_Access_Containers); }
+const confirmList = [
+    {name: "Array",          id: "ArrayName", model: "array_model", creator: Utils.Create_Array},
+    {name: "Vector",         id: "VecName",   model: "vec_model",   creator: Utils.Create_Random_Access_Containers},
+    {name: "Deque",          id: "DeqName",   model: "deq_model",   creator: Utils.Create_Random_Access_Containers},
+    {name: "Stack",          id: "StName",    model: "st_model",    creator: Utils.Create_Container_Adapters},
+    {name: "Set",            id: "SetName",   model: "set_model",   creator: Utils},
+    {name: "Queue",          id: "QuName",    model: "qu_model",    creator: Utils.Create_Container_Adapters},
+    {name: "Priority_Queue", id: "PqName",    model: "pq_model",    creator: Utils.Create_Container_Adapters},
+];
+
+const actions = {};
+confirmList.forEach(({ name, id, model, creator }) => {
+    actions[`Confirm${name}`] = () => Confirm(id, name, model, creator);
+});
 
 // have more than one options 
-function Confirm_Choose(text_name, type_name, model_name, Func) {
+function Confirm_Options(text_name, type_name, model_name, Func) {
     const name = document.getElementById(text_name).value;
     const type = document.querySelector(`input[name="${type_name}"]:checked`).value;
 
@@ -643,13 +680,59 @@ function Confirm_Choose(text_name, type_name, model_name, Func) {
     Blockly.getMainWorkspace().refreshToolboxSelection();
 };
 
-export function ConfirmVar(){ Confirm_Choose("VarName", "var_type", "var_model", Utils.Create_Variable); };
-export function ConfirmFunction(){ Confirm_Choose("FuncName", "func_type", "func_model", Utils.Create_Function); }
-export function ConfirmGet(){ Confirm_Choose("GetName", "get_type", "get_model", Utils.Create_getName); }
-export function Cancel(type){ document.getElementById(type).style.display = "none"; };
+const ConfirmList_options = [
+    {name: "Variable", type: "var_type",  id: "VarName",  model: "var_model",  creator: Utils.Create_Variable},
+    {name: "Function", type: "func_type", id: "FuncName", model: "func_model", creator: Utils.Create_Function},
+    {name: "Get",      type: "get_type",  id: "GetName",  model: "get_model",  creator: Utils.Create_getName},
+]
+
+ConfirmList_options.forEach(({name, type, id, model, creator}) => {
+    actions[`Confirm${name}`] = () => Confirm_Options(id, type, model, creator);
+})
+
+actions["Cancel"] = (type) => document.getElementById(type).style.display = "none";
+export const { 
+    ConfirmArray, 
+    ConfirmVector, 
+    ConfirmDeque, 
+    ConfirmStack, 
+    ConfirmQueue, 
+    ConfirmPriority_Queue, 
+    ConfirmVariable,
+    ConfirmFunction, 
+    ConfirmGet, 
+    Cancel
+} = actions
 
 // to init the callback function from local to global 
-const button_callback = { ConfirmArray, ConfirmVector, ConfirmVar, ConfirmFunction, ConfirmGet, Cancel };
-Object.keys(button_callback).forEach(key => {
-  window[key] = button_callback[key];
+Object.keys(actions).forEach(key => {
+  window[key] = actions[key];
 });
+
+/** template (declate html div) **/
+const configs = [
+    {id: "array", label: "輸入 Array 名稱：",          name: "Array", Func: ConfirmArray}, 
+    {id: "vec",   label: "輸入 Vector 名稱：",         name: "Vec",   Func: ConfirmVector}, 
+    {id: "deq",   label: "輸入 Deque 名稱：",          name: "Deq",   Func: ConfirmDeque}, 
+    {id: "st",    label: "輸入 Stack 名稱：",          name: "St",    Func: ConfirmStack}, 
+    {id: "qu",    label: "輸入 Queue 名稱：",          name: "Qu",    Func: ConfirmQueue}, 
+    {id: "pq",    label: "輸入 Priority_queue 名稱：", name: "Pq",    Func: ConfirmPriority_Queue}, 
+]
+
+const temp = document.getElementById("callback_template");
+const contanier = document.getElementById("callback_container");
+
+window.onload = function(){
+configs.forEach( conf =>{
+    const clone = temp.content.cloneNode(true);
+    const div = clone.querySelector(".model");
+
+    div.id = conf.id + "_model";
+    clone.querySelector(".label_model").innerText = conf.label;
+    clone.querySelector(".input_model").id = conf.name + "Name";
+    clone.querySelector(".confirm_btn").onclick = conf.Func;
+    clone.querySelector(".cancel_btn").onclick = () => Cancel(conf.id + "_model");
+
+    contanier.appendChild(clone);
+});
+};
