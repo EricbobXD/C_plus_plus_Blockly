@@ -77,9 +77,9 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
     Cpp.forBlock[`define_${Block_type}`] = function(block) {
         const container = Block_type.toLowerCase();
 
-        var type = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var Name = block.getFieldValue("Name");
-        var contents = block.getFieldValue("contents");
+        const type = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const contents = block.getFieldValue("contents");
         var code = `${container}<${type}>${Name}`;
 
         switch (contents){
@@ -89,8 +89,8 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
                 break;
             case "iter":
                 if (!this.getInput("start") || !this.getInput("end")) break;
-                var start = Cpp.valueToCode(block, "start", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-                var end = Cpp.valueToCode(block, "end", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                const start = Cpp.valueToCode(block, "start", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                const end = Cpp.valueToCode(block, "end", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
                 code += `(${start}, ${end})`;
                 break;
             case "copy":
@@ -113,90 +113,49 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
 
             this.jsonInit({
                 "type": `${Block_type}_insert`,
-                "message0": `插入一個元素 %1`,
-                "args0": [{
-                    "type": "input_value",
-                    "name": "value"
-                }],
+                "message0": `插入 %1 %2`,
+                "args0": [
+                    {
+                        "type": "field_dropdown", 
+                        "name": "func", 
+                        "options": [
+                            ["一個元素", "insert"], 
+                            ["一個元素集合", "insert_range"], 
+                            ["一組物件建構子的參數", "emplace"]
+                        ]
+                    }, 
+                    {
+                        "type": "input_value",
+                        "name": "value"
+                    }
+                ],
                 "inputsInline": true,
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color[Block_type],
                 "extensions": ["dynamic_dropdown", "change_block_type"],
-                "tooltip": `在 ${Block_type} 中插入元素`,
                 "helpUrl": ""
+            }), 
+
+            this.setTooltip(()=>{
+                const func = this.getFieldValue("func");
+                const tooltip = {
+                    "insert": "一個元素", 
+                    "insert_range": "一個元素集合", 
+                    "emplace": "一組物件建構子的參數"
+                };
+
+                return `在 ${Block_type} 中插入${tooltip[func]}`;
             })
         }
     }
 
     Cpp.forBlock[`${Block_type}_insert`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        return `${Name}.insert(${value});\n`;
+        const Name = block.getFieldValue("Name");
+        const func = block.getFieldValue("func")
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        return `${Name}.${func}(${value});\n`;
     }
-
-    Blockly.Blocks[`${Block_type}_insert_range`] = {
-        init: function(){
-            this.text = `${Block_type} 名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type} 名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
-
-            this.jsonInit({
-                "type": `${Block_type}_insert_range`,
-                "message0": "插入元素集合 %1",
-                "args0": [{
-                    "type": "input_value",
-                    "name": "array"
-                }],
-                "inputsInline": true, 
-                "previousStatement": null,
-                "nextStatement": null,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
-                "tooltip": `在 ${Block_type} 中插入元素集合`,
-                "helpUrl": ""
-            })
-        }
-    }
-
-    Cpp.forBlock[`${Block_type}_insert_range`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var array = Cpp.valueToCode(block, "array", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        return `${Name}.insert_range(${array});\n`;
-    }
-
-    Blockly.Blocks[`${Block_type}_emplace`] = {
-        init: function(){
-            this.text = `${Block_type} 名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type} 名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
-
-            this.jsonInit({
-                "type": `${Block_type}_emplace`, 
-                "message0": "新增一個元素 %1(支援直接輸入多個物件建構子的參數)",
-                "args0": [{
-                    "type": "input_value",
-                    "name": "para"
-                },],
-                "previousStatement": null,
-                "nextStatement": null,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
-                "tooltip": `在 ${Block_type} 中新增一個元素但可(支援直接輸入多個物件建構子的參數`,
-                "helpUrl": ""
-            })
-        }
-    }
-
-    Cpp.forBlock[`${Block_type}_emplace`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        return `${Name}.emplace(${element});\n`;
-    };
 
     Blockly.Blocks[`${Block_type}_erase`] = {
         init: function(){
@@ -208,7 +167,7 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
 
             this.jsonInit({
                 "type": `${Block_type}_erase`,
-                "message0": "刪除元素 %2",
+                "message0": "刪除元素 %1",
                 "args0": [{
                     "type": "input_value",
                     "name": "value"
@@ -225,8 +184,8 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
     }
 
     Cpp.forBlock[`${Block_type}_erase`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return `${Name}.erase(${value});\n`;
     }
 
@@ -256,8 +215,8 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
     }
 
     Cpp.forBlock[`${Block_type}_extract`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return [`${Name}.extract(${value})`, 1];
     }
 
@@ -290,8 +249,8 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
     }
 
     Cpp.forBlock[`${Block_type}_merge`] = function(block) {
-        var Name1 = block.getFieldValue("Name1");
-        var Name2 = block.getFieldValue("Name2");
+        const Name1 = block.getFieldValue("Name1");
+        const Name2 = block.getFieldValue("Name2");
         return `${Name1}.merge(${Name2});\n`;
     };
 
@@ -341,9 +300,9 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
     }
 
     Cpp.forBlock[`${Block_type}_find`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var func = block.getFieldValue("func");
+        const Name = block.getFieldValue("Name");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const func = block.getFieldValue("func");
         return [`${Name}.${func}(${value})`, 1];
     }
 
@@ -393,9 +352,9 @@ const color = {"Set": "#DAA520", "Unordered_set": "#FFD700", "Multiset": "#FACA1
     };
 
     Cpp.forBlock[`${Block_type}_find_index`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var func = block.getFieldValue("func");
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const func = block.getFieldValue("func");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return [`${Name}.${func}(${value})`, 1];
     }
 })

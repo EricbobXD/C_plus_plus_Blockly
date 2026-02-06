@@ -169,7 +169,7 @@ const CategoryType = ["VAR", "PTR", "REF",
                       "Vector", "Deque", 
                       "Stack", "Queue", "Priority_queue", 
                       "Map", "Unordered_map", "Pair", 
-                      "Set", "Unordered_set", "Flat_set", "multiset"
+                      "Set", "Unordered_set", "Flat_set", "Multiset"
                      ];
 CategoryType.forEach(t => Blockly.Cpp[t] = []);
 
@@ -597,7 +597,7 @@ document.getElementById("redoBtn").addEventListener("click", async ()=>{
 
 /** Different type name pools setting **/
 //regist the call back button and control the web open and close
-const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq"];
+const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq", "set"];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
 
 // have only one options 
@@ -684,6 +684,8 @@ const ConfirmList_options = [
     {name: "Variable", type: "var_type",  id: "VarName",  model: "var_model",  creator: Utils.Create_Variable},
     {name: "Function", type: "func_type", id: "FuncName", model: "func_model", creator: Utils.Create_Function},
     {name: "Get",      type: "get_type",  id: "GetName",  model: "get_model",  creator: Utils.Create_getName},
+    {name: "Set",      type: "set_type",  id: "SetName",  model: "set_model",  creator: Utils.Create_Associative_Container},
+    //{name: "Map",      type: "map_type",  id: "MapName",  model: "map_model",  creator: Utils.Create_Associative_Container},
 ]
 
 ConfirmList_options.forEach(({name, type, id, model, creator}) => {
@@ -701,6 +703,8 @@ export const {
     ConfirmVariable,
     ConfirmFunction, 
     ConfirmGet, 
+    ConfirmSet, 
+    //ConfirmMap, 
     Cancel
 } = actions
 
@@ -711,28 +715,60 @@ Object.keys(actions).forEach(key => {
 
 /** template (declate html div) **/
 const configs = [
-    {id: "array", label: "輸入 Array 名稱：",          name: "Array", Func: ConfirmArray}, 
+    // has one option
+    {id: "array", label: "輸入陣列名稱：",             name: "Array", Func: ConfirmArray}, 
     {id: "vec",   label: "輸入 Vector 名稱：",         name: "Vec",   Func: ConfirmVector}, 
     {id: "deq",   label: "輸入 Deque 名稱：",          name: "Deq",   Func: ConfirmDeque}, 
     {id: "st",    label: "輸入 Stack 名稱：",          name: "St",    Func: ConfirmStack}, 
     {id: "qu",    label: "輸入 Queue 名稱：",          name: "Qu",    Func: ConfirmQueue}, 
     {id: "pq",    label: "輸入 Priority_queue 名稱：", name: "Pq",    Func: ConfirmPriority_Queue}, 
+
+    // have many options
+    {id: "var",  label: "輸入變數名稱：",  name: "Var",  value: ["VAR", "PTR", "REF"]         , Func: ConfirmVariable}, 
+    {id: "get",  label: "輸入變數名稱：",  name: "Var",  value: ["Struct_Name", "Class_Name"] , Func: ConfirmVariable}, 
+    {id: "func", label: "輸入函數名稱：",  name: "Func", value: ["Function", "Lambda", "Struct", "Class", "Operation"] , Func: ConfirmVariable}, 
+    {id: "set",  label: "輸入 Set 名稱：", name: "Set",  value: ["Set", "Unordered_set", "Multiset", "Flat_set"],        Func: ConfirmSet}, 
+    //{id: "map",  label: "輸入 Map 名稱：", "options": {id: "MapName", value: ["Map", "Unordered_map", "Multimap"]},                    Func: ConfirmMap}, 
 ]
 
 const temp = document.getElementById("callback_template");
 const contanier = document.getElementById("callback_container");
 
+const data_type = {
+    "VAR": "變數", "PTR": "指標", "REF": "參考", 
+    "Struct_Name": "結構變數", "Class_Name": "類別變數"
+};
 window.onload = function(){
-configs.forEach( conf =>{
-    const clone = temp.content.cloneNode(true);
-    const div = clone.querySelector(".model");
+    configs.forEach( conf =>{
+        const clone = temp.content.cloneNode(true);
+        const div = clone.querySelector(".model");
 
-    div.id = conf.id + "_model";
-    clone.querySelector(".label_model").innerText = conf.label;
-    clone.querySelector(".input_model").id = conf.name + "Name";
-    clone.querySelector(".confirm_btn").onclick = conf.Func;
-    clone.querySelector(".cancel_btn").onclick = () => Cancel(conf.id + "_model");
+        div.id = conf.id + "_model";
+        clone.querySelector(".label_model").innerText = conf.label;
+        clone.querySelector(".input_model").id = `${conf.name}Name`;
+        clone.querySelector(".confirm_btn").onclick = conf.Func;
+        clone.querySelector(".cancel_btn").onclick = () => Cancel(`${conf.id}_model`);
 
-    contanier.appendChild(clone);
-});
+        if (Object.hasOwn(conf, "value")){            
+            const radio_placeholder = clone.getElementById("radio_placeholder");
+            conf.value.forEach((val, idx) =>{
+                const radio = Object.assign(document.createElement("input"), {
+                    type: "radio", 
+                    name: `${conf.id}_type`, 
+                    value: val, 
+                    id: conf.id,
+                    checked: idx === 0
+                });
+
+                const label = Object.assign(document.createElement("label"), {
+                    htmlFor: conf.id,
+                    innerText: (Object.hasOwn(data_type, val)) ? data_type[val] : val
+                });
+
+                radio_placeholder.append(radio, label, document.createElement("br"));
+            })
+        }
+
+        contanier.appendChild(clone);
+    });
 };

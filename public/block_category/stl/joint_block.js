@@ -168,141 +168,54 @@ const color = {
         return [`${block.getFieldValue('Name')}.max_size()`, Cpp.ORDER_ATOMIC];
     }
 
-    Blockly.Blocks[`${Block_type}_begin`] = {  
+    Blockly.Blocks[`${Block_type}_iter`] = {  
         init: function() {
             this.text = `${Block_type}名稱: `;
             this.Block_type = Block_type;
             this.appendDummyInput("Name_Input")
                 .appendField(`${Block_type}名稱: `)
                 .appendField(VarDropdown(Block_type), "Name")
-                .appendField("第一個元素(順著走)");
             this.jsonInit({
                 "type": `${Block_type}_begin`,
+                "message0": "%1", 
+                "args0": [{
+                    "type": "field_dropdown", 
+                    "name": "func", 
+                    "options": [
+                        ["第一個元素(順著走)", "begin"], 
+                        ["最後一個元素(順著走)", "end"], 
+                        ["最後一個元素(逆著走)", "rbegin"], 
+                        ["第一個元素(逆著走)", "rend"], 
+                        ["第一個元素(順著走且只能讀)", "cbegin"], 
+                        ["最後一個元素(順著走且只能讀)", "cend"]
+                    ]
+                }], 
+                "inputsInline": true,
                 "colour": color[Block_type],
                 "extensions": ["dynamic_dropdown"],
-                "output": null,
-                "tooltip": `回傳一個迭代器，它指向 ${Block_type} 第一個元素，順著走且可讀可寫。`,
+                "output": null, 
                 "helpUrl": ""
             });
+
+            this.setTooltip(()=>{
+                const func = this.getFieldValue("func");
+                const tooltip = {
+                    "begin": "第一個元素，順著走且可讀可寫", 
+                    "end": "最後一個元素，順著走且可讀可寫", 
+                    "rbegin": "最後一個元素，逆著走且可讀可寫", 
+                    "rend": "第一個元素，逆著走且可讀可寫", 
+                    "cbegin": "第一個元素，順著走且只能讀",  
+                    "cend": "最後一個元素，順著走且只能讀"
+                }
+
+                return `回傳一個迭代器，它指向 ${Block_type} ${tooltip[func]}`;
+            })
         }
     };
 
-    Cpp.forBlock[`${Block_type}_begin`] = function(block) {
-        return [`${block.getFieldValue('Name')}.begin()`, Cpp.ORDER_ATOMIC];
-    }
-
-    Blockly.Blocks[`${Block_type}_end`] = {  
-        init: function() {
-            this.text = `${Block_type}名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
-                .appendField("最後一個元素(順著走)");
-            this.jsonInit({
-                "type": `${Block_type}_end`,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "output": null,
-                "tooltip": `回傳一個迭代器，它指向 ${Block_type} 最後一個元素，順著走且可讀可寫。`,
-                "helpUrl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_end`] = function(block) {
-        return [`${block.getFieldValue('Name')}.end()`, Cpp.ORDER_ATOMIC];
-    }
-
-    Blockly.Blocks[`${Block_type}_rbegin`] = {  
-        init: function() {
-            this.text = `${Block_type}名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
-                .appendField("最後一個元素(逆著走)");
-            this.jsonInit({
-                "type": `${Block_type}_rbegin`,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "output": null,
-                "tooltip": `回傳一個迭代器，它指向 ${Block_type} 最後一個元素，逆著走且可讀可寫。`,
-                "helpUrl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_rbegin`] = function(block) {
-        return [`${block.getFieldValue('Name')}.rbegin()`, Cpp.ORDER_ATOMIC];
-    }
-
-    Blockly.Blocks[`${Block_type}_rend`] = {  
-        init: function() {
-            this.text = `${Block_type}名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
-                .appendField("第一個元素(逆著走)");
-            this.jsonInit({
-                "type": `${Block_type}_rend`,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "output": null,
-                "tooltip": `回傳一個迭代器，它指向 ${Block_type} 第一個元素，逆著走且可讀可寫。`,
-                "helpUrl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_rend`] = function(block) {
-        return [`${block.getFieldValue('Name')}.rend()`, Cpp.ORDER_ATOMIC];
-    }
-
-    Blockly.Blocks[`${Block_type}_cbegin`] = {  
-        init: function() {
-            this.text = `${Block_type}名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
-                .appendField("第一個元素(順著走且只能讀)");
-            this.jsonInit({
-                "type": `${Block_type}_cbegin`,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "output": null,
-                "tooltip": `回傳一個迭代器，它指向 ${Block_type} 第一個元素，順著走且只能讀。`,
-                "helpUrl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_cbegin`] = function(block) {
-        return [`${block.getFieldValue('Name')}.cbegin()`, Cpp.ORDER_ATOMIC];
-    }
-
-    Blockly.Blocks[`${Block_type}_cend`] = {  
-        init: function() {
-            this.text = `${Block_type}名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type}名稱: `)
-                .appendField(VarDropdown(Block_type), "Name")
-                .appendField("最後一個元素(順著走且只能讀)");
-            this.jsonInit({
-                "type": `${Block_type}_cend`,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "output": null,
-                "tooltip": `回傳一個迭代器，它指向 ${Block_type} 最後一個元素，順著走且只能讀。`,
-                "helpUrl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_cend`] = function(block) {
-        return [`${block.getFieldValue('Name')}.cend()`, Cpp.ORDER_ATOMIC];
+    Cpp.forBlock[`${Block_type}_iter`] = function(block) {
+        const Name = block.getFieldValue('Name');
+        const func = block.getFieldValue("func");
+        return [`${Name}.${func}()`, Cpp.ORDER_ATOMIC];
     }
 });

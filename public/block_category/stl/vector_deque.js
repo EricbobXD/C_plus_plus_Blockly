@@ -28,7 +28,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                     "options": [
                         ["空", "empty"],
                         ["大小", "size"],
-                        ["大小+指定元素", "size_element"],
+                        ["大小+指定元素", "size_value"],
                         ["元素集合", "array"],
                         ["迭代器區間", "iter"],
                         [`複製${Block_type}內容`, "copy"]
@@ -55,7 +55,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
         }, 
         UpdateShape_: function(mode){
             if (!mode) mode = this.getFieldValue("mode");
-            const Input = ["size", "element", "array", "start", "end", `${Block_type}`];
+            const Input = ["size", "value", "array", "start", "end", `${Block_type}`];
             Input.forEach(name => {
                 if (this.getInput(name))  this.removeInput(name); 
             });
@@ -64,9 +64,9 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                 case "size": 
                     this.appendValueInput("size").appendField("元素個數");
                     break;
-                case "size_element": 
+                case "size_value": 
                     this.appendValueInput("size").appendField("元素個數");
-                    this.appendValueInput("element").appendField("元素");
+                    this.appendValueInput("value").appendField("元素");
                     break;
                 case "array": 
                     this.appendValueInput("array").appendField("元素集合");
@@ -86,9 +86,9 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     Cpp.forBlock[`define_${Block_type}`] = function(block) {
         const container = Block_type.toLowerCase();
 
-        var type = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var Name = block.getFieldValue("Name");
-        var contents = block.getFieldValue("contents");
+        const type = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const contents = block.getFieldValue("contents");
         var code = `${container}<${type}>${Name}`;
 
         switch (contents){
@@ -97,11 +97,11 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                 var size = Cpp.valueToCode(block, "size", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "");
                 code += `(${size})`;
                 break;
-            case "size_element": 
-                if (!this.getInput("size") || !this.getInput("element")) break;
+            case "size_value": 
+                if (!this.getInput("size") || !this.getInput("value")) break;
                 var size = Cpp.valueToCode(block, "size", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-                var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-                code += `(${size}, ${element})`;
+                const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                code += `(${size}, ${value})`;
                 break;
             case "array": 
                 if (!this.getInput("array")) break;
@@ -109,8 +109,8 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                 break;
             case "iter":
                 if (!this.getInput("start") || !this.getInput("end")) break;
-                var start = Cpp.valueToCode(block, "start", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-                var end = Cpp.valueToCode(block, "end", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                const start = Cpp.valueToCode(block, "start", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+                const end = Cpp.valueToCode(block, "end", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
                 code += `(${start}, ${end})`;
                 break;
             case "copy":
@@ -123,7 +123,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
         else return `${code};\n`;
     };
 
-    Blockly.Blocks[`${Block_type}_push_back`] = {
+    Blockly.Blocks[`${Block_type}_add_back`] = {
         init:function(){
             this.text = `${Block_type} 名稱: `;
             this.Block_type = Block_type;
@@ -133,90 +133,50 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                 .appendField(VarDropdown(Block_type), "Name");
             this.jsonInit({
                 "type": `${Block_type}_push_back`,
-                "message0": "新增 %1 在最尾端(已經定義好的變數)",
-                "args0": [{
-                    "type": "input_value",
-                    "name": "element",
-                }],
+                "message0": "新增 %1 %2在最尾端",
+                "args0": [
+                    {
+                        "type": "field_dropdown", 
+                        "name": "func", 
+                        "options": [
+                            ["一個元素", "push_back"], 
+                            ["一個元素集合", "append_range"], 
+                            ["一組物件建構子的參數", "emplace_back"]
+                        ]
+                    }, 
+                    {
+                        "type": "input_value",
+                        "name": "value"
+                    }
+                ],
                 "inputsInline": true,
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "tooltip": `新增元素至 ${Block_type} 的最尾端，必要時會進行記憶體組態。`,
+                "extensions": ["dynamic_dropdown"], 
                 "helpUrl": ""
             });
-
-            if (this.UpdateShape_) this.UpdateShape_();
+            
+            this.setTooltip(()=>{
+                const func = this.getFieldValue("func");
+                const tooltip = {
+                    "push_back": `新增一個元素至 ${Block_type} 的最尾端`, 
+                    "emplace_back": `新增一組物件建構子的參數至 ${Block_type} 的最尾端`, 
+                    "append_range": `新增一個元素集合至 ${Block_type} 最尾端`
+                }
+                
+                return tooltip[func];
+            })
         }, 
     }
 
-    Cpp.forBlock[`${Block_type}_push_back`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        return `${Name}.push_back(" + ${element}");\n`;
+    Cpp.forBlock[`${Block_type}_add_back`] = function(block) {
+        const Name = block.getFieldValue("Name");
+        const func = block.getFieldValue("func");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        return `${Name}.${func}(" + ${value}");\n`;
     };
 
-    Blockly.Blocks[`${Block_type}_emplace_back`] = {  
-        init: function() {
-            this.text = `${Block_type} 名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type} 名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
-            this.jsonInit({
-                "type": `${Block_type}_emplace_back`,
-                "message0": "新增 %1 在最尾端(支援直接輸入多個物件建構子的參數)",
-                "args0": [{
-                    "type": "input_value",
-                    "name": "parament",
-                }],
-                "inputsInline": true,
-                "previousStatement": null,
-                "nextStatement": null,
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "tooltip": `新增物件至 ${Block_type} 的最尾端，必要時會進行記憶體組態。`,
-                "helpUrl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_emplace_back`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var parament = Cpp.valueToCode(block, "parament", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        return `${Name}.emplace_back(${parament});\n`;
-    };
-
-    Blockly.Blocks[`${Block_type}_append_range`] = {  
-        init: function() {
-            this.text = `${Block_type} 名稱: `;
-            this.Block_type = Block_type;
-            this.appendDummyInput("Name_Input")
-                .appendField(`${Block_type} 名稱: `)
-                .appendField(VarDropdown(Block_type), "Name");
-            this.jsonInit({
-                "type": `${Block_type}_append_range`,
-                "message0": "加元素集合 %1 到最尾端",
-                "args0": [{
-                        "type": "input_value",
-                        "name": "element"
-                    }],
-                "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown"],
-                "previousStatement": null,
-                "nextStatement": null,
-                "tooltip": `新增元素集合至 ${Block_type} 最尾端`,
-                "helpurl": ""
-            });
-        }
-    };
-
-    Cpp.forBlock[`${Block_type}_append_range`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        return `${Name}.append_range(${element});\n`;
-    };
 
     Blockly.Blocks[`${Block_type}_pop_back`] = {  
         init: function() {
@@ -242,7 +202,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_pop_back`] = function(block) {
-        var Name = block.getFieldValue("Name");
+        const Name = block.getFieldValue("Name");
         return `${Name}.pop_back();\n`;
     };
 
@@ -278,9 +238,9 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_insert`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (pos === 0) {
             return `${Name}.insert(${Name}.begin(), ${value});\n`
         }   
@@ -318,9 +278,9 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_insert_range`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var array = Cpp.valueToCode(block, "array", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const array = Cpp.valueToCode(block, "array", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         if (pos === 0) {
             return `${Name}.insert_range(${Name}.begin(), ${array});\n`
         }   
@@ -359,9 +319,9 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_erase`] = function(block) {
-        var Name = block.getFieldValue("Name");
-        var pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC1).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC1).replace(/^\(?|\)?$/g, "") || "";
         if (pos === "0") 
             return `${Name}.erase(${Name}.begin(), ${value});\n`;
         else 
@@ -434,28 +394,28 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_assign`] = function(block){
-        var Name = block.getFieldValue("Name");
-        var mode = block.getFieldValue("mode");
-        var func = "";
+        const Name = block.getFieldValue("Name");
+        const mode = block.getFieldValue("mode");
+        const func = "";
 
         if (mode === "iter"){
             if (!this.getInput("start") || !this.getInput("end")) return "";
-            var start = Cpp.valueToCode(block, "start", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-            var end = Cpp.valueToCode(block, "end", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const start = Cpp.valueToCode(block, "start", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const end = Cpp.valueToCode(block, "end", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             func = `${start}, ${end}`;
         } else if (mode === "array"){
             if (!this.getInput("array")) return "";
             func = `${Cpp.valueToCode(block, "array", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || ""}`;
         } else if (mode === "repetition"){
             if (!this.getInput("count") || !this.getInput("char")) return "";
-            var count = Cpp.valueToCode(block, "count", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-            var char = Cpp.valueToCode(block, "char", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const count = Cpp.valueToCode(block, "count", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const char = Cpp.valueToCode(block, "char", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             func `${count}, ${char}`;
         } else if (mode === "substr"){
             if (!this.getInput("str") || !this.getInput("pos") || !this.getInput("len")) return "";
-            var str = Cpp.valueToCode(block, "str", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-            var pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-            var len = Cpp.valueToCode(block, "len", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const str = Cpp.valueToCode(block, "str", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            const len = Cpp.valueToCode(block, "len", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
             func = `${str}, ${pos}, ${len}`;
         }
         
@@ -488,8 +448,8 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_assign_range`] = function(block){
-        var Name = block.getFieldValue("Name");
-        var array = Cpp.valueToCode(block, "array", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const array = Cpp.valueToCode(block, "array", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return `${Name}.assign(${array});\n`;
     }
 
@@ -518,8 +478,8 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_operate[]`] = function(block){
-        var Name = block.getFieldValue("Name");
-        var pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         return [`${Name}[${pos}]`, Cpp.ORDER_ATOMIC];
     };
 
@@ -542,7 +502,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_front`] = function(block) {
-        var Name = block.getFieldValue("Name");
+        const Name = block.getFieldValue("Name");
         return [`${Name}.front()`, Cpp.ORDER_ATOMIC];
     }
 
@@ -569,7 +529,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_back`] = function(block) {
-        var Name = block.getFieldValue("Name");
+        const Name = block.getFieldValue("Name");
         return [`${Name}.back()`, Cpp.ORDER_ATOMIC];
     };
 
@@ -596,7 +556,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_resize`] = function(block) {
-        var Name = block.getFieldValue("Name");
+        const Name = block.getFieldValue("Name");
         return [`${Name}.resize()`, Cpp.ORDER_ATOMIC];
     }
 
@@ -612,6 +572,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                 .appendField("內存容量");
             this.jsonInit({
                 "type": `${Block_type}_capacity`,
+                "inputsInline": true,
                 "colour": color[Block_type],
                 "extensions": ["dynamic_dropdown"],
                 "output": null,
@@ -622,7 +583,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_capacity`] = function(block) {
-        var Name = block.getFieldValue("Name");
+        const Name = block.getFieldValue("Name");
         return [`${Name}.capacity()`, Cpp.ORDER_ATOMIC];
     }
 
@@ -642,6 +603,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                         "name": "size"
                     }
                 ],
+                "inputsInline": true,
                 "colour": color[Block_type],
                 "extensions": ["dynamic_dropdown"],
                 "output": null,
@@ -652,7 +614,7 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
     };
 
     Cpp.forBlock[`${Block_type}_reserve`] = function(block) {
-        var Name = block.getFieldValue("Name");
+        const Name = block.getFieldValue("Name");
         return [`${Name}.reserve()`, Cpp.ORDER_ATOMIC];
     }   
 });
@@ -669,7 +631,7 @@ Blockly.Blocks["Deque_push_front"] = {
             "message0": "新增 %1 在最前端(已經定義好的變數)",
             "args0": [{
                 "type": "input_value",
-                "name": "element",
+                "name": "value",
             }],
             "inputsInline": true,
             "colour": "#85B09A",
@@ -683,9 +645,9 @@ Blockly.Blocks["Deque_push_front"] = {
 }
 
 Cpp.forBlock["Deque_push_front"] = function(block) {
-    var Name = block.getFieldValue("Name");
-    var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-    return `${Name}.push_front(${element});\n`;
+    const Name = block.getFieldValue("Name");
+    const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    return `${Name}.push_front(${value});\n`;
 };
 
 Blockly.Blocks["Deque_emplace_front"] = {  
@@ -714,8 +676,8 @@ Blockly.Blocks["Deque_emplace_front"] = {
 };
 
 Cpp.forBlock["Deque_emplace_front"] = function(block) {
-    var Name = block.getFieldValue("Name");
-    var parament = Cpp.valueToCode(block, "parament", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    const Name = block.getFieldValue("Name");
+    const parament = Cpp.valueToCode(block, "parament", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
     return `${Name}.emplace_front(${parament});\n`;
 };
 
@@ -731,7 +693,7 @@ Blockly.Blocks["Deque_prepend_range"] = {
             "message0": "加元素集合 %1 到最前端",
             "args0": [{
                     "type": "input_value",
-                    "name": "element"
+                    "name": "value"
                 }],
             "colour": "#85B09A",
             "extensions": ["dynamic_dropdown"],
@@ -744,7 +706,7 @@ Blockly.Blocks["Deque_prepend_range"] = {
 };
 
 Cpp.forBlock["Deque_prepend_range"] = function(block) {
-    var Name = block.getFieldValue("Name");
-    var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-    return `${Name}.prepend_range(${element});\n`;
+    const Name = block.getFieldValue("Name");
+    const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    return `${Name}.prepend_range(${value});\n`;
 };

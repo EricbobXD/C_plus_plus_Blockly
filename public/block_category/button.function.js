@@ -89,12 +89,13 @@ export function Create_Random_Access_Containers(Block_type, toolbox, workspace){
     const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
 
     let blockSet = [`define_${Block_type}`, 
-        `${Block_type} 加入元素_txt`, `${Block_type}_push_back`, `${Block_type}_emplace_back`, `${Block_type}_append_range`, `${Block_type}_insert`, `${Block_type}_insert_range`, 
+        `${Block_type} 加入元素_txt`, `${Block_type}_add_back`, `${Block_type}_insert`, `${Block_type}_insert_range`, 
         `${Block_type} 刪除元素_txt`, `${Block_type}_pop_back`, `${Block_type}_erase`,
         `${Block_type} 集合操作_txt`, `${Block_type}_swap`, `${Block_type}_assign`, `${Block_type}_assign_range`, 
+        `${Block_type} 容器大小_txt`, `${Block_type}_resize`, `${Block_type}_capacity`, `${Block_type}_reserve`, 
         `${Block_type} 讀取元素_txt`, `${Block_type}_operate[]`, `${Block_type}_front`, `${Block_type}_back`, 
-        `${Block_type} 條件判斷_txt`,`${Block_type}_clear`, `${Block_type}_size`, `${Block_type}_empty`, 
-        `${Block_type} 迭代器_txt`, `${Block_type}_begin`, `${Block_type}_end`, `${Block_type}_rbegin`, `${Block_type}_rend`, `${Block_type}_cbegin`, `${Block_type}_cend`
+        `${Block_type} 條件判斷_txt`, `${Block_type}_clear`, `${Block_type}_size`, `${Block_type}_empty`, `${Block_type}_max_size`, 
+        `${Block_type} 迭代器_txt`, `${Block_type}_iter`
         ];
     if(category){
         if (Block_type === "Deque") {
@@ -115,14 +116,14 @@ export function Create_Container_Adapters(Block_type, toolbox, workspace){
     const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
     
     let blockSet = [`define_${Block_type}`, 
-        `${Block_type} Stack 新增元素_txt`, `${Block_type}_push`, `${Block_type}_emplace`, `${Block_type}_push_range`, 
+        `${Block_type} 新增元素_txt`, `${Block_type}_push`, `${Block_type}_emplace`, `${Block_type}_push_range`, 
         `${Block_type} 刪除元素_txt`, `${Block_type}_pop`, 
         `${Block_type} 集合操作_txt`, `${Block_type}_swap`, 
         `${Block_type} 讀取元素_txt`, 
         `${Block_type} 條件判斷_txt`, `${Block_type}_size`, `${Block_type}_empty`
     ];
 
-     if(category){
+    if(category){
         if (Block_type === "Queue") blockSet.splice(11, 0, "Queue_front"); 
         else blockSet.splice(11, 0, `${Block_type}_top`);
 
@@ -135,10 +136,40 @@ export function Create_Container_Adapters(Block_type, toolbox, workspace){
     workspace.updateToolbox(newToolbox);
 }
 
-export function Create_Associative_Container(Block_type, toolbox, workspace){
-    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
-
-    let blockSet = [`define_${Block_type}`, 
-        `${Block_type} Stack 新增元素_txt`, 
-    ]
+const color = {
+    "Set": "#DAA520", 
+    "Unordered_set": "#FFD700", 
+    "Multiset": "#FACA16", 
+    "Flat_set": "#F8DE7E"
 }
+export function Create_Associative_Container(Block_type, toolbox, workspace){
+    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === "Set");
+    
+    
+    let blockSet = [`define_${Block_type}`, 
+        `${Block_type} 新增元素_txt`, `${Block_type}_insert`, 
+        `${Block_type} 刪除元素_txt`, `${Block_type}_erase`, 
+        `${Block_type} 集合操作_txt`, `${Block_type}_extract`, `${Block_type}_merge`, `${Block_type}_swap`, 
+        `${Block_type} 條件判斷_txt`, `${Block_type}_clear`, `${Block_type}_size`, `${Block_type}_empty`, `${Block_type}_max_size`, 
+        `${Block_type} 尋找元素_txt` , `${Block_type}_find`, `${Block_type}_find_index`, 
+        `${Block_type} 迭代器_txt`, `${Block_type}_iter`
+    ];
+
+    if(category){
+        category.contents.push({
+            "kind": "category", 
+            "name": `${Block_type}`, 
+            "colour": color[Block_type],
+            "contents": []
+        });
+        const block_category = category.contents.find(cat => cat.name === `${Block_type}`);
+        if (block_category){
+            blockSet.forEach(block =>{
+                if (block.includes("_txt")) block_category.contents.push({kind: "label", text: block.replace("_txt", "")});
+                else block_category.contents.push({kind: "block", type: block});
+            });
+        }
+    }
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
+}   

@@ -138,7 +138,7 @@ Blockly.Blocks[`def_${Block_type}`] = {
         }
     }, 
     saveExtraState: function(){
-        return {'mode': block.getFieldValue('TYPE')};
+        return {'mode': this.getFieldValue('TYPE')};
     }, 
     loadExtraState: function(state){
         this.UpdateShape_(state.mode);
