@@ -1,4 +1,2 @@
-1. set/map
-2. bitset/functional
-3. std::from_range
-4. <ranges> std::view
+1. bitset/functional
+2. <ranges> std::view

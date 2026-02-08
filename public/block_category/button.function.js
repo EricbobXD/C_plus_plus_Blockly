@@ -142,8 +142,10 @@ const color = {
     "Multiset": "#FACA16", 
     "Flat_set": "#F8DE7E"
 }
+
 export function Create_Associative_Container(Block_type, toolbox, workspace){
-    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === "Set");
+    const type = (Block_type.includes("ap"))?"Map": "Set"
+    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === `${type}函式庫`);
     
     
     let blockSet = [`define_${Block_type}`, 
@@ -154,7 +156,9 @@ export function Create_Associative_Container(Block_type, toolbox, workspace){
         `${Block_type} 尋找元素_txt` , `${Block_type}_find`, `${Block_type}_find_index`, 
         `${Block_type} 迭代器_txt`, `${Block_type}_iter`
     ];
-
+    if (type === "Map"){
+        blockSet.push(`${Block_type} 輔助工具_txt`, `make_${Block_type}`, "string_commas")
+    }
     if(category){
         category.contents.push({
             "kind": "category", 

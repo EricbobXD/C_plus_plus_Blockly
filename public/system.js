@@ -597,7 +597,7 @@ document.getElementById("redoBtn").addEventListener("click", async ()=>{
 
 /** Different type name pools setting **/
 //regist the call back button and control the web open and close
-const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq", "set"];
+const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq", "set", "map"];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
 
 // have only one options 
@@ -685,7 +685,7 @@ const ConfirmList_options = [
     {name: "Function", type: "func_type", id: "FuncName", model: "func_model", creator: Utils.Create_Function},
     {name: "Get",      type: "get_type",  id: "GetName",  model: "get_model",  creator: Utils.Create_getName},
     {name: "Set",      type: "set_type",  id: "SetName",  model: "set_model",  creator: Utils.Create_Associative_Container},
-    //{name: "Map",      type: "map_type",  id: "MapName",  model: "map_model",  creator: Utils.Create_Associative_Container},
+    {name: "Map",      type: "map_type",  id: "MapName",  model: "map_model",  creator: Utils.Create_Associative_Container},
 ]
 
 ConfirmList_options.forEach(({name, type, id, model, creator}) => {
@@ -704,7 +704,7 @@ export const {
     ConfirmFunction, 
     ConfirmGet, 
     ConfirmSet, 
-    //ConfirmMap, 
+    ConfirmMap, 
     Cancel
 } = actions
 
@@ -728,7 +728,7 @@ const configs = [
     {id: "get",  label: "輸入變數名稱：",  name: "Var",  value: ["Struct_Name", "Class_Name"] , Func: ConfirmVariable}, 
     {id: "func", label: "輸入函數名稱：",  name: "Func", value: ["Function", "Lambda", "Struct", "Class", "Operation"] , Func: ConfirmVariable}, 
     {id: "set",  label: "輸入 Set 名稱：", name: "Set",  value: ["Set", "Unordered_set", "Multiset", "Flat_set"],        Func: ConfirmSet}, 
-    //{id: "map",  label: "輸入 Map 名稱：", "options": {id: "MapName", value: ["Map", "Unordered_map", "Multimap"]},                    Func: ConfirmMap}, 
+    {id: "map",  label: "輸入 Map 名稱：", name: "Map",  value: ["Map", "Unordered_map", "Multimap"],                    Func: ConfirmMap}, 
 ]
 
 const temp = document.getElementById("callback_template");
