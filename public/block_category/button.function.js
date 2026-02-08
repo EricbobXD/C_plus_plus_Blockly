@@ -1,4 +1,4 @@
-export function Create_Array(Block_type, toolbox, workspace) {
+export function Create_Array(toolbox, workspace) {
     const category = toolbox.contents.find(cat => cat.name === "陣列");
     const blockSet = ["define_array", "array_name", "array_content", "array_operate[]"];
     if (category) {
@@ -7,7 +7,7 @@ export function Create_Array(Block_type, toolbox, workspace) {
     
     const newToolbox = JSON.parse(JSON.stringify(toolbox));
     workspace.updateToolbox(newToolbox);
-}
+};
 
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
 export function Create_Variable(Block_type, toolbox, workspace){
@@ -83,7 +83,7 @@ export function Create_getName(Block_type, toolbox, workspace){
 
     const newToolbox = JSON.parse(JSON.stringify(toolbox));
     workspace.updateToolbox(newToolbox);
-}
+};
 
 export function Create_Random_Access_Containers(Block_type, toolbox, workspace){
     const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
@@ -110,7 +110,7 @@ export function Create_Random_Access_Containers(Block_type, toolbox, workspace){
 
     const newToolbox = JSON.parse(JSON.stringify(toolbox));
     workspace.updateToolbox(newToolbox);
-}
+};
 
 export function Create_Container_Adapters(Block_type, toolbox, workspace){
     const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === Block_type);
@@ -134,14 +134,14 @@ export function Create_Container_Adapters(Block_type, toolbox, workspace){
     }
     const newToolbox = JSON.parse(JSON.stringify(toolbox));
     workspace.updateToolbox(newToolbox);
-}
+};
 
 const color = {
     "Set": "#DAA520", 
     "Unordered_set": "#FFD700", 
     "Multiset": "#FACA16", 
     "Flat_set": "#F8DE7E"
-}
+};
 
 export function Create_Associative_Container(Block_type, toolbox, workspace){
     const type = (Block_type.includes("ap"))?"Map": "Set"
@@ -176,4 +176,42 @@ export function Create_Associative_Container(Block_type, toolbox, workspace){
     }
     const newToolbox = JSON.parse(JSON.stringify(toolbox));
     workspace.updateToolbox(newToolbox);
-}   
+};
+
+export function Create_Pair(toolbox, workspace){
+    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === "Pair");
+
+    const blockSet = ["define_Pair", 
+        "Pair 讀取元素_txt", "Pair_first", "Pair_second", 
+        "創一個 Pair_txt", "make_Pair"   
+    ];
+
+    if(category){
+        blockSet.forEach(block =>{
+            if (block.includes("_txt")) category.contents.push({kind: "label", text: block.replace("_txt", "")});
+            else category.contents.push({kind: "block", type: block});
+        });
+    }
+
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
+};
+
+export function Create_Bitset(toolbox, workspace){
+    const category = toolbox.contents.find(cat => cat.name === "STL模組")?.contents?.find(sub => sub.name === "Bitset");
+
+    const blockSet = ["define_Bitset", 
+        "Bitset 讀取元素_txt", "Bitset_operate[]", 
+        "Bitset 條件判斷_txt", "Bitset_size", "Bitset_set", "Bitset_count", "Bitset_true"
+    ];
+
+    if(category){
+        blockSet.forEach(block =>{
+            if (block.includes("_txt")) category.contents.push({kind: "label", text: block.replace("_txt", "")});
+            else category.contents.push({kind: "block", type: block});
+        });
+    }
+
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
+};

@@ -37,11 +37,10 @@ const color = {
                         [`複製${Block_type}內容`, "copy"]
                     ]
                 }],
-                "inputsInline": true,
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown", , "change_block_type"],
                 "tooltip": `創建一個 ${Block_type} 容器，${Block_type} 是會自動排列及擴展容量的元素集合`,
                 "helpUrl": ""
             }), 
@@ -49,6 +48,8 @@ const color = {
             this.setOnChange(function(e) {
                 if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
             });
+
+            this.setInputsInline(true);
         },
         saveExtraState: function(){
             return {"mode": this.getFieldValue("mode")};
@@ -139,7 +140,7 @@ const color = {
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "helpUrl": ""
             }), 
 
@@ -182,7 +183,7 @@ const color = {
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `在 ${Block_type} 中刪除元素`,
                 "helpUrl": ""
             })
@@ -213,7 +214,7 @@ const color = {
                 "inputsInline": true,
                 "output": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `在 ${Block_type} 提取元素`,
                 "helpUrl": ""
             })
@@ -247,7 +248,7 @@ const color = {
                 "previousStatement": null,
                 "nextStatement": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `在 ${Block_type} 中合併並刪除原本 ${Block_type} 擁有元素`,
                 "helpUrl": ""
             })
@@ -289,7 +290,7 @@ const color = {
                 "inputsInline": true,
                 "output": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "helpUrl": ""
             })
 
@@ -340,7 +341,7 @@ const color = {
                 "inputsInline": true,
                 "output": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "helpUrl": ""
             }), 
 
@@ -383,7 +384,7 @@ const color = {
                 }],
                 "output": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `在 ${Block_type} 中讀取某個位置中的 key`,
                 "helpUrl": ""
             })
@@ -413,7 +414,7 @@ const color = {
                 }],
                 "output": null,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `在 ${Block_type} 中讀取某個位置中的 value`,
                 "helpUrl": ""
             })
@@ -443,7 +444,7 @@ const color = {
                 "output": null,
                 "inputsInline": true,
                 "colour": color[Block_type],
-                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "extensions": ["dynamic_dropdown"],
                 "tooltip": `創建一個 pair 並擁有 key & value`,
                 "helpUrl": ""
             })
@@ -457,6 +458,7 @@ const color = {
     }
 })
 
+
 Blockly.Blocks["define_Pair"] = {  
     init: function() {
         this.appendValueInput("Key_TYPE")
@@ -465,10 +467,10 @@ Blockly.Blocks["define_Pair"] = {
             .appendField("value 資料型態: ")
 
         this.text = "Pair 名稱: ";
-        this.Pair = Pair;
+        this.Block_type = "Pair";
         this.appendDummyInput("Name_Input")
             .appendField(`Pair 名稱: `)
-            .appendField(VarDropdown(Pair), "Name");
+            .appendField(VarDropdown("Pair"), "Name");
 
         this.jsonInit({
             "type": "define_Pair",
@@ -481,11 +483,10 @@ Blockly.Blocks["define_Pair"] = {
                     ["pair", "pair"]
                 ]
             }],
-            "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
             "colour": color["Pair"],
-            "extensions": ["dynamic_dropdown", "change_block_type"],
+            "extensions": ["dynamic_dropdown", , "change_block_type"],
             "tooltip": "創建一個 Pair 容器",
             "helpUrl": ""
         }), 
@@ -493,6 +494,8 @@ Blockly.Blocks["define_Pair"] = {
         this.setOnChange(function(e) {
             if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
         });
+
+        this.setInputsInline(true);
     },
     saveExtraState: function(){
         return {"mode": this.getFieldValue("mode")};
@@ -525,23 +528,25 @@ Cpp.forBlock["define_Pair"] = function(block) {
         const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
         code += ` = {${key}, ${value}}`;
     }
-    return code;
+    
+    if (block.outputConnection) return [code, Cpp.ORDER_ATOMIC];
+    else return `${code};\n`;
 };  
 
 Blockly.Blocks["Pair_first"] = {
     init: function(){
         this.text = "Pair 名稱: ";
-        this.Block_type = Block_type;
+        this.Block_type = "Pair";
         this.appendDummyInput("Name_Input")
             .appendField("Pair 名稱: ")
-            .appendField(VarDropdown(Block_type), "Name")
+            .appendField(VarDropdown("Pair"), "Name")
             .appendField("的 key(first)");
 
         this.jsonInit({
             "type": "Pair_first",
             "output": null,
             "colour": color["Pair"],
-            "extensions": ["dynamic_dropdown", "change_block_type"],
+            "extensions": ["dynamic_dropdown"],
             "tooltip": "在 Pair 中讀取某個位置中的 key",
             "helpUrl": ""
         })
@@ -552,34 +557,34 @@ Cpp.forBlock["Pair_first"] = function(block) {
     const Name = block.getFieldValue("Name");
     const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
     return [`${Name}[${pos}].first`, Cpp.ORDER_ATOMIC];
-}
+};
 
 Blockly.Blocks["Pair_second"] = {
     init: function(){
         this.text = "Pair 名稱: ";
-        this.Block_type = Block_type;
+        this.Block_type = "Pair";
         this.appendDummyInput("Name_Input")
             .appendField("Pair 名稱: ")
-            .appendField(VarDropdown(Block_type), "Name")
+            .appendField(VarDropdown("Pair"), "Name")
             .appendField("的 value(second)"); 
         this.jsonInit({
             "type": "Pair_second",
             "output": null,
             "colour": color["Pair"],
-            "extensions": ["dynamic_dropdown", "change_block_type"],
+            "extensions": ["dynamic_dropdown"],
             "tooltip": "在 Pair 中讀取某個位置中的 value",
             "helpUrl": ""
         })
     }
-}
+};
 
 Cpp.forBlock["Pair_second"] = function(block) {
     const Name = block.getFieldValue("Name");
     const pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
     return [`${Name}[${pos}].second`, Cpp.ORDER_ATOMIC];
-}
+};
 
-Blockly.Blocks["make_pair"] = {
+Blockly.Blocks["make_Pair"] = {
     init: function(){
         this.jsonInit({
             "type": "make_pair",
@@ -596,15 +601,15 @@ Blockly.Blocks["make_pair"] = {
             "output": null,
             "inputsInline": true,
             "colour": color["Pair"],
-            "extensions": ["dynamic_dropdown", "change_block_type"],
+            "extensions": ["dynamic_dropdown"],
             "tooltip": `創建一個 pair 並擁有 key & value`,
             "helpUrl": ""
         })
     }
-}
+};
 
-Cpp.forBlock['make_pair'] = function(block) {
+Cpp.forBlock['make_Pair'] = function(block) {
     const key = Cpp.valueToCode(block, 'key', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
     const value = Cpp.valueToCode(block, 'value', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
     return [`{${key}, ${value}}`, Cpp.ORDER_ATOMIC];
-}
+};

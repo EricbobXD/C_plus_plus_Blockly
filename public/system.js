@@ -597,7 +597,7 @@ document.getElementById("redoBtn").addEventListener("click", async ()=>{
 
 /** Different type name pools setting **/
 //regist the call back button and control the web open and close
-const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq", "set", "map"];
+const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq", "set", "map", "pair", "bit"];
 model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
 
 // have only one options 
@@ -626,7 +626,8 @@ export function Confirm(text_name, type, model_name, Func) {
             });
             return;
         }
-        Func(type, toolbox, workspace);
+        if (["Array", "Pair", "Bitset"].includes(type)) Func(toolbox, workspace);
+        else Func(type, toolbox, workspace);
         window.data_type_checked[type] = true;
     }
 
@@ -639,9 +640,10 @@ const confirmList = [
     {name: "Vector",         id: "VecName",   model: "vec_model",   creator: Utils.Create_Random_Access_Containers},
     {name: "Deque",          id: "DeqName",   model: "deq_model",   creator: Utils.Create_Random_Access_Containers},
     {name: "Stack",          id: "StName",    model: "st_model",    creator: Utils.Create_Container_Adapters},
-    {name: "Set",            id: "SetName",   model: "set_model",   creator: Utils},
     {name: "Queue",          id: "QuName",    model: "qu_model",    creator: Utils.Create_Container_Adapters},
     {name: "Priority_Queue", id: "PqName",    model: "pq_model",    creator: Utils.Create_Container_Adapters},
+    {name: "Pair",           id: "PairName",  model: "pair_model",  creator: Utils.Create_Pair}, 
+    {name: "Bitset",         id: "BitName",   model: "bit_model",   creator: Utils.Create_Bitset}, 
 ];
 
 const actions = {};
@@ -700,6 +702,8 @@ export const {
     ConfirmStack, 
     ConfirmQueue, 
     ConfirmPriority_Queue, 
+    ConfirmPair, 
+    ConfirmBitset, 
     ConfirmVariable,
     ConfirmFunction, 
     ConfirmGet, 
@@ -722,6 +726,8 @@ const configs = [
     {id: "st",    label: "輸入 Stack 名稱：",          name: "St",    Func: ConfirmStack}, 
     {id: "qu",    label: "輸入 Queue 名稱：",          name: "Qu",    Func: ConfirmQueue}, 
     {id: "pq",    label: "輸入 Priority_queue 名稱：", name: "Pq",    Func: ConfirmPriority_Queue}, 
+    {id: "pair",  label: "輸入 Pair 名稱:",            name: "Pair",  Func: ConfirmPair}, 
+    {id: "bit",   label: "輸入 Bitset 名稱: ",         name: "Bit",   Func: ConfirmBitset},
 
     // have many options
     {id: "var",  label: "輸入變數名稱：",  name: "Var",  value: ["VAR", "PTR", "REF"]         , Func: ConfirmVariable}, 

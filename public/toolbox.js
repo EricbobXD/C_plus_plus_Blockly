@@ -381,30 +381,10 @@ export const toolbox = {
                     "name": "Pair",
                     "colour": "#338f35",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_pair"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Pair 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "pair_first"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "pair_second"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Pair 創一個pair"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "make_pair"
-                        }
-                    ]
+                        "kind": "button", 
+                        "text": "新增 pair",
+                        "callbackKey": "pair_category"
+                    }]
                 },
                 { //stack
                     "kind": "category",
@@ -438,53 +418,13 @@ export const toolbox = {
                 },
                 { //bitset
                     "kind": "category",
-                    "name": "bitset",
+                    "name": "Bitset",
                     "colour": "#d35400",
                     "contents": [{
-                            "kind": "block",
-                            "type": "define_bitset"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Bitset 讀取元素"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset[i]"
-                        },
-                        {
-                            "kind": "label",
-                            "text": "Bitset 條件判斷"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_size"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_count"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_set"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_reset"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_all"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_any"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "bitset_none"
-                        },
-                    ]
+                        "kind": "button", 
+                        "text": "新增 Bitset",
+                        "callbackKey": "bit_category"
+                    }]
                 },
                 { //algorithm
                     "kind": "category",

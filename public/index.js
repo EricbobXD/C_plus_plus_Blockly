@@ -14,6 +14,7 @@ import "./block_category/stl/joint_block.js"
 import "./block_category/stl/vector_deque.js"
 import "./block_category/stl/set_map_pair.js"
 import "./block_category/stl/stack_queue.js"
+import "./block_category/stl/bitset.js"
 import "./block_category/stl/functional.js"
 
 // another

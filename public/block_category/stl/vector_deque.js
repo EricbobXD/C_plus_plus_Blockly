@@ -27,8 +27,8 @@ const color = {"Vector": "#3d7fd6", "Deque": "#85B09A"};
                     "name": "mode",
                     "options": [
                         ["空", "empty"],
-                        ["大小", "size"],
-                        ["大小+指定元素", "size_value"],
+                        ["元素個數", "size"],
+                        ["元素個數+指定元素", "size_value"],
                         ["元素集合", "array"],
                         ["迭代器區間", "iter"],
                         [`複製${Block_type}內容`, "copy"]
