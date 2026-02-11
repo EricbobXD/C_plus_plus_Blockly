@@ -135,48 +135,6 @@
     </footer>
     
     <!-- Don't touch!!! -->
-    <!--
-    <div id="var_model" class="model">
-        <label>輸入變數名稱: </label><br>
-        <input type="text" id="VarName"><br><br>
-
-        <label>選擇類型：</label><br>
-        <input type="radio" name="var_type" value="VAR" checked> 變數<br>
-        <input type="radio" name="var_type" value="PTR"> 指標<br>
-        <input type="radio" name="var_type" value="REF"> 參考<br><br>
-
-        <button onclick="ConfirmVar()">確定</button>
-        <button onclick="Cancel('var_model')">取消</button>
-    </div>
-    
-    <div id="func_model" class="model">
-        <label>輸入函數名稱: </label><br>
-        <input type="text" id="FuncName"><br><br>
-
-        <label>選擇類型：</label><br>
-        <input type="radio" name="func_type" value="Function" checked> 函式<br>
-        <input type="radio" name="func_type" value="Lambda"> lambda<br>
-        <input type="radio" name="func_type" value="Struct"> struct<br>
-        <input type="radio" name="func_type" value="Class"> class<br>
-        <input type="radio" name="func_type" value="Operation"> operation<br>
-
-        <button onclick="ConfirmFunction()">確定</button>
-        <button onclick="Cancel('func_model')">取消</button>
-    </div>
-
-    <div id="get_model" class="model">
-        <label>輸入變數名稱: </label><br>
-        <input type="text" id="GetName"><br><br>
-
-        <label>選擇類型：</label><br>
-        <input type="radio" name="get_type" value="Struct_Name" checked> 結構變數<br>
-        <input type="radio" name="get_type" value="Class_Name"> 類別變數<br>
-
-        <button onclick="ConfirmGet()">確定</button>
-        <button onclick="Cancel('get_model')">取消</button>
-    </div>
-    -->
-    
     <template id="callback_template">
         <div class="model">
             <label class="label_model"></label>
@@ -190,6 +148,16 @@
     </template>
 
     <div id="callback_container"></div>
+
+    <div>
+        <div id="bubble_sort_model" class="model">
+            <label>輸入陣列名稱</label><br></br>
+            <input type="text" id="Name"><br></br>
+
+            <button onclick="Bubble_sort()">確定</button>
+            <button onclick="Cancel('bubble_sort_model')">取消</button>
+        </div>
+    </div>
 
     <script type="module" src="public/index.js" defer></script>
 </html>

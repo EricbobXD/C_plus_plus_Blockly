@@ -2,54 +2,6 @@
 // 方塊定義&轉換程式碼
 Blockly.defineBlocksWithJsonArray(
     [
-        //date-type
-        {
-            "type": "data_type",
-            "message0": "資料型態%1",
-            "args0": [{
-                "type": "field_dropdown",
-                "name": "TYPE",
-                "options": [
-                    ["整數", "int"],
-                    ["浮點數", "float"],
-                    ["雙重浮點數", "double"],
-                    ["字元", "char"],
-                    ["字串", "string"],
-                    ["更長的整數", "long long"]
-                ]
-            }],
-            "colour": "#EB5160",
-            "output": "null"
-        },
-        {
-            "type": "void", 
-            "message0": "void", 
-            "output": null,
-            "colour": "#db00db", 
-            "tootip": "特別資料型態", 
-            "helpurl": ""
-        },
-        {
-            "type": "struct_type",
-            "message0": "struct %1",
-            "args0": [{
-                "type": "field_input",
-                "name": "TYPE",
-            }],
-            "colour": "#f4a460",
-            "output": "null"
-        },
-        {
-            "type": "class_type",
-            "message0": "class %1",
-            "args0": [{
-                "type": "field_input",
-                "name": "TYPE",
-            }],
-            "colour": "#e9967a",
-            "output": "null"
-        },
-
         //data
         { //text
             "type": "string",
@@ -134,29 +86,30 @@ Blockly.defineBlocksWithJsonArray(
 
         //condition
         { //for
-            "type": "for_block",
-            "message0": "初始變數值 %1  循環條件 %2 迴圈條件 %3  執行%4 ",
-            "args0": [{
-                    "type": "input_value",
-                    "name": "INIT"
-                },
+           "type": "for_block", 
+            "message0": "初始變數值: %1, 循環條件: %2, 調整變數: %3",
+            "args0": [
                 {
-                    "type": "input_value",
-                    "name": "CONDITION",
-                    "check": "Boolean"
-                },
+                    "type": "input_value", 
+                    "name": "init", 
+                }, 
                 {
-                    "type": "input_value",
-                    "name": "var_cal",
-                },
+                    "type": "input_value", 
+                    "name": "condition", 
+                }, 
                 {
-                    "type": "input_statement",
-                    "name": "DO"
+                    "type": "input_value", 
+                    "name": "iter", 
                 }
-            ],
+            ], 
+            "message1": "%1",
+            "args1": [{
+                "type": "input_statement", 
+                "name": "DO"
+            }], 
+            "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "inputsInline": true,
             "colour": "#2473c2",
             "tooltip": "For 迴圈",
             "helpUrl": ""
@@ -381,7 +334,38 @@ Blockly.defineBlocksWithJsonArray(
             "tooltip": "簡化運算符",
             "helpUrl": ""
         },
-
+        { //compare_block
+            "type": "compare_block",
+            "message0": "%1 %2 %3",
+            "args0": [{
+                    "type": "input_value",
+                    "name": "A"
+                },
+                {
+                    "type": "field_dropdown",
+                    "name": "OPERATOR",
+                    "options": [
+                        ["=", "EQUAL"],
+                        ["!=", "NOT_EQUAL"],
+                        [">", "GREATER"],
+                        ["<", "LESS"],
+                        [">=", "GREATER_EQUAL"],
+                        ["<=", "LESS_EQUAL"]
+                    ]
+                },
+                {
+                    "type": "input_value",
+                    "name": "B"
+                }
+            ],
+            "inputsInline": true, 
+            "output": null, 
+            "colour": "#29A1CD",
+            "extensions": ["change_block_type"],
+            "inputsInline": true,
+            "tooltip": "運算符",
+            "helpUrl": ""
+        },
         //input and output
         { //cin
             "type": "cin_block",

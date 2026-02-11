@@ -14,9 +14,10 @@ export function Create_Variable(Block_type, toolbox, workspace){
     let blockSet = [
         `define_${Block_type}`,
         `${Block_type}_equal`,
-        `get_${Block_type}`,
-        `def_${Block_type}`
+        `get_${Block_type}`
     ];
+
+    if (Block_type === "VAR") blockSet.push("define_VAR_");
 
     if (Block_type === "PTR" || Block_type === "REF"){
         blockSet.push(`${Block_type}_of`)

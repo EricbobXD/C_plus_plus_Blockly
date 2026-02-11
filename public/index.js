@@ -18,5 +18,7 @@ import "./block_category/stl/bitset.js"
 import "./block_category/stl/functional.js"
 
 // another
+import "./block_category/not_in_toolbox_block.js"
+import "./block_category/data_type.js"
 import "./block_json.js"
 import "./block_cpp.js"

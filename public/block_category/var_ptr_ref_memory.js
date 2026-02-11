@@ -1,234 +1,227 @@
+const Cpp = Blockly.Cpp;
+
 function VarDropdown(type) {
     return new Blockly.FieldDropdown(
-        Blockly.Cpp[type].map(v => [v, v])
+        Cpp[type].map(v => [v, v])
     );
 }
 
 const data_type = {"VAR": "變數", "PTR": "指標", "REF": "參考"};
 ["VAR", "PTR", "REF"].forEach(Block_type =>{
     Blockly.Blocks[`define_${Block_type}`] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("宣告")
-            .appendField(new Blockly.FieldDropdown([
-                ["不固定", "no"],
-                ["固定", "const"]])
-            , "const");
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([
-                ["有正有負", "no"],
-                ["全部取正", "unsigned"]])
-            , "unsigned");
-        this.appendValueInput('type');
-        this.appendDummyInput()
-            .appendField(`${data_type[Block_type]}名稱: `)
-            .appendField(VarDropdown(Block_type), "var_name");
-        this.appendValueInput("value")
-            .appendField(" = ");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-        this.setColour('#DABD00');
-        this.setTooltip(`定義一個${data_type[Block_type]}`);
-        this.setHelpUrl(''); 
-    }
-}
-
-Blockly.Cpp.forBlock[`define_${Block_type}`] = function(block) {
-    var Const = block.getFieldValue('const');
-    var unsigned = block.getFieldValue('unsigned');
-    var type = Blockly.Cpp.valueToCode(block, 'type', 1) || '';
-    var var_name = block.getFieldValue('var_name');
-    var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
-    var code = '';
-    if (Const === 'const') {
-        code += 'const ';
-    }
-    if (unsigned === 'unsigned') {
-        code += 'unsigned ';
-    }
-
-    if (type.startsWith('(') && type.endsWith(')')) {
-        type = type.slice(1, -1);
-    }
-
-    if (type === "PTR") code = '*' + code;
-    else if (type === "REF") code = '&' + code;
-
-    code += ' ' + var_name;
-    if (value.startsWith('(') && value.endsWith(')')) {
-        value = value.slice(1, -1);
-    }
-    if (value !== '') {
-        code += ` = ${value}`;
-    }
-    code += ';\n';
-    return code;
-};
-
-Blockly.Blocks[`${Block_type}_equal`] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField(`${data_type[Block_type]}`)
-            .appendField(VarDropdown(Block_type), "var_name");
-        this.appendValueInput("value")
-            .appendField(" = ");
-        this.setInputsInline(true);
-        this.setColour('#DABD00');
-        this.setTooltip(`定義一個${data_type[Block_type]}`);
-        this.setHelpUrl('');
-        this.setPreviousStatement(true); 
-        this.setNextStatement(true);    
-    }
-};
-
-Blockly.Cpp.forBlock[`${Block_type}_equal`] = function(block) {
-    var var_name = block.getFieldValue('var_name');
-    var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '0';
-    if (value.startsWith('(') && value.endsWith(')')) {
-        value = value.slice(1, -1);
-    }
-    return `${var_name} = ${value};\n`;
-};
-
-Blockly.Blocks[`get_${Block_type}`] = {
         init: function() {
+            this.jsonInit({
+                "type": `define_${Block_type}`, 
+                "message0": "宣告%1%2%3", 
+                "args0": [
+                    {
+                        "type": "field_dropdown", 
+                        "name": "const", 
+                        "options": [
+                            ["不固定", "no"],
+                            ["固定", "const"]
+                        ]
+                    }, 
+                    {
+                        "type": "field_dropdown", 
+                        "name": "unsigned", 
+                        "options": [
+                            ["有正有負", "no"],
+                            ["全部取正", "unsigned"]
+                        ]
+                    }, 
+                    {
+                        "type": "input_value", 
+                        "name": "type"
+                    }
+                ], 
+                "inputsInline": true, 
+                "previousStatement": null, 
+                "nextStatement": null,
+                "colour": "#DABD00",
+                "extensions": ["dynamic_dropdown", "change_block_type"],
+                "tooltip": `定義一個${data_type[Block_type]}`,
+                "helpurl": ""
+            });
+
+            this.text = `${data_type[Block_type]}名稱: `;
+            this.Block_type = Block_type;
+            this.appendDummyInput("Name_Input")
+                .appendField(`${data_type[Block_type]}名稱: `)
+                .appendField(VarDropdown(Block_type), "Name");
+
             this.appendDummyInput()
-                .appendField(data_type[Block_type])
-                .appendField(VarDropdown(Block_type), "var_name");
-            this.setInputsInline(true);
-            this.setOutput(true, null);
-            this.setColour('#DABD00');
-            this.setTooltip(`定義 ${data_type[Block_type]} 類型`);
-            this.setHelpUrl('');
+                .appendField(new Blockly.FieldDropdown([
+                    ["不賦予值", "no"],
+                    ["賦予值", "val"]
+                ]), "mode")
+
+            this.setOnChange(function(e) {
+                if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
+            });
+        }, 
+        saveExtraState: function(){
+            return {"mode": this.getFieldValue("mode")};
+        }, 
+        loadExtraState: function(state){
+            this.UpdateShape_(state.mode);
+        }, 
+        UpdateShape_: function(mode){
+            if (!mode) mode = this.getFieldValue("mode");
+
+            if (this.getInput("value")) this.removeInput("value");
+            if (mode === "val")
+                this.appendValueInput("value").appendField("=");      
         }
-};
+    };
 
-Blockly.Cpp.forBlock[`get_${Block_type}`] = function(block){
-    return [block.getFieldValue('var_name'), Blockly.Cpp.ORDER_ATOMIC];
-};
+    Cpp.forBlock[`define_${Block_type}`] = function(block) {
+        const Const = block.getFieldValue("const");
+        const unsigned = block.getFieldValue("unsigned");
+        const type = Cpp.valueToCode(block, "type", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        const Name = block.getFieldValue("Name");
+        const mode = block.getFieldValue("mode")
+        var code = `${Const === "const"?"const ": ""}${unsigned === "unsigned "?"unsigned": ""}${type}`;
 
-Blockly.Blocks[`def_${Block_type}`] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("宣告")
-            .appendField(new Blockly.FieldDropdown([
-                ["不固定", "no"],
-                ["固定", "const"]])
-            , "const");
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([
-                ["有正有負", "no"],
-                ["全部取正", "unsigned"]])
-            , "unsigned");
-        this.appendValueInput('TYPE');
-        this.appendDummyInput()
-            .appendField(`${data_type[Block_type]}名稱: `)
-            .appendField(VarDropdown(Block_type), "var_name");
-        this.appendValueInput("value")
-            .appendField(" = ");
-        this.setInputsInline(true);
-        this.setOutput(true, null);
-        this.setColour('#DABD00');
-        this.setTooltip(`定義一個${data_type[Block_type]}`);
-        this.setHelpUrl('');
+        if (Block_type === "PTR") code += "*" ;
+        else if (Block_type === "REF") code += "&";
 
-         this.setOnChange = function(e){
-            if (this.workspace && !this.isInFlyout && e.blockId === this.id) this.UpdateShape_();
+        code += ` ${Name}`;
+        if (mode === "val"){
+            if(!this.getInput("value")) return '';
+            const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+            code += ` = ${value}`;
         }
-    }, 
-    saveExtraState: function(){
-        return {'mode': this.getFieldValue('TYPE')};
-    }, 
-    loadExtraState: function(state){
-        this.UpdateShape_(state.mode);
-    }, 
-    UpdateShape_: function(){
-        if (!mode) mode = block.getFieldValue('TYPE'); 
-    }
-}
+        
+        if (block.outputConnection) return [code, Cpp.ORDER_ATOMIC];
+        else return `${code};\n`;
+    };
 
-Blockly.Cpp.forBlock[`def_${Block_type}`] = function(block) {
-    var unsigned = block.getFieldValue('unsigned');
-    var type = block.getFieldValue('TYPE');
-    var var_name = block.getFieldValue('var_name');
-    var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '';
-    var code = '';
-    if (unsigned === 'unsigned') {
-        code += 'unsigned ';
-    }
+    Blockly.Blocks[`${Block_type}_equal`] = {
+        init: function() {
+            this.text = `${data_type[Block_type]}名稱: `;
+            this.Block_type = Block_type;
+            this.appendDummyInput("Name_Input")
+                .appendField(`${data_type[Block_type]}名稱: `)
+                .appendField(VarDropdown(Block_type), "Name");
+            
+            this.jsonInit({
+                "type": `${Block_type}_equal`,
+                "message0": " = %1", 
+                "args0": [{
+                    "type": "input_value", 
+                    "name": "value"
+                }], 
+                "inputsInline": true, 
+                "previousStatement": null, 
+                "nextStatement": null,
+                "colour": "#DABD00",
+                "extensions": ["dynamic_dropdown"],
+                "tooltip": `賦予值給 ${data_type[Block_type]}`,
+                "helpurl": ""
+            });
+        }
+    };
 
-    if (type === "PTR") code = '*' + code;
-    else if (type === "REF") code = '&' + code;
+    Cpp.forBlock[`${Block_type}_equal`] = function(block) {
+        const Name = block.getFieldValue("Name");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "0";
+        return `${Name} = ${value};\n`;
+    };
 
-    code += ' ' + var_name;
-    if (value.startsWith('(') && value.endsWith(')')) {
-        value = value.slice(1, -1);
-    }
-    if (value !== '') {
-        code += ` = ${value}`;
-    }
-    return [code, Blockly.Cpp.ORDER_ATOMIC];
-};
+    Blockly.Blocks[`get_${Block_type}`] = {
+        init: function() {
+            this.text = `${data_type[Block_type]}名稱: `;
+            this.Block_type = Block_type;
+            this.appendDummyInput("Name_Input")
+                .appendField(`${data_type[Block_type]}名稱: `)
+                .appendField(VarDropdown(Block_type), "Name");
+            this.jsonInit({
+                "type": `get_${Block_type}`, 
+                "inputsInline": true, 
+                "output": null,
+                "colour": "#DABD00",
+                "extensions": ["dynamic_dropdown"],
+                "tooltip": `${data_type[Block_type]}`,
+                "helpurl": ""
+            });
+        }
+    };
+
+    Cpp.forBlock[`get_${Block_type}`] = function(block){
+        return [block.getFieldValue("Name"), Cpp.ORDER_ATOMIC];
+    };
 });
 
 ["PTR", "REF"].forEach(Block_type =>{
     Blockly.Blocks[`${Block_type}_of`] = {
         init: function() {
-            this.appendDummyInput()
-                .appendField("變數")
-                .appendField(new Blockly.FieldDropdown(
-                    Blockly.Cpp[Block_type].map(item => [item, item]))
-                , "var_name");
-            this.appendValueInput("value")
-                .appendField(" -> ");
-            this.setInputsInline(true);
-            this.setOutput(true, null);
-            this.setColour('#DABD00');
-            this.setTooltip(``);
-            this.setHelpUrl('');
+            this.text = `${data_type[Block_type]}名稱: `;
+            this.Block_type = Block_type;
+            this.appendDummyInput("Name_Input")
+                .appendField(`${data_type[Block_type]}名稱: `)
+                .appendField(VarDropdown(Block_type), "Name");
+            this.jsonInit({
+                "type": `${Block_type}_of`, 
+                "message0": " -> %1", 
+                "args0": [{
+                    "type": "input_value", 
+                    "name": "value"
+                }], 
+                "inputsInline": true, 
+                "output": null, 
+                "colour": "#DABD00",
+                "extensions": ["dynamic_dropdown"],
+                "tooltip": `指向${data_type[Block_type]}下的參數`,
+                "helpurl": ""
+            });
         }
     };
 
-    Blockly.Cpp.forBlock[`${Block_type}_of`] = function(block) {
-        var var_name = block.getFieldValue('var_name');
-        var value = Blockly.Cpp.valueToCode(block, 'value', 1) || '0';
-        if (value.startsWith('(') && value.endsWith(')')) {
-            value = value.slice(1, -1);
-        }
-        return [`${var_name} -> ${value}`, Blockly.Cpp.ORDER_ATOMIC];
+    Cpp.forBlock[`${Block_type}_of`] = function(block) {
+        const Name = block.getFieldValue("Name");
+        const value = Cpp.valueToCode(block, "value", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "0";
+        return [`${Name} -> ${value}`, Cpp.ORDER_ATOMIC];
     };
 
     Blockly.Blocks[`${Block_type}_to`] = {
         init: function() {
-            this.appendDummyInput()
-                .appendField(data_type[Block_type])
-                .appendField(VarDropdown(Block_type), "var_name");
-            this.setInputsInline(true);
-            this.setOutput(true, null);
-            this.setColour('#DABD00');
-            this.setTooltip(``);
-            this.setHelpUrl('');
+           this.text = `${data_type[Block_type]}名稱: `;
+            this.Block_type = Block_type;
+            this.appendDummyInput("Name_Input")
+                .appendField(`${data_type[Block_type]}名稱: `)
+                .appendField(VarDropdown(Block_type), "Name");
+            this.jsonInit({
+                "type": `${Block_type}_to`, 
+                "inputsInline": true, 
+                "output": null, 
+                "colour": "#DABD00",
+                "extensions": ["dynamic_dropdown"],
+                "tooltip": `${data_type[Block_type]}`,
+                "helpurl": ""
+            });
         }
     };
 
-    Blockly.Cpp.forBlock[`${Block_type}_to`] = function(block) {
-        var var_name = block.getFieldValue('var_name');
-        return [`*${var_name}`, 1];
+    Cpp.forBlock[`${Block_type}_to`] = function(block) {
+        const Name = block.getFieldValue("Name");
+        return [`*${Name}`, 1];
     };
 })
 
 Blockly.Blocks[`nullptr`] = {
-    init:function() {
-        this.appendDummyInput()
-            .appendField("nullptr");
-        this.setOutput(true, null);
-        this.setColour('#DABD00');
-        this.setTooltip(`nullptr`);
-        this.setHelpUrl('');
+    init: function() {
+        this.jsonInit({
+            "type": "nullptr", 
+            "message0": "nullptr", 
+            "output": null, 
+            "colour": "#DABD00",
+            "tooltip": `nullptr`,
+            "helpurl": ""
+        });
     }
 }
 
-Blockly.Cpp.forBlock[`nullptr`] = function(block){
-    return [`nullptr`, Blockly.Cpp.ORDER_ATOMIC];
+Cpp.forBlock[`nullptr`] = function(block){
+    return [`nullptr`, Cpp.ORDER_ATOMIC];
 }

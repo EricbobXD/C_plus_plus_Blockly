@@ -6,16 +6,16 @@ function Dropdown() {
     );
 }
 
-Blockly.Blocks['define_array'] = {
+Blockly.Blocks["define_array"] = {
     init: function() {
-        this.appendValueInput('TYPE')
-            .appendField('定義陣列資料型態: ');
+        this.appendValueInput("TYPE")
+            .appendField("定義陣列資料型態: ");
 
         this.text = "陣列名稱: ";
         this.Block_type = "Array";
         this.appendDummyInput("Name_Input")
-            .appendField('陣列名稱: ')
-            .appendField(Dropdown(), 'Name');
+            .appendField("陣列名稱: ")
+            .appendField(Dropdown(), "Name");
 
         this.jsonInit({
             "type": "define_array",
@@ -64,32 +64,32 @@ Blockly.Blocks['define_array'] = {
     }
 };
 
-Cpp.forBlock['define_array'] = function(block) {
-    var type = Cpp.valueToCode(block, 'TYPE', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
-    var Name = block.getFieldValue('Name');
-    var mode = block.getFieldValue('mode');
+Cpp.forBlock["define_array"] = function(block) {
+    var type = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    var Name = block.getFieldValue("Name");
+    var mode = block.getFieldValue("mode");
 
     
     if (mode === "size") {
-        var size = Cpp.valueToCode(block, 'size', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
-        return type + ' ' + Name + '[' + size + '];';
+        var size = Cpp.valueToCode(block, "size", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        return type + " " + Name + "[" + size + "];";
     } else if (mode === "size_element"){
-        if (!this.getInput("element")) return '';
+        if (!this.getInput("element")) return "";
         console.log(111);
-        var size = Cpp.valueToCode(block, 'size', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
-        var element = Cpp.valueToCode(block, 'element', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
-        return type + ' ' + Name + '[' + size + '] = {' + element + '};\n';
+        var size = Cpp.valueToCode(block, "size", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        var element = Cpp.valueToCode(block, "element", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+        return type + " " + Name + "[" + size + "] = {" + element + "};\n";
     }
 };
 
-Blockly.Blocks['array_name'] = {
+Blockly.Blocks["array_name"] = {
     init: function() {
 
         this.text = "陣列名稱: ";
         this.Block_type = "Array";
         this.appendDummyInput("Name_Input")
-            .appendField('陣列名稱: ')
-            .appendField(Dropdown(), 'Name');
+            .appendField("陣列名稱: ")
+            .appendField(Dropdown(), "Name");
         this.jsonInit({
             "type": "array_name", 
             "output": null, 
@@ -101,12 +101,12 @@ Blockly.Blocks['array_name'] = {
     }
 };
 
-Cpp.forBlock['array_name'] = function(block) {
-    var Name = block.getFieldValue('Name');
+Cpp.forBlock["array_name"] = function(block) {
+    var Name = block.getFieldValue("Name");
     return [Name, Cpp.ORDER_ATOMIC];
 };
 
-Blockly.Blocks['array_content'] = {
+Blockly.Blocks["array_content"] = {
     init: function() {
         this.jsonInit({
             "type": "array_content", 
@@ -123,18 +123,18 @@ Blockly.Blocks['array_content'] = {
     }
 };
 
-Cpp.forBlock['array_content'] = function(block) {
-    var content = Cpp.valueToCode(block, 'mode', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
-    return ['{' + content + '}', Cpp.ORDER_ATOMIC];
+Cpp.forBlock["array_content"] = function(block) {
+    var content = Cpp.valueToCode(block, "mode", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    return ["{" + content + "}", Cpp.ORDER_ATOMIC];
 };
 
-Blockly.Blocks['array_operate[]'] = {
+Blockly.Blocks["array_operate[]"] = {
     init: function() {
         this.text = "陣列名稱: ";
         this.Block_type = "Array";
         this.appendDummyInput("Name_Input")
-            .appendField('陣列')
-            .appendField(Dropdown(), 'Name');
+            .appendField("陣列")
+            .appendField(Dropdown(), "Name");
         this.jsonInit({
             "type": "array_operate[]", 
             "message0": "[%1]",
@@ -151,9 +151,10 @@ Blockly.Blocks['array_operate[]'] = {
     }
 };
 
-Cpp.forBlock['array_operate[]'] = function(block) {
-    var Name = block.getFieldValue('Name');
-    var pos = Cpp.valueToCode(block, 'pos', Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
-    var code = Name + '[' + pos + ']';
+Cpp.forBlock["array_operate[]"] = function(block) {
+    var Name = block.getFieldValue("Name");
+    var pos = Cpp.valueToCode(block, "pos", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
+    var code = Name + "[" + pos + "]";
     return [code, Cpp.ORDER_ATOMIC];
 };
+

@@ -787,26 +787,7 @@ function bitwise_generateCode(block, operator) {
     }
 
     return [`${code}`, Cpp.ORDER_ATOMIC];
-}
-
-    // date_type
-    Cpp.forBlock["data_type"] = function(block) {
-        return [`${block.getFieldValue("TYPE")}`, Cpp.ORDER_ATOMIC];
-    }
-
-    Cpp.forBlock["void"] = function(){
-        return ["void", Cpp.ORDER_ATOMIC];
-    }
-
-    Cpp.forBlock["struct_type"] = function(block) {
-        return [`struct ${block.getFieldValue("TYPE")}`, Cpp.ORDER_ATOMIC];
-    }
-
-    Cpp.forBlock["class_type"] = function(block) {
-        return [`class ${block.getFieldValue("TYPE")}`, Cpp.ORDER_ATOMIC];
-    }
-
-
+}    
     // data
     Cpp.forBlock["add_line"] = function(block) {
         return `\n`;
@@ -829,6 +810,7 @@ function bitwise_generateCode(block, operator) {
     Cpp.forBlock["comment_block"] = function(block) {
         return `// ${block.getFieldValue("COMMENT")}\n`;
     };
+
 
     Cpp.forBlock["number"] = function(block) {
         return [block.getFieldValue("NUMBER") || "0", Cpp.ORDER_ATOMIC];
@@ -870,23 +852,13 @@ function bitwise_generateCode(block, operator) {
         return code;
     };
 
-    Cpp.forBlock["for_block"] = function(block) {
-        var init = Cpp.valueToCode(block, "INIT", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var condition = Cpp.valueToCode(block, "CONDITION", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var var_cal = Cpp.valueToCode(block, "var_cal", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";
-        var statements_body = Cpp.statementToCode(block, "DO")
-        statements_body = statements_body.replace(/^ {2}/gm, "    ");
+    Cpp.forBlock['for_block'] = function(block) {
+        const init = Blockly.Cpp.valueToCode(block, 'init', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+        const condition = Blockly.Cpp.valueToCode(block, 'condition', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+        const iter = Blockly.Cpp.valueToCode(block, 'iter', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+        const DO = Blockly.Cpp.statementToCode(block, 'DO').replace(/^ {2}/gm, '    ');
 
-        if (init.startsWith("(") && init.endsWith(")")) {
-            init = init.slice(1, -1);
-        }
-        if (condition.startsWith("(") && condition.endsWith(")")) {
-            condition = condition.slice(1, -1);
-        }
-        if (var_cal.startsWith("(") && var_cal.endsWith(")")) {
-            var_cal = var_cal.slice(1, -1);
-        }
-        return `for (${init}; ${condition}; ${var_cal}){\n${statements_body}}\n`;
+        return `for (${init}; ${condition}; ${iter}) {\n${DO}}\n`;
     };
 
     Cpp.forBlock["for_range_block"] = function(block) {
@@ -1042,7 +1014,7 @@ function bitwise_generateCode(block, operator) {
             Value2 = `(${Value2})`;
         }
 
-        code = `${Value1} ${operatorSymbol} ${Value2}`;
+        var code = `${Value1} ${operatorSymbol} ${Value2}`;
         return [code, Cpp.ORDER_ATOMIC];
     };
 
@@ -1125,9 +1097,8 @@ function bitwise_generateCode(block, operator) {
             Value2 = `(${Value2})`;
         }            
 
-        code = `${Value1} ${operatorSymbol} ${Value2}`;
 
-        return [code, Cpp.ORDER_ATOMIC];
+        return [`${Value1} ${operatorSymbol} ${Value2}`, Cpp.ORDER_ATOMIC];
     };
 
     // bool
@@ -1694,4 +1665,51 @@ function bitwise_generateCode(block, operator) {
         return code;
     };
 
+    Cpp.forBlock["compare_block"] = function(block){
+        var Value1 = Cpp.valueToCode(block, "A", 1) || "0";
+        var Value2 = Cpp.valueToCode(block, "B", 1) || "0";
 
+        var operator = block.getFieldValue("OPERATOR");
+        var operatorSymbol;
+
+        switch (operator) {
+            case "EQUAL":
+                operatorSymbol = "=";
+                break;
+            case "NOT_EQUAL":
+                operatorSymbol = "!=";
+                break;
+            case "GREATER":
+                operatorSymbol = ">";
+                break;
+            case "LESS":
+                operatorSymbol = "<";
+                break;
+            case "GREATER_EQUAL":
+                operatorSymbol = ">=";
+                break;
+            case "LESS_EQUAL":
+                operatorSymbol = "<=";
+                break;
+            default:
+                operatorSymbol = "==";
+        }
+
+        if (Value1.startsWith("(") && Value1.endsWith(")")) {
+            Value1 = Value1.slice(1, -1);
+        }
+        if (Value2.startsWith("(") && Value2.endsWith(")")) {
+            Value2 = Value2.slice(1, -1);
+        }
+
+        if (["<", ">", "=", "==", ">=", "<=", "&", "|", "^"].some(op => String(Value1).includes(op))) {
+            Value1 = `(${Value1})`;
+        }
+        if (["<", ">", "=", "==", ">=", "<=", "&", "|", "^"].some(op => String(Value2).includes(op))) {
+            Value2 = `(${Value2})`;
+        }
+
+        const code = `${Value1} ${operatorSymbol} ${Value2}`;
+        if (block.outputConnection) return [code, Cpp.ORDER_ATOMIC];
+        else return `${code};\n`;
+    }

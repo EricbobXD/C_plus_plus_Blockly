@@ -2,6 +2,7 @@
 
 import { toolbox } from "./toolbox.js";
 import * as Utils from "./block_category/button.function.js" 
+import { bubble_sort_block } from "./block_category/algorithm/bubble_sort.js";
 
 const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
     if (!targetConnection || !targetConnection.getSourceBlock().workspace) {
@@ -15,10 +16,13 @@ const Reconnect_Block = (targetConnection, sourceBlock, inputName) => {
 
 /**  init Blockly and define the constant **/
 Blockly.Cpp = new Blockly.Generator("Cpp");
-Blockly.Cpp.ORDER_ATOMIC = 1;
-Blockly.Cpp.ORDER_NONE = 99;
+const Cpp = Blockly.Cpp;
+Cpp.ORDER_ATOMIC = 1;
+Cpp.ORDER_NONE = 99;
 
-/**  regist Mutator ( Must init before the workspace ) **/
+/** regist MultiText **/
+
+/** regist Mutator ( Must init before the workspace ) **/
 Blockly.Blocks["if_block"] = {
         init: function() {
             this.jsonInit({
@@ -171,7 +175,7 @@ const CategoryType = ["VAR", "PTR", "REF",
                       "Map", "Unordered_map", "Pair", 
                       "Set", "Unordered_set", "Flat_set", "Multiset"
                      ];
-CategoryType.forEach(t => Blockly.Cpp[t] = []);
+CategoryType.forEach(t => Cpp[t] = []);
 
 // checked the data_type whether it"s a global variable
 if (!window.data_type_checked) {
@@ -184,7 +188,7 @@ const usedName = new Set();
 
 function VarDropdown(type) {
     return new Blockly.FieldDropdown(
-        Blockly.Cpp[type].map(v => [v, v])
+        Cpp[type].map(v => [v, v])
     );
 }
 
@@ -488,7 +492,6 @@ Blockly.ContextMenuRegistry.registry.register({
     callback: function(scope){
         const block = scope.block;
         const isOutput = !block.outputConnection;
-        console.log(isOutput);
         block.updateModeShape_(isOutput);
 
         // manually update the block
@@ -498,12 +501,12 @@ Blockly.ContextMenuRegistry.registry.register({
     }
 });
 
-Blockly.Cpp.init(workspace);
+Cpp.init(workspace);
 
 /** background connection **/
 let id_code = "";
 async function updateCodeOutput() {
-    id_code = Blockly.Cpp.workspaceToCode(workspace);
+    id_code = Cpp.workspaceToCode(workspace);
     var convElement = document.getElementById("code");
     if (convElement) {
         convElement.innerHTML = "";
@@ -572,15 +575,15 @@ document.getElementById("c_r").addEventListener("click", async () => {
     report.value = result.message;
 }); 
 
-const originalBlockToCode = Blockly.Cpp.blockToCode;
-Blockly.Cpp.blockToCode = function(block) {
+const originalBlockToCode = Cpp.blockToCode;
+Cpp.blockToCode = function(block) {
     if (!block) {
         return "";
     }
     let code = originalBlockToCode.call(this, block);
     const nextBlock = block.getNextBlock();
     if (nextBlock) {
-        code += Blockly.Cpp.blockToCode(nextBlock);
+        code += Cpp.blockToCode(nextBlock);
     }
     return code;
 };
@@ -598,7 +601,7 @@ document.getElementById("redoBtn").addEventListener("click", async ()=>{
 /** Different type name pools setting **/
 //regist the call back button and control the web open and close
 const model = ["var", "array", "func", "get", "vec", "deq", "st", "qu", "pq", "set", "map", "pair", "bit"];
-model.forEach(t => workspace.registerButtonCallback(`${t}_category`, function(){document.getElementById(`${t}_model`).style.display = "block";}));
+model.forEach(t => workspace.registerButtonCallback(`${t}_category`, () => document.getElementById(`${t}_model`).style.display = "block"));
 
 // have only one options 
 export function Confirm(text_name, type, model_name, Func) {
@@ -616,8 +619,8 @@ export function Confirm(text_name, type, model_name, Func) {
     document.getElementById(text_name).value = "";
 
     // to prevent repeating name add in the Name Pool
-    if (!Blockly.Cpp[type].includes(name)) {
-        Blockly.Cpp[type].push(name);
+    if (!Cpp[type].includes(name)) {
+        Cpp[type].push(name);
 
         if (window.data_type_checked[type]) {
             workspace.getAllBlocks().forEach(block => { 
@@ -666,8 +669,8 @@ function Confirm_Options(text_name, type_name, model_name, Func) {
     document.getElementById(model_name).style.display = "none";
     document.getElementById(text_name).value = "";
 
-    if (!Blockly.Cpp[type].includes(name)) {
-        Blockly.Cpp[type].push(name);
+    if (!Cpp[type].includes(name)) {
+        Cpp[type].push(name);
 
         if (window.data_type_checked[type]) {
             workspace.getAllBlocks().forEach(block => { 
@@ -778,3 +781,38 @@ window.onload = function(){
         contanier.appendChild(clone);
     });
 };
+
+const algorithm_model = ["bubble_sort"]
+algorithm_model.forEach(t => workspace.registerButtonCallback(t, () => document.getElementById(`${t}_model`).style.display = "block"));
+function Bubble_sort(){
+    const name = document.getElementById("Name").value;
+
+    console.log(111);
+    if (!name) return;
+    if (usedName.has(name)) {
+        alert("此變數名稱已被使用於其他種類！");
+        return;
+    }
+    usedName.add(name);
+
+    // make the web close and clear all the blank
+    document.getElementById("bubble_sort_model").style.display = "none";
+    document.getElementById("Name").value = "";
+
+    if (!Cpp["Array"].includes(name))
+        Cpp["Array"].push(name);
+    if (!Cpp["VAR"].includes("i"))
+        Cpp["VAR"].push("i");
+    if (!Cpp["VAR"].includes("j"))
+        Cpp["VAR"].push("j");
+
+    if (!Cpp["VAR"].includes("tmp"))
+        Cpp["VAR"].push("tmp");
+
+    const category = toolbox.contents.find(cat => cat.name === "演算法");
+    category.contents.push(bubble_sort_block(name));
+
+    const newToolbox = JSON.parse(JSON.stringify(toolbox));
+    workspace.updateToolbox(newToolbox);
+};
+window.Bubble_sort = Bubble_sort;

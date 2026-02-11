@@ -1,43 +1,58 @@
 const Cpp = Blockly.Cpp;
 
-const functional = [
-    {name: "less", rule: "<"}, 
-    {name: "greater", rule: ">"},
-    {name: "equal_to", rule: "=="}, 
-    {name: "not_equal_to", rule: "!="}, 
-    {name: "greater_equal", rule: ">="},  
-    {name: "less_equal", rule: "<="}
-]
+Blockly.Blocks["sort_container"] = {
+    init: function(){
+        this.jsonInit({
+            "type": "sort_container",
+            "message0": `資料型態: %1,排序方式 a %2 b`,
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "TYPE"
+                }, 
+                {
+                    "type": "field_dropdown", 
+                    "name": "func", 
+                    "options": [
+                        ["<", "less"], 
+                        [">", "greater"], 
+                        ["==", "eqaul_to"], 
+                        ["!=", "not_equal_to"],
+                        [">=", "greater_equal"], 
+                        ["<=", "less_equal"]
+                    ]
+                }
+            ],
+            "output": null, 
+            "colour": "#3EABF4",
+            "extensions": ["change_block_type"],
+            "helpurl": ""
+        }); 
 
-functional.forEach((item) => {
-    Blockly.Blocks[item.name] = {
-        init: function(){
-            this.jsonInit({
-                "type": `${item.name}`,
-                "message0": `資料型態%1, 函式: %2, 排序方式 a ${item.rule} b`,
-                "args0": [
-                    {
-                        "type": "input_value",
-                        "name": "TYPE"
-                    }, 
-                    {
-                        "type": "field_checkbox",
-                        "name": "func"
-                    }
-                ],
-                "colour": "#3EABF4",
-                "output": null
-            })
-        }
+        this.setTooltip(()=>{
+            const func = this.getFieldValue("func");
+            const tooltip = {
+                "less":  "<", 
+                "greater":  ">",
+                "equal_to":  "==", 
+                "not_equal_to":  "!=", 
+                "greater_equal":  ">=",  
+                "less_equal":  "<="
+            };
+            
+            return `自訂義容器排列方式 a ${tooltip[func]} b`
+        })
     }
+}
 
-    Cpp.forBlock[item.name] = function(block){
-        const TYPE = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";;
-        if (block.getFieldValue("func") === "TRUE") 
-            return [`${item.name}<${TYPE}>()`, 1];
-        return [`${item.name}<${TYPE}>`, 1];
-    }
-});
+Cpp.forBlock["sort_container"] = function(block){
+    const TYPE = Cpp.valueToCode(block, "TYPE", Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, "") || "";;
+    const func = block.getFieldValue("func");
+    const code = `${func}<${TYPE}>`;
+
+    if (block.outputConnection) return [`${code}()`, Cpp.ORDER_ATOMIC];
+    return code;
+}
 
 Blockly.Blocks["bind"] = {
     init: function(){
@@ -61,15 +76,8 @@ Blockly.Blocks["bind"] = {
 }
 
 Cpp.forBlock["bind"] = function(block) {
-    var func = Cpp.valueToCode(block, "func", 1);
-    var param = Cpp.valueToCode(block, "param", 1);
-    if (func.startsWith("(") && func.endsWith(")")) {
-        func = func.slice(1, -1);
-    }
-    
-    if (param.startsWith("(") && param.endsWith(")")) {
-        param = param.slice(1, -1);
-    }
+    var func = Cpp.valueToCode(block, "func", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || ''
+    var param = Cpp.valueToCode(block, "param", Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || ''
     return [`bind(${func}, ${param})`, 1];
 }
     

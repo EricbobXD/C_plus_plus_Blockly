@@ -1,56 +1,74 @@
 Blockly.Blocks['while_block'] = {
-  init: function() {
-    this.appendValueInput('CONDITION')
-        .setCheck('Boolean')
-        .appendField('當');
-    this.appendStatementInput('DO')
-        .appendField('重複執行');
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour('#00abea');
-    this.setTooltip('While 迴圈');
-    this.setHelpUrl('');
-  }
+    init: function() {
+        this.jsonInit({
+            "type": "while_block", 
+            "message0": "當 %1",
+            "args0": [{
+                "type": "input_value", 
+                "name": "condition", 
+            }], 
+            "message1": "%1",
+            "args1": [{
+                "type": "input_statement", 
+                "name": "DO"
+            }], 
+            "inputsInline": true,
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": "#00abea",
+            "tooltip": "While 迴圈",
+            "helpUrl": ""
+        });
+    }
 };
 
 Blockly.Cpp['while_block'] = function(block) {
-  var condition = Blockly.Cpp.valueToCode(block, 'CONDITION', Blockly.Cpp.ORDER_ATOMIC) || '(false)';
-  var statements_do = Blockly.Cpp.statementToCode(block, 'DO');
-  var code = 'while ' + condition + ' {\n' + statements_do + '\n}\n';
-  return code;
+    const condition = Blockly.Cpp.valueToCode(block, 'condition', Blockly.Cpp.ORDER_ATOMIC) || 'false';
+    const DO = Blockly.Cpp.statementToCode(block, 'DO');
+    return `while (${condition}) {\n${DO}\n}\n`;
 };
 
 Blockly.Blocks['for_block'] = {
-  init: function() {
-    this.appendValueInput('INIT')
-        .appendField('初始變數值');
-    this.appendValueInput('CONDITION')
-        .setCheck('Boolean')
-        .appendField('循環條件');
-    this.appendValueInput('var_cal')
-        .appendField('迴圈條件');
-    this.appendStatementInput('DO')
-        .appendField('執行');
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour('#2473c2');
-    this.setTooltip('For 迴圈');
-    this.setHelpUrl('');
-  }
+    init: function() {
+        this.jsonInit({
+            "type": "for_block", 
+            "message0": "初始變數值: %1, 循環條件: %2, 調整變數: %3",
+            "args0": [
+                {
+                    "type": "input_value", 
+                    "name": "init", 
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "condition", 
+                }, 
+                {
+                    "type": "input_value", 
+                    "name": "iter", 
+                }
+            ], 
+            "message1": "%1",
+            "args1": [{
+                "type": "input_statement", 
+                "name": "DO"
+            }], 
+            "inputsInline": true,
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": "#2473c2",
+            "tooltip": "For 迴圈",
+            "helpUrl": ""
+        });
+    }
 };
 
 Blockly.Cpp['for_block'] = function(block) {
-  var init = Blockly.Cpp.valueToCode(block, 'INIT', Blockly.Cpp.ORDER_ATOMIC) || '';
-  var condition = Blockly.Cpp.valueToCode(block, 'CONDITION', Blockly.Cpp.ORDER_ATOMIC) || '';
-  var varCal = Blockly.Cpp.valueToCode(block, 'var_cal', Blockly.Cpp.ORDER_ATOMIC) || '';
-  var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
-  
-  init = init.replace(/^\(?|\)?$/g, '');
-  condition = condition.replace(/^\(?|\)?$/g, '');
-  varCal = varCal.replace(/^\(?|\)?$/g, '');
-  statements_body = statements_body.replace(/^ {2}/gm, '    ');
-  return 'for (' + init + '; ' + condition + '; ' + varCal + ') {\n' + statements_body + '}\n';
+    const init = Blockly.Cpp.valueToCode(block, 'init', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    const condition = Blockly.Cpp.valueToCode(block, 'condition', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    const iter = Blockly.Cpp.valueToCode(block, 'iter', Blockly.Cpp.ORDER_ATOMIC).replace(/^\(?|\)?$/g, '') || '';
+    const DO = Blockly.Cpp.statementToCode(block, 'DO').replace(/^ {2}/gm, '    ');
+
+    return `for (${init}; ${condition}; ${iter}) {\n${DO}}\n`;
 };
 
 Blockly.Blocks['for_range_block'] = {
@@ -71,9 +89,9 @@ Blockly.Blocks['for_range_block'] = {
 }
 
 Blockly.Cpp['for_range_block'] = function(block) {
-  var VAR = Blockly.Cpp.valueToCode(block, 'VAR', Blockly.Cpp.ORDER_ATOMIC) || '';
-  var container = Blockly.Cpp.valueToCode(block, 'container', Blockly.Cpp.ORDER_ATOMIC) || '';
-  var statements_body = Blockly.Cpp.statementToCode(block, 'DO');
+  const VAR = Blockly.Cpp.valueToCode(block, 'VAR', Blockly.Cpp.ORDER_ATOMIC) || '';
+  const container = Blockly.Cpp.valueToCode(block, 'container', Blockly.Cpp.ORDER_ATOMIC) || '';
+  const statements_body = Blockly.Cpp.statementToCode(block, 'DO');
 
   VAR = VAR.replace(/^\(?|\)?$/g, '');
   container = container.replace(/^\(?|\)?$/g, '');
@@ -124,7 +142,7 @@ Blockly.Blocks['return_block'] = {
 };
 
 Blockly.Cpp['return_block'] = function(block) {
-  var returnValue = Blockly.Cpp.valueToCode(block, 'RETURN_VALUE', Blockly.Cpp.ORDER_ATOMIC) || '';
+  const returnValue = Blockly.Cpp.valueToCode(block, 'RETURN_VALUE', Blockly.Cpp.ORDER_ATOMIC) || '';
   returnValue = returnValue.replace(/^\(?|\)?$/g, '');
   if (returnValue === '') {
     return 'return;\n';

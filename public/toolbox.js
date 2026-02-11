@@ -1,6 +1,11 @@
 export const toolbox = {
     "kind": "categoryToolbox",
     "contents": [
+        {
+            "kind": "category",
+            "name": "test", 
+            "contents": []
+        },
         { //data type
             "kind": "category",
             "name": "資料型態",
@@ -13,14 +18,10 @@ export const toolbox = {
                 {
                     "kind": "block", 
                     "type": "void"
-                },
+                }, 
                 {
-                    "kind": "block",
-                    "type": "struct_type"
-                },
-                {
-                    "kind": "block",
-                    "type": "class_type"
+                    "kind": "block", 
+                    "type": "sizeof"
                 }
             ] 
         },
@@ -116,6 +117,10 @@ export const toolbox = {
                 {
                     "kind": "block",
                     "type": "logic_operators"
+                },
+                {
+                    "kind": "block", 
+                    "type": "compare_block"
                 },
                 {
                     "kind": "block",
@@ -660,27 +665,7 @@ export const toolbox = {
                     "contents": [
                         {
                             "kind": "block",
-                            "type": "less"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "greater"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "equal_to"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "not_equal_to"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "greater_equal"
-                        },
-                        {
-                            "kind": "block",
-                            "type": "less_equal"
+                            "type": "sort_container"
                         },
                         {
                             "kind": "block",
@@ -699,9 +684,27 @@ export const toolbox = {
         },
         {
             "kind": "category",
+            "name": "演算法",
+            "colour": "#1F91B5",
+            "contents": [
+                {
+                    "kind": "button", 
+                    "text": "Bubble Sort",
+                    "callbackKey": "bubble_sort"
+                }
+            ]
+        },
+        { // sep
+            "kind": "sep"
+        },
+        {
+            "kind": "category",
             "name": "搜尋",
             "colour": "#A1A1A1",
             "contents": []
-        }
+        }, 
+        { // sep
+            "kind": "sep"
+        },
     ]
 };
