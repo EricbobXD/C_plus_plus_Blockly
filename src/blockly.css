@@ -1,0 +1,123 @@
+.blocklyToolboxDiv { background: var(--toolbox) !important; border-right: 1px solid var(--line); }
+.app .blocklyToolbox { background: var(--toolbox) !important; color: var(--toolbox-text) !important; }
+.app .blocklyToolboxCategoryLabel { color: var(--toolbox-text) !important; }
+.blocklyTreeRow { height: 34px !important; line-height: 34px !important; margin: 3px 7px; border-radius: 6px; }
+.blocklyTreeLabel { font: 11px system-ui, sans-serif !important; color: var(--toolbox-text); }
+.blocklyTreeSelected { background: var(--accent-soft) !important; }
+.blocklyFlyoutBackground { fill: var(--toolbox) !important; fill-opacity: .98; }
+.blocklyMainBackground { fill: var(--workspace); stroke: none !important; }
+.blocklyScrollbarHandle { fill: #84938a !important; }
+.blocklyZoom > image { opacity: .55; }
+.app[data-theme="dark"] .blocklyText { fill: #e4ebe7 !important; }
+.blocklyToolboxDiv .blocklyTreeRow { background: transparent !important; border-radius: 7px !important; border-left: 3px solid transparent; padding-left: 5px; }
+.blocklyToolboxDiv .blocklyTreeRow:hover { background: var(--accent-soft) !important; }
+.blocklyToolboxDiv .blocklyTreeRow.blocklyTreeSelected { background: var(--accent-soft) !important; border-left-color: var(--accent); }
+.blocklyToolboxDiv .blocklyTreeLabel { color: var(--toolbox-text) !important; font-weight: 550 !important; }
+.app[data-theme="dark"] .blocklyToolboxDiv { background: var(--toolbox) !important; border-right-color: var(--line) !important; }
+.app[data-theme="dark"] .blocklyFlyoutBackground { fill: var(--flyout) !important; }
+.blocklyTooltipDiv { display:none !important; }
+.blocklyMutatorBackground { fill:var(--surface) !important; stroke:var(--accent) !important; stroke-opacity:.42; stroke-width:1.5px; }
+.blocklyMutatorIcon .blocklyIconShape { fill:var(--accent-soft) !important; stroke:var(--accent) !important; stroke-width:1.25px; }
+.blocklyMutatorIcon .blocklyIconSymbol { fill:var(--accent) !important; }
+.blocklyIconGroup.blocklyMutatorIcon { cursor:pointer; }
+.blocklyIconGroup.blocklyMutatorIcon:hover .blocklyIconShape { fill:var(--accent) !important; }
+.blocklyIconGroup.blocklyMutatorIcon:hover .blocklyIconSymbol { fill:var(--button-ink,#fff) !important; }
+.blocklyBlockCanvas .blocksmith-error-block .blocklyPath { stroke:#d93545 !important; stroke-width:2.5px !important; }
+.blocklyBlockCanvas .blocksmith-warning-block:not(.blocksmith-error-block) .blocklyPath { stroke:#f2c94c !important; stroke-width:2.25px !important; }
+.blocksmith-hover-card { position:absolute; z-index:28; width:min(292px,calc(100% - 24px)); max-height:210px; overflow:auto; padding:10px 12px; border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:9px; background:var(--surface); color:var(--ink); box-shadow:0 10px 30px #0005; pointer-events:auto; animation:blocksmithTooltipIn .12s ease-out; }
+.blocksmith-tooltip-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:4px; }
+.blocksmith-tooltip-header strong { color:var(--ink); font-size:12px; font-weight:750; }
+.blocksmith-tooltip-header code { color:var(--accent); font:10px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; }
+.blocksmith-hover-card p { margin:0 0 7px; color:var(--muted); font-size:11px; white-space:normal; }
+.blocksmith-tooltip-details { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 7px; }
+.blocksmith-tooltip-details span { padding:2px 6px; border:1px solid var(--line); border-radius:999px; background:var(--accent-soft); color:var(--ink); font-size:10px; }
+.blocksmith-hover-card pre { margin:0; padding:6px 8px; border-radius:6px; background:var(--code-surface); color:var(--ink); font:10px/1.45 ui-monospace, SFMono-Regular, Consolas, monospace; white-space:pre-wrap; }
+@keyframes blocksmithTooltipIn { from { opacity:0; transform:translateY(3px); } to { opacity:1; transform:translateY(0); } }
+
+/* Refined category rail and flyout surface. */
+.blocklyToolboxDiv {
+  box-shadow: 8px 0 24px #0000000a;
+  scrollbar-color: #84938a transparent;
+  scrollbar-width: thin;
+}
+.blocklyToolboxDiv .blocklyTreeRoot {
+  padding: 9px 5px 12px;
+}
+.blocklyToolboxDiv .blocklyTreeRow {
+  box-sizing: border-box;
+  height: 36px !important;
+  line-height: 36px !important;
+  margin: 3px 5px !important;
+  padding-left: 8px !important;
+  border-radius: 9px !important;
+  border-left-width: 3px !important;
+  transition: background-color .16s ease, border-color .16s ease, transform .16s ease;
+}
+.blocklyToolboxDiv .blocklyTreeRow:hover {
+  transform: translateX(1px);
+}
+.blocklyToolboxDiv .blocklyTreeRow.blocklyTreeSelected {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.blocklyToolboxDiv .blocklyTreeLabel {
+  font-size: 12px !important;
+  letter-spacing: .01em;
+}
+.blocklyToolboxDiv .blocklyTreeRow[aria-level="1"] {
+  min-height: 38px;
+  font-weight: 750;
+}
+.blocklyToolboxDiv .blocklyTreeRow[aria-level="2"] {
+  margin-left: 11px !important;
+}
+.blocklyToolboxDiv .blocklyTreeSeparator {
+  margin: 8px 12px !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+.blocklyFlyout {
+  filter: drop-shadow(5px 4px 12px #0002);
+}
+.blocklyFlyoutBackground {
+  fill-opacity: 1 !important;
+}
+.blocklyFlyout .blocklyBlockCanvas {
+  filter: drop-shadow(0 2px 2px #0002);
+}
+.blocklyScrollbarHandle {
+  opacity: .68;
+  transition: opacity .16s ease;
+}
+.blocklyScrollbarHandle:hover {
+  opacity: 1;
+}
+.app[data-theme="dark"] .blocklyToolboxDiv {
+  box-shadow: 8px 0 28px #0005;
+}
+.app[data-theme="dark"] .blocklyToolboxDiv .blocklyTreeSelected {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 34%, transparent), 0 3px 12px #0003;
+}
+.app[data-theme="dark"] .blocklyToolboxDiv .blocklyTreeSeparator {
+  border-bottom-color: #34413b !important;
+}
+.app[data-theme="dark"] .blocklyFlyout {
+  filter: drop-shadow(5px 4px 16px #0008);
+}
+.blocklyBlockCanvas .blocklyDraggable .blocklyPath {
+  stroke: #00000020;
+  stroke-width: .8px;
+  transition: filter .14s ease, stroke .14s ease;
+}
+.blocklyBlockCanvas .blocklyDraggable:hover .blocklyPath {
+  filter: brightness(1.08);
+  stroke: #ffffff65;
+}
+.blocklyBlockCanvas .blocklyDraggable.blocklySelected .blocklyPath {
+  stroke: #ffffffb0;
+  stroke-width: 1.5px;
+}
+.app[data-theme="dark"] .blocklyBlockCanvas .blocklyDraggable .blocklyPath {
+  stroke: #00000042;
+}
+.app[data-theme="dark"] .blocklyBlockCanvas .blocklyDraggable:hover .blocklyPath {
+  stroke: #ffffff85;
+}

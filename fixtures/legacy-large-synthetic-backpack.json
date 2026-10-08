@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "items": [
+    {
+      "id": "synthetic-if-branches",
+      "type": "controls_if",
+      "label": "合成舊版 if 分支",
+      "xml": "<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"controls_if\"><mutation elseif=\"2\" else=\"1\"></mutation><value name=\"IF0\"><shadow type=\"logic_boolean\"><field name=\"BOOL\">TRUE</field></shadow></value><value name=\"IF1\"><shadow type=\"logic_boolean\"><field name=\"BOOL\">FALSE</field></shadow></value><value name=\"IF2\"><shadow type=\"logic_boolean\"><field name=\"BOOL\">TRUE</field></shadow></value></block>"
+    },
+    {
+      "id": "synthetic-switch",
+      "type": "switch_block",
+      "label": "合成舊版 switch",
+      "xml": "<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"switch_block\"><mutation cases=\"3\" default=\"1\"></mutation><value name=\"SWITCH_VALUE\"><shadow type=\"math_number\"><field name=\"NUM\">2</field></shadow></value></block>"
+    },
+    {
+      "id": "synthetic-text-join",
+      "type": "text_join",
+      "label": "合成四段文字串接",
+      "xml": "<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"text_join\"><mutation items=\"4\"></mutation><value name=\"ADD0\"><shadow type=\"text\"><field name=\"TEXT\">saved-0</field></shadow></value><value name=\"ADD1\"><shadow type=\"text\"><field name=\"TEXT\">saved-1</field></shadow></value><value name=\"ADD2\"><shadow type=\"text\"><field name=\"TEXT\">saved-2</field></shadow></value><value name=\"ADD3\"><shadow type=\"text\"><field name=\"TEXT\">saved-3</field></shadow></value></block>"
+    },
+    {
+      "id": "synthetic-variadic",
+      "type": "string_generic",
+      "label": "合成多項字串方塊",
+      "xml": "<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"string_generic\"><mutation items=\"5\"></mutation><value name=\"ADD0\"><shadow type=\"string\"><field name=\"TEXT\">saved-0</field></shadow></value><value name=\"ADD1\"><shadow type=\"string\"><field name=\"TEXT\">saved-1</field></shadow></value><value name=\"ADD2\"><shadow type=\"string\"><field name=\"TEXT\">saved-2</field></shadow></value><value name=\"ADD3\"><shadow type=\"string\"><field name=\"TEXT\">saved-3</field></shadow></value><value name=\"ADD4\"><shadow type=\"string\"><field name=\"TEXT\">saved-4</field></shadow></value></block>"
+    },
+    {
+      "id": "synthetic-variable",
+      "type": "variables_get",
+      "label": "合成變數參照",
+      "xml": "<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"variables_get\"><field name=\"VAR\" id=\"synthetic-count\">count</field></block>"
+    }
+  ]
+}

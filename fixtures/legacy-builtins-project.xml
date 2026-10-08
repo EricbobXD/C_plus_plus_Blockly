@@ -1,0 +1,33 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="cpp_main" x="40" y="40"></block>
+  <block type="controls_if" x="80" y="190">
+    <mutation elseif="1" else="1"></mutation>
+    <value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow></value>
+    <statement name="DO0"><block type="controls_flow_statements"><field name="FLOW">BREAK</field></block></statement>
+    <value name="IF1"><shadow type="logic_boolean"><field name="BOOL">FALSE</field></shadow></value>
+  </block>
+  <block type="math_number_property" x="320" y="190">
+    <mutation divisor_input="true"></mutation>
+    <field name="PROPERTY">DIVISIBLE_BY</field>
+    <value name="NUMBER_TO_CHECK"><shadow type="math_number"><field name="NUM">12</field></shadow></value>
+    <value name="DIVISOR"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
+  </block>
+  <block type="math_on_list" x="540" y="190">
+    <mutation op="MODE"></mutation>
+    <field name="OP">MODE</field>
+    <value name="LIST"><shadow type="lists_create_with"><mutation items="3"></mutation></shadow></value>
+  </block>
+  <block type="text_charAt" x="760" y="190">
+    <mutation at="false"></mutation>
+    <field name="WHERE">LAST</field>
+    <value name="VALUE"><shadow type="text"><field name="TEXT">legacy</field></shadow></value>
+  </block>
+  <block type="text_join" x="80" y="390">
+    <mutation items="3"></mutation>
+    <value name="ADD0"><shadow type="text"><field name="TEXT">A</field></shadow></value>
+    <value name="ADD1"><shadow type="text"><field name="TEXT">B</field></shadow></value>
+    <value name="ADD2"><shadow type="text"><field name="TEXT">C</field></shadow></value>
+  </block>
+  <block type="logic_compare" x="350" y="390"><field name="OP">LT</field></block>
+  <block type="logic_ternary" x="560" y="390"></block>
+</xml>

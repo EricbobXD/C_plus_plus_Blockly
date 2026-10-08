@@ -1,0 +1,22 @@
+{
+  "name": "cpp-blockly-studio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "prepare:compiler": "clang-wasm-copy-assets public/clang",
+    "dev": "clang-wasm-copy-assets public/clang && vite --configLoader runner",
+    "build": "clang-wasm-copy-assets public/clang && vite build --configLoader runner",
+    "preview": "vite preview --configLoader runner",
+    "benchmark:search": "node --expose-gc scripts/benchmark-search.mjs"
+  },
+  "dependencies": {
+    "blockly": "^12.3.1",
+    "@live-codes/clang-wasm": "^0.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}

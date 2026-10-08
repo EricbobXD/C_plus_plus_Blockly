@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legacy Restore Benchmark</title>
+  <style>
+    body { margin: 0; padding: 20px; color: #17201b; background: #edf2ed; font: 13px/1.5 system-ui, sans-serif; }
+    h1 { margin: 0 0 4px; font-size: 18px; } p { margin: 0 0 12px; color: #53645a; }
+    #status { padding: 10px 12px; border: 1px solid #bacbbd; border-radius: 8px; background: #fff; white-space: pre-wrap; }
+    #stage { position: fixed; left: -10000px; top: 0; width: 1000px; height: 820px; }
+  </style>
+</head>
+<body>
+  <h1>大型舊專案還原校準</h1>
+  <p>使用控制流程密集、字串運算密集或混合比例的巢狀合成舊專案。比較整批匯入、headless 建立，以及分幀根方塊還原搭配不同尺寸重算策略；同時核對 mutator、變數參照與背包資料。</p>
+  <pre id="status" role="status">載入測試資料…</pre>
+  <div id="stage"></div>
+  <script>
+    const reportFailure = (message) => { document.querySelector('#status').textContent = `校準失敗：${message}`; };
+    window.addEventListener('error', (event) => reportFailure(event.message || 'JavaScript error'));
+    window.addEventListener('unhandledrejection', (event) => reportFailure(event.reason?.stack || event.reason?.message || String(event.reason)));
+  </script>
+  <script type="module">
+    import * as Blockly from 'blockly/core';
+    import * as builtinBlocks from 'blockly/blocks';
+    import * as zhHant from 'blockly/msg/zh-hant';
+    import { registerBuiltinMutatorCompatibility } from '../src/builtinMutatorCompatibility.js';
+    import { registerLegacyBlocks } from '../src/legacyBlocks.js';
+    import { registerMinimalBuiltinBlocks } from '../src/minimalBuiltinBlocks.js';
+
+    const status = document.querySelector('#status');
+    const stage = document.querySelector('#stage');
+    const steadyMode = new URLSearchParams(location.search).has('steady');
+    const rounds = steadyMode ? 7 : 2;
+    const warmupRounds = steadyMode ? 3 : 0;
+    const resizeModes = ['default', 'per-frame', 'whole-restore'];
+    const frameBudgetMs = 10;
+    const fixtureName = new URLSearchParams(location.search).get('fixture') || 'control';
+    const fixtureFiles = {
+      control: 'legacy-large-nested-synthetic-project.xml',
+      text: 'legacy-large-text-heavy-nested-project.xml',
+      mixed: 'legacy-large-mixed-nested-project.xml',
+    };
+    const fixtureFile = fixtureFiles[fixtureName] || fixtureFiles.control;
+    const source = await fetch(`../fixtures/${fixtureFile}`).then((response) => response.text());
+    const backpack = await fetch('../fixtures/legacy-large-synthetic-backpack.json').then((response) => response.json());
+
+    Blockly.setLocale(zhHant);
+    Object.assign(Blockly.Blocks, ...Object.values(builtinBlocks).map((group) => group?.blocks ?? group));
+    registerBuiltinMutatorCompatibility(Blockly);
+    registerMinimalBuiltinBlocks(Blockly);
+    const generator = new Blockly.Generator('Synthetic C++');
+    registerLegacyBlocks(generator, Blockly);
+    Blockly.Blocks.cpp_main = { init() { this.appendDummyInput().appendField('主程式'); this.appendStatementInput('BODY'); this.setColour(210); } };
+    Blockly.Blocks.synthetic_fixture_entry = { init() { this.appendValueInput('EXPR'); this.appendStatementInput('BODY'); this.setPreviousStatement(true); this.setNextStatement(true); this.setColour(210); } };
+
+    const workspaceOptions = {
+      renderer: 'zelos',
+      scrollbars: true,
+      move: { scrollbars: true, drag: true, wheel: true },
+      zoom: { controls: false, wheel: false },
+    };
+    const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+    const makeWorkspace = () => {
+      const host = document.createElement('div');
+      host.style.cssText = 'width:1000px;height:820px;background:#e8eee8';
+      stage.replaceChildren(host);
+      return Blockly.inject(host, workspaceOptions);
+    };
+    const readProject = () => Blockly.utils.xml.textToDom(source);
+    const profile = (workspace) => {
+      const blocks = workspace.getAllBlocks(false);
+      const byType = {};
+      const mutators = { controlsIfElseBranches: 0, legacyIfElseBranches: 0, builtinTextJoinItems: 0, legacyVariadicItems: 0, legacySwitchCases: 0 };
+      const variableRefs = [];
+      for (const block of blocks) {
+        byType[block.type] = (byType[block.type] || 0) + 1;
+        if (block.type === 'controls_if' && block.elseifCount_ === 1 && block.elseCount_ === 1) mutators.controlsIfElseBranches++;
+        if (block.type === 'if_block' && block.elseifCount_ === 1 && block.hasElse_) mutators.legacyIfElseBranches++;
+        if (block.type === 'text_join' && block.itemCount_ === 4) mutators.builtinTextJoinItems++;
+        if (block.type === 'string_generic' && block.itemCount_ === 4) mutators.legacyVariadicItems++;
+        if (block.type === 'switch_block' && block.caseCount_ === 2 && block.hasDefault_) mutators.legacySwitchCases++;
+        if (block.type === 'variables_get') {
+          const model = block.getField('VAR')?.getVariable?.();
+          variableRefs.push({ id: model?.getId?.() || '', name: model?.name || '' });
+        }
+      }
+      const variables = workspace.getAllVariables().map((item) => ({ id: item.getId(), name: item.name })).sort((a, b) => a.id.localeCompare(b.id));
+      return { blockCount: blocks.length, byType: Object.fromEntries(Object.entries(byType).sort(([a], [b]) => a.localeCompare(b))), mutators, variables, variableReferenceCount: variableRefs.length, referencesResolve: variableRefs.every((ref) => variables.some((item) => item.id === ref.id)) };
+    };
+    const restoreBackpack = (workspace) => backpack.items.map((item) => {
+      const node = Blockly.utils.xml.textToDom(item.xml);
+      return Blockly.Xml.domToBlock(node, workspace);
+    });
+    const backpackProfile = (blocks) => blocks.map((block) => ({ type: block.type, mutator: block.itemCount_ ?? block.elseifCount_ ?? block.caseCount_ ?? null, variableId: block.getField('VAR')?.getVariable?.()?.getId?.() || null }));
+
+    const summarize = (values) => ({ medianMs: [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)], minMs: Math.min(...values), maxMs: Math.max(...values) });
+    const profileDiff = (expected, actual) => Object.fromEntries(Object.keys(expected).filter((key) => JSON.stringify(expected[key]) !== JSON.stringify(actual[key])).map((key) => [key, { expected: expected[key], actual: actual[key] }]));
+    const measureRenderCalls = (workspace, action) => {
+      const metrics = new Map();
+      const originals = [];
+      const targets = [
+        [Blockly.BlockSvg?.prototype, 'initSvg', 'block-init-svg'],
+        [Blockly.BlockSvg?.prototype, 'render', 'block-render'],
+        [Blockly.zelos?.Renderer?.prototype, 'render', 'renderer-render'],
+        [workspace, 'setResizesEnabled', 'set-resizes-enabled'],
+        [workspace, 'resizeContents', 'resize-contents'],
+      ];
+      for (const [object, method, name] of targets) {
+        if (!object || typeof object[method] !== 'function') continue;
+        const original = object[method];
+        originals.push([object, method, original]);
+        object[method] = function (...args) {
+          const started = performance.now();
+          try { return original.apply(this, args); }
+          finally {
+            const item = metrics.get(name) || { calls: 0, totalMs: 0 };
+            item.calls++;
+            item.totalMs += performance.now() - started;
+            metrics.set(name, item);
+          }
+        };
+      }
+      try { action(); }
+      finally { for (const [object, method, original] of originals.reverse()) object[method] = original; }
+      return [...metrics.entries()].map(([name, value]) => ({ name, calls: value.calls, totalMs: Math.round(value.totalMs * 10) / 10 }));
+    };
+    const directTimes = [];
+    const directMaxSync = [];
+    const headlessTimes = [];
+    const headlessConsistency = [];
+    const stagedResults = [];
+    let expectedProfile;
+    let expectedBackpack;
+    const restoreVisibleOnce = () => {
+      const workspace = makeWorkspace();
+      const xml = readProject();
+      const started = performance.now();
+      Blockly.Xml.domToWorkspace(xml, workspace);
+      const elapsed = performance.now() - started;
+      const currentProfile = profile(workspace);
+      const backpackBlocks = restoreBackpack(workspace);
+      const currentBackpackProfile = backpackProfile(backpackBlocks);
+      workspace.dispose();
+      return { elapsed, currentProfile, backpackProfile: currentBackpackProfile };
+    };
+    const coldRestore = restoreVisibleOnce();
+    expectedProfile = coldRestore.currentProfile;
+    expectedBackpack = coldRestore.backpackProfile;
+    for (let i = 0; i < warmupRounds; i++) restoreVisibleOnce();
+    for (let i = 0; i < rounds; i++) {
+      const run = restoreVisibleOnce();
+      directTimes.push(run.elapsed);
+      directMaxSync.push(run.elapsed);
+    }
+
+    const renderMetricRuns = [];
+    for (let i = 0; i < (steadyMode ? 3 : 1); i++) {
+      const instrumentedWorkspace = makeWorkspace();
+      renderMetricRuns.push(measureRenderCalls(instrumentedWorkspace, () => Blockly.Xml.domToWorkspace(readProject(), instrumentedWorkspace)));
+      instrumentedWorkspace.dispose();
+    }
+    const renderMetrics = [...new Set(renderMetricRuns.flatMap((run) => run.map((item) => item.name)))].map((name) => {
+      const samples = renderMetricRuns.map((run) => run.find((item) => item.name === name)).filter(Boolean);
+      return { name, callsPerRun: samples.map((sample) => sample.calls), totalMs: summarize(samples.map((sample) => sample.totalMs)) };
+    });
+
+    if (!steadyMode) for (const resizeMode of resizeModes) {
+      const totalTimes = [];
+      const longestSyncChunks = [];
+      const longestSlices = [];
+      const frameGaps = [];
+      let structureConsistent = true;
+      let backpackConsistent = true;
+      let firstProfileDiff = null;
+      for (let i = 0; i < rounds; i++) {
+        const workspace = makeWorkspace();
+        const xml = readProject();
+        const roots = [...xml.children].filter((element) => element.tagName === 'block' || element.tagName === 'shadow');
+        const variables = xml.querySelector('variables');
+        const started = performance.now();
+        const variableShell = document.implementation.createDocument(xml.namespaceURI, 'xml');
+        if (variables) variableShell.documentElement.appendChild(variables.cloneNode(true));
+        if (variables) Blockly.Xml.domToWorkspace(variableShell, workspace);
+        if (resizeMode === 'whole-restore') workspace.setResizesEnabled(false);
+        let longestSync = 0;
+        let longestSlice = 0;
+        let maxFrameGap = 0;
+        let lastFrame = performance.now();
+        for (let offset = 0; offset < roots.length;) {
+          const sliceStarted = performance.now();
+          if (resizeMode === 'per-frame') workspace.setResizesEnabled(false);
+          do {
+            const root = roots[offset++];
+            const rootStarted = performance.now();
+            Blockly.Xml.domToBlock(root.cloneNode(true), workspace);
+            longestSync = Math.max(longestSync, performance.now() - rootStarted);
+          } while (offset < roots.length && performance.now() - sliceStarted < frameBudgetMs);
+          if (resizeMode === 'per-frame') workspace.setResizesEnabled(true);
+          longestSlice = Math.max(longestSlice, performance.now() - sliceStarted);
+          await nextFrame();
+          const now = performance.now();
+          maxFrameGap = Math.max(maxFrameGap, now - lastFrame);
+          lastFrame = now;
+        }
+        if (resizeMode === 'whole-restore') workspace.setResizesEnabled(true);
+        totalTimes.push(performance.now() - started);
+        longestSyncChunks.push(longestSync);
+        longestSlices.push(longestSlice);
+        frameGaps.push(maxFrameGap);
+        const currentProfile = profile(workspace);
+        const currentBackpack = backpackProfile(restoreBackpack(workspace));
+        structureConsistent &&= JSON.stringify(currentProfile) === JSON.stringify(expectedProfile);
+        backpackConsistent &&= JSON.stringify(currentBackpack) === JSON.stringify(expectedBackpack);
+        if (!firstProfileDiff) firstProfileDiff = profileDiff(expectedProfile, currentProfile);
+        workspace.dispose();
+      }
+      stagedResults.push({ resizeMode, frameBudgetMs, total: summarize(totalTimes), longestAtomicRoot: summarize(longestSyncChunks), longestFrameSlice: summarize(longestSlices), maxFrameGap: summarize(frameGaps), structureConsistent, backpackConsistent, profileDiff: firstProfileDiff });
+    }
+
+    for (let i = 0; i < (steadyMode ? 2 : rounds); i++) {
+      const workspace = new Blockly.Workspace();
+      const started = performance.now();
+      Blockly.Xml.domToWorkspace(readProject(), workspace);
+      headlessTimes.push(performance.now() - started);
+      headlessConsistency.push(JSON.stringify(profile(workspace)) === JSON.stringify(expectedProfile));
+      workspace.dispose();
+    }
+
+    const fixtureXml = readProject();
+    const expectedRootCount = [...fixtureXml.children].filter((element) => element.tagName === 'block').length;
+    status.textContent = JSON.stringify({
+      sample: `${fixtureName} composition; synthetic application-shaped XML, not a captured user project`,
+      sampling: { blocklyVersion: '12.5.1', coldRestoreMs: coldRestore.elapsed, warmupRounds, measuredWarmRounds: rounds, instrumentationRounds: renderMetricRuns.length },
+      apiProbe: { domToBlockHeadless: typeof Blockly.Xml.domToBlockHeadless, domToBlock: typeof Blockly.Xml.domToBlock },
+      fixture: { bytes: new Blob([source]).size, topLevelBlocks: expectedRootCount, expectedTotalBlocks: expectedProfile.blockCount, blockTypes: expectedProfile.byType, expectedVariables: expectedProfile.variables, expectedVariableRefs: expectedProfile.variableReferenceCount, mutators: expectedProfile.mutators, backpackItems: backpack.items.length, backpackRestored: expectedBackpack },
+      direct: { steadyTotal: summarize(directTimes), longestSyncChunk: summarize(directMaxSync), structureAndBackpackConsistent: true, renderMetrics },
+      headless: { total: summarize(headlessTimes), structureConsistent: headlessConsistency.every(Boolean) },
+      adaptiveScheduling: stagedResults,
+    }, null, 2);
+  </script>
+</body>
+</html>

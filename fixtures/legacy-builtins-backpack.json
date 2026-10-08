@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "items": [
+    {"id":"legacy-divisible","type":"math_number_property","label":"舊版整除判斷","xml":"<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"math_number_property\"><mutation divisor_input=\"true\"></mutation><field name=\"PROPERTY\">DIVISIBLE_BY</field><value name=\"NUMBER_TO_CHECK\"><shadow type=\"math_number\"><field name=\"NUM\">18</field></shadow></value><value name=\"DIVISOR\"><shadow type=\"math_number\"><field name=\"NUM\">6</field></shadow></value></block>"},
+    {"id":"legacy-mode","type":"math_on_list","label":"舊版眾數清單","xml":"<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"math_on_list\"><mutation op=\"MODE\"></mutation><field name=\"OP\">MODE</field><value name=\"LIST\"><shadow type=\"lists_create_with\"><mutation items=\"2\"></mutation></shadow></value></block>"},
+    {"id":"legacy-char-at","type":"text_charAt","label":"舊版取最後字元","xml":"<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"text_charAt\"><mutation at=\"false\"></mutation><field name=\"WHERE\">LAST</field><value name=\"VALUE\"><shadow type=\"text\"><field name=\"TEXT\">sample</field></shadow></value></block>"},
+    {"id":"legacy-join","type":"text_join","label":"舊版三段串接","xml":"<block xmlns=\"https://developers.google.com/blockly/xml\" type=\"text_join\"><mutation items=\"3\"></mutation><value name=\"ADD0\"><shadow type=\"text\"><field name=\"TEXT\">old</field></shadow></value><value name=\"ADD1\"><shadow type=\"text\"><field name=\"TEXT\"> backpack</field></shadow></value><value name=\"ADD2\"><shadow type=\"text\"><field name=\"TEXT\"> sample</field></shadow></value></block>"}
+  ]
+}
