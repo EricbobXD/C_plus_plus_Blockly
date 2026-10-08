@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: process.env.GITHUB_PAGES === 'true' ? '/C_plus_plus_Blockly/' : '/',
   worker: {
     format: 'es',
   },
