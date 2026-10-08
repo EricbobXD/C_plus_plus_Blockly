@@ -900,9 +900,9 @@ function normalizeFilename(value) {
   return `${stem}.cpp`;
 }
 
-function persistProject(workspace, filename) {
+function persistProject(workspace, filename, savedAt = Date.now()) {
   if (!workspace) return;
-  const snapshot = JSON.stringify({ version: 2, savedAt: Date.now(), filename, xml: Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)) });
+  const snapshot = JSON.stringify({ version: 2, savedAt, filename, xml: Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)) });
   try {
     localStorage.setItem(STORAGE_KEY, snapshot);
     localStorage.setItem(BACKUP_KEY, snapshot);
@@ -1402,7 +1402,7 @@ export default function App() {
     setSavePulseId((id) => id + 1);
     setSaveFeedback(true);
     window.clearTimeout(saveFeedbackTimerRef.current);
-    saveFeedbackTimerRef.current = window.setTimeout(() => setSaveFeedback(false), 1100);
+    saveFeedbackTimerRef.current = window.setTimeout(() => setSaveFeedback(false), 3000);
   };
   forceSaveRef.current = () => {
     const workspace = workspaceRef.current;
@@ -1411,7 +1411,7 @@ export default function App() {
     const filename = normalizeFilename(filenameRef.current);
     let xml;
     try { xml = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)); } catch { xml = ''; }
-    if (!xml || !persistProject(workspace, filename)) { setSaveState('儲存失敗'); return; }
+    if (!xml || !persistProject(workspace, filename, savedAt)) { setSaveState('儲存失敗'); return; }
     try {
       const current = JSON.parse(localStorage.getItem(PROJECT_VERSIONS_KEY) || '[]');
       const projectId = activeProjectIdRef.current;
@@ -1437,7 +1437,8 @@ export default function App() {
     filenameRef.current = fileName;
     document.title = normalizeFilename(fileName);
     localStorage.setItem('blocksmith-filename', fileName);
-    if (workspaceRef.current && persistProject(workspaceRef.current, normalizeFilename(fileName))) { setSaveState('已自動儲存'); setLastSavedAt(Date.now()); flashSavedState(); }
+    const savedAt = Date.now();
+    if (workspaceRef.current && persistProject(workspaceRef.current, normalizeFilename(fileName), savedAt)) { setSaveState('已自動儲存'); setLastSavedAt(savedAt); flashSavedState(); }
     setProjectTabs((current) => current.map((item) => item.id === activeProjectIdRef.current ? { ...item, filename: normalizeFilename(fileName) } : item));
   }, [fileName]);
 
@@ -1809,15 +1810,16 @@ export default function App() {
       setDiagnostics(getWorkspaceDiagnostics(workspace, reminderThreshold));
       ensureMainBlock(workspace);
       setHistoryState({ undo: workspace.getUndoStack().length > 0, redo: workspace.getRedoStack().length > 0 });
-      const saved = persistProject(workspace, normalizeFilename(filenameRef.current));
+      const savedAt = Date.now();
+      const saved = persistProject(workspace, normalizeFilename(filenameRef.current), savedAt);
       setSaveState(saved ? '已自動儲存' : '儲存失敗');
-      if (saved) { setLastSavedAt(Date.now()); flashSavedState(); }
+      if (saved) { setLastSavedAt(savedAt); flashSavedState(); }
       if (!switchingProjectRef.current) {
         const xmlSnapshot = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace));
         setProjectTabs((current) => {
           const next = current.some((item) => item.id === activeProjectIdRef.current)
-            ? current.map((item) => item.id === activeProjectIdRef.current ? { ...item, filename: normalizeFilename(filenameRef.current), xml: xmlSnapshot, savedAt: Date.now() } : item)
-            : [...current, { id: activeProjectIdRef.current, filename: normalizeFilename(filenameRef.current), xml: xmlSnapshot, savedAt: Date.now() }];
+            ? current.map((item) => item.id === activeProjectIdRef.current ? { ...item, filename: normalizeFilename(filenameRef.current), xml: xmlSnapshot, savedAt } : item)
+            : [...current, { id: activeProjectIdRef.current, filename: normalizeFilename(filenameRef.current), xml: xmlSnapshot, savedAt }];
           try { localStorage.setItem(PROJECT_TABS_KEY, JSON.stringify(next.slice(-8))); } catch { /* Workspace autosave remains the recovery source. */ }
           return next.slice(-8);
         });
@@ -1969,8 +1971,9 @@ export default function App() {
         }
         if (data.filename) setFileName(normalizeFilename(data.filename));
         workspace.clearUndo();
-        const saved = persistProject(workspace, normalizeFilename(data.filename || fileName));
-        if (saved) { setLastSavedAt(Date.now()); flashSavedState(); }
+        const savedAt = Date.now();
+        const saved = persistProject(workspace, normalizeFilename(data.filename || fileName), savedAt);
+        if (saved) { setLastSavedAt(savedAt); flashSavedState(); }
         setSaveState('已匯入並儲存');
       } catch (error) {
         workspace.clear();
@@ -2652,8 +2655,9 @@ export default function App() {
       try { workspace.clear(); Blockly.Xml.domToWorkspace(Blockly.utils.xml.textToDom(version.xml), workspace); ensureMainBlock(workspace, true); workspace.clearUndo(); }
       finally { Blockly.Events.enable(); }
       refreshWorkspaceState(workspace);
-      const saved = persistProject(workspace, normalizeFilename(fileName));
-      if (saved) { setLastSavedAt(Date.now()); flashSavedState(); }
+      const savedAt = Date.now();
+      const saved = persistProject(workspace, normalizeFilename(fileName), savedAt);
+      if (saved) { setLastSavedAt(savedAt); flashSavedState(); }
       setSaveState('已還原版本');
     }
     catch (error) { workspace.clear(); Blockly.Xml.domToWorkspace(Blockly.utils.xml.textToDom(before), workspace); window.alert(menuText(`無法還原此版本：${error.message || '資料格式錯誤'}`,`Could not restore this version: ${error.message || 'Invalid data format'}`)); }
